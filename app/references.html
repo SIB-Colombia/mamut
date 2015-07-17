@@ -1,0 +1,40 @@
+<h3>References</h3>
+<hr>
+<div class="row equal">
+ 	<div class="col-md-5">
+ 		<div>
+ 			<h4>Add a manual reference:</h4>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addReferenceDirec(formData.references)">Add<span class="glyphicon glyphicon-plus"></span> </button>
+		</div>
+	</div>
+	<div class="col-md-5">
+		<div ng-app="fileUpload" ng-controller="UploadFile">
+			<h4>Drop File:</h4>
+		    <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+		        ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+		        accept="image/*,application/pdf">Drop ris here or click to upload
+		   	</div>
+		</div>   	
+	</div>
+</div>
+<hr>
+<div ng-repeat="ref in formData.references">
+	<div class="form-group">
+		<h4>Identifier:</h4>
+		<input type="text"  ng-model="ref.identifier"/>
+		<br>
+		<h4>Datatype:</h4>
+		<input type="text"  ng-model="ref.datatype"/>
+		<br>
+		<h4>Source:</h4>
+		<input type="text"  ng-model="ref.source"/>
+		<button  type="button" class="btn btn-info btn-sm" ng-show="$last" ng-click="removeReferenceDirec()"><span class="glyphicon glyphicon-minus"></span></button>
+		<hr>
+	</div>
+</div>
+<div class="col-xs-6 col-xs-offset-3">
+    <a ui-sref="form.ancillary" class="btn btn-block btn-info">
+    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+</div>
+</div>

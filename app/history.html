@@ -1,0 +1,1212 @@
+<div class="form-group">
+	<div ng-controller="CollapseDemoCtrl">
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Life Form</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+			<h3>Life Form Atomized:</h3>
+			<div ng-repeat="measurementOrFact in formData.lifeForm.lifeFormAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+       				<div>{{measurementOrFact}}</div>
+    			</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Life Form </button>
+			<div collapse="isCollapsed_1">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.lifeForm.lifeFormAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.lifeForm.lifeFormAtomized.measurementOrFact,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
+
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.lifeForm.lifeFormAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.lifeForm.lifeFormAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>-->
+
+			<h3>Life Form Unstructured:</h3>
+			<input type="text" class="form-control" name="lifeForm" ng-model="formData.lifeForm.lifeFormUnstructured"/>
+			
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.lifeForm.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.lifeForm.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>		
+	<br>
+
+	<div ng-controller="CollapseDemoCtrl">
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Life Cycle</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    	<h3>Life Cycle Atomized:</h3>
+			<div ng-repeat="measurementOrFact in formData.lifeCycle.lifeCycleAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+       				<div>{{measurementOrFact}}</div>
+    			</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Life Cycle </button>
+			<div collapse="isCollapsed_1">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.lifeCycle.lifeCycleAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.lifeCycle.lifeCycleAtomized.measurementOrFact,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.lifeCycle.lifeCycleAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.lifeCycle.lifeCycleAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>-->
+
+			<h3>Life Cycle Unstructured:</h3>
+			<input type="text" class="form-control" name="lifeCycle" ng-model="formData.lifeCycle.lifeCycleUnstructured"/>
+			
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.lifeCycle.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.lifeCycle.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>		
+	<br>
+
+	<div ng-controller="CollapseDemoCtrl">
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Reproduction</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    	<h3>Reproduction Atomized:</h3>
+			<div ng-repeat="measurementOrFact in formData.reproduction.reproductionAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+       				<div>{{measurementOrFact}}</div>
+    			</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Reproduction </button>
+			<div collapse="isCollapsed_1">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.reproduction.reproductionAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.reproduction.reproductionAtomized.measurementOrFact,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.reproduction.reproductionAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.reproduction.reproductionAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>-->
+
+			<h3>Reproduction Unstructured:</h3>
+			<input type="text" class="form-control" name="reproduction" ng-model="formData.reproduction.reproductionUnstructured"/>
+			
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.reproduction.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.reproduction.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>
+			<br>			
+		</div>
+	</div>		
+	<br>
+
+	<div ng-controller="CollapseDemoCtrl">
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Annual Cycles</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    	<h3>Annual Cycle Atomized:</h3>
+			<div ng-repeat="measurementOrFact in formData.annualCycle.annualCycleAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+       				<div>{{measurementOrFact}}</div>
+    			</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Annual Cycle </button>
+			<div collapse="isCollapsed_1">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.annualCycle.annualCycleAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.annualCycle.annualCycleAtomized.measurementOrFact,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.annualCycle.annualCycleAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.annualCycle.annualCycleAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>-->
+			<h3>Annual Cycle Unstructured:</h3>
+			<input type="text" class="form-control" name="annualCycle" ng-model="formData.annualCycle.annualCycleUnstructured"/>
+			
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.annualCycle.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.annualCycle.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>	
+	<br>
+
+	<div ng-controller="CollapseDemoCtrl">
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Feeding</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    	<h3>Feeding Atomized:</h3>
+			<div ng-repeat="measurementOrFact in formData.feeding.feedingAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+       				<div>{{measurementOrFact}}</div>
+    			</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Feeding </button>
+			<div collapse="isCollapsed_1">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.feeding.feedingAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.feeding.feedingAtomized.measurementOrFact,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.feeding.feedingAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.feeding.feedingAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>-->
+			<h3>Feeding Unstructured:</h3>
+			<input type="text" class="form-control" name="feeding" ng-model="formData.feeding.feedingUnstructured"/>
+			
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.feeding.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.feeding.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>		
+	<br>
+
+	<div ng-controller="CollapseDemoCtrl">
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Dispersal</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    	<h3>Dispersal Atomized:</h3>
+			<div ng-repeat="measurementOrFact in formData.dispersal.dispersalAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+       				<div>{{measurementOrFact}}</div>
+    			</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Dispersal </button>
+			<div collapse="isCollapsed_1">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.dispersal.dispersalAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.dispersal.dispersalAtomized.measurementOrFact,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.dispersal.dispersalAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.dispersal.dispersalAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>-->
+			<h3>Dispersal Unstructured:</h3>
+			<input type="text" class="form-control" name="dispersal" ng-model="formData.dispersal.dispersalUnstructured"/>
+			
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.dispersal.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.dispersal.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>		
+	<br>
+
+	<div ng-controller="CollapseDemoCtrl">
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Behavior</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    	<h3>Behavior Atomized:</h3>
+			<div ng-repeat="measurementOrFact in formData.behavior.behaviorAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+       				<div>{{measurementOrFact}}</div>
+    			</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Behavior </button>
+			<div collapse="isCollapsed_1">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.behavior.behaviorAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.behavior.behaviorAtomized.measurementOrFact,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.behavior.behaviorAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.behavior.behaviorAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>-->
+			<h3>Behavior Unstructured:</h3>
+			<input type="text" class="form-control" name="behavior" ng-model="formData.behavior.behaviorUnstructured"/>
+			
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.behavior.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.behavior.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>		
+	<br>
+	
+	<div ng-controller="CollapseDemoCtrl">
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Interactions</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    	<h3>Interactions Atomized:</h3>
+			<div ng-repeat="measurementOrFact in formData.interactions.interactionsAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+       				<div>{{measurementOrFact}}</div>
+    			</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Interactions </button>
+			<div collapse="isCollapsed_1">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.interactions.interactionsAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.interactions.interactionsAtomized.measurementOrFact,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.interactions.interactionsAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.interactions.interactionsAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>-->
+			<h3>Interactions Unstructured:</h3>
+			<input type="text" class="form-control" name="interactions" ng-model="formData.interactions.interactionsUnstructured"/>
+			
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.interactions.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.interactions.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>
+	<br>
+
+	<div ng-controller="CollapseDemoCtrl">
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Molecular Data</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    <h3>Molecular Data Atomized:</h3>
+			<div ng-repeat="measurementOrFact in formData.molecularData.molecularDataAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+       				<div>{{measurementOrFact}}</div>
+    			</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Interactions </button>
+			<div collapse="isCollapsed_1">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.molecularData.molecularDataAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.molecularData.molecularDataAtomized.measurementOrFact,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.molecularData.molecularDataAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.molecularData.molecularDataAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>-->	
+			<h3>Molecular Data Unstructured:</h3>
+			<input type="text" class="form-control" name="molecularData" ng-model="formData.molecularData.molecularDataUnstructured"/>
+			
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.molecularData.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.molecularData.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>		
+	<br>
+
+	
+	<div ng-controller="CollapseDemoCtrl">
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Migratory</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    	<h3>Migratory Atomized:</h3>
+			<div ng-repeat="measurementOrFact in formData.migratory.migratoryAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+       				<div>{{measurementOrFact}}</div>
+    			</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Migratory </button>
+			<div collapse="isCollapsed_1">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.migratory.migratoryAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.migratory.migratoryAtomized.measurementOrFact,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.migratory.migratoryAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.migratory.migratoryAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>-->	
+			<h3>Migratory Unstructured:</h3>
+			<input type="text" class="form-control" name="migratory" ng-model="formData.migratory.migratoryUnstructured"/>
+			
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.migratory.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.migratory.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>	
+	<br>
+
+	<div ng-controller="CollapseDemoCtrl">
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Ecological Significance</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    	<h3>Ecological Significance Atomized:</h3>
+			<div ng-repeat="measurementOrFact in formData.ecologicalSignificance.ecologicalSignificanceAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+       				<div>{{measurementOrFact}}</div>
+    			</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Ecological Significance </button>
+			<div collapse="isCollapsed_1">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.ecologicalSignificance.ecologicalSignificanceAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.ecologicalSignificance.ecologicalSignificanceAtomized.measurementOrFact,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.ecologicalSignificance.ecologicalSignificanceAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.ecologicalSignificance.ecologicalSignificanceAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>-->
+			<h3>Ecological Significance Unstructured:</h3>
+			<input type="text" class="form-control" name="ecologicalSignificance" ng-model="formData.ecologicalSignificance.ecologicalSignificanceUnstructured"/>
+			
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.ecologicalSignificance.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.ecologicalSignificance.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>		
+	<br>
+
+	<div ng-controller="CollapseDemoCtrl">
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Environmental Envelope</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    	<h3>Environmental Envelope Atomized:</h3>
+			<div ng-repeat="measurementOrFact in formData.environmentalEnvelope.environmentalEnvelopeAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+       				<div>{{measurementOrFact}}</div>
+    			</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Environmental Envelope </button>
+			<div collapse="isCollapsed_1">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.environmentalEnvelope.environmentalEnvelopeAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.environmentalEnvelope.environmentalEnvelopeAtomized.measurementOrFact,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.environmentalEnvelope.environmentalEnvelopeAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.environmentalEnvelope.environmentalEnvelopeAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>-->
+			<h3>Environmental Envelope Unstructured:</h3>
+			<input type="text" class="form-control" name="environmentalEnvelope" ng-model="formData.environmentalEnvelope.environmentalEnvelopeUnstructured"/>
+			
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.environmentalEnvelope.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.environmentalEnvelope.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>		
+	<br>
+
+</div> 
+
+<div class="col-xs-6 col-xs-offset-3">
+    <a ui-sref="form.invasiveness" class="btn btn-block btn-info">
+    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+</div>
+</div>
