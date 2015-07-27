@@ -1,7 +1,7 @@
 
 // create our angular app and inject ngAnimate and ui-router 
 // =============================================================================
-angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload', 'angularModalService'])
+angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload'])
 
 // configuring our routes 
 // =============================================================================
@@ -91,6 +91,7 @@ angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload
 .controller('CollapseDemoCtrl', ['$scope', function($scope) {
     $scope.isCollapsed = true;
     $scope.isCollapsed_1 = true;
+    $scope.isCollapsed_2 = true;
 }])
 .controller('UploadFile', ['$scope', 'Upload', function($scope, Upload) {
      $scope.$watch('files', function () {
@@ -121,8 +122,8 @@ angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload
     };
 }])
 
-.controller('checkBoxController',['$scope', function ($scope) {
-  $scope.employees=[{name:'John', age:25, gender:'boy'},
+.controller('checkBoxController',['$scope', '$http', function ($scope, $http) {
+    $scope.employees=[{name:'John', age:25, gender:'boy'},
        {name:'Jessie', age:30, gender:'girl'},
        {name:'Johanna', age:28, gender:'girl'},
        {name:'Joy', age:15, gender:'girl'},
@@ -132,23 +133,64 @@ angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload
        {name:'Erika', age:27, gender:'girl'},
        {name:'Patrick', age:40, gender:'boy'},
        {name:'Samantha', age:60, gender:'girl'}];
-  // toggle selection for a given employee by name
-  $scope.toggleSelection = function toggleSelection(selection, employeeName) {
-     var idx = selection.indexOf(employeeName);
-     // is currently selected
-     if (idx > -1) {
-       selection.splice(idx, 1);
-     }
-     // is newly selected
-     else {
-       selection.push(employeeName);
-     }
-   };
+ 
+      // toggle selection for a given employee by name
+    $scope.toggleSelection = function toggleSelection(selection, name) {
+        var idx = selection.indexOf(name);
+        // is currently selected
+        if (idx > -1) {
+            selection.splice(idx, 1);
+        }
+        // is newly selected
+        else {
+            selection.push(name);
+        }
+    };
+
+   $scope.updateSelectionFeeding = function updateSelectionFeeding(element, list) {
+        angular.forEach(list, function(item) {
+            item.checked = false;
+        });
+        element.checked= true;
+        $scope.feedingAtomizedType.type = element.name;
+    };
+    $scope.updateSelectionThropic = function updateSelectionThropic(element, list) {
+        angular.forEach(list, function(item) {
+            item.checked = false;
+        });
+        element.checked= true;
+        $scope.updateSelectionThropic.strategy = element.name;
+    };
+}])
+
+.controller('UbicacionCtrl', ['$scope', '$http', function($scope,$http) {
+    $http.get('/app/resources/distribution.json')
+       .then(function(res){
+          $scope.ubicacion = res.data;                
+    });
+    $scope.$watch('selected.country', function(id){
+        delete $scope.selected.stateProvince;
+        angular.forEach($scope.ubicacion, function(attr){
+          if(attr.countryIso === id){
+            $scope.selectedAttr = attr;
+          }
+        });
+    });
+    $scope.$watch('selected.stateProvince', function(id){
+        delete $scope.selected.county;
+        angular.forEach($scope.ubicacion, function(attr){
+          angular.forEach(attr.departments, function(attr2){
+            if(attr2.departmentIso === id){
+              $scope.selectedAttr2 = attr2;
+            }
+          });  
+        });
+      });
 }])
 
 // our controller for the form
 // =============================================================================
-.controller('formController', function($scope, $http, ModalService) {
+.controller('formController', function($scope, ModalService, $http) {
     
     $scope.colors = [{name: 'black',shade: 'dark'},{name: 'white',shade: 'light'},{name: 'red',shade: 'dark'},{name: 'blue',        shade: 'dark'},{name: 'yellow', shade: 'light'}
     ];
@@ -159,7 +201,7 @@ angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload
         $('#myselection').select2();
     };
 
-
+    $scope.selected = {};
     $scope.date = new Date();
     $scope.basesElements='';
     $scope.language='';
@@ -168,8 +210,11 @@ angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload
     $scope.commonName = {name:'',language:[],usedIn:'',usedBy:'',ancillaryData:[]};
     $scope.hierarchy = {classification:'',recommended:'',kingdom:'',phylum:'',classHierarchy:'',order:'',family:'',genus:'',subGenus:'',taxonRank:'',specificEpithet:'',infraspecificEpithet:'',higherClassification:'',parentTaxon:'',ancillaryData:[]};
     $scope.author = {name:'',role:''};
+    $scope.distributionOpt2 = {country:'',stateProvince:'',county:'',municipality:'',locality:''};
     $scope.measurementOrFact = {measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''}
-
+    $scope.annualCycleAtomizedType ={Event:'',startTimeInterval:'',endTimeInterval:'' ,ancillaryData:[]};
+    $scope.feedingAtomizedType = {type:'',thropic:[], ancillaryData:[]};
+    $scope.thropic = {strategy:'', strategyRemarks:''};
     // we will store all of our form data in this object
     $scope.formData = {};
     $scope.formData.revisiones=[];
@@ -186,8 +231,8 @@ angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload
     $scope.formData.lifeForm={lifeFormAtomized:{measurementOrFact:[],ancillaryData:[]},lifeFormUnstructured:'',ancillaryData:[]};
     $scope.formData.lifeCycle={lifeCycleAtomized:{measurementOrFact:[],ancillaryData:[]},lifeCycleUnstructured:'',ancillaryData:[]};
     $scope.formData.reproduction={reproductionAtomized:{measurementOrFact:[],ancillaryData:[]},reproductionUnstructured:'',ancillaryData:[]};
-    $scope.formData.annualCycle={annualCycleAtomized:{measurementOrFact:[],ancillaryData:[]},annualCycleUnstructured:'',ancillaryData:[]};
-    $scope.formData.feeding={feedingAtomized:{measurementOrFact:[],ancillaryData:[]},feedingUnstructured:'',ancillaryData:[]};
+    $scope.formData.annualCycle={annualCycleAtomized:{annualCycleAtomizedType:[]},annualCycleUnstructured:'',ancillaryData:[]};
+    $scope.formData.feeding={feedingAtomized:{feedingAtomizedType:[]},feedingUnstructured:'',ancillaryData:[]};
     $scope.formData.dispersal={dispersalAtomized:{measurementOrFact:[],ancillaryData:[]},dispersalUnstructured:'',ancillaryData:[]};
     $scope.formData.behavior={behaviorAtomized:{measurementOrFact:[],ancillaryData:[]},behaviorUnstructured:'',ancillaryData:[]};
     $scope.formData.interactions={interactionsAtomized:{measurementOrFact:[],ancillaryData:[]},interactionsUnstructured:'',ancillaryData:[]};
@@ -197,7 +242,7 @@ angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload
     $scope.formData.environmentalEnvelope={environmentalEnvelopeAtomized:{measurementOrFact:[],ancillaryData:[]},environmentalEnvelopeUnstructured:'',ancillaryData:[]};
     $scope.formData.invasiveness={invasivenessAtomized:{measurementOrFact:[],ancillaryData:[]},invasivenessUnstructured:'',ancillaryData:[]};
     $scope.formData.habitats={habitatsAtomized:{measurementOrFact:[],ancillaryData:[]},habitatsUnstructured:'',ancillaryData:[]};
-    $scope.formData.distribution={distributionScope:{type:'',ancillaryData:[]},temporalCoverage:{startDate:'',endDate:''},distributionAtomized:{measurementOrFact:[],ancillaryData:[]},distributionUnstructured:'',ancillaryData:[]};
+    $scope.formData.distribution={distributionScope:{type:'',ancillaryData:[]},temporalCoverage:{startDate:'',endDate:''},distributionAtomized:{distributionOpt2:[],ancillaryData:[]},distributionUnstructured:'',ancillaryData:[]};
     $scope.formData.endemicAtomized={measurementOrFact:[],ancillaryData:[]};
     $scope.formData.territory={territoryAtomized:{measurementOrFact:[],ancillaryData:[]},territoryUnstructured:'',ancillaryData:[]};
     $scope.formData.populationBiology={populationBiologyAtomized:{measurementOrFact:[],ancillaryData:[]},populationBiologyUnstructured:'',ancillaryData:[]};
@@ -206,6 +251,37 @@ angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload
     $scope.formData.legislation={legislationAtomized:{measurementOrFact:[],ancillaryData:[]},legislationUnstructured:'',ancillaryData:[]};
     $scope.formData.managementAndConservation={managementAndConservationAtomized:{measurementOrFact:[],ancillaryData:[]},managementAndConservationUnstructured:'',ancillaryData:[]};
     $scope.formData.ancillaryData=[];
+    $scope.lifeCycles=[];
+    $scope.reproductions=[];
+    $scope.primaryDietSource=[];
+    $scope.strategies=[];
+    
+    $http.get('https://script.google.com/macros/s/AKfycbypJD2tQh0Uz5Bpb6zXAke7EWCq1YKIjg7My_uBBSrG6lhlQrDz/exec')
+       .then(function(res){
+            console.log(res.data);
+            if(res.data.lifeCycles){
+                for(i = 0; i<res.data.lifeCycles.length;i++){
+                    $scope.lifeCycles.push({measurementType:res.data.lifeCycles[i].measurementtype,measurementValue:res.data.lifeCycles[i].measurementvalue})
+                }
+                
+            }
+            if(res.data.reproductions){
+                for(i = 0; i<res.data.reproductions.length;i++){
+                    $scope.reproductions.push({measurementType:res.data.reproductions[i].measurementtype,measurementValue:res.data.reproductions[i].measurementvalue})
+                }
+            } 
+            if(res.data.primaryDietSource){
+                for(i = 0; i<res.data.primaryDietSource.length;i++){
+                    $scope.primaryDietSource.push({name:res.data.primaryDietSource[i].name,checked:false})
+                }
+            }
+            if(res.data.strategies){
+                for(i = 0; i<res.data.strategies.length;i++){
+                    $scope.strategies.push({name:res.data.strategies[i].name,checked:false})
+                }
+            }
+             
+    });
     //$scope.formData.dataset={alternateIdentifier:[], title:[], creator:'',metadataProvider:[],associatedParty:'',pubDate:'',language:'',abstract:'',keyworset:'',additionalInfo:'',intellectialRights:'',distribution:'',coverage:'',purpose:'',contact:[],methods:'',project:''};
 
     // function to process the form
@@ -290,7 +366,7 @@ angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload
                                     if(data_1.results.length > 0){
                                         $scope.$apply(function(){
                                             for (i = 0; i<data_1.results.length;i++){
-                                                $scope.formData.synonymsAtomized.push({synonymName:{attributes:{id:'',isAnamorphic:'',nomenclaturalCode:''},simple:(data_1.results[i].scientificName!=undefined)?data_1.results[i].scientificName:'',rank:(data_1.results[i].rank!=undefined)?data_1.results[i].rank:'',canonicalName:{simple:(data_1.results[i].canonicalName!=undefined)?data_1.results[i].canonicalName:'',uninomial:'',genus:{ref:'',linkType:''},epithet:{infragenericEpithet:'',specificEpithet:'',infraspecificEpithet:''}},canonicalAuthorship: {simple:(data_1.results[i].authorship!=undefined)?data_1.results[i].authorship:'',authorship:{simple:'',year:[],authors:[]}},specialAuthorship:{basionymAuthorship:{simple:'',year:[],authors:[]},combinationAuthorship:[]},publishedln:{identifier:'',datatype:'',source:(data_1.results[i].publishedIn!=undefined)?data_1.results[i].publishedIn:''},year:'',microReference:'',typificacion:{simple:'', typeVoucherEntity:{voucherReference:[],lectotypePublicationVoucher:[],lectotypeMicroReferenceVoucher:[],typeOfType:''},typeNameEntity:{nameReference:{identifier:'',datatype:'',source:''},lectotypePublication:{identifier:'',datatype:'',source:''},lectotypeMicroReference:{identifier:'',datatype:'',source:''}}},spellingCorrentionOf:[],basionym:{ruleConsidered:'',note:'',reletedName:{identifier:'',datatype:'',source:''},publishedln:{identifier:'',datatype:'',source:''},microReference:''},basedOn:{ruleConsidered:'',note:'',reletedName:{identifier:'',datatype:'',source:''},publishedln:{identifier:'',datatype:'',source:''},microReference:''},conservedAgainst:[],laterHomonymOf:{ruleConsidered:'',note:'',reletedName:{identifier:'',datatype:'',source:''},publishedln:{identifier:'',datatype:'',source:''},microReference:''},sanctioned:{ruleConsidered:'',note:'',reletedName:{identifier:'',datatype:'',source:''},publishedln:{identifier:'',datatype:'',source:''},microReference:''},replacementNameFor:{ruleConsidered:'',note:'',reletedName:{identifier:'',datatype:'',source:''},publishedln:{identifier:'',datatype:'',source:''},microReference:''},publicationStatus:{ruleConsidered:'',note:'',reletedName:{identifier:'',datatype:'',source:''},publishedln:{identifier:'',datatype:'',source:''},microReference:''},providerLink:'',providerSpecificData:{anyOne:[],anyTwo:''}},synonymStatus:(data_1.results[i].nomenclaturalStatus!=undefined && data_1.results[i].nomenclaturalStatus!="[]")?data_1.results[i].nomenclaturalStatus:'',ancillaryData:[]});
+                                                $scope.formData.synonymsAtomized.push({synonymName:{attributes:{id:'',isAnamorphic:'',nomenclaturalCode:''},simple:(data_1.results[i].scientificName!=undefined)?data_1.results[i].scientificName:'',rank:(data_1.results[i].rank!=undefined)?data_1.results[i].rank:'',canonicalName:{simple:(data_1.results[i].canonicalName!=undefined)?data_1.results[i].canonicalName:'',uninomial:'',genus:{ref:'',linkType:''},epithet:{infragenericEpithet:'',specificEpithet:'',infraspecificEpithet:''}},canonicalAuthorship: {simple:(data_1.results[i].authorship!=undefined)?data_1.results[i].authorship:'',authorship:{simple:'',year:[],authors:[]}},specialAuthorship:{basionymAuthorship:{simple:'',year:[],authors:[]},combinationAuthorship:[]},publishedln:{identifier:'',datatype:'',source:(data_1.results[i].publishedIn!=undefined)?data_1.results[i].publishedIn:''},year:'',microReference:'',typificacion:{simple:'', typeVoucherEntity:{voucherReference:[],lectotypePublicationVoucher:[],lectotypeMicroReferenceVoucher:[],typeOfType:''},typeNameEntity:{nameReference:{identifier:'',datatype:'',source:''},lectotypePublication:{identifier:'',datatype:'',source:''},lectotypeMicroReference:{identifier:'',datatype:'',source:''}}},spellingCorrentionOf:[],basionym:{ruleConsidered:'',note:'',reletedName:{identifier:'',datatype:'',source:''},publishedln:{identifier:'',datatype:'',source:''},microReference:''},basedOn:{ruleConsidered:'',note:'',reletedName:{identifier:'',datatype:'',source:''},publishedln:{identifier:'',datatype:'',source:''},microReference:''},conservedAgainst:[],laterHomonymOf:{ruleConsidered:'',note:'',reletedName:{identifier:'',datatype:'',source:''},publishedln:{identifier:'',datatype:'',source:''},microReference:''},sanctioned:{ruleConsidered:'',note:'',reletedName:{identifier:'',datatype:'',source:''},publishedln:{identifier:'',datatype:'',source:''},microReference:''},replacementNameFor:{ruleConsidered:'',note:'',reletedName:{identifier:'',datatype:'',source:''},publishedln:{identifier:'',datatype:'',source:''},microReference:''},publicationStatus:{ruleConsidered:'',note:'',reletedName:{identifier:'',datatype:'',source:''},publishedln:{identifier:'',datatype:'',source:''},microReference:''},providerLink:'',providerSpecificData:{anyOne:[],anyTwo:''}},synonymStatus:(data_1.results[i].nomenclaturalStatus!=undefined && data_1.results[i].nomenclaturalStatus!='[]')?data_1.results[i].nomenclaturalStatus:'',ancillaryData:[]});
                                             }
                                         });
                                    }
@@ -368,6 +444,21 @@ angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload
         $scope.measurementOrFact = {measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''}
     };
 
+    $scope.addAnnualCycleAtomizedType = function(annualCycleAtomizedType,annualCycle){
+        annualCycleAtomizedType.push(annualCycle);
+        $scope.annualCycleAtomizedType ={Event:'',startTimeInterval:'',endTimeInterval:'' ,ancillaryData:[]};
+
+    }
+    $scope.addFeedingAtomizedType = function(feedingAtomizedType,feeding){
+        feedingAtomizedType.push(feeding);
+        $scope.feedingAtomizedType = {type:'',thropic:[], ancillaryData:[]};
+    }
+    $scope.addThropic = function(thropics,thropic){
+        thropics.push(thropic);
+        $scope.thropic = {strategy:'', strategyRemarks:''};
+    }
+
+
     $scope.addYear = function(years,year){
         years.push(year);
     };
@@ -399,8 +490,12 @@ angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload
         agent.push({firstName:'',lastName:'',organisation:'',position:'',address:'',phone:'',email:'',role:'',homepage:''});
     };
 
-     $scope.addDistribution = function(distribution) {
-        distribution.push();
+     $scope.addDistributionOpt2 = function(distribution,opt2) {
+        if(opt2.country!=undefined){
+            distribution.push(opt2);
+            $scope.selected={};
+            $scope.distributionOpt2 = {country:'',stateProvince:'',county:'',municipality:'',locality:''};
+        }
     };
 
     $scope.removeDistribution = function() {
@@ -424,4 +519,5 @@ angular.module('formApp', ['ngAnimate', 'ui.router','ui.bootstrap','ngFileUpload
         var lastItem = $scope.formData.uses.length-1;
         $scope.formData.uses.splice(lastItem);
     };
+
 });

@@ -106,64 +106,34 @@
 	    <div collapse="isCollapsed">
 
 			<h3>Distribution Atomized:</h3>
-			<div ng-repeat="measurementOrFact in formData.habitats.distributionAtomized.measurementOrFact" class="selected-item">
-				<div ng-show="measurementOrFact">
-					<div>{{measurementOrFact}}</div>
+			<div ng-repeat="distribution in formData.distribution.distributionAtomized.distributionOpt2" class="selected-item">
+				<div ng-show="distribution">
+					{{distribution.country}}
+					{{distribution.stateProvince}}
+					{{distribution.county}}
 				</div>
 			</div>
-		
-			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Distribution </button>
-			<div collapse="isCollapsed_1">
-				<div class="panel" ng-controller="checkBoxController">
-					<div ng-repeat="employee in employees">
-						<div class="action-checkbox">
-							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.habitats.distributionAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.habitats.distributionAtomized.measurementOrFact,employee.name)" />
-							<label for="{{employee.name}}"></label>
-							{{employee.name}}
-						</div>
-					</div>
-				</div>
-			</div>	
 			
-			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.habitats.distributionAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
-			<div ng-repeat="ancillary in formData.habitats.distributionAtomized.ancillaryData">
-				<div class="form-group">
-					<h4>License:</h4>
-					<input type="text"  ng-model="ancillary.license"/>
-					<hr>
-					<h4>Rights Holder:</h4>
-					<input type="text"  ng-model="ancillary.rightsHolder"/>
-					<hr>
-					<h4>Bibliographic Citation:</h4>
-					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
-					<hr>
-					<h4>Source:</h4>
-					<input type="text"  ng-model="ancillary.source"/>
-					<hr>
-					<h4>Media URL:</h4>
-					<input type="text"  ng-model="ancillary.mediaURL"/>
-					<hr>
-					<h4>References:</h4>
-					<div ng-repeat="ref in ancillary.reference">
-						<h5>Identifier:</h5>
-						<input type="text"  ng-model="ref.identifier"/>
-						<br>
-						<h5>Datatype:</h5>
-						<input type="text"  ng-model="ref.datatype"/>
-						<br>
-						<h5>Source:</h5>
-						<input type="text"  ng-model="ref.source"/>
-						<hr>
-					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
-					<hr>
-				</div>
-			</div>-->
+			<div ng-controller="UbicacionCtrl" >
+				<select ng-model="selected.country" ng-options="attr.countryIso as attr.countryName for attr in ubicacion ">
+					<option value="">- Seleccione -</option>
+				</select>  
+				
+				<select ng-model="selected.stateProvince" ng-disabled="!selected.country" ng-options="item.departmentIso as item.departmentName for item in selectedAttr.departments ">
+					<option value="">- Seleccione -</option>
+				</select>
+				<select ng-model="selected.county" ng-disabled="!selected.country || !selected.stateProvince" ng-options="item.countyIso as item.countyName for item in selectedAttr2.counties ">
+					<option value="">- Seleccione -</option>
+					</select>
+		    </div>
+			<button class="btn btn-default" ng-click="addDistributionOpt2(formData.distribution.distributionAtomized.distributionOpt2,selected)"> Add Distribution </button>
+
+			
 	      	<h3>Distribution Unstructured:</h3>
-			<input type="text" class="form-control" name="habitats" ng-model="formData.habitats.distributionUnstructured"/>
+			<input type="text" class="form-control" name="distribution" ng-model="formData.distribution.distributionUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.habitats.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
-			<div ng-repeat="ancillary in formData.habitats.ancillaryData">
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.distribution.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.distribution.ancillaryData">
 				<div class="form-group">
 					<h4>License:</h4>
 					<input type="text"  ng-model="ancillary.license"/>

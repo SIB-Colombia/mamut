@@ -18,13 +18,13 @@
 	<h3>Synonyms:</h3>
 	<hr noshade>
 	<div ng-repeat="synonymAtomized in formData.synonymsAtomized">
-		<div ng-show="synonymAtomized.synonymName.simple">
-       		<div>Synonym Name :{{synonymAtomized.synonymName.simple}}</div>
+		<div ng-show="synonymAtomized.synonymName.simple" display:"inline">
+       		{{synonymAtomized.synonymName.simple}}
+       		<div ng-show="synonymAtomized.synonymStatus" display:"inline">
+       			Synonym Status :{{synonymAtomized.synonymStatus}}	
+    		</div>
     	</div>
-    	<div ng-show="synonymAtomized.synonymStatus">
-       		<div>Synonym Status :{{synonymAtomized.synonymStatus}}</div>
-    	</div>
-    	<hr>
+
 	</div>
 	<div ng-controller="CollapseDemoCtrl">
 	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Synonym</button>
@@ -95,18 +95,17 @@
 	<hr>
 	<div ng-repeat="commonNameAtomized in formData.commonNameAtomized">
 		<div ng-show="commonNameAtomized.name">
-       		<div>Common Name :{{commonNameAtomized.name}}</div>
+       		{{commonNameAtomized.name}}
+       		<div ng-show="commonNameAtomized.language">
+       			Language :{{commonNameAtomized.language}}
+    		</div>
+    		<div ng-show="commonNameAtomized.usedIn.distributionUnstructured">
+	       		<div>Used In :{{commonNameAtomized.usedIn.distributionUnstructured}}</div>
+	    	</div>
+	    	<div ng-show="commonNameAtomized.usedBy">
+	       		<div>used By :{{commonNameAtomized.usedBy}}</div>
+	    	</div>
     	</div>
-    	<div ng-show="commonNameAtomized.language">
-       		<div>Language :{{commonNameAtomized.language}}</div>
-    	</div>
-    	<div ng-show="commonNameAtomized.usedIn.distributionUnstructured">
-       		<div>Used In :{{commonNameAtomized.usedIn.distributionUnstructured}}</div>
-    	</div>
-    	<div ng-show="commonNameAtomized.usedBy">
-       		<div>used By :{{commonNameAtomized.usedBy}}</div>
-    	</div>
-    	<hr>
 	</div>
 	<div ng-controller="CollapseDemoCtrl">
 	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Common Name</button>
