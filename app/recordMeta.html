@@ -1,36 +1,36 @@
 <div class="form-group">
-	<h3>Language:</h3>
+	<h3>Idioma:</h3>
 	<hr>
 	<input type="text" class="form-control" name="language" ng-model="formData.language"/> 
 	<br>
 	
-	<h3>Version:</h3>
+	<h3>Versión:</h3>
 	<hr>
 	<input type="text" class="form-control" name="version" ng-model="formData.version.preferredFlag"/> 
 	<br>
 
-	<h3>Revision:</h3>
+	<h3>Revisión:</h3>
 	<hr>
 	<div ng-repeat="rev in formData.revisiones">
 		<div class="form-group">
-			<h4>Associated Party:</h4>
+			<h4>Partes asociadas:</h4>
 			<input type="text"  ng-model="rev.associatedParty"/>
 			<br>
-			<h4>PubDate:</h4>
+			<h4>Fecha de publicación:</h4>
 			<input type="text"  ng-model="rev.pubDate"/>
 			<br>
-			<h4>Created:</h4>
+			<h4>Fecha de creación:</h4>
 			<input type="text"  ng-model="rev.created"/>
 			<button  type="button" class="btn btn-info btn-sm" ng-show="$last" ng-click="removeRevision()"><span class="glyphicon glyphicon-minus"></span></button>
 		</div>
 	</div>
-	<button type="button" class="btn btn-info btn-sm" ng-click="addRevision(formData.revisiones)">Add Revision<span class="glyphicon glyphicon-plus"></span> </button>
+	<button type="button" class="btn btn-info btn-sm" ng-click="addRevision(formData.revisiones)">Agregar Revisión<span class="glyphicon glyphicon-plus"></span> </button>
 </div> 
 
 <div class="form-group row">
 <div class="col-xs-6 col-xs-offset-3">
     <a ui-sref="form.nomeAndClass" class="btn btn-block btn-info">
-    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    Siguiente Sección <span class="glyphicon glyphicon-circle-arrow-right"></span>
     </a>
 </div>
 </div>

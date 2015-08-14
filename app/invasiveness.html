@@ -1,66 +1,9 @@
 <div class="form-group">
-	<h3>Invasiveness Atomized:</h3>
-	<div ng-controller="CollapseDemoCtrl">
 
-		<div ng-repeat="measurementOrFact in formData.invasiveness.invasivenessAtomized.measurementOrFact" class="selected-item">
-			<div ng-show="measurementOrFact">
-				<div>{{measurementOrFact}}</div>
-			</div>
-		</div>
-	
-		<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Invasiveness </button>
-		<div collapse="isCollapsed_1">
-			<div class="panel" ng-controller="checkBoxController">
-				<div ng-repeat="employee in employees">
-					<div class="action-checkbox">
-						<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.invasiveness.invasivenessAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.invasiveness.invasivenessAtomized.measurementOrFact,employee.name)" />
-						<label for="{{employee.name}}"></label>
-						{{employee.name}}
-					</div>
-				</div>
-			</div>
-		</div>	
-	</div>
-	<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.invasiveness.invasivenessAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
-	<div ng-repeat="ancillary in formData.invasiveness.invasivenessAtomized.ancillaryData">
-		<div class="form-group">
-			<h4>License:</h4>
-			<input type="text"  ng-model="ancillary.license"/>
-			<hr>
-			<h4>Rights Holder:</h4>
-			<input type="text"  ng-model="ancillary.rightsHolder"/>
-			<hr>
-			<h4>Bibliographic Citation:</h4>
-			<input type="text"  ng-model="ancillary.bibliographicCitation"/>
-			<hr>
-			<h4>Source:</h4>
-			<input type="text"  ng-model="ancillary.source"/>
-			<hr>
-			<h4>Media URL:</h4>
-			<input type="text"  ng-model="ancillary.mediaURL"/>
-			<hr>
-			<h4>References:</h4>
-			<div ng-repeat="ref in ancillary.reference">
-				<h5>Identifier:</h5>
-				<input type="text"  ng-model="ref.identifier"/>
-				<br>
-				<h5>Datatype:</h5>
-				<input type="text"  ng-model="ref.datatype"/>
-				<br>
-				<h5>Source:</h5>
-				<input type="text"  ng-model="ref.source"/>
-				<hr>
-			</div>
-			<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
-			<hr>
-		</div>
-	</div>-->
-	<br>
-
-	<h3>Invasiveness Unstructured:</h3>
+	<h3>Descripción:</h3>
 	<input type="text" class="form-control" name="invasiveness" ng-model="formData.invasiveness.invasivenessUnstructured"/>
 	
-	<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.invasiveness.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+	<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.invasiveness.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
 	<div ng-repeat="ancillary in formData.invasiveness.ancillaryData">
 		<div class="form-group">
 			<h4>License:</h4>
@@ -90,17 +33,243 @@
 				<input type="text"  ng-model="ref.source"/>
 				<hr>
 			</div>
-			<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
 			<hr>
 		</div>
+		<button type="button" class="btn btn-info btn-sm" ng-click="removeAncillaryData(formData.invasiveness.ancillaryData, ancillaryData)">Eliminar datos auxiliares</button>
 	</div>
 	<br>
+
+	<h3>Invasividad:</h3>
+	<div ng-controller="CollapseDemoCtrl">
+
+		<div ng-repeat="invasivenessAtomizedClass in formData.invasiveness.invasivenessAtomized.invasivenessAtomizedClass" class="selected-item">
+			<div ng-show="invasivenessAtomizedClass">
+				<div>{{invasivenessAtomizedClass}}</div>
+			</div>
+		</div>
 	
+
+		<div class="form-group">
+			
+			<div class="panel" ng-controller="checkBoxController">
+				<h4>Origen</h4>
+				<div ng-repeat="ori in origin">
+				    <label>
+					    <input type="checkbox" ng-model="ori.checked" ng-click="updateSelectionOrigin(ori, origin)"/>
+					    {{ori.name}}
+				    </label>
+			    </div>
+			
+				<h4>Presencia</h4>
+				<div ng-repeat="pre in presence">
+				    <label>
+					    <input type="checkbox" ng-model="pre.checked" ng-click="updateSelectionPresence(pre, presence)"/>
+					    {{pre.name}}
+				    </label>
+			    </div>
+				
+				<h4>Persistencia</h4>
+				<div ng-repeat="per in persistence">
+				    <label>
+					    <input type="checkbox" ng-model="per.checked" ng-click="updateSelectionPersistence(per, persistence)"/>
+					    {{per.name}}
+				    </label>
+			    </div>
+				
+				<h4>Distribución</h4>
+				<div ng-repeat="dis in distribution">
+				    <label>
+					    <input type="checkbox" ng-model="dis.checked" ng-click="updateSelectionDistribution(dis.name)"/>
+					    {{dis.name}}
+				    </label>
+			    </div>
+
+			    <h4>Daño</h4>
+			    <div ng-repeat="har in harmful">
+				    <label>
+					    <input type="checkbox" ng-model="har.checked" ng-click="updateSelectionHarmful(har, harmful)"/>
+					    {{har.name}}
+				    </label>
+			    </div>
+			</div>
+			
+			
+			
+			<h4>Modificación</h4>
+			<div class="control">
+                <input id="modified" class="form-control" type="date" ng-model="invasivenessAtomizedClass.modified"/>
+            </div>
+			
+			<h4>Fecha de inicio de validación</h4>
+            <div class="control">
+                <input id="startValidateDate" class="form-control" type="date" ng-model="invasivenessAtomizedClass.startValidateDate"/>
+            </div>
+			
+			<h4>Fecha de finalización de validación</h4>
+			<div class="control">
+                <input id="endValidateDate" class="form-control" type="date" ng-model="invasivenessAtomizedClass.endValidateDate"/>
+            </div>
+						
+			<h4>Código de país</h4>
+			<div ng-controller="UbicacionCtrl" >
+				<select ng-model="invasivenessAtomizedClass.countryCode" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
+					<option value="">- Seleccione -</option>
+				</select>  	
+		    </div>
+			
+			<h4>Departamento</h4>
+			<div ng-controller="UbicacionCtrl" >
+				 <select ng-model="invasivenessAtomizedClass.stateProvince" ng-disabled="!invasivenessAtomizedClass.countryCode" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
+					<option value="">- Seleccione -</option>
+				</select>
+			</div>	
+
+			<h4>Municipio</h4>
+			<div ng-controller="UbicacionCtrl" >
+				<select ng-model="invasivenessAtomizedClass.county" ng-disabled="!invasivenessAtomizedClass.countryCode || !invasivenessAtomizedClass.stateProvince" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
+					<option value="">- Seleccione -</option>
+				</select>
+			</div>
+
+			<h4>Localidad</h4>
+			<input type="text" class="form-control" name="localityName" ng-model="invasivenessAtomizedClass.localityName"/> <br>
+			
+			<h4>Idioma</h4>
+			<select ng-model="invasivenessAtomizedClass.language" ng-options="lang.Idioma as lang.Idioma for lang in idiomas ">
+				<option value="">- Seleccione -</option>
+			</select> 
+
+			<h4>Fuente de información</h4>
+			<input type="text" class="form-control" name="citation" ng-model="invasivenessAtomizedClass.citation"/> <br>
+			
+			
+			<div class="panel" ng-controller="checkBoxController">
+				<h4>Abundancia</h4>
+				<div ng-repeat="abu in abundance">
+				    <label>
+					    <input type="checkbox" ng-model="abu.checked" ng-click="updateSelectionAbundance(abu, abundance)"/>
+					    {{abu.name}}
+				    </label>
+			    </div>
+
+				<h4>Tendencia</h4>
+				<div ng-repeat="tre in trend">
+				    <label>
+					    <input type="checkbox" ng-model="tre.checked" ng-click="updateSelectionTrend(tre, trend)"/>
+					    {{tre.name}}
+				    </label>
+			    </div>
+				
+				<h4>Velocidad de propagación</h4>
+				<div ng-repeat="ros in rateOfSpread">
+				    <label>
+					    <input type="checkbox" ng-model="ros.checked" ng-click="updateSelectionRateOfSpread(ros, rateOfSpread)"/>
+					    {{ros.name}}
+				    </label>
+			    </div>
+				
+				<h4>Estado de regulación</h4>
+				<div ng-repeat="rl in regulatoryListing">
+				    <label>
+					    <input type="checkbox" ng-model="rl.checked" ng-click="updateSelectionRegulatoryListing(rl, regulatoryListing)"/>
+					    {{rl.name}}
+				    </label>
+			    </div>
+			</div>
+			
+			<h4>Observaciones</h4>
+			<input type="text" class="form-control" name="memo" ng-model="invasivenessAtomizedClass.memo"/> <br>
+
+			<h4>Fecha de publicación</h4>
+			<div class="control">
+                <input id="publicationDate" class="form-control" type="date" ng-model="invasivenessAtomizedClass.publicationDate"/>
+            </div>
+			
+			<div class="panel" ng-controller="checkBoxController">			
+				<h4>Tipo de localidad</h4>
+				<div ng-repeat="lt in localityType">
+				    <label>
+					    <input type="checkbox" ng-model="lt.checked" ng-click="updateSelectionLocalityType(lt, localityType)"/>
+					    {{lt.name}}
+				    </label>
+			    </div>
+				
+				<h4>Valor de localidad</h4>
+				<div ng-repeat="lv in locationValue">
+				    <label>
+					    <input type="checkbox" ng-model="lv.checked" ng-click="updateSelectionLocationValue(lv, locationValue)"/>
+					    {{lv.name}}
+				    </label>
+			    </div>
+				
+				<h4>Precisión de la fecha de publicación</h4>
+				<div ng-repeat="pdp in publicationDatePrecision">
+				    <label>
+					    <input type="checkbox" ng-model="pdp.checked" ng-click="updateSelectionPublicationDatePrecision(pdp, publicationDatePrecision)"/>
+					    {{pdp.name}}
+				    </label>
+			    </div>
+			</div>
+			
+			<h4>Impacto</h4>
+			<input type="text" class="form-control" name="whatImpact" ng-model="invasivenessAtomizedClass.whatImpact"/> <br>
+			
+			<h4>Vector</h4>
+			<input type="text" class="form-control" name="whatImpact" ng-model="invasivenessAtomizedClass.vector"/> <br>
+			
+			<h4>Ruta</h4>
+			<input type="text" class="form-control" name="route" ng-model="invasivenessAtomizedClass.route"/> <br>
+			
+			<h4>Objetivo del impacto</h4>
+			<input type="text" class="form-control" name="route" ng-model="invasivenessAtomizedClass.target"/> <br>
+
+			<h4>Mecanismo de impacto</h4>
+			<input type="text" class="form-control" name="mechanism" ng-model="invasivenessAtomizedClass.mechanism"/> <br>
+		</div>	
+		<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.invasiveness.invasivenessAtomized.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+		<div ng-repeat="ancillary in formData.invasiveness.invasivenessAtomized.ancillaryData">
+			<div class="form-group">
+				<h4>License:</h4>
+				<input type="text"  ng-model="ancillary.license"/>
+				<hr>
+				<h4>Rights Holder:</h4>
+				<input type="text"  ng-model="ancillary.rightsHolder"/>
+				<hr>
+				<h4>Bibliographic Citation:</h4>
+				<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+				<hr>
+				<h4>Source:</h4>
+				<input type="text"  ng-model="ancillary.source"/>
+				<hr>
+				<h4>Media URL:</h4>
+				<input type="text"  ng-model="ancillary.mediaURL"/>
+				<hr>
+				<h4>References:</h4>
+				<div ng-repeat="ref in ancillary.reference">
+					<h5>Identifier:</h5>
+					<input type="text"  ng-model="ref.identifier"/>
+					<br>
+					<h5>Datatype:</h5>
+					<input type="text"  ng-model="ref.datatype"/>
+					<br>
+					<h5>Source:</h5>
+					<input type="text"  ng-model="ref.source"/>
+					<hr>
+				</div>
+				<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
+				<hr>
+			</div>
+			<button type="button" class="btn btn-info btn-sm" ng-click="removeAncillaryData(formData.invasiveness.invasivenessAtomized.ancillaryData, ancillaryData)">Eliminar datos auxiliares</button>
+		</div>
+		<br>
 	
+		<button type="button" class="btn btn-info btn-sm" ng-click="addInvasiveness(invasivenessAtomizedClass)">Agregar<span class="glyphicon glyphicon-plus"></span> </button>
+
 </div> 
 <div class="col-xs-6 col-xs-offset-3">
     <a ui-sref="form.habitat" class="btn btn-block btn-info">
-    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    Siguiente Sección <span class="glyphicon glyphicon-circle-arrow-right"></span>
     </a>
 </div>
 </div>

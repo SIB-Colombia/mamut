@@ -1,6 +1,6 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
+  "name": "editor",
+  "description": "Editor de fichas SiB",
   "version": "0.0.0",
   "homepage": "https://github.com/angular/angular-seed",
   "license": "MIT",
@@ -10,10 +10,11 @@
     "jquery":"~2.1.4",
     "bootstrap":"~3.3.5",
     "angular-ui-router": "0.2.15",
-    "html5-boilerplate": "~4.3.0",
-    "angular-bootstrap": "~0.13.0",
+    "html5-boilerplate": "~5.0.0",
+    "angular-bootstrap": "~0.13.1",
     "angular-animate":"~1.4.2",
-    "ng-file-upload":"~5.0.8",
-    "angular-modal-service":"~0.6.6"
+    "ng-file-upload":"~5.0.9",
+    "angular-modal-service":"~0.6.6",
+    "oboe":""
   }
 }

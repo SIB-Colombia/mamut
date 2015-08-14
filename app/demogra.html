@@ -1,66 +1,12 @@
 <div class="form-group">
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Territory</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Territorio</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    	<h3>Territory Atomized:</h3>
-			<div ng-repeat="measurementOrFact in formData.territory.territoryAtomized.measurementOrFact" class="selected-item">
-				<div ng-show="measurementOrFact">
-					<div>{{measurementOrFact}}</div>
-				</div>
-			</div>
-
-			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Territory </button>
-			<div collapse="isCollapsed_1">
-				<div class="panel" ng-controller="checkBoxController">
-					<div ng-repeat="employee in employees">
-						<div class="action-checkbox">
-							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.territory.territoryAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.territory.territoryAtomized.measurementOrFact,employee.name)" />
-							<label for="{{employee.name}}"></label>
-							{{employee.name}}
-						</div>
-					</div>
-				</div>
-			</div>	
-			
-			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.territory.territoryAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
-			<div ng-repeat="ancillary in formData.territory.territoryAtomized.ancillaryData">
-				<div class="form-group">
-					<h4>License:</h4>
-					<input type="text"  ng-model="ancillary.license"/>
-					<hr>
-					<h4>Rights Holder:</h4>
-					<input type="text"  ng-model="ancillary.rightsHolder"/>
-					<hr>
-					<h4>Bibliographic Citation:</h4>
-					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
-					<hr>
-					<h4>Source:</h4>
-					<input type="text"  ng-model="ancillary.source"/>
-					<hr>
-					<h4>Media URL:</h4>
-					<input type="text"  ng-model="ancillary.mediaURL"/>
-					<hr>
-					<h4>References:</h4>
-					<div ng-repeat="ref in ancillary.reference">
-						<h5>Identifier:</h5>
-						<input type="text"  ng-model="ref.identifier"/>
-						<br>
-						<h5>Datatype:</h5>
-						<input type="text"  ng-model="ref.datatype"/>
-						<br>
-						<h5>Source:</h5>
-						<input type="text"  ng-model="ref.source"/>
-						<hr>
-					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
-					<hr>
-				</div>
-			</div>-->
-			<h3>Territory Unstructured:</h3>
+	    	<h3>Descripción</h3>
 			<input type="text" class="form-control" name="territory" ng-model="formData.territory.territoryUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.territory.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.territory.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.territory.ancillaryData">
 				<div class="form-group">
 					<h4>License:</h4>
@@ -90,32 +36,37 @@
 						<input type="text"  ng-model="ref.source"/>
 						<hr>
 					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
 					<hr>
 				</div>
+				<button type="button" class="btn btn-info btn-sm" ng-click="removeAncillaryData(formData.territory.ancillaryData, ancillaryData)">Eliminar datos auxiliares</button>
 			</div>
 			<br>
-		</div>
-	</div>		
-	<br>
 
-	<div ng-controller="CollapseDemoCtrl">
-	 	<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Population Biology</button>
-	    <hr>
-	    <div collapse="isCollapsed">
-	    	<h3>Population Biology Atomized:</h3>
-			<div ng-repeat="measurementOrFact in formData.populationBiology.populationBiologyAtomized.measurementOrFact" class="selected-item">
-				<div ng-show="measurementOrFact">
-					<div>{{measurementOrFact}}</div>
+	    	<h4>Territorio</h4>
+			<div ng-repeat="measurementOrFact in formData.territory.territoryAtomized" class="selected-item">
+				<div ng-show="territoryAtomized">
+					<div>{{territoryAtomized}}</div>
 				</div>
 			</div>
 
-			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Population Biology </button>
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1">Agregar territorio</button>
 			<div collapse="isCollapsed_1">
+				<h4>Extensión de la presencia:</h4>
 				<div class="panel" ng-controller="checkBoxController">
 					<div ng-repeat="employee in employees">
 						<div class="action-checkbox">
-							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.populationBiology.populationBiologyAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.populationBiology.populationBiologyAtomized.measurementOrFact,employee.name)" />
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.territory.territoryAtomized.extentOfOccurrence.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.territory.territoryAtomized.extentOfOccurrence,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Área de ocupación:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.territory.territoryAtomized.areaOfOccupancy.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.territory.territoryAtomized.areaOfOccupancy,employee.name)" />
 							<label for="{{employee.name}}"></label>
 							{{employee.name}}
 						</div>
@@ -123,44 +74,20 @@
 				</div>
 			</div>	
 			
-			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.populationBiology.populationBiologyAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
-			<div ng-repeat="ancillary in formData.populationBiology.populationBiologyAtomized.ancillaryData">
-				<div class="form-group">
-					<h4>License:</h4>
-					<input type="text"  ng-model="ancillary.license"/>
-					<hr>
-					<h4>Rights Holder:</h4>
-					<input type="text"  ng-model="ancillary.rightsHolder"/>
-					<hr>
-					<h4>Bibliographic Citation:</h4>
-					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
-					<hr>
-					<h4>Source:</h4>
-					<input type="text"  ng-model="ancillary.source"/>
-					<hr>
-					<h4>Media URL:</h4>
-					<input type="text"  ng-model="ancillary.mediaURL"/>
-					<hr>
-					<h4>References:</h4>
-					<div ng-repeat="ref in ancillary.reference">
-						<h5>Identifier:</h5>
-						<input type="text"  ng-model="ref.identifier"/>
-						<br>
-						<h5>Datatype:</h5>
-						<input type="text"  ng-model="ref.datatype"/>
-						<br>
-						<h5>Source:</h5>
-						<input type="text"  ng-model="ref.source"/>
-						<hr>
-					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
-					<hr>
-				</div>
-			</div>-->
-			<h3>Population Biology Unstructured:</h3>
+
+			
+		</div>
+	</div>		
+	<br>
+
+	<div ng-controller="CollapseDemoCtrl">
+	 	<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Dinámica poblacional</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    	<h3>Descripción</h3>
 			<input type="text" class="form-control" name="populationBiology" ng-model="formData.populationBiology.populationBiologyUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.populationBiology.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.populationBiology.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.populationBiology.ancillaryData">
 				<div class="form-group">
 					<h4>License:</h4>
@@ -190,41 +117,207 @@
 						<input type="text"  ng-model="ref.source"/>
 						<hr>
 					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
 					<hr>
+					<button type="button" class="btn btn-info btn-sm" ng-click="removeAncillaryData(formData.populationBiology.ancillaryData, ancillaryData)">Eliminar datos auxiliares</button>
 				</div>
 			</div>
 			<br>
-		</div>
-	</div>		
-	<br>
-
-	<div ng-controller="CollapseDemoCtrl">
-	 	<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Threat Status</button>
-	    <hr>
-	    <div collapse="isCollapsed">
-	    	<h3>Threat Status Atomized:</h3>
-			<div ng-repeat="measurementOrFact in formData.threatStatus.threatStatusAtomized.measurementOrFact" class="selected-item">
+	    	<h3>Dinámica poblacional</h3>
+			<div ng-repeat="measurementOrFact in formData.populationBiology.populationBiologyAtomized.measurementOrFact" class="selected-item">
 				<div ng-show="measurementOrFact">
 					<div>{{measurementOrFact}}</div>
 				</div>
 			</div>
 
-			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Threat Status </button>
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1">Agregar dinámica poblacional</button>
 			<div collapse="isCollapsed_1">
+				<h4>Región:</h4>
+				<input type="text"  ng-model="populationBiologyAtomized.populationBiologyAtomized.region"/>
+				<h4>Abundancia:</h4>
 				<div class="panel" ng-controller="checkBoxController">
 					<div ng-repeat="employee in employees">
 						<div class="action-checkbox">
-							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.threatStatus.threatStatusAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.threatStatus.threatStatusAtomized.measurementOrFact,employee.name)" />
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.abundanceData.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.abundanceData,employee.name)" />
 							<label for="{{employee.name}}"></label>
 							{{employee.name}}
 						</div>
 					</div>
 				</div>
-			</div>
+				<h4>Densidad:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.densityData.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.densityData,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Patrón de Distribución:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.patternDistribution.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.patternDistribution,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Tamaño estimado de la población:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.size.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.size,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Proporción de machos y hembras:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.sexRatio.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.sexRatio,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Fertilidad:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.fecundity.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.fecundity,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Tasa de mortalidad:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.mortalityRate.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.mortalityRate,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Tasa de nacimiento:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.birthRate.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.birthRate,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Número de individuos por observación:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.numberIndividualsPerObservation.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.numberIndividualsPerObservation,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Densidad promedio:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.averageDensity.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.averageDensity,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Tendencia:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.populationTrend.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.populationTrend,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Reclutamiento:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.recruitment.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.recruitment,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Tasa de crecimiento:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.populationGrowthRate.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.populationGrowthRate,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Emigración:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.emigration.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.emigration,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Inmigración:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.immigration.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.immigration,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Descripción Etapas de vida:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.descriptionLifeStages.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.descriptionLifeStages,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Proporción de inviduos por etapa:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.proportionIndividualsPerStageLife.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.proportionIndividualsPerStageLife,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+				<h4>Capacidad de carga:</h4>
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="employee in employees">
+						<div class="action-checkbox">
+							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="populationBiologyAtomized.populationBiologyAtomized.carryingCapacity.indexOf(employee.name) > -1" ng-click="toggleSelection(populationBiologyAtomized.populationBiologyAtomized.carryingCapacity,employee.name)" />
+							<label for="{{employee.name}}"></label>
+							{{employee.name}}
+						</div>
+					</div>
+				</div>
+			</div>	
 			
-			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(thre.threatStatusAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
-			<div ng-repeat="ancillary in thre.threatStatusAtomized.ancillaryData">
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.populationBiology.populationBiologyAtomized.ancillaryData)">Add Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in formData.populationBiology.populationBiologyAtomized.ancillaryData">
 				<div class="form-group">
 					<h4>License:</h4>
 					<input type="text"  ng-model="ancillary.license"/>
@@ -253,15 +346,23 @@
 						<input type="text"  ng-model="ref.source"/>
 						<hr>
 					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
 					<hr>
 				</div>
-			</div>
-			<button  type="button" class="btn btn-info btn-sm" ng-show="$last" ng-click="removeThreatStatus()"><span class="glyphicon glyphicon-minus"></span></button>-->
-			<h3>Threat Status Unstructured:</h3>
+			</div>-->
+			
+		</div>
+	</div>		
+	<br>
+
+	<div ng-controller="CollapseDemoCtrl">
+	 	<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Estado de amenaza</button>
+	    <hr>
+	    <div collapse="isCollapsed">
+	    	<h3>Descripción</h3>
 			<input type="text" class="form-control" name="threatStatus" ng-model="formData.threatStatus.threatStatusUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(thre.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(thre.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in thre.ancillaryData">
 				<div class="form-group">
 					<h4>License:</h4>
@@ -291,27 +392,92 @@
 						<input type="text"  ng-model="ref.source"/>
 						<hr>
 					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
+					<hr>
+				</div>
+				<button type="button" class="btn btn-info btn-sm" ng-click="removeAncillaryData(formData.threatStatus.ancillaryData, ancillaryData)">Eliminar datos auxiliares</button>
+			</div>
+			<br>
+	    	<h3>Estado de amenaza</h3>
+			<div ng-repeat="measurementOrFact in formData.threatStatus.threatStatusAtomized.measurementOrFact" class="selected-item">
+				<div ng-show="measurementOrFact">
+					<div>{{measurementOrFact}}</div>
+				</div>
+			</div>
+
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1">Agregar estado de amenaza</button>
+			<div collapse="isCollapsed_1">
+				<h4>Categoría de Amenaza:</h4>
+				<input type="text"  ng-model="formData.threatStatus.threatStatusAtomized.threatCategory"/>
+				<h4>Autoridad:</h4>
+				<input type="text"  ng-model="formData.threatStatus.threatStatusAtomized.authority"/>
+				<h4>Aplica para:</h4>
+				<div ng-controller="UbicacionCtrl" >
+					<select ng-model="formData.threatStatus.threatStatusAtomized.aplliesTo.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
+						<option value="">- Seleccione -</option>
+					</select>  
+					
+					<select ng-model="formData.threatStatus.threatStatusAtomized.aplliesTo.stateProvince" ng-disabled="!formData.threatStatus.threatStatusAtomized.aplliesTo.country" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
+						<option value="">- Seleccione -</option>
+					</select>
+					<select ng-model="formData.threatStatus.threatStatusAtomized.aplliesTo.county" ng-disabled="!formData.threatStatus.threatStatusAtomized.aplliesTo.country || !formData.threatStatus.threatStatusAtomized.aplliesTo.stateProvince" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
+						<option value="">- Seleccione -</option>
+						</select>
+			    </div>
+			</div>
+			
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(thre.threatStatusAtomized.ancillaryData)">Add Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<div ng-repeat="ancillary in thre.threatStatusAtomized.ancillaryData">
+				<div class="form-group">
+					<h4>License:</h4>
+					<input type="text"  ng-model="ancillary.license"/>
+					<hr>
+					<h4>Rights Holder:</h4>
+					<input type="text"  ng-model="ancillary.rightsHolder"/>
+					<hr>
+					<h4>Bibliographic Citation:</h4>
+					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
+					<hr>
+					<h4>Source:</h4>
+					<input type="text"  ng-model="ancillary.source"/>
+					<hr>
+					<h4>Media URL:</h4>
+					<input type="text"  ng-model="ancillary.mediaURL"/>
+					<hr>
+					<h4>References:</h4>
+					<div ng-repeat="ref in ancillary.reference">
+						<h5>Identifier:</h5>
+						<input type="text"  ng-model="ref.identifier"/>
+						<br>
+						<h5>Datatype:</h5>
+						<input type="text"  ng-model="ref.datatype"/>
+						<br>
+						<h5>Source:</h5>
+						<input type="text"  ng-model="ref.source"/>
+						<hr>
+					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
 					<hr>
 				</div>
 			</div>
-			<br>
+			<button  type="button" class="btn btn-info btn-sm" ng-show="$last" ng-click="removeThreatStatus()"><span class="glyphicon glyphicon-minus"></span></button>-->
+			
 		</div>
 	</div>
 	<br>
 	
 	<div ng-controller="CollapseDemoCtrl">
-	 	<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Direct Threats</button>
+	 	<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Amenazas directas</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    	<h3>Direct Threats Atomized:</h3>
+	    	<h3>Atomizado</h3>
 	    	<div ng-repeat="measurementOrFact in formData.directThreats.directThreatsAtomized.measurementOrFact" class="selected-item">
 				<div ng-show="measurementOrFact">
 					<div>{{measurementOrFact}}</div>
 				</div>
 			</div>
 
-			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Direct Threats </button>
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1">Agregar amenaza directa</button>
 			<div collapse="isCollapsed_1">
 				<div class="panel" ng-controller="checkBoxController">
 					<div ng-repeat="employee in employees">
@@ -324,7 +490,7 @@
 				</div>
 			</div>
 
-			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.directThreats.directThreatsAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.directThreats.directThreatsAtomized.ancillaryData)">Add Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.directThreats.directThreatsAtomized.ancillaryData">
 				<div class="form-group">
 					<h4>License:</h4>
@@ -354,15 +520,15 @@
 						<input type="text"  ng-model="ref.source"/>
 						<hr>
 					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
 					<hr>
 					</div>
 				</div>
 			</div>-->
-			<h3>Direct Threats Unstructured:</h3>
+			<h3>No estructurada</h3>
 			<input type="text" class="form-control" name="directThreats" ng-model="formData.directThreats.directThreatsUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.directThreats.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.directThreats.ancillaryData)">Add Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.directThreats.ancillaryData">
 				<div class="form-group">
 					<h4>License:</h4>
@@ -392,7 +558,7 @@
 						<input type="text"  ng-model="ref.source"/>
 						<hr>
 					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
 					<hr>
 				</div>
 			</div>
@@ -404,17 +570,17 @@
 	<br>
 
 	<div ng-controller="CollapseDemoCtrl">
-	 	<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Legislation</button>
+	 	<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Marco normativo</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-			<h3>Legislation Atomized:</h3>
+			<h3>Atomizado</h3>
 			<div ng-repeat="measurementOrFact in formData.legislation.legislationAtomized.measurementOrFact" class="selected-item">
 				<div ng-show="measurementOrFact">
 					<div>{{measurementOrFact}}</div>
 				</div>
 			</div>
 
-			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Add Legislation </button>
+			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1">Agregar marco normativo</button>
 			<div collapse="isCollapsed_1">
 				<div class="panel" ng-controller="checkBoxController">
 					<div ng-repeat="employee in employees">
@@ -427,7 +593,7 @@
 				</div>
 			</div>
 			
-			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.legislation.legislationAtomized.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<!--<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.legislation.legislationAtomized.ancillaryData)">Add Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.legislation.legislationAtomized.ancillaryData">
 				<div class="form-group">
 					<h4>License:</h4>
@@ -457,14 +623,14 @@
 						<input type="text"  ng-model="ref.source"/>
 						<hr>
 					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
 					<hr>
 				</div>
 			</div>-->
-			<h3>Legislation Unstructured:</h3>
+			<h3>No estructurado</h3>
 			<input type="text" class="form-control" name="legislation" ng-model="formData.legislation.legislationUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.legislation.ancillaryData)">Add Ancillary Data<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.legislation.ancillaryData)">Add Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.legislation.ancillaryData">
 				<div class="form-group">
 					<h4>License:</h4>
@@ -494,7 +660,7 @@
 						<input type="text"  ng-model="ref.source"/>
 						<hr>
 					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Add Reference<span class="glyphicon glyphicon-plus"></span> </button>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
 					<hr>
 				</div>
 			</div>
@@ -506,7 +672,7 @@
 
 <div class="col-xs-6 col-xs-offset-3">
     <a ui-sref="form.uses" class="btn btn-block btn-info">
-    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    Siguiente Sección <span class="glyphicon glyphicon-circle-arrow-right"></span>
     </a>
 </div>
 </div>
