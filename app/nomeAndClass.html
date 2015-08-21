@@ -1,6 +1,6 @@
 <div class="form-group">
 
-	<h3>Descripción General:</h3>
+	<h3 translate>simplePliCTerm.name.Abstract</h3>
 	<hr>
 	<input type="text" class="form-control" name="abstract" ng-model="formData.abstract"/> <br>
 
@@ -10,24 +10,24 @@
 
 	<div ng-show="formData.taxonRecordName.scientificName.simple">
    		<div> 
-   			<h3>Nombre científico</h3> 
+  			<h3 translate>simplePliCTerm.name.ScientificName</h3>
    			{{formData.taxonRecordName.scientificName.simple}}
    		</div>
 	</div>
 	<div ng-show="formData.taxonRecordName.scientificName.publishedln.simple">
-   		<div>Published ln :{{formData.taxonRecordName.scientificName.publishedln.simple}}</div>
+   		<div>Publicado en :{{formData.taxonRecordName.scientificName.publishedln.simple}}</div>
 	</div>
 	<hr>
 
-	<h3>Sinónimos:</h3>
+	<h3 translate>simplePliCTerm.name.SynonymsAtomized</h3>
 	<hr noshade>
-	<div ng-repeat="synonymAtomized in formData.synonymsAtomized">
-		<span ng-show="synonymAtomized.synonymName.simple" display:"inline">
-       		{{synonymAtomized.synonymName.simple}}
-       	</span>
-       	<span ng-show="synonymAtomized.synonymStatus" display:"inline">
-       			Estado nomenclatural :{{synonymAtomized.synonymStatus}}	
-    	</span>
+	<div ng-repeat="synonymAtomized in formData.synonymsAtomized" class="parrafo">
+		<div ng-show="synonymAtomized.synonymName.canonicalName.simple" display:"inline">
+       		{{synonymAtomized.synonymName.canonicalName.simple}}
+       	</div>
+       	<div ng-show="synonymAtomized.synonymStatus" display:"inline">
+       			<p translate>simplePliCTerm.name.SynonymStatus</p> {{synonymAtomized.synonymStatus}}	
+    	</div>
 
     <br>
 	</div>
@@ -36,10 +36,10 @@
 	    <hr>
 	    <div collapse="isCollapsed">
 			<div class="form-group">
-					<h4>Sinónimo:</h4>
+					<h4 translate>simplePliCTerm.name.SynonymName</h4>
 					<input type="text"  ng-model="synonmy.canonicalName"/>
 					<br>
-					<h4>Estado nomenclatural:</h4>
+					<h4 translate>simplePliCTerm.name.SynonymStatus</h4>
 					<input type="text"  ng-model="synonmy.synonymStatus"/>
 					<br>
 					<h4>Publicado en:</h4>
@@ -54,26 +54,26 @@
 						<input type="text"  ng-model="synonmy.publishedln.source"/>
 					</div>
 					<br>
-					<h4>Datos Auxiliares:</h4>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(synonmy.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+					<h4 translate>simplePliCTerm.name.AncillaryData</h4>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(synonmy.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 					<div ng-repeat="ancillary in synonmy.ancillaryData">
 						<div class="form-group">
-							<h4>License:</h4>
+							<h4 translate>simplePliCTerm.name.license</h4>
 							<input type="text"  ng-model="ancillary.license"/>
 							<hr>
-							<h4>Rights Holder:</h4>
+							<h4 translate>simplePliCTerm.name.rights</h4>
 							<input type="text"  ng-model="ancillary.rightsHolder"/>
 							<hr>
-							<h4>Bibliographic Citation:</h4>
+							<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 							<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 							<hr>
-							<h4>Source:</h4>
+							<h4 translate>simplePliCTerm.name.source</h4>
 							<input type="text"  ng-model="ancillary.source"/>
 							<hr>
-							<h4>Media URL:</h4>
+							<h4 translate>simplePliCTerm.name.mediaURL</h4>
 							<input type="text"  ng-model="ancillary.mediaURL"/>
 							<hr>
-							<h4>References:</h4>
+							<h4 translate>simplePliCTerm.name.References</h4>
 							<div ng-repeat="ref in ancillary.reference">
 								<h5>Identifier:</h5>
 								<input type="text"  ng-model="ref.identifier"/>
@@ -86,71 +86,72 @@
 								<hr>
 							</div>
 							<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
-							<hr>
 						</div>
+						<button type="button" class="btn btn-info btn-sm" ng-click="removeAncillaryData(synonmy.ancillaryData, ancillaryData)">Eliminar datos auxiliares</button>
+						<hr>
 					</div>
 					<br>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addSynonymsAtomized(formData.synonymsAtomized,synonmy)">Agregar</button>
 				</div>
+				<button type="button" class="btn btn-info btn-sm" ng-click="addSynonymsAtomized(formData.synonymsAtomized,synonmy)">Agregar</button>
 			</div>
 		</div>		
 	<br>
 
-	<h3>Nombres comúnes:</h3>
+	<h3 translate>simplePliCTerm.name.CommonNamesAtomized</h3>
 	<hr>
-	<div ng-repeat="commonNameAtomized in formData.commonNameAtomized | orderBy:'-language.languageIso'">
-		<span ng-show="commonNameAtomized.name">
+	<div ng-repeat="commonNameAtomized in formData.commonNameAtomized | orderBy:'-language.languageIso'" class="parrafo">
+		<div ng-show="commonNameAtomized.name">
        		{{commonNameAtomized.name}}
-       	</span>
-   		<span ng-show="commonNameAtomized.language">
+       	</div>
+   		<div ng-show="commonNameAtomized.language">
    			{{commonNameAtomized.language}}
-		</span>
-		<span ng-show="commonNameAtomized.usedIn.distributionUnstructured">
-       		Usado en :{{commonNameAtomized.usedIn.distributionUnstructured}}
-    	</span>
-    	<span ng-show="commonNameAtomized.usedBy">
-       		Usado por :{{commonNameAtomized.usedBy}}
-    	</span>
+		</div>
+		<div ng-show="commonNameAtomized.usedIn.distributionUnstructured">
+       		<p translate>simplePliCTerm.name.UsedIn</p> :{{commonNameAtomized.usedIn.distributionUnstructured}}
+    	</div>
+    	<div ng-show="commonNameAtomized.usedBy">
+       		<p translate>simplePliCTerm.name.UsedBy</p>{{commonNameAtomized.usedBy}}
+    	</div>
 	</div>
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Agregar nombre común</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Crear un nuevo nombre común</button>
 	    <hr>
 	    <div collapse="isCollapsed">
 			<div class="form-group">
-				<h4>Nombre común:</h4>
+				<h4 translate>simplePliCTerm.name.Name</h4>
 				<input type="text"  ng-model="commonName.name"/>
 				<br>
-				<h4>Idioma:</h4>
+				<h4 translate>simplePliCTerm.name.Language</h4>
 				<select ng-model="commonName.language" ng-options="lang.Idioma as lang.Idioma for lang in idiomas ">
 					<option value="">- Seleccione -</option>
 				</select> 
 				<br>
-				<h4>Usado en:</h4>
+				<h4 translate>simplePliCTerm.name.UsedIn</h4>
 				<input type="text"  ng-model="commonName.usedIn"/>
 				<br>
-				<h4>Usado por:</h4>
+				<h4 translate>simplePliCTerm.name.UsedBy</h4>
 				<input type="text"  ng-model="commonName.usedBy"/>
 				<br>
-				<h4>Datos Auxiliares:</h4>
-				<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(commonName.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+				<h4 translate>simplePliCTerm.name.AncillaryData</h4>
+				<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(commonName.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 				<div ng-repeat="ancillary in commonName.ancillaryData">
 					<div class="form-group">
-						<h4>License:</h4>
+						<h4 translate>simplePliCTerm.name.license</h4>
 						<input type="text"  ng-model="ancillary.license"/>
 						<hr>
-						<h4>Rights Holder:</h4>
+						<h4 translate>simplePliCTerm.name.rights</h4>
 						<input type="text"  ng-model="ancillary.rightsHolder"/>
 						<hr>
-						<h4>Bibliographic Citation:</h4>
+						<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 						<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 						<hr>
-						<h4>Source:</h4>
+						<h4 translate>simplePliCTerm.name.source</h4>
 						<input type="text"  ng-model="ancillary.source"/>
 						<hr>
-						<h4>Media URL:</h4>
+						<h4 translate>simplePliCTerm.name.mediaURL</h4>
 						<input type="text"  ng-model="ancillary.mediaURL"/>
 						<hr>
-						<h4>References:</h4>
+						<h4 translate>simplePliCTerm.name.References</h4>
 						<div ng-repeat="ref in ancillary.reference">
 							<h5>Identifier:</h5>
 							<input type="text"  ng-model="ref.identifier"/>
@@ -165,9 +166,10 @@
 						<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
 						<hr>
 					</div>
+					<button type="button" class="btn btn-info btn-sm" ng-click="removeAncillaryData(commonName.ancillaryData, ancillaryData)">Eliminar datos auxiliares</button>
 				</div>
 				<br>
-				<button type="button" class="btn btn-info btn-sm" ng-click="addCommonNamesAtomized(formData.commonNameAtomized,commonName)">Accept</button>
+				<button type="button" class="btn btn-info btn-sm" ng-click="addCommonNamesAtomized(formData.commonNameAtomized,commonName)">Agregar</button>
 			</div>
 		</div>
 	</div>
@@ -175,9 +177,9 @@
 
 	
 
-	<h3>Jerarquía:</h3>
+	<h3 translate>simplePliCTerm.name.Hierarchy</h3>
 	<hr>
-	<div ng-repeat="hierarchy in formData.hierarchy">
+	<div ng-repeat="hierarchy in formData.hierarchy" class="parrafo-pegado">
 		<div ng-show="hierarchy.classification">
        		<div>classification :{{hierarchy.classification}}</div>
     	</div>
@@ -185,37 +187,55 @@
        		<div>recommended :{{hierarchy.recommended}}</div>
     	</div>
     	<div ng-show="hierarchy.kingdom">
-       		<div>Reino:{{hierarchy.kingdom}}</div>
+       		<div>
+       			<p translate>simplePliCTerm.name.kingdom</p>: {{hierarchy.kingdom}}
+       		</div>
     	</div>
     	<div ng-show="hierarchy.phylum">
-       		<div>Filo :{{hierarchy.phylum}}</div>
+       		<div>
+       			<p translate>simplePliCTerm.name.phylum</p>: {{hierarchy.phylum}}
+       		</div>
     	</div>
     	<div ng-show="hierarchy.classHierarchy">
-       		<div>Clase :{{hierarchy.classHierarchy}}</div>
+       		<div>
+       			<p translate>simplePliCTerm.name.class</p>: {{hierarchy.classHierarchy}}
+       		</div>
     	</div>
     	<div ng-show="hierarchy.order">
-       		<div>Orden :{{hierarchy.order}}</div>
+       		<div>
+       			<p translate>simplePliCTerm.name.order</p>:{{hierarchy.order}}
+       		</div>
     	</div>
     	<div ng-show="hierarchy.family">
-       		<div>Familia :{{hierarchy.family}}</div>
+       		<div><p translate>simplePliCTerm.name.family</p>:{{hierarchy.family}}</div>
     	</div>
     	<div ng-show="hierarchy.genus">
-       		<div>Género :{{hierarchy.genus}}</div>
+       		<div>
+       			<p translate>simplePliCTerm.name.genus</p>:{{hierarchy.genus}}
+       		</div>
     	</div>
     	<div ng-show="hierarchy.subGenus">
-       		<div>Subgénero :{{hierarchy.subGenus}}</div>
+       		<div>
+       			<p translate>simplePliCTerm.name.subgenus</p>:{{hierarchy.subGenus}}
+       		</div>
     	</div>
     	<!--<div ng-show="hierarchy.taxonRank">
        		<div>Categoría del taxón :{{hierarchy.taxonRank}}</div>
     	</div>-->
     	<div ng-show="hierarchy.specificEpithet">
-       		<div>Epíteto específico :{{hierarchy.specificEpithet}}</div>
+       		<div>
+       			<p translate>simplePliCTerm.name.specificEpithet</p>:{{hierarchy.specificEpithet}}
+       		</div>
     	</div>
     	<div ng-show="hierarchy.infraspecificEpithet">
-       		<div>Epítelo infraespecífico :{{hierarchy.infraspecificEpithet}}</div>
+       		<div>
+       			<p translate>simplePliCTerm.name.infraSpecificEpithet</p>:{{hierarchy.infraspecificEpithet}}
+       		</div>
     	</div>
     	<div ng-show="hierarchy.higherClassification">
-       		<div>Clasificacíon superior :{{hierarchy.higherClassification}}</div>
+       		<div>
+       			<p translate>simplePliCTerm.name.higherClassification</p>:{{hierarchy.higherClassification}}
+       		</div>
     	</div>
     	<!--<div ng-show="hierarchy.parentTaxon">
        		<div>parentTaxon :{{hierarchy.parentTaxon}}</div>
@@ -273,26 +293,26 @@
 				<h4>Taxón parental:</h4>
 				<input type="text"  ng-model="hierarchy.parentTaxon"/>
 				<br>
-				<h4>Datos Auxiliares:</h4>
+				<h4 translate>simplePliCTerm.name.AncillaryData</h4>
 				<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(hierarchy.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
 				<div ng-repeat="ancillary in hierarchy.ancillaryData">
 					<div class="form-group">
-						<h4>License:</h4>
+						<h4 translate>simplePliCTerm.name.license</h4>
 						<input type="text"  ng-model="ancillary.license"/>
 						<hr>
-						<h4>Rights Holder:</h4>
+						<h4 translate>simplePliCTerm.name.rights</h4>
 						<input type="text"  ng-model="ancillary.rightsHolder"/>
 						<hr>
-						<h4>Bibliographic Citation:</h4>
+						<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 						<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 						<hr>
-						<h4>Source:</h4>
+						<h4 translate>simplePliCTerm.name.source</h4>
 						<input type="text"  ng-model="ancillary.source"/>
 						<hr>
-						<h4>Media URL:</h4>
+						<h4 translate>simplePliCTerm.name.mediaURL</h4>
 						<input type="text"  ng-model="ancillary.mediaURL"/>
 						<hr>
-						<h4>References:</h4>
+						<h4 translate>simplePliCTerm.name.References</h4>
 						<div ng-repeat="ref in ancillary.reference">
 							<h5>Identifier:</h5>
 							<input type="text"  ng-model="ref.identifier"/>

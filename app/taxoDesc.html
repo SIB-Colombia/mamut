@@ -1,13 +1,13 @@
 <div class="form-group">
 	
-	<h3>Descripción breve</h3>
+	<h3 translate>simplePliCTerm.name.BriefDescription</h3>
 	<hr>
 	<input type="text" class="form-control" name="briefDescription" ng-model="formData.briefDescription"/>
 	<br>
 
 	
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Descripción completa</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed" translate>simplePliCTerm.definition.FullDescription</button>
 	    <hr>
 	    <div collapse="isCollapsed">
 	    	<h3>Descripción completa</h3>
@@ -34,25 +34,25 @@
 			<h3>Descripción</h3>
 			<input type="text" class="form-control" name="fullDescription" ng-model="formData.fullDescription.fullDescriptionUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.fullDescription.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.fullDescription.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.fullDescription.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
@@ -75,29 +75,29 @@
 	</div>			
 	<br>
 
-	<h3>Claves taxonómicas:</h3>
+	<h3 translate>simplePliCTerm.name.IdentificationKeys</h3>
 	<hr>
 	<input type="text" class="form-control" name="identificationKeys" ng-model="formData.identificationKeys.keys"/> 
 
-	<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.identificationKeys.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+	<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.identificationKeys.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 	<div ng-repeat="ancillary in formData.identificationKeys.ancillaryData">
 		<div class="form-group">
-			<h4>License:</h4>
+			<h4 translate>simplePliCTerm.name.license</h4>
 			<input type="text"  ng-model="ancillary.license"/>
 			<hr>
-			<h4>Rights Holder:</h4>
+			<h4 translate>simplePliCTerm.name.rights</h4>
 			<input type="text"  ng-model="ancillary.rightsHolder"/>
 			<hr>
-			<h4>Bibliographic Citation:</h4>
+			<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 			<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 			<hr>
-			<h4>Source:</h4>
+			<h4 translate>simplePliCTerm.name.source</h4>
 			<input type="text"  ng-model="ancillary.source"/>
 			<hr>
-			<h4>Media URL:</h4>
+			<h4 translate>simplePliCTerm.name.mediaURL</h4>
 			<input type="text"  ng-model="ancillary.mediaURL"/>
 			<hr>
-			<h4>References:</h4>
+			<h4 translate>simplePliCTerm.name.References</h4>
 			<div ng-repeat="ref in ancillary.reference">
 				<h5>Identifier:</h5>
 				<input type="text"  ng-model="ref.identifier"/>
@@ -112,6 +112,7 @@
 			<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
 			<hr>
 		</div>
+		<button type="button" class="btn btn-info btn-sm" ng-click="removeAncillaryData(formData.identificationKeys.ancillaryData, ancillaryData)">Eliminar datos auxiliares</button>
 	</div>
 
 </div> 

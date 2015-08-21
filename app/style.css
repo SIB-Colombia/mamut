@@ -61,6 +61,10 @@ pre                             { margin-bottom:20px; }
   text-transform:uppercase;
 }
 
+.parrafo div {display: inline;}
+.parrafo div p{display: inline;}
+.parrafo-pegado div p{display: inline;}
+
 @media screen and (min-width: 768px) {
   .equal, .equal > div[class*='col-'] {  
       display: -webkit-box;

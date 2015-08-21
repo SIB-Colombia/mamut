@@ -1,16 +1,16 @@
 <div class="form-group">
-	<h3>ID Conjunto de datos:</h3>
+	<h3 translate>simplePliCTerm.name.Dataset_ID</h3>
 	<hr>
 	<input type="text" class="form-control" name="datasetID" ng-model="formData.datasetID"/> <br>
-	<h3>Fecha de creación:</h3>
+	<h3 translate>simplePliCTerm.name.dateStamp</h3>
 	<hr>
 	<input type="text" class="form-control" name="dataStamp" ng-model="formData.dataStamp"/> <br>
-	<h3>Citación:</h3>
+	<h3 translate>simplePliCTerm.name.citation</h3>
 	<hr>
 	<input type="text" class="form-control" name="citation" ng-model="formData.citation"/> <br>
 
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Conjunto de datos</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed" translate>simplePliCTerm.name.dataset</button>
 	    <hr>
 	    <div collapse="isCollapsed">
 	      	<div class="form-group">
@@ -50,10 +50,10 @@
 	    </div>
 	</div>
 
-	<h3>URL o Logo del recurso:</h3>
+	<h3 translate>simplePliCTerm.name.resourceLogoUrl</h3>
 	<hr>
 	<input type="text" class="form-control" name="resourceLogoUrl" ng-model="formData.resourceLogoUrl"/> <br>
-	<h3>Referencias:</h3>
+	<h3 translate>simplePliCTerm.name.References</h3>
 	<hr>
 	<input type="text" class="form-control" name="reference" ng-model="formData.reference"/> <br>
 </div> 

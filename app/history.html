@@ -1,50 +1,51 @@
 <div class="form-group">
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Forma de vida</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.LifeForm" | translate}}</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-			<h3>Forma de vida</h3>
-			<div ng-repeat="measurementOrFact in formData.lifeForm.lifeFormAtomized.measurementOrFact" class="selected-item">
-				<div ng-show="measurementOrFact">
-       				<div>{{measurementOrFact}}</div>
+			<h3 translate>simplePliCTerm.name.LifeFormAtomized</h3>
+			<div ng-repeat="lifeFormAtomized in formData.lifeForm.lifeFormAtomized" class="selected-item">
+				<div ng-show="lifeFormAtomized">
+       				<div>{{lifeFormAtomized.measurementType}}-{{lifeFormAtomized.measurementValue}}</div>
     			</div>
 			</div>
 
 			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Agregar forma de vida </button>
 			<div collapse="isCollapsed_1">
-				<div class="panel" ng-controller="checkBoxController">
-					<div ng-repeat="lifeForm in lifeForms">
-						<div class="action-checkbox">
-							<input id="{{lifeForm.name}}" type="checkbox" value="{{lifeForm.name}}" ng-checked="formData.lifeForm.lifeFormAtomized.measurementOrFact.indexOf(lifeForm.name) > -1" ng-click="toggleSelection(formData.lifeForm.lifeFormAtomized.measurementOrFact,lifeForm)" />
-							<label for="{{lifeForm.name}}"></label>
-							{{lifeForm.name}}
-						</div>
-					</div>
+				<div ng-controller="MeasurementCtrl" >
+					<select ng-model="lifeFormAtomized.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in lifeForms | unique:'measurementtype'">
+						<option value="">- Seleccione -</option>
+					</select>  
+
+					<select ng-model="lifeFormAtomized.measurementValue" ng-disabled="!lifeFormAtomized.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr">
+						<option value="">- Seleccione -</option>
+					</select>
 				</div>
+				<button class="btn btn-default" ng-click="addMeasurementOrFactVector(formData.lifeForm.lifeFormAtomized, measurementOrFact)"> Agregar </button>
 			</div>	
 
-			<h3>Descripción</h3>
+			<h3 translate>simplePliCTerm.name.LifeFormUnstructured</h3>
 			<input type="text" class="form-control" name="lifeForm" ng-model="formData.lifeForm.lifeFormUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.lifeForm.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.lifeForm.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.lifeForm.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
@@ -67,51 +68,52 @@
 	<br>
 
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Ciclo de vida</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.LifeCycle" | translate}}</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    	<h3>Ciclo de vida</h3>
-			<div ng-repeat="measurementOrFact in formData.lifeCycle.lifeCycleAtomized.measurementOrFact" class="selected-item">
-				<div ng-show="measurementOrFact">
-       				<div>{{measurementOrFact.measurementvalue}}</div>
+	    	<h3 translate>simplePliCTerm.name.LifeCycleAtomized</h3>
+			<div ng-repeat="lifeCycleAtomized in formData.lifeCycle.lifeCycleAtomized" class="selected-item">
+				<div ng-show="lifeCycleAtomized">
+       				<div>{{lifeCycleAtomized.measurementType}}-{{lifeCycleAtomized.measurementValue}}</div>
     			</div>
 			</div>
 
 			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Agregar ciclo de vida </button>
 			<div collapse="isCollapsed_1">
-				<div class="panel" ng-controller="checkBoxController">
-					<div ng-repeat="lifeCycle in lifeCycles">
-						<div class="action-checkbox">
-							<input id="{{lifeCycle.measurementvalue}}" type="checkbox" value="{{lifeCycle.measurementvalue}}" ng-checked="formData.lifeCycle.lifeCycleAtomized.measurementOrFact.indexOf(lifeCycle.measurementvalue) > -1" ng-click="toggleSelection(formData.lifeCycle.lifeCycleAtomized.measurementOrFact,lifeCycle)" />
-							<label for="{{lifeCycle.measurementvalue}}"></label>
-							{{lifeCycle.measurementvalue}}
-						</div>
-					</div>
+				<div ng-controller="MeasurementCtrl" >
+					<select ng-model="lifeCycleAtomized.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in lifeCycles | unique:'measurementtype'">
+						<option value="">- Seleccione -</option>
+					</select>  
+
+					<select ng-model="lifeCycleAtomized.measurementValue" ng-disabled="!lifeCycleAtomized.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+						<option value="">- Seleccione -</option>
+					</select>
 				</div>
+				<button class="btn btn-default" ng-click="addMeasurementOrFactVector(formData.lifeCycle.lifeCycleAtomized, measurementOrFact)"> Agregar </button>
 			</div>	
 
-			<h3>Descripción</h3>
+			<h3 translate>simplePliCTerm.name.LifeCycleUnstructured</h3>
 			<input type="text" class="form-control" name="lifeCycle" ng-model="formData.lifeCycle.lifeCycleUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.lifeCycle.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.lifeCycle.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.lifeCycle.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
@@ -134,51 +136,52 @@
 	<br>
 
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Reproducción</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.Reproduction" | translate}}</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    	<h3>Reproducción</h3>
-			<div ng-repeat="measurementOrFact in formData.reproduction.reproductionAtomized.measurementOrFact" class="selected-item">
-				<div ng-show="measurementOrFact">
-       				<div>{{measurementOrFact.measurementvalue}}</div>
+	    	<h3 translate>simplePliCTerm.name.ReproductionAtomized</h3>
+			<div ng-repeat="reproductionAtomized in formData.reproduction.reproductionAtomized" class="selected-item">
+				<div ng-show="reproductionAtomized">
+       				<div>{{reproductionAtomized.measurementType}}-{{reproductionAtomized.measurementValue}}</div>
     			</div>
 			</div>
 
 			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Agregar reproducción </button>
 			<div collapse="isCollapsed_1">
-				<div class="panel" ng-controller="checkBoxController">
-					<div ng-repeat="reproduction in reproductions">
-						<div class="action-checkbox">
-							<input id="{{reproduction.measurementvalue}}" type="checkbox" value="{{reproduction.measurementvalue}}" ng-checked="formData.reproduction.reproductionAtomized.measurementOrFact.indexOf(reproduction.measurementvalue) > -1" ng-click="toggleSelection(formData.reproduction.reproductionAtomized.measurementOrFact,reproduction)" />
-							<label for="{{reproduction.measurementvalue}}"></label>
-							{{reproduction.measurementvalue}}
-						</div>
-					</div>
+				<div ng-controller="MeasurementCtrl" >
+					<select ng-model="reproductionAtomized.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in reproductions | unique:'measurementtype'">
+						<option value="">- Seleccione -</option>
+					</select>  
+
+					<select ng-model="reproductionAtomized.measurementValue" ng-disabled="!reproductionAtomized.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+						<option value="">- Seleccione -</option>
+					</select>
 				</div>
+				<button class="btn btn-default" ng-click="addMeasurementOrFactVector(formData.reproduction.reproductionAtomized, measurementOrFact)"> Agregar </button>
 			</div>				
 
-			<h3>Descripción</h3>
+			<h3 translate>simplePliCTerm.name.ReproductionUnstructured</h3>
 			<input type="text" class="form-control" name="reproduction" ng-model="formData.reproduction.reproductionUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.reproduction.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.reproduction.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.reproduction.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
@@ -202,15 +205,15 @@
 	<br>
 
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Ciclo anual</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed" >{{"simplePliCTerm.name.AnnualCycles" | translate}}</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    	<h3>Ciclo anual</h3>
-			<div ng-repeat="annualCycleAtomizedType in formData.annualCycle.annualCycleAtomized.annualCycleAtomizedType" class="selected-item">
-				<div ng-show="annualCycleAtomizedType">
-       				<div>Evento: {{annualCycleAtomizedType.Event}}</div>
-       				<div>Start Time: {{annualCycleAtomizedType.startTimeInterval| date: 'yyyy-MM-dd'}}</div>
-       				<div>End Time: {{annualCycleAtomizedType.endTimeInterval| date: 'yyyy-MM-dd'}}</div>
+	    	<h3 translate>simplePliCTerm.name.AnnualCyclesAtomized</h3>
+			<div ng-repeat="annualCycleAtomized in formData.annualCycle.annualCycleAtomized" class="selected-item">
+				<div ng-show="annualCycleAtomized">
+       				<div>Evento: {{annualCycleAtomized.Event}}</div>
+       				<div>Start Time: {{annualCycleAtomized.startTimeInterval| date: 'yyyy-MM-dd'}}</div>
+       				<div>End Time: {{annualCycleAtomized.endTimeInterval| date: 'yyyy-MM-dd'}}</div>
     			</div>
 			</div>
 
@@ -218,8 +221,14 @@
 			<div collapse="isCollapsed_1">
 				<div class="form-group">
 					<h4>Evento:</h4>
-					<input type="text"  ng-model="annualCycleAtomizedType.Event"/>
+					<div ng-repeat="eve in event">
+				      <label>
+				        <input type="checkbox" ng-model="eve.checked" ng-click="updateSelection(eve, event, annualCycleAtomizedType.Event)"/>
+				        {{eve.name}}
+				      </label>
+				    </div>
 					<br>
+
 					<label for="startTimeInterval" class="control-label">Start Time Interval:</label>
 		            <div class="control">
 		                <input id="startTimeInterval" class="form-control" type="date" ng-model="annualCycleAtomizedType.startTimeInterval"/>
@@ -228,25 +237,25 @@
 		            <div class="control">
 		                <input id="endTimeInterval" class="form-control" type="date" ng-model="annualCycleAtomizedType.endTimeInterval"/>
 		            </div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.annualCycle.annualCycleAtomized.annualCycleAtomizedType.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
-					<div ng-repeat="ancillary in formData.annualCycle.annualCycleAtomized.annualCycleAtomizedType.ancillaryData">
+					<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(annualCycleAtomizedType.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
+					<div ng-repeat="ancillary in annualCycleAtomized.ancillaryData">
 						<div class="form-group">
-							<h4>License:</h4>
+							<h4 translate>simplePliCTerm.name.license</h4>
 							<input type="text"  ng-model="ancillary.license"/>
 							<hr>
-							<h4>Rights Holder:</h4>
+							<h4 translate>simplePliCTerm.name.rights</h4>
 							<input type="text"  ng-model="ancillary.rightsHolder"/>
 							<hr>
-							<h4>Bibliographic Citation:</h4>
+							<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 							<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 							<hr>
-							<h4>Source:</h4>
+							<h4 translate>simplePliCTerm.name.source</h4>
 							<input type="text"  ng-model="ancillary.source"/>
 							<hr>
-							<h4>Media URL:</h4>
+							<h4 translate>simplePliCTerm.name.mediaURL</h4>
 							<input type="text"  ng-model="ancillary.mediaURL"/>
 							<hr>
-							<h4>References:</h4>
+							<h4 translate>simplePliCTerm.name.References</h4>
 							<div ng-repeat="ref in ancillary.reference">
 								<h5>Identifier:</h5>
 								<input type="text"  ng-model="ref.identifier"/>
@@ -262,33 +271,33 @@
 							<hr>
 						</div>
 					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addAnnualCycleAtomizedType(formData.annualCycle.annualCycleAtomized.annualCycleAtomizedType,annualCycleAtomizedType)">Accept</button>
+					<button type="button" class="btn btn-info btn-sm" ng-click="addAnnualCycleAtomizedType(formData.annualCycle.annualCycleAtomized, annualCycleAtomizedType)">Accept</button>
 					<br>
 				</div>
 			</div>	
 
-			<h3>Descripción</h3>
+			<h3 translate>simplePliCTerm.name.AnnualCyclesUnstructured</h3>
 			<input type="text" class="form-control" name="annualCycle" ng-model="formData.annualCycle.annualCycleUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.annualCycle.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.annualCycle.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.annualCycle.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
@@ -311,20 +320,25 @@
 	<br>
 
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Alimentación</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed" >{{"simplePliCTerm.name.Feeding" | translate}}</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    	<h3>Alimentación</h3>
-			<div ng-repeat="feedingAtomizedType in formData.feeding.feedingAtomized.feedingAtomizedType" class="selected-item">
-				<div ng-show="feedingAtomizedType">
-       				<div>{{feedingAtomizedType}}</div>
+	    	<h3 translate>simplePliCTerm.name.FeedingAtomized</h3>
+			<div ng-repeat="feedingAtomized in formData.feeding.feedingAtomized" class="selected-item">
+				<div ng-show="feedingAtomized">
+       				<div>{{feedingAtomized.type}}</div>
+       				<div ng-repeat="thropic in feedingAtomized.thropic" class="selected-item">
+       					<div ng-show="thropic">
+       						{{thropic.strategy}} - {{thropic.strategyRemarks}}
+       					</div>	
+       				</div>	
     			</div>
 			</div>
 
 			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Agregar alimentación </button>
 			<div collapse="isCollapsed_1">
 				<div class="panel" ng-controller="checkBoxController">
-					<h4>Tipo de alimentación</h4>
+					<h4 translate>simplePliCTerm.name.type</h4>
 					<div ng-repeat="source in primaryDietSource">
 				      <label>
 				        <input type="checkbox" ng-model="source.checked" ng-click="updateSelectionFeeding(source, primaryDietSource)"/>
@@ -332,9 +346,9 @@
 				      </label>
 				    </div>
 
-				    <button class="btn btn-default" ng-click="isCollapsed_2 = !isCollapsed_2"> Estrategia trófica </button>
+				    <button class="btn btn-default" ng-click="isCollapsed_2 = !isCollapsed_2" > {{"simplePliCTerm.name.Strategy" | translate}}</button>
 			    	<div collapse="isCollapsed_2">
-					    <h5>Estrategia trófica</h5>
+					    <h5 translate>simplePliCTerm.name.Strategy</h5>
 					    <div ng-repeat="strategy in strategies">
 							<div class="action-checkbox">
 								<label>
@@ -343,36 +357,36 @@
 							    </label>
 							</div>
 						</div>
-						<h5>Observaciones</h5>
+						<h5 translate>simplePliCTerm.name.StrategyRemarks</h5>
 						<input type="text" class="form-control" name="feeding" ng-model="thropic.strategyRemarks"/>
 						<button type="button" class="btn btn-info btn-sm" ng-click="addThropic(feedingAtomizedType.thropic,thropic)">Agregar estrategia</button>
 					</div>	
 				</div>
-				<button type="button" class="btn btn-info btn-sm" ng-click="addFeedingAtomizedType(formData.feeding.feedingAtomized.feedingAtomizedType,feedingAtomizedType)">Agregar</button>
+				<button type="button" class="btn btn-info btn-sm" ng-click="addFeedingAtomizedType(formData.feeding.feedingAtomized,feedingAtomizedType)">Agregar</button>
 			</div>	
 			
-			<h3>Descripción</h3>
+			<h3 translate>simplePliCTerm.name.FeedingUnstructured</h3>
 			<input type="text" class="form-control" name="feeding" ng-model="formData.feeding.feedingUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.feeding.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.feeding.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.feeding.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
@@ -396,72 +410,79 @@
 	<br>
 
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Dispersión</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed" >{{"simplePliCTerm.name.Dispersal" | translate}}</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    	<h3>Dispersión</h3>
-			<div ng-repeat="measurementOrFact in formData.dispersal.dispersalAtomized.measurementOrFact" class="selected-item">
-				<div ng-show="measurementOrFact">
-       				<div>{{measurementOrFact}}</div>
-    			</div>
+	    	<h3 translate>simplePliCTerm.name.DispersalAtomized</h3>
+			
+			<div ng-repeat="purpose in formData.dispersal.dispersalAtomized.purpose">
+				{{purpose}}
 			</div>
+			<h5 translate>simplePliCTerm.name.Purpose</h5>
+			<div ng-controller="MeasurementCtrl" >
+				<select ng-model="dispersalAtomized.purpose.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in purposes | unique:'measurementtype'">
+					<option value="">- Seleccione -</option>
+				</select>  
 
-			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Agregar dispersión </button>
-			<div collapse="isCollapsed_1">
-				<div class="panel" ng-controller="checkBoxController">
-					<h5>Propósito</h5>
-					<div ng-repeat="purpose in purposes">
-						<div class="action-checkbox">
-							<input id="{{purpose.name}}" type="checkbox" value="{{purpose.name}}" ng-checked="formData.dispersal.dispersalAtomized.measurementOrFact.indexOf(purpose.name) > -1" ng-click="toggleSelection(formData.dispersal.dispersalAtomized.measurementOrFact,purpose)" />
-							<label for="{{purpose.name}}"></label>
-							{{purpose.name}}
-						</div>
+				<select ng-model="dispersalAtomized.purpose.measurementValue" ng-disabled="!dispersalAtomized.purpose.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+					<option value="">- Seleccione -</option>
+				</select>
+			</div>
+			<button class="btn btn-default" ng-click="addMeasurementOrFactVector(formData.dispersal.dispersalAtomized.purpose, measurementOrFact)"> Agregar </button>
+			<div class="panel" ng-controller="checkBoxController">
+				<h5 translate>simplePliCTerm.name.Type</h5>
+				<div ng-repeat="type in dispersalType">	
+					<div class="action-checkbox">
+						<label>
+					        <input type="checkbox" ng-model="type.checked" ng-click="updateSelectionDispersalType(type, dispersalType)"/>
+					        {{type.name}}
+					    </label>
 					</div>
-					<h5>Tipo de dispersión</h5>
-					<div ng-repeat="type in types">	
-						<div class="action-checkbox">
-							<label>
-						        <input type="checkbox" ng-model="type.checked" ng-click="updateSelectionThropic(type, types)"/>
-						        {{type.name}}
-						    </label>
-						</div>
+				</div>
+				<h5 translate>simplePliCTerm.name.StructureDispersed</h5>
+				<div ng-repeat="structure in structureDispersed">	
+					<div class="action-checkbox">
+						<label>
+					        <input type="checkbox" ng-model="structure.checked" ng-click="updateSelectionStructureDispersed(structure, structureDispersed)"/>
+					        {{structure.name}}
+					    </label>
 					</div>
-					<h5>Estructura de dispersión</h5>
-					<div ng-repeat="structure in structureDispersed">	
-						<div class="action-checkbox">
-							<label>
-						        <input type="checkbox" ng-model="structure.checked" ng-click="updateSelectionThropic(structure, structureDispersed)"/>
-						        {{structure.name}}
-						    </label>
-						</div>
-					</div>
-					<h5>Distancia</h5>
-					<input type="text" class="form-control" name="distance" ng-model="dispersalAtomized.distance"/>
+				</div>
+				<h5 translate>simplePliCTerm.name.Distance</h5>
+				<div ng-controller="MeasurementCtrl" >
+					<select ng-model="formData.dispersal.dispersalAtomized.distance.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in distance | unique:'measurementtype'">
+						<option value="">- Seleccione -</option>
+					</select>  
+
+					<select ng-model="formData.dispersal.dispersalAtomized.distance.measurementValue" ng-disabled="!formData.dispersal.dispersalAtomized.distance.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+						<option value="">- Seleccione -</option>
+					</select>
 				</div>
 			</div>	
 
-			<h3>Descripción</h3>
+
+			<h3 translate>simplePliCTerm.name.DispersalUnstructured</h3>
 			<input type="text" class="form-control" name="dispersal" ng-model="formData.dispersal.dispersalUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.dispersal.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.dispersal.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.dispersal.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
@@ -485,51 +506,51 @@
 	<br>
 
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Comportamiento</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.Behavior" | translate}}</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    	<h3>Comportamiento</h3>
-			<div ng-repeat="measurementOrFact in formData.behavior.behaviorAtomized.measurementOrFact" class="selected-item">
-				<div ng-show="measurementOrFact">
-       				<div>{{measurementOrFact}}</div>
+	    	<h3 translate>simplePliCTerm.name.BehaviorAtomized</h3>
+			<div ng-repeat="behaviorAtomized in formData.behavior.behaviorAtomized" class="selected-item">
+				<div ng-show="behaviorAtomized">
+       				<div>{{behaviorAtomized}}</div>
     			</div>
 			</div>
 
 			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Agregar comportamiento </button>
 			<div collapse="isCollapsed_1">
-				<div class="panel" ng-controller="checkBoxController">
-					<div ng-repeat="employee in employees">
-						<div class="action-checkbox">
-							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.behavior.behaviorAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.behavior.behaviorAtomized.measurementOrFact,employee.name)" />
-							<label for="{{employee.name}}"></label>
-							{{employee.name}}
-						</div>
-					</div>
+				<div ng-controller="MeasurementCtrl" >
+					<select ng-model="formData.behavior.behaviorAtomized.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in behaviors | unique:'measurementtype'">
+						<option value="">- Seleccione -</option>
+					</select>  
+
+					<select ng-model="formData.behavior.behaviorAtomized.measurementValue" ng-disabled="!formData.behavior.behaviorAtomized.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+						<option value="">- Seleccione -</option>
+					</select>
 				</div>
 			</div>	
 			
-			<h3>Descripción</h3>
+			<h3 translate>simplePliCTerm.name.BehaviorUnstructured</h3>
 			<input type="text" class="form-control" name="behavior" ng-model="formData.behavior.behaviorUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.behavior.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.behavior.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.behavior.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
@@ -552,53 +573,55 @@
 	<br>
 	
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Interacciones</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.Interactions" | translate}}</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    	<h3>Interacciones</h3>
-			<div ng-repeat="measurementOrFact in formData.interactions.interactionsAtomized.measurementOrFact" class="selected-item">
-				<div ng-show="measurementOrFact">
-       				<div>{{measurementOrFact}}</div>
+	    	<h3 translate>simplePliCTerm.name.InteractionAtomized</h3>
+			<div ng-repeat="interactionsAtomized in formData.interactions.interactionsAtomized" class="selected-item">
+				<div ng-show="interactionsAtomized">
+       				<div>{{interactionsAtomized}}</div>
     			</div>
 			</div>
 
 			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Agregar interacción </button>
 			<div collapse="isCollapsed_1">
 				<div class="panel" ng-controller="checkBoxController">
-					<h5>Relacion con otras especies:</h5>
-					<h5>Tipo de Interacción:</h5>
-					<div ng-repeat="employee in employees">
+					<h5 translate>simplePliCTerm.name.InteractionSpecies</h5>
+					<h5 translate>simplePliCTerm.name.InteractionSpeciesType</h5>
+
+					<div ng-repeat="interaction in interactionSpeciesType">
 						<div class="action-checkbox">
-							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.interactions.interactionsAtomized.measurementOrFact.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.interactions.interactionsAtomized.measurementOrFact,employee.name)" />
-							<label for="{{employee.name}}"></label>
-							{{employee.name}}
+							<input id="{{interaction.name}}" type="checkbox" value="{{interaction.name}}" ng-checked="interactionsAtomizedType.interactionSpeciesType.indexOf(interaction.name) > -1" ng-click="toggleSelection(interactionsAtomizedType.interactionSpeciesType,interaction.name)" />
+							<label for="{{interaction.name}}"></label>
+							{{interaction.name}}
 						</div>
 					</div>
 				</div>
+				<button type="button" class="btn btn-info btn-sm" ng-click="addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)">Agregar</button>
 			</div>	
 
-			<h3>Descripción</h3>
+			<h3 translate>simplePliCTerm.name.InteractionUnstructured</h3>
 			<input type="text" class="form-control" name="interactions" ng-model="formData.interactions.interactionsUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.interactions.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.interactions.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.interactions.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
@@ -621,51 +644,57 @@
 	<br>
 
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Datos moleculares</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.MolecularData"|translate}}</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    <h3>Datos moleculares</h3>
+	    	<h3 translate>simplePliCTerm.name.MolecularDataAtomized</h3>
 			<div ng-repeat="measurementOrFact in formData.molecularData.molecularDataAtomized.measurementOrFact" class="selected-item">
 				<div ng-show="measurementOrFact">
-       				<div>{{measurementOrFact}}</div>
-    			</div>
+	   				<div>{{measurementOrFact}}</div>
+				</div>
 			</div>
 
 			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Agregar dato molecular </button>
 			<div collapse="isCollapsed_1">
-				<div class="panel" ng-controller="checkBoxController">
-					<div ng-repeat="molecularData in molecularDatas">
-						<div class="action-checkbox">
-							<input id="{{molecularData.name}}" type="checkbox" value="{{molecularData.name}}" ng-checked="formData.molecularData.molecularDataAtomized.measurementOrFact.indexOf(molecularData.name) > -1" ng-click="toggleSelection(formData.molecularData.molecularDataAtomized.measurementOrFact,molecularData)" />
-							<label for="{{molecularData.name}}"></label>
-							{{molecularData.name}}
-						</div>
-					</div>
+				<div ng-controller="MeasurementCtrl" >
+					<select ng-model="molecularDataAtomizedType.measurementOrFact.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in molecularDatas | unique:'measurementtype'">
+						<option value="">- Seleccione -</option>
+					</select>  
+
+					<select ng-model="molecularDataAtomizedType.measurementOrFact.measurementValue" ng-disabled="!molecularDataAtomizedType.measurementOrFact.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+						<option value="">- Seleccione -</option>
+					</select>
 				</div>
+
+				<h3 translate>simplePliCTerm.name.Related to</h3>
+				<input type="text"  ng-model="molecularDataAtomizedType.relatedTo"/>
+
+				<br>
+				<button type="button" class="btn btn-info btn-sm" ng-click="addMolecularDataAtomizedType(formData.molecularData.molecularDataAtomized,molecularDataAtomizedType)">Agregar</button>
 			</div>	
 				
-			<h3>Descripción</h3>
+			<h3 translate>simplePliCTerm.name.MolecularDataUnstructured</h3>
 			<input type="text" class="form-control" name="molecularData" ng-model="formData.molecularData.molecularDataUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.molecularData.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.molecularData.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.molecularData.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
@@ -689,10 +718,10 @@
 
 	
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Migración</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.Migratory"|translate}}</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    	<h3>Migración</h3>
+	    	<h3 translate>simplePliCTerm.name.MigratoryAtomized</h3>
 			<div ng-repeat="migratoryAtomized in formData.migratory.migratoryAtomized" class="selected-item">
 				<div ng-show="migratoryAtomized">
        				<div>{{migratoryAtomized}}</div>
@@ -701,57 +730,58 @@
 
 			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Agregar migración </button>
 			<div collapse="isCollapsed_1">
-				<h5>Causas</h5>
+				<h5 translate>simplePliCTerm.name.Causes</h5>
 				<div class="panel" ng-controller="checkBoxController">
-					<div ng-repeat="employee in employees">
+					<div ng-repeat="cause in migratoryCauses">
 						<div class="action-checkbox">
-							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.migratory.migratoryAtomized.causes.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.migratory.migratoryAtomized.causes,employee.name)" />
-							<label for="{{employee.name}}"></label>
-							{{employee.name}}
+							<input id="{{cause.name}}" type="checkbox" value="{{cause.name}}" ng-checked="migratoryAtomizedType.causes.indexOf(cause.name) > -1" ng-click="toggleSelection(migratoryAtomizedType.causes,cause.name)" />
+							<label for="{{cause.name}}"></label>
+							{{cause.name}}
+						</div>
+					</div>
+				
+				<h5 translate>simplePliCTerm.name.Patterns</h5>
+					<div ng-repeat="pattern in migratoryPatterns">
+						<div class="action-checkbox">
+							<input id="{{pattern.name}}" type="checkbox" value="{{pattern.name}}" ng-checked="migratoryAtomizedType.patterns.indexOf(pattern.name) > -1" ng-click="toggleSelection(migratoryAtomizedType.patterns,pattern.name)" />
+							<label for="{{pattern.name}}"></label>
+							{{pattern.name}}
 						</div>
 					</div>
 				</div>
 				
-				<h5>Patrones</h5>
-				<div class="panel" ng-controller="checkBoxController">
-					<div ng-repeat="employee in employees">
-						<div class="action-checkbox">
-							<input id="{{employee.name}}" type="checkbox" value="{{employee.name}}" ng-checked="formData.migratory.migratoryAtomized.patterns.indexOf(employee.name) > -1" ng-click="toggleSelection(formData.migratory.migratoryAtomized.patterns,employee.name)" />
-							<label for="{{employee.name}}"></label>
-							{{employee.name}}
-						</div>
-					</div>
-				</div>
+				<h5 translate>simplePliCTerm.name.Routes</h5>
+				<input type="text"  ng-model="migratoryAtomizedType.routes"/>
 				
-				<h5>Rutas:</h5>
-				<input type="text"  ng-model="formData.migratory.migratoryAtomized.routes"/>
-				
-				<h5>Temporada:</h5>
-				<input type="text"  ng-model="formData.migratory.migratoryAtomized.season"/>
+				<h3 translate>simplePliCTerm.name.Season</h3>
+				<input type="text"  ng-model="migratoryAtomizedType.season"/>
+				<br>
+				<button type="button" class="btn btn-info btn-sm" ng-click="addMigratoryAtomizedType(formData.migratory.migratoryAtomized,migratoryAtomizedType)">Agregar</button>
+
 			</div>	
 
-			<h3>Descripción</h3>
+			<h3 translate>simplePliCTerm.name.MigratoryUnstructured</h3>
 			<input type="text" class="form-control" name="migratory" ng-model="formData.migratory.migratoryUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.migratory.ancillaryData)">Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.migratory.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.migratory.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
@@ -774,51 +804,52 @@
 	<br>
 
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Rol ecológico</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.EcologicalSignificance"|translate}}</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    	<h3>Rol ecológico</h3>
-			<div ng-repeat="measurementOrFact in formData.ecologicalSignificance.ecologicalSignificanceAtomized.measurementOrFact" class="selected-item">
-				<div ng-show="measurementOrFact">
-       				<div>{{measurementOrFact}}</div>
+	    	<h3 translate>simplePliCTerm.name.EcologicalSignificanceAtomized</h3>
+			<div ng-repeat="ecologicalSignificanceAtomized in formData.ecologicalSignificance.ecologicalSignificanceAtomized" class="selected-item">
+				<div ng-show="ecologicalSignificanceAtomized">
+       				<div>{{ecologicalSignificanceAtomized}}</div>
     			</div>
 			</div>
 
 			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Agregar rol ecológico </button>
 			<div collapse="isCollapsed_1">
-				<div class="panel" ng-controller="checkBoxController">
-					<div ng-repeat="ecologicalSignificance in ecologicalSignificances">
-						<div class="action-checkbox">
-							<input id="{{ecologicalSignificance.name}}" type="checkbox" value="{{ecologicalSignificance.name}}" ng-checked="formData.ecologicalSignificance.ecologicalSignificanceAtomized.measurementOrFact.indexOf(ecologicalSignificance.name) > -1" ng-click="toggleSelection(formData.ecologicalSignificance.ecologicalSignificanceAtomized.measurementOrFact,ecologicalSignificance)" />
-							<label for="{{ecologicalSignificance.name}}"></label>
-							{{ecologicalSignificance.name}}
-						</div>
-					</div>
+				<div ng-controller="MeasurementCtrl" >
+					<select ng-model="ecologicalSignificanceAtomized.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in ecologicalSignificances | unique:'measurementtype'">
+						<option value="">- Seleccione -</option>
+					</select>  
+
+					<select ng-model="ecologicalSignificanceAtomized.measurementValue" ng-disabled="!ecologicalSignificanceAtomized.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+						<option value="">- Seleccione -</option>
+					</select>
 				</div>
+				<button class="btn btn-default" ng-click="addMeasurementOrFactVector(formData.ecologicalSignificance.ecologicalSignificanceAtomized, measurementOrFact)"> Agregar </button>
 			</div>	
 
-			<h3>Descripción</h3>
+			<h3 translate>simplePliCTerm.name.EcologicalSignificanceUnstructured</h3>
 			<input type="text" class="form-control" name="ecologicalSignificance" ng-model="formData.ecologicalSignificance.ecologicalSignificanceUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.ecologicalSignificance.ancillaryData)">Add Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.ecologicalSignificance.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.ecologicalSignificance.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
@@ -841,51 +872,52 @@
 	<br>
 
 	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Condiciones ambientales</button>
+	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.EnvironmentalEnvelope"|translate}}</button>
 	    <hr>
 	    <div collapse="isCollapsed">
-	    	<h3>Condiciones ambientales</h3>
-			<div ng-repeat="measurementOrFact in formData.environmentalEnvelope.environmentalEnvelopeAtomized.measurementOrFact" class="selected-item">
-				<div ng-show="measurementOrFact">
-       				<div>{{measurementOrFact}}</div>
+	    	<h3 translate>simplePliCTerm.name.EnvironmentalEnvelopeAtomized</h3>
+			<div ng-repeat="environmentalEnvelopeAtomized in formData.environmentalEnvelope.environmentalEnvelopeAtomized" class="selected-item">
+				<div ng-show="environmentalEnvelopeAtomized">
+       				<div>{{environmentalEnvelopeAtomized}}</div>
     			</div>
 			</div>
 
 			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Agregar condición ambiental </button>
 			<div collapse="isCollapsed_1">
-				<div class="panel" ng-controller="checkBoxController">
-					<div ng-repeat="environmentalEnvelope in environmentalEnvelopes">
-						<div class="action-checkbox">
-							<input id="{{environmentalEnvelope.name}}" type="checkbox" value="{{environmentalEnvelope.name}}" ng-checked="formData.environmentalEnvelope.environmentalEnvelopeAtomized.measurementOrFact.indexOf(environmentalEnvelope.name) > -1" ng-click="toggleSelection(formData.environmentalEnvelope.environmentalEnvelopeAtomized.measurementOrFact,environmentalEnvelope)" />
-							<label for="{{environmentalEnvelope.name}}"></label>
-							{{environmentalEnvelope.name}}
-						</div>
-					</div>
+				<div ng-controller="MeasurementCtrl" >
+					<select ng-model="environmentalEnvelopeAtomized.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in environmentalEnvelopes | unique:'measurementtype'">
+						<option value="">- Seleccione -</option>
+					</select>  
+
+					<select ng-model="environmentalEnvelopeAtomized.measurementValue" ng-disabled="!environmentalEnvelopeAtomized.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+						<option value="">- Seleccione -</option>
+					</select>
 				</div>
+				<button class="btn btn-default" ng-click="addMeasurementOrFactVector(formData.environmentalEnvelope.environmentalEnvelopeAtomized, measurementOrFact)"> Agregar </button>
 			</div>	
 
-			<h3>Descripción</h3>
+			<h3 translate>simplePliCTerm.name.EnvironmentalEnvelopeUnstructured</h3>
 			<input type="text" class="form-control" name="environmentalEnvelope" ng-model="formData.environmentalEnvelope.environmentalEnvelopeUnstructured"/>
 			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.environmentalEnvelope.ancillaryData)">Add Datos Auxiliares<span class="glyphicon glyphicon-plus"></span> </button>
+			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.environmentalEnvelope.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
 			<div ng-repeat="ancillary in formData.environmentalEnvelope.ancillaryData">
 				<div class="form-group">
-					<h4>License:</h4>
+					<h4 translate>simplePliCTerm.name.license</h4>
 					<input type="text"  ng-model="ancillary.license"/>
 					<hr>
-					<h4>Rights Holder:</h4>
+					<h4 translate>simplePliCTerm.name.rights</h4>
 					<input type="text"  ng-model="ancillary.rightsHolder"/>
 					<hr>
-					<h4>Bibliographic Citation:</h4>
+					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
 					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
 					<hr>
-					<h4>Source:</h4>
+					<h4 translate>simplePliCTerm.name.source</h4>
 					<input type="text"  ng-model="ancillary.source"/>
 					<hr>
-					<h4>Media URL:</h4>
+					<h4 translate>simplePliCTerm.name.mediaURL</h4>
 					<input type="text"  ng-model="ancillary.mediaURL"/>
 					<hr>
-					<h4>References:</h4>
+					<h4 translate>simplePliCTerm.name.References</h4>
 					<div ng-repeat="ref in ancillary.reference">
 						<h5>Identifier:</h5>
 						<input type="text"  ng-model="ref.identifier"/>
