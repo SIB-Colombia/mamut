@@ -4,16 +4,16 @@ body                            { padding-top:20px; }
 pre                             { margin-bottom:20px; }
 
 /* form styling */
-#form-container                { background:#2f2f2f; margin-bottom:10px;
+#form-container                { background:#ffffff; margin-bottom:10px;
     border-radius:5px; }
-#form-container .page-header   { background:#151515; margin:0; padding:20px; 
+#form-container .page-header   { background:#ffffff; margin:0; padding:20px; 
     border-top-left-radius:5px; border-top-right-radius:5px; }
 
 /* numbered buttons */
 #status-buttons                 {  }
-#status-buttons a               { color:#FFF; display:inline-block; font-size:11px; margin-right:10px; text-align:center; text-transform:uppercase; }
+#status-buttons a               { color:#000000; display:inline-block; font-size:11px; margin-right:10px; text-align:center; text-transform:uppercase; }
 #status-buttons a:hover         { text-decoration:none; }
-#status-buttons span            { background:#080808; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px; 
+#status-buttons span            { background:#ffffff; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px; 
     border-radius:50%; }
 
 /* active buttons */
@@ -25,7 +25,10 @@ pre                             { margin-bottom:20px; }
 .form-control ,input{
      color: black;
 }
-
+.form-inline .form-group{
+    margin-left: 0;
+    margin-right: 0;
+}
 /* basic styling for entering and leaving */
 /* left and right added to ensure full width */
 #form-views.ng-enter,
@@ -75,6 +78,13 @@ pre                             { margin-bottom:20px; }
       flex:1 1 auto;
   }
 }
+label+em{ color: #aaa;}
+
+.panel-heading spanT{
+  font-size:18px; 
+  font-weight:bold;
+}
+
 /* ANIMATIONS
 ============================================================================= */
 /* slide out to the left */
@@ -101,3 +111,32 @@ pre                             { margin-bottom:20px; }
 	from 	{ -webkit-transform:translateX(200%); }
 	to 		{ -webkit-transform: translateX(0); }
 }
+
+.col-xs-10 input[type=text] {
+  width: 100% !important;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+.col-xs-11 input[type=text] {
+  width: 100% !important;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+select {
+  width: 110px;
+  height: 23px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+.col-xs-10 select:focus {
+   outline: none;
+}
+.form-group{clear: both;}
+
+.form-group input,
+.form-group textarea, 
+.form-group  button,
+.form-group select {margin: 5px;}

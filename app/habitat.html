@@ -1,17 +1,17 @@
 <div class="form-group">
-	 <div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.Habitats"|translate}}</button>
-	    <hr>
-	    <div collapse="isCollapsed">
-	    	<h3 translate>simplePliCTerm.name.HabitatAtomized</h3>
-			<div ng-repeat="habitatsAtomized in formData.habitats.habitatsAtomized" class="selected-item">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+	  		<spanT>{{"simplePliCTerm.name.Habitats"|translate}}<spanT>
+	  	</div>
+	  	<div class="panel-body">
+		  	<div ng-repeat="habitatsAtomized in formData.habitats.habitatsAtomized" class="selected-item">
 				<div ng-show="habitatsAtomized">
 					<div>{{habitatsAtomized}}</div>
 				</div>
 			</div>
-		
-			<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1"> Agregar Hábitat </button>
-			<div collapse="isCollapsed_1">
+
+			<div class="form-group">
 				<div ng-controller="MeasurementCtrl" >
 					<select ng-model="habitatsAtomized.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in habitats | unique:'measurementtype'">
 						<option value="">- Seleccione -</option>
@@ -20,60 +20,40 @@
 					<select ng-model="habitatsAtomized.measurementValue" ng-disabled="!habitatsAtomized.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
 						<option value="">- Seleccione -</option>
 					</select>
+					<button class="btn btn-default btn-xs pull-right" ng-click="addMeasurementOrFactVector(formData.habitat.habitatsAtomized, measurementOrFact)"> Guardar </button>
 				</div>
-				<button class="btn btn-default" ng-click="addMeasurementOrFactVector(formData.habitat.habitatsAtomized, measurementOrFact)"> Agregar </button>
-			</div>	
-
-	      	<h3 translate>simplePliCTerm.name.HabitatUnstructured</h3>
-			<input type="text" class="form-control" name="habitats" ng-model="formData.habitats.habitatsUnstructured"/>
-			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(formData.habitats.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
-			<div ng-repeat="ancillary in formData.habitats.ancillaryData">
-				<div class="form-group">
-					<h4 translate>simplePliCTerm.name.license</h4>
-					<input type="text"  ng-model="ancillary.license"/>
-					<hr>
-					<h4 translate>simplePliCTerm.name.rights</h4>
-					<input type="text"  ng-model="ancillary.rightsHolder"/>
-					<hr>
-					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
-					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
-					<hr>
-					<h4 translate>simplePliCTerm.name.source</h4>
-					<input type="text"  ng-model="ancillary.source"/>
-					<hr>
-					<h4 translate>simplePliCTerm.name.mediaURL</h4>
-					<input type="text"  ng-model="ancillary.mediaURL"/>
-					<hr>
-					<h4 translate>simplePliCTerm.name.References</h4>
-					<div ng-repeat="ref in ancillary.reference">
-						<h5>Identifier:</h5>
-						<input type="text"  ng-model="ref.identifier"/>
-						<br>
-						<h5>Datatype:</h5>
-						<input type="text"  ng-model="ref.datatype"/>
-						<br>
-						<h5>Source:</h5>
-						<input type="text"  ng-model="ref.source"/>
-						<hr>
-					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
-					<hr>
-				</div>
-				<button type="button" class="btn btn-info btn-sm" ng-click="removeAncillaryData(formData.habitats.ancillaryData, ancillaryData)">Eliminar datos auxiliares</button>
 			</div>
-			<br>
-	    </div>
-	 </div>
-	<br>
+			
+			
+			<hr>
+			
+			<label for="habitatUnstructured" translate>simplePliCTerm.name.HabitatUnstructured</label> <em>(opcional)</em>
+			<textarea class="form-control" rows="3" name="habitats" ng-model="formData.habitats.habitatsUnstructured"></textarea>
+	  		
+	  		<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="addAncillaryData(formData.habitats.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
+	  		
+	  		<div class="form-group">
+				<div class="col-xs-11">
+					<div ng-repeat="ancillary in formData.habitats.ancillaryData">
+						<input type="text"  ng-model="ancillary.license" placeholder={{"simplePliCTerm.name.license"|translate}}>
+						<input type="text"  ng-model="ancillary.rights" placeholder={{"simplePliCTerm.name.rights"|translate}}>
+						<input type="text"  ng-model="ancillary.bibliographicCitation" placeholder={{"simplePliCTerm.name.bibliographicCitation"|translate}}>
+						<input type="text"  ng-model="ancillary.source" placeholder={{"simplePliCTerm.name.source"|translate}}>
+						<input type="text"  ng-model="ancillary.mediaURL" placeholder={{"simplePliCTerm.name.mediaURL"|translate}}>
+						<button type="button" class="btn btn-primary btn-sm" ng-click="removeAncillaryData(formData.habitats.ancillaryData, ancillaryData)">Eliminar</button>
+						
+					</div>	
+				</div>
+			</div>
+	  	</div>	
+	</div>
 
-	<div ng-controller="CollapseDemoCtrl">
-	    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.Distribution"|translate}}</button>
-	    <hr>
-	    <div collapse="isCollapsed">
-
-			<h3 translate>simplePliCTerm.name.DistributionAtomized</h3>
-			<div ng-repeat="distribution in formData.distribution.distributionAtomized.distributionOpt2" class="selected-item">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+	  		<spanT>{{"simplePliCTerm.name.Distribution"|translate}}<spanT>
+	  	</div>
+	  	<div class="panel-body">
+		  	<div ng-repeat="distribution in formData.distribution.distributionAtomized.distributionOpt2" class="selected-item">
 				<div ng-show="distribution">
 					{{distribution.country}}
 					{{distribution.stateProvince}}
@@ -81,100 +61,105 @@
 					
 				</div>
 			</div>
-			
-			<h3 translate>simplePliCTerm.name.DistributionScope</h3>
-			<div ng-repeat="ds in distributionScope">
-			    <label>
-				    <input type="checkbox" ng-model="ds.checked" ng-click="updateSelectionDistributionScope(ds, publicationDatePrecision)"/>
-				    {{ds.name}}
-			    </label>
-		    </div>
 
-			<h3 translate>simplePliCTerm.name.TemporalCoverage</h3>
-			<input type="text"  ng-model="distributionClass.temporalCoverage"/>
-
-			<div ng-controller="UbicacionCtrl" >
-				<select ng-model="distributionOpt2.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
-					<option value="">- Seleccione -</option>
-				</select>  
-				
-				<select ng-model="distributionOpt2.stateProvince" ng-disabled="!distributionOpt2.country" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
-					<option value="">- Seleccione -</option>
-				</select>
-				<select ng-model="distributionOpt2.county" ng-disabled="!distributionOpt2.country || !distributionOpt2.stateProvince" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
-					<option value="">- Seleccione -</option>
-					</select>
-		    </div>
-			<button class="btn btn-default" ng-click="addDistributionOpt2(distributionClass.distributionAtomized,distributionOpt2)"> Agregar distribución </button>
-
-			
-	      	<h3 translate>simplePliCTerm.name.DistributionUnstructured</h3>
-			<input type="text" class="form-control" name="distribution" ng-model="distributionClass.distributionUnstructured"/>
-			
-			<button type="button" class="btn btn-info btn-sm" ng-click="addAncillaryData(distributionClass.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
-			<div ng-repeat="ancillary in formData.distribution.ancillaryData">
-				<div class="form-group">
-					<h4 translate>simplePliCTerm.name.license</h4>
-					<input type="text"  ng-model="ancillary.license"/>
-					<hr>
-					<h4 translate>simplePliCTerm.name.rights</h4>
-					<input type="text"  ng-model="ancillary.rightsHolder"/>
-					<hr>
-					<h4 translate>simplePliCTerm.name.bibliographicCitation</h4>
-					<input type="text"  ng-model="ancillary.bibliographicCitation"/>
-					<hr>
-					<h4 translate>simplePliCTerm.name.source</h4>
-					<input type="text"  ng-model="ancillary.source"/>
-					<hr>
-					<h4 translate>simplePliCTerm.name.mediaURL</h4>
-					<input type="text"  ng-model="ancillary.mediaURL"/>
-					<hr>
-					<h4 translate>simplePliCTerm.name.References</h4>
-					<div ng-repeat="ref in ancillary.reference">
-						<h5>Identifier:</h5>
-						<input type="text"  ng-model="ref.identifier"/>
-						<br>
-						<h5>Datatype:</h5>
-						<input type="text"  ng-model="ref.datatype"/>
-						<br>
-						<h5>Source:</h5>
-						<input type="text"  ng-model="ref.source"/>
-						<hr>
-					</div>
-					<button type="button" class="btn btn-info btn-sm" ng-click="addReference(ancillary.reference)">Referencia<span class="glyphicon glyphicon-plus"></span> </button>
-					<hr>
+			<div class="form-group">
+				<label for="distributionScope" class="col-xs-2 control-label" translate>simplePliCTerm.name.DistributionScope</label>
+			    <div class="col-xs-10">
+					<div ng-repeat="ds in distributionScope">
+						    <input type="checkbox" ng-model="ds.checked" ng-click="updateSelectionDistributionScope(ds, publicationDatePrecision)"/>
+						    {{ds.name}}
+				    </div>
 				</div>
-				<button type="button" class="btn btn-info btn-sm" ng-click="removeAncillaryData(distributionClass.ancillaryData, ancillaryData)">Eliminar datos auxiliares</button>
 			</div>
-			<br>
-			<button class="btn btn-default" ng-click="addDistribution(formData.distribution,distributionClass)"> Agregar distribución </button>
-	    </div>
-	    
-	</div>
-	<br>
 
-	<h3 translate>simplePliCTerm.name.EndemicAtomized</h3>
-	<hr>
-	<div ng-controller="CollapseDemoCtrl">
-		<div ng-repeat="endemicAtomized in formData.endemicAtomized" class="selected-item">
-			<div ng-show="endemicAtomized">
-				<div>{{endemicAtomized}}</div>
+			<div class="form-group">
+				<label for="temporalCoverage" class="col-xs-2 control-label" translate>simplePliCTerm.name.TemporalCoverage</label>
+			    <div class="col-xs-10">
+			    	<label> {{simplePliCTerm.name.startDate|translate}} </label>
+	                <input id="startValidateDate" class="form-control" type="date" ng-model="distributionClass.temporalCoverage.startDate"/>
+	                <label> {{simplePliCTerm.name.endDate|translate}} </label>
+	                <input id="endValidateDate" class="form-control" type="date" ng-model="distributionClass.temporalCoverage.endDate"/>
+				</div>
 			</div>
-		</div>
+			
+			<div class="form-group">
+				<div ng-controller="UbicacionCtrl" >
+					<select ng-model="distributionOpt2.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
+						<option value="">- Seleccione -</option>
+					</select>  
+					
+					<select ng-model="distributionOpt2.stateProvince" ng-disabled="!distributionOpt2.country" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
+						<option value="">- Seleccione -</option>
+					</select>
+					<select ng-model="distributionOpt2.county" ng-disabled="!distributionOpt2.country || !distributionOpt2.stateProvince" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
+						<option value="">- Seleccione -</option>
+						</select>
+			    </div>
+			</div>
 
-		<button class="btn btn-default" ng-click="isCollapsed_1 = !isCollapsed_1">Agregar endemismo</button>
-		<div collapse="isCollapsed_1">
-			<div class="panel" ng-controller="checkBoxController">
-				<h3 translate>simplePliCTerm.name.EndemicTo</h3>
-				<input type="text"  ng-model="endemicTo"/>
-				<button class="btn btn-default" ng-click="addEndemicTo(endemicAtomizedType.endemicTo,endemicTo)"> Agregar endemismo para </button>	
-				<h3 translate>simplePliCTerm.name.EndemicIn</h3>
-				<input type="text"  ng-model="endemicAtomizedType.endemicIn"/>
-			</div>
-			<button class="btn btn-default" ng-click="addEndemic(formData.endemicAtomized,endemicAtomizedType)"> Agregar </button>	
-		</div>
+			<button class="btn btn-default btn-sm pull-right" ng-click="addDistributionOpt2(distributionClass.distributionAtomized,distributionOpt2)"> Guardar </button>
+
+			<div class="form-group">
+				<hr>
+				
+				<label for="distributionUnstructured" translate>simplePliCTerm.name.DistributionUnstructured</label> <em>(opcional)</em>
+				<textarea class="form-control" rows="3" name="distribution" ng-model="distributionClass.distributionUnstructured"></textarea>
+		  		
+		  		<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="addAncillaryData(distributionClass.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
+		  		
+		  		<div class="form-group">
+					<div class="col-xs-11">
+						<div ng-repeat="ancillary in distributionClass.ancillaryData">
+							<input type="text"  ng-model="ancillary.license" placeholder={{"simplePliCTerm.name.license"|translate}}>
+							<input type="text"  ng-model="ancillary.rights" placeholder={{"simplePliCTerm.name.rights"|translate}}>
+							<input type="text"  ng-model="ancillary.bibliographicCitation" placeholder={{"simplePliCTerm.name.bibliographicCitation"|translate}}>
+							<input type="text"  ng-model="ancillary.source" placeholder={{"simplePliCTerm.name.source"|translate}}>
+							<input type="text"  ng-model="ancillary.mediaURL" placeholder={{"simplePliCTerm.name.mediaURL"|translate}}>
+							<button type="button" class="btn btn-primary btn-sm" ng-click="removeAncillaryData(distributionClass.ancillaryData, ancillaryData)">Eliminar</button>
+							
+						</div>	
+					</div>
+				</div>
+			</div>	
+	  	</div>	
 	</div>
-	<br>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+	  		<spanT>{{"simplePliCTerm.name.EndemicAtomized"|translate}}<spanT>
+	  	</div>
+	  	<div class="panel-body">
+		  	<div ng-repeat="endemicAtomized in formData.endemicAtomized" class="selected-item">
+				<div ng-show="endemicAtomized">
+					<div>{{endemicAtomized}}</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="endemicTo" class="col-xs-2 control-label" translate>simplePliCTerm.name.EndemicTo</label>
+			    <div class="col-xs-10">
+					<div ng-repeat="endemicTo in endemicAtomizedType.endemicTo" class="selected-item">
+						<div ng-show="endemicTo">
+							<div>{{endemicTo}}</div>
+						</div>
+					</div>
+					<input name="endemicTo" type="text" ng-model="endemicTo"/>
+					<button class="btn btn-default btn-xs pull-right" ng-click="addEndemicTo(endemicAtomizedType.endemicTo,endemicTo)"> Guardar endemismo para </button>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="endemicIn" class="col-xs-2 control-label" translate>simplePliCTerm.name.EndemicIn</label>
+			    <div class="col-xs-10">
+	                <input type="text"  ng-model="endemicAtomizedType.endemicIn"/>
+				</div>
+			</div>
+			
+
+			<button class="btn btn-default" ng-click="addEndemic(formData.endemicAtomized,endemicAtomizedType)"> Agregar distribución </button>
+
+	  	</div>	
+	</div>
 </div> 
 <div class="col-xs-6 col-xs-offset-3">
     <a ui-sref="form.demogra" class="btn btn-block btn-info">
