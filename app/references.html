@@ -1,40 +1,39 @@
-<h3>References</h3>
-<hr>
-<div class="row equal">
- 	<div class="col-md-5">
- 		<div>
- 			<h4>Add a manual reference:</h4>
-			<button type="button" class="btn btn-primary btn-sm" ng-click="addReferenceDirec(formData.references)">Add<span class="glyphicon glyphicon-plus"></span> </button>
-		</div>
-	</div>
-	<div class="col-md-5">
-		<div ng-app="fileUpload" ng-controller="UploadFile">
-			<h4>Drop File:</h4>
-		    <div ngf-drop ngf-select ng-model="files" class="drop-box" 
-		        ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
-		        accept="image/*,application/pdf">Drop ris here or click to upload
-		   	</div>
-		</div>   	
-	</div>
-</div>
-<hr>
-<div ng-repeat="ref in formData.references">
-	<div class="form-group">
-		<h4>Identifier:</h4>
-		<input type="text"  ng-model="ref.identifier"/>
-		<br>
-		<h4>Datatype:</h4>
-		<input type="text"  ng-model="ref.datatype"/>
-		<br>
-		<h4>Source:</h4>
-		<input type="text"  ng-model="ref.source"/>
-		<button  type="button" class="btn btn-primary btn-sm" ng-show="$last" ng-click="removeReferenceDirec()"><span class="glyphicon glyphicon-minus"></span></button>
-		<hr>
+<div class="form-group">	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+	  		<spanT>{{"simplePliCTerm.name.References"|translate}}<spanT>
+	  	</div>
+	  	<div class="panel-body">
+	  		<div ng-repeat="ref in formData.references">
+	  			{{ref.identifier}} - {{ref.datatype}} - {{ref.source}}
+	  		</div>
+	  		<div class="row equal">
+		 	<div class="col-md-5">
+		 		<div>
+		 			<h4>Agregar referencia manualmente</h4>
+					<input type="text"  ng-model="reference.identifier" placeholder={{"simplePliCTerm.name.Identifier"|translate}}>
+					<input type="text"  ng-model="reference.datatype" placeholder={{"simplePliCTerm.name.Datatype"|translate}}>
+					<input type="text"  ng-model="reference.source" placeholder={{"simplePliCTerm.name.Source"|translate}}>
+					<button type="button" class="btn btn-primary btn-xs" ng-click="addReferenceDirec(reference)" translate>Guardar Referencia </button>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<div ng-app="fileUpload" ng-controller="UploadFile">
+					<h4>Archivo RIS</h4>
+				    <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+				        ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+				        accept="image/*,application/pdf">Arrastrar el archivo ris o haga clic para subirlo.
+				   	</div>
+				</div>   	
+			</div>
+		</div>	
+	  	</div>
 	</div>
 </div>
+
 <div class="col-xs-6 col-xs-offset-3">
-    <a ui-sref="form.ancillary" class="btn btn-block btn-info">
-    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
-    </a>
-</div>
+	<ul class="pager">
+		<li> <a ui-sref="form.associatedParty" class="btn btn-block btn-info"><span class="glyphicon glyphicon-circle-arrow-left"></span> Sección Anterior</a></li>
+		<li> <a ui-sref="form.ancillary" class="btn btn-block btn-info"> Siguiente Sección <span class="glyphicon glyphicon-circle-arrow-right"></span></a></li>
+	</ul>
 </div>

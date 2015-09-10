@@ -112,21 +112,20 @@ label+em{ color: #aaa;}
 	to 		{ -webkit-transform: translateX(0); }
 }
 
-.col-xs-10 input[type=text] {
-  width: 100% !important;
+.form-group{clear: both;}
+
+.form-group input[type=text],
+.form-group input[type="date"],
+.form-group textarea,
+.form-group select {
+  width: 92% !important;
   border: 1px solid #cccccc;
   border-radius: 4px;
+  margin: 5px;
 }
 
-.col-xs-11 input[type=text] {
-  width: 100% !important;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-}
-
-select {
-  width: 110px;
-  height: 23px;
+.col-xs-11 input[type=text], {
+  width: 90% !important;
   border: 1px solid #cccccc;
   border-radius: 4px;
 }
@@ -134,9 +133,16 @@ select {
 .col-xs-10 select:focus {
    outline: none;
 }
-.form-group{clear: both;}
 
-.form-group input,
-.form-group textarea, 
-.form-group  button,
-.form-group select {margin: 5px;}
+.pager li>a, .pager li>span {
+  display: inline;
+  padding: 5px 10px; 
+  border-radius: 4px;
+}
+
+.nav>li>a:hover, 
+.nav>li>a:focus {
+    color: #ffffff;
+    background-color: #446e9b;
+    border-radius: 2px;
+}

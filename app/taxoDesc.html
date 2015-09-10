@@ -1,61 +1,15 @@
 <div class="form-group">
-	<div class="panel panel-default">
-	  	<div class="panel-heading">
-	  		<spanT>{{"simplePliCTerm.name.BriefDescription"|translate}} <spanT>
-	  	</div>
-	  	<div class="panel-body">
-	  		<textarea class="form-control" rows="3" name="briefDescription" ng-model="formData.briefDescription"></textarea>
-	  	</div>
-	</div>
 	
-	<div class="panel panel-default">
-	  	<div class="panel-heading">
-	  		<spanT>{{"simplePliCTerm.name.FullDescription"|translate}} <spanT>
-	  	</div>
-	  	<div class="panel-body">
-	  		<textarea class="form-control" rows="3" name="fullDescription" ng-model="formData.fullDescription.fullDescriptionUnstructured"></textarea>
-	  		<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="addAncillaryData(formData.fullDescription.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
-	  		<div class="form-group">
-				<div class="col-xs-10">
-					<div ng-repeat="ancillary in formData.fullDescription.ancillaryData">
-						<input type="text"  ng-model="ancillary.license" placeholder={{"simplePliCTerm.name.license"|translate}}>
-						<input type="text"  ng-model="ancillary.rights" placeholder={{"simplePliCTerm.name.rights"|translate}}>
-						<input type="text"  ng-model="ancillary.bibliographicCitation" placeholder={{"simplePliCTerm.name.bibliographicCitation"|translate}}>
-						<input type="text"  ng-model="ancillary.source" placeholder={{"simplePliCTerm.name.source"|translate}}>
-						<input type="text"  ng-model="ancillary.mediaURL" placeholder={{"simplePliCTerm.name.mediaURL"|translate}}>
-						<button type="button" class="btn btn-primary btn-sm" ng-click="removeAncillaryData(formData.fullDescription.ancillaryData, ancillaryData)">Eliminar</button>
-					</div>	
-				</div>
-			</div>
-	  	</div>
-	</div>
+	<div ng-include="'./includes/briefDescription.html'"> </div>
+	
+	<div ng-include="'./includes/fullDescription.html'"> </div>
 
-	<div class="panel panel-default">
-	  	<div class="panel-heading">
-	  		<spanT>{{"simplePliCTerm.name.IdentificationKeys"|translate}} <spanT>
-	  	</div>
-	  	<div class="panel-body">
-	  		<textarea class="form-control" rows="3" name="identificationKeys" ng-model="formData.identificationKeys.keys"></textarea>
-	  		<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="addAncillaryData(formData.identificationKeys.ancillaryData)" translate>simplePliCTerm.name.AncillaryData<span class="glyphicon glyphicon-plus"></span> </button>
-	  		<div class="form-group">
-				<div class="col-xs-10">
-					<div ng-repeat="ancillary in formData.identificationKeys.ancillaryData">
-						<input type="text"  ng-model="ancillary.license" placeholder={{"simplePliCTerm.name.license"|translate}}>
-						<input type="text"  ng-model="ancillary.rights" placeholder={{"simplePliCTerm.name.rights"|translate}}>
-						<input type="text"  ng-model="ancillary.bibliographicCitation" placeholder={{"simplePliCTerm.name.bibliographicCitation"|translate}}>
-						<input type="text"  ng-model="ancillary.source" placeholder={{"simplePliCTerm.name.source"|translate}}>
-						<input type="text"  ng-model="ancillary.mediaURL" placeholder={{"simplePliCTerm.name.mediaURL"|translate}}>
-						<button type="button" class="btn btn-primary btn-sm" ng-click="removeAncillaryData(formData.identificationKeys.ancillaryData, ancillaryData)">Eliminar</button>
-					</div>	
-				</div>
-			</div>
-	  	</div>
-	</div>
+	<div ng-include="'./includes/identificationKeys.html'"> </div>
 </div> 
 
 <div class="col-xs-6 col-xs-offset-3">
-    <a ui-sref="form.history" class="btn btn-block btn-info">
-    Siguiente Sección <span class="glyphicon glyphicon-circle-arrow-right"></span>
-    </a>
-</div>
+    <ul class="pager">
+    	<li> <a ui-sref="form.nomeAndClass" class="btn btn-block btn-info"><span class="glyphicon glyphicon-circle-arrow-left"></span> Sección Anterior</a></li>
+		<li> <a ui-sref="form.history" class="btn btn-block btn-info"> Siguiente Sección <span class="glyphicon glyphicon-circle-arrow-right"></span></a></li>
+	</ul>
 </div>

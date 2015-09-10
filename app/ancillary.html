@@ -2,61 +2,77 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">
 	  		<spanT>{{"simplePliCTerm.name.AncillaryData"|translate}}<spanT>
-	  		<button type="button" class="btn btn-default btn-xs pull-right" ng-click="addAncillaryData(formData.ancillaryData)"><span class="glyphicon glyphicon-plus"></span> </button>
+	  		<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.AncillaryData"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
 
 	  	</div>
 	  	<div class="panel-body">
 	  		<div ng-repeat="ancillary in formData.ancillaryData">
-				<div class="form-group">
-					<div class="form-group">
-						<label for="license" class="col-xs-2 control-label" translate>simplePliCTerm.name.license</label>	
-						<div class="col-xs-10">
-							<input type="text"  ng-model="ancillary.license"/>
-						</div>
-					</div>
+	  			{{ancillary.license}} - {{ancillary.rights}} - {{ancillary.source}} - {{ancillary.mediaURL}}
+			</div>
 
-					<div class="form-group">
-						<label for="rights" class="col-xs-2 control-label" translate>simplePliCTerm.name.rights</label>	
-						<div class="col-xs-10">
-							<input type="text"  ng-model="ancillary.rightsHolder"/>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="bibliographicCitation" class="col-xs-2 control-label" translate>simplePliCTerm.name.bibliographicCitation</label>	
-						<div class="col-xs-10">
-							<input type="text"  ng-model="ancillary.bibliographicCitation"/>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="source" class="col-xs-2 control-label" translate>simplePliCTerm.name.source</label>	
-						<div class="col-xs-10">
-							<input type="text"  ng-model="ancillary.source"/>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="source" class="col-xs-2 control-label" translate>simplePliCTerm.name.mediaURL</label>	
-						<div class="col-xs-10">
-							<input type="text"  ng-model="ancillary.mediaURL"/>
-							<button  type="button" class="btn btn-primary btn-xs pull-right" ng-show="$last" ng-click="getInfoLicence(ancillary.mediaURL, ancillary)">Get license info</span></button>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="References" class="col-xs-2 control-label" translate>simplePliCTerm.name.References</label>	
-						<div class="col-xs-10">
-							<div ng-repeat="ref in ancillary.reference">
-								<input type="text"  ng-model="ref.identifier" placeholder="Identifier"/>
-								<input type="text"  ng-model="ref.datatype" placeholder="Datatype"/>
-								<input type="text"  ng-model="ref.source" placeholder="Source"/>
-							</div>
-							<button type="button" class="btn btn-primary btn-xs" ng-click="addReference(ancillary.reference)" translate>simplePliCTerm.name.References<span class="glyphicon glyphicon-plus"></span> </button>
-						</div>
-					</div>
+			<div class="form-group">
+				<label for="license" class="col-xs-2 control-label" translate>simplePliCTerm.name.license</label>	
+				<div class="col-xs-10">
+					<input type="text"  ng-model="ancillaryData.license"/>
+					<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.license"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
 				</div>
 			</div>
+
+			<div class="form-group">
+				<label for="rights" class="col-xs-2 control-label" translate>simplePliCTerm.name.rights</label>	
+				<div class="col-xs-10">
+					<input type="text"  ng-model="ancillaryData.rightsHolder"/>
+					<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.rights"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="bibliographicCitation" class="col-xs-2 control-label" translate>simplePliCTerm.name.bibliographicCitation</label>	
+				<div class="col-xs-10">
+					<textarea rows="3" name="bibliographicCitation" ng-model="ancillaryData.bibliographicCitation"></textarea>
+					<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.bibliographicCitation"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="source" class="col-xs-2 control-label" translate>simplePliCTerm.name.source</label>	
+				<div class="col-xs-10">
+					<input type="text"  ng-model="ancillaryData.source"/>
+					<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.source"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="source" class="col-xs-2 control-label" translate>simplePliCTerm.name.mediaURL</label>	
+				<div class="col-xs-10">
+					<input type="text"  ng-model="ancillaryData.mediaURL"/>
+					<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.mediaURL"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+					<img ng-src="{{ imageurl }}"/>
+				</div>
+			</div>
+			<button  type="button" class="btn btn-primary btn-xs pull-right" ng-click="getInfoLicence(ancillaryData.mediaURL, ancillaryData)">Get license info</span></button>
+
+			<div class="form-group">
+				<label for="references" class="col-xs-2 control-label" translate>simplePliCTerm.name.References</label>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.References"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+
+				<div class="col-xs-10">
+					<input type="text"  ng-model="reference.identifier" placeholder={{"simplePliCTerm.name.Identifier"|translate}}>
+					<input type="text"  ng-model="reference.datatype" placeholder={{"simplePliCTerm.name.Datatype"|translate}}>
+					<input type="text"  ng-model="reference.source" placeholder={{"simplePliCTerm.name.Source"|translate}}>
+					<button type="button" class="btn btn-primary btn-xs" ng-click="addReference(ancillaryData.reference,reference)" translate>Guardar Referencia </button>
+				</div>
+				<div ng-repeat="ref in ancillaryData.reference">
+					{{ref.identifier}} - {{ref.datatype}} - {{ref.source}}
+				</div>
+			</div>
+			<button type="button" class="btn btn-success btn-xs pull-right" ng-click="addAncillaryData(formData.ancillaryData,ancillaryData)">Guardar</span> </button>
 	  	</div>	
 	</div>
 </div> 
+
+<div class="col-xs-6 col-xs-offset-3">
+	<ul class="pager">
+		<li> <a ui-sref="form.references" class="btn btn-block btn-info"><span class="glyphicon glyphicon-circle-arrow-left"></span> Sección Anterior</a></li>
+	</ul>
+</div>
