@@ -1,0 +1,81 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+  		<spanT>{{"simplePliCTerm.name.Migratory" | translate}}<spanT>
+  		<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.Migratory"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+  	</div>
+  	<div class="panel-body">
+  		<div class="form-group">
+		  	<label for="causes" class="col-xs-2 control-label" translate>simplePliCTerm.name.Causes</label>
+		    <div class="col-xs-10">
+		    	<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="cause in migratoryCauses">
+						<div class="action-checkbox">
+							<input id="{{cause.name}}" type="checkbox" value="{{cause.name}}" ng-checked="migratoryAtomizedType.causes.indexOf(cause.name) > -1" ng-click="toggleSelection(migratoryAtomizedType.causes,cause.name)" />
+							<label for="{{cause.name}}"></label>
+							{{cause.name}}
+						</div>
+					</div>
+				</div>	
+		    </div>
+		</div>
+	    
+	    <div class="form-group">
+		    <label for="causes" class="col-xs-2 control-label" translate>simplePliCTerm.name.Patterns</label>
+		    <div class="col-xs-10">
+		    	<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="pattern in migratoryPatterns">
+						<div class="action-checkbox">
+							<input id="{{pattern.name}}" type="checkbox" value="{{pattern.name}}" ng-checked="migratoryAtomizedType.patterns.indexOf(pattern.name) > -1" ng-click="toggleSelection(migratoryAtomizedType.patterns,pattern.name)" />
+							<label for="{{pattern.name}}"></label>
+							{{pattern.name}}
+						</div>
+					</div>
+				</div>	
+		    </div>
+		</div>
+	    
+	    <div class="form-group">
+			<label for="synonymStatus" class="col-xs-2 control-label" translate>simplePliCTerm.name.Routes</label>
+		    <div class="col-xs-10">
+		    	<input type="text"  ng-model="migratoryAtomizedType.routes"/>
+		    </div>
+		</div>
+		
+		<div class="form-group">
+			<label for="synonymStatus" class="col-xs-2 control-label" translate>simplePliCTerm.name.Season</label>
+		    <div class="col-xs-10">
+		    	<input type="text"  ng-model="migratoryAtomizedType.season"/>
+		    </div>
+		</div>
+		
+		
+		<button type="button" class="btn btn-success btn-sm pull-right" ng-click="addMigratoryAtomizedType(formData.migratory.migratoryAtomized,migratoryAtomizedType)">Guardar</button>
+		
+		<div class="form-group">
+			<hr>
+			
+			<label for="migratoryUnstructured" translate>simplePliCTerm.name.MigratoryUnstructured</label> <em>(opcional)</em>
+			<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.MigratoryUnstructured"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			<textarea rows="3" name="migratory" ng-model="formData.migratory.migratoryUnstructured"></textarea>
+	  		
+			<div ng-repeat="ancillary in formData.migratory.ancillaryData">
+				{{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			</div>
+			<div ng-controller="CollapseDemoCtrl">
+				<div class="form-group">
+					<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
+					<div class="col-xs-10">
+						<div collapse="isCollapsed">
+							<input type="text"  ng-model="ancillaryData.license" placeholder={{"simplePliCTerm.name.license"|translate}}>
+							<input type="text"  ng-model="ancillaryData.rights" placeholder={{"simplePliCTerm.name.rights"|translate}}>
+							<input type="text"  ng-model="ancillaryData.bibliographicCitation" placeholder={{"simplePliCTerm.name.bibliographicCitation"|translate}}>
+							<input type="text"  ng-model="ancillaryData.source" placeholder={{"simplePliCTerm.name.source"|translate}}>
+							<input type="text"  ng-model="ancillaryData.mediaURL" placeholder={{"simplePliCTerm.name.mediaURL"|translate}}>
+							<button type="button" class="btn btn-primary btn-sm" ng-click="addAncillaryData(formData.migratory.ancillaryData,ancillaryData)" translate>Guardar<span class="glyphicon glyphicon-plus"></span> </button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  	</div>	
+</div>

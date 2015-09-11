@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+  		<spanT>{{"simplePliCTerm.name.Behavior" | translate}}<spanT>
+  		<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.Behavior"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+  	</div>
+  	<div class="panel-body">
+  		<div class="form-group">
+			<div ng-controller="MeasurementCtrl" >
+				<select ng-model="formData.behavior.behaviorAtomized.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in behaviors | unique:'measurementtype'">
+					<option value="">- Seleccione -</option>
+				</select>  
+
+				<select ng-model="formData.behavior.behaviorAtomized.measurementValue" ng-disabled="!formData.behavior.behaviorAtomized.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+					<option value="">- Seleccione -</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<hr>
+			
+			<label for="behaviorUnstructured" translate>simplePliCTerm.name.BehaviorUnstructured</label> <em>(opcional)</em>
+			<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.BehaviorUnstructured"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			<textarea rows="3" name="behavior" ng-model="formData.behavior.behaviorUnstructured"></textarea>
+	  		
+			<div ng-repeat="ancillary in formData.behavior.ancillaryData">
+				{{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			</div>
+			<div ng-controller="CollapseDemoCtrl">
+				<div class="form-group">
+					<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
+					<div class="col-xs-10">
+						<div collapse="isCollapsed">
+							<input type="text"  ng-model="ancillaryData.license" placeholder={{"simplePliCTerm.name.license"|translate}}>
+							<input type="text"  ng-model="ancillaryData.rights" placeholder={{"simplePliCTerm.name.rights"|translate}}>
+							<input type="text"  ng-model="ancillaryData.bibliographicCitation" placeholder={{"simplePliCTerm.name.bibliographicCitation"|translate}}>
+							<input type="text"  ng-model="ancillaryData.source" placeholder={{"simplePliCTerm.name.source"|translate}}>
+							<input type="text"  ng-model="ancillaryData.mediaURL" placeholder={{"simplePliCTerm.name.mediaURL"|translate}}>
+							<button type="button" class="btn btn-primary btn-sm" ng-click="addAncillaryData(formData.behavior.ancillaryData,ancillaryData)" translate>Guardar<span class="glyphicon glyphicon-plus"></span> </button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  	</div>	
+</div>

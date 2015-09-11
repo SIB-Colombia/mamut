@@ -1,0 +1,50 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+  		<spanT>{{"simplePliCTerm.name.EnvironmentalEnvelope" | translate}}<spanT>
+  		<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.EnvironmentalEnvelope"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+  	</div>
+  	<div class="panel-body">
+	  	<div ng-repeat="environmentalEnvelopeAtomized in formData.environmentalEnvelope.environmentalEnvelopeAtomized" class="selected-item">
+			<div ng-show="environmentalEnvelopeAtomized">
+   				<div>{{environmentalEnvelopeAtomized.measurementType}} - {{environmentalEnvelopeAtomized.measurementValue}} </div>
+			</div>
+		</div>
+
+		<div ng-controller="MeasurementCtrl" >
+			<select ng-model="environmentalEnvelopeAtomized.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in environmentalEnvelopes | unique:'measurementtype'">
+				<option value="">- Seleccione -</option>
+			</select>  
+
+			<select ng-model="environmentalEnvelopeAtomized.measurementValue" ng-disabled="!environmentalEnvelopeAtomized.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+				<option value="">- Seleccione -</option>
+			</select>
+			<button class="btn btn-success btn-xs pull-right" ng-click="addMeasurementOrFactVector(formData.environmentalEnvelope.environmentalEnvelopeAtomized, measurementOrFact)"> Guardar </button>
+		</div>
+		
+		
+		<hr>
+		
+		<label for="environmentalEnvelopeUnstructured" translate>simplePliCTerm.name.EnvironmentalEnvelopeUnstructured</label> <em>(opcional)</em>
+		<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.EnvironmentalEnvelopeUnstructured"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+		<textarea rows="3 "name="environmentalEnvelope" ng-model="formData.environmentalEnvelope.environmentalEnvelopeUnstructured"></textarea>
+  		
+		<div ng-repeat="ancillary in formData.environmentalEnvelope.ancillaryData">
+			{{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+		</div>
+		<div ng-controller="CollapseDemoCtrl">
+			<div class="form-group">
+				<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
+				<div class="col-xs-10">
+					<div collapse="isCollapsed">
+						<input type="text"  ng-model="ancillaryData.license" placeholder={{"simplePliCTerm.name.license"|translate}}>
+						<input type="text"  ng-model="ancillaryData.rights" placeholder={{"simplePliCTerm.name.rights"|translate}}>
+						<input type="text"  ng-model="ancillaryData.bibliographicCitation" placeholder={{"simplePliCTerm.name.bibliographicCitation"|translate}}>
+						<input type="text"  ng-model="ancillaryData.source" placeholder={{"simplePliCTerm.name.source"|translate}}>
+						<input type="text"  ng-model="ancillaryData.mediaURL" placeholder={{"simplePliCTerm.name.mediaURL"|translate}}>
+						<button type="button" class="btn btn-primary btn-sm" ng-click="addAncillaryData(formData.environmentalEnvelope.ancillaryData,ancillaryData)" translate>Guardar<span class="glyphicon glyphicon-plus"></span> </button>
+					</div>
+				</div>
+			</div>
+		</div>
+  	</div>	
+</div>

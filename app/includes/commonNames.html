@@ -1,0 +1,85 @@
+<div ng-controller="CollapseDemoCtrl">
+	<div class="panel panel-default">
+	  	<div class="panel-heading">
+	  		<spanT>{{"simplePliCTerm.name.CommonNamesAtomized"|translate}} </spanT>
+	  		<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.CommonNamesAtomized"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+	  		<button class="btn btn-success btn-xs pull-right" ng-click="isCollapsed = !isCollapsed"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}" aria-hidden="true"></span></button>
+	  	</div>
+	  	<div class="panel-body">
+			<div ng-repeat="commonNameAtomized in formData.commonNameAtomized | orderBy:'-language.languageIso'" class="parrafo">
+				<div ng-show="commonNameAtomized.name">
+		       		{{commonNameAtomized.name}}
+		       	</div>
+		   		<div ng-show="commonNameAtomized.language">
+		   			{{commonNameAtomized.language}}
+				</div>
+				<div ng-show="commonNameAtomized.usedIn.distributionUnstructured">
+		       		<p translate>simplePliCTerm.name.UsedIn</p> :{{commonNameAtomized.usedIn.distributionUnstructured}}
+		    	</div>
+		    	<div ng-show="commonNameAtomized.usedBy">
+		       		<p translate>simplePliCTerm.name.UsedBy</p>{{commonNameAtomized.usedBy}}
+		    	</div>
+			</div>
+
+		    <div collapse="isCollapsed">
+		    	<hr>
+				<div class="form-group">
+					<div class="form-group">
+						<label for="canonicalName" class="col-xs-2 control-label" translate>simplePliCTerm.name.Name</label>
+					    <div class="col-xs-10">
+					    	<input type="text"  ng-model="commonName.name">
+					    	<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.Name"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+					    </div>
+					</div>
+
+					<div class="form-group">
+						<label for="canonicalName" class="col-xs-2 control-label" translate>simplePliCTerm.name.Language</label>
+					    <div class="col-xs-10">
+					    	<select ng-model="commonName.language" ng-options="lang.Idioma as lang.Idioma for lang in idiomas ">
+								<option value="">- Seleccione -</option>
+							</select> 
+							<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.Language"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+					    </div>
+					</div>
+
+					<div class="form-group">
+						<label for="canonicalName" class="col-xs-2 control-label" translate>simplePliCTerm.name.UsedIn</label>
+					    <div class="col-xs-10">
+					    	<input type="text"  ng-model="commonName.usedIn">
+					    	<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.UsedIn"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+					    </div>
+					</div>
+
+					<div class="form-group">
+						<label for="canonicalName" class="col-xs-2 control-label" translate>simplePliCTerm.name.UsedBy</label>
+					    <div class="col-xs-10">
+					    	<input type="text"  ng-model="commonName.usedBy">
+					    	<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.UsedBy"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+					    </div>
+					</div>
+
+					<div class="form-group">
+						<label for="ancillaryData" class="col-xs-2 control-label" translate>simplePliCTerm.name.AncillaryData</label>
+						<div class="col-xs-10">
+							<div ng-repeat="ancillary in commonName.ancillaryData">
+								{{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+							</div>
+					  		<button class="btn btn-success btn-xs" ng-click="isCollapsed_1 = !isCollapsed_1"><span ng-class="{'glyphicon glyphicon-chevron-down': isCollapsed_1 , 'glyphicon glyphicon-chevron-up' : !isCollapsed_1}" aria-hidden="true"></span></button>
+
+							<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.AncillaryData"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+							<div collapse="isCollapsed_1">
+								<input type="text"  ng-model="ancillaryData.license" placeholder={{"simplePliCTerm.name.license"|translate}}>
+								<input type="text"  ng-model="ancillaryData.rights" placeholder={{"simplePliCTerm.name.rights"|translate}}>
+								<input type="text"  ng-model="ancillaryData.bibliographicCitation" placeholder={{"simplePliCTerm.name.bibliographicCitation"|translate}}>
+								<input type="text"  ng-model="ancillaryData.source" placeholder={{"simplePliCTerm.name.source"|translate}}>
+								<input type="text"  ng-model="ancillaryData.mediaURL" placeholder={{"simplePliCTerm.name.mediaURL"|translate}}>
+								<button type="button" class="btn btn-primary btn-sm" ng-click="addAncillaryData(commonName.ancillaryData,ancillaryData)" translate>Guardar<span class="glyphicon glyphicon-plus"></span> </button>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn btn-success btn-sm pull-right" ng-click="addCommonNamesAtomized(formData.commonNameAtomized,commonName)">Guardar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	

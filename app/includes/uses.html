@@ -1,0 +1,174 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+  		<spanT>{{"simplePliCTerm.name.Uses"|translate}}<spanT>
+  		<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.Uses"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+  	</div>
+  	<div class="panel-body">
+			<div ng-repeat="usesAtomized in formData.usesManagementAndConservation.usesAtomized" class="selected-item">
+			<div ng-show="usesAtomized">
+				<div>{{usesAtomized}}</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="sourceOfInformation" class="col-xs-2 control-label" translate>simplePliCTerm.name.SourceOfInformation</label>	
+			<div class="col-xs-10">
+            	<input id="sourceOfInformation" type="text" ng-model="usesAtomizedType.sourceOfInformation.sourceOfInformationText"/>
+            	<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.SourceOfInformation"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+
+		<div class="form-group">
+			<label for="use-Value" class="col-xs-2 control-label" translate>simplePliCTerm.name.Use-Value</label>	
+			<div class="col-xs-10">
+				<input id="useValue" type="text" ng-model="usesAtomizedType.useValue"/>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.Use-Value"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="partUsed" class="col-xs-2 control-label" translate>simplePliCTerm.name.PartUsed</label>	
+			<div class="col-xs-10">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="pu in partUsed">
+					    <input type="checkbox" ng-model="pu.checked" ng-click="updateSelectionPartUsedCategory(pu, partUsed)"/>
+					    {{tc.name}}
+			    	</div>
+			    </div>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="users" class="col-xs-2 control-label" translate>simplePliCTerm.name.Users</label>	
+			<div class="col-xs-10">
+				<input id="users" type="text" ng-model="usesAtomizedType.users"/>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.Users"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="organisms" class="col-xs-2 control-label" translate>simplePliCTerm.name.Organisms</label>	
+			<div class="col-xs-10">
+				<input id="organisms" type="text" ng-model="usesAtomizedType.organisms"/>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.Organisms"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="vernacularNameUseAnnotations" class="col-xs-2 control-label" translate>simplePliCTerm.name.VernacuarNameUseAnnotations</label>	
+			<div class="col-xs-10">
+				<input id="vernacularNameUseAnnotations" type="text" ng-model="usesAtomizedType.vernacularNameUseAnnotations"/>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.VernacuarNameUseAnnotations"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="productionDetails" class="col-xs-2 control-label" translate>simplePliCTerm.name.ProductionDetails</label>	
+			<div class="col-xs-10">
+				<input id="productionDetails" type="text" ng-model="usesAtomizedType.productionDetails"/>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.ProductionDetails"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="administration" class="col-xs-2 control-label" translate>simplePliCTerm.name.MeansOfApplication-Administration</label>	
+			<div class="col-xs-10">
+				<input id="meansOfApplicationAdministration" type="text" ng-model="usesAtomizedType.meansOfApplicationAdministration"/>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.MeansOfApplication-Administration"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="seasonOfAvailabilityUse" class="col-xs-2 control-label" translate>simplePliCTerm.name.SeasonOfAvailability-Use</label>	
+			<div class="col-xs-10">
+				<input id="seasonOfAvailabilityUse" type="text" ng-model="usesAtomizedType.seasonOfAvailabilityUse"/>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.SeasonOfAvailability-Use"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="conservationExplotationData" class="col-xs-2 control-label" translate>simplePliCTerm.name.Conservation-ExplotationData</label>	
+			<div class="col-xs-10">
+				<input id="conservationExplotationData" type="text" ng-model="usesAtomizedType.conservationExplotationData"/>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.ExplotationData"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+
+		<div class="form-group">
+			<label for="useTypeAtomized" class="col-xs-2 control-label" translate>simplePliCTerm.name.UseTypeAtomized</label>	
+			<div class="col-xs-10">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="uta in useTypeAtomized">
+					    <input type="checkbox" ng-model="uta.checked" ng-click="updateSelectionUseTypeAtomized(uta, useTypeAtomized)"/>
+					    {{uta.name}}
+		    		</div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="economics" class="col-xs-2 control-label" translate>simplePliCTerm.name.Economics</label>	
+			<div class="col-xs-10">
+				<input id="economics" type="text" ng-model="usesAtomizedType.economics"/>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.Economics"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="ratingPopularity" class="col-xs-2 control-label" translate>simplePliCTerm.name.RatingPopularity</label>	
+			<div class="col-xs-10">
+				<input id="ratingPopularity" type="text" ng-model="usesAtomizedType.ratingPopularity"/>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.RatingPopularity"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="administration" class="col-xs-2 control-label" translate>simplePliCTerm.name.Properties</label>	
+			<div class="col-xs-10">
+				<input id="properties" type="text" ng-model="usesAtomizedType.properties"/>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.Properties"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="potential" class="col-xs-2 control-label" translate>simplePliCTerm.name.Potential</label>	
+			<div class="col-xs-10">
+				<input id="potential" type="text" ng-model="usesAtomizedType.potential"/>
+				<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.Potential"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="useNotes" class="col-xs-2 control-label" translate>simplePliCTerm.name.UsesNotes</label>	
+			<div class="col-xs-10">
+				<textarea rows="3" id="useNotes" ng-model="usesAtomizedType.useNotes"/>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<div ng-repeat="ancillary in usesAtomizedType.ancillaryData">
+					{{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			</div>
+			<div ng-controller="CollapseDemoCtrl">
+				<div class="form-group">
+					<button type="button" class="btn btn-primary btn-sm" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
+					<div class="col-xs-10">
+						<div collapse="isCollapsed">
+							<input type="text"  ng-model="ancillaryData.license" placeholder={{"simplePliCTerm.name.license"|translate}}>
+							<input type="text"  ng-model="ancillaryData.rights" placeholder={{"simplePliCTerm.name.rights"|translate}}>
+							<input type="text"  ng-model="ancillaryData.bibliographicCitation" placeholder={{"simplePliCTerm.name.bibliographicCitation"|translate}}>
+							<input type="text"  ng-model="ancillaryData.source" placeholder={{"simplePliCTerm.name.source"|translate}}>
+							<input type="text"  ng-model="ancillaryData.mediaURL" placeholder={{"simplePliCTerm.name.mediaURL"|translate}}>
+							<button type="button" class="btn btn-primary btn-sm" ng-click="addAncillaryData(usesAtomizedType.ancillaryData,ancillaryData)" translate>Guardar<span class="glyphicon glyphicon-plus"></span> </button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<button type="button" class="btn btn-success btn-sm pull-right" ng-click="addUsesAtomized(usesAtomizedType)">Guardar </button>
+		</div>
+  	</div>	
+</div>

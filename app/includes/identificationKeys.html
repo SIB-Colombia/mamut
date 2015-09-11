@@ -1,0 +1,29 @@
+<div ng-controller="CollapseDemoCtrl">
+	<div class="panel panel-default">
+	  	<div class="panel-heading">
+	  		<spanT>{{"simplePliCTerm.name.IdentificationKeys"|translate}} <spanT>
+	  		<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.IdentificationKeys"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+	  	</div>
+	  	<div class="panel-body">
+	  		<textarea rows="3" name="identificationKeys" ng-model="formData.identificationKeys.keys"></textarea>
+
+	  		<div ng-repeat="ancillary in formData.identificationKeys.ancillaryData">
+				{{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			</div>
+
+			<div class="form-group">
+				<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
+				<div class="col-xs-10">
+					<div collapse="isCollapsed">
+						<input type="text"  ng-model="ancillaryData.license" placeholder={{"simplePliCTerm.name.license"|translate}}>
+						<input type="text"  ng-model="ancillaryData.rights" placeholder={{"simplePliCTerm.name.rights"|translate}}>
+						<input type="text"  ng-model="ancillaryData.bibliographicCitation" placeholder={{"simplePliCTerm.name.bibliographicCitation"|translate}}>
+						<input type="text"  ng-model="ancillaryData.source" placeholder={{"simplePliCTerm.name.source"|translate}}>
+						<input type="text"  ng-model="ancillaryData.mediaURL" placeholder={{"simplePliCTerm.name.mediaURL"|translate}}>
+						<button type="button" class="btn btn-primary btn-sm" ng-click="addAncillaryData(formData.identificationKeys.ancillaryData,ancillaryData)" translate>Guardar<span class="glyphicon glyphicon-plus"></span> </button>
+					</div>
+				</div>
+			</div>
+	  	</div>
+	</div>
+</div>

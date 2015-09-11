@@ -1,0 +1,84 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+  		<spanT>{{"simplePliCTerm.name.ThreatStatus"|translate}}<spanT>
+  		<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.ThreatStatus"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+  	</div>
+  	<div class="panel-body">
+			<div ng-repeat="measurementOrFact in formData.threatStatus.threatStatusAtomized.measurementOrFact" class="selected-item">
+			<div ng-show="measurementOrFact">
+				<div>{{measurementOrFact}}</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="threatCategory" class="col-xs-2 control-label" translate>simplePliCTerm.name.ThreatCategory</label>	
+			<div class="col-xs-10">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="tc in threatCategory">
+					    <input type="checkbox" ng-model="tc.checked" ng-click="updateSelectionThreatCategory(tc, threatCategory)"/>
+					    {{tc.name}}
+				    </div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="authority" class="col-xs-2 control-label" translate>simplePliCTerm.name.Authority</label>	
+			<div class="col-xs-10">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="aut in authority">
+						<input type="checkbox" ng-model="aut.checked" ng-click="updateSelectionAutority(aut)"/>
+						{{aut.name}}
+				    </div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<label for="appliesTo" class="col-xs-2 control-label" translate>simplePliCTerm.name.AppliesTo</label>	
+			<div class="col-xs-10">
+				<div ng-controller="UbicacionCtrl" >
+					<select ng-model="threatStatusClass.threatStatusAtomized.aplliesTo.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
+						<option value="">- Seleccione -</option>
+					</select>  
+					
+					<select ng-model="threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince" ng-disabled="!threatStatusClass.threatStatusAtomized.aplliesTo.country" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
+						<option value="">- Seleccione -</option>
+					</select>
+					<select ng-model="threatStatusClass.threatStatusAtomized.aplliesTo.county" ng-disabled="!threatStatusClass.threatStatusAtomized.aplliesTo.country || !threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
+						<option value="">- Seleccione -</option>
+						</select>
+			    </div>
+			</div>	
+		</div>
+
+		
+		<button type="button" class="btn btn-success btn-sm pull-right" ng-click="addThreatStatusClass(threatStatusClass)">Guardar</button>
+
+		<div class="form-group">
+			<hr>
+			<label for="threatStatusUnstructured" translate>simplePliCTerm.name.ThreatStatusUnstructured</label> <em>(opcional)</em>
+			<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.ThreatStatusUnstructured"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			<textarea rows="3" name="threatStatus" ng-model="formData.threatStatus.threatStatusUnstructured"></textarea>
+	  		
+			<div ng-repeat="ancillary in thre.ancillaryData">
+				{{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			</div>
+			<div ng-controller="CollapseDemoCtrl">
+				<div class="form-group">
+					<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
+					<div class="col-xs-10">
+						<div collapse="isCollapsed">
+							<input type="text"  ng-model="ancillaryData.license" placeholder={{"simplePliCTerm.name.license"|translate}}>
+							<input type="text"  ng-model="ancillaryData.rights" placeholder={{"simplePliCTerm.name.rights"|translate}}>
+							<input type="text"  ng-model="ancillaryData.bibliographicCitation" placeholder={{"simplePliCTerm.name.bibliographicCitation"|translate}}>
+							<input type="text"  ng-model="ancillaryData.source" placeholder={{"simplePliCTerm.name.source"|translate}}>
+							<input type="text"  ng-model="ancillaryData.mediaURL" placeholder={{"simplePliCTerm.name.mediaURL"|translate}}>
+							<button type="button" class="btn btn-primary btn-sm" ng-click="addAncillaryData(thre.ancillaryData,ancillaryData)" translate>Guardar<span class="glyphicon glyphicon-plus"></span> </button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+  	</div>	
+</div>

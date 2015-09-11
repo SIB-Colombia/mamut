@@ -1,0 +1,62 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+  		<spanT>{{"simplePliCTerm.name.Interactions" | translate}}<spanT>
+  		<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.Interactions"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+  	</div>
+  	<div class="panel-body">
+		<div ng-repeat="interactionsAtomized in formData.interactions.interactionsAtomized" class="selected-item">
+			<div ng-show="interactionsAtomized">
+   				<div>{{interactionsAtomized}}</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="interactionSpecies" class="col-xs-2 control-label" translate>simplePliCTerm.name.InteractionSpecies</label>
+		</div>
+		
+		<div class="form-group">
+			<label for="interactionSpeciesType" class="col-xs-2 control-label" translate>simplePliCTerm.name.InteractionSpeciesType</label>
+			<div class="col-xs-10">
+				<div class="panel" ng-controller="checkBoxController">
+					<div ng-repeat="interaction in interactionSpeciesType">
+						<div class="action-checkbox">
+							<input id="{{interaction.name}}" type="checkbox" value="{{interaction.name}}" ng-checked="interactionsAtomizedType.interactionSpeciesType.indexOf(interaction.name) > -1" ng-click="toggleSelection(interactionsAtomizedType.interactionSpeciesType,interaction.name)" />
+							<label for="{{interaction.name}}"></label>
+							{{interaction.name}}
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+		
+		<button type="button" class="btn btn-success btn-sm pull-right" ng-click="addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)">Guardar</button>
+		
+		
+		
+		<div class="form-group">
+			<hr>
+			<label for="interactionUnstructured" translate>simplePliCTerm.name.InteractionUnstructured</label> <em>(opcional)</em>
+			<a  class="btn-xs" data-container="body" data-toggle="popover" data-placement="left" title={{"simplePliCTerm.definition.InteractionUnstructured"|translate}}><span class="glyphicon glyphicon-info-sign"></span></a>
+			<textarea rows="3" name="interactions" ng-model="formData.interactions.interactionsUnstructured"></textarea>
+			
+			<div ng-repeat="ancillary in formData.interactions.ancillaryData">
+				{{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			</div>
+			<div ng-controller="CollapseDemoCtrl">
+				<div class="form-group">
+					<button type="button" class="btn btn-primary btn-sm pull-right" ng-click="isCollapsed = !isCollapsed">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
+					<div class="col-xs-10">
+						<div collapse="isCollapsed">
+							<input type="text"  ng-model="ancillaryData.license" placeholder={{"simplePliCTerm.name.license"|translate}}>
+							<input type="text"  ng-model="ancillaryData.rights" placeholder={{"simplePliCTerm.name.rights"|translate}}>
+							<input type="text"  ng-model="ancillaryData.bibliographicCitation" placeholder={{"simplePliCTerm.name.bibliographicCitation"|translate}}>
+							<input type="text"  ng-model="ancillaryData.source" placeholder={{"simplePliCTerm.name.source"|translate}}>
+							<input type="text"  ng-model="ancillaryData.mediaURL" placeholder={{"simplePliCTerm.name.mediaURL"|translate}}>
+							<button type="button" class="btn btn-primary btn-sm" ng-click="addAncillaryData(formData.interactions.ancillaryData,ancillaryData)" translate>Guardar<span class="glyphicon glyphicon-plus"></span> </button>
+						</div>
+					</div>
+				</div>
+			</div>
+  		</div>
+  	</div>	
+</div>
