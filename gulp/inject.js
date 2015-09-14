@@ -9,7 +9,7 @@ var $ = require('gulp-load-plugins')();
 var wiredep = require('wiredep').stream;
 var _ = require('lodash');
 
-gulp.task('inject', ['scripts', 'styles'], function () {
+gulp.task('inject', ['scripts', 'styles', 'jadetohtml'], function () {
 	var injectStyles = gulp.src([
 		path.join(conf.paths.src, '/public/stylesheets/**/*.css'),
 	], { read: false });

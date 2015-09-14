@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 module.exports = function(parent) {
 	parent.set('port', normalizePort(process.env.PORT || '5000'));
 	parent.set('view engine', 'jade');
-	parent.use(favicon(__dirname + '/../../src/public/images/favicon.ico'));
+	parent.use(favicon(__dirname + '/../../src/public/images/sib.ico'));
 	parent.use(morgan('dev'));
 	parent.use(compression());
 	parent.use(bodyParser.json());

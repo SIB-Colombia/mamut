@@ -1,0 +1,67 @@
+div(ng-controller='CollapseDemoCtrl')
+	.panel.panel-default
+		.panel-heading
+			spant {{"simplePliCTerm.name.CommonNamesAtomized"|translate}}
+			a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.CommonNamesAtomized"|translate}}')
+				span.glyphicon.glyphicon-info-sign
+			button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed = !isCollapsed')
+				span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true')
+		.panel-body
+			.parrafo(ng-repeat="commonNameAtomized in formData.commonNameAtomized | orderBy:'-language.languageIso'")
+				div(ng-show='commonNameAtomized.name')
+					| {{commonNameAtomized.name}}
+				div(ng-show='commonNameAtomized.language')
+					| {{commonNameAtomized.language}}
+				div(ng-show='commonNameAtomized.usedIn.distributionUnstructured')
+					p(translate='') simplePliCTerm.name.UsedIn
+					|  :{{commonNameAtomized.usedIn.distributionUnstructured}}
+				div(ng-show='commonNameAtomized.usedBy')
+					p(translate='') simplePliCTerm.name.UsedBy
+					| {{commonNameAtomized.usedBy}}
+			div(collapse='isCollapsed')
+				hr
+				.form-group
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.Name
+						.col-xs-10
+							input(type='text', ng-model='commonName.name')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Name"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.Language
+						.col-xs-10
+							select(ng-model='commonName.language', ng-options='lang.Idioma as lang.Idioma for lang in idiomas ')
+								option(value='') - Seleccione -
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Language"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.UsedIn
+						.col-xs-10
+							input(type='text', ng-model='commonName.usedIn')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.UsedIn"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.UsedBy
+						.col-xs-10
+							input(type='text', ng-model='commonName.usedBy')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.UsedBy"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='ancillaryData', translate='') simplePliCTerm.name.AncillaryData
+						.col-xs-10
+							div(ng-repeat='ancillary in commonName.ancillaryData')
+								| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+							button.btn.btn-success.btn-xs(ng-click='isCollapsed_1 = !isCollapsed_1')
+								span(ng-class="{'glyphicon glyphicon-chevron-down': isCollapsed_1 , 'glyphicon glyphicon-chevron-up' : !isCollapsed_1}", aria-hidden='true')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AncillaryData"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+							div(collapse='isCollapsed_1')
+								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+								input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+								input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
+								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(commonName.ancillaryData,ancillaryData)', translate='')
+									| Guardar
+									span.glyphicon.glyphicon-plus
+					button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addCommonNamesAtomized(formData.commonNameAtomized,commonName)') Guardar

@@ -7,5 +7,5 @@ bower_components/
 dist/
 src/public/bower_components
 src/public/javascripts
-src/public/stylesheets/style.css
+src/public/form
 src/app/layouts/final
