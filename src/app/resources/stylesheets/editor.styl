@@ -1,0 +1,118 @@
+/* BASIC STYLINGS
+============================================================================= */
+
+body
+  padding-top 20px
+
+pre
+  margin-bottom 20px
+
+#form-container
+  background #2f2f2f
+  margin-bottom 20px
+  border-radius 5px
+  .page-header
+    background #151515
+    margin 0
+    padding 30px
+    border-top-left-radius 5px
+    border-top-right-radius 5px
+
+#status-buttons
+  a
+    color #FFF
+    display inline-block
+    font-size 12px
+    margin-right 10px
+    text-align center
+    text-transform uppercase
+    &:hover
+      text-decoration none
+    &.active
+      span
+        background #00BC8C
+  span
+    background #080808
+    display block
+    height 30px
+    margin 0 auto 10px
+    padding-top 5px
+    width 30px
+    border-radius 50%
+
+/* ANIMATION STYLINGS
+============================================================================= */
+#signup-form
+  position relative
+  min-height 300px
+  overflow hidden
+  padding 30px
+
+.form-control ,input
+  color black
+
+#form-views.ng-enter,
+#form-views.ng-leave
+  position absolute
+  left 30px
+  right 30px
+  transition 0.5s all ease
+  -moz-transition 0.5s all ease
+  -webkit-transition 0.5s all ease
+
+/* enter and leave animation */
+#form-views
+  &.ng-enter
+    -webkit-animation slideInRight 0.5s both ease
+    -moz-animation slideInRight 0.5s both ease
+    animation slideInRight 0.5s both ease
+  &.ng-leave
+    -webkit-animation slideOutLeft 0.5s both ease
+    -moz-animation slideOutLeft 0.5s both ease
+    animation slideOutLeft 0.5s both ease
+
+.drop-box
+  background #adadad
+  border 5px dashed #DDD
+  width 200px
+  height 100px
+  text-align center
+  padding-top 25px
+  margin 10px
+
+@media screen and (min-width: 768px) {
+  .equal, .equal > div[class*='col-'] {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex:1 1 auto;
+  }
+}
+/* ANIMATIONS
+============================================================================= */
+/* slide out to the left */
+@keyframes slideOutLeft {
+	to 		{ transform: translateX(-200%); }
+}
+@-moz-keyframes slideOutLeft {
+	to 		{ -moz-transform: translateX(-200%); }
+}
+@-webkit-keyframes slideOutLeft {
+	to 		{ -webkit-transform: translateX(-200%); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+	from 	{ transform:translateX(200%); }
+	to 		{ transform: translateX(0); }
+}
+@-moz-keyframes slideInRight {
+	from 	{ -moz-transform:translateX(200%); }
+	to 		{ -moz-transform: translateX(0); }
+}
+@-webkit-keyframes slideInRight {
+	from 	{ -webkit-transform:translateX(200%); }
+	to 		{ -webkit-transform: translateX(0); }
+}

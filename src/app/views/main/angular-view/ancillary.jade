@@ -1,0 +1,38 @@
+.form-group
+	h3 Ancillary Data
+	hr
+	div(ng-repeat='ancillary in formData.ancillaryData')
+		.form-group
+			h4 License:
+			input(type='text', ng-model='ancillary.license')
+			hr
+			h4 Rights Holder:
+			input(type='text', ng-model='ancillary.rightsHolder')
+			hr
+			h4 Bibliographic Citation:
+			input(type='text', ng-model='ancillary.bibliographicCitation')
+			hr
+			h4 Source:
+			input(type='text', ng-model='ancillary.source')
+			hr
+			h4 Media URL:
+			input(type='text', ng-model='ancillary.mediaURL')
+			hr
+			h4 References:
+			div(ng-repeat='ref in ancillary.reference')
+				h5 Identifier:
+				input(type='text', ng-model='ref.identifier')
+				br
+				h5 Datatype:
+				input(type='text', ng-model='ref.datatype')
+				br
+				h5 Source:
+				input(type='text', ng-model='ref.source')
+				hr
+			button.btn.btn-info.btn-sm(type='button', ng-click='addReference(ancillary.reference)')
+				| Add Reference
+				span.glyphicon.glyphicon-plus
+			hr
+	button.btn.btn-info.btn-sm(type='button', ng-click='addAncillaryData(formData.ancillaryData)')
+		| Add Ancillary Data
+		span.glyphicon.glyphicon-plus

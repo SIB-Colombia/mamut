@@ -1,0 +1,63 @@
+.form-group
+	h3 Dataset ID:
+	hr
+	input.form-control(type='text', name='datasetID', ng-model='formData.datasetID')
+	br
+	h3 Data Stamp:
+	hr
+	input.form-control(type='text', name='dataStamp', ng-model='formData.dataStamp')
+	br
+	h3 Citation:
+	hr
+	input.form-control(type='text', name='citation', ng-model='formData.citation')
+	br
+	div(ng-controller='CollapseDemoCtrl')
+		button.btn.btn-default(ng-click='isCollapsed = !isCollapsed') Dataset
+		hr
+		div(collapse='isCollapsed')
+			.form-group
+				h4 alternateIdentifier:
+				input(type='text', ng-model='formData.dataset.alternateIdentifier')
+				h4 title:
+				input(type='text', ng-model='formData.dataset.title')
+				h4 creator:
+				input(type='text', ng-model='formData.dataset.creator')
+				h4 metadataProvider:
+				input(type='text', ng-model='formData.dataset.metadataProvider')
+				h4 associatedParty:
+				input(type='text', ng-model='formData.dataset.associatedParty')
+				h4 pubDate:
+				input(type='text', ng-model='formData.dataset.pubDate')
+				h4 language:
+				input(type='text', ng-model='formData.dataset.language')
+				h4 abstract:
+				input(type='text', ng-model='formData.dataset.abstract')
+				h4 keyworset:
+				input(type='text', ng-model='formData.dataset.keyworset')
+				h4 additionalInfo:
+				input(type='text', ng-model='formData.dataset.additionalInfo')
+				h4 intellectialRights:
+				input(type='text', ng-model='formData.dataset.intellectialRights')
+				h4 distribution:
+				input(type='text', ng-model='formData.dataset.distribution')
+				h4 coverage:
+				input(type='text', ng-model='formData.dataset.coverage')
+				h4 contact:
+				input(type='text', ng-model='formData.dataset.contact')
+				h4 methods:
+				input(type='text', ng-model='formData.dataset.methods')
+				h4 project:
+				input(type='text', ng-model='formData.dataset.project')
+	h3 Resource Logo URL:
+	hr
+	input.form-control(type='text', name='resourceLogoUrl', ng-model='formData.resourceLogoUrl')
+	br
+	h3 References:
+	hr
+	input.form-control(type='text', name='reference', ng-model='formData.reference')
+	br
+.form-group.row
+	.col-xs-6.col-xs-offset-3
+		a.btn.btn-block.btn-info(ui-sref='form.baseElem')
+			| Next Section
+			span.glyphicon.glyphicon-circle-arrow-right
