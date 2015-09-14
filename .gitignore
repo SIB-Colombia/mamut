@@ -1,2 +1,11 @@
-node_modules
-bower_components
+node_modules/
+bower_components/
+.sass-cache/
+.idea/
+.tmp/
+.DS_Store
+dist/
+src/public/bower_components
+src/public/javascripts
+src/public/stylesheets/style.css
+src/app/layouts/final
