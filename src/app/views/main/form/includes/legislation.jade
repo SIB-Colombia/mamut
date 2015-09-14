@@ -1,0 +1,80 @@
+.panel.panel-default
+	.panel-heading
+		spant
+			| {{"simplePliCTerm.name.Legislation"|translate}}
+			spant
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Legislation"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+	.panel-body
+		.selected-item(ng-repeat='legislationAtomized in formData.legislation.legislationAtomized')
+			div(ng-show='legislationAtomized')
+				div {{legislationAtomized}}
+		.form-group
+			label.col-xs-2.control-label(for='legislationName', translate='') simplePliCTerm.name.LegislationName
+			.col-xs-10
+				input(type='text', ng-model='legislationAtomizedType.legislationName')
+		.form-group
+			label.col-xs-2.control-label(for='protectionLegalStatus', translate='') simplePliCTerm.name.ProtectionLegalStatus
+			.col-xs-10
+				.panel(ng-controller='checkBoxController')
+					div(ng-repeat='lp in legislationProtection')
+						input(type='checkbox', ng-model='lp.checked', ng-click='updateSelectionProtectionLegal(lp,legislationProtection)')
+						| 							{{lp.name}}
+		.form-group
+			label.col-xs-2.control-label(for='LegislationRead', translate='') simplePliCTerm.name.LegislationRead
+			.col-xs-10
+				input(type='text', ng-model='legislationAtomizedType.legislationRead')
+		.form-group
+			label.col-xs-2.control-label(for='status', translate='') simplePliCTerm.name.Status
+			.col-xs-10
+				.panel(ng-controller='checkBoxController')
+					div(ng-repeat='ls in legislationStatus')
+						input(type='checkbox', ng-model='ls.checked', ng-click='updateSelectionProtectionLegalStatus(ls,legislationStatus)')
+						| 						{{ls.name}}
+		.form-group
+			label.col-xs-2.control-label(for='Type', translate='') simplePliCTerm.name.Type
+			.col-xs-10
+				.panel(ng-controller='checkBoxController')
+					div(ng-repeat='lt in legislationType')
+						input(type='checkbox', ng-model='lt.checked', ng-click='updateSelectionProtectionLegalType(lt,legislationType)')
+						| 							{{lt.name}}
+		.form-group
+			label.col-xs-2.control-label(for='Norm', translate='') simplePliCTerm.name.Norm
+			.col-xs-10
+				.panel(ng-controller='checkBoxController')
+					div(ng-repeat='ln in legislationNorm')
+						input(type='checkbox', ng-model='ln.checked', ng-click='updateSelectionProtectionLegalNorm(ln,legislationNorm)')
+						| 							{{ln.name}}
+		.form-group
+			label.col-xs-2.control-label(for='appliesTo', translate='') simplePliCTerm.name.AppliesTo
+			.col-xs-10
+				div(ng-controller='UbicacionCtrl')
+					select(ng-model='legislationAtomizedType.aplliesTo.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
+						option(value='') - Seleccione -
+					select(ng-model='legislationAtomizedType.aplliesTo.stateProvince', ng-disabled='!legislationAtomizedType.aplliesTo.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
+						option(value='') - Seleccione -
+					select(ng-model='legislationAtomizedType.aplliesTo.county', ng-disabled='!legislationAtomizedType.aplliesTo.country || !legislationAtomizedType.aplliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
+						option(value='') - Seleccione -
+		button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addLegislationAtomized(legislationAtomizedType)') Guardar
+		.form-group
+			hr
+			label(for='legislationUnstructured', translate='') simplePliCTerm.name.LegislationUnstructured
+			em (opcional)
+			a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.LegislationUnstructured"|translate}}')
+				span.glyphicon.glyphicon-info-sign
+			textarea(rows='3', name='legislation', ng-model='formData.legislation.legislationUnstructured')
+			div(ng-repeat='ancillary in formData.legislation.ancillaryData')
+				| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			div(ng-controller='CollapseDemoCtrl')
+				.form-group
+					button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+					.col-xs-10
+						div(collapse='isCollapsed')
+							input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+							input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+							input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+							input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
+							button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.legislation.ancillaryData,ancillaryData)', translate='')
+								| Guardar
+								span.glyphicon.glyphicon-plus

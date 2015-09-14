@@ -1,0 +1,66 @@
+.panel.panel-default
+	.panel-heading
+		spant
+			| {{"simplePliCTerm.name.Dispersal" | translate}}
+			spant
+			a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Dispersal"|translate}}')
+				span.glyphicon.glyphicon-info-sign
+	.panel-body
+		div(ng-repeat='purpose in formData.dispersal.dispersalAtomized.purpose')
+			| {{purpose}}
+		.form-group
+			label.col-xs-2.control-label(for='purpose', translate='') simplePliCTerm.name.Purpose
+			.col-xs-10
+			div(ng-controller='MeasurementCtrl')
+				select(ng-model='dispersalAtomized.purpose.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in purposes | unique:'measurementtype'")
+				option(value='') - Seleccione -
+				select(ng-model='dispersalAtomized.purpose.measurementValue', ng-disabled='!dispersalAtomized.purpose.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+				option(value='') - Seleccione -
+				button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(formData.dispersal.dispersalAtomized.purpose, measurementOrFact)') Guardar proposito 
+		.form-group
+			label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Type
+			.col-xs-10
+			.panel(ng-controller='checkBoxController')
+				div(ng-repeat='type in dispersalType')
+				.action-checkbox
+					input(type='checkbox', ng-model='type.checked', ng-click='updateSelectionDispersalType(type, dispersalType)')
+					| 									{{type.name}}
+		.form-group
+			label.col-xs-2.control-label(for='structureDispersed', translate='') simplePliCTerm.name.StructureDispersed
+			.col-xs-10
+			.panel(ng-controller='checkBoxController')
+				div(ng-repeat='structure in structureDispersed')
+				.action-checkbox
+					input(type='checkbox', ng-model='structure.checked', ng-click='updateSelectionStructureDispersed(structure, structureDispersed)')
+					| 									{{structure.name}}
+		.form-group
+			label.col-xs-2.control-label(for='distance', translate='') simplePliCTerm.name.Distance
+			.col-xs-10
+			div(ng-controller='MeasurementCtrl')
+				select(ng-model='formData.dispersal.dispersalAtomized.distance.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in distance | unique:'measurementtype'")
+				option(value='') - Seleccione -
+				select(ng-model='formData.dispersal.dispersalAtomized.distance.measurementValue', ng-disabled='!formData.dispersal.dispersalAtomized.distance.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+				option(value='') - Seleccione -
+		.form-group
+			hr
+			label(for='dispersalUnstructured', translate='') simplePliCTerm.name.DispersalUnstructured
+			em (opcional)
+			a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.DispersalUnstructured"|translate}}')
+			span.glyphicon.glyphicon-info-sign
+			textarea(rows='3', name='dispersal', ng-model='formData.dispersal.dispersalUnstructured')
+			div(ng-repeat='ancillary in formData.dispersal.ancillaryData')
+			| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			
+			.form-group
+				div(ng-controller='CollapseDemoCtrl')
+				button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+				.col-xs-10
+				div(collapse='isCollapsed')
+					input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+					input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+					input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+					input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+					input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
+					button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.dispersal.ancillaryData,ancillaryData)', translate='')
+					| Guardar
+					span.glyphicon.glyphicon-plus

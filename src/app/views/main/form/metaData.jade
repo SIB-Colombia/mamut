@@ -1,18 +1,18 @@
 .form-group
-	h3 Dataset ID:
+	h3(translate='') simplePliCTerm.name.Dataset_ID
 	hr
-	input.form-control(type='text', name='datasetID', ng-model='formData.datasetID')
+	input(type='text', name='datasetID', ng-model='formData.datasetID')
 	br
-	h3 Data Stamp:
+	h3(translate='') simplePliCTerm.name.dateStamp
 	hr
-	input.form-control(type='text', name='dataStamp', ng-model='formData.dataStamp')
+	input(type='text', name='dataStamp', ng-model='formData.dataStamp')
 	br
-	h3 Citation:
+	h3(translate='') simplePliCTerm.name.citation
 	hr
-	input.form-control(type='text', name='citation', ng-model='formData.citation')
+	input(type='text', name='citation', ng-model='formData.citation')
 	br
 	div(ng-controller='CollapseDemoCtrl')
-		button.btn.btn-default(ng-click='isCollapsed = !isCollapsed') Dataset
+		button.btn.btn-success(ng-click='isCollapsed = !isCollapsed', translate='') simplePliCTerm.name.dataset
 		hr
 		div(collapse='isCollapsed')
 			.form-group
@@ -48,16 +48,16 @@
 				input(type='text', ng-model='formData.dataset.methods')
 				h4 project:
 				input(type='text', ng-model='formData.dataset.project')
-	h3 Resource Logo URL:
+	h3(translate='') simplePliCTerm.name.resourceLogoUrl
 	hr
-	input.form-control(type='text', name='resourceLogoUrl', ng-model='formData.resourceLogoUrl')
+	input(type='text', name='resourceLogoUrl', ng-model='formData.resourceLogoUrl')
 	br
-	h3 References:
+	h3(translate='') simplePliCTerm.name.References
 	hr
-	input.form-control(type='text', name='reference', ng-model='formData.reference')
+	input(type='text', name='reference', ng-model='formData.reference')
 	br
 .form-group.row
 	.col-xs-6.col-xs-offset-3
 		a.btn.btn-block.btn-info(ui-sref='form.baseElem')
-			| Next Section
+			| Siguiente Sección 
 			span.glyphicon.glyphicon-circle-arrow-right

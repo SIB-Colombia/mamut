@@ -1,0 +1,125 @@
+.panel.panel-default
+	.panel-heading
+		spant
+			| {{"simplePliCTerm.name.Uses"|translate}}
+			spant
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Uses"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+	.panel-body
+		.selected-item(ng-repeat='usesAtomized in formData.usesManagementAndConservation.usesAtomized')
+			div(ng-show='usesAtomized')
+				div {{usesAtomized}}
+		.form-group
+			label.col-xs-2.control-label(for='sourceOfInformation', translate='') simplePliCTerm.name.SourceOfInformation
+			.col-xs-10
+				input#sourceOfInformation(type='text', ng-model='usesAtomizedType.sourceOfInformation.sourceOfInformationText')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.SourceOfInformation"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='use-Value', translate='') simplePliCTerm.name.Use-Value
+			.col-xs-10
+				input#useValue(type='text', ng-model='usesAtomizedType.useValue')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Use-Value"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='partUsed', translate='') simplePliCTerm.name.PartUsed
+			.col-xs-10
+				.panel(ng-controller='checkBoxController')
+					div(ng-repeat='pu in partUsed')
+						input(type='checkbox', ng-model='pu.checked', ng-click='updateSelectionPartUsedCategory(pu, partUsed)')
+						| 							{{tc.name}}
+		.form-group
+			label.col-xs-2.control-label(for='users', translate='') simplePliCTerm.name.Users
+			.col-xs-10
+				input#users(type='text', ng-model='usesAtomizedType.users')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Users"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='organisms', translate='') simplePliCTerm.name.Organisms
+			.col-xs-10
+				input#organisms(type='text', ng-model='usesAtomizedType.organisms')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Organisms"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='vernacularNameUseAnnotations', translate='') simplePliCTerm.name.VernacuarNameUseAnnotations
+			.col-xs-10
+				input#vernacularNameUseAnnotations(type='text', ng-model='usesAtomizedType.vernacularNameUseAnnotations')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.VernacuarNameUseAnnotations"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='productionDetails', translate='') simplePliCTerm.name.ProductionDetails
+			.col-xs-10
+				input#productionDetails(type='text', ng-model='usesAtomizedType.productionDetails')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ProductionDetails"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='administration', translate='') simplePliCTerm.name.MeansOfApplication-Administration
+			.col-xs-10
+				input#meansOfApplicationAdministration(type='text', ng-model='usesAtomizedType.meansOfApplicationAdministration')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.MeansOfApplication-Administration"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='seasonOfAvailabilityUse', translate='') simplePliCTerm.name.SeasonOfAvailability-Use
+			.col-xs-10
+				input#seasonOfAvailabilityUse(type='text', ng-model='usesAtomizedType.seasonOfAvailabilityUse')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.SeasonOfAvailability-Use"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='conservationExplotationData', translate='') simplePliCTerm.name.Conservation-ExplotationData
+			.col-xs-10
+				input#conservationExplotationData(type='text', ng-model='usesAtomizedType.conservationExplotationData')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ExplotationData"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='useTypeAtomized', translate='') simplePliCTerm.name.UseTypeAtomized
+			.col-xs-10
+				.panel(ng-controller='checkBoxController')
+					div(ng-repeat='uta in useTypeAtomized')
+						input(type='checkbox', ng-model='uta.checked', ng-click='updateSelectionUseTypeAtomized(uta, useTypeAtomized)')
+						| 							{{uta.name}}
+		.form-group
+			label.col-xs-2.control-label(for='economics', translate='') simplePliCTerm.name.Economics
+			.col-xs-10
+				input#economics(type='text', ng-model='usesAtomizedType.economics')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Economics"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='ratingPopularity', translate='') simplePliCTerm.name.RatingPopularity
+			.col-xs-10
+				input#ratingPopularity(type='text', ng-model='usesAtomizedType.ratingPopularity')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.RatingPopularity"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='administration', translate='') simplePliCTerm.name.Properties
+			.col-xs-10
+				input#properties(type='text', ng-model='usesAtomizedType.properties')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Properties"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='potential', translate='') simplePliCTerm.name.Potential
+			.col-xs-10
+				input#potential(type='text', ng-model='usesAtomizedType.potential')
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Potential"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+		.form-group
+			label.col-xs-2.control-label(for='useNotes', translate='') simplePliCTerm.name.UsesNotes
+			.col-xs-10
+				textarea#useNotes(rows='3', ng-model='usesAtomizedType.useNotes')
+		.form-group
+			div(ng-repeat='ancillary in usesAtomizedType.ancillaryData')
+				| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			div(ng-controller='CollapseDemoCtrl')
+				.form-group
+					button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+					.col-xs-10
+						div(collapse='isCollapsed')
+							input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+							input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+							input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+							input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
+							button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(usesAtomizedType.ancillaryData,ancillaryData)', translate='')
+								| Guardar
+								span.glyphicon.glyphicon-plus
+		.form-group
+			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addUsesAtomized(usesAtomizedType)') Guardar 

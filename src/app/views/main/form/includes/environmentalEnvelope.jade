@@ -1,0 +1,39 @@
+.panel.panel-default
+	.panel-heading
+		spant
+			| {{"simplePliCTerm.name.EnvironmentalEnvelope" | translate}}
+			spant
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.EnvironmentalEnvelope"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+	.panel-body
+		.selected-item(ng-repeat='environmentalEnvelopeAtomized in formData.environmentalEnvelope.environmentalEnvelopeAtomized')
+			div(ng-show='environmentalEnvelopeAtomized')
+				div
+					| {{environmentalEnvelopeAtomized.measurementType}} - {{environmentalEnvelopeAtomized.measurementValue}}
+		div(ng-controller='MeasurementCtrl')
+			select(ng-model='environmentalEnvelopeAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in environmentalEnvelopes | unique:'measurementtype'")
+				option(value='') - Seleccione -
+			select(ng-model='environmentalEnvelopeAtomized.measurementValue', ng-disabled='!environmentalEnvelopeAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+				option(value='') - Seleccione -
+			button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(formData.environmentalEnvelope.environmentalEnvelopeAtomized, measurementOrFact)') Guardar 
+		hr
+		label(for='environmentalEnvelopeUnstructured', translate='') simplePliCTerm.name.EnvironmentalEnvelopeUnstructured
+		em (opcional)
+		a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.EnvironmentalEnvelopeUnstructured"|translate}}')
+			span.glyphicon.glyphicon-info-sign
+		textarea(rows='3 ', name='environmentalEnvelope', ng-model='formData.environmentalEnvelope.environmentalEnvelopeUnstructured')
+		div(ng-repeat='ancillary in formData.environmentalEnvelope.ancillaryData')
+			| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+		div(ng-controller='CollapseDemoCtrl')
+			.form-group
+				button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+				.col-xs-10
+					div(collapse='isCollapsed')
+						input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+						input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+						input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+						input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+						input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
+						button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.environmentalEnvelope.ancillaryData,ancillaryData)', translate='')
+							| Guardar
+							span.glyphicon.glyphicon-plus

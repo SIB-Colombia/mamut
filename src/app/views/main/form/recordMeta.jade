@@ -1,0 +1,31 @@
+.form-group
+	h3(translate='') simplePliCTerm.name.Language
+	hr
+	input(type='text', name='language', ng-model='formData.language')
+	br
+	h3(translate='') simplePliCTerm.name.Version
+	hr
+	input(type='text', name='version', ng-model='formData.version.preferredFlag')
+	br
+	h3(translate='') simplePliCTerm.name.Revision
+	hr
+	div(ng-repeat='rev in formData.revisiones')
+		.form-group
+			h4(translate='') simplePliCTerm.name.associatedParty
+			input(type='text', ng-model='rev.associatedParty')
+			br
+			h4(translate='') simplePliCTerm.name.pubDate
+			input(type='text', ng-model='rev.pubDate')
+			br
+			h4(translate='') simplePliCTerm.name.created
+			input(type='text', ng-model='rev.created')
+			button.btn.btn-primary.btn-sm(type='button', ng-show='$last', ng-click='removeRevision()')
+				span.glyphicon.glyphicon-minus
+	button.btn.btn-primary.btn-sm(type='button', ng-click='addRevision(formData.revisiones)')
+		| Agregar Revisión
+		span.glyphicon.glyphicon-plus
+.form-group.row
+	.col-xs-6.col-xs-offset-3
+		a.btn.btn-block.btn-info(ui-sref='form.nomeAndClass')
+			| Siguiente Sección 
+			span.glyphicon.glyphicon-circle-arrow-right

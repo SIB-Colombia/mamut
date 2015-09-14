@@ -1,0 +1,45 @@
+.panel.panel-default
+	.panel-heading
+		spant
+			| {{"simplePliCTerm.name.Interactions" | translate}}
+			spant
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Interactions"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+	.panel-body
+		.selected-item(ng-repeat='interactionsAtomized in formData.interactions.interactionsAtomized')
+			div(ng-show='interactionsAtomized')
+				div {{interactionsAtomized}}
+		.form-group
+			label.col-xs-2.control-label(for='interactionSpecies', translate='') simplePliCTerm.name.InteractionSpecies
+		.form-group
+			label.col-xs-2.control-label(for='interactionSpeciesType', translate='') simplePliCTerm.name.InteractionSpeciesType
+			.col-xs-10
+				.panel(ng-controller='checkBoxController')
+					div(ng-repeat='interaction in interactionSpeciesType')
+						.action-checkbox
+							input(id='{{interaction.name}}', type='checkbox', value='{{interaction.name}}', ng-checked='interactionsAtomizedType.interactionSpeciesType.indexOf(interaction.name) > -1', ng-click='toggleSelection(interactionsAtomizedType.interactionSpeciesType,interaction.name)')
+							label(for='{{interaction.name}}')
+							| 							{{interaction.name}}
+		button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)') Guardar
+		.form-group
+			hr
+			label(for='interactionUnstructured', translate='') simplePliCTerm.name.InteractionUnstructured
+			em (opcional)
+			a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.InteractionUnstructured"|translate}}')
+				span.glyphicon.glyphicon-info-sign
+			textarea(rows='3', name='interactions', ng-model='formData.interactions.interactionsUnstructured')
+			div(ng-repeat='ancillary in formData.interactions.ancillaryData')
+				| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			div(ng-controller='CollapseDemoCtrl')
+				.form-group
+					button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+					.col-xs-10
+						div(collapse='isCollapsed')
+							input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+							input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+							input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+							input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
+							button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.interactions.ancillaryData,ancillaryData)', translate='')
+								| Guardar
+								span.glyphicon.glyphicon-plus

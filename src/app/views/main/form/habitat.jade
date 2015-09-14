@@ -1,0 +1,14 @@
+.form-group
+	div(ng-include="'./includes/habitats.html'")  
+	div(ng-include="'./includes/distribution.html'")  
+	div(ng-include="'./includes/endemic.html'")  
+.col-xs-6.col-xs-offset-3
+	ul.pager
+		li
+			a.btn.btn-block.btn-info(ui-sref='form.invasiveness')
+				span.glyphicon.glyphicon-circle-arrow-left
+				|  Sección Anterior
+		li
+			a.btn.btn-block.btn-info(ui-sref='form.demogra')
+				| Siguiente Sección 
+				span.glyphicon.glyphicon-circle-arrow-right

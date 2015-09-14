@@ -1,0 +1,32 @@
+.form-group
+	.panel.panel-default
+		.panel-heading
+			spant
+				| {{"simplePliCTerm.name.References"|translate}}
+				spant
+		.panel-body
+			div(ng-repeat='ref in formData.references')
+				| {{ref.identifier}} - {{ref.datatype}} - {{ref.source}}
+			.row.equal
+				.col-md-5
+					div
+						h4 Agregar referencia manualmente
+						input(type='text', ng-model='reference.identifier', placeholder='{{"simplePliCTerm.name.Identifier"|translate}}')
+						input(type='text', ng-model='reference.datatype', placeholder='{{"simplePliCTerm.name.Datatype"|translate}}')
+						input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+						button.btn.btn-primary.btn-xs(type='button', ng-click='addReferenceDirec(reference)', translate='') Guardar Referencia 
+				.col-md-5
+					div(ng-app='fileUpload', ng-controller='UploadFile')
+						h4 Archivo RIS
+						.drop-box(ngf-drop='', ngf-select='', ng-model='files', ngf-drag-over-class='dragover', ngf-multiple='true', ngf-allow-dir='true', accept='image/*,application/pdf')
+							| Arrastrar el archivo ris o haga clic para subirlo.
+.col-xs-6.col-xs-offset-3
+	ul.pager
+		li
+			a.btn.btn-block.btn-info(ui-sref='form.associatedParty')
+				span.glyphicon.glyphicon-circle-arrow-left
+				|	Sección Anterior
+		li
+			a.btn.btn-block.btn-info(ui-sref='form.ancillary')
+				| Siguiente Sección 
+				span.glyphicon.glyphicon-circle-arrow-right

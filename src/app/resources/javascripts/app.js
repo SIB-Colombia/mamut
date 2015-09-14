@@ -10,7 +10,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 
 	$stateProvider
 	// route to show our basic form (/form)
-		.state('form', {
+	.state('form', {
 		url: '/form',
 		templateUrl: 'form.html',
 		controller: 'formController'
@@ -20,86 +20,87 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 	// each of these sections will have their own view
 	// url will be nested (/form/metaData)
 	.state('form.metaData', {
-		url: '/metaData',
+		url: '/form/metaData',
 		templateUrl: 'metaData.html'
 	})
 
 	// url will be /form/baseElem
 	.state('form.baseElem', {
-		url: '/baseElem',
+		url: '/form/baseElem',
 		templateUrl: 'baseElem.html'
 	})
 
 	// url will be /form/recordMeta
 	.state('form.recordMeta', {
-			url: '/recordMeta',
-			templateUrl: 'recordMeta.html'
-		})
-		.state('form.nomeAndClass', {
-			url: '/form/nomeAndClass',
-			templateUrl: 'nomeAndClass.html'
-		})
+		url: '/form/recordMeta',
+		templateUrl: 'recordMeta.html'
+	})
+	
+	// url will be /form/nomeAndClass
+	.state('form.nomeAndClass', {
+		url: '/form/nomeAndClass',
+		templateUrl: 'nomeAndClass.html'
+	})
 
 	// url will be /form/taxoDesc
 	.state('form.taxoDesc', {
-		url: '/taxoDesc',
+		url: '/form/taxoDesc',
 		templateUrl: 'taxoDesc.html'
 	})
 
 	// url will be /form/history
 	.state('form.history', {
-		url: '/history',
+		url: '/form/history',
 		templateUrl: 'history.html'
 	})
 
-	// url will be /form/history
+	// url will be /form/historyC
 	.state('form.historyC', {
-		url: '/historyC',
+		url: '/form/historyC',
 		templateUrl: 'historyC.html'
 	})
 
 	// url will be /form/invasiveness
 	.state('form.invasiveness', {
-		url: '/invasiveness',
+		url: '/form/invasiveness',
 		templateUrl: 'invasiveness.html'
 	})
 
 	// url will be /form/habitat
 	.state('form.habitat', {
-		url: '/habitat',
+		url: '/form/habitat',
 		templateUrl: 'habitat.html'
 	})
 
 	// url will be /form/demogra
 	.state('form.demogra', {
-		url: '/demogra',
+		url: '/form/demogra',
 		templateUrl: 'demogra.html'
 	})
 
 	// url will be /form/uses
 	.state('form.uses', {
-		url: '/uses',
+		url: '/form/uses',
 		templateUrl: 'uses.html'
 	})
 
 	// url will be /form/references
 	.state('form.references', {
-		url: '/references',
+		url: '/form/references',
 		templateUrl: 'references.html'
 	})
 
 	// url will be /form/ancillary
 	.state('form.ancillary', {
-		url: '/ancillary',
+		url: '/form/ancillary',
 		templateUrl: 'ancillary.html'
 	})
 
 	// url will be /form/associatedParty
 	.state('form.associatedParty', {
-		url: '/associatedParty',
+		url: '/form/associatedParty',
 		templateUrl: 'associatedParty.html'
 	});
-
 
 	// catch all route
 	// send users to the form page
@@ -786,12 +787,12 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 // =============================================================================
 .controller('formController', function($scope, ModalService, $http, $filter, $timeout) {
 
-	$http.get('/app/resources/distribution.json')
+	$http.get('/resources/distribution.json')
 		.then(function(res) {
 			$scope.ubicacion = res.data;
 		});
 
-	$http.get('/app/resources/language.json')
+	$http.get('/resources/language.json')
 		.then(function(res) {
 			$scope.idiomas = res.data;
 		});

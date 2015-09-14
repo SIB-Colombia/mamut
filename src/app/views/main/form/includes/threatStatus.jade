@@ -1,0 +1,58 @@
+.panel.panel-default
+	.panel-heading
+		spant
+			| {{"simplePliCTerm.name.ThreatStatus"|translate}}
+			spant
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ThreatStatus"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+	.panel-body
+		.selected-item(ng-repeat='measurementOrFact in formData.threatStatus.threatStatusAtomized.measurementOrFact')
+			div(ng-show='measurementOrFact')
+				div {{measurementOrFact}}
+		.form-group
+			label.col-xs-2.control-label(for='threatCategory', translate='') simplePliCTerm.name.ThreatCategory
+			.col-xs-10
+				.panel(ng-controller='checkBoxController')
+					div(ng-repeat='tc in threatCategory')
+						input(type='checkbox', ng-model='tc.checked', ng-click='updateSelectionThreatCategory(tc, threatCategory)')
+						| 							{{tc.name}}
+		.form-group
+			label.col-xs-2.control-label(for='authority', translate='') simplePliCTerm.name.Authority
+			.col-xs-10
+				.panel(ng-controller='checkBoxController')
+					div(ng-repeat='aut in authority')
+						input(type='checkbox', ng-model='aut.checked', ng-click='updateSelectionAutority(aut)')
+						| 						{{aut.name}}
+		.form-group
+			label.col-xs-2.control-label(for='appliesTo', translate='') simplePliCTerm.name.AppliesTo
+			.col-xs-10
+				div(ng-controller='UbicacionCtrl')
+					select(ng-model='threatStatusClass.threatStatusAtomized.aplliesTo.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
+						option(value='') - Seleccione -
+					select(ng-model='threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince', ng-disabled='!threatStatusClass.threatStatusAtomized.aplliesTo.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
+						option(value='') - Seleccione -
+					select(ng-model='threatStatusClass.threatStatusAtomized.aplliesTo.county', ng-disabled='!threatStatusClass.threatStatusAtomized.aplliesTo.country || !threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
+						option(value='') - Seleccione -
+		button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addThreatStatusClass(threatStatusClass)') Guardar
+		.form-group
+			hr
+			label(for='threatStatusUnstructured', translate='') simplePliCTerm.name.ThreatStatusUnstructured
+			em (opcional)
+			a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ThreatStatusUnstructured"|translate}}')
+				span.glyphicon.glyphicon-info-sign
+			textarea(rows='3', name='threatStatus', ng-model='formData.threatStatus.threatStatusUnstructured')
+			div(ng-repeat='ancillary in thre.ancillaryData')
+				| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			div(ng-controller='CollapseDemoCtrl')
+				.form-group
+					button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+					.col-xs-10
+						div(collapse='isCollapsed')
+							input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+							input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+							input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+							input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
+							button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(thre.ancillaryData,ancillaryData)', translate='')
+								| Guardar
+								span.glyphicon.glyphicon-plus

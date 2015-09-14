@@ -1,0 +1,55 @@
+.panel.panel-default
+	.panel-heading
+		spant
+			| {{"simplePliCTerm.name.Feeding" | translate}}
+			spant
+			a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Feeding"|translate}}')
+				span.glyphicon.glyphicon-info-sign
+	.panel-body
+		.selected-item(ng-repeat='feedingAtomized in formData.feeding.feedingAtomized')
+			div(ng-show='feedingAtomized')
+			div {{feedingAtomized.type}}
+			.selected-item(ng-repeat='thropic in feedingAtomized.thropic')
+				div(ng-show='thropic')
+				| {{thropic.strategy}} - {{thropic.strategyRemarks}}
+		.form-group
+			label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.type
+			.col-xs-10
+			.panel(ng-controller='checkBoxController')
+				div(ng-repeat='source in primaryDietSource')
+				input(type='checkbox', ng-model='source.checked', ng-click='updateSelectionFeeding(source, primaryDietSource)')
+				| 								{{source.name}}
+		.form-group
+			label.col-xs-2.control-label(for='strategy', translate='') simplePliCTerm.name.Strategy
+			.col-xs-10
+			.panel(ng-controller='checkBoxController')
+				div(ng-repeat='strategy in strategies')
+				.action-checkbox
+					input(type='checkbox', ng-model='strategy.checked', ng-click='updateSelectionThropic(strategy, strategies)')
+					| 									{{strategy.name}}
+			label(translate='') simplePliCTerm.name.StrategyRemarks
+			textarea(rows='3', name='strategyRemarks', ng-model='thropic.strategyRemarks')
+			button.btn.btn-success.btn-sm(type='button', ng-click='addThropic(feedingAtomizedType.thropic,thropic)') Guardar estrategia
+		button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addFeedingAtomizedType(formData.feeding.feedingAtomized,feedingAtomizedType)') Guardar
+		.form-group
+			hr
+			label(for='feedingUnstructured', translate='') simplePliCTerm.name.FeedingUnstructured
+			em (opcional)
+			a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.FeedingUnstructured"|translate}}')
+			span.glyphicon.glyphicon-info-sign
+			textarea(rows='3', name='feeding', ng-model='formData.feeding.feedingUnstructured')
+			div(ng-repeat='ancillary in formData.feeding.ancillaryData')
+			| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			div(ng-controller='CollapseDemoCtrl')
+				.form-group
+					button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+					.col-xs-10
+					div(collapse='isCollapsed')
+						input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+						input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+						input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+						input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+						input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
+						button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.feeding.ancillaryData,ancillaryData)', translate='')
+						| Guardar
+						span.glyphicon.glyphicon-plus

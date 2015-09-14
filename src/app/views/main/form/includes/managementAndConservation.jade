@@ -1,0 +1,55 @@
+.panel.panel-default
+	.panel-heading
+		spant
+			| {{"simplePliCTerm.name.ManagementAndConservation"|translate}}
+			spant
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ManagementAndConservation"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+	.panel-body
+		.selected-item(ng-repeat='managementAndConservationAtomized in formData.usesManagementAndConservation.managementAndConservationAtomized')
+			div(ng-show='managementAndConservationAtomized')
+				div {{managementAndConservationAtomized}}
+		.form-group
+			label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Type
+			.col-xs-10
+				.panel(ng-controller='checkBoxController')
+					div(ng-repeat='mt in managementType')
+						input(type='checkbox', ng-model='mt.checked', ng-click='updateSelectionManagementType(mt, managementType)')
+						| 							{{mt.name}}
+		.form-group
+			label.col-xs-2.control-label(for='objectives', translate='') simplePliCTerm.name.Objectives
+			.col-xs-10
+				input#objective(type='text', ng-model='managementAndConservationAtomizedType.objective')
+		.form-group
+			label.col-xs-2.control-label(for='managementPlan', translate='') simplePliCTerm.name.ManagementPlan
+			.col-xs-10
+				input#managementPlan(type='text', ng-model='managementAndConservationAtomizedType.managementPlan')
+		.form-group
+			label.col-xs-2.control-label(for='actions', translate='') simplePliCTerm.name.Actions
+			.col-xs-10
+				.panel(ng-controller='checkBoxController')
+					div(ng-repeat='ma in managementAction')
+						input(type='checkbox', ng-model='ma.checked', ng-click='updateSelectionManagementAction(ma)')
+						| 							{{ma.name}}
+		.form-group
+			label.col-xs-2.control-label(for='humanAndEnvironmentalRelevance', translate='') simplePliCTerm.name.HumanAndEnvironmentalRelevance
+			.col-xs-10
+				input#humanAndEnvironmentalrelevanc(type='text', ng-model='managementAndConservationAtomizedType.humanAndEnvironmentalrelevanc')
+		.form-group
+			div(ng-repeat='ancillary in managementAndConservationAtomizedType.ancillaryData')
+				| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
+			div(ng-controller='CollapseDemoCtrl')
+				.form-group
+					button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+					.col-xs-10
+						div(collapse='isCollapsed')
+							input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+							input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+							input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+							input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
+							button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(managementAndConservationAtomizedType.ancillaryData,ancillaryData)', translate='')
+								| Guardar
+								span.glyphicon.glyphicon-plus
+		.form-group
+			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addManagementAndConservation(managementAndConservationAtomizedType)') Guardar 
