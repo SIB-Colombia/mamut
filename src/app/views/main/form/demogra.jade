@@ -1,9 +1,9 @@
 .form-group
-	div(ng-include="'./includes/territory.html'")  
-	div(ng-include="'./includes/populationBiology.html'")  
-	div(ng-include="'./includes/threatStatus.html'")  
-	div(ng-include="'./includes/directThreats.html'")  
-	div(ng-include="'./includes/legislation.html'")  
+	div(ng-include="'./form/includes/territory.html'")
+	div(ng-include="'./form/includes/populationBiology.html'")
+	div(ng-include="'./form/includes/threatStatus.html'")
+	div(ng-include="'./form/includes/directThreats.html'")
+	div(ng-include="'./form/includes/legislation.html'")
 .col-xs-6.col-xs-offset-3
 	ul.pager
 		li
@@ -12,5 +12,5 @@
 				|  Sección Anterior
 		li
 			a.btn.btn-block.btn-info(ui-sref='form.uses')
-				| Siguiente Sección 
+				| Siguiente Sección
 				span.glyphicon.glyphicon-circle-arrow-right

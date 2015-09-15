@@ -21,6 +21,7 @@ gulp.task('nodemon', function() {
 	var started = false;
 	return nodemon({
 		script: 'app.js',
+		"ignore": ["*.js"],
 		env: {
 			'NODE_ENV': 'development'
 		}

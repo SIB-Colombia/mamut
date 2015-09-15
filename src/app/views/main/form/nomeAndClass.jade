@@ -10,10 +10,10 @@ form.form-group
 					| 		   			{{formData.taxonRecordName.scientificName.simple}}
 				div(ng-show='formData.taxonRecordName.scientificName.publishedln.simple')
 					div Publicado en :{{formData.taxonRecordName.scientificName.publishedln.simple}}
-	div(ng-include="'./includes/hierarchy.html'")
-	div(ng-include="'./includes/abstract.html'")
-	div(ng-include="'./includes/synonyms.html'")
-	div(ng-include="'./includes/commonNames.html'")
+	div(ng-include="'./form/includes/hierarchy.html'")
+	div(ng-include="'./form/includes/abstract.html'")
+	div(ng-include="'./form/includes/synonyms.html'")
+	div(ng-include="'./form/includes/commonNames.html'")
 .col-xs-6.col-xs-offset-3
 	ul.pager
 		li

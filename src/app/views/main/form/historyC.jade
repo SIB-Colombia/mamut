@@ -1,10 +1,10 @@
 .form-group
-	div(ng-include="'./includes/behavior.html'")  
-	div(ng-include="'./includes/interactions.html'")  
-	div(ng-include="'./includes/molecularData.html'")  
-	div(ng-include="'./includes/migratory.html'")  
-	div(ng-include="'./includes/ecologicalSignificance.html'")  
-	div(ng-include="'./includes/environmentalEnvelope.html'")  
+	div(ng-include="'./form/includes/behavior.html'")
+	div(ng-include="'./form/includes/interactions.html'")
+	div(ng-include="'./form/includes/molecularData.html'")
+	div(ng-include="'./form/includes/migratory.html'")
+	div(ng-include="'./form/includes/ecologicalSignificance.html'")
+	div(ng-include="'./form/includes/environmentalEnvelope.html'")
 .col-xs-6.col-xs-offset-3
 	ul.pager
 		li
@@ -13,5 +13,5 @@
 				|  Sección Anterior
 		li
 			a.btn.btn-block.btn-info(ui-sref='form.invasiveness')
-				| Siguiente Sección 
+				| Siguiente Sección
 				span.glyphicon.glyphicon-circle-arrow-right

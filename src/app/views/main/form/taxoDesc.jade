@@ -1,7 +1,7 @@
 .form-group
-	div(ng-include="'./includes/briefDescription.html'")
-	div(ng-include="'./includes/fullDescription.html'")
-	div(ng-include="'./includes/identificationKeys.html'")
+	div(ng-include="'./form/includes/briefDescription.html'")
+	div(ng-include="'./form/includes/fullDescription.html'")
+	div(ng-include="'./form/includes/identificationKeys.html'")
 .col-xs-6.col-xs-offset-3
 	ul.pager
 		li
@@ -10,5 +10,5 @@
 				|	Sección Anterior
 		li
 			a.btn.btn-block.btn-info(ui-sref='form.history')
-				| Siguiente Sección 
+				| Siguiente Sección
 				span.glyphicon.glyphicon-circle-arrow-right

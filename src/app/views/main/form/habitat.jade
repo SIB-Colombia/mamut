@@ -1,7 +1,7 @@
 .form-group
-	div(ng-include="'./includes/habitats.html'")  
-	div(ng-include="'./includes/distribution.html'")  
-	div(ng-include="'./includes/endemic.html'")  
+	div(ng-include="'./form/includes/habitats.html'")
+	div(ng-include="'./form/includes/distribution.html'")
+	div(ng-include="'./form/includes/endemic.html'")
 .col-xs-6.col-xs-offset-3
 	ul.pager
 		li
@@ -10,5 +10,5 @@
 				|  Sección Anterior
 		li
 			a.btn.btn-block.btn-info(ui-sref='form.demogra')
-				| Siguiente Sección 
+				| Siguiente Sección
 				span.glyphicon.glyphicon-circle-arrow-right
