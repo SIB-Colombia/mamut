@@ -1987,9 +1987,10 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 								jsonpCallback: 'callback',
 								type: 'GET',
 								success: function(data_1) {
+									console.log(data_1.results.length);
 									if (data_1.results.length > 0) {
 										$scope.$apply(function() {
-											for (i = 0; i < data_1.results.length; i++) {
+											for (var i = 0; i < data_1.results.length; i++) {
 												$scope.formData.synonymsAtomized.push({
 													synonymName: {
 														attributes: {
@@ -2181,16 +2182,13 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 									if (data_1.results.length > 0) {
 										$scope.$apply(function() {
 											var langName = '';
-											for (i = 0; i < data_1.results.length; i++) {
+											for (var i = 0; i < data_1.results.length; i++) {
 												if (data_1.results[i].language != undefined) {
 													langName = $scope.findLanguageName(data_1.results[i].language);
 												}
 												$scope.formData.commonNameAtomized.push({
 													name: (data_1.results[i].vernacularName != undefined) ? data_1.results[i].vernacularName : '',
-													language: {
-														languageIso: (data_1.results[i].language != undefined) ? data_1.results[i].language : '',
-														languageName: langName
-													},
+													language: langName,
 													usedIn: {
 														distributionScope: {
 															type: '',
