@@ -13,6 +13,8 @@ function isOnlyChange(event) {
 gulp.task('watch', ['inject'], function () {
 	gulp.watch([path.join(conf.paths.src, '/app/layouts/layout.jade'), 'bower.json'], ['inject']);
 
+	gulp.watch([path.join(conf.paths.src, '/app/views/**/*.jade')], ['jadetohtml']);
+
 	gulp.watch([
 		path.join(conf.paths.src, '/app/**/*.css'),
 		path.join(conf.paths.src, '/app/**/*.styl')
