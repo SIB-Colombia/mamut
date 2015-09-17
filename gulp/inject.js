@@ -3,6 +3,7 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./config');
+var angularSort = require('gulp-angular-filesort');
 
 var $ = require('gulp-load-plugins')();
 
@@ -29,7 +30,7 @@ gulp.task('inject', ['scripts', 'styles', 'jadetohtml'], function () {
 
 	return gulp.src(path.join(conf.paths.src, '/app/layouts/layout.jade'))
 		.pipe($.inject(injectStyles, injectOptions))
-		.pipe($.inject(injectScripts, injectOptions))
+		.pipe($.inject(injectScripts, injectOptions).pipe(angularSort()))
 		.pipe(wiredep(_.extend({ignorePath: ['../../public']}, conf.wiredep)))
 		.pipe(gulp.dest(path.join(conf.paths.src, '/app/layouts/final')))
 		.pipe($.debug());

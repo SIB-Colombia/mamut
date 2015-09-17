@@ -2,7 +2,7 @@
 
 // create our angular app and inject ngAnimate and ui-router
 // =============================================================================
-angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.translate', 'ui.directives', 'ui.filters', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngFileUpload', 'angularModalService'])
+var formApp = angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.translate', 'ui.directives', 'ui.filters', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngFileUpload', 'angularModalService'])
 
 // configuring our routes
 // =============================================================================
@@ -155,253 +155,9 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 	};
 }])
 
-.controller('checkBoxController', ['$scope', '$http', function($scope, $http) {
-
-		// toggle selection for a given employee by name
-		$scope.toggleSelection = function toggleSelection(selection, name) {
-
-			var idx = selection.indexOf(name);
-			// is currently selected
-			if (idx > -1) {
-				selection.splice(idx, 1);
-			}
-			// is newly selected
-			else {
-				selection.push(name);
-			}
-		};
-
-		$scope.updateSelectionFeeding = function updateSelectionEvent(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.annualCycleAtomizedType.Event = element.name;
-		};
-
-		$scope.updateSelectionFeeding = function updateSelectionFeeding(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.feedingAtomizedType.type = element.name;
-		};
-
-		$scope.updateSelectionThropic = function updateSelectionThropic(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.thropic.strategy = element.name;
-		};
-
-		$scope.updateSelectionDispersalType = function updateSelectionDispersalType(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.formData.dispersal.dispersalAtomized.type = element.name;
-		};
-
-		$scope.updateSelectionStructureDispersed = function updateSelectionStructureDispersed(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.formData.dispersal.dispersalAtomized.structureDispersed = element.name;
-		};
-
-		$scope.updateSelectionOrigin = function updateSelectionOrigin(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.invasivenessAtomizedType.origin = element.name;
-		};
-
-		$scope.updateSelectionPresence = function updateSelectionPresence(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.invasivenessAtomizedType.presence = element.name;
-		};
-
-		$scope.updateSelectionPersistence = function updateSelectionPersistence(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.invasivenessAtomizedType.persistence = element.name;
-		};
-
-		$scope.updateSelectionDistribution = function updateSelectionDistribution(name) {
-			var idx = $scope.invasivenessAtomizedType.distribution.indexOf(name);
-			// is currently selected
-			if (idx > -1) {
-				$scope.invasivenessAtomizedType.distribution.splice(idx, 1);
-			}
-			// is newly selected
-			else {
-				$scope.invasivenessAtomizedType.distribution.push(name);
-			}
-		};
-
-		$scope.updateSelectionHarmful = function updateSelectionDistribution(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.invasivenessAtomizedType.harmful = element.name;
-		};
-
-		$scope.updateSelectionAbundance = function updateSelectionAbundance(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.invasivenessAtomizedType.abundance = element.name;
-		};
-		$scope.updateSelectionTrend = function updateSelectionTrend(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.invasivenessAtomizedType.trend = element.name;
-		};
-		$scope.updateSelectionRateOfSpread = function updateSelectionRateOfSpread(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.invasivenessAtomizedType.rateOfSpread = element.name;
-		};
-
-		$scope.updateSelectionRegulatoryListing = function updateSelectionRegulatoryListing(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.invasivenessAtomizedType.regulatoryListing = element.name;
-		};
-
-		$scope.updateSelectionLocalityType = function updateSelectionLocalityType(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.invasivenessAtomizedType.localityType = element.name;
-		};
-
-		$scope.updateSelectionLocationValue = function updateSelectionLocationValue(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.invasivenessAtomizedType.locationValue = element.name;
-		};
-		$scope.updateSelectionPublicationDatePrecision = function updateSelectionPublicationDatePrecision(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.invasivenessAtomizedType.publicationDatePrecision = element.name;
-		};
-
-		$scope.updateSelectionDistributionScope = function updateSelectionDistributionScope(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.distributionClass.distributionScope.type = element.name;
-		};
-
-		$scope.updateSelectionRegion = function updateSelectionRegion(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.populationBiologyAtomized.region = element.name;
-		};
-
-		$scope.updateSelectionThreatCategory = function updateSelectionThreatCategory(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.threatStatusClass.threatStatusAtomized.threatCategory = element.name;
-		};
-
-		$scope.updateSelectionAutority = function updateSelectionAutority(element) {
-			var idx = $scope.threatStatusClass.threatStatusAtomized.authority.indexOf(name);
-			if (idx > -1) {
-				$scope.threatStatusClass.threatStatusAtomized.authority.splice(idx, 1);
-			} else {
-				$scope.threatStatusClass.threatStatusAtomized.authority.push(name);
-			}
-		};
-		$scope.updateSelectionProtectionLegal = function updateSelectionProtectionLegal(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.legislationAtomizedType.protectionLegalStatus = element.name;
-		};
-		$scope.updateSelectionProtectionLegalStatus = function updateSelectionProtectionLegalStatus(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.legislationAtomizedType.status = element.name;
-		};
-		$scope.updateSelectionProtectionLegalType = function updateSelectionProtectionLegalType(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.legislationAtomizedType.type = element.name;
-		};
-		$scope.updateSelectionProtectionLegalNorm = function updateSelectionProtectionLegalNorm(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.legislationAtomizedType.norm = element.name;
-		};
-		$scope.updateSelectionPartUsedCategory = function updateSelectionPartUsedCategory(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.usesAtomizedType.partUsed = element.name;
-		};
-		$scope.updateSelectionUseTypeAtomized = function updateSelectionUseTypeAtomized(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.usesAtomizedType.useTypeAtomized = element.name;
-		};
-		$scope.updateSelectionManagementType = function updateSelectionManagementType(element, list) {
-			angular.forEach(list, function(item) {
-				item.checked = false;
-			});
-			element.checked = true;
-			$scope.managementAndConservationAtomizedType.type = element.name;
-		};
-		$scope.updateSelectionManagementAction = function updateSelectionManagementAction(element) {
-			var idx = $scope.managementAndConservationAtomizedType.actions.indexOf(name);
-			if (idx > -1) {
-				$scope.managementAndConservationAtomizedType.actions.splice(idx, 1);
-			} else {
-				$scope.managementAndConservationAtomizedType.actions.push(name);
-			}
-		};
-
-	}])
 	.controller('MeasurementCtrl', ['$scope', function($scope) {
 		$scope.$watch('lifeFormAtomized.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.lifeFormAtomized.measurementValue;
 				angular.forEach($scope.lifeForms, function(attr) {
 					if (attr.measurementtype === name) {
@@ -411,7 +167,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('lifeFormAtomized.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.lifeForms, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.measurementOrFact.measurementType = attr.measurementtype;
@@ -421,7 +177,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('lifeCycleAtomized.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.lifeCycleAtomized.measurementValue;
 				angular.forEach($scope.lifeCycles, function(attr) {
 					if (attr.measurementtype === name) {
@@ -431,7 +187,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('lifeCycleAtomized.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.lifeCycles, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.measurementOrFact.measurementType = attr.measurementtype;
@@ -441,7 +197,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('reproductionAtomized.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.reproductionAtomized.measurementValue;
 				angular.forEach($scope.reproductions, function(attr) {
 					if (attr.measurementtype === name) {
@@ -451,7 +207,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('reproductionAtomized.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.reproductions, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.measurementOrFact.measurementType = attr.measurementtype;
@@ -461,7 +217,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('dispersalAtomized.purpose.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.dispersalAtomized.purpose.measurementValue;
 				angular.forEach($scope.purposes, function(attr) {
 					if (attr.measurementtype === name) {
@@ -471,7 +227,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('dispersalAtomized.purpose.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.purposes, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.measurementOrFact.measurementType = attr.measurementtype;
@@ -482,7 +238,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 		});
 
 		$scope.$watch('formData.dispersal.dispersalAtomized.distance.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.formData.dispersal.dispersalAtomized.distance.measurementValue;
 				angular.forEach($scope.purposes, function(attr) {
 					if (attr.measurementtype === name) {
@@ -492,7 +248,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('formData.dispersal.dispersalAtomized.distance.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.purposes, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.formData.dispersal.dispersalAtomized.distance.measurementType = attr.measurementtype;
@@ -502,7 +258,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('formData.behavior.behaviorAtomized.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.formData.behavior.behaviorAtomized.measurementValue;
 				angular.forEach($scope.behaviors, function(attr) {
 					if (attr.measurementtype === name) {
@@ -512,7 +268,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('formData.behavior.behaviorAtomized.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.behaviors, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.formData.behavior.behaviorAtomized.measurementType = attr.measurementtype;
@@ -522,7 +278,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('molecularDataAtomizedType.measurementOrFact.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.molecularDataAtomizedType.measurementOrFact.measurementValue;
 				angular.forEach($scope.behaviors, function(attr) {
 					if (attr.measurementtype === name) {
@@ -532,7 +288,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('molecularDataAtomizedType.measurementOrFact.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.behaviors, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.molecularDataAtomizedType.measurementOrFact.measurementType = attr.measurementtype;
@@ -542,7 +298,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('ecologicalSignificanceAtomized.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.ecologicalSignificanceAtomized.measurementValue;
 				angular.forEach($scope.ecologicalSignificances, function(attr) {
 					if (attr.measurementtype === name) {
@@ -552,7 +308,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('ecologicalSignificanceAtomized.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.ecologicalSignificances, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.measurementOrFact.measurementType = attr.measurementtype;
@@ -562,7 +318,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('environmentalEnvelopeAtomized.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.environmentalEnvelopeAtomized.measurementValue;
 				angular.forEach($scope.environmentalEnvelopes, function(attr) {
 					if (attr.measurementtype === name) {
@@ -572,7 +328,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('environmentalEnvelopeAtomized.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.environmentalEnvelopes, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.measurementOrFact.measurementType = attr.measurementtype;
@@ -582,7 +338,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('habitatsAtomized.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.habitatsAtomized.measurementValue;
 				angular.forEach($scope.habitats, function(attr) {
 					if (attr.measurementtype === name) {
@@ -592,7 +348,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('habitatsAtomized.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.habitats, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.measurementOrFact.measurementType = attr.measurementtype;
@@ -602,7 +358,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('territoryAtomized.extentOfOccurrence.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.territoryAtomized.extentOfOccurrence.measurementValue;
 				angular.forEach($scope.extentOfOccurrence, function(attr) {
 					if (attr.measurementtype === name) {
@@ -612,7 +368,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('territoryAtomized.extentOfOccurrence.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.extentOfOccurrence, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.territory.territoryAtomized.extentOfOccurrence.measurementType = attr.measurementtype;
@@ -622,7 +378,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('territoryAtomized.areaOfOccupancy.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.territoryAtomized.areaOfOccupancy.measurementValue;
 				angular.forEach($scope.areaOfOccupancy, function(attr) {
 					if (attr.measurementtype === name) {
@@ -632,7 +388,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('territoryAtomized.areaOfOccupancy.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.areaOfOccupancy, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.measurementOrFact.measurementType = attr.measurementtype;
@@ -642,7 +398,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('directThreatsAtomized.measurementType', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.directThreatsAtomized.measurementValue;
 				angular.forEach($scope.directThreats, function(attr) {
 					if (attr.measurementtype === name) {
@@ -652,7 +408,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('directThreatsAtomized.measurementValue', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				angular.forEach($scope.directThreats, function(attr) {
 					if (attr.measurementvalue === name) {
 						$scope.directThreats.directThreatsAtomized.measurementType = attr.measurementtype;
@@ -666,7 +422,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 	}])
 	.controller('UbicacionCtrl', ['$scope', function($scope) {
 		$scope.$watch('distributionOpt2.country', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.distributionOpt2.stateProvince;
 				delete $scope.distributionOpt2.county;
 				angular.forEach($scope.ubicacion, function(attr) {
@@ -677,7 +433,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('distributionOpt2.stateProvince', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				delete $scope.distributionOpt2.county;
 				angular.forEach($scope.ubicacion, function(attr) {
 					angular.forEach(attr.departments, function(attr2) {
@@ -689,7 +445,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('invasivenessAtomizedType.countryCode', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				$scope.invasivenessAtomizedType.stateProvince = '';
 				$scope.invasivenessAtomizedType.county = '';
 				angular.forEach($scope.ubicacion, function(attr) {
@@ -700,7 +456,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('invasivenessAtomizedType.stateProvince', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				$scope.invasivenessAtomizedType.county = '';
 				angular.forEach($scope.ubicacion, function(attr) {
 					angular.forEach(attr.departments, function(attr2) {
@@ -712,7 +468,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('threatStatusClass.threatStatusAtomized.aplliesTo.country', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				$scope.threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince = '';
 				$scope.threatStatusClass.threatStatusAtomized.aplliesTo.county = '';
 				angular.forEach($scope.ubicacion, function(attr) {
@@ -723,7 +479,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				$scope.threatStatusClass.threatStatusAtomized.aplliesTo.county = '';
 				angular.forEach($scope.ubicacion, function(attr) {
 					angular.forEach(attr.departments, function(attr2) {
@@ -735,7 +491,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('legislationAtomizedType.aplliesTo.country', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				$scope.legislationAtomizedType.aplliesTo.stateProvince = '';
 				$scope.legislationAtomizedType.aplliesTo.county = '';
 				angular.forEach($scope.ubicacion, function(attr) {
@@ -746,7 +502,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('legislationAtomizedType.aplliesTo.stateProvince', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				$scope.legislationAtomizedType.aplliesTo.county = '';
 				angular.forEach($scope.ubicacion, function(attr) {
 					angular.forEach(attr.departments, function(attr2) {
@@ -759,7 +515,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 		});
 
 		$scope.$watch('associatedParty.country', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				$scope.associatedParty.state = '';
 				$scope.associatedParty.city = '';
 				angular.forEach($scope.ubicacion, function(attr) {
@@ -770,7 +526,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			}
 		});
 		$scope.$watch('associatedParty.state', function(name) {
-			if (name != undefined) {
+			if (name !== undefined) {
 				$scope.associatedParty.city = '';
 				angular.forEach($scope.ubicacion, function(attr) {
 					angular.forEach(attr.departments, function(attr2) {
@@ -802,152 +558,155 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			method: 'GET'
 		})
 		.done(function(things) {
-			if (things.lifeForms != undefined) {
+			if (things.lifeForms !== undefined) {
 				$scope.lifeForms = things.lifeForms;
 			}
-			if (things.lifeCycles != undefined) {
+			if (things.lifeCycles !== undefined) {
 				$scope.lifeCycles = things.lifeCycles;
 			}
-			if (things.reproductions != undefined) {
+			if (things.reproductions !== undefined) {
 				$scope.reproductions = things.reproductions;
 			}
-			if (things.event != undefined) {
+			if (things.event !== undefined) {
 				$scope.event = things.event;
 			}
-			if (things.primaryDietSource != undefined) {
+			if (things.primaryDietSource !== undefined) {
 				$scope.primaryDietSource = things.primaryDietSource;
 			}
-			if (things.strategies != undefined) {
+			if (things.strategies !== undefined) {
 				$scope.strategies = things.strategies;
 			}
-			if (things.purposes != undefined) {
+			if (things.purposes !== undefined) {
 				$scope.purposes = things.purposes;
 			}
-			if (things.dispersalType != undefined) {
+			if (things.dispersalType !== undefined) {
 				$scope.dispersalType = things.dispersalType;
 			}
-			if (things.structureDispersed != undefined) {
+			if (things.structureDispersed !== undefined) {
 				$scope.structureDispersed = things.structureDispersed;
 			}
-			if (things.distance != undefined) {
+			if (things.distance !== undefined) {
 				$scope.distance = things.distance;
 			}
-			if (things.behaviors != undefined) {
+			if (things.behaviors !== undefined) {
 				$scope.behaviors = things.behaviors;
 			}
-			if (things.interactionSpeciesType != undefined) {
+			if (things.interactionSpeciesType !== undefined) {
 				$scope.interactionSpeciesType = things.interactionSpeciesType;
 			}
-			if (things.molecularDatas != undefined) {
+			if (things.molecularDatas !== undefined) {
 				$scope.molecularDatas = things.molecularDatas;
 			}
-			if (things.migratoryCauses != undefined) {
+			if (things.migratoryCauses !== undefined) {
 				$scope.migratoryCauses = things.migratoryCauses;
 			}
-			if (things.migratoryPatterns != undefined) {
+			if (things.migratoryPatterns !== undefined) {
 				$scope.migratoryPatterns = things.migratoryPatterns;
 			}
-			if (things.ecologicalSignificances != undefined) {
+			if (things.ecologicalSignificances !== undefined) {
 				$scope.ecologicalSignificances = things.ecologicalSignificances;
 			}
-			if (things.environmentalEnvelopes != undefined) {
+			if (things.environmentalEnvelopes !== undefined) {
 				$scope.environmentalEnvelopes = things.environmentalEnvelopes;
 			}
-			if (things.origin != undefined) {
+			if (things.origin !== undefined) {
 				$scope.origin = things.origin;
 			}
-			if (things.presence != undefined) {
+			if (things.presence !== undefined) {
 				$scope.presence = things.presence;
 			}
-			if (things.persistence != undefined) {
+			if (things.persistence !== undefined) {
 				$scope.persistence = things.presistence;
 			}
-			if (things.distribution != undefined) {
+			if (things.distribution !== undefined) {
 				$scope.distribution = things.distribution;
 			}
-			if (things.harmful != undefined) {
+			if (things.harmful !== undefined) {
 				$scope.harmful = things.harmful;
 			}
-			if (things.abundance != undefined) {
+			if (things.abundance !== undefined) {
 				$scope.abundance = things.abundance;
 			}
-			if (things.trend != undefined) {
+			if (things.trend !== undefined) {
 				$scope.trend = things.trend;
 			}
-			if (things.rateOfSpread != undefined) {
+			if (things.rateOfSpread !== undefined) {
 				$scope.rateOfSpread = things.rateOfSpread;
 			}
-			if (things.regulatoryListing != undefined) {
+			if (things.regulatoryListing !== undefined) {
 				$scope.regulatoryListing = things.regulatoryListing;
 			}
-			if (things.localityType != undefined) {
+			if (things.localityType !== undefined) {
 				$scope.localityType = things.localityType;
 			}
-			if (things.locationStandard != undefined) {
+			if (things.locationStandard !== undefined) {
 				$scope.locationStandard = things.locationStandard;
 			}
-			if (things.publicationDatePrecision != undefined) {
+			if (things.publicationDatePrecision !== undefined) {
 				$scope.publicationDatePrecision = things.publicationDatePrecision;
 			}
-			if (things.habitats != undefined) {
+			if (things.habitats !== undefined) {
 				$scope.habitats = things.habitats;
 			}
-			if (things.distributionScope != undefined) {
+			if (things.distributionScope !== undefined) {
 				$scope.distributionScope = things.distributionScope;
 			}
-			if (things.extentOfOccurrence != undefined) {
+			if (things.extentOfOccurrence !== undefined) {
 				$scope.extentOfOccurrence = things.extentOfOccurrence;
 			}
-			if (things.areaOfOccupancy != undefined) {
+			if (things.areaOfOccupancy !== undefined) {
 				$scope.areaOfOccupancy = things.areaOfOccupancy;
 			}
-			if (things.region != undefined) {
+			if (things.region !== undefined) {
 				$scope.region = things.region;
 			}
-			if (things.mortalityRate != undefined) {
+			if (things.mortalityRate !== undefined) {
 				$scope.mortalityRate = things.mortalityRate;
 			}
-			if (things.birthRate != undefined) {
+			if (things.birthRate !== undefined) {
 				$scope.birthRate = things.birthRate;
 			}
-			if (things.avaregeDensity != undefined) {
+			if (things.avaregeDensity !== undefined) {
 				$scope.avaregeDensity = things.avaregeDensity;
 			}
-			if (things.populationGrowthRate != undefined) {
+			if (things.populationGrowthRate !== undefined) {
 				$scope.populationGrowthRate = things.populationGrowthRate;
 			}
-			if (things.threatCategory != undefined) {
+			if (things.threatCategory !== undefined) {
 				$scope.threatCategory = things.threatCategory;
 			}
-			if (things.authority != undefined) {
+			if (things.authority !== undefined) {
 				$scope.authority = things.authority;
 			}
-			if (things.directThreats != undefined) {
+			if (things.directThreats !== undefined) {
 				$scope.directThreats = things.directThreats;
 			}
-			if (things.legislationProtection != undefined) {
+			if (things.legislationProtection !== undefined) {
 				$scope.legislationProtection = things.legislationProtection;
 			}
-			if (things.legislationStatus != undefined) {
+			if (things.legislationStatus !== undefined) {
 				$scope.legislationStatus = things.legislationStatus;
 			}
-			if (things.legislationType != undefined) {
+			if (things.legislationType !== undefined) {
 				$scope.legislationType = things.legislationType;
 			}
-			if (things.legislationNorm != undefined) {
+			if (things.legislationNorm !== undefined) {
 				$scope.legislationNorm = things.legislationNorm;
 			}
-			if (things.partUsed != undefined) {
+			if (things.partUsed !== undefined) {
 				$scope.partUsed = things.partUsed;
 			}
-			if (things.useTypeAtomized != undefined) {
+			if (things.useTypeAtomized !== undefined) {
 				$scope.useTypeAtomized = things.useTypeAtomized;
 			}
-			if (things.managementType != undefined) {
+			if (things.managementType !== undefined) {
 				$scope.managementType = things.managementType;
 			}
-			if (things.managementAction != undefined) {
+			if (things.managementAction !== undefined) {
 				$scope.managementAction = things.managementAction;
+			}
+			if (things.reference_type !== undefined) {
+				$scope.reference_type = things.reference_type;
 			}
 
 		})
@@ -1149,48 +908,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 			ancillaryData: []
 		}
 	};
-	//Synonyms
-	$scope.synonmy = {
-		rank: '',
-		canonicalName: '',
-		canonicalAuthorship: '',
-		publishedln: {
-			identifier: '',
-			datatype: '',
-			source: ''
-		},
-		synonymStatus: '',
-		ancillaryData: []
-	};
-	$scope.formData.synonymsAtomized = [];
-	//Common Names
-	$scope.commonName = {
-		name: '',
-		language: [],
-		usedIn: '',
-		usedBy: '',
-		ancillaryData: []
-	};
-	$scope.formData.commonNameAtomized = [];
-	//Hierarchy
-	$scope.hierarchy = {
-		classification: '',
-		recommended: '',
-		kingdom: '',
-		phylum: '',
-		classHierarchy: '',
-		order: '',
-		family: '',
-		genus: '',
-		subGenus: '',
-		taxonRank: '',
-		specificEpithet: '',
-		infraspecificEpithet: '',
-		higherClassification: '',
-		parentTaxon: '',
-		ancillaryData: []
-	};
-	$scope.formData.hierarchy = [];
+
 	//Uses
 	$scope.formData.uses = [];
 	//Identification Keys
@@ -1794,9 +1512,36 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 	};
 	//Reference
 	$scope.reference = {
-		identifier: '',
-		datatype: '',
-		source: ''
+		id: '',
+		profile_id:'',
+		group_id:'',
+		created:'',
+		last_modified:'',
+		identifiers:[],
+		abstract:'',
+		tags:'',
+		type: '',
+		source: '',
+		title:'',
+		authors:[],
+		year:'',
+		volume:'',
+		issue:'',
+		pages:'',
+		series:'',
+		chapter:'',
+		websites:'',
+		accessed:'',
+		publisher:'',
+		city:'',
+		edition:'',
+		institution:'',
+		editors:[],
+		keywors:[],
+		doi:'',
+		isbn:'',
+		issn:'',
+		link:''
 	};
 	$scope.formData.references = [];
 	//AncillaryData
@@ -1897,27 +1642,27 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 						$scope.formData.commonNameAtomized = [];
 						$scope.formData.hierarchy = [];
 						//taxonRecordName
-						$scope.formData.taxonRecordName.scientificName.simple = (data.results[0].scientificName != undefined) ? data.results[0].scientificName : '';
-						$scope.formData.taxonRecordName.scientificName.rank = (data.results[0].rank != undefined) ? data.results[0].rank : '';
-						$scope.formData.taxonRecordName.scientificName.canonicalName.simple = (data.results[0].canonicalName != undefined) ? data.results[0].canonicalName : '';
-						$scope.formData.taxonRecordName.scientificName.canonicalAuthorship.simple = (data.results[0].authorship != undefined) ? data.results[0].authorship : '';
-						$scope.formData.taxonRecordName.scientificName.publishedln.simple = (data.results[0].publishedIn != undefined) ? data.results[0].publishedIn : '';
+						$scope.formData.taxonRecordName.scientificName.simple = (data.results[0].scientificName !== undefined) ? data.results[0].scientificName : '';
+						$scope.formData.taxonRecordName.scientificName.rank = (data.results[0].rank !== undefined) ? data.results[0].rank : '';
+						$scope.formData.taxonRecordName.scientificName.canonicalName.simple = (data.results[0].canonicalName !== undefined) ? data.results[0].canonicalName : '';
+						$scope.formData.taxonRecordName.scientificName.canonicalAuthorship.simple = (data.results[0].authorship !== undefined) ? data.results[0].authorship : '';
+						$scope.formData.taxonRecordName.scientificName.publishedln.simple = (data.results[0].publishedIn !== undefined) ? data.results[0].publishedIn : '';
 						//hierarchy
 						$scope.formData.hierarchy.push({
 							classification: '',
 							recommended: '',
-							kingdom: (data.results[0].kingdom != undefined) ? data.results[0].kingdom : '',
-							phylum: (data.results[0].phylum != undefined) ? data.results[0].phylum : '',
-							classHierarchy: (data.results[0].class != undefined) ? data.results[0].class : '',
-							order: (data.results[0].order != undefined) ? data.results[0].order : '',
-							family: (data.results[0].family != undefined) ? data.results[0].family : '',
-							genus: (data.results[0].genus != undefined) ? data.results[0].genus : '',
+							kingdom: (data.results[0].kingdom !== undefined) ? data.results[0].kingdom : '',
+							phylum: (data.results[0].phylum !== undefined) ? data.results[0].phylum : '',
+							classHierarchy: (data.results[0].class !== undefined) ? data.results[0].class : '',
+							order: (data.results[0].order !== undefined) ? data.results[0].order : '',
+							family: (data.results[0].family !== undefined) ? data.results[0].family : '',
+							genus: (data.results[0].genus !== undefined) ? data.results[0].genus : '',
 							subGenus: '',
-							taxonRank: (data.results[0].rank != undefined) ? data.results[0].rank : '',
+							taxonRank: (data.results[0].rank !== undefined) ? data.results[0].rank : '',
 							specificEpithet: '',
 							infraspecificEpithet: '',
 							higherClassification: '',
-							parentTaxon: (data.results[0].parent != undefined) ? data.results[0].parent : '',
+							parentTaxon: (data.results[0].parent !== undefined) ? data.results[0].parent : '',
 							ancillaryData: [{
 								identifier: '',
 								dataType: '',
@@ -1941,7 +1686,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 								rigthsHolder: '',
 								bibliographicCitation: '',
 								audience: [],
-								source: (data.results[0].accordingTo != undefined) ? data.results[0].accordingTo : '',
+								source: (data.results[0].accordingTo !== undefined) ? data.results[0].accordingTo : '',
 								subject: [],
 								description: '',
 								mediaURL: [],
@@ -1980,14 +1725,13 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 								keyValue = '';
 						};
 						//synonyms and commonNames
-						if (keyValue != '') {
+						if (keyValue !== '') {
 							$.ajax({
 								url: 'http://api.gbif.org/v1/species/' + keyValue + '/synonyms',
 								dataType: 'JSONP',
 								jsonpCallback: 'callback',
 								type: 'GET',
 								success: function(data_1) {
-									console.log(data_1.results.length);
 									if (data_1.results.length > 0) {
 										$scope.$apply(function() {
 											for (var i = 0; i < data_1.results.length; i++) {
@@ -1998,10 +1742,10 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 															isAnamorphic: '',
 															nomenclaturalCode: ''
 														},
-														simple: (data_1.results[i].scientificName != undefined) ? data_1.results[i].scientificName : '',
-														rank: (data_1.results[i].rank != undefined) ? data_1.results[i].rank : '',
+														simple: (data_1.results[i].scientificName !== undefined) ? data_1.results[i].scientificName : '',
+														rank: (data_1.results[i].rank !== undefined) ? data_1.results[i].rank : '',
 														canonicalName: {
-															simple: (data_1.results[i].canonicalName != undefined) ? data_1.results[i].canonicalName : '',
+															simple: (data_1.results[i].canonicalName !== undefined) ? data_1.results[i].canonicalName : '',
 															uninomial: '',
 															genus: {
 																ref: '',
@@ -2014,7 +1758,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 															}
 														},
 														canonicalAuthorship: {
-															simple: (data_1.results[i].authorship != undefined) ? data_1.results[i].authorship : '',
+															simple: (data_1.results[i].authorship !== undefined) ? data_1.results[i].authorship : '',
 															authorship: {
 																simple: '',
 																year: [],
@@ -2032,7 +1776,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 														publishedln: {
 															identifier: '',
 															datatype: '',
-															source: (data_1.results[i].publishedIn != undefined) ? data_1.results[i].publishedIn : ''
+															source: (data_1.results[i].publishedIn !== undefined) ? data_1.results[i].publishedIn : ''
 														},
 														year: '',
 														microReference: '',
@@ -2160,7 +1904,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 															anyTwo: ''
 														}
 													},
-													synonymStatus: (data_1.results[i].nomenclaturalStatus != undefined && data_1.results[i].nomenclaturalStatus[0] != undefined) ? data_1.results[i].nomenclaturalStatus : '',
+													synonymStatus: (data_1.results[i].nomenclaturalStatus !== undefined && data_1.results[i].nomenclaturalStatus[0] !== undefined) ? data_1.results[i].nomenclaturalStatus : '',
 													ancillaryData: []
 												});
 											}
@@ -2183,12 +1927,9 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 										$scope.$apply(function() {
 											var langName = '';
 											for (var i = 0; i < data_1.results.length; i++) {
-												if (data_1.results[i].language != undefined) {
-													langName = $scope.findLanguageName(data_1.results[i].language);
-												}
 												$scope.formData.commonNameAtomized.push({
-													name: (data_1.results[i].vernacularName != undefined) ? data_1.results[i].vernacularName : '',
-													language: langName,
+													name: (data_1.results[i].vernacularName !== undefined) ? data_1.results[i].vernacularName : '',
+													language: (data_1.results[i].language !== undefined) ? $scope.findLanguageName(data_1.results[i].language) : '',
 													usedIn: {
 														distributionScope: {
 															type: '',
@@ -2199,7 +1940,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 															endDate: ''
 														},
 														distributionAtomizedBranch: [],
-														distributionUnstructured: (data_1.results[i].area != undefined) ? data_1.results[i].area : '',
+														distributionUnstructured: (data_1.results[i].area !== undefined) ? data_1.results[i].area : '',
 														ancillaryData: []
 													},
 													usedBy: '',
@@ -2226,7 +1967,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 	};
 
 	$scope.findLanguageName = function(languageIso) {
-		if (languageIso != undefined && languageIso != '') {
+		if (languageIso !== undefined && languageIso !== '') {
 			for (var d = 0, len = $scope.idiomas.length; d < len; d += 1) {
 				if ($scope.idiomas[d].ISO === languageIso) {
 					return $scope.idiomas[d].Idioma;
@@ -2235,263 +1976,14 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 		}
 	};
 
-	//Synonyms
-	$scope.addSynonymsAtomized = function(synonymsAtomized, synonmy) {
-		if (synonmy.canonicalName != '') {
-			synonymsAtomized.push({
-				synonymName: {
-					attributes: {
-						id: '',
-						isAnamorphic: '',
-						nomenclaturalCode: ''
-					},
-					simple: '',
-					rank: synonmy.rank,
-					canonicalName: {
-						simple: synonmy.canonicalName,
-						uninomial: '',
-						genus: {
-							ref: '',
-							linkType: ''
-						},
-						epithet: {
-							infragenericEpithet: '',
-							specificEpithet: '',
-							infraspecificEpithet: ''
-						}
-					},
-					canonicalAuthorship: {
-						simple: synonmy.canonicalAuthorship,
-						authorship: {
-							simple: '',
-							year: [],
-							authors: []
-						}
-					},
-					specialAuthorship: {
-						basionymAuthorship: {
-							simple: '',
-							year: [],
-							authors: []
-						},
-						combinationAuthorship: []
-					},
-					publishedln: synonmy.publishedln,
-					year: '',
-					microReference: '',
-					typificacion: {
-						simple: '',
-						typeVoucherEntity: {
-							voucherReference: [],
-							lectotypePublicationVoucher: [],
-							lectotypeMicroReferenceVoucher: [],
-							typeOfType: ''
-						},
-						typeNameEntity: {
-							nameReference: {
-								identifier: '',
-								datatype: '',
-								source: ''
-							},
-							lectotypePublication: {
-								identifier: '',
-								datatype: '',
-								source: ''
-							},
-							lectotypeMicroReference: {
-								identifier: '',
-								datatype: '',
-								source: ''
-							}
-						}
-					},
-					spellingCorrentionOf: [],
-					basionym: {
-						ruleConsidered: '',
-						note: '',
-						reletedName: {
-							identifier: '',
-							datatype: '',
-							source: ''
-						},
-						publishedln: {
-							identifier: '',
-							datatype: '',
-							source: ''
-						},
-						microReference: ''
-					},
-					basedOn: {
-						ruleConsidered: '',
-						note: '',
-						reletedName: {
-							identifier: '',
-							datatype: '',
-							source: ''
-						},
-						publishedln: {
-							identifier: '',
-							datatype: '',
-							source: ''
-						},
-						microReference: ''
-					},
-					conservedAgainst: [],
-					laterHomonymOf: {
-						ruleConsidered: '',
-						note: '',
-						reletedName: {
-							identifier: '',
-							datatype: '',
-							source: ''
-						},
-						publishedln: {
-							identifier: '',
-							datatype: '',
-							source: ''
-						},
-						microReference: ''
-					},
-					sanctioned: {
-						ruleConsidered: '',
-						note: '',
-						reletedName: {
-							identifier: '',
-							datatype: '',
-							source: ''
-						},
-						publishedln: {
-							identifier: '',
-							datatype: '',
-							source: ''
-						},
-						microReference: ''
-					},
-					replacementNameFor: {
-						ruleConsidered: '',
-						note: '',
-						reletedName: {
-							identifier: '',
-							datatype: '',
-							source: ''
-						},
-						publishedln: {
-							identifier: '',
-							datatype: '',
-							source: ''
-						},
-						microReference: ''
-					},
-					publicationStatus: {
-						ruleConsidered: '',
-						note: '',
-						reletedName: {
-							identifier: '',
-							datatype: '',
-							source: ''
-						},
-						publishedln: {
-							identifier: '',
-							datatype: '',
-							source: ''
-						},
-						microReference: ''
-					},
-					providerLink: '',
-					providerSpecificData: {
-						anyOne: [],
-						anyTwo: ''
-					}
-				},
-				synonymStatus: synonmy.synonymStatus,
-				ancillaryData: synonmy.ancillaryData
-			});
-			$scope.synonmy = {
-				rank: '',
-				canonicalName: '',
-				canonicalAuthorship: '',
-				publishedln: '',
-				synonymStatus: '',
-				ancillaryData: []
-			};
-		}
-	};
+	
 
-	$scope.removeSynonymsAtomized = function() {
-		var lastItem = $scope.formData.synonymsAtomized.length - 1;
-		$scope.formData.synonymsAtomized.splice(lastItem);
-	};
 
-	//Common names
-	$scope.addCommonNamesAtomized = function(commonNameAtomized, commonName) {
-		if (commonName.name != '') {
-			commonNameAtomized.splice(0, 0, {
-				name: commonName.name,
-				language: commonName.language,
-				usedIn: {
-					distributionScope: {
-						type: '',
-						ancillaryData: []
-					},
-					temporalCoverage: {
-						startDate: '',
-						endDate: ''
-					},
-					distributionAtomizedBranch: [],
-					distributionUnstructured: commonName.usedIn,
-					ancillaryData: []
-				},
-				usedBy: commonName.usedBy,
-				ancillaryData: commonName.ancillaryData
-			});
-			$scope.commonName = {
-				name: '',
-				language: [],
-				usedIn: '',
-				usedBy: '',
-				ancillaryData: []
-			};
-		}
-	};
-
-	$scope.removeCommonNamesAtomized = function() {
-		var lastItem = $scope.formData.commonNameAtomized.length - 1;
-		$scope.formData.commonNameAtomized.splice(lastItem);
-	};
-
-	//Hierarchy
-	$scope.addHierarchy = function(hierarchy, hier) {
-		if (hier.kingdom != '') {
-			hierarchy.push(hier);
-			$scope.hierarchy = {
-				classification: '',
-				recommended: '',
-				kingdom: '',
-				phylum: '',
-				classHierarchy: '',
-				order: '',
-				family: '',
-				genus: '',
-				subGenus: '',
-				taxonRank: '',
-				specificEpithet: '',
-				infraspecificEpithet: '',
-				higherClassification: '',
-				parentTaxon: '',
-				ancillaryData: []
-			};
-		}
-	};
-
-	$scope.removeHierarchy = function() {
-		var lastItem = $scope.formData.hierarchy.length - 1;
-		$scope.formData.hierarchy.splice(lastItem);
-	};
 
 	//MeasuremenetOrFact
 	$scope.addMeasurementOrFactVector = function(measurementOrFact, measurement, model) {
-		if (measurement != undefined) {
-			if (measurement.measurementValue != '') {
+		if (measurement !== undefined) {
+			if (measurement.measurementValue !== '') {
 				measurementOrFact.push(measurement);
 				$scope.measurementOrFact = {
 					measurementID: '',
@@ -2510,8 +2002,8 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 		}
 	};
 	$scope.addMeasurementOrFact = function(measurementOrFact, measurement) {
-		if (measurement != undefined) {
-			if (measurement.measurementValue != '') {
+		if (measurement !== undefined) {
+			if (measurement.measurementValue !== '') {
 				measurementOrFact = measurement;
 				$scope.measurementOrFact = {
 					measurementID: '',
@@ -2532,7 +2024,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 
 	//Annual Cycle
 	$scope.addAnnualCycleAtomizedType = function(annualCycleAtomizedType, annualCycle) {
-		if (annualCycle.Event != '') {
+		if (annualCycle.Event !== '') {
 			annualCycleAtomizedType.push(annualCycle);
 			$scope.annualCycleAtomizedType = {
 				Event: '',
@@ -2545,7 +2037,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 
 	//Feeding
 	$scope.addFeedingAtomizedType = function(feedingAtomizedType, feeding) {
-		if (feeding.type != '') {
+		if (feeding.type !== '') {
 			feedingAtomizedType.push(feeding);
 			$scope.feedingAtomizedType = {
 				type: '',
@@ -2555,7 +2047,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 		}
 	};
 	$scope.addThropic = function(thropics, thropic) {
-		if (thropic != '') {
+		if (thropic !== '') {
 			thropics.push(thropic);
 			$scope.thropic = {
 				strategy: '',
@@ -2566,7 +2058,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 
 	//Interactions
 	$scope.addInteractionAtomizedType = function(interactionAtomizedType, interaction) {
-		if (interaction.interactionSpecies != '') {
+		if (interaction.interactionSpecies !== '') {
 			interactionAtomizedType.push(interaction);
 			$scope.interactionsAtomizedType = {
 				interactionSpecies: '',
@@ -2579,7 +2071,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 
 	//Molecular Data
 	$scope.addMolecularDataAtomizedType = function(molecularDataAtomizedType, molecular) {
-		if (molecular.measurementOrFact.measurementType != '') {
+		if (molecular.measurementOrFact.measurementType !== '') {
 			molecularDataAtomizedType.push(molecular);
 			$scope.molecularDataAtomizedType = {
 				measurementOrFact: {
@@ -2603,7 +2095,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 
 	//Endemic
 	$scope.addEndemic = function(endemicAtomized, endemic) {
-		if (endemic.endemicTo != '') {
+		if (endemic.endemicTo !== '') {
 			endemicAtomized.push(endemic);
 			$scope.endemicAtomizedType = {
 				endemicTo: [],
@@ -2614,14 +2106,14 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 	};
 
 	$scope.addEndemicTo = function(endemicAtomized, endemicTo) {
-		if (endemicTo != '') {
+		if (endemicTo !== '') {
 			endemicAtomized.push(endemicTo);
 			$scope.endemicTo = '';
 		}
 	};
 
 	$scope.addPopulationBiology = function(populationBiologyAtomized) {
-		if (populationBiologyAtomized.region != '') {
+		if (populationBiologyAtomized.region !== '') {
 			$scope.formData.populationBiology.populationBiologyAtomized.push(populationBiologyAtomized);
 			$scope.populationBiologyAtomized = {
 				region: '',
@@ -2836,7 +2328,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 	};
 
 	$scope.addThreatStatusClass = function(threatStatusClass) {
-		if (threatStatusClass.threatStatusAtomized.threatCategory != '') {
+		if (threatStatusClass.threatStatusAtomized.threatCategory !== '') {
 			$scope.formData.threatStatus.push(threatStatusClass);
 			$scope.threatStatusClass = {
 				threatStatusAtomized: {
@@ -2858,7 +2350,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 	};
 
 	$scope.addLegislationAtomized = function(legislationAtomizedType) {
-		if (legislationAtomizedType.legislationName != '') {
+		if (legislationAtomizedType.legislationName !== '') {
 			$scope.formData.legislation.legislationAtomized.push(legislationAtomizedType);
 			$scope.legislationAtomizedType = {
 				legislationName: '',
@@ -2894,7 +2386,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 
 	//Ancillary Data
 	$scope.addAncillaryData = function(ancillaryDataList, ancillary) {
-		if (ancillary.license != '') {
+		if (ancillary.license !== '') {
 			ancillaryDataList.push(ancillary);
 			$scope.ancillaryData = {
 				identifier: '',
@@ -2937,17 +2429,6 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 		ancillaryDataList.splice(index, 1);
 	};
 
-	//Reference
-	$scope.addReference = function(references, reference) {
-		references.push(reference);
-		$scope.formData.references.push(reference);
-		$scope.reference = {
-			identifier: '',
-			datatype: '',
-			source: ''
-		};
-	};
-
 	$scope.addAgent = function(agent) {
 		if (agent == undefined) {
 			agent = [];
@@ -2967,7 +2448,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 
 	//Distribution
 	$scope.addDistributionOpt2 = function(distribution, opt2) {
-		if (opt2.country != undefined) {
+		if (opt2.country !== undefined) {
 			distribution.push(opt2);
 			$scope.distributionOpt2 = {
 				country: '',
@@ -3092,7 +2573,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 
 	//Get linces info for reference
 	$scope.getInfoLicence = function(url, ancillary) {
-		if (url != undefined) {
+		if (url !== undefined) {
 			url_parts = url.split('/');
 			if (url.indexOf('www.flickr.com') > -1) {
 				var photo_id = url_parts[5];
@@ -3134,7 +2615,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
 							.then(function(res) {
 								data_1 = res.data.replace('jsonFlickrApi(', '').replace(')', '').replace(/\n/g, '');
 								var objetoJSONFinal_1 = JSON.parse(data_1);
-								if (typeof objetoJSONFinal_1.sizes.size[5].source != 'undefined') {
+								if (typeof objetoJSONFinal_1.sizes.size[5].source !== 'undefined') {
 									$scope.ancillaryData.source = (objetoJSONFinal_1.sizes.size[5].source).replace(/'/g, "\''");
 									$scope.imageurl = (objetoJSONFinal_1.sizes.size[5].source).replace(/'/g, "\''");
 								}

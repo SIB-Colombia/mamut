@@ -7,73 +7,67 @@ div(ng-controller='CollapseDemoCtrl')
 			button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed = !isCollapsed')
 				span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true')
 		.panel-body
-			table
-				.table.table-striped
-					thead
-						tr
-							th Classification
-							th Delete
-					
-					tbody
-						tr(ng-repeat='hierarchy in formData.hierarchy')
-							td
-								.parrafo-pegado
-									div(ng-show='hierarchy.classification')
-										div classification :{{hierarchy.classification}}
-									div(ng-show='hierarchy.recommended')
-										div recommended :{{hierarchy.recommended}}
-									div(ng-show='hierarchy.kingdom')
-										div
-											p(translate='') simplePliCTerm.name.kingdom
-											| : {{hierarchy.kingdom}}
-									div(ng-show='hierarchy.phylum')
-										div
-											p(translate='') simplePliCTerm.name.phylum
-											| : {{hierarchy.phylum}}
-									div(ng-show='hierarchy.classHierarchy')
-										div
-											p(translate='') simplePliCTerm.name.class
-											| : {{hierarchy.classHierarchy}}
-									div(ng-show='hierarchy.order')
-										div
-											p(translate='') simplePliCTerm.name.order
-											| :{{hierarchy.order}}
-									div(ng-show='hierarchy.family')
-										div
-											p(translate='') simplePliCTerm.name.family
-											| :{{hierarchy.family}}
-									div(ng-show='hierarchy.genus')
-										div
-											p(translate='') simplePliCTerm.name.genus
-											| :{{hierarchy.genus}}
-									div(ng-show='hierarchy.subGenus')
-										div
-											p(translate='') simplePliCTerm.name.subgenus
-											| :{{hierarchy.subGenus}}
-									//
-										<div ng-show="hierarchy.taxonRank">
-										<div>Categoría del taxón :{{hierarchy.taxonRank}}</div>
-										</div>
-									div(ng-show='hierarchy.specificEpithet')
-										div
-											p(translate='') simplePliCTerm.name.specificEpithet
-											| :{{hierarchy.specificEpithet}}
-									div(ng-show='hierarchy.infraspecificEpithet')
-										div
-											p(translate='') simplePliCTerm.name.infraSpecificEpithet
-											| :{{hierarchy.infraspecificEpithet}}
-									div(ng-show='hierarchy.higherClassification')
-										div
-											p(translate='') simplePliCTerm.name.higherClassification
-											| :{{hierarchy.higherClassification}}
-									//
-										<div ng-show="hierarchy.parentTaxon">
-										<div>parentTaxon :{{hierarchy.parentTaxon}}</div>
-										</div>
-									div(ng-show='hierarchy.ancillaryData[0].source')
-										div Fuente :{{hierarchy.ancillaryData[0].source}}
-							td
-								button.btn(ng-click='deleted()') Elimiar
+			table.table.table-striped.table-striped
+				tbody
+					tr(ng-repeat='hierarchy in formData.hierarchy track by $index')
+						td
+							.parrafo-pegado
+								div(ng-show='hierarchy.classification')
+									div classification :{{hierarchy.classification}}
+								div(ng-show='hierarchy.recommended')
+									div recommended :{{hierarchy.recommended}}
+								div(ng-show='hierarchy.kingdom')
+									div
+										p(translate='') simplePliCTerm.name.kingdom
+										| : {{hierarchy.kingdom}}
+								div(ng-show='hierarchy.phylum')
+									div
+										p(translate='') simplePliCTerm.name.phylum
+										| : {{hierarchy.phylum}}
+								div(ng-show='hierarchy.classHierarchy')
+									div
+										p(translate='') simplePliCTerm.name.class
+										| : {{hierarchy.classHierarchy}}
+								div(ng-show='hierarchy.order')
+									div
+										p(translate='') simplePliCTerm.name.order
+										| :{{hierarchy.order}}
+								div(ng-show='hierarchy.family')
+									div
+										p(translate='') simplePliCTerm.name.family
+										| :{{hierarchy.family}}
+								div(ng-show='hierarchy.genus')
+									div
+										p(translate='') simplePliCTerm.name.genus
+										| :{{hierarchy.genus}}
+								div(ng-show='hierarchy.subGenus')
+									div
+										p(translate='') simplePliCTerm.name.subgenus
+										| :{{hierarchy.subGenus}}
+								//
+									<div ng-show="hierarchy.taxonRank">
+									<div>Categoría del taxón :{{hierarchy.taxonRank}}</div>
+									</div>
+								div(ng-show='hierarchy.specificEpithet')
+									div
+										p(translate='') simplePliCTerm.name.specificEpithet
+										| :{{hierarchy.specificEpithet}}
+								div(ng-show='hierarchy.infraspecificEpithet')
+									div
+										p(translate='') simplePliCTerm.name.infraSpecificEpithet
+										| :{{hierarchy.infraspecificEpithet}}
+								div(ng-show='hierarchy.higherClassification')
+									div
+										p(translate='') simplePliCTerm.name.higherClassification
+										| :{{hierarchy.higherClassification}}
+								//
+									<div ng-show="hierarchy.parentTaxon">
+									<div>parentTaxon :{{hierarchy.parentTaxon}}</div>
+									</div>
+								div(ng-show='hierarchy.ancillaryData[0].source')
+									div Fuente :{{hierarchy.ancillaryData[0].source}}
+						td
+							button.btn(ng-click='removeHierarchy($index)') Eliminar
 			div(collapse='isCollapsed')
 				hr
 				.form-group
