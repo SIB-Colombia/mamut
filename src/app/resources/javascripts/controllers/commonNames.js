@@ -1,6 +1,8 @@
 'use strict';
 
-formApp.controller("commonNameController", function($scope){
+var commonNameModule = angular.module('commonNameModule',[]);
+
+commonNameModule.controller("commonNameController", function($scope){
 	$scope.commonName = {
 		name: '',
 		language: [],

@@ -1,6 +1,8 @@
 'use strict';
 
-formApp.controller("synonmyController", function($scope, referenceFactory, ancillaryDataFactory){
+var synonmyModule = angular.module('synonmyModule',['referenceModule','ancillaryModule']);
+
+synonmyModule.controller("synonmyController", function($scope, referenceFactory, ancillaryDataFactory){
 	$scope.synonmy = {
 		rank: '',
 		canonicalName: '',
@@ -16,10 +18,10 @@ formApp.controller("synonmyController", function($scope, referenceFactory, ancil
 
 	$scope.formData.synonymsAtomized = [];
 
-	$scope.reference = new referenceFactory();
+	$scope.reference = new ReferenceFactory();
 
 	//Ancillary
-	$scope.ancillaryData = new ancillaryDataFactory();
+	$scope.ancillaryData = new AncillaryDataFactory();
 
 	//ADD
 	$scope.addSynonymsAtomized = function(synonymsAtomized, synonmy) {

@@ -2,7 +2,7 @@
 
 // create our angular app and inject ngAnimate and ui-router
 // =============================================================================
-var formApp = angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.translate', 'ui.directives', 'ui.filters', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngFileUpload', 'angularModalService'])
+var formApp = angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.translate', 'ui.directives', 'ui.filters', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngFileUpload', 'editor.controllers'])
 
 // configuring our routes
 // =============================================================================

@@ -1,6 +1,8 @@
 'use strict';
 
-formApp.factory('ancillaryDataFactory', function(){
+var ancillaryModule = angular.module('ancillaryModule',[]);
+
+ancillaryModule.factory('AncillaryDataFactory', function(){
 	var AncillaryData = function (){
 		this.identifier='';
 		this.dataType='';

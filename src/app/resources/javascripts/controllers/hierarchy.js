@@ -1,6 +1,8 @@
 'use strict';
 
-formApp.controller("hierarchyController", function($scope){	
+var hierarchyModule = angular.module('hierarchyModule',[]);
+
+hierarchyModule.controller("hierarchyController", function($scope){	
 	$scope.hierarchy = {
 		classification: '',
 		recommended: '',
