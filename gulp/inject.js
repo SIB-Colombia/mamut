@@ -3,7 +3,6 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./config');
-var angularSort = require('gulp-angular-filesort');
 
 var $ = require('gulp-load-plugins')();
 
@@ -21,7 +20,8 @@ gulp.task('inject', ['scripts', 'styles', 'jadetohtml'], function () {
 		path.join('!' + conf.paths.src, '/public/javascripts/final/**/*.js'),
 		path.join('!' + conf.paths.src, '/public/**/*.spec.js'),
 		path.join('!' + conf.paths.src, '/public/**/*.mock.js')
-	]);
+	])
+	.pipe($.angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
 
 	var injectOptions = {
 		ignorePath: [conf.paths.tmp, path.join(conf.paths.src, '/public')],
@@ -30,8 +30,7 @@ gulp.task('inject', ['scripts', 'styles', 'jadetohtml'], function () {
 
 	return gulp.src(path.join(conf.paths.src, '/app/layouts/layout.jade'))
 		.pipe($.inject(injectStyles, injectOptions))
-		.pipe($.inject(injectScripts, injectOptions).pipe(angularSort()))
+		.pipe($.inject(injectScripts, injectOptions))
 		.pipe(wiredep(_.extend({ignorePath: ['../../public']}, conf.wiredep)))
-		.pipe(gulp.dest(path.join(conf.paths.src, '/app/layouts/final')))
-		.pipe($.debug());
+		.pipe(gulp.dest(path.join(conf.paths.src, '/app/layouts/final')));
 });

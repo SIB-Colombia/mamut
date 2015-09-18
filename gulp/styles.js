@@ -36,6 +36,5 @@ gulp.task('styles', function () {
 		.pipe($.autoprefixer()).on('error', conf.errorHandler('Autoprefixer'))
 		.pipe($.sourcemaps.write())
 		.pipe(gulp.dest(path.join(conf.paths.src, '/public/stylesheets/')))
-		.pipe(browserSync.reload({ stream: true }))
-		.pipe($.debug());
+		.pipe(browserSync.reload({ stream: true }));
 });
