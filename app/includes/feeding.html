@@ -18,7 +18,7 @@
 		<div class="form-group">
 			<label for="type" class="col-xs-2 control-label" translate>simplePliCTerm.name.type</label>
 			<div class="col-xs-10">
-				<div class="panel" ng-controller="checkBoxController">
+				<div class="panel" ng-controller="CheckBoxCrtl">
 					<div ng-repeat="source in primaryDietSource">
 			        	<input type="checkbox" ng-model="source.checked" ng-click="updateSelectionFeeding(source, primaryDietSource)"/>
 			        	{{source.name}}
@@ -31,7 +31,7 @@
 		<div class="form-group">   
 		    <label for="strategy" class="col-xs-2 control-label" translate>simplePliCTerm.name.Strategy</label>
 			<div class="col-xs-10">
-				<div class="panel" ng-controller="checkBoxController">
+				<div class="panel" ng-controller="CheckBoxCrtl">
 					<div ng-repeat="strategy in strategies">
 						<div class="action-checkbox">
 					        <input type="checkbox" ng-model="strategy.checked" ng-click="updateSelectionThropic(strategy, strategies)"/>

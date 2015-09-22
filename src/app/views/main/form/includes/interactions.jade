@@ -14,7 +14,7 @@
 		.form-group
 			label.col-xs-2.control-label(for='interactionSpeciesType', translate='') simplePliCTerm.name.InteractionSpeciesType
 			.col-xs-10
-				.panel(ng-controller='checkBoxController')
+				.panel(ng-controller='CheckBoxCrtl')
 					div(ng-repeat='interaction in interactionSpeciesType')
 						.action-checkbox
 							input(id='{{interaction.name}}', type='checkbox', value='{{interaction.name}}', ng-checked='interactionsAtomizedType.interactionSpeciesType.indexOf(interaction.name) > -1', ng-click='toggleSelection(interactionsAtomizedType.interactionSpeciesType,interaction.name)')

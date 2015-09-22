@@ -12,7 +12,7 @@
 		.form-group
 			label.col-xs-2.control-label(for='Region', translate='') simplePliCTerm.name.Region
 			.col-xs-10
-				.panel(ng-controller='checkBoxController')
+				.panel(ng-controller='CheckBoxCrtl')
 					div(ng-repeat='reg in region')
 						input(type='checkbox', ng-model='reg.checked', ng-click='updateSelectionRegion(reg, region)')
 						| 							{{reg.name}}

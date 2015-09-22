@@ -13,7 +13,7 @@
 		<div class="form-group">
 			<label for="threatCategory" class="col-xs-2 control-label" translate>simplePliCTerm.name.ThreatCategory</label>	
 			<div class="col-xs-10">
-				<div class="panel" ng-controller="checkBoxController">
+				<div class="panel" ng-controller="CheckBoxCrtl">
 					<div ng-repeat="tc in threatCategory">
 					    <input type="checkbox" ng-model="tc.checked" ng-click="updateSelectionThreatCategory(tc, threatCategory)"/>
 					    {{tc.name}}
@@ -25,7 +25,7 @@
 		<div class="form-group">
 			<label for="authority" class="col-xs-2 control-label" translate>simplePliCTerm.name.Authority</label>	
 			<div class="col-xs-10">
-				<div class="panel" ng-controller="checkBoxController">
+				<div class="panel" ng-controller="CheckBoxCrtl">
 					<div ng-repeat="aut in authority">
 						<input type="checkbox" ng-model="aut.checked" ng-click="updateSelectionAutority(aut)"/>
 						{{aut.name}}

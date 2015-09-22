@@ -15,7 +15,7 @@
 			<div class="form-group">
 				<label for="origin" class="col-xs-2 control-label" translate>simplePliCTerm.name.origin</label>
 			    <div class="col-xs-10">
-			    	<div class="panel" ng-controller="checkBoxController">
+			    	<div class="panel" ng-controller="CheckBoxCrtl">
 			    		<div ng-repeat="ori in origin">
 							    <input type="checkbox" ng-model="ori.checked" ng-click="updateSelectionOrigin(ori, origin)"/>
 							    {{ori.name}}
@@ -27,7 +27,7 @@
 			<div class="form-group">
 				<label for="presence" class="col-xs-2 control-label" translate>simplePliCTerm.name.presence</label>
 			    <div class="col-xs-10">
-			    	<div class="panel" ng-controller="checkBoxController">
+			    	<div class="panel" ng-controller="CheckBoxCrtl">
 			    		<div ng-repeat="pre in presence">
 						 	    <input type="checkbox" ng-model="pre.checked" ng-click="updateSelectionPresence(pre, presence)"/>
 							    {{pre.name}}
@@ -39,7 +39,7 @@
 			<div class="form-group">
 				<label for="persistence" class="col-xs-2 control-label" translate>simplePliCTerm.name.persistence</label>
 			    <div class="col-xs-10">
-			    	<div class="panel" ng-controller="checkBoxController">
+			    	<div class="panel" ng-controller="CheckBoxCrtl">
 			    		<div ng-repeat="per in persistence">
 							    <input type="checkbox" ng-model="per.checked" ng-click="updateSelectionPersistence(per, persistence)"/>
 							    {{per.name}}
@@ -50,7 +50,7 @@
 			<div class="form-group">
 				<label for="distribution" class="col-xs-2 control-label" translate>simplePliCTerm.name.distribution</label>
 			    <div class="col-xs-10">
-			    	<div class="panel" ng-controller="checkBoxController">
+			    	<div class="panel" ng-controller="CheckBoxCrtl">
 			    		<div ng-repeat="dis in distribution">
 							    <input type="checkbox" ng-model="dis.checked" ng-click="updateSelectionDistribution(dis.name)"/>
 							    {{dis.name}}
@@ -62,7 +62,7 @@
 			<div class="form-group">
 				<label for="harmful" class="col-xs-2 control-label" translate>simplePliCTerm.name.harmful</label>
 			    <div class="col-xs-10">
-			    	<div class="panel" ng-controller="checkBoxController">
+			    	<div class="panel" ng-controller="CheckBoxCrtl">
 			    		<div ng-repeat="har in harmful">
 							    <input type="checkbox" ng-model="har.checked" ng-click="updateSelectionHarmful(har, harmful)"/>
 							    {{har.name}}
@@ -151,7 +151,7 @@
 			<div class="form-group">
 				<label for="abundance" class="col-xs-2 control-label" translate>simplePliCTerm.name.abundance</label>
 			    <div class="col-xs-10">
-			    	<div class="panel" ng-controller="checkBoxController">
+			    	<div class="panel" ng-controller="CheckBoxCrtl">
 				    	<div ng-repeat="abu in abundance">
 							    <input type="checkbox" ng-model="abu.checked" ng-click="updateSelectionAbundance(abu, abundance)"/>
 							    {{abu.name}}
@@ -163,7 +163,7 @@
 			<div class="form-group">
 				<label for="trend" class="col-xs-2 control-label" translate>simplePliCTerm.name.trend</label>
 			    <div class="col-xs-10">
-			    	<div class="panel" ng-controller="checkBoxController">
+			    	<div class="panel" ng-controller="CheckBoxCrtl">
 				    	<div ng-repeat="tre in trend">
 							    <input type="checkbox" ng-model="tre.checked" ng-click="updateSelectionTrend(tre, trend)"/>
 							    {{tre.name}}
@@ -175,7 +175,7 @@
 			<div class="form-group">
 				<label for="rateOfSpread" class="col-xs-2 control-label" translate>simplePliCTerm.name.rateOfSpread</label>
 			    <div class="col-xs-10">
-			    	<div class="panel" ng-controller="checkBoxController">
+			    	<div class="panel" ng-controller="CheckBoxCrtl">
 				    	<div ng-repeat="ros in rateOfSpread">
 							    <input type="checkbox" ng-model="ros.checked" ng-click="updateSelectionRateOfSpread(ros, rateOfSpread)"/>
 							    {{ros.name}}
@@ -187,7 +187,7 @@
 			<div class="form-group">
 				<label for="regulatoryListing" class="col-xs-2 control-label" translate>simplePliCTerm.name.regulatoryListing</label>
 			    <div class="col-xs-10">
-			    	<div class="panel" ng-controller="checkBoxController">
+			    	<div class="panel" ng-controller="CheckBoxCrtl">
 				    	<div ng-repeat="rl in regulatoryListing">
 							    <input type="checkbox" ng-model="rl.checked" ng-click="updateSelectionRegulatoryListing(rl, regulatoryListing)"/>
 							   {{rl.name}}
@@ -213,7 +213,7 @@
 			<div class="form-group">
 				<label for="localityType" class="col-xs-2 control-label" translate>simplePliCTerm.name.localityType</label>
 			    <div class="col-xs-10">
-			    	<div class="panel" ng-controller="checkBoxController">
+			    	<div class="panel" ng-controller="CheckBoxCrtl">
 				    	<div ng-repeat="lt in localityType">
 							    <input type="checkbox" ng-model="lt.checked" ng-click="updateSelectionLocalityType(lt, localityType)"/>
 							    {{lt.name}}
@@ -225,7 +225,7 @@
 			<div class="form-group">
 				<label for="locationValue" class="col-xs-2 control-label" translate>simplePliCTerm.name.locationValue</label>
 			    <div class="col-xs-10">
-			    	<div class="panel" ng-controller="checkBoxController">
+			    	<div class="panel" ng-controller="CheckBoxCrtl">
 				    	<div ng-repeat="lv in locationValue">
 							    <input type="checkbox" ng-model="lv.checked" ng-click="updateSelectionLocationValue(lv, locationValue)"/>
 							    {{lv.name}}
@@ -237,7 +237,7 @@
 			<div class="form-group">
 				<label for="publicationDatePrecision" class="col-xs-2 control-label" translate>simplePliCTerm.name.publicationDatePrecision</label>
 			    <div class="col-xs-10">
-			    	<div class="panel" ng-controller="checkBoxController">
+			    	<div class="panel" ng-controller="CheckBoxCrtl">
 				    	<div ng-repeat="pdp in publicationDatePrecision">
 							    <input type="checkbox" ng-model="pdp.checked" ng-click="updateSelectionPublicationDatePrecision(pdp, publicationDatePrecision)"/>
 							    {{pdp.name}}

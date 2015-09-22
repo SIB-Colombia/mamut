@@ -15,7 +15,7 @@
 		<div class="form-group">
 			<label for="event" class="col-xs-2 control-label" translate>simplePliCTerm.name.Event</label>
 		    <div class="col-xs-10">
-		    	<div class="panel" ng-controller="checkBoxController">
+		    	<div class="panel" ng-controller="CheckBoxCrtl">
 			    	<div ng-repeat="eve in event">
 				        <input type="checkbox" ng-model="eve.checked" ng-click="updateSelection(eve, event, annualCycleAtomizedType.Event)"/>
 				        {{eve.name}}

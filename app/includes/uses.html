@@ -30,7 +30,7 @@
 		<div class="form-group">
 			<label for="partUsed" class="col-xs-2 control-label" translate>simplePliCTerm.name.PartUsed</label>	
 			<div class="col-xs-10">
-				<div class="panel" ng-controller="checkBoxController">
+				<div class="panel" ng-controller="CheckBoxCrtl">
 					<div ng-repeat="pu in partUsed">
 					    <input type="checkbox" ng-model="pu.checked" ng-click="updateSelectionPartUsedCategory(pu, partUsed)"/>
 					    {{tc.name}}
@@ -99,7 +99,7 @@
 		<div class="form-group">
 			<label for="useTypeAtomized" class="col-xs-2 control-label" translate>simplePliCTerm.name.UseTypeAtomized</label>	
 			<div class="col-xs-10">
-				<div class="panel" ng-controller="checkBoxController">
+				<div class="panel" ng-controller="CheckBoxCrtl">
 					<div ng-repeat="uta in useTypeAtomized">
 					    <input type="checkbox" ng-model="uta.checked" ng-click="updateSelectionUseTypeAtomized(uta, useTypeAtomized)"/>
 					    {{uta.name}}

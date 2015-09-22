@@ -13,7 +13,7 @@
 		<div class="form-group">
 			<label for="type" class="col-xs-2 control-label" translate>simplePliCTerm.name.Type</label>	
 			<div class="col-xs-10">
-				<div class="panel" ng-controller="checkBoxController">
+				<div class="panel" ng-controller="CheckBoxCrtl">
 					<div ng-repeat="mt in managementType">
 					    <input type="checkbox" ng-model="mt.checked" ng-click="updateSelectionManagementType(mt, managementType)"/>
 					    {{mt.name}}
@@ -42,7 +42,7 @@
 		<div class="form-group">
 			<label for="actions" class="col-xs-2 control-label" translate>simplePliCTerm.name.Actions</label>	
 			<div class="col-xs-10">
-				<div class="panel" ng-controller="checkBoxController">
+				<div class="panel" ng-controller="CheckBoxCrtl">
 					<div ng-repeat="ma in managementAction">
 					    <input type="checkbox" ng-model="ma.checked" ng-click="updateSelectionManagementAction(ma)"/>
 					    {{ma.name}}

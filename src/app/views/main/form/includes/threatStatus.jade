@@ -12,14 +12,14 @@
 		.form-group
 			label.col-xs-2.control-label(for='threatCategory', translate='') simplePliCTerm.name.ThreatCategory
 			.col-xs-10
-				.panel(ng-controller='checkBoxController')
+				.panel(ng-controller='CheckBoxCrtl')
 					div(ng-repeat='tc in threatCategory')
 						input(type='checkbox', ng-model='tc.checked', ng-click='updateSelectionThreatCategory(tc, threatCategory)')
 						| 							{{tc.name}}
 		.form-group
 			label.col-xs-2.control-label(for='authority', translate='') simplePliCTerm.name.Authority
 			.col-xs-10
-				.panel(ng-controller='checkBoxController')
+				.panel(ng-controller='CheckBoxCrtl')
 					div(ng-repeat='aut in authority')
 						input(type='checkbox', ng-model='aut.checked', ng-click='updateSelectionAutority(aut)')
 						| 						{{aut.name}}

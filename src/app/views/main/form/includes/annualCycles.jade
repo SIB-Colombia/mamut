@@ -14,7 +14,7 @@
 		.form-group
 			label.col-xs-2.control-label(for='event', translate='') simplePliCTerm.name.Event
 			.col-xs-10
-				.panel(ng-controller='checkBoxController')
+				.panel(ng-controller='CheckBoxCrtl')
 					div(ng-repeat='eve in event')
 					input(type='checkbox', ng-model='eve.checked', ng-click='updateSelection(eve, event, annualCycleAtomizedType.Event)')
 					| 								{{eve.name}}

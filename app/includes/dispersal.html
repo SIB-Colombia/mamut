@@ -30,7 +30,7 @@
 		<div class="form-group">
 			<label for="type" class="col-xs-2 control-label" translate>simplePliCTerm.name.Type</label>
 		    <div class="col-xs-10">
-		    	<div class="panel" ng-controller="checkBoxController">
+		    	<div class="panel" ng-controller="CheckBoxCrtl">
 			    	<div ng-repeat="type in dispersalType">	
 						<div class="action-checkbox">
 					        <input type="checkbox" ng-model="type.checked" ng-click="updateSelectionDispersalType(type, dispersalType)"/>
@@ -44,7 +44,7 @@
 		<div class="form-group">
 			<label for="structureDispersed" class="col-xs-2 control-label" translate>simplePliCTerm.name.StructureDispersed</label>
 		    <div class="col-xs-10">
-		    	<div class="panel" ng-controller="checkBoxController">
+		    	<div class="panel" ng-controller="CheckBoxCrtl">
 			    	<div ng-repeat="structure in structureDispersed">	
 						<div class="action-checkbox">
 					        <input type="checkbox" ng-model="structure.checked" ng-click="updateSelectionStructureDispersed(structure, structureDispersed)"/>

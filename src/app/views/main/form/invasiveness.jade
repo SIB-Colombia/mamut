@@ -13,35 +13,35 @@
 			.form-group
 				label.col-xs-2.control-label(for='origin', translate='') simplePliCTerm.name.origin
 				.col-xs-10
-					.panel(ng-controller='checkBoxController')
+					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='ori in origin')
 							input(type='checkbox', ng-model='ori.checked', ng-click='updateSelectionOrigin(ori, origin)')
 							| 									{{ori.name}}
 			.form-group
 				label.col-xs-2.control-label(for='presence', translate='') simplePliCTerm.name.presence
 				.col-xs-10
-					.panel(ng-controller='checkBoxController')
+					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='pre in presence')
 							input(type='checkbox', ng-model='pre.checked', ng-click='updateSelectionPresence(pre, presence)')
 							| 									{{pre.name}}
 			.form-group
 				label.col-xs-2.control-label(for='persistence', translate='') simplePliCTerm.name.persistence
 				.col-xs-10
-					.panel(ng-controller='checkBoxController')
+					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='per in persistence')
 							input(type='checkbox', ng-model='per.checked', ng-click='updateSelectionPersistence(per, persistence)')
 							| 									{{per.name}}
 			.form-group
 				label.col-xs-2.control-label(for='distribution', translate='') simplePliCTerm.name.distribution
 				.col-xs-10
-					.panel(ng-controller='checkBoxController')
+					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='dis in distribution')
 							input(type='checkbox', ng-model='dis.checked', ng-click='updateSelectionDistribution(dis.name)')
 							| 									{{dis.name}}
 			.form-group
 				label.col-xs-2.control-label(for='harmful', translate='') simplePliCTerm.name.harmful
 				.col-xs-10
-					.panel(ng-controller='checkBoxController')
+					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='har in harmful')
 							input(type='checkbox', ng-model='har.checked', ng-click='updateSelectionHarmful(har, harmful)')
 							| 									{{har.name}}
@@ -91,28 +91,28 @@
 			.form-group
 				label.col-xs-2.control-label(for='abundance', translate='') simplePliCTerm.name.abundance
 				.col-xs-10
-					.panel(ng-controller='checkBoxController')
+					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='abu in abundance')
 							input(type='checkbox', ng-model='abu.checked', ng-click='updateSelectionAbundance(abu, abundance)')
 							| 									{{abu.name}}
 			.form-group
 				label.col-xs-2.control-label(for='trend', translate='') simplePliCTerm.name.trend
 				.col-xs-10
-					.panel(ng-controller='checkBoxController')
+					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='tre in trend')
 							input(type='checkbox', ng-model='tre.checked', ng-click='updateSelectionTrend(tre, trend)')
 							| 									{{tre.name}}
 			.form-group
 				label.col-xs-2.control-label(for='rateOfSpread', translate='') simplePliCTerm.name.rateOfSpread
 				.col-xs-10
-					.panel(ng-controller='checkBoxController')
+					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='ros in rateOfSpread')
 							input(type='checkbox', ng-model='ros.checked', ng-click='updateSelectionRateOfSpread(ros, rateOfSpread)')
 							| 									{{ros.name}}
 			.form-group
 				label.col-xs-2.control-label(for='regulatoryListing', translate='') simplePliCTerm.name.regulatoryListing
 				.col-xs-10
-					.panel(ng-controller='checkBoxController')
+					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='rl in regulatoryListing')
 							input(type='checkbox', ng-model='rl.checked', ng-click='updateSelectionRegulatoryListing(rl, regulatoryListing)')
 							| 								 {{rl.name}}
@@ -127,21 +127,21 @@
 			.form-group
 				label.col-xs-2.control-label(for='localityType', translate='') simplePliCTerm.name.localityType
 				.col-xs-10
-					.panel(ng-controller='checkBoxController')
+					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='lt in localityType')
 							input(type='checkbox', ng-model='lt.checked', ng-click='updateSelectionLocalityType(lt, localityType)')
 							| 									{{lt.name}}
 			.form-group
 				label.col-xs-2.control-label(for='locationValue', translate='') simplePliCTerm.name.locationValue
 				.col-xs-10
-					.panel(ng-controller='checkBoxController')
+					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='lv in locationValue')
 							input(type='checkbox', ng-model='lv.checked', ng-click='updateSelectionLocationValue(lv, locationValue)')
 							| 									{{lv.name}}
 			.form-group
 				label.col-xs-2.control-label(for='publicationDatePrecision', translate='') simplePliCTerm.name.publicationDatePrecision
 				.col-xs-10
-					.panel(ng-controller='checkBoxController')
+					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='pdp in publicationDatePrecision')
 							input(type='checkbox', ng-model='pdp.checked', ng-click='updateSelectionPublicationDatePrecision(pdp, publicationDatePrecision)')
 							| 									{{pdp.name}}

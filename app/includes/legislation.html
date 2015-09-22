@@ -20,7 +20,7 @@
 		<div class="form-group">
 			<label for="protectionLegalStatus" class="col-xs-2 control-label" translate>simplePliCTerm.name.ProtectionLegalStatus</label>	
 			<div class="col-xs-10">
-				<div class="panel" ng-controller="checkBoxController">
+				<div class="panel" ng-controller="CheckBoxCrtl">
 					<div ng-repeat="lp in legislationProtection">
 					    <input type="checkbox" ng-model="lp.checked" ng-click="updateSelectionProtectionLegal(lp,legislationProtection)"/>
 					    {{lp.name}}
@@ -39,7 +39,7 @@
 		<div class="form-group">
 			<label for="status" class="col-xs-2 control-label" translate>simplePliCTerm.name.Status</label>	
 			<div class="col-xs-10">
-				<div class="panel" ng-controller="checkBoxController">
+				<div class="panel" ng-controller="CheckBoxCrtl">
 					<div ng-repeat="ls in legislationStatus">
 						<input type="checkbox" ng-model="ls.checked" ng-click="updateSelectionProtectionLegalStatus(ls,legislationStatus)"/>
 						{{ls.name}}
@@ -51,7 +51,7 @@
 		<div class="form-group">
 			<label for="Type" class="col-xs-2 control-label" translate>simplePliCTerm.name.Type</label>	
 			<div class="col-xs-10">
-				<div class="panel" ng-controller="checkBoxController">
+				<div class="panel" ng-controller="CheckBoxCrtl">
 					<div ng-repeat="lt in legislationType">
 					    <input type="checkbox" ng-model="lt.checked" ng-click="updateSelectionProtectionLegalType(lt,legislationType)"/>
 					    {{lt.name}}
@@ -63,7 +63,7 @@
 		<div class="form-group">
 			<label for="Norm" class="col-xs-2 control-label" translate>simplePliCTerm.name.Norm</label>	
 			<div class="col-xs-10">
-				<div class="panel" ng-controller="checkBoxController">
+				<div class="panel" ng-controller="CheckBoxCrtl">
 					<div ng-repeat="ln in legislationNorm">
 					    <input type="checkbox" ng-model="ln.checked" ng-click="updateSelectionProtectionLegalNorm(ln,legislationNorm)"/>
 					    {{ln.name}}

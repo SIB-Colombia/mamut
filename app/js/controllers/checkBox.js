@@ -1,4 +1,4 @@
-formApp.controller('checkBoxController', function ($scope, $http) {
+formApp.controller('CheckBoxCrtl', function ($scope, $http) {
  
       // toggle selection for a given employee by name
     $scope.toggleSelection = function toggleSelection(selection, name) {

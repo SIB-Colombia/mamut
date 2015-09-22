@@ -153,7 +153,7 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
     };
 }])
 
-.controller('checkBoxController',['$scope', '$http', function ($scope, $http) {
+.controller('CheckBoxCrtl',['$scope', '$http', function ($scope, $http) {
  
       // toggle selection for a given employee by name
     $scope.toggleSelection = function toggleSelection(selection, name) {
