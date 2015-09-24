@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.services',[])
+angular.module('app.services')
 .service('referenceService', function(){
 
 	var reference = {
@@ -45,6 +45,6 @@ angular.module('app.services',[])
 		referenceList.splice(index);
 	};
 
-	
+
 	return reference;
 });

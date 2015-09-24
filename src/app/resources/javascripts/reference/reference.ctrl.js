@@ -2,7 +2,7 @@
 
 angular.module('app.controllers')
 .controller('ReferenceCrtl', ['$scope', 'referenceService', function($scope, referenceService) {
-	
+
 	$scope.reference = referenceService;
 	$scope.formData.references = [];
 	//$scope.reference = referenceService.reference;
@@ -15,6 +15,6 @@ angular.module('app.controllers')
 	};
 
 	$scope.removeReference = function (referenceList, reference){
-		referenceService.deleteFrom(referenceList,reference)
+		referenceService.deleteFrom(referenceList,reference);
 	};
 }]);
