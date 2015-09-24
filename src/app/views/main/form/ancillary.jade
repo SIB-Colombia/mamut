@@ -1,58 +1,79 @@
-.form-group
-	.panel.panel-default
-		.panel-heading
-			spant
-				| {{"simplePliCTerm.name.AncillaryData"|translate}}
+div(ng-controller='AncillaryDataCtrl')
+	.form-group
+		.panel.panel-default
+			.panel-heading
 				spant
-					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AncillaryData"|translate}}')
+					| {{"simplePliCTerm.name.AncillaryData"|translate}}
+					spant
+						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AncillaryData"|translate}}')
+							span.glyphicon.glyphicon-info-sign
+			.panel-body
+				div(ng-show='(formData.ancillaryData).length')
+					table.table.table-striped.table-striped
+						thead
+							tr
+								th {{"simplePliCTerm.name.license"|translate}}
+								th {{"simplePliCTerm.name.rights"|translate}}
+								th {{"simplePliCTerm.name.source"|translate}}
+								th
+						
+						tbody
+							tr(ng-repeat="ancillary in formData.ancillaryData")
+								td
+									div(ng-show='ancillary.license')
+										| {{ancillary.license}}
+								td
+									div(ng-show='ancillary.rights')
+										|  {{ancillary.rights}}
+								td
+									div(ng-show='ancillary.source')
+										| {{ancillary.source}}
+								td
+									button.btn(ng-click='removeAncillaryData(formData.ancillaryData,ancillary)') Eliminar
+				.form-group
+					label.col-xs-2.control-label(for='license', translate='') simplePliCTerm.name.license
+					.col-xs-10
+						input(type='text', ng-model='ancillaryData.license')
+						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.license"|translate}}')
+							span.glyphicon.glyphicon-info-sign
+				.form-group
+					label.col-xs-2.control-label(for='rights', translate='') simplePliCTerm.name.rights
+					.col-xs-10
+						input(type='text', ng-model='ancillaryData.rightsHolder')
+						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.rights"|translate}}')
+							span.glyphicon.glyphicon-info-sign
+				.form-group
+					label.col-xs-2.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation
+					.col-xs-10
+						textarea(rows='3', name='bibliographicCitation', ng-model='ancillaryData.bibliographicCitation')
+						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.bibliographicCitation"|translate}}')
+							span.glyphicon.glyphicon-info-sign
+				.form-group
+					label.col-xs-2.control-label(for='source', translate='') simplePliCTerm.name.source
+					.col-xs-10
+						input(type='text', ng-model='ancillaryData.source')
+						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.source"|translate}}')
+							span.glyphicon.glyphicon-info-sign
+				.form-group
+					label.col-xs-2.control-label(for='source', translate='') simplePliCTerm.name.mediaURL
+					.col-xs-10
+						input(type='text', ng-model='ancillaryData.mediaURL')
+						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.mediaURL"|translate}}')
+							span.glyphicon.glyphicon-info-sign
+						img(ng-src='{{ imageurl }}')
+				button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='getInfoLicence(ancillaryData.mediaURL, ancillaryData)') Get license info
+				.form-group
+					label.col-xs-2.control-label(for='references', translate='') simplePliCTerm.name.References
+					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
 						span.glyphicon.glyphicon-info-sign
-		.panel-body
-			div(ng-repeat='ancillary in formData.ancillaryData')
-				| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.source}} - {{ancillary.mediaURL}}
-			.form-group
-				label.col-xs-2.control-label(for='license', translate='') simplePliCTerm.name.license
-				.col-xs-10
-					input(type='text', ng-model='ancillaryData.license')
-					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.license"|translate}}')
-						span.glyphicon.glyphicon-info-sign
-			.form-group
-				label.col-xs-2.control-label(for='rights', translate='') simplePliCTerm.name.rights
-				.col-xs-10
-					input(type='text', ng-model='ancillaryData.rightsHolder')
-					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.rights"|translate}}')
-						span.glyphicon.glyphicon-info-sign
-			.form-group
-				label.col-xs-2.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation
-				.col-xs-10
-					textarea(rows='3', name='bibliographicCitation', ng-model='ancillaryData.bibliographicCitation')
-					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.bibliographicCitation"|translate}}')
-						span.glyphicon.glyphicon-info-sign
-			.form-group
-				label.col-xs-2.control-label(for='source', translate='') simplePliCTerm.name.source
-				.col-xs-10
-					input(type='text', ng-model='ancillaryData.source')
-					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.source"|translate}}')
-						span.glyphicon.glyphicon-info-sign
-			.form-group
-				label.col-xs-2.control-label(for='source', translate='') simplePliCTerm.name.mediaURL
-				.col-xs-10
-					input(type='text', ng-model='ancillaryData.mediaURL')
-					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.mediaURL"|translate}}')
-						span.glyphicon.glyphicon-info-sign
-					img(ng-src='{{ imageurl }}')
-			button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='getInfoLicence(ancillaryData.mediaURL, ancillaryData)') Get license info
-			.form-group
-				label.col-xs-2.control-label(for='references', translate='') simplePliCTerm.name.References
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-				.col-xs-10
-					input(type='text', ng-model='reference.identifier', placeholder='{{"simplePliCTerm.name.Identifier"|translate}}')
-					input(type='text', ng-model='reference.datatype', placeholder='{{"simplePliCTerm.name.Datatype"|translate}}')
-					input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
-					button.btn.btn-primary.btn-xs(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia 
-				div(ng-repeat='ref in ancillaryData.reference')
-					| {{ref.identifier}} - {{ref.datatype}} - {{ref.source}}
-			button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addAncillaryData(formData.ancillaryData,ancillaryData)') Guardar 
+					.col-xs-10
+						input(type='text', ng-model='reference.identifier', placeholder='{{"simplePliCTerm.name.Identifier"|translate}}')
+						input(type='text', ng-model='reference.datatype', placeholder='{{"simplePliCTerm.name.Datatype"|translate}}')
+						input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+						button.btn.btn-primary.btn-xs(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia 
+					div(ng-repeat='ref in ancillaryData.reference')
+						| {{ref.identifier}} - {{ref.datatype}} - {{ref.source}}
+				button.btn.btn-success.btn-xs.pull-right(type='button', ng-click="addAncillaryData(formData.ancillaryData,ancillaryData)") Guardar 
 .col-xs-6.col-xs-offset-3
 	ul.pager
 		li

@@ -1,33 +1,20 @@
 'use strict';
 
 angular.module('app.controllers')
-.controller('ReferenceCrtl', ['$scope', 'referenceService', function($scope, referenceService){
-	$scope.reference = referenceService.reference;
+.controller('ReferenceCrtl', ['$scope', 'referenceService', function($scope, referenceService) {
+	
+	$scope.reference = referenceService;
+	$scope.formData.references = [];
+	//$scope.reference = referenceService.reference;
 
-	$scope.addReference = function(ReferenceList, reference){
-		if (reference.type !== '') {
-			ReferenceList.push(reference);
-			reference = '';
+	$scope.addReference = function (referenceList, reference){
+		if (reference.source !== '') {
+			referenceService.addTo(referenceList, reference);
+			$scope.reference = '';
 		}
 	};
-	$scope.removeReference = function(ReferenceList, reference){
-		var index = ReferenceList.indexOf(reference);
-		ReferenceList.splice(index);
-	};
 
-	$scope.addReferenceDirec = function(reference) {
-		$scope.formData.references.push(reference);
-		$scope.reference = {
-			identifier: '',
-			datatype: '',
-			source: ''
-		};
+	$scope.removeReference = function (referenceList, reference){
+		referenceService.deleteFrom(referenceList,reference)
 	};
-
-	$scope.removeReferenceDirec = function() {
-		var lastItem = $scope.formData.references.length - 1;
-		$scope.formData.references.splice(lastItem);
-	};
-
-	$scope.$apply();
 }]);

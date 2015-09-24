@@ -2,9 +2,8 @@
 
 angular.module('app.services',[])
 .service('ancillaryDataService', function(){
-	var ancillaryData;
 
-	ancillaryData = {
+	var ancillaryData = {
 		identifier:'',
 		dataType:'',
 		mimeType:'',
@@ -27,6 +26,16 @@ angular.module('app.services',[])
 		additionalInformation:'',
 		dataObject:''
 	};
+
+	ancillaryData.addTo = function(ancillaryDataList, ancillary){
+		ancillaryDataList.push(ancillary);
+	};
+
+	ancillaryData.deleteFrom = function(ancillaryDataList, ancillary){
+		var index = ancillaryDataList.indexOf(ancillary);
+		ancillaryDataList.splice(index);
+	};
+
 	
 	return ancillaryData;
 });

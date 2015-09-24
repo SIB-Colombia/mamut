@@ -1,39 +1,40 @@
-.form-group
-	.panel.panel-default
-		.panel-heading
-			spant
-				| {{"simplePliCTerm.name.References"|translate}}
+div(ng-controller='ReferenceCrtl')
+	.form-group
+		.panel.panel-default
+			.panel-heading
 				spant
-		.panel-body
-			div(ng-repeat='ref in formData.references')
-				| {{ref.type}} - {{ref.title}} - {{ref.source}}
-			.form-group
-				div
-					h4 Agregar referencia manualmente
-					select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
-						option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
-					input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
-					input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.Title"|translate}}')
-					input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.Authors"|translate}}')
-					input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.Year"|translate}}')
-					input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.Volume"|translate}}')
-					input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.Issue"|translate}}')
-					input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.Pages"|translate}}')
-					input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.Series"|translate}}')
-					input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.Chapter"|translate}}')
-					input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.Websites"|translate}}')
-					input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.Accessed"|translate}}')
-					input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.Publisher"|translate}}')
-					input(type='text', ng-model='reference.city', placeholder='{{"simplePliCTerm.name.City"|translate}}')
-					input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.Edition"|translate}}')
-					input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.Institution"|translate}}')
-					input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.Editors"|translate}}')
-					input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.Keywords"|translate}}')
-					input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.Doi"|translate}}')
-					input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.Isbn"|translate}}')
-					input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.Issn"|translate}}')
-					input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.Link"|translate}}')
-					button.btn.btn-primary.btn-xs(type='button', ng-click='addReferenceDirec(reference)', translate='') Guardar Referencia 
+					| {{"simplePliCTerm.name.References"|translate}}
+					spant
+			.panel-body
+				div(ng-repeat='ref in formData.references')
+					| {{ref.type}} - {{ref.title}} - {{ref.source}}
+				.form-group
+					div
+						h4 Agregar referencia manualmente
+						select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+							option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
+						input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+						input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.Title"|translate}}')
+						input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.Authors"|translate}}')
+						input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.Year"|translate}}')
+						input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.Volume"|translate}}')
+						input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.Issue"|translate}}')
+						input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.Pages"|translate}}')
+						input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.Series"|translate}}')
+						input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.Chapter"|translate}}')
+						input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.Websites"|translate}}')
+						input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.Accessed"|translate}}')
+						input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.Publisher"|translate}}')
+						input(type='text', ng-model='reference.city', placeholder='{{"simplePliCTerm.name.City"|translate}}')
+						input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.Edition"|translate}}')
+						input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.Institution"|translate}}')
+						input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.Editors"|translate}}')
+						input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.Keywords"|translate}}')
+						input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.Doi"|translate}}')
+						input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.Isbn"|translate}}')
+						input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.Issn"|translate}}')
+						input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.Link"|translate}}')
+						button.btn.btn-primary.btn-xs(type='button', ng-click='addReference(formData.references,reference)', translate='') Guardar Referencia 
 
 .col-xs-6.col-xs-offset-3
 	ul.pager

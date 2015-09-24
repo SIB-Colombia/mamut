@@ -1,19 +1,20 @@
 'use strict';
 
 angular.module('app.controllers')
-.controller('AncillaryDataCtrl', ['$scope', 'ancillaryDataService', 'referenceService', function($scope, ancillaryDataService, referenceService) {
-	$scope.ancillaryData = ancillaryDataService.ancillaryData;
-	$scope.reference = referenceService.reference;
+.controller('AncillaryDataCtrl', ['$scope', 'ancillaryDataService', function($scope, ancillaryDataService) {
+	
+	$scope.ancillaryData = ancillaryDataService;
+	$scope.formData.ancillaryData = [];
+	//$scope.reference = referenceService.reference;
 
 	$scope.addAncillaryData = function addAncillaryData(ancillaryDataList, ancillary){
 		if (ancillary.source !== '') {
-			ancillaryDataList.push(ancillary);
-			ancillary = '';
+			ancillaryDataService.addTo(ancillaryDataList, ancillary);
+			$scope.ancillaryData = '';
 		}
 	};
 
 	$scope.removeAncillaryData = function removeAncillaryData(ancillaryDataList, ancillary){
-		var index = ancillaryDataList.indexOf(ancillary);
-		ancillaryDataList.splice(index);
+		ancillaryDataService.deleteFrom(ancillaryDataList,ancillary)
 	};
 }]);

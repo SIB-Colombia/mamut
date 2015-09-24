@@ -3,9 +3,7 @@
 angular.module('app.services',[])
 .service('referenceService', function(){
 
-	var reference;
-
-	reference = {
+	var reference = {
 		id: '',
 		profile_id: '',
 		group_id: '',
@@ -37,6 +35,16 @@ angular.module('app.services',[])
 		issn: '',
 		link: ''
 	};
+
+	ancillaryData.addTo = function(referenceList, reference){
+		referenceList.push(reference);
+	};
+
+	ancillaryData.deleteFrom = function(referenceList, reference){
+		var index = referenceList.indexOf(reference);
+		referenceList.splice(index);
+	};
+
 	
 	return reference;
 });

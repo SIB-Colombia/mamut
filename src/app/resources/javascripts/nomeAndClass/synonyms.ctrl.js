@@ -1,17 +1,16 @@
 'use strict';
 
 angular.module('app.controllers')
-.controller("SynonmyCtrl", function($scope){
-	$scope.synonmy = {
-		
-	};
+.controller("SynonmyCtrl", ['$scope',function($scope){
+	//$scope.synonmy = synonmyService.synonmy;
 
 	$scope.formData.synonymsAtomized = [];
 
-	$scope.reference = {};
+	//Reference
+	//$scope.reference = referenceService.reference;
 
 	//Ancillary
-	$scope.ancillaryData = {};
+	//$scope.ancillaryData = ancillaryDataService.ancillaryData;
 
 	//ADD
 	$scope.addSynonymsAtomized = function(synonymsAtomized, synonmy) {
@@ -192,5 +191,4 @@ angular.module('app.controllers')
 	$scope.removeSynonymsAtomized = function(synonmy) {
 		$scope.formData.synonymsAtomized.splice(synonmy,1);
 	};
-});
-
+}]);
