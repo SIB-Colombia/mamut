@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers',[])
+angular.module('app.controllers.form',[])
 .controller('formController', ['$scope', '$http', function($scope, $http) {
 
 	$http.get('/resources/distribution.json')

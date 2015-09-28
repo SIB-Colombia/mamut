@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.routes',['pascalprecht.translate','ngSanitize','ngCookies'])
+angular.module('app.routes.translate',['pascalprecht.translate','ngSanitize','ngCookies'])
 .config(function($translateProvider) {
 	$translateProvider.useStaticFilesLoader({
 		prefix: '/../../i18n/',

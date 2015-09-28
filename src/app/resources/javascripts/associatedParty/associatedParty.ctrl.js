@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.associatedParty',[])
 .controller('AssociatedPartyCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.associatedParty = {
 		

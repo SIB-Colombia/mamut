@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.threatStatus',[])
 .controller('ThreatStatusCtrl', ['$scope', function($scope) {
 	$scope.threatStatusClass = {
 		

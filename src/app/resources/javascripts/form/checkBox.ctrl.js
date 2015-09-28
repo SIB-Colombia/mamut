@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.checkBox',[])
 .controller('CheckBoxCrtl', ['$scope', function($scope) {
       // toggle selection for a given employee by name
     $scope.toggleSelection = function toggleSelection(selection, name) {

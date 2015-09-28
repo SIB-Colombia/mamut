@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.hierarchy',[])
 .controller('HierarchyCtrl', ['$scope', function($scope) {
 	$scope.hierarchy = {
 		

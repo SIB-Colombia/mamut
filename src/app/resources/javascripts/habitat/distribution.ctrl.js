@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.distribution',[])
 .controller('DistributionCtrl', ['$scope', function($scope) {
 	$scope.distributionOpt2 = {
 		

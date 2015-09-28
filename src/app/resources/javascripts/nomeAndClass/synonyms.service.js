@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.services',[])
+angular.module('app.services.synonmy',[])
 .service('synonmyService', function(){
 	var synonmy;
 

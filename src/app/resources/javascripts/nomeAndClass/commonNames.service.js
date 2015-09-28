@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.services',[])
+angular.module('app.services.commonName',[])
 .service('commonNameService', function(){
 	var commonName;
 

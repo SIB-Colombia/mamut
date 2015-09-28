@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.endemic',[])
 .controller('EndemicCtrl', ['$scope', function($scope) {
 	$scope.endemicTo = '';
 	$scope.endemicAtomizedType = {

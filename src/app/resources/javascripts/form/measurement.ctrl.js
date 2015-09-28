@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.measurement',[])
 .controller('MeasurementCtrl', ['$scope', function($scope) {
 	$scope.measurementOrFact = {
 		measurementID: '',

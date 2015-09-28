@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.commonName',[])
 .controller('CommonNameCtrl', ['$scope', function($scope) {
 	$scope.commonName = {
 		

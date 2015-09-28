@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.services',[])
+angular.module('app.services.threatStatus',[])
 .service('threatStatusService', function(){
 
 	var threatStatusClass;

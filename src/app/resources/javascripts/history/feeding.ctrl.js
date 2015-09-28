@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.feeding',[])
 .controller('FeedingCtrl', ['$scope', function($scope) {
 	$scope.thropic = {
 		

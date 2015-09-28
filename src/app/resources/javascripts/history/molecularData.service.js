@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.services',[])
+angular.module('app.services.molecularData',[])
 .service('molecularDataService', function(){
 	var molecularDataAtomizedType;
 	var molecularData;

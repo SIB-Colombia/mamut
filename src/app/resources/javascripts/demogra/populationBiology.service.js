@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.services',[])
+angular.module('app.services.populationBiology',[])
 .service('populationBiologyService', function(){
 
 	var populationBiologyAtomized;

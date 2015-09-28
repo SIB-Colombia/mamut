@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('app.controllers')
-.controller('AncillaryDataCtrl', ['$scope', 'ancillaryDataService', function($scope, ancillaryDataService) {
+angular.module('app.controllers.ancillary',[])
+.controller('AncillaryDataCtrl', ['$scope', 'ancillaryDataService', function($scope, ancillaryDataService){
 	
 	$scope.ancillaryData = ancillaryDataService;
 	$scope.formData.ancillaryData = [];

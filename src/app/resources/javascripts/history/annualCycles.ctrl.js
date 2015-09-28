@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.annualCycle',[])
 .controller('AnnualCyclesCtrl', ['$scope', function($scope) {
 	$scope.annualCycleAtomizedType = {
 		

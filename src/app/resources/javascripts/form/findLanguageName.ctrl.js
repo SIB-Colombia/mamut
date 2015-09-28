@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.findLanguageName',[])
 .controller('FindLanguageNameCrtl', ['$scope', function($scope) {
 	$scope.findLanguageName = function(languageIso) {
 		if (languageIso !== undefined && languageIso !== '') {

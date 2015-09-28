@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.abstract',[])
 .controller('AbstractCtrl', ['$scope', function($scope) {
 
 }]);

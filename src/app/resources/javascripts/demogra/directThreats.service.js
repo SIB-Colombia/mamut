@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.services',[])
+angular.module('app.services.directThreats',[])
 .service('directThreatsService', function(){
 
 	var directThreats;

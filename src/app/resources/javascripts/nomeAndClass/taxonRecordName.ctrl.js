@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.taxonRecordName',[])
 .controller('TaxonRecordNameCtrl', ['$scope', function($scope) {
 	$scope.formData.taxonRecordName = {
 		

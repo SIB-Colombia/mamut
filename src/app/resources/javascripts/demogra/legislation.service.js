@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.services',[])
+angular.module('app.services.legislation',[])
 .service('legislationService', function(){
 
 	var legislationAtomizedType;

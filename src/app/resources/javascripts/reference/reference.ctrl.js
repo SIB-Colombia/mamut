@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('app.controllers')
-.controller('ReferenceCrtl', ['$scope', 'referenceService', function($scope, referenceService) {
+angular.module('app.controllers.reference',[])
+.controller('ReferenceCrtl', ['$scope', 'referenceService', function($scope, referenceService){
 
-	$scope.reference = referenceService;
+	
 	$scope.formData.references = [];
-	//$scope.reference = referenceService.reference;
+	$scope.reference = referenceService;
 
 	$scope.addReference = function (referenceList, reference){
 		if (reference.source !== '') {

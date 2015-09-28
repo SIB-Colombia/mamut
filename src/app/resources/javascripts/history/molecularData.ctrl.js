@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.molecularData',[])
 .controller('MolecularDataCtrl', ['$scope', function($scope) {
 	$scope.molecularDataAtomizedType = {
 		

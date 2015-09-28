@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.services',[])
+angular.module('app.services.invasiveness',[])
 .service('invasivenessService', function(){
 	var invasivenessAtomizedType;
 	var invasiveness;

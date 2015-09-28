@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.invasiveness',[])
 .controller('InvasivenessCtrl', ['$scope', function($scope) {
 	$scope.invasivenessAtomizedType = {
 		

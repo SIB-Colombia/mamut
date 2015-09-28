@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.synonmy',[])
 .controller("SynonmyCtrl", ['$scope',function($scope){
 	//$scope.synonmy = synonmyService.synonmy;
 

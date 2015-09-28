@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.services',[])
+angular.module('app.services.managementAndConservation',[])
 .service('managementAndConservationAtomizedService', function(){
 	var managementAndConservationAtomizedType;
 	var usesManagementAndConservation;

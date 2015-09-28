@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.controllers')
+angular.module('app.controllers.use',[])
 .controller('UsesCtrl', ['$scope', function($scope) {
 	$scope.usesAtomizedType = {
 		

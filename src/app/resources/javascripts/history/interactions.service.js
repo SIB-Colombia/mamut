@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.services',[])
+angular.module('app.services.interactions',[])
 .service('interactionsService', function(){
 	var interactionsAtomizedType;
 	var interactions;
