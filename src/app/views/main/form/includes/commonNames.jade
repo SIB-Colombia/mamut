@@ -8,7 +8,7 @@ div(ng-controller='CommonNameCtrl')
 				button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed = !isCollapsed')
 					span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true')
 			.panel-body
-				div(ng-show='(formData.commonNameAtomized).length')
+				div.table-responsive(ng-show='(formData.commonNameAtomized).length')
 					table.table.table-striped.table-striped
 						thead
 							tr
@@ -31,9 +31,9 @@ div(ng-controller='CommonNameCtrl')
 										| {{commonName.usedIn.distributionUnstructured}}
 								td
 									div(ng-show='commonName.usedBy')
-										| {{commonName.usedBy.distributionUnstructured}}
+										| {{commonName.usedBy}}
 								td
-									button.btn(ng-click='removeCommonNamesAtomized($index)') Eliminar
+									button.btn(ng-click='removeCommonNamesAtomized(formData.commonNameAtomized,commonName)') Eliminar
 				div(collapse='isCollapsed')
 					hr
 					.form-group
@@ -44,40 +44,88 @@ div(ng-controller='CommonNameCtrl')
 								a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Name"|translate}}')
 									span.glyphicon.glyphicon-info-sign
 						.form-group
-							label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.Language
+							label.col-xs-2.control-label(for='language', translate='') simplePliCTerm.name.Language
 							.col-xs-10
 								select(ng-model='commonName.language', ng-options='lang.Idioma as lang.Idioma for lang in idiomas ')
 									option(value='') - Seleccione -
 								a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Language"|translate}}')
 									span.glyphicon.glyphicon-info-sign
 						.form-group
-							label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.UsedIn
+							label.col-xs-2.control-label(for='usedIn', translate='') simplePliCTerm.name.UsedIn
 							.col-xs-10
-								input(type='text', ng-model='commonName.usedIn')
+								input(type='text', ng-model='commonName.usedIn.distributionUnstructured')
 								a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.UsedIn"|translate}}')
 									span.glyphicon.glyphicon-info-sign
 						.form-group
-							label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.UsedBy
+							label.col-xs-2.control-label(for='usedBy', translate='') simplePliCTerm.name.UsedBy
 							.col-xs-10
 								input(type='text', ng-model='commonName.usedBy')
 								a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.UsedBy"|translate}}')
 									span.glyphicon.glyphicon-info-sign
 						.form-group
 							label.col-xs-2.control-label(for='ancillaryData', translate='') simplePliCTerm.name.AncillaryData
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AncillaryData"|translate}}')
+								span.glyphicon.glyphicon-info-sign
 							.col-xs-10
 								div(ng-repeat='ancillary in commonName.ancillaryData')
-									| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
-								button.btn.btn-success.btn-xs(ng-click='isCollapsed_1 = !isCollapsed_1')
-									span(ng-class="{'glyphicon glyphicon-chevron-down': isCollapsed_1 , 'glyphicon glyphicon-chevron-up' : !isCollapsed_1}", aria-hidden='true')
-								a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AncillaryData"|translate}}')
-									span.glyphicon.glyphicon-info-sign
-								div(collapse='isCollapsed_1')
-									input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
-									input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
-									input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
-									input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
-									input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
-									button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(commonName.ancillaryData,ancillaryData)', translate='')
-										| Guardar
+									| {{ancillary.source}}
+								input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+								.panel.panel-default
+									.panel-heading
+										spant {{"simplePliCTerm.name.References"|translate}}
+										button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
+											span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
+										a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
+											span.glyphicon.glyphicon-info-sign
+									.panel-body
+										div.table-responsive(ng-show='(ancillaryData.reference).length')
+											table.table.table-striped.table-striped
+												thead
+													tr
+														th {{"simplePliCTerm.name.Type"|translate}}
+														th {{"simplePliCTerm.name.Source"|translate}}
+														th {{"simplePliCTerm.name.Title"|translate}}
+														th
+												
+												tbody
+													tr(ng-repeat="ref in ancillaryData.reference track by $index")
+														td
+															| {{ref.type}}
+														td
+															| {{ref.source}}
+														td
+															| {{ref.title}}
+														td
+															button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+				
+										div(collapse='isCollapsed_1')
+											.form-group
+												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+													option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
+												input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+												input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.Title"|translate}}')
+												input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.Authors"|translate}}')
+												input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.Year"|translate}}')
+												input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.Volume"|translate}}')
+												input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.Issue"|translate}}')
+												input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.Pages"|translate}}')
+												input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.Series"|translate}}')
+												input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.Chapter"|translate}}')
+												input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.Websites"|translate}}')
+												input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.Accessed"|translate}}')
+												input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.Publisher"|translate}}')
+												input(type='text', ng-model='reference.city', placeholder='{{"simplePliCTerm.name.City"|translate}}')
+												input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.Edition"|translate}}')
+												input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.Institution"|translate}}')
+												input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.Editors"|translate}}')
+												input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.Keywords"|translate}}')
+												input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.Doi"|translate}}')
+												input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.Isbn"|translate}}')
+												input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.Issn"|translate}}')
+												input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.Link"|translate}}')
+											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia 
+											
+									button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addAncillaryData(commonName.ancillaryData,ancillaryData)', translate='')
+										| Añadir DA
 										span.glyphicon.glyphicon-plus
 						button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addCommonNamesAtomized(formData.commonNameAtomized,commonName)') Guardar

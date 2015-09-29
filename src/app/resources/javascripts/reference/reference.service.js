@@ -36,11 +36,11 @@ angular.module('app.services.reference',[])
 		link: ''
 	};
 
-	ancillaryData.addTo = function(referenceList, reference){
+	reference.addTo = function(referenceList, reference){
 		referenceList.push(reference);
 	};
 
-	ancillaryData.deleteFrom = function(referenceList, reference){
+	reference.deleteFrom = function(referenceList, reference){
 		var index = referenceList.indexOf(reference);
 		referenceList.splice(index);
 	};

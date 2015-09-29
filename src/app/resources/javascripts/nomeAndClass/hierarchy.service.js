@@ -21,6 +21,13 @@ angular.module('app.services.hierarchy',[])
 		parentTaxon: '',
 		ancillaryData: []
 	};
-	
+	hierarchy.add = function(hierarchy, hier){
+		hierarchy.push(hier);
+	};
+
+	hierarchy.delete = function(hierarchy, hier){
+		var index = hierarchy.indexOf(hier);
+		hierarchy.splice(index);
+	};
 	return hierarchy;
 });

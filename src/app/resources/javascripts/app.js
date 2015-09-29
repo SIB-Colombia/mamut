@@ -8,5 +8,6 @@ angular.module('formApp',
 	'app.controllers.reference' ,'app.services.reference',
 	'app.controllers.ancillary' ,'app.services.ancillary',
 	'app.controllers.commonName' ,'app.services.commonName',
-	'app.controllers.synonmy' ,'app.services.synonmy'
+	'app.controllers.synonmy' ,'app.services.synonmy',
+	'app.controllers.hierarchy' ,'app.services.hierarchy'
 	]);

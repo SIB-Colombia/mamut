@@ -1,175 +1,225 @@
-div(ng-controller='CollapseDemoCtrl')
-	.panel.panel-default
-		.panel-heading
-			spant {{"simplePliCTerm.name.Hierarchy"|translate}}
-			a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Hierarchy"|translate}}')
-				span.glyphicon.glyphicon-info-sign
-			button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed = !isCollapsed')
-				span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true')
-		.panel-body
-			table.table.table-striped.table-striped
-				tbody
-					tr(ng-repeat='hierarchy in formData.hierarchy track by $index')
-						td
-							.parrafo-pegado
-								div(ng-show='hierarchy.classification')
-									div classification :{{hierarchy.classification}}
-								div(ng-show='hierarchy.recommended')
-									div recommended :{{hierarchy.recommended}}
-								div(ng-show='hierarchy.kingdom')
-									div
-										p(translate='') simplePliCTerm.name.kingdom
-										| : {{hierarchy.kingdom}}
-								div(ng-show='hierarchy.phylum')
-									div
-										p(translate='') simplePliCTerm.name.phylum
-										| : {{hierarchy.phylum}}
-								div(ng-show='hierarchy.classHierarchy')
-									div
-										p(translate='') simplePliCTerm.name.class
-										| : {{hierarchy.classHierarchy}}
-								div(ng-show='hierarchy.order')
-									div
-										p(translate='') simplePliCTerm.name.order
-										| :{{hierarchy.order}}
-								div(ng-show='hierarchy.family')
-									div
-										p(translate='') simplePliCTerm.name.family
-										| :{{hierarchy.family}}
-								div(ng-show='hierarchy.genus')
-									div
-										p(translate='') simplePliCTerm.name.genus
-										| :{{hierarchy.genus}}
-								div(ng-show='hierarchy.subGenus')
-									div
-										p(translate='') simplePliCTerm.name.subgenus
-										| :{{hierarchy.subGenus}}
-								//
-									<div ng-show="hierarchy.taxonRank">
-									<div>Categoría del taxón :{{hierarchy.taxonRank}}</div>
-									</div>
-								div(ng-show='hierarchy.specificEpithet')
-									div
-										p(translate='') simplePliCTerm.name.specificEpithet
-										| :{{hierarchy.specificEpithet}}
-								div(ng-show='hierarchy.infraspecificEpithet')
-									div
-										p(translate='') simplePliCTerm.name.infraSpecificEpithet
-										| :{{hierarchy.infraspecificEpithet}}
-								div(ng-show='hierarchy.higherClassification')
-									div
-										p(translate='') simplePliCTerm.name.higherClassification
-										| :{{hierarchy.higherClassification}}
-								//
-									<div ng-show="hierarchy.parentTaxon">
-									<div>parentTaxon :{{hierarchy.parentTaxon}}</div>
-									</div>
-								div(ng-show='hierarchy.ancillaryData[0].source')
-									div Fuente :{{hierarchy.ancillaryData[0].source}}
-						td
-							button.btn(ng-click='removeHierarchy($index)') Eliminar
-			div(collapse='isCollapsed')
-				hr
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') Classification
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.classification')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{""|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') Recommended
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.recommended')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{""|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.kingdom
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.kingdom')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.kingdom"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.phylum
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.phylum')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.phylum"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.class
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.classHierarchy')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.class"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.order
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.order')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.order"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.family
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.family')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.family"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.genus
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.genus')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.genus"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.subgenus
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.subGenus')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.subgenus"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.taxonRank
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.taxonRank')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.taxonRank"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.specificEpithet
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.specificEpithet')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.specificEpithet"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.infraSpecificEpithet
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.infraspecificEpithet')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.infraSpecificEpithet"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.higherClassification
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.higherClassification')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.higherClassification"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.ParentTaxon
-					.col-xs-10
-						input(type='text', ng-model='hierarchy.parentTaxon')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ParentTaxon"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-				.form-group
-					label.col-xs-2.control-label(for='ancillaryData', translate='') simplePliCTerm.name.AncillaryData
-					.col-xs-10
-						div(ng-repeat='ancillary in hierarchy.ancillaryData')
-							| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
-						button.btn.btn-success.btn-xs(ng-click='isCollapsed_1 = !isCollapsed_1')
-							span(ng-class="{'glyphicon glyphicon-chevron-down': isCollapsed_1 , 'glyphicon glyphicon-chevron-up' : !isCollapsed_1}", aria-hidden='true')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AncillaryData"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-						div(collapse='isCollapsed_1')
-							input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
-							input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
-							input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+div(ng-controller='HierarchyCtrl')
+	div(ng-controller='CollapseDemoCtrl')
+		.panel.panel-default
+			.panel-heading
+				spant {{"simplePliCTerm.name.Hierarchy"|translate}}
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Hierarchy"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+				button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed = !isCollapsed')
+					span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true')
+			.panel-body
+				table.table.table-striped.table-striped
+					tbody
+						tr(ng-repeat='hierarchy in formData.hierarchy track by $index')
+							td
+								.parrafo-pegado
+									div(ng-show='hierarchy.classification')
+										div classification :{{hierarchy.classification}}
+									div(ng-show='hierarchy.recommended')
+										div recommended :{{hierarchy.recommended}}
+									div(ng-show='hierarchy.kingdom')
+										div
+											p(translate='') simplePliCTerm.name.kingdom
+											| : {{hierarchy.kingdom}}
+									div(ng-show='hierarchy.phylum')
+										div
+											p(translate='') simplePliCTerm.name.phylum
+											| : {{hierarchy.phylum}}
+									div(ng-show='hierarchy.classHierarchy')
+										div
+											p(translate='') simplePliCTerm.name.class
+											| : {{hierarchy.classHierarchy}}
+									div(ng-show='hierarchy.order')
+										div
+											p(translate='') simplePliCTerm.name.order
+											| :{{hierarchy.order}}
+									div(ng-show='hierarchy.family')
+										div
+											p(translate='') simplePliCTerm.name.family
+											| :{{hierarchy.family}}
+									div(ng-show='hierarchy.genus')
+										div
+											p(translate='') simplePliCTerm.name.genus
+											| :{{hierarchy.genus}}
+									div(ng-show='hierarchy.subGenus')
+										div
+											p(translate='') simplePliCTerm.name.subgenus
+											| :{{hierarchy.subGenus}}
+									//
+										<div ng-show="hierarchy.taxonRank">
+										<div>Categoría del taxón :{{hierarchy.taxonRank}}</div>
+										</div>
+									div(ng-show='hierarchy.specificEpithet')
+										div
+											p(translate='') simplePliCTerm.name.specificEpithet
+											| :{{hierarchy.specificEpithet}}
+									div(ng-show='hierarchy.infraspecificEpithet')
+										div
+											p(translate='') simplePliCTerm.name.infraSpecificEpithet
+											| :{{hierarchy.infraspecificEpithet}}
+									div(ng-show='hierarchy.higherClassification')
+										div
+											p(translate='') simplePliCTerm.name.higherClassification
+											| :{{hierarchy.higherClassification}}
+									//
+										<div ng-show="hierarchy.parentTaxon">
+										<div>parentTaxon :{{hierarchy.parentTaxon}}</div>
+										</div>
+									div(ng-show='hierarchy.ancillaryData[0].source')
+										div Fuente :{{hierarchy.ancillaryData[0].source}}
+							td
+								button.btn(ng-click='removeHierarchy(formData.hierarchy,hierarchy)') Eliminar
+				div(collapse='isCollapsed')
+					hr
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') Classification
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.classification')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{""|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') Recommended
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.recommended')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{""|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.kingdom
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.kingdom')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.kingdom"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.phylum
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.phylum')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.phylum"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.class
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.classHierarchy')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.class"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.order
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.order')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.order"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.family
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.family')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.family"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.genus
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.genus')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.genus"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.subgenus
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.subGenus')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.subgenus"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.taxonRank
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.taxonRank')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.taxonRank"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.specificEpithet
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.specificEpithet')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.specificEpithet"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.infraSpecificEpithet
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.infraspecificEpithet')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.infraSpecificEpithet"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.higherClassification
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.higherClassification')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.higherClassification"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.ParentTaxon
+						.col-xs-10
+							input(type='text', ng-model='hierarchy.parentTaxon')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ParentTaxon"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='ancillaryData', translate='') simplePliCTerm.name.AncillaryData
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AncillaryData"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+						.col-xs-10
+							div(ng-repeat='ancillary in hierarchy.ancillaryData')
+								| {{ancillary.source}}
 							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
-							input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
-							button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(hierarchy.ancillaryData,ancillaryData)', translate='')
-								| Guardar
+							.panel.panel-default
+								.panel-heading
+									spant {{"simplePliCTerm.name.References"|translate}}
+									button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
+										span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
+										span.glyphicon.glyphicon-info-sign
+								.panel-body
+
+									div.table-responsive(ng-show='(ancillaryData.reference).length')
+										table.table.table-striped.table-striped
+											thead
+												tr
+													th {{"simplePliCTerm.name.Type"|translate}}
+													th {{"simplePliCTerm.name.Source"|translate}}
+													th {{"simplePliCTerm.name.Title"|translate}}
+													th
+											
+											tbody
+												tr(ng-repeat="ref in ancillaryData.reference track by $index")
+													td
+														| {{ref.type}}
+													td
+														| {{ref.source}}
+													td
+														| {{ref.title}}
+													td
+														button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+			
+									div(collapse='isCollapsed_1')
+										.form-group
+											select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+												option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
+											input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+											input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.Title"|translate}}')
+											input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.Authors"|translate}}')
+											input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.Year"|translate}}')
+											input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.Volume"|translate}}')
+											input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.Issue"|translate}}')
+											input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.Pages"|translate}}')
+											input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.Series"|translate}}')
+											input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.Chapter"|translate}}')
+											input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.Websites"|translate}}')
+											input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.Accessed"|translate}}')
+											input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.Publisher"|translate}}')
+											input(type='text', ng-model='reference.city', placeholder='{{"simplePliCTerm.name.City"|translate}}')
+											input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.Edition"|translate}}')
+											input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.Institution"|translate}}')
+											input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.Editors"|translate}}')
+											input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.Keywords"|translate}}')
+											input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.Doi"|translate}}')
+											input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.Isbn"|translate}}')
+											input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.Issn"|translate}}')
+											input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.Link"|translate}}')
+										button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia 
+										
+							button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addAncillaryData(hierarchy.ancillaryData,ancillaryData)', translate='')
+								| Añadir DA
 								span.glyphicon.glyphicon-plus
-				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addHierarchy(formData.hierarchy,hierarchy)') Guardar
+					button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addHierarchy(formData.hierarchy,hierarchy)') Guardar
