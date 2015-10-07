@@ -12,7 +12,7 @@ angular.module('app.services.ancillary',[])
 		modified:'',
 		license:'',
 		rights:'',
-		rigthsHolder:'',
+		rightsHolder:'',
 		bibliographicCitation:'',
 		audience:[],
 		source:'',

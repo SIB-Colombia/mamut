@@ -32,12 +32,19 @@ angular.module('app.controllers.checkBox',[])
         $scope.feedingAtomizedType.type = element.name;
     };
 
-    $scope.updateSelectionThropic = function updateSelectionThropic(element, list) {
-        angular.forEach(list, function(item) {
-            item.checked = false;
-        });
-        element.checked= true;
-        $scope.thropic.strategy = element.name;
+    $scope.updateSelectionThropic = function updateSelectionThropic(name) {
+        var idx = -1;
+        for(var i = 0, len = $scope.feedingAtomizedType.thropic.length; i < len; i++) {
+            if ($scope.feedingAtomizedType.thropic[i].strategy === name.name) idx = i;
+        }
+        // is currently selected
+        if (idx > -1) {
+            $scope.feedingAtomizedType.thropic.splice(idx, 1);
+        }
+        // is newly selected
+        else {
+            $scope.feedingAtomizedType.thropic.push({'strategy':name.name});
+        }
     };
 
     $scope.updateSelectionDispersalType = function updateSelectionDispersalType(element, list) {
@@ -80,19 +87,15 @@ angular.module('app.controllers.checkBox',[])
         $scope.invasivenessAtomizedType.persistence = element.name;
     };
 
-    $scope.updateSelectionDistribution = function updateSelectionDistribution(name) {
-        var idx = $scope.invasivenessAtomizedType.distribution.indexOf(name);
-        // is currently selected
-        if (idx > -1) {
-            $scope.invasivenessAtomizedType.distribution.splice(idx, 1);
-        }
-        // is newly selected
-        else {
-            $scope.invasivenessAtomizedType.distribution.push(name);
-        }
+    $scope.updateSelectionDistribution = function updateSelectionDistribution(element, list) {
+        angular.forEach(list, function(item) {
+            item.checked = false;
+        });
+        element.checked= true;
+        $scope.invasivenessAtomizedType.distribution = element.name;
     };
 
-    $scope.updateSelectionHarmful = function updateSelectionDistribution(element, list) {
+    $scope.updateSelectionHarmful = function updateSelectionHarmful(element, list) {
         angular.forEach(list, function(item) {
             item.checked = false;
         });

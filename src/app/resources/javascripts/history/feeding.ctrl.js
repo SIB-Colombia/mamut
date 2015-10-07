@@ -1,35 +1,47 @@
 'use strict';
 
 angular.module('app.controllers.feeding',[])
-.controller('FeedingCtrl', ['$scope', function($scope) {
-	$scope.thropic = {
-		
-	};
-	$scope.feedingAtomizedType = {
-		
-	};
-	$scope.formData.feeding = {
-		
+.controller('FeedingCtrl', ['$scope','referenceService', 'ancillaryDataService','feedingService', function($scope,referenceService,ancillaryDataService,feedingService) {
+	$scope.thropic = feedingService.thropic;
+	$scope.feedingAtomizedType = feedingService.feedingAtomizedType;
+	$scope.formData.feeding = feedingService.feeding;
+	//Reference
+	$scope.reference = referenceService;
+	//Ancillary
+	$scope.ancillaryData = ancillaryDataService;
+
+	var origFA = angular.copy($scope.feedingAtomizedType);
+	var origR = angular.copy($scope.reference);
+	var origAD = angular.copy($scope.ancillaryData);
+	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
+		if(ancillaryData.source !== ''){
+			ancillaryDataService.addTo(ancillaryDataList,ancillaryData);
+			//Reset the scope variable
+			$scope.ancillaryData = origAD;
+			origAD = angular.copy($scope.ancillaryData);
+		}		
 	};
 
-	$scope.addFeedingAtomizedType = function(feedingAtomizedType, feeding) {
+	$scope.addReference = function(referenceList,reference){
+		if(reference.type !== ''){
+			referenceService.addTo(referenceList,reference);
+			//Reset the scope variable
+			$scope.reference = origR;
+			origR = angular.copy($scope.reference);
+		}	
+	};
+
+	$scope.removeReference = function(referenceList,reference){
+		referenceService.deleteFrom(referenceList,reference);	
+	};
+
+	$scope.addFeedingAtomizedType = function(feeding, feedingAtomizedType) {
 		if (feeding.type !== '') {
-			feedingAtomizedType.push(feeding);
-			$scope.feedingAtomizedType = {
-				type: '',
-				thropic: [],
-				ancillaryData: []
-			};
-		}
-	};
-
-	$scope.addThropic = function(thropics, thropic) {
-		if (thropic !== '') {
-			thropics.push(thropic);
-			$scope.thropic = {
-				strategy: '',
-				strategyRemarks: ''
-			};
+			feeding.push(feedingAtomizedType);
+			//Reset the scope variable
+			$scope.feedingAtomizedType = origFA;
+			origFA = angular.copy($scope.feedingAtomizedType);
+			$('input:checkbox').removeAttr('checked');
 		}
 	};
 

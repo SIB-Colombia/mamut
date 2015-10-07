@@ -1,215 +1,360 @@
-.form-group
-	.panel.panel-default
-		.panel-heading
-			spant
-				| {{"simplePliCTerm.name.Invasiveness" | translate}}
+div(ng-controller='InvasivenessCtrl')
+	.form-group
+		.panel.panel-default
+			.panel-heading
 				spant
-					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Invasiveness"|translate}}')
-						span.glyphicon.glyphicon-info-sign
-		.panel-body
-			.selected-item(ng-repeat='invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized.invasivenessAtomizedType')
-				div(ng-show='invasivenessAtomizedType')
-					div {{invasivenessAtomizedType}}
-			.form-group
-				label.col-xs-2.control-label(for='origin', translate='') simplePliCTerm.name.origin
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='ori in origin')
-							input(type='checkbox', ng-model='ori.checked', ng-click='updateSelectionOrigin(ori, origin)')
-							| 									{{ori.name}}
-			.form-group
-				label.col-xs-2.control-label(for='presence', translate='') simplePliCTerm.name.presence
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='pre in presence')
-							input(type='checkbox', ng-model='pre.checked', ng-click='updateSelectionPresence(pre, presence)')
-							| 									{{pre.name}}
-			.form-group
-				label.col-xs-2.control-label(for='persistence', translate='') simplePliCTerm.name.persistence
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='per in persistence')
-							input(type='checkbox', ng-model='per.checked', ng-click='updateSelectionPersistence(per, persistence)')
-							| 									{{per.name}}
-			.form-group
-				label.col-xs-2.control-label(for='distribution', translate='') simplePliCTerm.name.distribution
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='dis in distribution')
-							input(type='checkbox', ng-model='dis.checked', ng-click='updateSelectionDistribution(dis.name)')
-							| 									{{dis.name}}
-			.form-group
-				label.col-xs-2.control-label(for='harmful', translate='') simplePliCTerm.name.harmful
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='har in harmful')
-							input(type='checkbox', ng-model='har.checked', ng-click='updateSelectionHarmful(har, harmful)')
-							| 									{{har.name}}
-			.form-group
-				label.col-xs-2.control-label(for='modified', translate='') simplePliCTerm.name.modified
-				.col-xs-10
-					input#modified(type='date', ng-model='invasivenessAtomizedType.modified')
-			.form-group
-				label.col-xs-2.control-label(for='startValidateDate', translate='') simplePliCTerm.name.startValidateDate
-				.col-xs-10
-					input#startValidateDate(type='date', ng-model='invasivenessAtomizedType.startValidateDate')
-			.form-group
-				label.col-xs-2.control-label(for='endValidateDate', translate='') simplePliCTerm.name.endValidateDate
-				.col-xs-10
-					input#endValidateDate(type='date', ng-model='invasivenessAtomizedType.endValidateDate')
-			.form-group
-				label.col-xs-2.control-label(for='countryCode', translate='') simplePliCTerm.name.countryCode
-				.col-xs-10
-					div(ng-controller='UbicacionCtrl')
-						select(ng-model='invasivenessAtomizedType.countryCode', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
+					| {{"simplePliCTerm.name.Invasiveness" | translate}}
+					spant
+						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Invasiveness"|translate}}')
+							span.glyphicon.glyphicon-info-sign
+			.panel-body
+				.selected-item(ng-repeat='invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized.invasivenessAtomizedType')
+					div(ng-show='invasivenessAtomizedType')
+						div {{invasivenessAtomizedType}}
+				.form-group
+					label.col-xs-2.control-label(for='origin', translate='') simplePliCTerm.name.origin
+					.col-xs-10
+						.panel(ng-controller='CheckBoxCrtl')
+							div(ng-repeat='ori in origin')
+								input(type='checkbox', ng-model='ori.checked', ng-click='updateSelectionOrigin(ori, origin)')
+								|	{{ori.name}}
+				.form-group
+					label.col-xs-2.control-label(for='presence', translate='') simplePliCTerm.name.presence
+					.col-xs-10
+						.panel(ng-controller='CheckBoxCrtl')
+							div(ng-repeat='pre in presence')
+								input(type='checkbox', ng-model='pre.checked', ng-click='updateSelectionPresence(pre, presence)')
+								|	{{pre.name}}
+				.form-group
+					label.col-xs-2.control-label(for='persistence', translate='') simplePliCTerm.name.persistence
+					.col-xs-10
+						.panel(ng-controller='CheckBoxCrtl')
+							div(ng-repeat='per in persistence')
+								input(type='checkbox', ng-model='per.checked', ng-click='updateSelectionPersistence(per, persistence)')
+								|	{{per.name}}
+				.form-group
+					label.col-xs-2.control-label(for='distribution', translate='') simplePliCTerm.name.distribution
+					.col-xs-10
+						.panel(ng-controller='CheckBoxCrtl')
+							div(ng-repeat='dis in distribution')
+								input(type='checkbox', ng-model='dis.checked', ng-click='updateSelectionDistribution(dis, distribution)')
+								|	{{dis.name}}
+				.form-group
+					label.col-xs-2.control-label(for='harmful', translate='') simplePliCTerm.name.harmful
+					.col-xs-10
+						.panel(ng-controller='CheckBoxCrtl')
+							div(ng-repeat='har in harmful')
+								input(type='checkbox', ng-model='har.checked', ng-click='updateSelectionHarmful(har, harmful)')
+								|	{{har.name}}
+				.form-group
+					label.col-xs-2.control-label(for='modified', translate='') simplePliCTerm.name.modified
+					.col-xs-10
+						input#modified(type='date', ng-model='invasivenessAtomizedType.modified')
+				.form-group
+					label.col-xs-2.control-label(for='startValidateDate', translate='') simplePliCTerm.name.startValidateDate
+					.col-xs-10
+						input#startValidateDate(type='date', ng-model='invasivenessAtomizedType.startValidateDate')
+				.form-group
+					label.col-xs-2.control-label(for='endValidateDate', translate='') simplePliCTerm.name.endValidateDate
+					.col-xs-10
+						input#endValidateDate(type='date', ng-model='invasivenessAtomizedType.endValidateDate')
+				.form-group
+					label.col-xs-2.control-label(for='countryCode', translate='') simplePliCTerm.name.countryCode
+					.col-xs-10
+						div(ng-controller='UbicacionCtrl')
+							select(ng-model='invasivenessAtomizedType.countryCode', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
+								option(value='') - Seleccione -
+				.form-group
+					label.col-xs-2.control-label(for='stateProvince', translate='') simplePliCTerm.name.stateProvince
+					.col-xs-10
+						div(ng-controller='UbicacionCtrl')
+							select(ng-model='invasivenessAtomizedType.stateProvince', ng-disabled='!invasivenessAtomizedType.countryCode', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
+								option(value='') - Seleccione -
+				.form-group
+					label.col-xs-2.control-label(for='county', translate='') simplePliCTerm.name.county
+					.col-xs-10
+						div(ng-controller='UbicacionCtrl')
+							select(ng-model='invasivenessAtomizedType.county', ng-disabled='!invasivenessAtomizedType.countryCode || !invasivenessAtomizedType.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
+								option(value='') - Seleccione -
+				.form-group
+					label.col-xs-2.control-label(for='localityName', translate='') simplePliCTerm.name.localityName
+					.col-xs-10
+						input(type='text', name='localityName', ng-model='invasivenessAtomizedType.localityName')
+				.form-group
+					label.col-xs-2.control-label(for='language', translate='') simplePliCTerm.name.language
+					.col-xs-10
+						select(ng-model='invasivenessAtomizedType.language', ng-options='lang.Idioma as lang.Idioma for lang in idiomas ')
 							option(value='') - Seleccione -
-			.form-group
-				label.col-xs-2.control-label(for='stateProvince', translate='') simplePliCTerm.name.stateProvince
-				.col-xs-10
-					div(ng-controller='UbicacionCtrl')
-						select(ng-model='invasivenessAtomizedType.stateProvince', ng-disabled='!invasivenessAtomizedType.countryCode', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
-							option(value='') - Seleccione -
-			.form-group
-				label.col-xs-2.control-label(for='county', translate='') simplePliCTerm.name.county
-				.col-xs-10
-					div(ng-controller='UbicacionCtrl')
-						select(ng-model='invasivenessAtomizedType.county', ng-disabled='!invasivenessAtomizedType.countryCode || !invasivenessAtomizedType.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
-							option(value='') - Seleccione -
-			.form-group
-				label.col-xs-2.control-label(for='localityName', translate='') simplePliCTerm.name.localityName
-				.col-xs-10
-					input(type='text', name='localityName', ng-model='invasivenessAtomizedType.localityName')
-			.form-group
-				label.col-xs-2.control-label(for='language', translate='') simplePliCTerm.name.language
-				.col-xs-10
-					select(ng-model='invasivenessAtomizedType.language', ng-options='lang.Idioma as lang.Idioma for lang in idiomas ')
-						option(value='') - Seleccione -
-			.form-group
-				label.col-xs-2.control-label(for='citation', translate='') simplePliCTerm.name.citation
-				.col-xs-10
-					input(type='text', name='citation', ng-model='invasivenessAtomizedType.citation')
-			.form-group
-				label.col-xs-2.control-label(for='abundance', translate='') simplePliCTerm.name.abundance
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='abu in abundance')
-							input(type='checkbox', ng-model='abu.checked', ng-click='updateSelectionAbundance(abu, abundance)')
-							| 									{{abu.name}}
-			.form-group
-				label.col-xs-2.control-label(for='trend', translate='') simplePliCTerm.name.trend
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='tre in trend')
-							input(type='checkbox', ng-model='tre.checked', ng-click='updateSelectionTrend(tre, trend)')
-							| 									{{tre.name}}
-			.form-group
-				label.col-xs-2.control-label(for='rateOfSpread', translate='') simplePliCTerm.name.rateOfSpread
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='ros in rateOfSpread')
-							input(type='checkbox', ng-model='ros.checked', ng-click='updateSelectionRateOfSpread(ros, rateOfSpread)')
-							| 									{{ros.name}}
-			.form-group
-				label.col-xs-2.control-label(for='regulatoryListing', translate='') simplePliCTerm.name.regulatoryListing
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='rl in regulatoryListing')
-							input(type='checkbox', ng-model='rl.checked', ng-click='updateSelectionRegulatoryListing(rl, regulatoryListing)')
-							| 								 {{rl.name}}
-			.form-group
-				label.col-xs-2.control-label(for='memo', translate='') simplePliCTerm.name.memo
-				.col-xs-10
-					input(type='text', name='memo', ng-model='invasivenessAtomizedType.memo')
-			.form-group
-				label.col-xs-2.control-label(for='publicationDate', translate='') simplePliCTerm.name.publicationDate
-				.col-xs-10
-					input#publicationDate(type='date', ng-model='invasivenessAtomizedType.publicationDate')
-			.form-group
-				label.col-xs-2.control-label(for='localityType', translate='') simplePliCTerm.name.localityType
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='lt in localityType')
-							input(type='checkbox', ng-model='lt.checked', ng-click='updateSelectionLocalityType(lt, localityType)')
-							| 									{{lt.name}}
-			.form-group
-				label.col-xs-2.control-label(for='locationValue', translate='') simplePliCTerm.name.locationValue
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='lv in locationValue')
-							input(type='checkbox', ng-model='lv.checked', ng-click='updateSelectionLocationValue(lv, locationValue)')
-							| 									{{lv.name}}
-			.form-group
-				label.col-xs-2.control-label(for='publicationDatePrecision', translate='') simplePliCTerm.name.publicationDatePrecision
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='pdp in publicationDatePrecision')
-							input(type='checkbox', ng-model='pdp.checked', ng-click='updateSelectionPublicationDatePrecision(pdp, publicationDatePrecision)')
-							| 									{{pdp.name}}
-			.form-group
-				label.col-xs-2.control-label(for='WhatImpact', translate='') simplePliCTerm.name.WhatImpact
-				.col-xs-10
-					textarea(rows='3', name='whatImpact', ng-model='invasivenessAtomizedType.whatImpact')
-			.form-group
-				label.col-xs-2.control-label(for='vector', translate='') simplePliCTerm.name.vector
-				.col-xs-10
-					textarea(rows='3', name='whatImpact', ng-model='invasivenessAtomizedType.vector')
-			.form-group
-				label.col-xs-2.control-label(for='route', translate='') simplePliCTerm.name.route
-				.col-xs-10
-					textarea(rows='3', name='route', ng-model='invasivenessAtomizedType.route')
-			.form-group
-				label.col-xs-2.control-label(for='target', translate='') simplePliCTerm.name.target
-				.col-xs-10
-					textarea(rows='3', name='route', ng-model='invasivenessAtomizedType.target')
-			.form-group
-				label.col-xs-2.control-label(for='Mechanism', translate='') simplePliCTerm.name.Mechanism
-				.col-xs-10
-					textarea(rows='3', name='mechanism', ng-model='invasivenessAtomizedType.mechanism')
-			.form-group
-				div(ng-repeat='ancillary in invasivenessAtomizedType.ancillaryData')
-					| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
-				div(ng-controller='CollapseDemoCtrl')
-					.form-group
-						button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
-						.col-xs-10
-							div(collapse='isCollapsed')
-								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
-								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
-								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
-								input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
-								input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
-								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(invasivenessAtomizedType,ancillaryData)', translate='')
-									| Guardar
-									span.glyphicon.glyphicon-plus
-			.form-group
-				button.btn.btn-success.btn-sm(type='button', ng-click='addInvasiveness(invasivenessAtomizedType)') Guardar
-			.form-group
-				hr
-				label(for='invasivenessUnstructured', translate='') Descripción
-				em (opcional)
-				textarea(rows='3', name='invasiveness', ng-model='formData.invasiveness.invasivenessUnstructured')
-				div(ng-repeat='ancillary in formData.invasiveness.ancillaryData')
-					| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
-				div(ng-controller='CollapseDemoCtrl')
-					.form-group
-						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
-						.col-xs-10
-							div(collapse='isCollapsed')
-								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
-								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
-								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
-								input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
-								input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
-								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.invasiveness.ancillaryData,ancillaryData)', translate='')
-									| Guardar
-									span.glyphicon.glyphicon-plus
-.col-xs-6.col-xs-offset-3
-	ul.pager
-		li
-			a.btn.btn-block.btn-info(ui-sref='form.historyC')
-				span.glyphicon.glyphicon-circle-arrow-left
-				|	Sección Anterior
-		li
-			a.btn.btn-block.btn-info(ui-sref='form.habitat')
-				| Siguiente Sección 
-				span.glyphicon.glyphicon-circle-arrow-right
+				.form-group
+					label.col-xs-2.control-label(for='citation', translate='') simplePliCTerm.name.citation
+					.col-xs-10
+						input(type='text', name='citation', ng-model='invasivenessAtomizedType.citation')
+				.form-group
+					label.col-xs-2.control-label(for='abundance', translate='') simplePliCTerm.name.abundance
+					.col-xs-10
+						.panel(ng-controller='CheckBoxCrtl')
+							div(ng-repeat='abu in abundance')
+								input(type='checkbox', ng-model='abu.checked', ng-click='updateSelectionAbundance(abu, abundance)')
+								| 									{{abu.name}}
+				.form-group
+					label.col-xs-2.control-label(for='trend', translate='') simplePliCTerm.name.trend
+					.col-xs-10
+						.panel(ng-controller='CheckBoxCrtl')
+							div(ng-repeat='tre in trend')
+								input(type='checkbox', ng-model='tre.checked', ng-click='updateSelectionTrend(tre, trend)')
+								| 									{{tre.name}}
+				.form-group
+					label.col-xs-2.control-label(for='rateOfSpread', translate='') simplePliCTerm.name.rateOfSpread
+					.col-xs-10
+						.panel(ng-controller='CheckBoxCrtl')
+							div(ng-repeat='ros in rateOfSpread')
+								input(type='checkbox', ng-model='ros.checked', ng-click='updateSelectionRateOfSpread(ros, rateOfSpread)')
+								| 									{{ros.name}}
+				.form-group
+					label.col-xs-2.control-label(for='regulatoryListing', translate='') simplePliCTerm.name.regulatoryListing
+					.col-xs-10
+						.panel(ng-controller='CheckBoxCrtl')
+							div(ng-repeat='rl in regulatoryListing')
+								input(type='checkbox', ng-model='rl.checked', ng-click='updateSelectionRegulatoryListing(rl, regulatoryListing)')
+								| 								 {{rl.name}}
+				.form-group
+					label.col-xs-2.control-label(for='memo', translate='') simplePliCTerm.name.memo
+					.col-xs-10
+						input(type='text', name='memo', ng-model='invasivenessAtomizedType.memo')
+				.form-group
+					label.col-xs-2.control-label(for='publicationDate', translate='') simplePliCTerm.name.publicationDate
+					.col-xs-10
+						input#publicationDate(type='date', ng-model='invasivenessAtomizedType.publicationDate')
+				.form-group
+					label.col-xs-2.control-label(for='localityType', translate='') simplePliCTerm.name.localityType
+					.col-xs-10
+						.panel(ng-controller='CheckBoxCrtl')
+							div(ng-repeat='lt in localityType')
+								input(type='checkbox', ng-model='lt.checked', ng-click='updateSelectionLocalityType(lt, localityType)')
+								| 									{{lt.name}}
+				.form-group
+					label.col-xs-2.control-label(for='locationValue', translate='') simplePliCTerm.name.locationValue
+					.col-xs-10
+						.panel(ng-controller='CheckBoxCrtl')
+							div(ng-repeat='lv in locationValue')
+								input(type='checkbox', ng-model='lv.checked', ng-click='updateSelectionLocationValue(lv, locationValue)')
+								| 									{{lv.name}}
+				.form-group
+					label.col-xs-2.control-label(for='publicationDatePrecision', translate='') simplePliCTerm.name.publicationDatePrecision
+					.col-xs-10
+						.panel(ng-controller='CheckBoxCrtl')
+							div(ng-repeat='pdp in publicationDatePrecision')
+								input(type='checkbox', ng-model='pdp.checked', ng-click='updateSelectionPublicationDatePrecision(pdp, publicationDatePrecision)')
+								| 									{{pdp.name}}
+				.form-group
+					label.col-xs-2.control-label(for='WhatImpact', translate='') simplePliCTerm.name.WhatImpact
+					.col-xs-10
+						textarea(rows='3', name='whatImpact', ng-model='invasivenessAtomizedType.whatImpact')
+				.form-group
+					label.col-xs-2.control-label(for='vector', translate='') simplePliCTerm.name.vector
+					.col-xs-10
+						textarea(rows='3', name='whatImpact', ng-model='invasivenessAtomizedType.vector')
+				.form-group
+					label.col-xs-2.control-label(for='route', translate='') simplePliCTerm.name.route
+					.col-xs-10
+						textarea(rows='3', name='route', ng-model='invasivenessAtomizedType.route')
+				.form-group
+					label.col-xs-2.control-label(for='target', translate='') simplePliCTerm.name.target
+					.col-xs-10
+						textarea(rows='3', name='route', ng-model='invasivenessAtomizedType.target')
+				.form-group
+					label.col-xs-2.control-label(for='Mechanism', translate='') simplePliCTerm.name.Mechanism
+					.col-xs-10
+						textarea(rows='3', name='mechanism', ng-model='invasivenessAtomizedType.mechanism')
+				.form-group
+					div.table-responsive(ng-show='(invasivenessAtomizedType.ancillaryData).length')
+						table.table.table-bordered
+							thead
+								tr
+									th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
+									th {{"simplePliCTerm.name.license"|translate}}
+									th {{"simplePliCTerm.name.rights"|translate}}
+									th {{"simplePliCTerm.name.source"|translate}}
+									th
+							
+							tbody
+								tr(ng-repeat="ancillary in invasivenessAtomizedType.ancillaryData track by $index")
+									td
+										| {{ancillary.bibliographicCitation}}
+									td
+										| {{ancillary.license}}	
+									td
+										| {{ancillary.rights}}
+									td
+										| {{ancillary.source}}	
+									td
+										button.btn(ng-click='removeAncillaryData(invasivenessAtomizedType.ancillaryData,ancillaryData)') Eliminar
+					div(ng-controller='CollapseDemoCtrl')
+						.form-group
+							button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+							.col-xs-10
+								div(collapse='isCollapsed')
+									input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+									input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+									input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+									input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+									.panel.panel-default
+										.panel-heading
+											spant {{"simplePliCTerm.name.References"|translate}}
+											button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
+												span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
+											a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
+												span.glyphicon.glyphicon-info-sign
+										.panel-body
+											div.table-responsive(ng-show='(ancillaryData.reference).length')
+												table.table.table-striped
+													thead
+														tr
+															th {{"simplePliCTerm.name.Type"|translate}}
+															th {{"simplePliCTerm.name.Source"|translate}}
+															th {{"simplePliCTerm.name.title"|translate}}
+															th
+													
+													tbody
+														tr(ng-repeat="ref in ancillaryData.reference track by $index")
+															td
+																| {{ref.type}}
+															td
+																| {{ref.source}}
+															td
+																| {{ref.title}}
+															td
+																button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+					
+											div(collapse='isCollapsed_1')
+												.form-group
+													select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+														option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
+													input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+													input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+													input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+													input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+													input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+													input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+													input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+													input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+													input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+													input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+													input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+													input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+													input(type='text', ng-model='reference.city', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+													input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+													input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+													input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+													input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+													input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+													input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+													input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+													input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+												button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+									button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(invasivenessAtomizedType.ancillaryData,ancillaryData)', translate='') Guardar
+				
+				.form-group
+					button.btn.btn-success.btn-sm(type='button', ng-click='addInvasiveness(invasivenessAtomizedType)') Guardar
+				.form-group
+					hr
+					label(for='invasivenessUnstructured', translate='') Descripción
+					em (opcional)
+					textarea(rows='3', name='invasiveness', ng-model='formData.invasiveness.invasivenessUnstructured')
+					div.table-responsive(ng-show='(formData.invasiveness.ancillaryData).length')
+						table.table.table-bordered
+							thead
+								tr
+									th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
+									th {{"simplePliCTerm.name.license"|translate}}
+									th {{"simplePliCTerm.name.rights"|translate}}
+									th {{"simplePliCTerm.name.source"|translate}}
+									th
+							
+							tbody
+								tr(ng-repeat="ancillary in formData.invasiveness.ancillaryData track by $index")
+									td
+										| {{ancillary.bibliographicCitation}}
+									td
+										| {{ancillary.license}}	
+									td
+										| {{ancillary.rights}}
+									td
+										| {{ancillary.source}}	
+									td
+										button.btn(ng-click='removeAncillaryData(formData.invasiveness.ancillaryData,ancillaryData)') Eliminar
+					div(ng-controller='CollapseDemoCtrl')
+						.form-group
+							button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+							.col-xs-10
+								div(collapse='isCollapsed')
+									input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+									input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+									input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+									input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+									.panel.panel-default
+										.panel-heading
+											spant {{"simplePliCTerm.name.References"|translate}}
+											button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
+												span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
+											a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
+												span.glyphicon.glyphicon-info-sign
+										.panel-body
+											div.table-responsive(ng-show='(ancillaryData.reference).length')
+												table.table.table-striped
+													thead
+														tr
+															th {{"simplePliCTerm.name.Type"|translate}}
+															th {{"simplePliCTerm.name.Source"|translate}}
+															th {{"simplePliCTerm.name.title"|translate}}
+															th
+													
+													tbody
+														tr(ng-repeat="ref in ancillaryData.reference track by $index")
+															td
+																| {{ref.type}}
+															td
+																| {{ref.source}}
+															td
+																| {{ref.title}}
+															td
+																button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+					
+											div(collapse='isCollapsed_1')
+												.form-group
+													select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+														option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
+													input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+													input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+													input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+													input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+													input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+													input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+													input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+													input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+													input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+													input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+													input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+													input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+													input(type='text', ng-model='reference.city', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+													input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+													input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+													input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+													input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+													input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+													input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+													input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+													input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+												button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+									button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.invasiveness.ancillaryData,ancillaryData)', translate='') Guardar
+
+	.col-xs-6.col-xs-offset-3
+		ul.pager
+			li
+				a.btn.btn-block.btn-info(ui-sref='form.historyC')
+					span.glyphicon.glyphicon-circle-arrow-left
+					|	Sección Anterior
+			li
+				a.btn.btn-block.btn-info(ui-sref='form.habitat')
+					| Siguiente Sección 
+					span.glyphicon.glyphicon-circle-arrow-right

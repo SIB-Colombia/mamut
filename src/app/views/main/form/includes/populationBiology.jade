@@ -1,149 +1,240 @@
-.panel.panel-default
-	.panel-heading
-		spant
-			| {{"simplePliCTerm.name.PopulationBiology"|translate}}
+div(ng-controller='PopulationBiologyCtrl')
+	.panel.panel-default
+		.panel-heading
 			spant
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.PopulationBiology"|translate}}')
+				| {{"simplePliCTerm.name.PopulationBiology"|translate}}
+				spant
+					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.PopulationBiology"|translate}}')
+						span.glyphicon.glyphicon-info-sign
+		.panel-body
+			div.table-responsive(ng-show='(formData.populationBiology.populationBiologyAtomized).length')
+				table.table.table-bordered
+					thead
+						tr
+							th {{"simplePliCTerm.name.Region"|translate}}
+							th {{"simplePliCTerm.name.AbundanceData"|translate}}
+							th {{"simplePliCTerm.name.DensityData"|translate}}
+							th {{"simplePliCTerm.name.PatternDistrubution"|translate}}
+							th
+					
+					tbody
+						tr(ng-repeat="populationBiologyAtomized in formData.populationBiology.populationBiologyAtomized track by $index")
+							td
+								| {{populationBiologyAtomized.region.measurementValue}}
+							td
+								| {{populationBiologyAtomized.abundanceData.measurementValue}}	
+							td
+								| {{populationBiologyAtomized.densityData.measurementValue}}
+							td
+								| {{populationBiologyAtomized.patternDistribution.measurementValue}}	
+							td
+								button.btn(ng-click='removePopulation(formData.populationBiology.populationBiologyAtomized,populationBiologyAtomized)') Eliminar
+			.form-group
+				label.col-xs-1.control-label(for='Region', translate='') simplePliCTerm.name.Region
+				.col-xs-11
+					input(type='text', ng-model='populationBiologyAtomized.region.measurementValue')
+					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Region"|translate}}')
+						span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='abundanceData', translate='') simplePliCTerm.name.AbundanceData
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.abundanceData.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AbundanceData"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='densityData', translate='') simplePliCTerm.name.DensityData
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.densityData.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.DensityData"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='patternDistribution', translate='') simplePliCTerm.name.PatternDistrubution
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.patternDistribution.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.PatternDistrubution"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='size', translate='') simplePliCTerm.name.Size
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.size.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Size"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='sexRatio', translate='') simplePliCTerm.name.SexRatio
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.sexRatio.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.SexRatio"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='fecundity', translate='') simplePliCTerm.name.Fecundity
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.fecundity.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Fecundity"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='mortalityRate', translate='') simplePliCTerm.name.MortalityRate
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.mortalityRate.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.MortalityRate"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='birthRate', translate='') simplePliCTerm.name.BirthRate
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.birthRate.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.BirthRate"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='numberIndividualsPerObservation', translate='') simplePliCTerm.name.NumberIndividualsPerObservation
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.numberIndividualsPerObservation.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.NumberIndividualsPerObservation"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='averageDensity', translate='') simplePliCTerm.name.AverageDensity
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.averageDensity.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AverageDensity"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='populationTrend', translate='') simplePliCTerm.name.PopulationTrend
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.populationTrend.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.PopulationTrend"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='recruitment', translate='') simplePliCTerm.name.Recruitment
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.recruitment.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Recruitment"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='populationGrowthRate', translate='') simplePliCTerm.name.PopulationGrowthRate
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.populationGrowthRate.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.PopulationGrowthRate"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='emigration', translate='') simplePliCTerm.name.Emigration
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.emigration.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Emigration"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='immigration', translate='') simplePliCTerm.name.Immigration
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.immigration.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Immigration"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='descriptionLifeStages', translate='') simplePliCTerm.name.DescriptionLifeStages
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.descriptionLifeStages.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.DescriptionLifeStages"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='proportionIndividualsPerStageLife', translate='') simplePliCTerm.name.ProportionIndividualsPerStage
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.proportionIndividualsPerStageLife.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ProportionIndividualsPerStage"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+					.form-group
+						label.col-xs-2.control-label(for='carryingCapacity', translate='') simplePliCTerm.name.CarryingCapacity
+						.col-xs-10
+							input(type='text', ng-model='populationBiologyAtomized.carryingCapacity.measurementValue')
+							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.CarryingCapacity"|translate}}')
+								span.glyphicon.glyphicon-info-sign
+			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addPopulationBiology(populationBiologyAtomized)') Guardar
+			.form-group
+				hr
+				label.col-xs-2.control-label(for='populationBiologyUnstructured', translate='') simplePliCTerm.name.PopulationBiologyUnstructured
+				em (opcional)
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.PopulationBiologyUnstructured"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-	.panel-body
-		.selected-item(ng-repeat='populationBiologyAtomized in formData.populationBiology.populationBiologyAtomized')
-			div(ng-show='populationBiologyAtomized')
-				div {{populationBiologyAtomized}}
-		.form-group
-			label.col-xs-2.control-label(for='Region', translate='') simplePliCTerm.name.Region
-			.col-xs-10
-				.panel(ng-controller='CheckBoxCrtl')
-					div(ng-repeat='reg in region')
-						input(type='checkbox', ng-model='reg.checked', ng-click='updateSelectionRegion(reg, region)')
-						| 							{{reg.name}}
-		.form-group
-			label.col-xs-2.control-label(for='abundanceData', translate='') simplePliCTerm.name.AbundanceData
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.abundanceData.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AbundanceData"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='densityData', translate='') simplePliCTerm.name.DensityData
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.densityData.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.DensityData"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='patternDistribution', translate='') simplePliCTerm.name.PatternDistrubution
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.patternDistribution.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.PatternDistrubution"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='size', translate='') simplePliCTerm.name.Size
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.size.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Size"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='sexRatio', translate='') simplePliCTerm.name.SexRatio
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.sexRatio.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.SexRatio"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='fecundity', translate='') simplePliCTerm.name.Fecundity
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.fecundity.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Fecundity"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='mortalityRate', translate='') simplePliCTerm.name.MortalityRate
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.mortalityRate.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.MortalityRate"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='birthRate', translate='') simplePliCTerm.name.BirthRate
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.birthRate.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.BirthRate"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='numberIndividualsPerObservation', translate='') simplePliCTerm.name.NumberIndividualsPerObservation
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.numberIndividualsPerObservation.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.NumberIndividualsPerObservation"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='averageDensity', translate='') simplePliCTerm.name.AverageDensity
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.averageDensity.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AverageDensity"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='populationTrend', translate='') simplePliCTerm.name.PopulationTrend
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.populationTrend.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.PopulationTrend"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='recruitment', translate='') simplePliCTerm.name.Recruitment
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.recruitment.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Recruitment"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='populationGrowthRate', translate='') simplePliCTerm.name.PopulationGrowthRate
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.populationGrowthRate.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.PopulationGrowthRate"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='emigration', translate='') simplePliCTerm.name.Emigration
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.emigration.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Emigration"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='immigration', translate='') simplePliCTerm.name.Immigration
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.immigration.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Immigration"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='descriptionLifeStages', translate='') simplePliCTerm.name.DescriptionLifeStages
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.descriptionLifeStages.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.DescriptionLifeStages"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='proportionIndividualsPerStageLife', translate='') simplePliCTerm.name.ProportionIndividualsPerStage
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.proportionIndividualsPerStageLife.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ProportionIndividualsPerStage"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		.form-group
-			label.col-xs-2.control-label(for='carryingCapacity', translate='') simplePliCTerm.name.CarryingCapacity
-			.col-xs-10
-				input(type='text', ng-model='populationBiologyAtomized.carryingCapacity.measurementValue')
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.CarryingCapacity"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-		button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addPopulationBiology(populationBiologyAtomized)') Guardar
-		.form-group
-			hr
-			label.col-xs-2.control-label(for='populationBiologyUnstructured', translate='') simplePliCTerm.name.PopulationBiologyUnstructured
-			em (opcional)
-			a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.PopulationBiologyUnstructured"|translate}}')
-				span.glyphicon.glyphicon-info-sign
-			textarea(rows='3', name='populationBiology', ng-model='formData.populationBiology.populationBiologyUnstructured')
-			div(ng-repeat='ancillary in formData.territory.ancillaryData')
-				| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
-			div(ng-controller='CollapseDemoCtrl')
-				.form-group
-					button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
-					.col-xs-10
-						div(collapse='isCollapsed')
-							input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
-							input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
-							input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
-							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
-							input(type='text', ng-model='ancillaryData.mediaURL', placeholder='{{"simplePliCTerm.name.mediaURL"|translate}}')
-							button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.territory.ancillaryData,ancillaryData)', translate='')
-								| Guardar
-								span.glyphicon.glyphicon-plus
+				textarea(rows='3', name='populationBiology', ng-model='formData.populationBiology.populationBiologyUnstructured')
+
+				div(ng-controller='CollapseDemoCtrl')
+					.form-group
+						div.table-responsive(ng-show='(formData.territory.ancillaryData).length')
+							table.table.table-bordered
+								thead
+									tr
+										th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
+										th {{"simplePliCTerm.name.license"|translate}}
+										th {{"simplePliCTerm.name.rights"|translate}}
+										th {{"simplePliCTerm.name.source"|translate}}
+										th
+								
+								tbody
+									tr(ng-repeat="ancillary in formData.territory.ancillaryData track by $index")
+										td
+											| {{ancillary.bibliographicCitation}}
+										td
+											| {{ancillary.license}}	
+										td
+											| {{ancillary.rights}}
+										td
+											| {{ancillary.source}}	
+										td
+											button.btn(ng-click='removeAncillaryData(formData.territory.ancillaryData,ancillaryData)') Eliminar
+						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+						.col-xs-10
+							div(collapse='isCollapsed')
+								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+								input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+								.panel.panel-default
+									.panel-heading
+										spant {{"simplePliCTerm.name.References"|translate}}
+										button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
+											span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
+										a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
+											span.glyphicon.glyphicon-info-sign
+									.panel-body
+										div.table-responsive(ng-show='(ancillaryData.reference).length')
+											table.table.table-striped
+												thead
+													tr
+														th {{"simplePliCTerm.name.Type"|translate}}
+														th {{"simplePliCTerm.name.Source"|translate}}
+														th {{"simplePliCTerm.name.title"|translate}}
+														th
+												
+												tbody
+													tr(ng-repeat="ref in ancillaryData.reference track by $index")
+														td
+															| {{ref.type}}
+														td
+															| {{ref.source}}
+														td
+															| {{ref.title}}
+														td
+															button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+				
+										div(collapse='isCollapsed_1')
+											.form-group
+												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+													option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
+												input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+												input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+												input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+												input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+												input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+												input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+												input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+												input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+												input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+												input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+												input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+												input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+												input(type='text', ng-model='reference.city', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+												input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+												input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+												input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+												input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+												input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+												input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+												input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+												input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.territory.ancillaryData,ancillaryData)', translate='') Guardar

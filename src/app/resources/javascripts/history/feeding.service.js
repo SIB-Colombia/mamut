@@ -23,6 +23,9 @@ angular.module('app.services.feeding',[])
 		ancillaryData: []
 	};
 	
+	feedingAtomizedType.add = function(feeding, feedingAtomizedType){
+		feeding.push(feedingAtomizedType);
+	};
 	return {
 		thropic : thropic,
 		feedingAtomizedType : feedingAtomizedType,

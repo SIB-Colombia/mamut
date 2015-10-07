@@ -18,6 +18,9 @@ angular.module('app.services.annualCycle',[])
 		ancillaryData: []
 	};
 	
+	annualCycleAtomizedType.add = function(annualCycleAtomizedType, annualCycle){
+		annualCycleAtomizedType.push(annualCycle);
+	};
 	return {
 		annualCycleAtomizedType : annualCycleAtomizedType,
 		annualCycle : annualCycle

@@ -1,8 +1,9 @@
-.panel.panel-default
-	.panel-heading
-		spant {{"simplePliCTerm.name.Abstract"|translate}}
-		a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Abstract"|translate}}')
-			span.glyphicon.glyphicon-info-sign
-	.panel-body
-		.form-group
-			textarea(rows='3', name='abstract', ng-model='formData.abstract')
+div(ng-controller='AbstractCtrl')
+	.panel.panel-default
+		.panel-heading
+			spant {{"simplePliCTerm.name.Abstract"|translate}}
+			a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Abstract"|translate}}')
+				span.glyphicon.glyphicon-info-sign
+		.panel-body
+			.form-group
+				textarea(rows='3', name='abstract', ng-model='formData.abstract')

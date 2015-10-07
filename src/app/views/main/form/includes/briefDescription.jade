@@ -1,9 +1,10 @@
-.panel.panel-default
-	.panel-heading
-		spant
-			| {{"simplePliCTerm.name.BriefDescription"|translate}} 
+div(ng-controller='BriefDescriptionCtrl')
+	.panel.panel-default
+		.panel-heading
 			spant
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.BriefDescription"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-	.panel-body
-		textarea(rows='3', name='briefDescription', ng-model='formData.briefDescription')
+				| {{"simplePliCTerm.name.BriefDescription"|translate}} 
+				spant
+					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.BriefDescription"|translate}}')
+						span.glyphicon.glyphicon-info-sign
+		.panel-body
+			textarea(rows='3', name='briefDescription', ng-model='formData.briefDescription')

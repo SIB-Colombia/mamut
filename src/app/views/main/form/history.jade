@@ -2,16 +2,16 @@
 	div(ng-include="'./form/includes/lifeForm.html'")
 	div(ng-include="'./form/includes/lifeCycle.html'")
 	div(ng-include="'./form/includes/reproduction.html'")
-	div(ng-include="'./form/includes/annualCycles.html'")
+	//div(ng-include="'./form/includes/annualCycles.html'")
 	div(ng-include="'./form/includes/feeding.html'")
 	div(ng-include="'./form/includes/dispersal.html'")
 .col-xs-6.col-xs-offset-3
 	ul.pager
 		li
 			a.btn.btn-block.btn-info(ui-sref='form.taxoDesc')
-			span.glyphicon.glyphicon-circle-arrow-left
-			|	Sección Anterior
+				span.glyphicon.glyphicon-circle-arrow-left
+				|	Sección Anterior
 		li
 			a.btn.btn-block.btn-info(ui-sref='form.historyC')
-			| Siguiente Sección
-			span.glyphicon.glyphicon-circle-arrow-right
+				|	Siguiente Sección
+				span.glyphicon.glyphicon-circle-arrow-right
