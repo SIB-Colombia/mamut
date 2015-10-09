@@ -7,15 +7,27 @@ div(ng-controller='EcologicalSignificanceCtrl')
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.EcologicalSignificance"|translate}}')
 					span.glyphicon.glyphicon-info-sign
 		.panel-body
-			.selected-item(ng-repeat='ecologicalSignificanceAtomized in formData.ecologicalSignificance.ecologicalSignificanceAtomized')
-				div(ng-show='ecologicalSignificanceAtomized')
-					div
-						| {{ecologicalSignificanceAtomized.measurementType}} - {{ecologicalSignificanceAtomized.measurementValue}}
+			div.table-responsive(ng-show='(formData.ecologicalSignificance.ecologicalSignificanceAtomized).length')
+				table.table.table-bordered
+					thead
+						tr
+							th Fuente de Información
+							th 
+							th
+					
+					tbody
+						tr(ng-repeat="ecologicalSignificanceAtomized in formData.ecologicalSignificance.ecologicalSignificanceAtomized track by $index")
+							td
+								| {{ecologicalSignificanceAtomized.measurementOrFact.measurementType}}
+							td
+								| {{ecologicalSignificanceAtomized.measurementOrFact.measurementValue}}	
+							td
+								button.btn(ng-click='removeEcologicalSignificanceAtomized(formData.ecologicalSignificance.ecologicalSignificanceAtomized,ecologicalSignificanceAtomized)') Eliminar
 			.form-group
 				div(ng-controller='MeasurementCtrl')
-					select(ng-model='ecologicalSignificanceAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in ecologicalSignificances | unique:'measurementtype'")
+					select(ng-model='ecologicalSignificanceAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in ecologicalSignificances | unique:'measurementtype'")
 						option(value='') - Seleccione -
-					select(ng-model='ecologicalSignificanceAtomized.measurementValue', ng-disabled='!ecologicalSignificanceAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+					select(ng-model='ecologicalSignificanceAtomized.measurementOrFact.measurementValue', ng-disabled='!ecologicalSignificanceAtomized.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
 						option(value='') - Seleccione -
 					button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(formData.ecologicalSignificance.ecologicalSignificanceAtomized, measurementOrFact)') Guardar 
 			.form-group

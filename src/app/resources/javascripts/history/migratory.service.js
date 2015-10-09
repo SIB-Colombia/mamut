@@ -19,6 +19,15 @@ angular.module('app.services.migratory',[])
 		ancillaryData: []
 	};
 
+	migratory.add = function(list,migratoryAtomizedType){
+		list.push(migratoryAtomizedType);
+	};
+
+	migratory.delete = function(list,migratoryAtomized){
+		var index = list.indexOf(migratoryAtomized);
+		list.splice(index,1);
+	};
+
 	return {
 		migratoryAtomizedType : migratoryAtomizedType,
 		migratory : migratory

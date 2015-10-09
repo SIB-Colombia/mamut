@@ -22,7 +22,7 @@ div(ng-controller='InteractionsCtrl')
 							td
 								.selected-item(ng-repeat='interactionSpeciesType in interactionsAtomized.interactionSpeciesType')
 									div(ng-show='interactionSpeciesType')
-										| {{interactionSpeciesType.measurementType}} {{interactionSpeciesType.measurementValue}}	
+										| {{interactionSpeciesType.measurementOrFact.measurementType}} {{interactionSpeciesType.measurementOrFact.measurementValue}}	
 							td
 								button.btn(ng-click='removeInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomized)') Eliminar
 
@@ -34,11 +34,29 @@ div(ng-controller='InteractionsCtrl')
 				label.col-xs-2.control-label(for='interactionSpeciesType', translate='') simplePliCTerm.name.InteractionSpeciesType
 				div(ng-controller='MeasurementCtrl')
 					.col-xs-10
-						select(ng-model='interactionsAtomizedType.interactionSpeciesType.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in interactionSpeciesType | unique:'measurementtype'")
+						select(ng-model='interactionsAtomizedType.interactionSpeciesType.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in interactionSpeciesType | unique:'measurementtype'")
 							option(value='') - Seleccione -
-						select(ng-model='interactionsAtomizedType.interactionSpeciesType.measurementValue', ng-disabled='!interactionsAtomizedType.interactionSpeciesType.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+						select(ng-model='interactionsAtomizedType.interactionSpeciesType.measurementOrFact.measurementValue', ng-disabled='!interactionsAtomizedType.interactionSpeciesType.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
 							option(value='') - Seleccione -
 						button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(interactionsAtomizedType.interactionSpeciesType, measurementOrFact)') Guardar
+
+						div.table-responsive(ng-show='(interactionsAtomizedType.interactionSpeciesType).length')
+							table.table.table-bordered
+								thead
+									tr
+										th Fuente de Información
+										th 
+										th
+								
+								tbody
+									tr(ng-repeat="interactionSpeciesType in interactionsAtomizedType.interactionSpeciesType track by $index")
+										td
+											| {{interactionSpeciesType.measurementOrFact.measurementType}}
+										td
+											| {{interactionSpeciesType.measurementOrFact.measurementValue}}	
+		
+										td
+											button.btn(ng-click='removeInteractionSpeciesType(interactionsAtomizedType.interactionSpeciesType,interactionSpeciesType)') Eliminar
 			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)') Guardar
 			.form-group
 				hr

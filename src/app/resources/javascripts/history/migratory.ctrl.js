@@ -8,6 +8,8 @@ angular.module('app.controllers.migratory',[])
 	$scope.reference = referenceService;
 	//Ancillary
 	$scope.ancillaryData = ancillaryDataService;
+
+	var origMA = angular.copy($scope.migratoryAtomizedType);
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
@@ -30,5 +32,15 @@ angular.module('app.controllers.migratory',[])
 
 	$scope.removeReference = function(referenceList,reference){
 		referenceService.deleteFrom(referenceList,reference);	
+	};
+
+	$scope.addMigratoryAtomizedType = function(list,migratoryAtomizedType){
+		migratoryService.migratory.add(list,migratoryAtomizedType);
+		$scope.migratoryAtomizedType = origMA;
+		origMA = angular.copy($scope.migratoryAtomizedType);
+	};
+
+	$scope.removeMigratoryAtomized = function(list,migratoryAtomized){
+		migratoryService.migratory.delete(list,migratoryAtomized);
 	};
 }]);

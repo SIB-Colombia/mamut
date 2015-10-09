@@ -3,7 +3,42 @@
 angular.module('app.controllers.measurement',[])
 .controller('MeasurementCtrl', ['$scope', 'measurementService', function($scope, measurementService) {
 	
-	$scope.measurementOrFact = Object.create(measurementService).init();
+	$scope.measurementOrFact = {
+		measurementOrFact : {
+			measurementID: '',
+			measurementType: '',
+			measurementValue: '',
+			measurementAccuracy: '',
+			measurementUnit: '',
+			measurementDeterminedDate: '',
+			measurementDeterminedBy: [],
+			measurementMethod: '',
+			measurementRemarks: '',
+			relatedTo: ''
+		},
+		ancillaryData : {
+			identifier:'',
+			dataType:'',
+			mimeType:'',
+			agent:[],
+			created:'',
+			modified:'',
+			license:'',
+			rights:'',
+			rightsHolder:'',
+			bibliographicCitation:'',
+			audience:[],
+			source:'',
+			subject:[],
+			description:'',
+			mediaURL:[],
+			thumbnailURL:'',
+			location:'',
+			geoPoint:'',
+			reference:[],
+			additionalInformation:'',
+			dataObject:''}
+		};
 
 	var measurementCopy = angular.copy($scope.measurementOrFact);
 
@@ -27,7 +62,6 @@ angular.module('app.controllers.measurement',[])
 					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
 					$scope.measurementOrFact.ancillaryData.bibliographicCitation = attr.referencia;
 					$scope.measurementOrFact.ancillaryData.source = attr.url;
-					console.log($scope.measurementOrFact);
 				} 
 			});
 		}
@@ -179,9 +213,9 @@ angular.module('app.controllers.measurement',[])
 			});
 		}
 	});
-	$scope.$watch('interactionsAtomizedType.interactionSpeciesType.measurementType', function(name) {
+	$scope.$watch('interactionsAtomizedType.interactionSpeciesType.measurementOrFact.measurementType', function(name) {
 		if (name !== undefined) {
-			delete $scope.interactionsAtomizedType.interactionSpeciesType.measurementValue;
+			delete $scope.interactionsAtomizedType.interactionSpeciesType.measurementOrFact.measurementValue;
 			$scope.selectedAttr.length = 0;
 
 			angular.forEach($scope.interactionSpeciesType, function(attr) {
@@ -191,7 +225,7 @@ angular.module('app.controllers.measurement',[])
 			});
 		}
 	});
-	$scope.$watch('interactionsAtomizedType.interactionSpeciesType.measurementValue', function(name) {
+	$scope.$watch('interactionsAtomizedType.interactionSpeciesType.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
 			angular.forEach($scope.interactionSpeciesType, function(attr) {
 				if (attr.measurementvalue === name) {
@@ -203,33 +237,9 @@ angular.module('app.controllers.measurement',[])
 			});
 		}
 	});
-	$scope.$watch('ecologicalSignificanceAtomized.measurementType', function(name) {
+	$scope.$watch('environmentalEnvelopeAtomized.measurementOrFact.measurementType', function(name) {
 		if (name !== undefined) {
-			delete $scope.ecologicalSignificanceAtomized.measurementValue;
-			$scope.selectedAttr.length = 0;
-
-			angular.forEach($scope.ecologicalSignificances, function(attr) {
-				if (attr.measurementtype === name) {
-					$scope.selectedAttr.push(attr);
-				}
-			});
-		}
-	});
-	$scope.$watch('ecologicalSignificanceAtomized.measurementValue', function(name) {
-		if (name !== undefined) {
-			angular.forEach($scope.ecologicalSignificances, function(attr) {
-				if (attr.measurementvalue === name) {
-					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
-					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
-					$scope.measurementOrFact.ancillaryData.bibliographicCitation = attr.referencia;
-					$scope.measurementOrFact.ancillaryData.source = attr.url;
-				}
-			});
-		}
-	});
-	$scope.$watch('environmentalEnvelopeAtomized.measurementType', function(name) {
-		if (name !== undefined) {
-			delete $scope.environmentalEnvelopeAtomized.measurementValue;
+			delete $scope.environmentalEnvelopeAtomized.measurementOrFact.measurementValue;
 			$scope.selectedAttr.length = 0;
 
 			angular.forEach($scope.environmentalEnvelopes, function(attr) {
@@ -239,7 +249,7 @@ angular.module('app.controllers.measurement',[])
 			});
 		}
 	});
-	$scope.$watch('environmentalEnvelopeAtomized.measurementValue', function(name) {
+	$scope.$watch('environmentalEnvelopeAtomized.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
 			angular.forEach($scope.environmentalEnvelopes, function(attr) {
 				if (attr.measurementvalue === name) {
@@ -250,6 +260,31 @@ angular.module('app.controllers.measurement',[])
 				}
 			});
 		}
+	$scope.$watch('ecologicalSignificanceAtomized.measurementOrFact.measurementType', function(name) {
+		if (name !== undefined) {
+			delete $scope.ecologicalSignificanceAtomized.measurementOrFact.measurementValue;
+			$scope.selectedAttr.length = 0;
+
+			angular.forEach($scope.ecologicalSignificances, function(attr) {
+				if (attr.measurementtype === name) {
+					$scope.selectedAttr.push(attr);
+				}
+			});
+		}
+	});
+	$scope.$watch('ecologicalSignificanceAtomized.measurementOrFact.measurementValue', function(name) {
+		if (name !== undefined) {
+			angular.forEach($scope.ecologicalSignificances, function(attr) {
+				if (attr.measurementvalue === name) {
+					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
+					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
+					$scope.measurementOrFact.ancillaryData.bibliographicCitation = attr.referencia;
+					$scope.measurementOrFact.ancillaryData.source = attr.url;
+				}
+			});
+		}
+	});
+
 	});
 	$scope.$watch('habitatsAtomized.measurementType', function(name) {
 		if (name !== undefined) {
@@ -350,10 +385,10 @@ angular.module('app.controllers.measurement',[])
 
 	$scope.addMeasurementOrFactVector = function(measurementOrFact, measurement) {
 		if (measurement !== undefined) {
-			if (measurement.measurementValue !== '') {
+			if (measurement.measurementOrFact.measurementValue !== '') {
 				measurementOrFact.push({'measurementOrFact':measurement.measurementOrFact,'ancillaryData':measurement.ancillaryData});
 
-				$scope.measurementOrFact = measurementCopy;
+				$scope.measurementOrFact = angular.copy(measurementCopy);
 				measurementCopy = angular.copy($scope.measurementOrFact);
 
 				$scope.selectedAttr.length = 0;
@@ -362,7 +397,7 @@ angular.module('app.controllers.measurement',[])
 	};
 	$scope.addMeasurementOrFact = function(measurementOrFact, measurement) {
 		if (measurement !== undefined) {
-			if (measurement.measurementValue !== '') {
+			if (measurement.measurementOrFact.measurementValue !== '') {
 				measurementOrFact = {'measurementOrFact':measurement.measurementOrFact,'ancillaryData':measurement.ancillaryData};
 				
 				$scope.measurementOrFact = measurementCopy;

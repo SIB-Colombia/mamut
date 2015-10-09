@@ -30,4 +30,8 @@ angular.module('app.controllers.ecologicalSignificance',[])
 	$scope.removeReference = function(referenceList,reference){
 		referenceService.deleteFrom(referenceList,reference);	
 	};
+
+	$scope.removeEcologicalSignificanceAtomized= function(list,ecologicalSignificanceAtomized){
+		ecologicalSignificanceService.delete(list,ecologicalSignificanceAtomized);	
+	};
 }]);

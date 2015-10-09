@@ -30,4 +30,10 @@ angular.module('app.controllers.environmentalEnvelope',[])
 	$scope.removeReference = function(referenceList,reference){
 		referenceService.deleteFrom(referenceList,reference);	
 	};
+	
+	$scope.removeEnvironmentalEnvelopeAtomized= function(list,environmentalEnvelopeAtomized){
+		environmentalEnvelopeService.delete(list,environmentalEnvelopeAtomized);	
+	};
+
+	
 }]);

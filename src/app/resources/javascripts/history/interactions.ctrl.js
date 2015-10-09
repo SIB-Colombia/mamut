@@ -45,4 +45,10 @@ angular.module('app.controllers.interactions',[])
 	$scope.removeInteractionAtomizedType = function(list,interactionsAtomizedType){
 		interactionsService.interactions.delete(list,interactionsAtomizedType);
 	};
+
+	$scope.removeInteractionSpeciesType = function(list,interactionSpeciesType){
+		interactionsService.interactions.delete(list,interactionSpeciesType);
+	};
+
+	
 }]);

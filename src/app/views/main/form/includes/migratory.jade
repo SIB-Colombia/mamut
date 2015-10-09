@@ -8,6 +8,33 @@ div(ng-controller='MigratoryCtrl')
 					span.glyphicon.glyphicon-info-sign
 		.panel-body
 			.form-group
+				div.table-responsive(ng-show='(formData.migratory.migratoryAtomized).length')
+					table.table.table-bordered
+						thead
+							tr
+								th {{"simplePliCTerm.name.Causes"|translate}}
+								th {{"simplePliCTerm.name.Patterns"|translate}}
+								th {{"simplePliCTerm.name.Routes"|translate}}
+								th {{"simplePliCTerm.name.Season"|translate}}
+								th
+						
+						tbody
+							tr(ng-repeat="migratoryAtomized in formData.migratory.migratoryAtomized track by $index")
+								td
+									selected-item(ng-repeat='patterns in migratoryAtomized.causes')
+										div(ng-show='causes')
+											| {{causes}}
+								td
+									.selected-item(ng-repeat='patterns in migratoryAtomized.patterns')
+										div(ng-show='patterns')
+											| {{patterns}}
+								td
+									| {{migratoryAtomized.routes}}
+								td
+									| {{migratoryAtomized.season}}	
+								td
+									button.btn(ng-click='removeMigratoryAtomized(formData.migratory.migratoryAtomized,migratoryAtomized)') Eliminar
+			.form-group
 				label.col-xs-2.control-label(for='causes', translate='') simplePliCTerm.name.Causes
 				.col-xs-10
 					.panel(ng-controller='CheckBoxCrtl')
@@ -15,7 +42,7 @@ div(ng-controller='MigratoryCtrl')
 						.action-checkbox
 							input(id='{{cause.name}}', type='checkbox', value='{{cause.name}}', ng-checked='migratoryAtomizedType.causes.indexOf(cause.name) > -1', ng-click='toggleSelection(migratoryAtomizedType.causes,cause.name)')
 							label(for='{{cause.name}}')
-							| 							{{cause.name}}
+								| {{cause.name}}
 			.form-group
 				label.col-xs-2.control-label(for='causes', translate='') simplePliCTerm.name.Patterns
 				.col-xs-10
@@ -24,13 +51,13 @@ div(ng-controller='MigratoryCtrl')
 						.action-checkbox
 							input(id='{{pattern.name}}', type='checkbox', value='{{pattern.name}}', ng-checked='migratoryAtomizedType.patterns.indexOf(pattern.name) > -1', ng-click='toggleSelection(migratoryAtomizedType.patterns,pattern.name)')
 							label(for='{{pattern.name}}')
-							| 							{{pattern.name}}
+								| {{pattern.name}}
 			.form-group
-				label.col-xs-2.control-label(for='synonymStatus', translate='') simplePliCTerm.name.Routes
+				label.col-xs-2.control-label(for='routes', translate='') simplePliCTerm.name.Routes
 				.col-xs-10
 					input(type='text', ng-model='migratoryAtomizedType.routes')
 			.form-group
-				label.col-xs-2.control-label(for='synonymStatus', translate='') simplePliCTerm.name.Season
+				label.col-xs-2.control-label(for='season', translate='') simplePliCTerm.name.Season
 				.col-xs-10
 					input(type='text', ng-model='migratoryAtomizedType.season')
 			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addMigratoryAtomizedType(formData.migratory.migratoryAtomized,migratoryAtomizedType)') Guardar

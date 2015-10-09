@@ -7,14 +7,26 @@ div(ng-controller='EnvironmentalEnvelopeCtrl')
 					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.EnvironmentalEnvelope"|translate}}')
 						span.glyphicon.glyphicon-info-sign
 		.panel-body
-			.selected-item(ng-repeat='environmentalEnvelopeAtomized in formData.environmentalEnvelope.environmentalEnvelopeAtomized')
-				div(ng-show='environmentalEnvelopeAtomized')
-					div
-						| {{environmentalEnvelopeAtomized.measurementType}} - {{environmentalEnvelopeAtomized.measurementValue}}
+			div.table-responsive(ng-show='(formData.environmentalEnvelope.environmentalEnvelopeAtomized).length')
+				table.table.table-bordered
+					thead
+						tr
+							th Fuente de Información
+							th 
+							th
+					
+					tbody
+						tr(ng-repeat="environmentalEnvelopeAtomized in formData.environmentalEnvelope.environmentalEnvelopeAtomized track by $index")
+							td
+								| {{environmentalEnvelopeAtomized.measurementOrFact.measurementType}}
+							td
+								| {{environmentalEnvelopeAtomized.measurementOrFact.measurementValue}}	
+							td
+								button.btn(ng-click='removeEnvironmentalEnvelopeAtomized(formData.environmentalEnvelope.environmentalEnvelopeAtomized,environmentalEnvelopeAtomized)') Eliminar
 			div(ng-controller='MeasurementCtrl')
-				select(ng-model='environmentalEnvelopeAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in environmentalEnvelopes | unique:'measurementtype'")
+				select(ng-model='environmentalEnvelopeAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in environmentalEnvelopes | unique:'measurementtype'")
 					option(value='') - Seleccione -
-				select(ng-model='environmentalEnvelopeAtomized.measurementValue', ng-disabled='!environmentalEnvelopeAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+				select(ng-model='environmentalEnvelopeAtomized.measurementOrFact.measurementValue', ng-disabled='!environmentalEnvelopeAtomized.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
 					option(value='') - Seleccione -
 				button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(formData.environmentalEnvelope.environmentalEnvelopeAtomized, measurementOrFact)') Guardar 
 			hr

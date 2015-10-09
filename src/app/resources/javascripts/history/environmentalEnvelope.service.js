@@ -10,6 +10,11 @@ angular.module('app.services.environmentalEnvelope',[])
 		environmentalEnvelopeUnstructured: '',
 		ancillaryData: []
 	};
+
+	environmentalEnvelope.delete = function(list,environmentalEnvelopeAtomized){
+		var index = list.indexOf(environmentalEnvelopeAtomized);
+		list.splice(index,1);
+	};
 	
 	return environmentalEnvelope;
 });
