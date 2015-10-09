@@ -30,4 +30,8 @@ angular.module('app.controllers.lifeCycle',[])
 	$scope.removeReference = function(referenceList,reference){
 		referenceService.deleteFrom(referenceList,reference);	
 	};
+
+	$scope.removeLifeCycleAtomized= function(list,lifeCycleAtomized){
+		lifeCycleService.delete(list,lifeCycleAtomized);	
+	};
 }]);

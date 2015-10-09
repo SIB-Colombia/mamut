@@ -24,8 +24,8 @@ angular.module('app.controllers.form',[])
 			if (things.lifeCycles !== undefined) {
 				$scope.lifeCycles = things.lifeCycles;
 			}
-			if (things.reproductions !== undefined) {
-				$scope.reproductions = things.reproductions;
+			if (things.reproduction !== undefined) {
+				$scope.reproduction = things.reproduction;
 			}
 			if (things.event !== undefined) {
 				$scope.event = things.event;

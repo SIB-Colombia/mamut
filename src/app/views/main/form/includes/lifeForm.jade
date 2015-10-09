@@ -18,9 +18,9 @@ div(ng-controller='LifeFormCtrl')
 					tbody
 						tr(ng-repeat="lifeFormAtomized in formData.lifeForm.lifeFormAtomized track by $index")
 							td
-								| {{lifeFormAtomized.measurementType}}
+								| {{lifeFormAtomized.measurementOrFact.measurementType}}
 							td
-								| {{lifeFormAtomized.measurementValue}}
+								| {{lifeFormAtomized.measurementOrFact.measurementValue}}
 							td
 								button.btn(ng-click='removeLifeFormAtomized(formData.lifeForm.lifeFormAtomized, lifeFormAtomized)') Eliminar
 			.form-group

@@ -7,8 +7,19 @@ div(ng-controller='DispersalCtrl')
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Dispersal"|translate}}')
 					span.glyphicon.glyphicon-info-sign
 		.panel-body
-			div(ng-repeat='purpose in formData.dispersal.dispersalAtomized.purpose')
-				| {{purpose}}
+			div.table-responsive(ng-show='(formData.dispersal.dispersalAtomized.purpose).length')
+				table.table.table-bordered
+					thead
+						tr
+							th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
+							th
+					
+					tbody
+						tr(ng-repeat="purpose in formData.dispersal.dispersalAtomized.purpose track by $index")
+							td
+								| {{purpose}}
+							td
+								button.btn(ng-click='removeDispersalAtomized(formData.dispersal.dispersalAtomized.purpose,purpose)') Eliminar
 			.form-group
 				label.col-xs-2.control-label(for='purpose', translate='') simplePliCTerm.name.Purpose
 				.col-xs-10
@@ -23,24 +34,24 @@ div(ng-controller='DispersalCtrl')
 				.col-xs-10
 					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='type in dispersalType')
-						.action-checkbox
-							input(type='checkbox', ng-model='type.checked', ng-click='updateSelectionDispersalType(type, dispersalType)')
-							| {{type.name}}
+							.action-checkbox
+								input(type='checkbox', ng-model='type.checked', ng-click='updateSelectionDispersalType(type, dispersalType)')
+								| {{type.name}}
 			.form-group
 				label.col-xs-2.control-label(for='structureDispersed', translate='') simplePliCTerm.name.StructureDispersed
 				.col-xs-10
 					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='structure in structureDispersed')
-						.action-checkbox
-							input(type='checkbox', ng-model='structure.checked', ng-click='updateSelectionStructureDispersed(structure, structureDispersed)')
-							| {{structure.name}}
+							.action-checkbox
+								input(type='checkbox', ng-model='structure.checked', ng-click='updateSelectionStructureDispersed(structure, structureDispersed)')
+								| {{structure.name}}
 			.form-group
 				label.col-xs-2.control-label(for='distance', translate='') simplePliCTerm.name.Distance
 				div(ng-controller='MeasurementCtrl')
 					.col-xs-3
 						input(type='text', ng-model='formData.dispersal.dispersalAtomized.distance.measurementtypeValue')
 					.col-xs-3
-						select(ng-model='formData.dispersal.dispersalAtomized.distance.measurementType', ng-options="attr.measurementtype as attr.measurementvalue for attr in distance | unique:'measurementtype'")
+						select(ng-model='formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementvalue for attr in distance | unique:'measurementtype'")
 							option(value='') - Seleccione -
 			.form-group
 				hr

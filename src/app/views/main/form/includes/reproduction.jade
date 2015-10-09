@@ -18,14 +18,14 @@ div(ng-controller='ReproductionCtrl')
 					tbody
 						tr(ng-repeat="reproductionAtomized in formData.reproduction.reproductionAtomized track by $index")
 							td
-								| {{reproductionAtomized.measurementType}}
+								| {{reproductionAtomized.measurementOrFact.measurementType}}
 							td
-								| {{reproductionAtomized.measurementValue}}
+								| {{reproductionAtomized.measurementOrFact.measurementValue}}
 							td
-								button.btn(ng-click='removeLifeFormAtomized(formData.reproduction.reproductionAtomized, reproductionAtomized)') Eliminar
+								button.btn(ng-click='removeReproductionAtomized(formData.reproduction.reproductionAtomized, reproductionAtomized)') Eliminar
 			.form-group
 				div(ng-controller='MeasurementCtrl')
-					select(ng-model='reproductionAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in reproductions | unique:'measurementtype'")
+					select(ng-model='reproductionAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in reproduction | unique:'measurementtype'")
 						option(value='') - Seleccione -
 					select(ng-model='reproductionAtomized.measurementValue', ng-disabled='!reproductionAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
 						option(value='') - Seleccione -

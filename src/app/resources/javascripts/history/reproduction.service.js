@@ -6,9 +6,13 @@ angular.module('app.services.reproduction',[])
 
 	reproduction = {
 		reproductionAtomized: [],
-		ancillaryDataA: [],
 		reproductionUnstructured: '',
 		ancillaryData: []
+	};
+
+	reproduction.delete = function(list,reproductionAtomized){
+		var index = list.indexOf(reproductionAtomized);
+		list.splice(index,1);
 	};
 	
 	return reproduction;

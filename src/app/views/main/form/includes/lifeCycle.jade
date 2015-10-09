@@ -18,11 +18,11 @@ div(ng-controller='LifeCycleCtrl')
 					tbody
 						tr(ng-repeat="lifeCycleAtomized in formData.lifeCycle.lifeCycleAtomized track by $index")
 							td
-								| {{lifeCycleAtomized.measurementType}}
+								| {{lifeCycleAtomized.measurementOrFact.measurementType}}
 							td
-								| {{lifeCycleAtomized.measurementValue}}
+								| {{lifeCycleAtomized.measurementOrFact.measurementValue}}
 							td
-								button.btn(ng-click='removeLifeCycleAtomized(formData.lifeForm.lifeCycleAtomized, lifeCycleAtomized)') Eliminar
+								button.btn(ng-click='removeLifeCycleAtomized(formData.lifeCycle.lifeCycleAtomized, lifeCycleAtomized)') Eliminar
 			.form-group
 				div(ng-controller='MeasurementCtrl')
 					select(ng-model='lifeCycleAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in lifeCycles | unique:'measurementtype'")

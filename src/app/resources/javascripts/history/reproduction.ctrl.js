@@ -30,4 +30,9 @@ angular.module('app.controllers.reproduction',[])
 	$scope.removeReference = function(referenceList,reference){
 		referenceService.deleteFrom(referenceList,reference);	
 	};
+	
+	$scope.removeReproductionAtomized= function(list,reproductionAtomized){
+		reproductionService.delete(list,reproductionAtomized);	
+	};
+	
 }]);

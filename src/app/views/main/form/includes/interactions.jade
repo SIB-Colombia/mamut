@@ -7,20 +7,38 @@ div(ng-controller='InteractionsCtrl')
 					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Interactions"|translate}}')
 						span.glyphicon.glyphicon-info-sign
 		.panel-body
-			.selected-item(ng-repeat='interactionsAtomized in formData.interactions.interactionsAtomized')
-				div(ng-show='interactionsAtomized')
-					div {{interactionsAtomized}}
+			div.table-responsive(ng-show='(formData.interactions.interactionsAtomized).length')
+				table.table.table-bordered
+					thead
+						tr
+							th {{"simplePliCTerm.name.InteractionSpecies"|translate}}
+							th {{"simplePliCTerm.name.InteractionSpeciesType"|translate}}
+							th
+					
+					tbody
+						tr(ng-repeat="interactionsAtomized in formData.interactions.interactionsAtomized track by $index")
+							td
+								| {{interactionsAtomized.interactionSpecies}}
+							td
+								.selected-item(ng-repeat='interactionSpeciesType in interactionsAtomized.interactionSpeciesType')
+									div(ng-show='interactionSpeciesType')
+										| {{interactionSpeciesType.measurementType}} {{interactionSpeciesType.measurementValue}}	
+							td
+								button.btn(ng-click='removeInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomized)') Eliminar
+
 			.form-group
 				label.col-xs-2.control-label(for='interactionSpecies', translate='') simplePliCTerm.name.InteractionSpecies
+				.col-xs-10
+					input(type='text', ng-model='interactionsAtomizedType.interactionSpecies')
 			.form-group
 				label.col-xs-2.control-label(for='interactionSpeciesType', translate='') simplePliCTerm.name.InteractionSpeciesType
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='interaction in interactionSpeciesType')
-							.action-checkbox
-								input(id='{{interaction.name}}', type='checkbox', value='{{interaction.name}}', ng-checked='interactionsAtomizedType.interactionSpeciesType.indexOf(interaction.name) > -1', ng-click='toggleSelection(interactionsAtomizedType.interactionSpeciesType,interaction.name)')
-								label(for='{{interaction.name}}')
-								| 							{{interaction.name}}
+				div(ng-controller='MeasurementCtrl')
+					.col-xs-10
+						select(ng-model='interactionsAtomizedType.interactionSpeciesType.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in interactionSpeciesType | unique:'measurementtype'")
+							option(value='') - Seleccione -
+						select(ng-model='interactionsAtomizedType.interactionSpeciesType.measurementValue', ng-disabled='!interactionsAtomizedType.interactionSpeciesType.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+							option(value='') - Seleccione -
+						button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(interactionsAtomizedType.interactionSpeciesType, measurementOrFact)') Guardar
 			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)') Guardar
 			.form-group
 				hr

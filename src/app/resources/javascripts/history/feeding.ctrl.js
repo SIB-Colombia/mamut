@@ -37,12 +37,15 @@ angular.module('app.controllers.feeding',[])
 
 	$scope.addFeedingAtomizedType = function(feeding, feedingAtomizedType) {
 		if (feeding.type !== '') {
-			feeding.push(feedingAtomizedType);
+			feedingService.feeding.add(feeding,feedingAtomizedType);
 			//Reset the scope variable
 			$scope.feedingAtomizedType = origFA;
 			origFA = angular.copy($scope.feedingAtomizedType);
 			$('input:checkbox').removeAttr('checked');
 		}
 	};
-
+	$scope.removeFeedingAtomizedType= function(list,feedingAtomizedType){
+		feedingService.feeding.delete(list,feedingAtomizedType);	
+	};
+	
 }]);

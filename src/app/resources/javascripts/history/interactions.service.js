@@ -17,6 +17,15 @@ angular.module('app.services.interactions',[])
 		ancillaryData: []
 	};
 
+	interactions.add = function(list,interactionsAtomizedType){
+		list.push(interactionsAtomizedType);
+	};
+
+	interactions.delete = function(list,interactionsAtomizedType){
+		var index = list.indexOf(interactionsAtomizedType);
+		list.splice(index,1);
+	};
+
 	return {
 		interactionsAtomizedType : interactionsAtomizedType,
 		interactions : interactions
