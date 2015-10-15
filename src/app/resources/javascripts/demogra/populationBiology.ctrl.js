@@ -40,4 +40,8 @@ angular.module('app.controllers.populationBiology',[])
 			origPBA = angular.copy($scope.populationBiologyAtomized);
 		}
 	};
+	$scope.removePopulation = function(list, populationBiologyAtomized) {
+		var index = list.indexOf(populationBiologyAtomized);
+		list.splice(index);
+	};
 }]);

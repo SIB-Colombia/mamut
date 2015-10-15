@@ -24,14 +24,25 @@ div(ng-controller='EndemicCtrl')
 							td
 								| {{endemicAtomized.endemicIn}}	
 							td
-								button.btn(ng-click='removeAncillaryData(distributionClass.distributionAtomized,distribution)') Eliminar
+								button.btn(ng-click='removeEndemic(formData.endemicAtomized,endemicAtomized)') Eliminar
 			.form-group
 				label.col-xs-2.control-label(for='endemicTo', translate='') simplePliCTerm.name.EndemicTo
-				.col-xs-10
-					.selected-item(ng-repeat='endemicTo in endemicAtomizedType.endemicTo')
-						div(ng-show='endemicTo')
-						div {{endemicTo}}
+				.col-xs-7
 					input(name='endemicTo', type='text', ng-model='endemicTo')
+					div.table-responsive(ng-show='(endemicAtomizedType.endemicTo).length')
+						table.table.table-bordered
+							thead
+								tr
+									th {{"simplePliCTerm.name.EndemicTo"|translate}}
+									th
+							
+							tbody
+								tr(ng-repeat="endemicTo in endemicAtomizedType.endemicTo")
+									td
+										{{endemicTo}}
+									td
+										button.btn(ng-click='removeEndemicTo(endemicAtomizedType.endemicTo,endemicTo)') Eliminar
+				.col-xs-3
 					button.btn.btn-success.btn-xs.pull-right(ng-click='addEndemicTo(endemicAtomizedType.endemicTo,endemicTo)') Guardar endemismo para 
 			.form-group
 				label.col-xs-2.control-label(for='endemicIn', translate='') simplePliCTerm.name.EndemicIn

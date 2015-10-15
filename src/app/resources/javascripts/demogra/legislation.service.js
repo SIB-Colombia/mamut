@@ -13,7 +13,7 @@ angular.module('app.services.legislation',[])
 		status: '',
 		type: '',
 		norm: '',
-		aplliesTo: {
+		appliesTo: {
 			country: '',
 			stateProvince: '',
 			county: '',
@@ -29,6 +29,14 @@ angular.module('app.services.legislation',[])
 		ancillaryData: []
 	};
 
+	legislation.add = function(list,legislationAtomizedType){
+		list.push(legislationAtomizedType);
+	};
+
+	legislation.delete = function(list,legislationAtomizedType){
+		var index = list.indexOf(legislationAtomizedType);
+		list.splice(index,1);
+	};
 	
 	return {
 		legislationAtomizedType : legislationAtomizedType,

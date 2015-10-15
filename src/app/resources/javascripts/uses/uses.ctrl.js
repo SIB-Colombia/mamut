@@ -31,10 +31,15 @@ angular.module('app.controllers.use',[])
 	$scope.removeReference = function(referenceList,reference){
 		referenceService.deleteFrom(referenceList,reference);	
 	};
-	$scope.addUsesAtomized = function(usesAtomized) {
-		$scope.formData.usesManagementAndConservation.usesAtomized.push(usesAtomized);
+
+	$scope.addUsesAtomized = function(list, usesAtomized) {
+		usesService.add(list, usesAtomized);
 		//Reset the scope variable
 		$scope.usesAtomizedType = origUA;
 		origUA = angular.copy($scope.usesAtomizedType);
+	};
+
+	$scope.removeUsesAtomized = function(list,usesAtomized){
+		usesService.delete(list, usesAtomized);
 	};
 }]);

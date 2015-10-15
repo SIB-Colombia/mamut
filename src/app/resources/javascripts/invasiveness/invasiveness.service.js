@@ -43,6 +43,15 @@ angular.module('app.services.invasiveness',[])
 		ancillaryData: []
 	};
 	
+	invasiveness.add = function(list, invasivenessAtomizedType){
+		list.push(invasivenessAtomizedType);
+	};
+
+	invasiveness.delete = function(list,invasivenessAtomizedType){
+		var index = list.indexOf(invasivenessAtomizedType);
+		list.splice(index,1);
+	};
+
 	return {
 		invasivenessAtomizedType : invasivenessAtomizedType,
 		invasiveness : invasiveness

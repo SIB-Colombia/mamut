@@ -5,10 +5,15 @@ angular.module('app.controllers.associatedParty',[])
 	$scope.associatedParty = associatedPartyService;
 	$scope.formData.associatedParty = [];
 
-	$scope.addAssociatedParty = function(associatedParty) {
-		$scope.formData.associatedParty.push(associatedParty);
-		associatedParty = '';
+	var origAP = angular.copy($scope.associatedParty);
+	$scope.addAssociatedParty = function(list, associatedParty) {
+		associatedPartyService.add(list, associatedParty);
+		$scope.associatedParty = origAP;
+		origAP = angular.copy($scope.associatedParty);
 	};
 
+	$scope.removeAssociatedParty = function(list, associatedParty) {
+		associatedPartyService.delete(list, associatedParty);
+	};
 	
 }]);

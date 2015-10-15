@@ -33,12 +33,15 @@ angular.module('app.controllers.legislation',[])
 		referenceService.deleteFrom(referenceList,reference);	
 	};
 
-	$scope.addLegislationAtomized= function(legislationList,legislationAtomized){
+	$scope.addLegislationAtomized= function(list,legislationAtomized){
 		if(legislationAtomized.legislationName !== ''){
-			legislationList.push(legislationAtomized);
+			legislationService.legislation.add(list,legislationAtomized);
 			//Reset the scope variable
 			$scope.legislationAtomizedType = origLA;
 			origLA = angular.copy($scope.legislationAtomizedType);
 		}	
+	};
+	$scope.removeLegislation = function(list, legislationAtomized) {
+		legislationService.legislation.delete(list,legislationAtomized);
 	};
 }]);

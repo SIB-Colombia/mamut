@@ -12,10 +12,12 @@ div(ng-controller='DirectThreatsCtrl')
 					div {{measurementOrFact}}
 			.form-group
 				div(ng-controller='MeasurementCtrl')
-					select(ng-model='directThreatsAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in directThreats | unique:'measurementtype'")
-						option(value='') - Seleccione -
-					select(ng-model='directThreatsAtomized.measurementValue', ng-disabled='!directThreatsAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
-						option(value='') - Seleccione -
+					.col-xs-5
+						select(ng-model='directThreatsAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in directThreats | unique:'measurementtype'")
+							option(value='') - Seleccione -
+					.col-xs-5
+						select(ng-model='directThreatsAtomized.measurementValue', ng-disabled='!directThreatsAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+							option(value='') - Seleccione -
 			.form-group
 				hr
 				label(for='directThreatUnstructured', translate='') simplePliCTerm.name.DirectThreatUnstructured

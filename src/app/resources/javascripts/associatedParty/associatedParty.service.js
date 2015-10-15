@@ -22,6 +22,15 @@ angular.module('app.services.associatedParty',[])
 		personnelIdentifier: '',
 		role: ''
 	};
+
+	associatedParty.add = function(list,associatedParty){
+		list.push(associatedParty);
+	};
+
+	associatedParty.delete = function(list,associatedParty){
+		var index = list.indexOf(associatedParty);
+		list.splice(index,1);
+	};
 	
 	return associatedParty;
 });

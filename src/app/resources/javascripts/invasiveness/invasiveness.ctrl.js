@@ -32,10 +32,14 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.removeReference = function(referenceList,reference){
 		referenceService.deleteFrom(referenceList,reference);	
 	};
-	$scope.addInvasiveness = function(invasiveness) {
-		$scope.formData.invasiveness.invasivenessAtomized.push(invasiveness);
+	$scope.addInvasiveness = function(list, invasiveness) {
+		invasivenessService.invasiveness.add(list, invasiveness);
 		//Reset the scope variable
 		$scope.invasivenessAtomizedType = origI;
 		origI = angular.copy($scope.invasivenessAtomizedType);
+		$('input:checkbox').removeAttr('checked');
+	};
+	$scope.removeInvasivenessAtomized= function(list,invasiveness){
+		invasivenessService.invasiveness.delete(list,invasiveness);	
 	};
 }]);

@@ -28,7 +28,7 @@ div(ng-controller='UsesCtrl')
 							td
 								| {{usesAtomized.users}}	
 							td
-								button.btn(ng-click='removeManagement(formData.usesManagementAndConservation.usesAtomized,usesAtomized)') Eliminar
+								button.btn(ng-click='removeUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)') Eliminar
 
 			.form-group
 				label.col-xs-2.control-label(for='sourceOfInformation', translate='') simplePliCTerm.name.SourceOfInformation
@@ -217,4 +217,4 @@ div(ng-controller='UsesCtrl')
 								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(usesAtomizedType.ancillaryData,ancillaryData)', translate='') Guardar
 
 			.form-group
-				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addUsesAtomized(usesAtomizedType)') Guardar 
+				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addUsesAtomized(formData.usesManagementAndConservation.usesAtomized, usesAtomizedType)') Guardar 

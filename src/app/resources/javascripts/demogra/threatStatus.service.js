@@ -9,7 +9,7 @@ angular.module('app.services.threatStatus',[])
 		threatStatusAtomized: {
 			threatCategory: '',
 			authority: [],
-			aplliesTo: {
+			appliesTo: {
 				country: '',
 				stateProvince: '',
 				county: '',
@@ -20,6 +20,15 @@ angular.module('app.services.threatStatus',[])
 		},
 		threatStatusUnstructured: '',
 		ancillaryData: []
+	};
+	
+	threatStatusClass.add = function(list,threatStatusClass){
+		list.push(threatStatusClass);
+	};
+
+	threatStatusClass.delete = function(list,threatStatusClass){
+		var index = list.indexOf(threatStatusClass);
+		list.splice(index,1);
 	};
 	
 	return threatStatusClass;

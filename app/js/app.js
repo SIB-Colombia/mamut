@@ -711,10 +711,10 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
             });
          }   
       });
-    $scope.$watch('threatStatusClass.threatStatusAtomized.aplliesTo.country', function(name){
+    $scope.$watch('threatStatusClass.threatStatusAtomized.appliesTo.country', function(name){
         if(name!=undefined){
-            $scope.threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince = '';
-            $scope.threatStatusClass.threatStatusAtomized.aplliesTo.county = '';
+            $scope.threatStatusClass.threatStatusAtomized.appliesTo.stateProvince = '';
+            $scope.threatStatusClass.threatStatusAtomized.appliesTo.county = '';
             angular.forEach($scope.ubicacion, function(attr){
               if(attr.countryName === name){
                 $scope.selectedAttr = attr;
@@ -722,9 +722,9 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
             });
         }
     });
-    $scope.$watch('threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince', function(name){
+    $scope.$watch('threatStatusClass.threatStatusAtomized.appliesTo.stateProvince', function(name){
         if(name!=undefined){
-            $scope.threatStatusClass.threatStatusAtomized.aplliesTo.county = '';
+            $scope.threatStatusClass.threatStatusAtomized.appliesTo.county = '';
             angular.forEach($scope.ubicacion, function(attr){
               angular.forEach(attr.departments, function(attr2){
                 if(attr2.departmentName === name){
@@ -734,10 +734,10 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
             });
          }   
       });
-    $scope.$watch('legislationAtomizedType.aplliesTo.country', function(name){
+    $scope.$watch('legislationAtomizedType.appliesTo.country', function(name){
         if(name!=undefined){
-            $scope.legislationAtomizedType.aplliesTo.stateProvince = '';
-            $scope.legislationAtomizedType.aplliesTo.county = '';
+            $scope.legislationAtomizedType.appliesTo.stateProvince = '';
+            $scope.legislationAtomizedType.appliesTo.county = '';
             angular.forEach($scope.ubicacion, function(attr){
               if(attr.countryName === name){
                 $scope.selectedAttr = attr;
@@ -745,9 +745,9 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
             });
         }
     });
-    $scope.$watch('legislationAtomizedType.aplliesTo.stateProvince', function(name){
+    $scope.$watch('legislationAtomizedType.appliesTo.stateProvince', function(name){
         if(name!=undefined){
-            $scope.legislationAtomizedType.aplliesTo.county = '';
+            $scope.legislationAtomizedType.appliesTo.county = '';
             angular.forEach($scope.ubicacion, function(attr){
               angular.forEach(attr.departments, function(attr2){
                 if(attr2.departmentName === name){
@@ -1034,12 +1034,12 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
     $scope.populationBiologyAtomized={region:'',abundanceData:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},densityData:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},patternDistribution:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},size:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},sexRatio:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},fecundity:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},mortalityRate:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},birthRate:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},numberIndividualsPerObservation:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},averageDensity:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''}, populationTrend:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},recruitment:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},populationGrowthRate:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},emigration:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},immigration:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''}, descriptionLifeStages:[],proportionIndividualsPerStageLife:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},carryingCapacity:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},ancillaryData:[]};
     $scope.formData.populationBiology={populationBiologyAtomized:[], populationBiologyUnstructured:'',ancillaryData:[]};
     //ThreatStatus
-    $scope.threatStatusClass = {threatStatusAtomized:{threatCategory:'',authority:[], aplliesTo:{country:'',stateProvince:'',county:'',municipality:'',locality:''},ancillaryData:[]},threatStatusUnstructured:'',ancillaryData:[]}
+    $scope.threatStatusClass = {threatStatusAtomized:{threatCategory:'',authority:[], appliesTo:{country:'',stateProvince:'',county:'',municipality:'',locality:''},ancillaryData:[]},threatStatusUnstructured:'',ancillaryData:[]}
     $scope.formData.threatStatus=[];
     //Direct Threats
     $scope.formData.directThreats={directThreatsAtomized:{measurementID:'',measurementType:'',measurementValue:'',measurementAccuracy:'',measurementUnit:'',measurementDeterminedDate:'',measurementDeterminedBy:[],measurementMethod:'',measurementRemarks:'',relatedTo:''},ancillaryDataA:[],directThreatsUnstructured:'',ancillaryData:[]};
     //Legislation
-    $scope.legislationAtomizedType = {legislationName:'',protectionLegalStatus:'',legislationRead:'',status:'',type:'',norm:'',aplliesTo:{country:'',stateProvince:'',county:'',municipality:'',locality:''},ancillaryData:[]};
+    $scope.legislationAtomizedType = {legislationName:'',protectionLegalStatus:'',legislationRead:'',status:'',type:'',norm:'',appliesTo:{country:'',stateProvince:'',county:'',municipality:'',locality:''},ancillaryData:[]};
     $scope.formData.legislation={legislationAtomized:[],legislationUnstructured:'',ancillaryData:[]};
     //Uses, Management and Conservation
     $scope.usesAtomizedType={sourceOfInformation:{references:[],sourceOfInformationText:''},useValue:'',partUsed:'',users:'',organisms:'',vernacularNameUseAnnotations:'',productionDetails:'',meansOfApplicationAdministration:'',seasonOfAvailabilityUse:'',conservationExplotationData:'',useTypeAtomized:'',economics:'',ratingPopularity:'',properties:'',potential:'',useNotes:'',ancillaryData:[]};
@@ -1324,14 +1324,14 @@ angular.module('formApp', ['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transl
     $scope.addThreatStatusClass = function(threatStatusClass){
         if(threatStatusClass.threatStatusAtomized.threatCategory!=''){
             $scope.formData.threatStatus.push(threatStatusClass);
-            $scope.threatStatusClass = {threatStatusAtomized:{threatCategory:'',authority:[], aplliesTo:{country:'',stateProvince:'',county:'',municipality:'',locality:''},ancillaryData:[]},threatStatusUnstructured:'',ancillaryData:[]}
+            $scope.threatStatusClass = {threatStatusAtomized:{threatCategory:'',authority:[], appliesTo:{country:'',stateProvince:'',county:'',municipality:'',locality:''},ancillaryData:[]},threatStatusUnstructured:'',ancillaryData:[]}
         }
     };
 
      $scope.addLegislationAtomized = function(legislationAtomizedType){
         if(legislationAtomizedType.legislationName!=''){
             $scope.formData.legislation.legislationAtomized.push(legislationAtomizedType);
-            $scope.legislationAtomizedType = {legislationName:'',protectionLegalStatus:'',legislationRead:'',status:'',type:'',norm:'',aplliesTo:{country:'',stateProvince:'',county:'',municipality:'',locality:''},ancillaryData:[]};
+            $scope.legislationAtomizedType = {legislationName:'',protectionLegalStatus:'',legislationRead:'',status:'',type:'',norm:'',appliesTo:{country:'',stateProvince:'',county:'',municipality:'',locality:''},ancillaryData:[]};
         }
     };
 

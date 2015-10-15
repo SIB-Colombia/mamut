@@ -27,5 +27,14 @@ angular.module('app.services.use',[])
 		ancillaryData: []
 	};
 	
+	usesAtomizedType.add = function(list,usesAtomizedType){
+		list.push(usesAtomizedType);
+	};
+
+	usesAtomizedType.delete = function(list,usesAtomizedType){
+		var index = list.indexOf(usesAtomizedType);
+		list.splice(index,1);
+	};	
+	
 	return usesAtomizedType;
 });

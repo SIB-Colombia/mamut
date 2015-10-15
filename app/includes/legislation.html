@@ -76,14 +76,14 @@
 			<label for="appliesTo" class="col-xs-2 control-label" translate>simplePliCTerm.name.AppliesTo</label>	
 			<div class="col-xs-10">
 				<div ng-controller="UbicacionCtrl" >
-					<select ng-model="legislationAtomizedType.aplliesTo.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
+					<select ng-model="legislationAtomizedType.appliesTo.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
 						<option value="">- Seleccione -</option>
 					</select>  
 					
-					<select ng-model="legislationAtomizedType.aplliesTo.stateProvince" ng-disabled="!legislationAtomizedType.aplliesTo.country" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
+					<select ng-model="legislationAtomizedType.appliesTo.stateProvince" ng-disabled="!legislationAtomizedType.appliesTo.country" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
 						<option value="">- Seleccione -</option>
 					</select>
-					<select ng-model="legislationAtomizedType.aplliesTo.county" ng-disabled="!legislationAtomizedType.aplliesTo.country || !legislationAtomizedType.aplliesTo.stateProvince" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
+					<select ng-model="legislationAtomizedType.appliesTo.county" ng-disabled="!legislationAtomizedType.appliesTo.country || !legislationAtomizedType.appliesTo.stateProvince" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
 						<option value="">- Seleccione -</option>
 						</select>
 			    </div>

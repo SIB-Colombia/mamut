@@ -87,12 +87,15 @@ angular.module('app.controllers.checkBox',[])
         $scope.invasivenessAtomizedType.persistence = element.name;
     };
 
-    $scope.updateSelectionDistribution = function updateSelectionDistribution(element, list) {
-        angular.forEach(list, function(item) {
-            item.checked = false;
-        });
-        element.checked= true;
-        $scope.invasivenessAtomizedType.distribution = element.name;
+    $scope.updateSelectionDistribution = function updateSelectionDistribution(name) {
+
+        var idx = $scope.invasivenessAtomizedType.distribution.indexOf(name);
+        if (idx > -1) {
+            $scope.invasivenessAtomizedType.distribution.splice(idx, 1);
+        }
+        else {
+            $scope.invasivenessAtomizedType.distribution.push(name.name);
+        }
     };
 
     $scope.updateSelectionHarmful = function updateSelectionHarmful(element, list) {
@@ -180,13 +183,13 @@ angular.module('app.controllers.checkBox',[])
         $scope.threatStatusClass.threatStatusAtomized.threatCategory = element.name;
     };
 
-    $scope.updateSelectionAutority = function updateSelectionAutority(element) {
+    $scope.updateSelectionAutority = function updateSelectionAutority(name) {
          var idx = $scope.threatStatusClass.threatStatusAtomized.authority.indexOf(name);
         if (idx > -1) {
             $scope.threatStatusClass.threatStatusAtomized.authority.splice(idx, 1);
         }
         else {
-            $scope.threatStatusClass.threatStatusAtomized.authority.push(name);
+            $scope.threatStatusClass.threatStatusAtomized.authority.push(name.name);
         }
     };
     $scope.updateSelectionProtectionLegal = function updateSelectionProtectionLegal(element, list) {
@@ -238,13 +241,13 @@ angular.module('app.controllers.checkBox',[])
         element.checked= true;
         $scope.managementAndConservationAtomizedType.type = element.name;
     };
-    $scope.updateSelectionManagementAction = function updateSelectionManagementAction(element) {
+    $scope.updateSelectionManagementAction = function updateSelectionManagementAction(name) {
          var idx = $scope.managementAndConservationAtomizedType.actions.indexOf(name);
         if (idx > -1) {
             $scope.managementAndConservationAtomizedType.actions.splice(idx, 1);
         }
         else {
-            $scope.managementAndConservationAtomizedType.actions.push(name);
+            $scope.managementAndConservationAtomizedType.actions.push(name.name);
         }
     };
 }]);

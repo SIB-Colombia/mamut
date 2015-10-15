@@ -38,16 +38,20 @@ angular.module('app.controllers.distribution',[])
 
 	$scope.addDistributionOpt2 = function(distributionClass, opt2) {
 		if (opt2.country !== undefined) {
-			distributionClass.push(opt2);
+			distributionService.distributionOpt2.add(distributionClass, opt2);
 			//Reset the scope variable
 			$scope.distributionOpt2 = origDO;
 			origDO = angular.copy($scope.distributionOpt2);
 		}
 	};
 
-	$scope.addDistribution = function(distribution, distributionClass) {
+	$scope.removeDistributionOpt2 = function(distributionClass, opt2) {
+		distributionService.distributionOpt2.delete(distributionClass, opt2);
+	};
+
+	$scope.addDistribution = function(list, distributionClass) {
 		if (distributionClass.distributionScope.type !== undefined) {
-			distribution.push(distributionClass);
+			distributionService.distributionClass.add(list, distributionClass);
 			//Reset the scope variable
 			$scope.distributionClass = origDC;
 			origDC = angular.copy($scope.distributionClass);
@@ -55,9 +59,8 @@ angular.module('app.controllers.distribution',[])
 		}
 	};
 
-	$scope.removeDistribution = function() {
-		var lastItem = $scope.formData.distribution.length - 1;
-		$scope.formData.distribution.splice(lastItem);
+	$scope.removeDistribution = function(list,distribution) {
+		distributionService.distributionClass.delete(list, distribution);
 	};
 
 }]);

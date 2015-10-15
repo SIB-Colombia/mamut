@@ -23,8 +23,8 @@ angular.module('app.services.feeding',[])
 		ancillaryData: []
 	};
 	
-	feeding.add = function(feeding, feedingAtomizedType){
-		feeding.push(feedingAtomizedType);
+	feeding.add = function(list, feedingAtomizedType){
+		list.push(feedingAtomizedType);
 	};
 
 	feeding.delete = function(list,feedingAtomizedType){

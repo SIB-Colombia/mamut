@@ -7,7 +7,7 @@ div(ng-controller='ThreatStatusCtrl')
 					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ThreatStatus"|translate}}')
 						span.glyphicon.glyphicon-info-sign
 		.panel-body
-			div.table-responsive(ng-show='(formData.threatStatus.threatStatusAtomized).length')
+			div.table-responsive(ng-show='(formData.threatStatus).length')
 				table.table.table-bordered
 					thead
 						tr
@@ -17,15 +17,17 @@ div(ng-controller='ThreatStatusCtrl')
 							th
 					
 					tbody
-						tr(ng-repeat="threatStatusAtomized in formData.threatStatus.threatStatusAtomized track by $index")
+						tr(ng-repeat="threatStatusClass in formData.threatStatus track by $index")
 							td
-								| {{threatStatusAtomized.authority}}
+								.selected-item(ng-repeat='authority in threatStatusClass.threatStatusAtomized.authority')
+									div(ng-show='authority')
+										| {{authority}}
 							td
-								| {{threatStatusAtomized.threatCategory}}	
+								| {{threatStatusClass.threatStatusAtomized.threatCategory}}	
 							td
-								| {{threatStatusAtomized.aplliesTo}}
+								| {{threatStatusClass.threatStatusAtomized.appliesTo.country}} - {{threatStatusClass.threatStatusAtomized.appliesTo.stateProvince}} - {{threatStatusClass.threatStatusAtomized.appliesTo.county}}
 							td
-								button.btn(ng-click='removeThreatStatus(formData.threatStatus.threatStatusAtomized,threatStatusAtomized)') Eliminar
+								button.btn(ng-click='removeThreatStatus(formData.threatStatus,threatStatusAtomized)') Eliminar
 			.form-group
 				label.col-xs-2.control-label(for='authority', translate='') simplePliCTerm.name.Authority
 				.col-xs-10
@@ -42,15 +44,18 @@ div(ng-controller='ThreatStatusCtrl')
 							| {{tc.name}}
 			.form-group
 				label.col-xs-2.control-label(for='appliesTo', translate='') simplePliCTerm.name.AppliesTo
-				.col-xs-10
-					div(ng-controller='UbicacionCtrl')
-						select(ng-model='threatStatusClass.threatStatusAtomized.aplliesTo.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
+				div(ng-controller='UbicacionCtrl')
+					.col-xs-3
+						select(ng-model='threatStatusClass.threatStatusAtomized.appliesTo.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
 							option(value='') {{"simplePliCTerm.name.countryCode"|translate}}
-						select(ng-model='threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince', ng-disabled='!threatStatusClass.threatStatusAtomized.aplliesTo.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
+					.col-xs-3
+						select(ng-model='threatStatusClass.threatStatusAtomized.appliesTo.stateProvince', ng-disabled='!threatStatusClass.threatStatusAtomized.appliesTo.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
 							option(value='') {{"simplePliCTerm.name.stateProvince"|translate}}
-						select(ng-model='threatStatusClass.threatStatusAtomized.aplliesTo.county', ng-disabled='!threatStatusClass.threatStatusAtomized.aplliesTo.country || !threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
+					.col-xs-2
+						select(ng-model='threatStatusClass.threatStatusAtomized.appliesTo.county', ng-disabled='!threatStatusClass.threatStatusAtomized.appliesTo.country || !threatStatusClass.threatStatusAtomized.appliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
 							option(value='') {{"simplePliCTerm.name.county"|translate}}
-			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addThreatStatusClass(threatStatusClass)') Guardar
+					.col-xs-2
+						button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addThreatStatusClass(formData.threatStatus, threatStatusClass)') Guardar
 			.form-group
 				hr
 				label(for='threatStatusUnstructured', translate='') simplePliCTerm.name.ThreatStatusUnstructured

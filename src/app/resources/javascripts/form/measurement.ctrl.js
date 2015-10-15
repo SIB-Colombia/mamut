@@ -37,8 +37,9 @@ angular.module('app.controllers.measurement',[])
 			geoPoint:'',
 			reference:[],
 			additionalInformation:'',
-			dataObject:''}
-		};
+			dataObject:''
+		}
+	};
 
 	var measurementCopy = angular.copy($scope.measurementOrFact);
 
@@ -56,7 +57,8 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('lifeFormAtomized.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.lifeForms, function(attr) {
+
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
@@ -80,7 +82,7 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('lifeCycleAtomized.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.lifeCycles, function(attr) {
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
@@ -104,7 +106,7 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('reproductionAtomized.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.reproduction, function(attr) {
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
@@ -129,7 +131,7 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('dispersalAtomized.purpose.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.purposes, function(attr) {
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
@@ -145,7 +147,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.formData.dispersal.dispersalAtomized.distance.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.purposes, function(attr) {
+			angular.forEach($scope.distance, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
@@ -154,7 +156,7 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.purposes, function(attr) {
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementValue = name;
@@ -179,7 +181,7 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('formData.behavior.behaviorAtomized.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.behaviors, function(attr) {
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.formData.behavior.behaviorAtomized.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.formData.behavior.behaviorAtomized.measurementOrFact.measurementValue = name;
@@ -194,7 +196,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.molecularDataAtomizedType.measurementOrFact.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.behaviors, function(attr) {
+			angular.forEach($scope.molecularData, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
@@ -203,7 +205,7 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('molecularDataAtomizedType.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.behaviors, function(attr) {
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.molecularDataAtomizedType.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.molecularDataAtomizedType.measurementOrFact.measurementOrFact.measurementValue = name;
@@ -227,7 +229,7 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('interactionsAtomizedType.interactionSpeciesType.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.interactionSpeciesType, function(attr) {
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
@@ -251,7 +253,7 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('environmentalEnvelopeAtomized.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.environmentalEnvelopes, function(attr) {
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
@@ -260,6 +262,7 @@ angular.module('app.controllers.measurement',[])
 				}
 			});
 		}
+	});
 	$scope.$watch('ecologicalSignificanceAtomized.measurementOrFact.measurementType', function(name) {
 		if (name !== undefined) {
 			delete $scope.ecologicalSignificanceAtomized.measurementOrFact.measurementValue;
@@ -272,9 +275,10 @@ angular.module('app.controllers.measurement',[])
 			});
 		}
 	});
+
 	$scope.$watch('ecologicalSignificanceAtomized.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.ecologicalSignificances, function(attr) {
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
@@ -285,31 +289,32 @@ angular.module('app.controllers.measurement',[])
 		}
 	});
 
-	});
-	$scope.$watch('habitatsAtomized.measurementType', function(name) {
+	$scope.$watch('habitatAtomized.measurementType', function(name) {
 		if (name !== undefined) {
-			delete $scope.habitatsAtomized.measurementValue;
+			delete $scope.habitatAtomized.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.habitats, function(attr) {
+			angular.forEach($scope.habitat, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
 			});
 		}
 	});
-	$scope.$watch('habitatsAtomized.measurementValue', function(name) {
+	$scope.$watch('habitatAtomized.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.habitats, function(attr) {
+
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
 					$scope.measurementOrFact.ancillaryData.bibliographicCitation = attr.referencia;
 					$scope.measurementOrFact.ancillaryData.source = attr.url;
-				}
+				} 
 			});
 		}
 	});
+
 	$scope.$watch('territoryAtomized.extentOfOccurrence.measurementType', function(name) {
 		if (name !== undefined) {
 			delete $scope.territoryAtomized.extentOfOccurrence.measurementValue;
@@ -324,7 +329,7 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('territoryAtomized.extentOfOccurrence.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.extentOfOccurrence, function(attr) {
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.territory.territoryAtomized.extentOfOccurrence.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.territory.territoryAtomized.extentOfOccurrence.measurementOrFact.measurementValue = name;
@@ -348,7 +353,7 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('territoryAtomized.areaOfOccupancy.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.areaOfOccupancy, function(attr) {
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.measurementOrFact.measurementValue = name;
@@ -372,7 +377,7 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('directThreatsAtomized.measurementValue', function(name) {
 		if (name !== undefined) {
-			angular.forEach($scope.directThreats, function(attr) {
+			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.directThreats.directThreatsAtomized.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.directThreats.directThreatsAtomized.measurementOrFact.measurementValue = name;

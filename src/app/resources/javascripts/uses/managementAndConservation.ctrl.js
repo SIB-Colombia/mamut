@@ -32,10 +32,14 @@ angular.module('app.controllers.managementAndConservation',[])
 	$scope.removeReference = function(referenceList,reference){
 		referenceService.deleteFrom(referenceList,reference);	
 	};
-	$scope.addManagementAndConservation = function(managementAndConservation) {
-		$scope.formData.usesManagementAndConservation.managementAndConservationAtomized.push(managementAndConservation);
+	$scope.addManagementAndConservation = function(list, managementAndConservation) {
+		managementAndConservationAtomizedService.managementAndConservationAtomizedType.add(list, managementAndConservation);
 		//Reset the scope variable
 		$scope.managementAndConservationAtomizedType = origMC;
 		origMC = angular.copy($scope.managementAndConservationAtomizedType);
 	};
+	$scope.removeManagementAndConservation = function(list, managementAndConservation) {
+		managementAndConservationAtomizedService.managementAndConservationAtomizedType.delete(list, managementAndConservation);
+	};
+	
 }]);

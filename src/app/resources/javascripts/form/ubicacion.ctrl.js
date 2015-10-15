@@ -48,10 +48,10 @@ angular.module('app.controllers.ubicacion',[])
 			});
 		}
 	});
-	$scope.$watch('threatStatusClass.threatStatusAtomized.aplliesTo.country', function(name) {
+	$scope.$watch('threatStatusClass.threatStatusAtomized.appliesTo.country', function(name) {
 		if (name !== undefined) {
-			$scope.threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince = '';
-			$scope.threatStatusClass.threatStatusAtomized.aplliesTo.county = '';
+			$scope.threatStatusClass.threatStatusAtomized.appliesTo.stateProvince = '';
+			$scope.threatStatusClass.threatStatusAtomized.appliesTo.county = '';
 			angular.forEach($scope.ubicacion, function(attr) {
 				if (attr.countryName === name) {
 					$scope.selectedAttr = attr;
@@ -59,9 +59,9 @@ angular.module('app.controllers.ubicacion',[])
 			});
 		}
 	});
-	$scope.$watch('threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince', function(name) {
+	$scope.$watch('threatStatusClass.threatStatusAtomized.appliesTo.stateProvince', function(name) {
 		if (name !== undefined) {
-			$scope.threatStatusClass.threatStatusAtomized.aplliesTo.county = '';
+			$scope.threatStatusClass.threatStatusAtomized.appliesTo.county = '';
 			angular.forEach($scope.ubicacion, function(attr) {
 				angular.forEach(attr.departments, function(attr2) {
 					if (attr2.departmentName === name) {
@@ -71,10 +71,10 @@ angular.module('app.controllers.ubicacion',[])
 			});
 		}
 	});
-	$scope.$watch('legislationAtomizedType.aplliesTo.country', function(name) {
+	$scope.$watch('legislationAtomizedType.appliesTo.country', function(name) {
 		if (name !== undefined) {
-			$scope.legislationAtomizedType.aplliesTo.stateProvince = '';
-			$scope.legislationAtomizedType.aplliesTo.county = '';
+			$scope.legislationAtomizedType.appliesTo.stateProvince = '';
+			$scope.legislationAtomizedType.appliesTo.county = '';
 			angular.forEach($scope.ubicacion, function(attr) {
 				if (attr.countryName === name) {
 					$scope.selectedAttr = attr;
@@ -82,9 +82,9 @@ angular.module('app.controllers.ubicacion',[])
 			});
 		}
 	});
-	$scope.$watch('legislationAtomizedType.aplliesTo.stateProvince', function(name) {
+	$scope.$watch('legislationAtomizedType.appliesTo.stateProvince', function(name) {
 		if (name !== undefined) {
-			$scope.legislationAtomizedType.aplliesTo.county = '';
+			$scope.legislationAtomizedType.appliesTo.county = '';
 			angular.forEach($scope.ubicacion, function(attr) {
 				angular.forEach(attr.departments, function(attr2) {
 					if (attr2.departmentName === name) {

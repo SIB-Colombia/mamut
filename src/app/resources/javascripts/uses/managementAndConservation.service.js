@@ -21,6 +21,15 @@ angular.module('app.services.managementAndConservation',[])
 		ancillaryData: []
 	};
 
+	managementAndConservationAtomizedType.add = function(list,managementAndConservationAtomizedType){
+		list.push(managementAndConservationAtomizedType);
+	};
+
+	managementAndConservationAtomizedType.delete = function(list,managementAndConservationAtomizedType){
+		var index = list.indexOf(managementAndConservationAtomizedType);
+		list.splice(index,1);
+	};
+
 	return {
 		managementAndConservationAtomizedType: managementAndConservationAtomizedType,
 		usesManagementAndConservation : usesManagementAndConservation

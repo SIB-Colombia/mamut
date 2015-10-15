@@ -9,10 +9,12 @@ div(ng-controller='BehaviorCtrl')
 		.panel-body
 			.form-group
 				div(ng-controller='MeasurementCtrl')
-					select(ng-model='formData.behavior.behaviorAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in behaviors | unique:'measurementtype'")
-						option(value='') - Seleccione -
-					select(ng-model='formData.behavior.behaviorAtomized.measurementOrFact.measurementValue', ng-disabled='!formData.behavior.behaviorAtomized.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
-						option(value='') - Seleccione -
+					.col-xs-5
+						select(ng-model='formData.behavior.behaviorAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in behaviors | unique:'measurementtype'")
+							option(value='') - Seleccione -
+					.col-xs-5
+						select(ng-model='formData.behavior.behaviorAtomized.measurementOrFact.measurementValue', ng-disabled='!formData.behavior.behaviorAtomized.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+							option(value='') - Seleccione -
 			.form-group
 				hr
 				label(for='behaviorUnstructured', translate='') simplePliCTerm.name.BehaviorUnstructured

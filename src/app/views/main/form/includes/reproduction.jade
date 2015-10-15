@@ -25,11 +25,14 @@ div(ng-controller='ReproductionCtrl')
 								button.btn(ng-click='removeReproductionAtomized(formData.reproduction.reproductionAtomized, reproductionAtomized)') Eliminar
 			.form-group
 				div(ng-controller='MeasurementCtrl')
-					select(ng-model='reproductionAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in reproduction | unique:'measurementtype'")
-						option(value='') - Seleccione -
-					select(ng-model='reproductionAtomized.measurementValue', ng-disabled='!reproductionAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
-						option(value='') - Seleccione -
-					button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(formData.reproduction.reproductionAtomized, measurementOrFact)') Guardar 
+					.col-xs-5
+						select(ng-model='reproductionAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in reproduction | unique:'measurementtype'")
+							option(value='') - Seleccione -
+					.col-xs-5
+						select(ng-model='reproductionAtomized.measurementValue', ng-disabled='!reproductionAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+							option(value='') - Seleccione -
+					.col-xs-2
+						button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(formData.reproduction.reproductionAtomized, measurementOrFact)') Guardar 
 			.form-group
 				hr
 				label(for='reproductionUnstructured', translate='') simplePliCTerm.name.ReproductionUnstructured

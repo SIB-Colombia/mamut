@@ -8,44 +8,124 @@ div(ng-controller='InvasivenessCtrl')
 						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Invasiveness"|translate}}')
 							span.glyphicon.glyphicon-info-sign
 			.panel-body
-				.selected-item(ng-repeat='invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized.invasivenessAtomizedType')
-					div(ng-show='invasivenessAtomizedType')
-						div {{invasivenessAtomizedType}}
+				div.table-responsive(ng-show='(formData.invasiveness.invasivenessAtomized).length')
+					table.table.table-bordered
+					
+						tbody
+							tr(ng-repeat="invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized track by $index")
+								td
+									.parrafo-pegado
+										div(ng-show='invasivenessAtomizedType.origin')
+											div {{"simplePliCTerm.name.origin"|translate}} : {{invasivenessAtomizedType.origin}}
+										div(ng-show='invasivenessAtomizedType.presence')
+											div {{"simplePliCTerm.name.presence"|translate}} : {{invasivenessAtomizedType.presence}}
+										div(ng-show='invasivenessAtomizedType.persistence')
+											div {{"simplePliCTerm.name.persistence"|translate}} : {{invasivenessAtomizedType.persistence}}
+										div(ng-show='invasivenessAtomizedType.distribution')
+											div {{"simplePliCTerm.name.distribution"|translate}} :
+												.selected-item(ng-repeat='distribution in invasivenessAtomizedType.distribution')
+													div(ng-show='distribution')
+														| {{distribution}}
+										div(ng-show='invasivenessAtomizedType.harmful')
+											div {{"simplePliCTerm.name.harmful"|translate}} : {{invasivenessAtomizedType.harmful}}
+										div(ng-show='invasivenessAtomizedType.modified')
+											div {{"simplePliCTerm.name.modified"|translate}} : {{invasivenessAtomizedType.modified}}
+										div(ng-show='invasivenessAtomizedType.startValidateDate')
+											div {{"simplePliCTerm.name.startValidateDate"|translate}} : {{invasivenessAtomizedType.startValidateDate}}	
+										div(ng-show='invasivenessAtomizedType.endValidateDate')
+											div {{"simplePliCTerm.name.endValidateDate"|translate}} : {{invasivenessAtomizedType.endValidateDate}}
+										div(ng-show='invasivenessAtomizedType.countryCode')
+											div {{"simplePliCTerm.name.countryCode"|translate}} : {{invasivenessAtomizedType.countryCode}}
+										div(ng-show='invasivenessAtomizedType.stateProvince')
+											div {{"simplePliCTerm.name.stateProvince"|translate}} : {{invasivenessAtomizedType.stateProvince}}
+										div(ng-show='invasivenessAtomizedType.county')
+											div {{"simplePliCTerm.name.county"|translate}} : {{invasivenessAtomizedType.county}}	
+										div(ng-show='invasivenessAtomizedType.localityName')
+											div {{"simplePliCTerm.name.localityName"|translate}} : {{invasivenessAtomizedType.localityName}}	
+										div(ng-show='invasivenessAtomizedType.language')
+											div {{"simplePliCTerm.name.language"|translate}} : {{invasivenessAtomizedType.language}}
+										div(ng-show='invasivenessAtomizedType.citation')
+											div {{"simplePliCTerm.name.citation"|translate}} : {{invasivenessAtomizedType.citation}}
+										div(ng-show='invasivenessAtomizedType.abundance')
+											div {{"simplePliCTerm.name.abundance"|translate}} : {{invasivenessAtomizedType.abundance}}	
+										div(ng-show='invasivenessAtomizedType.trend')
+											div {{"simplePliCTerm.name.trend"|translate}} : {{invasivenessAtomizedType.trend}}
+										div(ng-show='invasivenessAtomizedType.rateOfSpread')
+											div {{"simplePliCTerm.name.rateOfSpread"|translate}} : {{invasivenessAtomizedType.rateOfSpread}}
+										div(ng-show='invasivenessAtomizedType.regulatoryListing')
+											div {{"simplePliCTerm.name.regulatoryListing"|translate}} : {{invasivenessAtomizedType.regulatoryListing}}
+										div(ng-show='invasivenessAtomizedType.memo')
+											div {{"simplePliCTerm.name.memo"|translate}} : {{invasivenessAtomizedType.memo}}	
+										div(ng-show='invasivenessAtomizedType.publicationDate')
+											div {{"simplePliCTerm.name.publicationDate"|translate}} : {{invasivenessAtomizedType.publicationDate}}
+										div(ng-show='invasivenessAtomizedType.localityType')
+											div {{"simplePliCTerm.name.localityType"|translate}} : {{invasivenessAtomizedType.localityType}}
+										div(ng-show='invasivenessAtomizedType.locationValue')
+											div {{"simplePliCTerm.name.locationValue"|translate}} : {{invasivenessAtomizedType.locationValue}}
+										div(ng-show='invasivenessAtomizedType.publicationDatePrecision')
+											div {{"simplePliCTerm.name.publicationDatePrecision"|translate}} : {{invasivenessAtomizedType.publicationDatePrecision}}	
+										div(ng-show='invasivenessAtomizedType.whatImpact')
+											div {{"simplePliCTerm.name.WhatImpact"|translate}} : {{invasivenessAtomizedType.whatImpact}}	
+										div(ng-show='invasivenessAtomizedType.vector')
+											div {{"simplePliCTerm.name.vector"|translate}} : {{invasivenessAtomizedType.vector}}
+										div(ng-show='invasivenessAtomizedType.route')
+											div {{"simplePliCTerm.name.route"|translate}} : {{invasivenessAtomizedType.route}}
+										div(ng-show='invasivenessAtomizedType.target')
+											div {{"simplePliCTerm.name.target"|translate}} : {{invasivenessAtomizedType.target}}	
+										div(ng-show='invasivenessAtomizedType.mechanism')
+											div {{"simplePliCTerm.name.Mechanism"|translate}} : {{invasivenessAtomizedType.mechanism}}		
+								td
+									button.btn(ng-click='removeInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)') Eliminar
 				.form-group
 					label.col-xs-2.control-label(for='origin', translate='') simplePliCTerm.name.origin
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
 							div(ng-repeat='ori in origin')
 								input(type='checkbox', ng-model='ori.checked', ng-click='updateSelectionOrigin(ori, origin)')
-								|	{{ori.name}}
+								| {{ori.name}}
+								spant
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{ori.help}}')
+										span.glyphicon.glyphicon-info-sign
 				.form-group
 					label.col-xs-2.control-label(for='presence', translate='') simplePliCTerm.name.presence
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
 							div(ng-repeat='pre in presence')
 								input(type='checkbox', ng-model='pre.checked', ng-click='updateSelectionPresence(pre, presence)')
-								|	{{pre.name}}
+								| {{pre.name}}
+								spant
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{pre.help}}')
+										span.glyphicon.glyphicon-info-sign
 				.form-group
 					label.col-xs-2.control-label(for='persistence', translate='') simplePliCTerm.name.persistence
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
 							div(ng-repeat='per in persistence')
 								input(type='checkbox', ng-model='per.checked', ng-click='updateSelectionPersistence(per, persistence)')
-								|	{{per.name}}
+								| {{per.name}}
+								spant
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{per.help}}')
+										span.glyphicon.glyphicon-info-sign
 				.form-group
 					label.col-xs-2.control-label(for='distribution', translate='') simplePliCTerm.name.distribution
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
 							div(ng-repeat='dis in distribution')
 								input(type='checkbox', ng-model='dis.checked', ng-click='updateSelectionDistribution(dis, distribution)')
-								|	{{dis.name}}
+								| {{dis.name}}
+								spant
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{dis.help}}')
+										span.glyphicon.glyphicon-info-sign
 				.form-group
 					label.col-xs-2.control-label(for='harmful', translate='') simplePliCTerm.name.harmful
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
 							div(ng-repeat='har in harmful')
 								input(type='checkbox', ng-model='har.checked', ng-click='updateSelectionHarmful(har, harmful)')
-								|	{{har.name}}
+								| {{har.name}}
+								spant
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{har.help}}')
+										span.glyphicon.glyphicon-info-sign
 				.form-group
 					label.col-xs-2.control-label(for='modified', translate='') simplePliCTerm.name.modified
 					.col-xs-10
@@ -95,28 +175,40 @@ div(ng-controller='InvasivenessCtrl')
 						.panel(ng-controller='CheckBoxCrtl')
 							div(ng-repeat='abu in abundance')
 								input(type='checkbox', ng-model='abu.checked', ng-click='updateSelectionAbundance(abu, abundance)')
-								| 									{{abu.name}}
+								| {{abu.name}}
+								spant
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{abu.help}}')
+										span.glyphicon.glyphicon-info-sign
 				.form-group
 					label.col-xs-2.control-label(for='trend', translate='') simplePliCTerm.name.trend
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
 							div(ng-repeat='tre in trend')
 								input(type='checkbox', ng-model='tre.checked', ng-click='updateSelectionTrend(tre, trend)')
-								| 									{{tre.name}}
+								| {{tre.name}}
+								spant
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{tre.help}}')
+										span.glyphicon.glyphicon-info-sign
 				.form-group
 					label.col-xs-2.control-label(for='rateOfSpread', translate='') simplePliCTerm.name.rateOfSpread
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
 							div(ng-repeat='ros in rateOfSpread')
 								input(type='checkbox', ng-model='ros.checked', ng-click='updateSelectionRateOfSpread(ros, rateOfSpread)')
-								| 									{{ros.name}}
+								| {{ros.name}}
+								spant
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{ros.help}}')
+										span.glyphicon.glyphicon-info-sign
 				.form-group
 					label.col-xs-2.control-label(for='regulatoryListing', translate='') simplePliCTerm.name.regulatoryListing
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
 							div(ng-repeat='rl in regulatoryListing')
 								input(type='checkbox', ng-model='rl.checked', ng-click='updateSelectionRegulatoryListing(rl, regulatoryListing)')
-								| 								 {{rl.name}}
+								| {{rl.name}}
+								spant
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{rl.help}}')
+										span.glyphicon.glyphicon-info-sign
 				.form-group
 					label.col-xs-2.control-label(for='memo', translate='') simplePliCTerm.name.memo
 					.col-xs-10
@@ -131,21 +223,24 @@ div(ng-controller='InvasivenessCtrl')
 						.panel(ng-controller='CheckBoxCrtl')
 							div(ng-repeat='lt in localityType')
 								input(type='checkbox', ng-model='lt.checked', ng-click='updateSelectionLocalityType(lt, localityType)')
-								| 									{{lt.name}}
+								| {{lt.name}}
+								spant
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lt.help}}')
+										span.glyphicon.glyphicon-info-sign
 				.form-group
 					label.col-xs-2.control-label(for='locationValue', translate='') simplePliCTerm.name.locationValue
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='lv in locationValue')
-								input(type='checkbox', ng-model='lv.checked', ng-click='updateSelectionLocationValue(lv, locationValue)')
-								| 									{{lv.name}}
+							div(ng-repeat='ls in locationStandard')
+								input(type='checkbox', ng-model='lv.checked', ng-click='updateSelectionLocationValue(ls, locationStandard)')
+								| {{ls.name}}
 				.form-group
 					label.col-xs-2.control-label(for='publicationDatePrecision', translate='') simplePliCTerm.name.publicationDatePrecision
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
 							div(ng-repeat='pdp in publicationDatePrecision')
 								input(type='checkbox', ng-model='pdp.checked', ng-click='updateSelectionPublicationDatePrecision(pdp, publicationDatePrecision)')
-								| 									{{pdp.name}}
+								| {{pdp.name}}
 				.form-group
 					label.col-xs-2.control-label(for='WhatImpact', translate='') simplePliCTerm.name.WhatImpact
 					.col-xs-10
@@ -255,7 +350,7 @@ div(ng-controller='InvasivenessCtrl')
 									button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(invasivenessAtomizedType.ancillaryData,ancillaryData)', translate='') Guardar
 				
 				.form-group
-					button.btn.btn-success.btn-sm(type='button', ng-click='addInvasiveness(invasivenessAtomizedType)') Guardar
+					button.btn.btn-success.btn-sm(type='button', ng-click='addInvasiveness(formData.invasiveness.invasivenessAtomized, invasivenessAtomizedType)') Guardar
 				.form-group
 					hr
 					label(for='invasivenessUnstructured', translate='') Descripción

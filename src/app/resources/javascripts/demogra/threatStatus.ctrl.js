@@ -2,7 +2,9 @@
 
 angular.module('app.controllers.threatStatus',[])
 .controller('ThreatStatusCtrl', ['$scope','referenceService', 'ancillaryDataService','threatStatusService', function($scope,referenceService,ancillaryDataService,threatStatusService) {
+	
 	$scope.threatStatusClass = threatStatusService;
+	
 	$scope.formData.threatStatus = [];
 	//Reference
 	$scope.reference = referenceService;
@@ -33,12 +35,15 @@ angular.module('app.controllers.threatStatus',[])
 		referenceService.deleteFrom(referenceList,reference);	
 	};
 
-	$scope.addThreatStatusClass = function(threatStatusClass) {
-		//if (threatStatusClass.threatStatusAtomized.threatCategory !== '') {
-			$scope.formData.threatStatus.push(threatStatusClass);
+	$scope.addThreatStatusClass = function(list, threatStatusClass) {
+		if (threatStatusClass.threatStatusAtomized.threatCategory !== '') {
+			threatStatusService.add(list, threatStatusClass);
 			//Reset the scope variable
 			$scope.threatStatusClass = origTSC;
 			origTSC = angular.copy($scope.threatStatusClass);
-		//}
+		}
+	};
+	$scope.removeThreatStatus = function(list, threatStatusClass) {
+		threatStatusService.delete(list, threatStatusClass);
 	};
 }]);

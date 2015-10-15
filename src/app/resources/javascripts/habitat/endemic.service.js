@@ -10,6 +10,14 @@ angular.module('app.services.endemic',[])
 		endemicIn: '',
 		ancillaryData: []
 	};
-	
-	return endemicAtomizedType;
+
+	endemicAtomizedType.add = function(list,endemicAtomized){
+		list.push(endemicAtomized);
+	};
+
+	endemicAtomizedType.delete = function(list,endemicAtomized){
+		var index = list.indexOf(endemicAtomized);
+		list.splice(index,1);
+	};	
+	return 	endemicAtomizedType;
 });

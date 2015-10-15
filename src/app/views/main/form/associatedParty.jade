@@ -87,7 +87,7 @@ div(ng-controller='AssociatedPartyCtrl')
 						input(type='text', ng-model='associatedParty.role')
 						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.role"|translate}}')
 							span.glyphicon.glyphicon-info-sign
-				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addAssociatedParty(associatedParty)') Guardar 
+				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addAssociatedParty(formData.associatedParty, associatedParty)') Guardar 
 	.col-xs-6.col-xs-offset-3
 		ul.pager
 			li

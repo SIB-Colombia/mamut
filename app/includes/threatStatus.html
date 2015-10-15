@@ -38,14 +38,14 @@
 			<label for="appliesTo" class="col-xs-2 control-label" translate>simplePliCTerm.name.AppliesTo</label>	
 			<div class="col-xs-10">
 				<div ng-controller="UbicacionCtrl" >
-					<select ng-model="threatStatusClass.threatStatusAtomized.aplliesTo.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
+					<select ng-model="threatStatusClass.threatStatusAtomized.appliesTo.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
 						<option value="">- Seleccione -</option>
 					</select>  
 					
-					<select ng-model="threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince" ng-disabled="!threatStatusClass.threatStatusAtomized.aplliesTo.country" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
+					<select ng-model="threatStatusClass.threatStatusAtomized.appliesTo.stateProvince" ng-disabled="!threatStatusClass.threatStatusAtomized.appliesTo.country" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
 						<option value="">- Seleccione -</option>
 					</select>
-					<select ng-model="threatStatusClass.threatStatusAtomized.aplliesTo.county" ng-disabled="!threatStatusClass.threatStatusAtomized.aplliesTo.country || !threatStatusClass.threatStatusAtomized.aplliesTo.stateProvince" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
+					<select ng-model="threatStatusClass.threatStatusAtomized.appliesTo.county" ng-disabled="!threatStatusClass.threatStatusAtomized.appliesTo.country || !threatStatusClass.threatStatusAtomized.appliesTo.stateProvince" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
 						<option value="">- Seleccione -</option>
 						</select>
 			    </div>

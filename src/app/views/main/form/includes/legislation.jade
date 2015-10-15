@@ -15,6 +15,7 @@ div(ng-controller='LegislationCtrl')
 							th {{"simplePliCTerm.name.ProtectionLegalStatus"|translate}}
 							th {{"simplePliCTerm.name.LegislationRead"|translate}}
 							th {{"simplePliCTerm.name.Status"|translate}}
+							th {{"simplePliCTerm.name.AppliesTo"|translate}}
 							th
 					
 					tbody
@@ -27,6 +28,8 @@ div(ng-controller='LegislationCtrl')
 								| {{legislationAtomized.legislationRead}}
 							td
 								| {{legislationAtomized.status}}	
+							td
+								| {{legislationAtomized.appliesTo.country}} - {{legislationAtomized.appliesTo.stateProvince}} - {{legislationAtomized.appliesTo.county}}
 							td
 								button.btn(ng-click='removeLegislation(formData.legislation.legislationAtomized,legislationAtomized)') Eliminar
 
@@ -68,15 +71,18 @@ div(ng-controller='LegislationCtrl')
 							| {{ln.name}}
 			.form-group
 				label.col-xs-2.control-label(for='appliesTo', translate='') simplePliCTerm.name.AppliesTo
-				.col-xs-10
-					div(ng-controller='UbicacionCtrl')
-						select(ng-model='legislationAtomizedType.aplliesTo.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
+				div(ng-controller='UbicacionCtrl')
+					.col-xs-3
+						select(ng-model='legislationAtomizedType.appliesTo.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
 							option(value='') {{"simplePliCTerm.name.countryCode"|translate}}
-						select(ng-model='legislationAtomizedType.aplliesTo.stateProvince', ng-disabled='!legislationAtomizedType.aplliesTo.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
+					.col-xs-3
+						select(ng-model='legislationAtomizedType.appliesTo.stateProvince', ng-disabled='!legislationAtomizedType.appliesTo.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
 							option(value='') {{"simplePliCTerm.name.stateProvince"|translate}}
-						select(ng-model='legislationAtomizedType.aplliesTo.county', ng-disabled='!legislationAtomizedType.aplliesTo.country || !legislationAtomizedType.aplliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
+					.col-xs-2
+						select(ng-model='legislationAtomizedType.appliesTo.county', ng-disabled='!legislationAtomizedType.appliesTo.country || !legislationAtomizedType.appliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
 							option(value='') {{"simplePliCTerm.name.county"|translate}}
-			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addLegislationAtomized(formData.legislation.legislationAtomized,legislationAtomizedType)') Guardar
+					.col-xs-2
+						button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addLegislationAtomized(formData.legislation.legislationAtomized,legislationAtomizedType)') Guardar
 			.form-group
 				hr
 				label(for='legislationUnstructured', translate='') simplePliCTerm.name.LegislationUnstructured

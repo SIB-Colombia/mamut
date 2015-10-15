@@ -26,9 +26,11 @@ div(ng-controller='ManagementAndConservationCtrl')
 							td
 								| {{managementAndConservationAtomized.managementPlan}}
 							td
-								| {{managementAndConservationAtomized.actions}}	
+								.selected-item(ng-repeat='actions in managementAndConservationAtomized.actions')
+									div(ng-show='actions')
+										| {{actions}}
 							td
-								button.btn(ng-click='removeManagement(formData.usesManagementAndConservation.managementAndConservationAtomized,managementAndConservationAtomized)') Eliminar
+								button.btn(ng-click='removeManagementAndConservation(formData.usesManagementAndConservation.managementAndConservationAtomized,managementAndConservationAtomized)') Eliminar
 			.form-group
 				label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Type
 				.col-xs-10
@@ -146,4 +148,4 @@ div(ng-controller='ManagementAndConservationCtrl')
 								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(managementAndConservationAtomizedType.ancillaryData,ancillaryData)', translate='') Guardar
 			
 			.form-group
-				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addManagementAndConservation(managementAndConservationAtomizedType)') Guardar 
+				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addManagementAndConservation(formData.usesManagementAndConservation.managementAndConservationAtomized, managementAndConservationAtomizedType)') Guardar 

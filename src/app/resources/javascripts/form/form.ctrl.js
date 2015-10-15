@@ -76,7 +76,7 @@ angular.module('app.controllers.form',[])
 				$scope.presence = things.presence;
 			}
 			if (things.persistence !== undefined) {
-				$scope.persistence = things.presistence;
+				$scope.persistence = things.persistence;
 			}
 			if (things.distribution !== undefined) {
 				$scope.distribution = things.distribution;
@@ -105,8 +105,8 @@ angular.module('app.controllers.form',[])
 			if (things.publicationDatePrecision !== undefined) {
 				$scope.publicationDatePrecision = things.publicationDatePrecision;
 			}
-			if (things.habitats !== undefined) {
-				$scope.habitats = things.habitats;
+			if (things.habitat !== undefined) {
+				$scope.habitat = things.habitat;
 			}
 			if (things.distributionScope !== undefined) {
 				$scope.distributionScope = things.distributionScope;

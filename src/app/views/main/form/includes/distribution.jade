@@ -6,6 +6,7 @@ div(ng-controller='DistributionCtrl')
 				spant
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Distribution"|translate}}')
 					span.glyphicon.glyphicon-info-sign
+			button.btn.btn-success.btn-xs.pull-right(ng-click='addDistribution(formData.distribution,distributionClass)') Guardar distribución
 		.panel-body
 			div.table-responsive(ng-show='(formData.distribution).length')
 				table.table.table-bordered
@@ -27,37 +28,38 @@ div(ng-controller='DistributionCtrl')
 									div(ng-show='distributionA')
 										| {{distributionA.country}} - {{distributionA.stateProvince}} - {{distributionA.county}}
 							td
-								button.btn(ng-click='removeAncillaryData(formData.distribution,distributionClass)') Eliminar
+								button.btn(ng-click='removeDistribution(formData.distribution,distribution)') Eliminar
+				hr
 			.form-group
 				label.col-xs-2.control-label(for='distributionScope', translate='') simplePliCTerm.name.DistributionScope
 				.col-xs-10
 					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='ds in distributionScope')
-							input(type='checkbox', ng-model='ds.checked', ng-click='updateSelectionDistributionScope(ds, publicationDatePrecision)')
+							input(type='checkbox', ng-model='ds.checked', ng-click='updateSelectionDistributionScope(ds, distributionScope)')
 							| {{ds.name}}
 			.form-group
 				label.col-xs-2.control-label(for='temporalCoverage', translate='') simplePliCTerm.name.TemporalCoverage
-				.col-xs-10
+				.col-xs-3
 					label {{simplePliCTerm.name.startDate|translate}} 
 						input#startValidateDate(type='date', ng-model='distributionClass.temporalCoverage.startDate')
+				.col-xs-3
 					label {{simplePliCTerm.name.endDate|translate}} 
 						input#endValidateDate(type='date', ng-model='distributionClass.temporalCoverage.endDate')
 			.form-group
 
 				label.col-xs-2.control-label(for='temporalCoverage', translate='') Distribución atomizada
-				.col-xs-7
-					div(ng-controller='UbicacionCtrl')
+				div(ng-controller='UbicacionCtrl')
+					.col-xs-3
 						select(ng-model='distributionOpt2.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
 							option(value='') {{"simplePliCTerm.name.countryCode"|translate}}
+					.col-xs-3
 						select(ng-model='distributionOpt2.stateProvince', ng-disabled='!distributionOpt2.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
 							option(value='') {{"simplePliCTerm.name.stateProvince"|translate}}
+					.col-xs-3
 						select(ng-model='distributionOpt2.county', ng-disabled='!distributionOpt2.country || !distributionOpt2.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
 							option(value='') {{"simplePliCTerm.name.county"|translate}}
-				.col-xs-3
-					br
-					br
-					br
-					button.btn.btn-success.btn-sm.pull-right(ng-click='addDistributionOpt2(distributionClass.distributionAtomized,distributionOpt2)') Agregar distribución atomizada
+					.col-xs-1
+						button.btn.btn-success.btn-xs.pull-right(ng-click='addDistributionOpt2(distributionClass.distributionAtomized,distributionOpt2)') Agregar
 				label.col-xs-2.control-label(for='temporalCoverage', translate='') 
 				.col-xs-10
 					div.table-responsive(ng-show='(distributionClass.distributionAtomized).length')
@@ -78,16 +80,16 @@ div(ng-controller='DistributionCtrl')
 									td
 										| {{distribution.county}}
 									td
-										button.btn(ng-click='removeAncillaryData(distributionClass.distributionAtomized,distribution)') Eliminar
+										button.btn(ng-click='removeDistributionOpt2(distributionClass.distributionAtomized,distribution)') Eliminar
 			.form-group
-				hr
-				label(for='distributionUnstructured', translate='') simplePliCTerm.name.DistributionUnstructured
-				em (opcional)
-				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.DistributionUnstructured"|translate}}')
-					span.glyphicon.glyphicon-info-sign
-				textarea(rows='3', name='distribution', ng-model='distributionClass.distributionUnstructured')
-
-				div(ng-controller='CollapseDemoCtrl')
+				.col-xs-2
+					label(for='distributionUnstructured', translate='') simplePliCTerm.name.DistributionUnstructured
+					em (opcional)
+					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.DistributionUnstructured"|translate}}')
+						span.glyphicon.glyphicon-info-sign
+				.col-xs-10
+					textarea(rows='3', name='distribution', ng-model='distributionClass.distributionUnstructured')
+				
 					.form-group
 						div.table-responsive(ng-show='(distributionClass.ancillaryData).length')
 								table.table.table-bordered
@@ -111,67 +113,67 @@ div(ng-controller='DistributionCtrl')
 												| {{ancillary.source}}	
 											td
 												button.btn(ng-click='removeAncillaryData(distributionClass.ancillaryData,ancillaryData)') Eliminar
+									
+					div(ng-controller='CollapseDemoCtrl')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
-						.col-xs-10
-							div(collapse='isCollapsed')
-								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
-								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
-								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
-								input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
-								.panel.panel-default
-									.panel-heading
-										spant {{"simplePliCTerm.name.References"|translate}}
-										button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
-											span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
-										a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
-											span.glyphicon.glyphicon-info-sign
-									.panel-body
-										div.table-responsive(ng-show='(ancillaryData.reference).length')
-											table.table.table-striped
-												thead
-													tr
-														th {{"simplePliCTerm.name.Type"|translate}}
-														th {{"simplePliCTerm.name.Source"|translate}}
-														th {{"simplePliCTerm.name.title"|translate}}
-														th
-												
-												tbody
-													tr(ng-repeat="ref in ancillaryData.reference track by $index")
-														td
-															| {{ref.type}}
-														td
-															| {{ref.source}}
-														td
-															| {{ref.title}}
-														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
-				
-										div(collapse='isCollapsed_1')
-											.form-group
-												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
-													option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
-												input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
-												input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
-												input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
-												input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
-												input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
-												input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
-												input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
-												input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
-												input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
-												input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
-												input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
-												input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
-												input(type='text', ng-model='reference.city', placeholder='{{"simplePliCTerm.name.city"|translate}}')
-												input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
-												input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
-												input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
-												input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
-												input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
-												input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
-												input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
-												input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
-								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(distributionClass.ancillaryData,ancillaryData)', translate='') Guardar
-
-			button.btn.btn-success.btn-sm.pull-right(ng-click='addDistribution(formData.distribution,distributionClass)') Guardar distribución
+						div(collapse='isCollapsed')
+							input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+							input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+							input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+							.panel.panel-default
+								.panel-heading
+									spant {{"simplePliCTerm.name.References"|translate}}
+									button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
+										span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
+										span.glyphicon.glyphicon-info-sign
+								.panel-body
+									div.table-responsive(ng-show='(ancillaryData.reference).length')
+										table.table.table-striped
+											thead
+												tr
+													th {{"simplePliCTerm.name.Type"|translate}}
+													th {{"simplePliCTerm.name.Source"|translate}}
+													th {{"simplePliCTerm.name.title"|translate}}
+													th
+											
+											tbody
+												tr(ng-repeat="ref in ancillaryData.reference track by $index")
+													td
+														| {{ref.type}}
+													td
+														| {{ref.source}}
+													td
+														| {{ref.title}}
+													td
+														button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+			
+									div(collapse='isCollapsed_1')
+										.form-group
+											select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+												option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
+											input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+											input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+											input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+											input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+											input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+											input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+											input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+											input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+											input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+											input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+											input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+											input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+											input(type='text', ng-model='reference.city', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+											input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+											input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+											input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+											input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+											input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+											input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+											input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+											input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+										button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+							button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(distributionClass.ancillaryData,ancillaryData)', translate='') Guardar
+			
