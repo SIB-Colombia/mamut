@@ -33,7 +33,8 @@ div(ng-controller='CommonNameCtrl')
 									div(ng-show='commonName.usedBy')
 										| {{commonName.usedBy}}
 								td
-									button.btn(ng-click='removeCommonNamesAtomized(formData.commonNameAtomized,commonName)') Eliminar
+									button.btn(ng-click='removeCommonNamesAtomized(formData.commonNameAtomized,commonName)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				div(collapse='isCollapsed')
 					hr
 					.form-group
@@ -96,7 +97,8 @@ div(ng-controller='CommonNameCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+																span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group

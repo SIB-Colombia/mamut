@@ -8,6 +8,8 @@ angular.module('app.controllers.molecularData',[])
 	$scope.reference = referenceService;
 	//Ancillary
 	$scope.ancillaryData = ancillaryDataService;
+	
+	var origMD = angular.copy($scope.molecularDataAtomizedType);
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
@@ -27,6 +29,9 @@ angular.module('app.controllers.molecularData',[])
 			origR = angular.copy($scope.reference);
 		}	
 	};
+	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
+		ancillaryDataService.deleteFrom(ancillaryDataList,ancillaryData);
+	};
 
 	$scope.removeReference = function(referenceList,reference){
 		referenceService.deleteFrom(referenceList,reference);	
@@ -34,22 +39,8 @@ angular.module('app.controllers.molecularData',[])
 	$scope.addMolecularDataAtomizedType = function(molecularDataAtomizedType, molecular) {
 		if (molecular.measurementOrFact.measurementType !== '') {
 			molecularDataAtomizedType.push(molecular);
-			$scope.molecularDataAtomizedType = {
-				measurementOrFact: {
-					measurementID: '',
-					measurementType: '',
-					measurementValue: '',
-					measurementAccuracy: '',
-					measurementUnit: '',
-					measurementDeterminedDate: '',
-					measurementDeterminedBy: [],
-					measurementMethod: '',
-					measurementRemarks: '',
-					relatedTo: ''
-				},
-				relatedTo: '',
-				ancillaryData: []
-			};
+			$scope.molecularDataAtomizedType = origMD;
+			origMD = angular.copy($scope.molecularDataAtomizedType);
 
 		}
 	};

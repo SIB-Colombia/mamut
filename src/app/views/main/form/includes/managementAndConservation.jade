@@ -30,7 +30,8 @@ div(ng-controller='ManagementAndConservationCtrl')
 									div(ng-show='actions')
 										| {{actions}}
 							td
-								button.btn(ng-click='removeManagementAndConservation(formData.usesManagementAndConservation.managementAndConservationAtomized,managementAndConservationAtomized)') Eliminar
+								button.btn(ng-click='removeManagementAndConservation(formData.usesManagementAndConservation.managementAndConservationAtomized,managementAndConservationAtomized)')
+									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			.form-group
 				label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Type
 				.col-xs-10
@@ -83,7 +84,8 @@ div(ng-controller='ManagementAndConservationCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(managementAndConservationAtomizedType.ancillaryData,ancillaryData)') Eliminar
+											button.btn(ng-click='removeAncillaryData(managementAndConservationAtomizedType.ancillaryData,ancillaryData)')
+												span(class="glyphicon glyphicon-trash", aria-hidden='true')
 						button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(collapse='isCollapsed')
@@ -117,7 +119,8 @@ div(ng-controller='ManagementAndConservationCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+																span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group

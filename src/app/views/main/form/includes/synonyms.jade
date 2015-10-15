@@ -25,7 +25,8 @@ div(ng-controller='SynonmyCtrl')
 									div(ng-show='synonymAtomized.synonymStatus')
 										|  {{synonymAtomized.synonymStatus}}
 								td
-									button.btn(ng-click='removeSynonymsAtomized(formData.synonymsAtomized,synonymAtomized)') Eliminar
+									button.btn(ng-click='removeSynonymsAtomized(formData.synonymsAtomized,synonymAtomized)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
 
 				div(collapse='isCollapsed')
 					hr
@@ -54,9 +55,21 @@ div(ng-controller='SynonmyCtrl')
 						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AncillaryData"|translate}}')
 							span.glyphicon.glyphicon-info-sign
 						.col-xs-10
-							div(ng-repeat='ancillarySynonmy in synonmy.ancillaryData')
-								| {{ancillarySynonmy.source}}
-							input(type='text', ng-model='ancillaryDataSN.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+							div.table-responsive(ng-show='(synonmy.ancillaryData).length')
+								table.table.table-striped
+									thead
+										tr
+											th {{"simplePliCTerm.name.source"|translate}}
+											th
+									
+									tbody
+										tr(ng-repeat="ancillary in synonmy.ancillaryData track by $index")
+											td
+												| {{ancillary.source}}
+											td
+												button.btn(ng-click='removeAncillaryData(synonmy.ancillaryData,ancillary)')
+													span(class="glyphicon glyphicon-trash", aria-hidden='true')
+							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
 							.panel.panel-default
 								.panel-heading
 									spant {{"simplePliCTerm.name.References"|translate}}
@@ -66,7 +79,7 @@ div(ng-controller='SynonmyCtrl')
 										span.glyphicon.glyphicon-info-sign
 								.panel-body
 
-									div.table-responsive(ng-show='(ancillaryDataSN.reference).length')
+									div.table-responsive(ng-show='(ancillaryData.reference).length')
 										table.table.table-striped
 											thead
 												tr
@@ -76,7 +89,7 @@ div(ng-controller='SynonmyCtrl')
 													th
 											
 											tbody
-												tr(ng-repeat="ref in ancillaryDataSN.reference track by $index")
+												tr(ng-repeat="ref in ancillaryData.reference track by $index")
 													td
 														| {{ref.type}}
 													td
@@ -84,7 +97,8 @@ div(ng-controller='SynonmyCtrl')
 													td
 														| {{ref.title}}
 													td
-														button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+														button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+															span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			
 									div(collapse='isCollapsed_1')
 										.form-group
@@ -111,9 +125,9 @@ div(ng-controller='SynonmyCtrl')
 											input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
 											input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 											input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-										button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReferenceSN(ancillaryDataSN.reference,referenceSN)', translate='') Guardar Referencia 
+										button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia 
 										
-							button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addAncillaryData(synonmy.ancillaryData,ancillaryDataSN)', translate='')
+							button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addAncillaryData(synonmy.ancillaryData,ancillaryData)', translate='')
 								| Añadir DA
 								span.glyphicon.glyphicon-plus
 						button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addSynonymsAtomized(formData.synonymsAtomized,synonmy)') Guardar

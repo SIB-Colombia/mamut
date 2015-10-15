@@ -22,7 +22,8 @@ div(ng-controller='EnvironmentalEnvelopeCtrl')
 							td
 								| {{environmentalEnvelopeAtomized.measurementOrFact.measurementValue}}	
 							td
-								button.btn(ng-click='removeEnvironmentalEnvelopeAtomized(formData.environmentalEnvelope.environmentalEnvelopeAtomized,environmentalEnvelopeAtomized)') Eliminar
+								button.btn(ng-click='removeEnvironmentalEnvelopeAtomized(formData.environmentalEnvelope.environmentalEnvelopeAtomized,environmentalEnvelopeAtomized)')
+									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			div(ng-controller='MeasurementCtrl')
 				.col-xs-5
 					select(ng-model='environmentalEnvelopeAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in environmentalEnvelopes | unique:'measurementtype'")
@@ -62,7 +63,8 @@ div(ng-controller='EnvironmentalEnvelopeCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(formData.environmentalEnvelope.ancillaryData,ancillaryData)') Eliminar
+											button.btn(ng-click='removeAncillaryData(formData.environmentalEnvelope.ancillaryData,ancillaryData)')
+												span(class="glyphicon glyphicon-trash", aria-hidden='true')
 					button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 					.col-xs-10
 						div(collapse='isCollapsed')
@@ -96,7 +98,8 @@ div(ng-controller='EnvironmentalEnvelopeCtrl')
 													td
 														| {{ref.title}}
 													td
-														button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+														button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+															span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			
 									div(collapse='isCollapsed_1')
 										.form-group

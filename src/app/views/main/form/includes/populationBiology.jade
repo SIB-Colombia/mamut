@@ -28,7 +28,8 @@ div(ng-controller='PopulationBiologyCtrl')
 							td
 								| {{populationBiologyAtomized.patternDistribution.measurementValue}}	
 							td
-								button.btn(ng-click='removePopulation(formData.populationBiology.populationBiologyAtomized,populationBiologyAtomized)') Eliminar
+								button.btn(ng-click='removePopulation(formData.populationBiology.populationBiologyAtomized,populationBiologyAtomized)')
+									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			.form-group
 				label.col-xs-2.control-label(for='Region', translate='') simplePliCTerm.name.Region
 				.col-xs-10
@@ -175,7 +176,8 @@ div(ng-controller='PopulationBiologyCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(formData.territory.ancillaryData,ancillaryData)') Eliminar
+											button.btn(ng-click='removeAncillaryData(formData.territory.ancillaryData,ancillaryData)')
+												span(class="glyphicon glyphicon-trash", aria-hidden='true')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(collapse='isCollapsed')
@@ -209,7 +211,8 @@ div(ng-controller='PopulationBiologyCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+																span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group

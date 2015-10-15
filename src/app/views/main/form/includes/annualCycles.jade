@@ -63,7 +63,8 @@ div(ng-controller='AnnualCyclesCtrl')
 												td
 													| {{ref.title}}
 												td
-													button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+													button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+														span(class="glyphicon glyphicon-trash", aria-hidden='true')
 		
 								div(collapse='isCollapsed_1')
 									.form-group
@@ -124,7 +125,8 @@ div(ng-controller='AnnualCyclesCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)') Eliminar
+											button.btn(ng-click='removeAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)')
+												span(class="glyphicon glyphicon-trash", aria-hidden='true')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(collapse='isCollapsed')
@@ -158,7 +160,8 @@ div(ng-controller='AnnualCyclesCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+																span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group

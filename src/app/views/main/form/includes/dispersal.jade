@@ -19,7 +19,8 @@ div(ng-controller='DispersalCtrl')
 							td
 								| {{purpose}}
 							td
-								button.btn(ng-click='removeDispersalAtomized(formData.dispersal.dispersalAtomized.purpose,purpose)') Eliminar
+								button.btn(ng-click='removeDispersalAtomized(formData.dispersal.dispersalAtomized.purpose,purpose)')
+									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			.form-group
 				label.col-xs-2.control-label(for='purpose', translate='') simplePliCTerm.name.Purpose
 				div(ng-controller='MeasurementCtrl')
@@ -86,7 +87,8 @@ div(ng-controller='DispersalCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(formData.dispersal.ancillaryData,ancillaryData)') Eliminar
+											button.btn(ng-click='removeAncillaryData(formData.dispersal.ancillaryData,ancillaryData)')
+												span(class="glyphicon glyphicon-trash", aria-hidden='true')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(collapse='isCollapsed')
@@ -120,7 +122,8 @@ div(ng-controller='DispersalCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+																span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group

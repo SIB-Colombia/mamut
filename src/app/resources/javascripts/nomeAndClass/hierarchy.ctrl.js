@@ -40,6 +40,11 @@ angular.module('app.controllers.hierarchy',[])
 			origAD = angular.copy($scope.ancillaryData);
 		}		
 	};
+	
+	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
+			ancillaryDataService.deleteFrom(ancillaryDataList,ancillaryData);
+	};
+
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){

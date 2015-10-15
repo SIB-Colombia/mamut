@@ -26,7 +26,8 @@ div(ng-controller='AssociatedPartyCtrl')
 								td
 									| {{associatedParty.organisation}}	
 								td
-									button.btn(ng-click='removeAssociatedParty(formData.associatedParty,associatedParty)') Eliminar
+									button.btn(ng-click='removeAssociatedParty(formData.associatedParty,associatedParty)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				.form-group
 					label.col-xs-2.control-label(for='givenName', translate='') simplePliCTerm.name.givenName
 					.col-xs-10

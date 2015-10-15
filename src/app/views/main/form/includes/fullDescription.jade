@@ -32,7 +32,8 @@ div(ng-controller='FullDescriptionCtrl')
 									td
 										| {{ancillary.source}}
 									td
-										button.btn(ng-click='removeAncillaryData(formData.fullDescription.ancillaryData,ancillaryData)') Eliminar
+										button.btn(ng-click='removeAncillaryData(formData.fullDescription.ancillaryData,ancillaryData)')
+											span(class="glyphicon glyphicon-trash", aria-hidden='true')
 					button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 					.col-xs-10
 						div(collapse='isCollapsed')
@@ -66,8 +67,8 @@ div(ng-controller='FullDescriptionCtrl')
 													td
 														| {{ref.title}}
 													td
-														button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
-			
+														button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+															span(class="glyphicon glyphicon-trash", aria-hidden='true')
 									div(collapse='isCollapsed_1')
 										.form-group
 											select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')

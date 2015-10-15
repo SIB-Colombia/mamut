@@ -28,7 +28,8 @@ div(ng-controller='DistributionCtrl')
 									div(ng-show='distributionA')
 										| {{distributionA.country}} - {{distributionA.stateProvince}} - {{distributionA.county}}
 							td
-								button.btn(ng-click='removeDistribution(formData.distribution,distribution)') Eliminar
+								button.btn(ng-click='removeDistribution(formData.distribution,distribution)')
+									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				hr
 			.form-group
 				label.col-xs-2.control-label(for='distributionScope', translate='') simplePliCTerm.name.DistributionScope
@@ -80,7 +81,8 @@ div(ng-controller='DistributionCtrl')
 									td
 										| {{distribution.county}}
 									td
-										button.btn(ng-click='removeDistributionOpt2(distributionClass.distributionAtomized,distribution)') Eliminar
+										button.btn(ng-click='removeDistributionOpt2(distributionClass.distributionAtomized,distribution)')
+											span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			.form-group
 				.col-xs-2
 					label(for='distributionUnstructured', translate='') simplePliCTerm.name.DistributionUnstructured
@@ -112,7 +114,8 @@ div(ng-controller='DistributionCtrl')
 											td
 												| {{ancillary.source}}	
 											td
-												button.btn(ng-click='removeAncillaryData(distributionClass.ancillaryData,ancillaryData)') Eliminar
+												button.btn(ng-click='removeAncillaryData(distributionClass.ancillaryData,ancillaryData)')
+													span(class="glyphicon glyphicon-trash", aria-hidden='true')
 									
 					div(ng-controller='CollapseDemoCtrl')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
@@ -147,7 +150,8 @@ div(ng-controller='DistributionCtrl')
 													td
 														| {{ref.title}}
 													td
-														button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+														button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+															span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			
 									div(collapse='isCollapsed_1')
 										.form-group

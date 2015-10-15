@@ -24,7 +24,8 @@ div(ng-controller='FeedingCtrl')
 									div(ng-show='thropic')
 										| {{thropic.strategy}}
 							td
-								button.btn(ng-click='removeFeedingAtomizedType(formData.feeding.feedingAtomized,feedingAtomizedType)') Eliminar
+								button.btn(ng-click='removeFeedingAtomizedType(formData.feeding.feedingAtomized,feedingAtomizedType)')
+									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 
 			.form-group
 				label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.type
@@ -75,7 +76,8 @@ div(ng-controller='FeedingCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(formData.feeding.ancillaryData,ancillaryData)') Eliminar
+											button.btn(ng-click='removeAncillaryData(formData.feeding.ancillaryData,ancillaryData)')
+												span(class="glyphicon glyphicon-trash", aria-hidden='true')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(collapse='isCollapsed')
@@ -109,7 +111,8 @@ div(ng-controller='FeedingCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+																span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group

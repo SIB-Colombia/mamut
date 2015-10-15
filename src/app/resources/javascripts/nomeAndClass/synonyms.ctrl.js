@@ -5,16 +5,15 @@ angular.module('app.controllers.synonmy',[])
 	//synonmy
 	$scope.synonmy = synonmyService;
 	//Reference
-	var referenceSN = Object.create(referenceService);
-	$scope.referenceSN = referenceSN;
+	$scope.reference = referenceService;
 	//Ancillary
-	$scope.ancillaryDataSN = ancillaryDataService;
+	$scope.ancillaryData = ancillaryDataService;
 	//synonyms vector for FormData
 	$scope.formData.synonymsAtomized = [];
 
 	//reset variables
 	var origS = angular.copy($scope.synonmy);
-	var origR = angular.copy($scope.referenceSN);
+	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
 
@@ -37,17 +36,21 @@ angular.module('app.controllers.synonmy',[])
 		if(ancillaryData.source !== ''){
 			ancillaryDataService.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
-			$scope.ancillaryDataSN = origAD;
-			origAD = angular.copy($scope.ancillaryDataSN);
+			$scope.ancillaryData = origAD;
+			origAD = angular.copy($scope.ancillaryData);
 		}		
 	};
 
-	$scope.addReferenceSN = function(referenceList,reference){
+	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
+			ancillaryDataService.deleteFrom(ancillaryDataList,ancillaryData);
+	};
+
+	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceSN.addTo(referenceList,reference);
+			reference.addTo(referenceList,reference);
 			//Reset the scope variable
-			$scope.referenceSN = origR;
-			origR = angular.copy($scope.referenceSN);
+			$scope.reference = origR;
+			origR = angular.copy($scope.reference);
 			$scope.isCollapsed_1 = true;
 		}	
 	};

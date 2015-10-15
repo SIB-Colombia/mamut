@@ -75,7 +75,8 @@ div(ng-controller='InvasivenessCtrl')
 										div(ng-show='invasivenessAtomizedType.mechanism')
 											div {{"simplePliCTerm.name.Mechanism"|translate}} : {{invasivenessAtomizedType.mechanism}}		
 								td
-									button.btn(ng-click='removeInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)') Eliminar
+									button.btn(ng-click='removeInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				.form-group
 					label.col-xs-2.control-label(for='origin', translate='') simplePliCTerm.name.origin
 					.col-xs-10
@@ -283,7 +284,8 @@ div(ng-controller='InvasivenessCtrl')
 									td
 										| {{ancillary.source}}	
 									td
-										button.btn(ng-click='removeAncillaryData(invasivenessAtomizedType.ancillaryData,ancillaryData)') Eliminar
+										button.btn(ng-click='removeAncillaryData(invasivenessAtomizedType.ancillaryData,ancillaryData)')
+											span(class="glyphicon glyphicon-trash", aria-hidden='true')
 					div(ng-controller='CollapseDemoCtrl')
 						.form-group
 							button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
@@ -319,7 +321,8 @@ div(ng-controller='InvasivenessCtrl')
 															td
 																| {{ref.title}}
 															td
-																button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+																button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+																	span(class="glyphicon glyphicon-trash", aria-hidden='true')
 					
 											div(collapse='isCollapsed_1')
 												.form-group
@@ -377,7 +380,8 @@ div(ng-controller='InvasivenessCtrl')
 									td
 										| {{ancillary.source}}	
 									td
-										button.btn(ng-click='removeAncillaryData(formData.invasiveness.ancillaryData,ancillaryData)') Eliminar
+										button.btn(ng-click='removeAncillaryData(formData.invasiveness.ancillaryData,ancillaryData)')
+											span(class="glyphicon glyphicon-trash", aria-hidden='true')
 					div(ng-controller='CollapseDemoCtrl')
 						.form-group
 							button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
@@ -413,7 +417,8 @@ div(ng-controller='InvasivenessCtrl')
 															td
 																| {{ref.title}}
 															td
-																button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+																button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+																	span(class="glyphicon glyphicon-trash", aria-hidden='true')
 					
 											div(collapse='isCollapsed_1')
 												.form-group

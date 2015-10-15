@@ -29,7 +29,8 @@ div(ng-controller='AncillaryDataCtrl')
 									div(ng-show='ancillary.source')
 										| {{ancillary.source}}
 								td
-									button.btn(ng-click='removeAncillaryData(formData.ancillaryData,ancillary)') Eliminar
+									button.btn(ng-click='removeAncillaryData(formData.ancillaryData,ancillary)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				.form-group
 					label.col-xs-2.control-label(for='license', translate='') simplePliCTerm.name.license
 					.col-xs-10
@@ -92,7 +93,8 @@ div(ng-controller='AncillaryDataCtrl')
 												td
 													| {{ref.title}}
 												td
-													button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+													button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+														span(class="glyphicon glyphicon-trash", aria-hidden='true')
 		
 								div(collapse='isCollapsed_1')
 									.form-group

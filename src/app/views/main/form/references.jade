@@ -24,7 +24,8 @@ div(ng-controller='ReferenceCrtl')
 								td
 									| {{ref.title}}
 								td
-									button.btn(ng-click='removeReference(formData.references,ref)') Eliminar
+									button.btn(ng-click='removeReference(formData.references,ref)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				.form-group
 					div
 						.form-group

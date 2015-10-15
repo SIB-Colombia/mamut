@@ -26,7 +26,10 @@ angular.module('app.controllers.lifeCycle',[])
 			origR = angular.copy($scope.reference);
 		}	
 	};
-
+	
+	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
+		ancillaryDataService.deleteFrom(ancillaryDataList,ancillaryData);
+	};
 	$scope.removeReference = function(referenceList,reference){
 		referenceService.deleteFrom(referenceList,reference);	
 	};

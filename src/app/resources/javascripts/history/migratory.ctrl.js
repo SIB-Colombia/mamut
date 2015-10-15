@@ -30,6 +30,10 @@ angular.module('app.controllers.migratory',[])
 		}	
 	};
 
+	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
+		ancillaryDataService.deleteFrom(ancillaryDataList,ancillaryData);
+	};
+	
 	$scope.removeReference = function(referenceList,reference){
 		referenceService.deleteFrom(referenceList,reference);	
 	};

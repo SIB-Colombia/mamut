@@ -22,7 +22,8 @@ div(ng-controller='LifeCycleCtrl')
 							td
 								| {{lifeCycleAtomized.measurementOrFact.measurementValue}}
 							td
-								button.btn(ng-click='removeLifeCycleAtomized(formData.lifeCycle.lifeCycleAtomized, lifeCycleAtomized)') Eliminar
+								button.btn(ng-click='removeLifeCycleAtomized(formData.lifeCycle.lifeCycleAtomized, lifeCycleAtomized)')
+									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			.form-group
 				div(ng-controller='MeasurementCtrl')
 					.col-xs-5
@@ -64,7 +65,8 @@ div(ng-controller='LifeCycleCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(formData.lifeCycle.ancillaryData,ancillaryData)') Eliminar
+											button.btn(ng-click='removeAncillaryData(formData.lifeCycle.ancillaryData,ancillaryData)')
+												span(class="glyphicon glyphicon-trash", aria-hidden='true')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(collapse='isCollapsed')
@@ -98,7 +100,8 @@ div(ng-controller='LifeCycleCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+																span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group

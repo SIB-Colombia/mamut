@@ -28,7 +28,8 @@ div(ng-controller='UsesCtrl')
 							td
 								| {{usesAtomized.users}}	
 							td
-								button.btn(ng-click='removeUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)') Eliminar
+								button.btn(ng-click='removeUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)')
+									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 
 			.form-group
 				label.col-xs-2.control-label(for='sourceOfInformation', translate='') simplePliCTerm.name.SourceOfInformation
@@ -152,7 +153,8 @@ div(ng-controller='UsesCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(usesAtomizedType.ancillaryData,ancillaryData)') Eliminar
+											button.btn(ng-click='removeAncillaryData(usesAtomizedType.ancillaryData,ancillaryData)')
+												span(class="glyphicon glyphicon-trash", aria-hidden='true')
 						button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(collapse='isCollapsed')
@@ -186,7 +188,8 @@ div(ng-controller='UsesCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)') Eliminar
+															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+																span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group

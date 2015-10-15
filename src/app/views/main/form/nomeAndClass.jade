@@ -1,15 +1,15 @@
-form.form-group
-	.form-group
+.form-group
+	div(ng-controller='TaxonRecordNameCtrl')
 		input(type='text', name='taxonRecordName', ng-model='taxonNameResearch')
 		button.btn.btn-success.btn-sm(ng-click='getTaxonInformation(taxonNameResearch)') Traer información
-	div(ng-show='formData.taxonRecordName.scientificName.simple')
-		.panel.panel-default
-			.panel-heading
-				div
-					spant(for='canonicalName', translate='') simplePliCTerm.name.ScientificName
-					| 		   			{{formData.taxonRecordName.scientificName.simple}}
-				div(ng-show='formData.taxonRecordName.scientificName.publishedln.simple')
-					div Publicado en :{{formData.taxonRecordName.scientificName.publishedln.simple}}
+		div(ng-show='formData.taxonRecordName.scientificName.simple')
+			.panel.panel-default
+				.panel-heading
+					div
+						spant(for='canonicalName', translate='') simplePliCTerm.name.ScientificName
+						| 		   			{{formData.taxonRecordName.scientificName.simple}}
+					div(ng-show='formData.taxonRecordName.scientificName.publishedln.simple')
+						div Publicado en :{{formData.taxonRecordName.scientificName.publishedln.simple}}
 	div(ng-include="'./form/includes/hierarchy.html'")
 	div(ng-include="'./form/includes/abstract.html'")
 	div(ng-include="'./form/includes/synonyms.html'")
