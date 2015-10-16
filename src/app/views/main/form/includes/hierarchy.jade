@@ -71,6 +71,8 @@ div(ng-controller='HierarchyCtrl')
 								td
 									button.btn(ng-click='removeHierarchy(formData.hierarchy,hierarchy)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
+									button.btn(ng-click='editHierarchy(formData.hierarchy,hierarchy)')
+										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 					hr
 				div(collapse='isCollapsed')
 					.form-group

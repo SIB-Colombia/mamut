@@ -84,7 +84,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='ori in origin')
 								input(type='checkbox', ng-model='ori.checked', ng-click='updateSelectionOrigin(ori, origin)')
 								| {{ori.name}}
-								spant
+								spant(ng-show='{{ori.help}}')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{ori.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -94,7 +94,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='pre in presence')
 								input(type='checkbox', ng-model='pre.checked', ng-click='updateSelectionPresence(pre, presence)')
 								| {{pre.name}}
-								spant
+								spant(ng-show='{{pre.help}}')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{pre.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -104,7 +104,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='per in persistence')
 								input(type='checkbox', ng-model='per.checked', ng-click='updateSelectionPersistence(per, persistence)')
 								| {{per.name}}
-								spant
+								spant(ng-show='{{per.help}}')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{per.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -114,7 +114,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='dis in distribution')
 								input(type='checkbox', ng-model='dis.checked', ng-click='updateSelectionDistribution(dis, distribution)')
 								| {{dis.name}}
-								spant
+								spant(ng-show='{{dis.help}}')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{dis.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -124,7 +124,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='har in harmful')
 								input(type='checkbox', ng-model='har.checked', ng-click='updateSelectionHarmful(har, harmful)')
 								| {{har.name}}
-								spant
+								spant(ng-show='{{har.help}}')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{har.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -177,7 +177,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='abu in abundance')
 								input(type='checkbox', ng-model='abu.checked', ng-click='updateSelectionAbundance(abu, abundance)')
 								| {{abu.name}}
-								spant
+								spant(ng-show='{{abu.help}}')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{abu.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -187,7 +187,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='tre in trend')
 								input(type='checkbox', ng-model='tre.checked', ng-click='updateSelectionTrend(tre, trend)')
 								| {{tre.name}}
-								spant
+								spant(ng-show='{{tre.help}}')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{tre.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -197,7 +197,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='ros in rateOfSpread')
 								input(type='checkbox', ng-model='ros.checked', ng-click='updateSelectionRateOfSpread(ros, rateOfSpread)')
 								| {{ros.name}}
-								spant
+								spant(ng-show='{{ros.help}}')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{ros.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -207,13 +207,13 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='rl in regulatoryListing')
 								input(type='checkbox', ng-model='rl.checked', ng-click='updateSelectionRegulatoryListing(rl, regulatoryListing)')
 								| {{rl.name}}
-								spant
+								spant(ng-show='{{rl.help}}')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{rl.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
 					label.col-xs-2.control-label(for='memo', translate='') simplePliCTerm.name.memo
 					.col-xs-10
-						input(type='text', name='memo', ng-model='invasivenessAtomizedType.memo')
+						textarea(rows='3', name='memo', ng-model='invasivenessAtomizedType.memo')
 				.form-group
 					label.col-xs-2.control-label(for='publicationDate', translate='') simplePliCTerm.name.publicationDate
 					.col-xs-10
@@ -225,7 +225,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='lt in localityType')
 								input(type='checkbox', ng-model='lt.checked', ng-click='updateSelectionLocalityType(lt, localityType)')
 								| {{lt.name}}
-								spant
+								spant(ng-show='{{lt.help}}')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lt.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group

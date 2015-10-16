@@ -17,7 +17,7 @@ angular.module('app.controllers.hierarchy',[])
 	var origAD = angular.copy($scope.ancillaryData);
 	$scope.formData.hierarchy = [];
 
-		//ADD
+	//ADD
 	$scope.addHierarchy = function(hierarchy, hier) {
 		if (hier.kingdom !== '') {
 			hierarchyService.add(hierarchy, hier);
@@ -30,6 +30,12 @@ angular.module('app.controllers.hierarchy',[])
 	//DELETE
 	$scope.removeHierarchy = function(hierarchy, hier) {
 		hierarchyService.delete(hierarchy, hier);
+	};
+
+	//EDIT
+	$scope.editHierarchy = function(hierarchy, hier) {
+		$scope.hierarchy = angular.copy(hier);
+		$scope.isCollapsed = false;
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
