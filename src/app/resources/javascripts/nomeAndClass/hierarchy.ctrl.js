@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('app.controllers.hierarchy',[])
-.controller('HierarchyCtrl', ['$scope', 'referenceService', 'ancillaryDataService', 'hierarchyService', function($scope,referenceService,ancillaryDataService,hierarchyService) {
-	
+.controller('HierarchyCtrl', ['$scope', 'referenceService', 'ancillaryDataService', 'hierarchyService', 'ancillaryDataFactory', function($scope,referenceService,ancillaryDataService,hierarchyService,ancillaryDataFactory) {
+
 	$scope.hierarchy = hierarchyService;
 	//reference
 	$scope.reference = referenceService;
 	//Ancillary
-	$scope.ancillaryData = ancillaryDataService;
+	//$scope.ancillaryData = ancillaryDataService;
+	$scope.ancillaryData = new ancillaryDataFactory();
 	//hierarchy vector for FormData
 	$scope.formData.hierarchy = [];
 
@@ -44,9 +45,9 @@ angular.module('app.controllers.hierarchy',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
-		}		
+		}
 	};
-	
+
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
 			ancillaryDataService.deleteFrom(ancillaryDataList,ancillaryData);
 	};
@@ -59,10 +60,10 @@ angular.module('app.controllers.hierarchy',[])
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.isCollapsed_1 = true;
-		}	
+		}
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceService.deleteFrom(referenceList,reference);	
+		referenceService.deleteFrom(referenceList,reference);
 	};
 }]);
