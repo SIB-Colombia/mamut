@@ -30,6 +30,8 @@ div(ng-controller='PopulationBiologyCtrl')
 							td
 								button.btn(ng-click='removePopulation(formData.populationBiology.populationBiologyAtomized,populationBiologyAtomized)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
+								button.btn(ng-click='editPopulation(formData.populationBiology.populationBiologyAtomized,populationBiologyAtomized)')
+									span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 			.form-group
 				label.col-xs-2.control-label(for='Region', translate='') simplePliCTerm.name.Region
 				.col-xs-10
@@ -144,7 +146,7 @@ div(ng-controller='PopulationBiologyCtrl')
 					input(type='text', ng-model='populationBiologyAtomized.carryingCapacity.measurementValue')
 					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.CarryingCapacity"|translate}}')
 						span.glyphicon.glyphicon-info-sign
-			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addPopulationBiology(populationBiologyAtomized)') Guardar
+			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addPopulationBiology(formData.populationBiology.populationBiologyAtomized, populationBiologyAtomized)') Guardar
 			.form-group
 				hr
 				label.col-xs-2.control-label(for='populationBiologyUnstructured', translate='') simplePliCTerm.name.PopulationBiologyUnstructured
@@ -155,7 +157,7 @@ div(ng-controller='PopulationBiologyCtrl')
 
 				div(ng-controller='CollapseDemoCtrl')
 					.form-group
-						div.table-responsive(ng-show='(formData.territory.ancillaryData).length')
+						div.table-responsive(ng-show='(formData.populationBiology.ancillaryData).length')
 							table.table.table-bordered
 								thead
 									tr
@@ -166,7 +168,7 @@ div(ng-controller='PopulationBiologyCtrl')
 										th
 								
 								tbody
-									tr(ng-repeat="ancillary in formData.territory.ancillaryData track by $index")
+									tr(ng-repeat="ancillary in formData.populationBiology.ancillaryData track by $index")
 										td
 											| {{ancillary.bibliographicCitation}}
 										td
@@ -176,8 +178,10 @@ div(ng-controller='PopulationBiologyCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(formData.territory.ancillaryData,ancillaryData)')
+											button.btn(ng-click='removeAncillaryData(formData.populationBiology.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
+											button.btn(ng-click='editAncillaryData(formData.populationBiology.ancillaryData,ancillary)')
+												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(collapse='isCollapsed')
@@ -211,8 +215,10 @@ div(ng-controller='PopulationBiologyCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+															button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-trash", aria-hidden='true')
+															button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group
@@ -240,4 +246,4 @@ div(ng-controller='PopulationBiologyCtrl')
 												input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
-								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.territory.ancillaryData,ancillaryData)', translate='') Guardar
+								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.populationBiology.ancillaryData,ancillaryData)', translate='') Guardar

@@ -35,6 +35,9 @@ div(ng-controller='MigratoryCtrl')
 								td
 									button.btn(ng-click='removeMigratoryAtomized(formData.migratory.migratoryAtomized,migratoryAtomized)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
+									button.btn(ng-click='editMigratoryAtomized(formData.migratory.migratoryAtomized,migratoryAtomized)')
+										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+
 			.form-group
 				label.col-xs-2.control-label(for='causes', translate='') simplePliCTerm.name.Causes
 				.col-xs-10
@@ -93,8 +96,11 @@ div(ng-controller='MigratoryCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(formData.migratory.ancillaryData,ancillaryData)')
+											button.btn(ng-click='removeAncillaryData(formData.migratory.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
+											button.btn(ng-click='editAncillaryData(formData.migratory.ancillaryData,ancillary)')
+												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(collapse='isCollapsed')
@@ -128,8 +134,10 @@ div(ng-controller='MigratoryCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+															button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-trash", aria-hidden='true')
+															button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group
@@ -157,4 +165,4 @@ div(ng-controller='MigratoryCtrl')
 												input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
-									button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.migratory.ancillaryData,ancillaryData)', translate='') Guardar
+								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.migratory.ancillaryData,ancillaryData)', translate='') Guardar

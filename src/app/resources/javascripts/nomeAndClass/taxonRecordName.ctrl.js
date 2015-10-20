@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('app.controllers.taxonRecordName',[])
-.controller('TaxonRecordNameCtrl', ['$scope','taxonRecordNameService', function($scope, taxonRecordNameService) {
-	$scope.formData.taxonRecordName = taxonRecordNameService;
+.controller('TaxonRecordNameCtrl', ['$scope','taxonRecordNameFactory', function($scope, taxonRecordNameFactory) {
+	
+	var taxonRecordNameFactory = new taxonRecordNameFactory();
+	$scope.formData.taxonRecordName = taxonRecordNameFactory.taxonRecordName;
 
 	$scope.findLanguageName = function(languageIso){
         if(languageIso!= undefined && languageIso != ''){

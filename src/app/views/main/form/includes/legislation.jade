@@ -33,6 +33,8 @@ div(ng-controller='LegislationCtrl')
 							td
 								button.btn(ng-click='removeLegislation(formData.legislation.legislationAtomized,legislationAtomized)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
+								button.btn(ng-click='editLegislation(formData.legislation.legislationAtomized,legislationAtomized)')
+									span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 
 			.form-group
 				label.col-xs-2.control-label(for='legislationName', translate='') simplePliCTerm.name.LegislationName
@@ -115,8 +117,10 @@ div(ng-controller='LegislationCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(formData.legislation.ancillaryData,ancillaryData)')
+											button.btn(ng-click='removeAncillaryData(formData.legislation.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
+											button.btn(ng-click='editAncillaryData(formData.legislation.ancillaryData,ancillary)')
+												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(collapse='isCollapsed')
@@ -150,8 +154,10 @@ div(ng-controller='LegislationCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+															button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-trash", aria-hidden='true')
+															button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group

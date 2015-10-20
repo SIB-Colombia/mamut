@@ -27,9 +27,10 @@ div(ng-controller='SynonmyCtrl')
 								td
 									button.btn(ng-click='removeSynonymsAtomized(formData.synonymsAtomized,synonymAtomized)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
-
-				div(collapse='isCollapsed')
+									button.btn(ng-click='editSynonymsAtomized(formData.synonymsAtomized,synonymAtomized)')
+										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 					hr
+				div(collapse='isCollapsed')
 					.form-group
 						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.SynonymName
 						.col-xs-10
@@ -69,6 +70,9 @@ div(ng-controller='SynonmyCtrl')
 											td
 												button.btn(ng-click='removeAncillaryData(synonmy.ancillaryData,ancillary)')
 													span(class="glyphicon glyphicon-trash", aria-hidden='true')
+												button.btn(ng-click='editAncillaryData(synonmy.ancillaryData,ancillary)')
+													span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+
 							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
 							.panel.panel-default
 								.panel-heading
@@ -97,8 +101,10 @@ div(ng-controller='SynonmyCtrl')
 													td
 														| {{ref.title}}
 													td
-														button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+														button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
 															span(class="glyphicon glyphicon-trash", aria-hidden='true')
+														button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+															span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 			
 									div(collapse='isCollapsed_1')
 										.form-group

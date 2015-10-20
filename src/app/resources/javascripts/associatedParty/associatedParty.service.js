@@ -1,36 +1,33 @@
 'use strict';
 
 angular.module('app.services.associatedParty',[])
-.service('associatedPartyService', function(){
+.factory('associatedPartyFactory', function(){
+	return function() {
+		this.associatedParty = {
+			firstName: '',
+			lastName: '',
+			position: '',
+			organisation: '',
+			address: '',
+			city: '',
+			state: '',
+			country: '',
+			postalCode: '',
+			phone: '',
+			email: '',
+			homepage: '',
+			personnelDirectory: '',
+			personnelIdentifier: '',
+			role: ''
+		};
 
-	var associatedParty;
+		this.add = function(list,associatedParty){
+			list.push(associatedParty);
+		};
 
-	associatedParty = {
-		firstName: '',
-		lastName: '',
-		position: '',
-		organisation: '',
-		address: '',
-		city: '',
-		state: '',
-		country: '',
-		postalCode: '',
-		phone: '',
-		email: '',
-		homepage: '',
-		personnelDirectory: '',
-		personnelIdentifier: '',
-		role: ''
+		this.delete = function(list,associatedParty){
+			var index = list.indexOf(associatedParty);
+			list.splice(index,1);
+		};
 	};
-
-	associatedParty.add = function(list,associatedParty){
-		list.push(associatedParty);
-	};
-
-	associatedParty.delete = function(list,associatedParty){
-		var index = list.indexOf(associatedParty);
-		list.splice(index,1);
-	};
-	
-	return associatedParty;
 });

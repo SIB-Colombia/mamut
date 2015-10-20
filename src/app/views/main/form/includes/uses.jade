@@ -30,6 +30,8 @@ div(ng-controller='UsesCtrl')
 							td
 								button.btn(ng-click='removeUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
+								button.btn(ng-click='editUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)')
+									span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 
 			.form-group
 				label.col-xs-2.control-label(for='sourceOfInformation', translate='') simplePliCTerm.name.SourceOfInformation
@@ -128,8 +130,6 @@ div(ng-controller='UsesCtrl')
 				.col-xs-10
 					textarea#useNotes(rows='3', ng-model='usesAtomizedType.useNotes')
 			.form-group
-				div(ng-repeat='ancillary in usesAtomizedType.ancillaryData')
-					| {{ancillary.license}} - {{ancillary.rights}} - {{ancillary.mediaURL}}
 				div(ng-controller='CollapseDemoCtrl')
 					.form-group
 						div.table-responsive(ng-show='(usesAtomizedType.ancillaryData).length')
@@ -153,8 +153,10 @@ div(ng-controller='UsesCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(usesAtomizedType.ancillaryData,ancillaryData)')
+											button.btn(ng-click='removeAncillaryData(usesAtomizedType.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
+											button.btn(ng-click='editAncillaryData(usesAtomizedType.ancillaryData,ancillary)')
+												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 						button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(collapse='isCollapsed')
@@ -188,8 +190,10 @@ div(ng-controller='UsesCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+															button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-trash", aria-hidden='true')
+															button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group

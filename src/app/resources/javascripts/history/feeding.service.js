@@ -1,39 +1,32 @@
 'use strict';
 
 angular.module('app.services.feeding',[])
-.service('feedingService', function(){
-	var thropic;
-	var feedingAtomizedType;
-	var feeding;
+.factory('feedingFactory', function(){
+	return function() {
+		this.thropic = {
+			strategy: '',
+			strategyRemarks: ''
+		};
 
-	thropic = {
-		strategy: '',
-		strategyRemarks: ''
-	};
+		this.feedingAtomizedType = {
+			type: '',
+			thropic: [],
+			ancillaryData: []
+		};
 
-	feedingAtomizedType = {
-		type: '',
-		thropic: [],
-		ancillaryData: []
-	};
+		this.feeding = {
+			feedingAtomized: [],
+			feedingUnstructured: '',
+			ancillaryData: []
+		};
+		
+		this.add = function(list, feedingAtomizedType){
+			list.push(feedingAtomizedType);
+		};
 
-	feeding = {
-		feedingAtomized: [],
-		feedingUnstructured: '',
-		ancillaryData: []
-	};
-	
-	feeding.add = function(list, feedingAtomizedType){
-		list.push(feedingAtomizedType);
-	};
-
-	feeding.delete = function(list,feedingAtomizedType){
-		var index = list.indexOf(feedingAtomizedType);
-		list.splice(index,1);
-	};
-	return {
-		thropic : thropic,
-		feedingAtomizedType : feedingAtomizedType,
-		feeding : feeding
+		this.delete = function(list,feedingAtomizedType){
+			var index = list.indexOf(feedingAtomizedType);
+			list.splice(index,1);
+		};
 	};
 });

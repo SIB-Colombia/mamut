@@ -1,37 +1,35 @@
 'use strict';
 
 angular.module('app.services.commonName',[])
-.service('commonNameService', function(){
-	var commonName;
-
-	commonName = {
-		name: '',
-		language: '',
-		usedIn: {
-			distributionScope: {
-				type: '',
+.factory('commonNameFactory', function(){
+	return function() {
+		this.commonName = {
+			name: '',
+			language: '',
+			usedIn: {
+				distributionScope: {
+					type: '',
+					ancillaryData: []
+				},
+				temporalCoverage: {
+					startDate: '',
+					endDate: ''
+				},
+				distributionAtomizedBranch: [],
+				distributionUnstructured: '',
 				ancillaryData: []
 			},
-			temporalCoverage: {
-				startDate: '',
-				endDate: ''
-			},
-			distributionAtomizedBranch: [],
-			distributionUnstructured: '',
+			usedBy: '',
 			ancillaryData: []
-		},
-		usedBy: '',
-		ancillaryData: []
-	};
+		};
 
-	commonName.add = function(commonNameAtomized, commonName){
-		commonNameAtomized.push(commonName);
-	};
+		this.add = function(commonNameAtomized, commonName){
+			commonNameAtomized.push(commonName);
+		};
 
-	commonName.delete = function(commonNameAtomized, commonName){
-		var index = commonNameAtomized.indexOf(commonName);
-		commonNameAtomized.splice(index);
+		this.delete = function(commonNameAtomized, commonName){
+			var index = commonNameAtomized.indexOf(commonName);
+			commonNameAtomized.splice(index,1);
+		};
 	};
-	
-	return commonName;
 });

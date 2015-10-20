@@ -1,44 +1,29 @@
 'use strict';
 
 angular.module('app.controllers.endemic',[])
-.controller('EndemicCtrl', ['$scope','referenceService', 'ancillaryDataService','endemicService', function($scope,referenceService,ancillaryDataService,endemicService) {
+.controller('EndemicCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory','endemicFactory', function($scope,referenceFactory,ancillaryDataFactory,endemicFactory) {
+	
+	var endemicFactory = new endemicFactory();
 	$scope.endemicTo = '';
-	$scope.endemicAtomizedType = endemicService;
+	$scope.endemicAtomizedType = endemicFactory.endemicAtomizedType;
 	$scope.formData.endemicAtomized = [];
-	//Reference
-	$scope.reference = referenceService;
+	
 	//Ancillary
-	$scope.ancillaryData = ancillaryDataService;
-
+	var ancillaryDataFactory = new ancillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	
+	//reference
+	var referenceFactory = new referenceFactory();
+	$scope.reference = referenceFactory.reference;
+	
+	//Local variables for reset objects
 	var origEA = angular.copy($scope.endemicAtomizedType);
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
-	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
-		if(ancillaryData.source !== ''){
-			ancillaryDataService.addTo(ancillaryDataList,ancillaryData);
-			//Reset the scope variable
-			$scope.ancillaryData = origAD;
-			origAD = angular.copy($scope.ancillaryData);
-		}		
-	};
-
-	$scope.addReference = function(referenceList,reference){
-		if(reference.type !== ''){
-			referenceService.addTo(referenceList,reference);
-			//Reset the scope variable
-			$scope.reference = origR;
-			origR = angular.copy($scope.reference);
-		}	
-	};
-
-	$scope.removeReference = function(referenceList,reference){
-		referenceService.deleteFrom(referenceList,reference);	
-	};
-
 	$scope.addEndemic = function(list, endemicAtomized) {
 		if (endemicAtomized.endemicTo !== '') {
-			endemicService.add(list, endemicAtomized);
+			endemicFactory.add(list, endemicAtomized);
 			//Reset the scope variable
 			$scope.endemicAtomizedType = origEA;
 			origEA = angular.copy($scope.endemicAtomizedType);
@@ -46,7 +31,7 @@ angular.module('app.controllers.endemic',[])
 	};
 
 	$scope.removeEndemic = function(list, endemicAtomized) {
-		endemicService.delete(list, endemicAtomized);
+		endemicFactory.delete(list, endemicAtomized);
 	};
 
 	$scope.addEndemicTo = function(endemicAtomized, endemicTo) {
@@ -59,5 +44,39 @@ angular.module('app.controllers.endemic',[])
 	$scope.removeEndemicTo = function(list, endemicTo) {
 		var index = list.indexOf(endemicTo);
 		list.splice(index,1);
+	};
+
+	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
+		if(ancillaryData.source !== ''){
+			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			//Reset the scope variable
+			$scope.ancillaryData = origAD;
+			origAD = angular.copy($scope.ancillaryData);
+		}
+	};
+
+	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
+		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+	};
+
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+		$scope.ancillaryData = angular.copy(ancillaryData);
+	};
+
+	$scope.addReference = function(referenceList,reference){
+		if(reference.type !== ''){
+			referenceFactory.addTo(referenceList,reference);
+			//Reset the scope variable
+			$scope.reference = origR;
+			origR = angular.copy($scope.reference);
+		}
+	};
+
+	$scope.removeReference = function(referenceList,reference){
+		referenceFactory.deleteFrom(referenceList,reference);
+	};
+
+	$scope.editReference = function(referenceList,reference) {
+		$scope.reference = angular.copy(reference);
 	};
 }]);

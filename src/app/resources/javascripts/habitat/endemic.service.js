@@ -1,23 +1,21 @@
 'use strict';
 
 angular.module('app.services.endemic',[])
-.service('endemicService', function(){
+.factory('endemicFactory', function(){
+	return function() {
+		this.endemicAtomizedType = {
+			endemicTo: [],
+			endemicIn: '',
+			ancillaryData: []
+		};
 
-	var endemicAtomizedType;
+		this.add = function(list,endemicAtomized){
+			list.push(endemicAtomized);
+		};
 
-	endemicAtomizedType = {
-		endemicTo: [],
-		endemicIn: '',
-		ancillaryData: []
+		this.delete = function(list,endemicAtomized){
+			var index = list.indexOf(endemicAtomized);
+			list.splice(index,1);
+		};	
 	};
-
-	endemicAtomizedType.add = function(list,endemicAtomized){
-		list.push(endemicAtomized);
-	};
-
-	endemicAtomizedType.delete = function(list,endemicAtomized){
-		var index = list.indexOf(endemicAtomized);
-		list.splice(index,1);
-	};	
-	return 	endemicAtomizedType;
 });

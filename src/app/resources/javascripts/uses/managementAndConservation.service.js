@@ -1,37 +1,31 @@
 'use strict';
 
 angular.module('app.services.managementAndConservation',[])
-.service('managementAndConservationAtomizedService', function(){
-	var managementAndConservationAtomizedType;
-	var usesManagementAndConservation;
+.factory('managementAndConservationAtomizedFactory', function(){
+	return function() {
+		this.managementAndConservationAtomizedType = {
+			type: '',
+			objective: '',
+			managementPlan: '',
+			actions: [],
+			humanAndEnvironmentalrelevanc: '',
+			ancillaryData: []
+		};
+		
+		this.usesManagementAndConservation = {
+			usesAtomized: [],
+			managementAndConservationAtomized: [],
+			managementAndConservationUnstructured: '',
+			ancillaryData: []
+		};
 
-	managementAndConservationAtomizedType = {
-		type: '',
-		objective: '',
-		managementPlan: '',
-		actions: [],
-		humanAndEnvironmentalrelevanc: '',
-		ancillaryData: []
-	};
-	
-	usesManagementAndConservation = {
-		usesAtomized: [],
-		managementAndConservationAtomized: [],
-		managementAndConservationUnstructured: '',
-		ancillaryData: []
-	};
+		this.add = function(list,managementAndConservationAtomizedType){
+			list.push(managementAndConservationAtomizedType);
+		};
 
-	managementAndConservationAtomizedType.add = function(list,managementAndConservationAtomizedType){
-		list.push(managementAndConservationAtomizedType);
-	};
-
-	managementAndConservationAtomizedType.delete = function(list,managementAndConservationAtomizedType){
-		var index = list.indexOf(managementAndConservationAtomizedType);
-		list.splice(index,1);
-	};
-
-	return {
-		managementAndConservationAtomizedType: managementAndConservationAtomizedType,
-		usesManagementAndConservation : usesManagementAndConservation
+		this.delete = function(list,managementAndConservationAtomizedType){
+			var index = list.indexOf(managementAndConservationAtomizedType);
+			list.splice(index,1);
+		};
 	};
 });

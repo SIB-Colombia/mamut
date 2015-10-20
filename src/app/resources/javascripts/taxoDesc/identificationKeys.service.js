@@ -1,13 +1,11 @@
 'use strict';
 
 angular.module('app.services.identificationKeys',[])
-.service('identificationKeysService', function(){
-	var identificationKeys;
-
-	identificationKeys = {
-		keys: [],
-		ancillaryData: []
+.factory('identificationKeysFactory', function(){
+	return function() {
+		this.identificationKeys = {
+			keys: [],
+			ancillaryData: []
+		};
 	};
-	
-	return identificationKeys;
 });

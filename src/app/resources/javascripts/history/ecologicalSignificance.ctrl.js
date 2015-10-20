@@ -1,41 +1,58 @@
 'use strict';
 
 angular.module('app.controllers.ecologicalSignificance',[])
-.controller('EcologicalSignificanceCtrl', ['$scope','referenceService', 'ancillaryDataService','ecologicalSignificanceService', function($scope,referenceService,ancillaryDataService,ecologicalSignificanceService) {
-	$scope.formData.ecologicalSignificance = ecologicalSignificanceService;
-	//Reference
-	$scope.reference = referenceService;
+.controller('EcologicalSignificanceCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory','ecologicalSignificanceFactory', function($scope,referenceFactory,ancillaryDataFactory,ecologicalSignificanceFactory) {
+	
+	var ecologicalSignificanceFactory = new ecologicalSignificanceFactory();
+	$scope.formData.ecologicalSignificance = ecologicalSignificanceFactory.ecologicalSignificance;
+	
 	//Ancillary
-	$scope.ancillaryData = ancillaryDataService;
+	var ancillaryDataFactory = new ancillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	
+	//reference
+	var referenceFactory = new referenceFactory();
+	$scope.reference = referenceFactory.reference;
+	
+	//Local variables for reset objects
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
+
+	$scope.removeEcologicalSignificanceAtomized= function(list,ecologicalSignificanceAtomized){
+		ecologicalSignificanceFactory.delete(list,ecologicalSignificanceAtomized);	
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataService.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
-		}		
+		}
+	};
+
+	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
+		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+	};
+
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+		$scope.ancillaryData = angular.copy(ancillaryData);
 	};
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceService.addTo(referenceList,reference);
+			referenceFactory.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
-		}	
-	};
-	
-	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataService.deleteFrom(ancillaryDataList,ancillaryData);
+		}
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceService.deleteFrom(referenceList,reference);	
+		referenceFactory.deleteFrom(referenceList,reference);
 	};
 
-	$scope.removeEcologicalSignificanceAtomized= function(list,ecologicalSignificanceAtomized){
-		ecologicalSignificanceService.delete(list,ecologicalSignificanceAtomized);	
+	$scope.editReference = function(referenceList,reference) {
+		$scope.reference = angular.copy(reference);
 	};
 }]);

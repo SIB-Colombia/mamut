@@ -30,6 +30,8 @@ div(ng-controller='DistributionCtrl')
 							td
 								button.btn(ng-click='removeDistribution(formData.distribution,distribution)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
+								button.btn(ng-click='editDistribution(formData.distribution,distribution)')
+									span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				hr
 			.form-group
 				label.col-xs-2.control-label(for='distributionScope', translate='') simplePliCTerm.name.DistributionScope
@@ -114,8 +116,10 @@ div(ng-controller='DistributionCtrl')
 											td
 												| {{ancillary.source}}	
 											td
-												button.btn(ng-click='removeAncillaryData(distributionClass.ancillaryData,ancillaryData)')
+												button.btn(ng-click='removeAncillaryData(distributionClass.ancillaryData,ancillary)')
 													span(class="glyphicon glyphicon-trash", aria-hidden='true')
+												button.btn(ng-click='editAncillaryData(distributionClass.ancillaryData,ancillary)')
+													span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 									
 					div(ng-controller='CollapseDemoCtrl')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
@@ -150,8 +154,10 @@ div(ng-controller='DistributionCtrl')
 													td
 														| {{ref.title}}
 													td
-														button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+														button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
 															span(class="glyphicon glyphicon-trash", aria-hidden='true')
+														button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+															span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 			
 									div(collapse='isCollapsed_1')
 										.form-group

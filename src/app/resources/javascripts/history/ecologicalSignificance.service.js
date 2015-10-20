@@ -1,20 +1,18 @@
 'use strict';
 
 angular.module('app.services.ecologicalSignificance',[])
-.service('ecologicalSignificanceService', function(){
-	var ecologicalSignificance;
+.factory('ecologicalSignificanceFactory', function(){
+	return function() {
+		this.ecologicalSignificance = {
+			ecologicalSignificanceAtomized: [],
+			ancillaryDataA: [],
+			ecologicalSignificanceUnstructured: '',
+			ancillaryData: []
+		};
 
-	ecologicalSignificance = {
-		ecologicalSignificanceAtomized: [],
-		ancillaryDataA: [],
-		ecologicalSignificanceUnstructured: '',
-		ancillaryData: []
+		this.delete = function(list,ecologicalSignificanceAtomized){
+			var index = list.indexOf(ecologicalSignificanceAtomized);
+			list.splice(index,1);
+		};
 	};
-
-	ecologicalSignificance.delete = function(list,ecologicalSignificanceAtomized){
-		var index = list.indexOf(ecologicalSignificanceAtomized);
-		list.splice(index,1);
-	};
-	
-	return ecologicalSignificance;
 });

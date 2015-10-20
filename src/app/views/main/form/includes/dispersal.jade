@@ -87,8 +87,11 @@ div(ng-controller='DispersalCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(formData.dispersal.ancillaryData,ancillaryData)')
+											button.btn(ng-click='removeAncillaryData(formData.dispersal.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
+											button.btn(ng-click='editAncillaryData(formData.dispersal.ancillaryData,ancillary)')
+												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+													
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(collapse='isCollapsed')
@@ -122,8 +125,10 @@ div(ng-controller='DispersalCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+															button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-trash", aria-hidden='true')
+															button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				
 										div(collapse='isCollapsed_1')
 											.form-group

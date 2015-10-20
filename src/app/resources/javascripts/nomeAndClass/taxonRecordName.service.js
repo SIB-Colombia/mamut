@@ -1,180 +1,178 @@
 'use strict';
 
 angular.module('app.services.taxonRecordName',[])
-.service('taxonRecordNameService', function(){
-	var taxonRecordName;
-
-	taxonRecordName = {
-		scientificName: {
-			attributes: {
-				id: '',
-				isAnamorphic: '',
-				nomenclaturalCode: ''
-			},
-			simple: '',
-			rank: '',
-			canonicalName: {
-				simple: '',
-				uninomial: '',
-				genus: {
-					ref: '',
-					linkType: ''
+.factory('taxonRecordNameFactory', function(){
+	return function() {
+		this.taxonRecordName = {
+			scientificName: {
+				attributes: {
+					id: '',
+					isAnamorphic: '',
+					nomenclaturalCode: ''
 				},
-				epithet: {
-					infragenericEpithet: '',
-					specificEpithet: '',
-					infraspecificEpithet: ''
-				}
-			},
-			canonicalAuthorship: {
 				simple: '',
-				authorship: {
+				rank: '',
+				canonicalName: {
 					simple: '',
-					year: [],
-					authors: []
-				}
-			},
-			specialAuthorship: {
-				basionymAuthorship: {
+					uninomial: '',
+					genus: {
+						ref: '',
+						linkType: ''
+					},
+					epithet: {
+						infragenericEpithet: '',
+						specificEpithet: '',
+						infraspecificEpithet: ''
+					}
+				},
+				canonicalAuthorship: {
 					simple: '',
-					year: [],
-					authors: []
+					authorship: {
+						simple: '',
+						year: [],
+						authors: []
+					}
 				},
-				combinationAuthorship: []
-			},
-			publishedln: {
-				identifier: '',
-				datatype: '',
-				source: ''
-			},
-			year: '',
-			microReference: '',
-			typificacion: {
-				simple: '',
-				typeVoucherEntity: {
-					voucherReference: [],
-					lectotypePublicationVoucher: [],
-					lectotypeMicroReferenceVoucher: [],
-					typeOfType: ''
-				}
-			},
-			typeNameEntity: {
-				nameReference: {
-					identifier: '',
-					datatype: '',
-					source: ''
-				},
-				lectotypePublication: {
-					identifier: '',
-					datatype: '',
-					source: ''
-				},
-				lectotypeMicroReference: {
-					identifier: '',
-					datatype: '',
-					source: ''
-				}
-			},
-			spellingCorrentionOf: [],
-			basionym: {
-				ruleConsidered: '',
-				note: '',
-				reletedName: {
-					identifier: '',
-					datatype: '',
-					source: ''
+				specialAuthorship: {
+					basionymAuthorship: {
+						simple: '',
+						year: [],
+						authors: []
+					},
+					combinationAuthorship: []
 				},
 				publishedln: {
 					identifier: '',
 					datatype: '',
 					source: ''
 				},
-				microReference: ''
-			},
-			basedOn: {
-				ruleConsidered: '',
-				note: '',
-				reletedName: {
-					identifier: '',
-					datatype: '',
-					source: ''
+				year: '',
+				microReference: '',
+				typificacion: {
+					simple: '',
+					typeVoucherEntity: {
+						voucherReference: [],
+						lectotypePublicationVoucher: [],
+						lectotypeMicroReferenceVoucher: [],
+						typeOfType: ''
+					}
 				},
-				publishedln: {
-					identifier: '',
-					datatype: '',
-					source: ''
+				typeNameEntity: {
+					nameReference: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					lectotypePublication: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					lectotypeMicroReference: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					}
 				},
-				microReference: ''
-			},
-			conservedAgainst: [],
-			laterHomonymOf: {
-				ruleConsidered: '',
-				note: '',
-				reletedName: {
-					identifier: '',
-					datatype: '',
-					source: ''
+				spellingCorrentionOf: [],
+				basionym: {
+					ruleConsidered: '',
+					note: '',
+					reletedName: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					publishedln: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					microReference: ''
 				},
-				publishedln: {
-					identifier: '',
-					datatype: '',
-					source: ''
+				basedOn: {
+					ruleConsidered: '',
+					note: '',
+					reletedName: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					publishedln: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					microReference: ''
 				},
-				microReference: ''
-			},
-			sanctioned: {
-				ruleConsidered: '',
-				note: '',
-				reletedName: {
-					identifier: '',
-					datatype: '',
-					source: ''
+				conservedAgainst: [],
+				laterHomonymOf: {
+					ruleConsidered: '',
+					note: '',
+					reletedName: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					publishedln: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					microReference: ''
 				},
-				publishedln: {
-					identifier: '',
-					datatype: '',
-					source: ''
+				sanctioned: {
+					ruleConsidered: '',
+					note: '',
+					reletedName: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					publishedln: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					microReference: ''
 				},
-				microReference: ''
-			},
-			replacementNameFor: {
-				ruleConsidered: '',
-				note: '',
-				reletedName: {
-					identifier: '',
-					datatype: '',
-					source: ''
+				replacementNameFor: {
+					ruleConsidered: '',
+					note: '',
+					reletedName: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					publishedln: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					microReference: ''
 				},
-				publishedln: {
-					identifier: '',
-					datatype: '',
-					source: ''
+				publicationStatus: {
+					ruleConsidered: '',
+					note: '',
+					reletedName: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					publishedln: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					microReference: ''
 				},
-				microReference: ''
-			},
-			publicationStatus: {
-				ruleConsidered: '',
-				note: '',
-				reletedName: {
-					identifier: '',
-					datatype: '',
-					source: ''
+				providerLink: '',
+				providerSpecificData: {
+					anyOne: [],
+					anyTwo: ''
 				},
-				publishedln: {
-					identifier: '',
-					datatype: '',
-					source: ''
-				},
-				microReference: ''
-			},
-			providerLink: '',
-			providerSpecificData: {
-				anyOne: [],
-				anyTwo: ''
-			},
-			ancillaryData: []
-		}
+				ancillaryData: []
+			}
+		};
 	};
-	
-	return taxonRecordName;
 });

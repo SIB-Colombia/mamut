@@ -1,20 +1,18 @@
 'use strict';
 
 angular.module('app.services.environmentalEnvelope',[])
-.service('environmentalEnvelopeService', function(){
-	var environmentalEnvelope;
+.factory('environmentalEnvelopeFactory', function(){
+	return function() {
+		this.environmentalEnvelope = {
+			environmentalEnvelopeAtomized: [],
+			ancillaryDataA: [],
+			environmentalEnvelopeUnstructured: '',
+			ancillaryData: []
+		};
 
-	environmentalEnvelope = {
-		environmentalEnvelopeAtomized: [],
-		ancillaryDataA: [],
-		environmentalEnvelopeUnstructured: '',
-		ancillaryData: []
+		this.delete = function(list,environmentalEnvelopeAtomized){
+			var index = list.indexOf(environmentalEnvelopeAtomized);
+			list.splice(index,1);
+		};
 	};
-
-	environmentalEnvelope.delete = function(list,environmentalEnvelopeAtomized){
-		var index = list.indexOf(environmentalEnvelopeAtomized);
-		list.splice(index,1);
-	};
-	
-	return environmentalEnvelope;
 });

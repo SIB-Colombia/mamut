@@ -77,6 +77,8 @@ div(ng-controller='InvasivenessCtrl')
 								td
 									button.btn(ng-click='removeInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
+									button.btn(ng-click='editInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)')
+										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				.form-group
 					label.col-xs-2.control-label(for='origin', translate='') simplePliCTerm.name.origin
 					.col-xs-10
@@ -84,7 +86,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='ori in origin')
 								input(type='checkbox', ng-model='ori.checked', ng-click='updateSelectionOrigin(ori, origin)')
 								| {{ori.name}}
-								spant(ng-show='{{ori.help}}')
+								spant(ng-show='ori.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{ori.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -94,7 +96,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='pre in presence')
 								input(type='checkbox', ng-model='pre.checked', ng-click='updateSelectionPresence(pre, presence)')
 								| {{pre.name}}
-								spant(ng-show='{{pre.help}}')
+								spant(ng-show='pre.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{pre.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -104,7 +106,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='per in persistence')
 								input(type='checkbox', ng-model='per.checked', ng-click='updateSelectionPersistence(per, persistence)')
 								| {{per.name}}
-								spant(ng-show='{{per.help}}')
+								spant(ng-show='per.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{per.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -114,7 +116,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='dis in distribution')
 								input(type='checkbox', ng-model='dis.checked', ng-click='updateSelectionDistribution(dis, distribution)')
 								| {{dis.name}}
-								spant(ng-show='{{dis.help}}')
+								spant(ng-show='dis.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{dis.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -124,7 +126,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='har in harmful')
 								input(type='checkbox', ng-model='har.checked', ng-click='updateSelectionHarmful(har, harmful)')
 								| {{har.name}}
-								spant(ng-show='{{har.help}}')
+								spant(ng-show='har.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{har.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -177,7 +179,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='abu in abundance')
 								input(type='checkbox', ng-model='abu.checked', ng-click='updateSelectionAbundance(abu, abundance)')
 								| {{abu.name}}
-								spant(ng-show='{{abu.help}}')
+								spant(ng-show='abu.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{abu.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -187,7 +189,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='tre in trend')
 								input(type='checkbox', ng-model='tre.checked', ng-click='updateSelectionTrend(tre, trend)')
 								| {{tre.name}}
-								spant(ng-show='{{tre.help}}')
+								spant(ng-show='tre.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{tre.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -197,7 +199,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='ros in rateOfSpread')
 								input(type='checkbox', ng-model='ros.checked', ng-click='updateSelectionRateOfSpread(ros, rateOfSpread)')
 								| {{ros.name}}
-								spant(ng-show='{{ros.help}}')
+								spant(ng-show='ros.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{ros.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -207,7 +209,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='rl in regulatoryListing')
 								input(type='checkbox', ng-model='rl.checked', ng-click='updateSelectionRegulatoryListing(rl, regulatoryListing)')
 								| {{rl.name}}
-								spant(ng-show='{{rl.help}}')
+								spant(ng-show='rl.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{rl.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -225,7 +227,7 @@ div(ng-controller='InvasivenessCtrl')
 							div(ng-repeat='lt in localityType')
 								input(type='checkbox', ng-model='lt.checked', ng-click='updateSelectionLocalityType(lt, localityType)')
 								| {{lt.name}}
-								spant(ng-show='{{lt.help}}')
+								spant(ng-show='lt.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lt.help}}')
 										span.glyphicon.glyphicon-info-sign
 				.form-group
@@ -284,8 +286,10 @@ div(ng-controller='InvasivenessCtrl')
 									td
 										| {{ancillary.source}}	
 									td
-										button.btn(ng-click='removeAncillaryData(invasivenessAtomizedType.ancillaryData,ancillaryData)')
+										button.btn(ng-click='removeAncillaryData(invasivenessAtomizedType.ancillaryData,ancillary)')
 											span(class="glyphicon glyphicon-trash", aria-hidden='true')
+										button.btn(ng-click='editAncillaryData(invasivenessAtomizedType.ancillaryData,ancillary)')
+											span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 					div(ng-controller='CollapseDemoCtrl')
 						.form-group
 							button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
@@ -321,8 +325,10 @@ div(ng-controller='InvasivenessCtrl')
 															td
 																| {{ref.title}}
 															td
-																button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+																button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
 																	span(class="glyphicon glyphicon-trash", aria-hidden='true')
+																button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+																	span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 					
 											div(collapse='isCollapsed_1')
 												.form-group

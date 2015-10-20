@@ -1,59 +1,54 @@
 'use strict';
 
 angular.module('app.services.invasiveness',[])
-.service('invasivenessService', function(){
-	var invasivenessAtomizedType;
-	var invasiveness;
+.factory('invasivenessFactory', function(){
+	return function() {
+		this.invasivenessAtomizedType = {
+			origin: '',
+			presence: '',
+			persistence: '',
+			distribution: [],
+			harmful: '',
+			modified: '',
+			startValidateDate: '',
+			endValidateDate: '',
+			countryCode: '',
+			stateProvince: '',
+			county: '',
+			localityName: '',
+			language: '',
+			citation: '',
+			abundance: '',
+			trend: '',
+			rateOfSpread: '',
+			regulatoryListing: '',
+			memo: '',
+			publicationDate: '',
+			localityType: '',
+			locationValue: '',
+			publicationDatePrecision: '',
+			whatImpact: '',
+			vector: '',
+			route: '',
+			target: [],
+			mechanism: [],
+			ancillaryData: []
+		};
 
-	invasivenessAtomizedType = {
-		origin: '',
-		presence: '',
-		persistence: '',
-		distribution: [],
-		harmful: '',
-		modified: '',
-		startValidateDate: '',
-		endValidateDate: '',
-		countryCode: '',
-		stateProvince: '',
-		county: '',
-		localityName: '',
-		language: '',
-		citation: '',
-		abundance: '',
-		trend: '',
-		rateOfSpread: '',
-		regulatoryListing: '',
-		memo: '',
-		publicationDate: '',
-		localityType: '',
-		locationValue: '',
-		publicationDatePrecision: '',
-		whatImpact: '',
-		vector: '',
-		route: '',
-		target: [],
-		mechanism: [],
-		ancillaryData: []
-	};
+		this.invasiveness = {
+			invasivenessAtomized: [],
+			invasivenessUnstructured: '',
+			ancillaryData: []
+		};
+		
+		this.add = function(list, invasivenessAtomizedType){
+			list.push(invasivenessAtomizedType);
+		};
 
-	invasiveness = {
-		invasivenessAtomized: [],
-		invasivenessUnstructured: '',
-		ancillaryData: []
-	};
-	
-	invasiveness.add = function(list, invasivenessAtomizedType){
-		list.push(invasivenessAtomizedType);
-	};
+		this.delete = function(list,invasivenessAtomizedType){
+			var index = list.indexOf(invasivenessAtomizedType);
+			list.splice(index,1);
+		};
 
-	invasiveness.delete = function(list,invasivenessAtomizedType){
-		var index = list.indexOf(invasivenessAtomizedType);
-		list.splice(index,1);
-	};
-
-	return {
-		invasivenessAtomizedType : invasivenessAtomizedType,
-		invasiveness : invasiveness
 	};
 });

@@ -1,50 +1,48 @@
 'use strict';
 
 angular.module('app.services.behavior',[])
-.service('behaviorService', function(){
-	var behavior;
-
-	behavior = {
-		behaviorAtomized: {
-			measurementOrFact : {
-				measurementID: '',
-				measurementType: '',
-				measurementValue: '',
-				measurementAccuracy: '',
-				measurementUnit: '',
-				measurementDeterminedDate: '',
-				measurementDeterminedBy: [],
-				measurementMethod: '',
-				measurementRemarks: '',
-				relatedTo: ''
+.factory('behaviorFactory', function(){
+	return function() {
+		this.behavior = {
+			behaviorAtomized: {
+				measurementOrFact : {
+					measurementID: '',
+					measurementType: '',
+					measurementValue: '',
+					measurementAccuracy: '',
+					measurementUnit: '',
+					measurementDeterminedDate: '',
+					measurementDeterminedBy: [],
+					measurementMethod: '',
+					measurementRemarks: '',
+					relatedTo: ''
+				},
+				ancillaryData : {
+					identifier:'',
+					dataType:'',
+					mimeType:'',
+					agent:[],
+					created:'',
+					modified:'',
+					license:'',
+					rights:'',
+					rightsHolder:'',
+					bibliographicCitation:'',
+					audience:[],
+					source:'',
+					subject:[],
+					description:'',
+					mediaURL:[],
+					thumbnailURL:'',
+					location:'',
+					geoPoint:'',
+					reference:[],
+					additionalInformation:'',
+					dataObject:''
+				}
 			},
-			ancillaryData : {
-				identifier:'',
-				dataType:'',
-				mimeType:'',
-				agent:[],
-				created:'',
-				modified:'',
-				license:'',
-				rights:'',
-				rightsHolder:'',
-				bibliographicCitation:'',
-				audience:[],
-				source:'',
-				subject:[],
-				description:'',
-				mediaURL:[],
-				thumbnailURL:'',
-				location:'',
-				geoPoint:'',
-				reference:[],
-				additionalInformation:'',
-				dataObject:''
-			}
-		},
-		behaviorUnstructured: '',
-		ancillaryData: []
+			behaviorUnstructured: '',
+			ancillaryData: []
+		};
 	};
-	
-	return behavior;
 });

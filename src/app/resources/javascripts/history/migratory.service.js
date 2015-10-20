@@ -1,35 +1,29 @@
 'use strict';
 
 angular.module('app.services.migratory',[])
-.service('migratoryService', function(){
-	var migratoryAtomizedType;
-	var migratory;
+.factory('migratoryFactory', function(){
+	return function() {
+		this.migratoryAtomizedType = {
+			causes: [],
+			patterns: [],
+			routes: [],
+			season: '',
+			ancillaryData: []
+		};
 
-	migratoryAtomizedType = {
-		causes: [],
-		patterns: [],
-		routes: [],
-		season: '',
-		ancillaryData: []
-	};
+		this.migratory = {
+			migratoryAtomized: [],
+			migratoryUnstructured: '',
+			ancillaryData: []
+		};
 
-	migratory = {
-		migratoryAtomized: [],
-		migratoryUnstructured: '',
-		ancillaryData: []
-	};
+		this.add = function(list,migratoryAtomizedType){
+			list.push(migratoryAtomizedType);
+		};
 
-	migratory.add = function(list,migratoryAtomizedType){
-		list.push(migratoryAtomizedType);
-	};
-
-	migratory.delete = function(list,migratoryAtomized){
-		var index = list.indexOf(migratoryAtomized);
-		list.splice(index,1);
-	};
-
-	return {
-		migratoryAtomizedType : migratoryAtomizedType,
-		migratory : migratory
+		this.delete = function(list,migratoryAtomized){
+			var index = list.indexOf(migratoryAtomized);
+			list.splice(index,1);
+		};
 	};
 });

@@ -31,6 +31,8 @@ div(ng-controller='AncillaryDataCtrl')
 								td
 									button.btn(ng-click='removeAncillaryData(formData.ancillaryData,ancillary)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
+									button.btn(ng-click='editAncillaryData(formData.ancillaryData,ancillary)')
+										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				.form-group
 					label.col-xs-2.control-label(for='license', translate='') simplePliCTerm.name.license
 					.col-xs-10
@@ -65,16 +67,16 @@ div(ng-controller='AncillaryDataCtrl')
 						button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='getInfoLicence(ancillaryData.mediaURL, ancillaryData)') Obetener información
 				.form-group
 					img(id='image', ng-src='{{ imageurl }}')
-				div(ng-controller='CollapseDemoCtrl')
-					.form-group
+				
+				.form-group
+					label.col-xs-2.control-label(for='source', translate='') simplePliCTerm.name.References
+					.col-xs-10
 						.panel.panel-default
-							.panel-heading
-								spant {{"simplePliCTerm.name.References"|translate}}
+							div(ng-controller='CollapseDemoCtrl')
 								button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
 									span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
 								a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
 									span.glyphicon.glyphicon-info-sign
-							.panel-body
 								div.table-responsive(ng-show='(ancillaryData.reference).length')
 									table.table.table-striped
 										thead
@@ -93,8 +95,10 @@ div(ng-controller='AncillaryDataCtrl')
 												td
 													| {{ref.title}}
 												td
-													button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+													button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
 														span(class="glyphicon glyphicon-trash", aria-hidden='true')
+													button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+														span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 		
 								div(collapse='isCollapsed_1')
 									.form-group
@@ -121,7 +125,7 @@ div(ng-controller='AncillaryDataCtrl')
 										input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
 										input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 										input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-									button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+										button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
 				button.btn.btn-success.btn-xs.pull-right(type='button', ng-click="addAncillaryData(formData.ancillaryData,ancillaryData)") Guardar 
 .col-xs-6.col-xs-offset-3
 	ul.pager

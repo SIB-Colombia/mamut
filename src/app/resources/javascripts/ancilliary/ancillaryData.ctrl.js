@@ -1,25 +1,55 @@
 'use strict';
 
 angular.module('app.controllers.ancillary',[])
-.controller('AncillaryDataCtrl', ['$scope', '$http', 'ancillaryDataService', function($scope, $http, ancillaryDataService){
-	
-	$scope.ancillaryData = ancillaryDataService;
+.controller('AncillaryDataCtrl', ['$scope', '$http', 'ancillaryDataFactory', 'referenceFactory', function($scope, $http, ancillaryDataFactory,referenceFactory){
+	//Ancillary
+	var ancillaryDataFactory = new ancillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+
+	//reference
+	var referenceFactory = new referenceFactory();
+	$scope.reference = referenceFactory.reference;
+
 	$scope.formData.ancillaryData = [];
 	var origAD = angular.copy($scope.ancillaryData);
-	//$scope.reference = referenceService.reference;
+	var origR = angular.copy($scope.reference);
+	//$scope.reference = referenceFactory.reference;
 
-	$scope.addAncillaryData = function addAncillaryData(ancillaryDataList, ancillary){
+	$scope.addAncillaryData = function(ancillaryDataList, ancillary){
 		if (ancillary.source !== '') {
-			ancillaryDataService.addTo(ancillaryDataList, ancillary);
+			ancillaryDataFactory.addTo(ancillaryDataList, ancillary);
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
-			var image = document.getElementById("image");
-			image.parentNode.removeChild(image);
+			if(image !== undefined){
+				var image = document.getElementById("image");
+				image.parentNode.removeChild(image);
+			}
 		}
 	};
 
-	$scope.removeAncillaryData = function removeAncillaryData(ancillaryDataList, ancillary){
-		ancillaryDataService.deleteFrom(ancillaryDataList,ancillary)
+	$scope.removeAncillaryData = function(ancillaryDataList, ancillary){
+		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillary)
+	};
+
+	$scope.editAncillaryData = function(ancillaryDataList, ancillary){
+		$scope.ancillaryData = angular.copy(ancillary);
+	};
+
+	$scope.addReference = function(referenceList,reference){
+		if(reference.type !== ''){
+			referenceFactory.addTo(referenceList,reference);
+			//Reset the scope variable
+			$scope.reference = origR;
+			origR = angular.copy($scope.reference);
+		}
+	};
+
+	$scope.removeReference = function(referenceList,reference){
+		referenceFactory.deleteFrom(referenceList,reference);
+	};
+
+	$scope.editReference = function(referenceList,reference) {
+		$scope.reference = angular.copy(reference);
 	};
 
 	$scope.getInfoLicence = function(url, ancillary) {

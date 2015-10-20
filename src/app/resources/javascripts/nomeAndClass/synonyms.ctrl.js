@@ -1,13 +1,19 @@
 'use strict';
 
 angular.module('app.controllers.synonmy',[])
-.controller("SynonmyCtrl", ['$scope', 'referenceService', 'ancillaryDataService', 'synonmyService', function($scope ,referenceService,ancillaryDataService,synonmyService){
+.controller("SynonmyCtrl", ['$scope', 'referenceFactory', 'ancillaryDataFactory', 'synonmyFactory', function($scope ,referenceFactory,ancillaryDataFactory,synonmyFactory){
 	//synonmy
-	$scope.synonmy = synonmyService;
-	//Reference
-	$scope.reference = referenceService;
+	var synonmyFactory = new synonmyFactory();
+	$scope.synonmy = synonmyFactory.synonmy;
+
 	//Ancillary
-	$scope.ancillaryData = ancillaryDataService;
+	var ancillaryDataFactory = new ancillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+
+	//reference
+	var referenceFactory = new referenceFactory();
+	$scope.reference = referenceFactory.reference;
+
 	//synonyms vector for FormData
 	$scope.formData.synonymsAtomized = [];
 
@@ -20,7 +26,7 @@ angular.module('app.controllers.synonmy',[])
 	//ADD
 	$scope.addSynonymsAtomized = function(synonymsAtomized, synonmy) {
 		if (synonmy.canonicalName !== '') {
-			synonmyService.add(synonymsAtomized, synonmy);
+			synonmyFactory.add(synonymsAtomized, synonmy);
 			//Reset the scope variable
 			$scope.synonmy = origS;
 			origS = angular.copy($scope.synonmy);
@@ -29,12 +35,17 @@ angular.module('app.controllers.synonmy',[])
 
 	//DELETE
 	$scope.removeSynonymsAtomized = function(synonymsAtomized, synonmy) {
-		synonmyService.delete(synonymsAtomized, synonmy);
+		synonmyFactory.delete(synonymsAtomized, synonmy);
+	};
+
+	//EDIT
+	$scope.editSynonymsAtomized = function(synonymsAtomized, synonmy) {
+		$scope.synonmy = angular.copy(synonmy);
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataService.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -42,12 +53,16 @@ angular.module('app.controllers.synonmy',[])
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-			ancillaryDataService.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+	};
+
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+		$scope.ancillaryData = angular.copy(ancillaryData);
 	};
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			reference.addTo(referenceList,reference);
+			referenceFactory.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
@@ -56,6 +71,10 @@ angular.module('app.controllers.synonmy',[])
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceService.deleteFrom(referenceList,reference);	
+		referenceFactory.deleteFrom(referenceList,reference);	
+	};
+
+	$scope.editReference = function(referenceList,reference) {
+		$scope.reference = angular.copy(reference);
 	};
 }]);

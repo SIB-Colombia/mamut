@@ -1,19 +1,17 @@
 'use strict';
 
 angular.module('app.services.lifeCycle',[])
-.service('lifeCycleService', function(){
-	var lifeCycle;
+.factory('lifeCycleFactory', function(){
+	return function() {
+		this.lifeCycle = {
+			lifeCycleAtomized: [],
+			lifeCycleUnstructured: '',
+			ancillaryData: []
+		};
 
-	lifeCycle = {
-		lifeCycleAtomized: [],
-		lifeCycleUnstructured: '',
-		ancillaryData: []
+		this.delete = function(list,lifeCycleAtomized){
+			var index = list.indexOf(lifeCycleAtomized);
+			list.splice(index,1);
+		};
 	};
-
-	lifeCycle.delete = function(list,lifeCycleAtomized){
-		var index = list.indexOf(lifeCycleAtomized);
-		list.splice(index,1);
-	};
-	
-	return lifeCycle;
 });

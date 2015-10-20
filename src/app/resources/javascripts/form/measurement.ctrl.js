@@ -1,47 +1,9 @@
 'use strict';
 
 angular.module('app.controllers.measurement',[])
-.controller('MeasurementCtrl', ['$scope', 'measurementService', function($scope, measurementService) {
-	
-	$scope.measurementOrFact = {
-		measurementOrFact : {
-			measurementID: '',
-			measurementType: '',
-			measurementValue: '',
-			measurementAccuracy: '',
-			measurementUnit: '',
-			measurementDeterminedDate: '',
-			measurementDeterminedBy: [],
-			measurementMethod: '',
-			measurementRemarks: '',
-			relatedTo: ''
-		},
-		ancillaryData : {
-			identifier:'',
-			dataType:'',
-			mimeType:'',
-			agent:[],
-			created:'',
-			modified:'',
-			license:'',
-			rights:'',
-			rightsHolder:'',
-			bibliographicCitation:'',
-			audience:[],
-			source:'',
-			subject:[],
-			description:'',
-			mediaURL:[],
-			thumbnailURL:'',
-			location:'',
-			geoPoint:'',
-			reference:[],
-			additionalInformation:'',
-			dataObject:''
-		}
-	};
+.controller('MeasurementCtrl', ['$scope', 'measurementFactory', function($scope, measurementFactory) {
 
-	var measurementCopy = angular.copy($scope.measurementOrFact);
+	var measurementCopy;
 
 	$scope.$watch('lifeFormAtomized.measurementType', function(name) {
 		if (name !== undefined) {
@@ -57,7 +19,8 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('lifeFormAtomized.measurementValue', function(name) {
 		if (name !== undefined) {
-
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
@@ -82,6 +45,8 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('lifeCycleAtomized.measurementValue', function(name) {
 		if (name !== undefined) {
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
@@ -106,6 +71,8 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('reproductionAtomized.measurementValue', function(name) {
 		if (name !== undefined) {
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
@@ -131,6 +98,8 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('dispersalAtomized.purpose.measurementValue', function(name) {
 		if (name !== undefined) {
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
@@ -156,6 +125,8 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementType = attr.measurementtype;
@@ -166,9 +137,9 @@ angular.module('app.controllers.measurement',[])
 			});
 		}
 	});
-	$scope.$watch('formData.behavior.behaviorAtomized.measurementOrFact.measurementType', function(name) {
+	$scope.$watch('behaviorAtomized.measurementType', function(name) {
 		if (name !== undefined) {
-			delete $scope.formData.behavior.behaviorAtomized.measurementValue;
+			delete $scope.behaviorAtomized.measurementValue;
 			$scope.selectedAttr.length = 0;
 			
 			angular.forEach($scope.behaviors, function(attr) {
@@ -179,14 +150,16 @@ angular.module('app.controllers.measurement',[])
 			});
 		}
 	});
-	$scope.$watch('formData.behavior.behaviorAtomized.measurementOrFact.measurementValue', function(name) {
+	$scope.$watch('behaviorAtomized.measurementValue', function(name) {
 		if (name !== undefined) {
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
-					$scope.formData.behavior.behaviorAtomized.measurementOrFact.measurementType = attr.measurementtype;
-					$scope.formData.behavior.behaviorAtomized.measurementOrFact.measurementValue = name;
-					$scope.formData.behavior.behaviorAtomized.ancillaryData.bibliographicCitation = attr.referencia;
-					$scope.formData.behavior.behaviorAtomized.ancillaryData.source = attr.url;
+					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
+					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
+					$scope.measurementOrFact.ancillaryData.bibliographicCitation = attr.referencia;
+					$scope.measurementOrFact.ancillaryData.source = attr.url;
 				}
 			});
 		}
@@ -205,6 +178,8 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('molecularDataAtomizedType.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.molecularDataAtomizedType.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
@@ -229,6 +204,8 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('interactionsAtomizedType.interactionSpeciesType.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
@@ -253,6 +230,8 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('environmentalEnvelopeAtomized.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
@@ -278,6 +257,8 @@ angular.module('app.controllers.measurement',[])
 
 	$scope.$watch('ecologicalSignificanceAtomized.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
@@ -303,7 +284,8 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('habitatAtomized.measurementValue', function(name) {
 		if (name !== undefined) {
-
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
@@ -317,52 +299,25 @@ angular.module('app.controllers.measurement',[])
 
 	$scope.$watch('territoryAtomized.extentOfOccurrence.measurementType', function(name) {
 		if (name !== undefined) {
-			delete $scope.territoryAtomized.extentOfOccurrence.measurementValue;
-			$scope.selectedAttr.length = 0;
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
+			
+			$scope.measurementOrFact.measurementType = name;
+			$scope.measurementOrFact.measurementValue = $scope.territoryAtomized.extentOfOccurrence.measurementValue;
+		}
+	}); 
 
-			angular.forEach($scope.extentOfOccurrence, function(attr) {
-				if (attr.measurementtype === name) {
-					$scope.selectedAttr.push(attr);
-				}
-			});
-		}
-	});
-	$scope.$watch('territoryAtomized.extentOfOccurrence.measurementValue', function(name) {
-		if (name !== undefined) {
-			angular.forEach($scope.selectedAttr, function(attr) {
-				if (attr.measurementvalue === name) {
-					$scope.territory.territoryAtomized.extentOfOccurrence.measurementOrFact.measurementType = attr.measurementtype;
-					$scope.territory.territoryAtomized.extentOfOccurrence.measurementOrFact.measurementValue = name;
-					$scope.territory.territoryAtomized.extentOfOccurrence.ancillaryData.bibliographicCitation = attr.referencia;
-					$scope.territory.territoryAtomized.extentOfOccurrence.ancillaryData.source = attr.url;
-				}
-			});
-		}
-	});
 	$scope.$watch('territoryAtomized.areaOfOccupancy.measurementType', function(name) {
 		if (name !== undefined) {
-			delete $scope.territoryAtomized.areaOfOccupancy.measurementValue;
-			$scope.selectedAttr.length = 0;
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
+			
+			$scope.measurementOrFact.measurementType = name;
+			$scope.measurementOrFact.measurementValue = $scope.territoryAtomized.areaOfOccupancy.measurementValue;
+		}
+	});
 
-			angular.forEach($scope.areaOfOccupancy, function(attr) {
-				if (attr.measurementtype === name) {
-					$scope.selectedAttr.push(attr);
-				}
-			});
-		}
-	});
-	$scope.$watch('territoryAtomized.areaOfOccupancy.measurementValue', function(name) {
-		if (name !== undefined) {
-			angular.forEach($scope.selectedAttr, function(attr) {
-				if (attr.measurementvalue === name) {
-					$scope.measurementOrFact.measurementType = attr.measurementtype;
-					$scope.measurementOrFact.measurementValue = name;
-					$scope.measurementOrFact.ancillaryData.bibliographicCitation = attr.referencia;
-					$scope.measurementOrFact.ancillaryData.source = attr.url;
-				}
-			});
-		}
-	});
+
 	$scope.$watch('directThreatsAtomized.measurementType', function(name) {
 		if (name !== undefined) {
 			delete $scope.directThreatsAtomized.measurementValue;
@@ -377,6 +332,8 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('directThreatsAtomized.measurementValue', function(name) {
 		if (name !== undefined) {
+			$scope.measurementOrFact = new measurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.directThreats.directThreatsAtomized.measurementOrFact.measurementType = attr.measurementtype;
@@ -403,9 +360,10 @@ angular.module('app.controllers.measurement',[])
 	$scope.addMeasurementOrFact = function(measurementOrFact, measurement) {
 		if (measurement !== undefined) {
 			if (measurement.measurementOrFact.measurementValue !== '') {
-				measurementOrFact = {'measurementOrFact':measurement.measurementOrFact,'ancillaryData':measurement.ancillaryData};
+				measurementOrFact.measurementOrFact = angular.copy(measurement.measurementOrFact);
+				measurementOrFact.ancillaryData = angular.copy(measurement.ancillaryData);
 				
-				$scope.measurementOrFact = measurementCopy;
+				$scope.measurementOrFact = angular.copy(measurementCopy);
 				measurementCopy = angular.copy($scope.measurementOrFact);
 				
 				$scope.selectedAttr.length = 0;

@@ -1,44 +1,30 @@
 'use strict';
 
 angular.module('app.controllers.distribution',[])
-.controller('DistributionCtrl', ['$scope','referenceService', 'ancillaryDataService','distributionService',function($scope,referenceService,ancillaryDataService,distributionService) {
-	$scope.distributionOpt2 = distributionService.distributionOpt2;
-	$scope.distributionClass = distributionService.distributionClass;
+.controller('DistributionCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory','distributionFactory',function($scope,referenceFactory,ancillaryDataFactory,distributionFactory) {
+	
+	var distributionFactory = new distributionFactory();
+	$scope.distributionOpt2 = distributionFactory.distributionOpt2;
+	$scope.distributionClass = distributionFactory.distributionClass;
 	$scope.formData.distribution = [];
-	//Reference
-	$scope.reference = referenceService;
+	
 	//Ancillary
-	$scope.ancillaryData = ancillaryDataService;
-
+	var ancillaryDataFactory = new ancillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	
+	//reference
+	var referenceFactory = new referenceFactory();
+	$scope.reference = referenceFactory.reference;
+	
+	//Local variables for reset objects
 	var origDO = angular.copy($scope.distributionOpt2);
 	var origDC = angular.copy($scope.distributionClass);
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
-	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
-		if(ancillaryData.source !== ''){
-			ancillaryDataService.addTo(ancillaryDataList,ancillaryData);
-			//Reset the scope variable
-			$scope.ancillaryData = origAD;
-			origAD = angular.copy($scope.ancillaryData);
-		}		
-	};
-
-	$scope.addReference = function(referenceList,reference){
-		if(reference.type !== ''){
-			referenceService.addTo(referenceList,reference);
-			//Reset the scope variable
-			$scope.reference = origR;
-			origR = angular.copy($scope.reference);
-		}	
-	};
-
-	$scope.removeReference = function(referenceList,reference){
-		referenceService.deleteFrom(referenceList,reference);	
-	};
 
 	$scope.addDistributionOpt2 = function(distributionClass, opt2) {
 		if (opt2.country !== undefined) {
-			distributionService.distributionOpt2.add(distributionClass, opt2);
+			distributionFactory.addOpt2(distributionClass, opt2);
 			//Reset the scope variable
 			$scope.distributionOpt2 = origDO;
 			origDO = angular.copy($scope.distributionOpt2);
@@ -46,12 +32,12 @@ angular.module('app.controllers.distribution',[])
 	};
 
 	$scope.removeDistributionOpt2 = function(distributionClass, opt2) {
-		distributionService.distributionOpt2.delete(distributionClass, opt2);
+		distributionFactory.deleteOpt2(distributionClass, opt2);
 	};
 
 	$scope.addDistribution = function(list, distributionClass) {
 		if (distributionClass.distributionScope.type !== undefined) {
-			distributionService.distributionClass.add(list, distributionClass);
+			distributionFactory.addClass(list, distributionClass);
 			//Reset the scope variable
 			$scope.distributionClass = origDC;
 			origDC = angular.copy($scope.distributionClass);
@@ -60,7 +46,44 @@ angular.module('app.controllers.distribution',[])
 	};
 
 	$scope.removeDistribution = function(list,distribution) {
-		distributionService.distributionClass.delete(list, distribution);
+		distributionFactory.deleteClass(list, distribution);
 	};
 
+	$scope.editDistribution = function(list,distribution) {
+		$scope.distributionClass = angular.copy(distribution);
+	};
+
+	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
+		if(ancillaryData.source !== ''){
+			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			//Reset the scope variable
+			$scope.ancillaryData = origAD;
+			origAD = angular.copy($scope.ancillaryData);
+		}
+	};
+
+	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
+		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+	};
+
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+		$scope.ancillaryData = angular.copy(ancillaryData);
+	};
+
+	$scope.addReference = function(referenceList,reference){
+		if(reference.type !== ''){
+			referenceFactory.addTo(referenceList,reference);
+			//Reset the scope variable
+			$scope.reference = origR;
+			origR = angular.copy($scope.reference);
+		}
+	};
+
+	$scope.removeReference = function(referenceList,reference){
+		referenceFactory.deleteFrom(referenceList,reference);
+	};
+
+	$scope.editReference = function(referenceList,reference) {
+		$scope.reference = angular.copy(reference);
+	};
 }]);

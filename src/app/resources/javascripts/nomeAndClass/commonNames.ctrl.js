@@ -1,13 +1,19 @@
 'use strict';
 
 angular.module('app.controllers.commonName',[])
-.controller('CommonNameCtrl', ['$scope','referenceService', 'ancillaryDataService', 'commonNameService', function($scope,referenceService,ancillaryDataService,commonNameService) {
+.controller('CommonNameCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory', 'commonNameFactory', function($scope,referenceFactory,ancillaryDataFactory,commonNameFactory) {
 	//Common Name element
-	$scope.commonName = commonNameService;
-	//Reference
-	$scope.reference = referenceService;
+	var commonNameFactory = new commonNameFactory();
+	$scope.commonName = commonNameFactory.commonName;
+
 	//Ancillary
-	$scope.ancillaryData = ancillaryDataService;
+	var ancillaryDataFactory = new ancillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+
+	//reference
+	var referenceFactory = new referenceFactory();
+	$scope.reference = referenceFactory.reference;
+
 	//comon name vector for FormData
 	$scope.formData.commonNameAtomized = [];
 	
@@ -20,7 +26,7 @@ angular.module('app.controllers.commonName',[])
 	//ADD
 	$scope.addCommonNamesAtomized = function(commonNameAtomized, commonName) {
 		if (commonName.name !== '') {
-			commonNameService.add(commonNameAtomized, commonName);
+			commonNameFactory.add(commonNameAtomized, commonName);
 			//Reset the scope variable
 			$scope.commonName = origCN;
 			origCN = angular.copy($scope.commonName);
@@ -29,32 +35,45 @@ angular.module('app.controllers.commonName',[])
 
 	//DELETE
 	$scope.removeCommonNamesAtomized = function(commonNameAtomized, commonName) {
-		commonNameService.delete(commonNameAtomized, commonName);
+		commonNameFactory.delete(commonNameAtomized, commonName);
+	};
+
+	//EDIT
+	$scope.editCommonNamesAtomized = function(commonNameAtomized, commonName) {
+		$scope.commonName = angular.copy(commonName);
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataService.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 		}		
 	};
 
+	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
+		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+	};
+
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+		$scope.ancillaryData = angular.copy(ancillaryData);
+	};
+
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceService.addTo(referenceList,reference);
+			referenceFactory.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 		}	
 	};
 
-	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataService.deleteFrom(ancillaryDataList,ancillaryData);
+	$scope.removeReference = function(referenceList,reference){
+		referenceFactory.deleteFrom(referenceList,reference);	
 	};
 	
-	$scope.removeReference = function(referenceList,reference){
-		referenceService.deleteFrom(referenceList,reference);	
+	$scope.editReference = function(referenceList,reference) {
+		$scope.reference = angular.copy(reference);
 	};
 }]);

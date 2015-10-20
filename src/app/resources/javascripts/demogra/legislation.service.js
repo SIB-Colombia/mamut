@@ -1,45 +1,38 @@
 'use strict';
 
 angular.module('app.services.legislation',[])
-.service('legislationService', function(){
+.factory('legislationFactory', function(){
+	return function() {
+		this.legislationAtomizedType = {
+			legislationName: '',
+			protectionLegalStatus: '',
+			legislationRead: '',
+			status: '',
+			type: '',
+			norm: '',
+			appliesTo: {
+				country: '',
+				stateProvince: '',
+				county: '',
+				municipality: '',
+				locality: ''
+			},
+			ancillaryData: []
+		};
 
-	var legislationAtomizedType;
-	var legislation;
+		this.legislation = {
+			legislationAtomized: [],
+			legislationUnstructured: '',
+			ancillaryData: []
+		};
 
-	legislationAtomizedType = {
-		legislationName: '',
-		protectionLegalStatus: '',
-		legislationRead: '',
-		status: '',
-		type: '',
-		norm: '',
-		appliesTo: {
-			country: '',
-			stateProvince: '',
-			county: '',
-			municipality: '',
-			locality: ''
-		},
-		ancillaryData: []
-	};
+		this.add = function(list,legislationAtomizedType){
+			list.push(legislationAtomizedType);
+		};
 
-	legislation = {
-		legislationAtomized: [],
-		legislationUnstructured: '',
-		ancillaryData: []
-	};
-
-	legislation.add = function(list,legislationAtomizedType){
-		list.push(legislationAtomizedType);
-	};
-
-	legislation.delete = function(list,legislationAtomizedType){
-		var index = list.indexOf(legislationAtomizedType);
-		list.splice(index,1);
-	};
-	
-	return {
-		legislationAtomizedType : legislationAtomizedType,
-		legislation : legislation
+		this.delete = function(list,legislationAtomizedType){
+			var index = list.indexOf(legislationAtomizedType);
+			list.splice(index,1);
+		};
 	};
 });

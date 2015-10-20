@@ -1,14 +1,19 @@
 'use strict';
 
 angular.module('app.controllers.hierarchy',[])
-.controller('HierarchyCtrl', ['$scope', 'referenceService', 'ancillaryDataService', 'hierarchyService', 'ancillaryDataFactory', function($scope,referenceService,ancillaryDataService,hierarchyService,ancillaryDataFactory) {
-
-	$scope.hierarchy = hierarchyService;
-	//reference
-	$scope.reference = referenceService;
+.controller('HierarchyCtrl', ['$scope', 'referenceFactory', 'ancillaryDataFactory', 'hierarchyFactory',  function($scope,referenceFactory,ancillaryDataFactory,hierarchyFactory) {
+	//hierarchy
+	var hierarchyFactory = new hierarchyFactory();
+	$scope.hierarchy = hierarchyFactory.hierarchy;
+	
 	//Ancillary
-	//$scope.ancillaryData = ancillaryDataService;
-	$scope.ancillaryData = new ancillaryDataFactory();
+	var ancillaryDataFactory = new ancillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	
+	//reference
+	var referenceFactory = new referenceFactory();
+	$scope.reference = referenceFactory.reference;
+	
 	//hierarchy vector for FormData
 	$scope.formData.hierarchy = [];
 
@@ -16,12 +21,12 @@ angular.module('app.controllers.hierarchy',[])
 	var origH = angular.copy($scope.hierarchy);
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
-	$scope.formData.hierarchy = [];
+
 
 	//ADD
 	$scope.addHierarchy = function(hierarchy, hier) {
 		if (hier.kingdom !== '') {
-			hierarchyService.add(hierarchy, hier);
+			hierarchyFactory.add(hierarchy, hier);
 			//Reset the scope variable
 			$scope.hierarchy = origH;
 			origH = angular.copy($scope.hierarchy);
@@ -30,18 +35,17 @@ angular.module('app.controllers.hierarchy',[])
 
 	//DELETE
 	$scope.removeHierarchy = function(hierarchy, hier) {
-		hierarchyService.delete(hierarchy, hier);
+		hierarchyFactory.delete(hierarchy, hier);
 	};
 
 	//EDIT
 	$scope.editHierarchy = function(hierarchy, hier) {
 		$scope.hierarchy = angular.copy(hier);
-		$scope.isCollapsed = false;
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataService.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -49,21 +53,27 @@ angular.module('app.controllers.hierarchy',[])
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-			ancillaryDataService.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+		$scope.ancillaryData = angular.copy(ancillaryData);
+	};
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceService.addTo(referenceList,reference);
+			referenceFactory.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
-			$scope.isCollapsed_1 = true;
 		}
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceService.deleteFrom(referenceList,reference);
+		referenceFactory.deleteFrom(referenceList,reference);
+	};
+
+	$scope.editReference = function(referenceList,reference) {
+		$scope.reference = angular.copy(reference);
 	};
 }]);

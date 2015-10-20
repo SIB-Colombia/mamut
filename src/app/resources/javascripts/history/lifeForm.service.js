@@ -1,19 +1,17 @@
 'use strict';
 
 angular.module('app.services.lifeForm',[])
-.service('lifeFormService', function(){
-	var lifeForm;
+.factory('lifeFormFactory', function(){
+	return function() {
+		this.lifeForm = {
+			lifeFormAtomized: [],
+			lifeFormUnstructured: '',
+			ancillaryData: []
+		};
 
-	lifeForm = {
-		lifeFormAtomized: [],
-		lifeFormUnstructured: '',
-		ancillaryData: []
+		this.delete = function(list,lifeFormAtomized){
+			var index = list.indexOf(lifeFormAtomized);
+			list.splice(index,1);
+		};
 	};
-
-	lifeForm.delete = function(list,lifeFormAtomized){
-		var index = list.indexOf(lifeFormAtomized);
-		list.splice(index,1);
-	};
-	
-	return lifeForm;
 });

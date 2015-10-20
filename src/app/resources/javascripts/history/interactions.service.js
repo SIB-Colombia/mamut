@@ -1,33 +1,27 @@
 'use strict';
 
 angular.module('app.services.interactions',[])
-.service('interactionsService', function(){
-	var interactionsAtomizedType;
-	var interactions;
+.factory('interactionsFactory', function(){
+	return function() {
+		this.interactionsAtomizedType = {
+			interactionSpecies: '',
+			interactionSpeciesType: [],
+			ancillaryData: []
+		};
 
-	interactionsAtomizedType = {
-		interactionSpecies: '',
-		interactionSpeciesType: [],
-		ancillaryData: []
-	};
+		this.interactions = {
+			interactionsAtomized: [],
+			interactionsUnstructured: '',
+			ancillaryData: []
+		};
 
-	interactions = {
-		interactionsAtomized: [],
-		interactionsUnstructured: '',
-		ancillaryData: []
-	};
+		this.add = function(list,interactionsAtomizedType){
+			list.push(interactionsAtomizedType);
+		};
 
-	interactions.add = function(list,interactionsAtomizedType){
-		list.push(interactionsAtomizedType);
-	};
-
-	interactions.delete = function(list,interactionsAtomizedType){
-		var index = list.indexOf(interactionsAtomizedType);
-		list.splice(index,1);
-	};
-
-	return {
-		interactionsAtomizedType : interactionsAtomizedType,
-		interactions : interactions
+		this.delete = function(list,interactionsAtomizedType){
+			var index = list.indexOf(interactionsAtomizedType);
+			list.splice(index,1);
+		};
 	};
 });
