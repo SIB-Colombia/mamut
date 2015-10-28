@@ -1,18 +1,18 @@
 'use strict';
 
 angular.module('app.controllers.reproduction',[])
-.controller('ReproductionCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory','reproductionFactory', function($scope,referenceFactory,ancillaryDataFactory,reproductionFactory) {
+.controller('ReproductionCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','ReproductionFactory', function($scope,ReferenceFactory,AncillaryDataFactory,ReproductionFactory) {
 	//reproduction
-	var reproductionFactory = new reproductionFactory();
-	$scope.formData.reproduction = reproductionFactory.reproduction;
+	var reproductionFactoryLocal = new ReproductionFactory();
+	$scope.formData.reproduction = reproductionFactoryLocal.reproduction;
 	
 	//Ancillary
-	var ancillaryDataFactory = new ancillaryDataFactory();
-	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
 	
 	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	var referenceFactoryLocal = new ReferenceFactory();
+	$scope.reference = referenceFactoryLocal.reference;
 	
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
@@ -24,12 +24,12 @@ angular.module('app.controllers.reproduction',[])
 	};
 
 	$scope.removeReproductionAtomized= function(list,reproductionAtomized){
-		reproductionFactory.delete(list,reproductionAtomized);	
+		reproductionFactoryLocal.delete(list,reproductionAtomized);	
 	};
 	
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -38,7 +38,7 @@ angular.module('app.controllers.reproduction',[])
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
@@ -53,7 +53,7 @@ angular.module('app.controllers.reproduction',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactory.addTo(referenceList,reference);
+			referenceFactoryLocal.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
@@ -62,7 +62,7 @@ angular.module('app.controllers.reproduction',[])
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactory.deleteFrom(referenceList,reference);
+		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
 	$scope.editReference = function(referenceList,reference) {

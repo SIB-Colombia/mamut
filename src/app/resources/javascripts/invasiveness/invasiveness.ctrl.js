@@ -1,26 +1,26 @@
 'use strict';
 
 angular.module('app.controllers.invasiveness',[])
-.controller('InvasivenessCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory','invasivenessFactory', function($scope,referenceFactory,ancillaryDataFactory,invasivenessFactory) {
+.controller('InvasivenessCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','InvasivenessFactory', function($scope,ReferenceFactory,AncillaryDataFactory,InvasivenessFactory) {
 	
-	var invasivenessFactory = new invasivenessFactory();
-	$scope.invasivenessAtomizedType = invasivenessFactory.invasivenessAtomizedType;
-	$scope.formData.invasiveness = invasivenessFactory.invasiveness;
+	var invasivenessFactoryLocal = new InvasivenessFactory();
+	$scope.invasivenessAtomizedType = invasivenessFactoryLocal.invasivenessAtomizedType;
+	$scope.formData.invasiveness = invasivenessFactoryLocal.invasiveness;
 	
 	//Ancillary
-	var ancillaryDataFactoryUn = new ancillaryDataFactory();
+	var ancillaryDataFactoryUn = new AncillaryDataFactory();
 	$scope.ancillaryData = ancillaryDataFactoryUn.ancillaryData;
 	
 	//reference unstructure
-	var referenceFactoryUn = new referenceFactory();
+	var referenceFactoryUn = new ReferenceFactory();
 	$scope.reference = referenceFactoryUn.reference;
 
 	//reference ato
-	var referenceFactoryAto = new referenceFactory();
+	var referenceFactoryAto = new ReferenceFactory();
 	$scope.referenceAto = referenceFactoryAto.reference;
 
 	//Ancillary
-	var ancillaryDataFactoryAto = new ancillaryDataFactory();
+	var ancillaryDataFactoryAto = new AncillaryDataFactory();
 	$scope.ancillaryDataAto = ancillaryDataFactoryAto.ancillaryData;
 	
 	//Local variables for reset objects
@@ -35,7 +35,7 @@ angular.module('app.controllers.invasiveness',[])
 	};
 	
 	$scope.addInvasivenessAtomizedType = function(list, invasiveness) {
-		invasivenessFactory.add(list, invasiveness);
+		invasivenessFactoryLocal.add(list, invasiveness);
 		//Reset the scope variable
 		$scope.invasivenessAtomizedType = origI;
 		origI = angular.copy($scope.invasivenessAtomizedType);
@@ -43,14 +43,14 @@ angular.module('app.controllers.invasiveness',[])
 	};
 
 	$scope.removeInvasivenessAtomized= function(list,invasiveness){
-		invasivenessFactory.delete(list,invasiveness);	
+		invasivenessFactoryLocal.delete(list,invasiveness);	
 	};
 
 	$scope.editInvasivenessAtomized = function(list,invasiveness) {
 		$scope.invasivenessAtomizedType = angular.copy(invasiveness);
 		angular.forEach($scope.origin, function(item) {
 
-            if(invasiveness.origin!==null && invasiveness.origin == item.name){
+            if(invasiveness.origin!==null && invasiveness.origin === item.name){
             	console.log($scope.ori);
 				item.checked = true;
 			}

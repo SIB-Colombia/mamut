@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.behavior',[])
-.factory('behaviorFactory', function(){
+.factory('BehaviorFactory', function(){
 	return function() {
 		this.behavior = {
 			behaviorAtomized: {

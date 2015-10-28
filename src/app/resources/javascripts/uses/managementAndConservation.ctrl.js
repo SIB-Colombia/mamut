@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('app.controllers.managementAndConservation',[])
-.controller('ManagementAndConservationCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory','managementAndConservationAtomizedFactory', function($scope,referenceFactory,ancillaryDataFactory,managementAndConservationAtomizedFactory) {
+.controller('ManagementAndConservationCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','ManagementAndConservationAtomizedFactory', function($scope,ReferenceFactory,AncillaryDataFactory,ManagementAndConservationAtomizedFactory) {
 	
-	var managementAndConservationAtomizedFactory = new managementAndConservationAtomizedFactory();
-	$scope.managementAndConservationAtomizedType = managementAndConservationAtomizedFactory.managementAndConservationAtomizedType;
-	$scope.formData.usesManagementAndConservation = managementAndConservationAtomizedFactory.usesManagementAndConservation;
+	var managementAndConservationAtomizedFactoryLocal = new ManagementAndConservationAtomizedFactory();
+	$scope.managementAndConservationAtomizedType = managementAndConservationAtomizedFactoryLocal.managementAndConservationAtomizedType;
+	$scope.formData.usesManagementAndConservation = managementAndConservationAtomizedFactoryLocal.usesManagementAndConservation;
 	
 	//Ancillary
-	var ancillaryDataFactory = new ancillaryDataFactory();
-	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
 	
 	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	var referenceFactoryLocal = new ReferenceFactory();
+	$scope.reference = referenceFactoryLocal.reference;
 	
 	//Local variables for reset objects
 	var origMC = angular.copy($scope.managementAndConservationAtomizedType);
@@ -27,14 +27,14 @@ angular.module('app.controllers.managementAndConservation',[])
 	};
 
 	$scope.addManagementAndConservation = function(list, managementAndConservation) {
-		managementAndConservationAtomizedFactory.add(list, managementAndConservation);
+		managementAndConservationAtomizedFactoryLocal.add(list, managementAndConservation);
 		//Reset the scope variable
 		$scope.managementAndConservationAtomizedType = origMC;
 		origMC = angular.copy($scope.managementAndConservationAtomizedType);
 	};
 
 	$scope.removeManagementAndConservation = function(list, managementAndConservation) {
-		managementAndConservationAtomizedFactory.delete(list, managementAndConservation);
+		managementAndConservationAtomizedFactoryLocal.delete(list, managementAndConservation);
 	};
 
 	$scope.editManagementAndConservation = function(list, managementAndConservation) {
@@ -47,7 +47,7 @@ angular.module('app.controllers.managementAndConservation',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -56,7 +56,7 @@ angular.module('app.controllers.managementAndConservation',[])
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
@@ -71,7 +71,7 @@ angular.module('app.controllers.managementAndConservation',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactory.addTo(referenceList,reference);
+			referenceFactoryLocal.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
@@ -80,7 +80,7 @@ angular.module('app.controllers.managementAndConservation',[])
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactory.deleteFrom(referenceList,reference);
+		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
 	$scope.editReference = function(referenceList,reference) {

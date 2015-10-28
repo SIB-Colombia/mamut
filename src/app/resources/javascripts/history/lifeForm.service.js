@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.lifeForm',[])
-.factory('lifeFormFactory', function(){
+.factory('LifeFormFactory', function(){
 	return function() {
 		this.lifeForm = {
 			lifeFormAtomized: [],

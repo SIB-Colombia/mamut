@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.commonName',[])
-.factory('commonNameFactory', function(){
+.factory('CommonNameFactory', function(){
 	return function() {
 		this.commonName = {
 			name: '',

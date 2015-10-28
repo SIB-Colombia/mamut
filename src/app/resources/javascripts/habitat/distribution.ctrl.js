@@ -1,20 +1,20 @@
 'use strict';
 
 angular.module('app.controllers.distribution',[])
-.controller('DistributionCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory','distributionFactory',function($scope,referenceFactory,ancillaryDataFactory,distributionFactory) {
+.controller('DistributionCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','DistributionFactory',function($scope,ReferenceFactory,AncillaryDataFactory,DistributionFactory) {
 	
-	var distributionFactory = new distributionFactory();
-	$scope.distributionOpt2 = distributionFactory.distributionOpt2;
-	$scope.distributionClass = distributionFactory.distributionClass;
+	var distributionFactoryLocal = new DistributionFactory();
+	$scope.distributionOpt2 = distributionFactoryLocal.distributionOpt2;
+	$scope.distributionClass = distributionFactoryLocal.distributionClass;
 	$scope.formData.distribution = [];
 	
 	//Ancillary
-	var ancillaryDataFactory = new ancillaryDataFactory();
-	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
 	
 	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	var referenceFactoryLocal = new ReferenceFactory();
+	$scope.reference = referenceFactoryLocal.reference;
 	
 	//Local variables for reset objects
 	var origDO = angular.copy($scope.distributionOpt2);
@@ -24,7 +24,7 @@ angular.module('app.controllers.distribution',[])
 
 	$scope.addDistributionOpt2 = function(distributionClass, opt2) {
 		if (opt2.country !== undefined) {
-			distributionFactory.addOpt2(distributionClass, opt2);
+			distributionFactoryLocal.addOpt2(distributionClass, opt2);
 			//Reset the scope variable
 			$scope.distributionOpt2 = origDO;
 			origDO = angular.copy($scope.distributionOpt2);
@@ -32,12 +32,12 @@ angular.module('app.controllers.distribution',[])
 	};
 
 	$scope.removeDistributionOpt2 = function(distributionClass, opt2) {
-		distributionFactory.deleteOpt2(distributionClass, opt2);
+		distributionFactoryLocal.deleteOpt2(distributionClass, opt2);
 	};
 
 	$scope.addDistribution = function(list, distributionClass) {
 		if (distributionClass.distributionScope.type !== undefined) {
-			distributionFactory.addClass(list, distributionClass);
+			distributionFactoryLocal.addClass(list, distributionClass);
 			//Reset the scope variable
 			$scope.distributionClass = origDC;
 			origDC = angular.copy($scope.distributionClass);
@@ -46,7 +46,7 @@ angular.module('app.controllers.distribution',[])
 	};
 
 	$scope.removeDistribution = function(list,distribution) {
-		distributionFactory.deleteClass(list, distribution);
+		distributionFactoryLocal.deleteClass(list, distribution);
 	};
 
 	$scope.editDistribution = function(list,distribution) {
@@ -55,7 +55,7 @@ angular.module('app.controllers.distribution',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -64,7 +64,7 @@ angular.module('app.controllers.distribution',[])
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
@@ -79,7 +79,7 @@ angular.module('app.controllers.distribution',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactory.addTo(referenceList,reference);
+			referenceFactoryLocal.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
@@ -88,7 +88,7 @@ angular.module('app.controllers.distribution',[])
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactory.deleteFrom(referenceList,reference);
+		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
 	$scope.editReference = function(referenceList,reference) {

@@ -65,7 +65,7 @@ div(ng-controller='AncillaryDataCtrl')
 						input(type='text', ng-model='ancillaryData.mediaURL')
 						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.mediaURL"|translate}}')
 							span.glyphicon.glyphicon-info-sign
-					.col-xs-2		
+					.col-xs-2
 						button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='getInfoLicence(ancillaryData.mediaURL, ancillaryData)') Obetener información
 				.form-group
 					img(id='image', ng-src='{{ imageurl }}')

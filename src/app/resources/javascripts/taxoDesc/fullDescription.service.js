@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.fullDescription',[])
-.factory('fullDescriptionFactory', function(){
+.factory('FullDescriptionFactory', function(){
 	return function() {
 		this.fullDescription = {
 			fullDescriptionAtomized: [],

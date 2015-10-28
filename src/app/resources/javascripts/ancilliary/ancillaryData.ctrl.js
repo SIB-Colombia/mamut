@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('app.controllers.ancillary',[])
-.controller('AncillaryDataCtrl', ['$scope', '$http', 'ancillaryDataFactory', 'referenceFactory', function($scope, $http, ancillaryDataFactory,referenceFactory){
+.controller('AncillaryDataCtrl', ['$scope', '$http', 'AncillaryDataFactory', 'ReferenceFactory', function($scope, $http, AncillaryDataFactory,ReferenceFactory){
 	//Ancillary
-	var ancillaryDataFactory = new ancillaryDataFactory();
-	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
 
 	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	var referenceFactoryLocal = new ReferenceFactory();
+	$scope.reference = referenceFactoryLocal.reference;
 
 	$scope.formData.ancillaryData = [];
 	var origAD = angular.copy($scope.ancillaryData);
@@ -23,18 +23,18 @@ angular.module('app.controllers.ancillary',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList, ancillary){
 		if (ancillary.source !== '') {
-			ancillaryDataFactory.addTo(ancillaryDataList, ancillary);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList, ancillary);
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			if(image !== undefined){
-				var image = document.getElementById("image");
+				var image = $(document).getElementById("image");
 				image.parentNode.removeChild(image);
 			}
 		}
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList, ancillary){
-		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillary)
+		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillary);
 	};
 
 	$scope.editAncillaryData = function(ancillaryDataList, ancillary){
@@ -47,7 +47,7 @@ angular.module('app.controllers.ancillary',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactory.addTo(referenceList,reference);
+			referenceFactoryLocal.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
@@ -56,7 +56,7 @@ angular.module('app.controllers.ancillary',[])
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactory.deleteFrom(referenceList,reference);
+		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
 	$scope.editReference = function(referenceList,reference) {
@@ -113,14 +113,14 @@ angular.module('app.controllers.ancillary',[])
 								var data_1 = res.data.replace('jsonFlickrApi(', '').replace(')', '').replace(/\n/g, '');
 								var objetoJSONFinal_1 = JSON.parse(data_1);
 								if (typeof objetoJSONFinal_1.sizes.size[5].source !== 'undefined') {
-									$scope.ancillaryData.source = (objetoJSONFinal_1.sizes.size[5].source).replace(/'/g, "\''");
+									ancillary.source = (objetoJSONFinal_1.sizes.size[5].source).replace(/'/g, "\''");
 									$scope.imageurl = (objetoJSONFinal_1.sizes.size[5].source).replace(/'/g, "\''");
 								}
 							});
 
-						$scope.ancillaryData.license = license;
-						$scope.ancillaryData.rightsHolder = objetoJSONFinal.photo.owner.username;
-						$scope.ancillaryData.bibliographicCitation = objetoJSONFinal.photo.description._content;
+						ancillary.license = license;
+						ancillary.rightsHolder = objetoJSONFinal.photo.owner.username;
+						ancillary.bibliographicCitation = objetoJSONFinal.photo.description._content;
 					});
 			}
 			if (url.indexOf('commons.wikimedia.org') > -1) {

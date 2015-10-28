@@ -43,8 +43,7 @@ div(ng-controller='EndemicCtrl')
 							
 							tbody
 								tr(ng-repeat="endemicTo in endemicAtomizedType.endemicTo")
-									td
-										{{endemicTo}}
+									td {{endemicTo}}
 									td
 										button.btn(ng-click='removeEndemicTo(endemicAtomizedType.endemicTo,endemicTo)')
 											span(class="glyphicon glyphicon-trash", aria-hidden='true')

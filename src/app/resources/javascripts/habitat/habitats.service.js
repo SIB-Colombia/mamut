@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.habitat',[])
-.factory('habitatsFactory', function(){
+.factory('HabitatsFactory', function(){
 	return function() {
 		this.habitat = {
 			habitatAtomized: [],

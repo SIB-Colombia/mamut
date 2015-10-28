@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.ecologicalSignificance',[])
-.factory('ecologicalSignificanceFactory', function(){
+.factory('EcologicalSignificanceFactory', function(){
 	return function() {
 		this.ecologicalSignificance = {
 			ecologicalSignificanceAtomized: [],

@@ -35,7 +35,9 @@ angular.module('app.controllers.checkBox',[])
     $scope.updateSelectionThropic = function updateSelectionThropic(name) {
         var idx = -1;
         for(var i = 0, len = $scope.feedingAtomizedType.thropic.length; i < len; i++) {
-            if ($scope.feedingAtomizedType.thropic[i].strategy === name.name) idx = i;
+            if($scope.feedingAtomizedType.thropic[i].strategy === name.name){
+                idx = i;
+            } 
         }
         // is currently selected
         if (idx > -1) {

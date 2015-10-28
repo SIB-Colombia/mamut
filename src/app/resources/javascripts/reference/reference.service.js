@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.reference',[])
-.factory('referenceFactory', function(){
+.factory('ReferenceFactory', function(){
 	return function() {
 		this.reference = {
 			id: '',

@@ -1,18 +1,18 @@
 'use strict';
 
 angular.module('app.controllers.synonmy',[])
-.controller("SynonmyCtrl", ['$scope', 'referenceFactory', 'ancillaryDataFactory', 'synonmyFactory', function($scope ,referenceFactory,ancillaryDataFactory,synonmyFactory){
+.controller("SynonmyCtrl", ['$scope', 'ReferenceFactory', 'AncillaryDataFactory', 'SynonmyFactory', function($scope ,ReferenceFactory,AncillaryDataFactory,SynonmyFactory){
 	//synonmy
-	var synonmyFactory = new synonmyFactory();
-	$scope.synonmy = synonmyFactory.synonmy;
+	var synonmyFactoryLocal = new SynonmyFactory();
+	$scope.synonmy = synonmyFactoryLocal.synonmy;
 
 	//Ancillary
-	var ancillaryDataFactory = new ancillaryDataFactory();
-	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
 
 	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	var referenceFactoryLocal = new ReferenceFactory();
+	$scope.reference = referenceFactoryLocal.reference;
 
 	//synonyms vector for FormData
 	$scope.formData.synonymsAtomized = [];
@@ -26,7 +26,7 @@ angular.module('app.controllers.synonmy',[])
 	//ADD
 	$scope.addSynonymsAtomized = function(synonymsAtomized, synonmy) {
 		if (synonmy.canonicalName !== '') {
-			synonmyFactory.add(synonymsAtomized, synonmy);
+			synonmyFactoryLocal.add(synonymsAtomized, synonmy);
 			//Reset the scope variable
 			$scope.synonmy = origS;
 			origS = angular.copy($scope.synonmy);
@@ -36,7 +36,7 @@ angular.module('app.controllers.synonmy',[])
 
 	//DELETE
 	$scope.removeSynonymsAtomized = function(synonymsAtomized, synonmy) {
-		synonmyFactory.delete(synonymsAtomized, synonmy);
+		synonmyFactoryLocal.delete(synonymsAtomized, synonmy);
 	};
 
 	//EDIT
@@ -53,7 +53,7 @@ angular.module('app.controllers.synonmy',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -61,7 +61,7 @@ angular.module('app.controllers.synonmy',[])
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
@@ -70,7 +70,7 @@ angular.module('app.controllers.synonmy',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactory.addTo(referenceList,reference);
+			referenceFactoryLocal.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
@@ -80,7 +80,7 @@ angular.module('app.controllers.synonmy',[])
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactory.deleteFrom(referenceList,reference);	
+		referenceFactoryLocal.deleteFrom(referenceList,reference);	
 	};
 
 	$scope.editReference = function(referenceList,reference) {

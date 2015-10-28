@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.annualCycle',[])
-.factory('annualCycleFactory', function(){
+.factory('AnnualCycleFactory', function(){
 	return function() {
 		this.annualCycleAtomizedType = {
 			Event: '',

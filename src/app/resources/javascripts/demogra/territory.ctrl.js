@@ -1,18 +1,18 @@
 'use strict';
 
 angular.module('app.controllers.territory',[])
-.controller('TerritoryCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory','territoryFactory', function($scope,referenceFactory,ancillaryDataFactory,territoryFactory) {
+.controller('TerritoryCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','TerritoryFactory', function($scope,ReferenceFactory,AncillaryDataFactory,TerritoryFactory) {
 	
-	var territoryFactory = new territoryFactory();
-	$scope.formData.territory = territoryFactory.territory;
+	var territoryFactoryLocal = new TerritoryFactory();
+	$scope.formData.territory = territoryFactoryLocal.territory;
 	
 	//Ancillary
-	var ancillaryDataFactory = new ancillaryDataFactory();
-	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
 	
 	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	var referenceFactoryLocal = new ReferenceFactory();
+	$scope.reference = referenceFactoryLocal.reference;
 	
 	//Local variables for reset objects
 	var origR = angular.copy($scope.reference);
@@ -26,7 +26,7 @@ angular.module('app.controllers.territory',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -35,7 +35,7 @@ angular.module('app.controllers.territory',[])
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
@@ -50,7 +50,7 @@ angular.module('app.controllers.territory',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactory.addTo(referenceList,reference);
+			referenceFactoryLocal.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
@@ -59,7 +59,7 @@ angular.module('app.controllers.territory',[])
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactory.deleteFrom(referenceList,reference);
+		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
 	$scope.editReference = function(referenceList,reference) {

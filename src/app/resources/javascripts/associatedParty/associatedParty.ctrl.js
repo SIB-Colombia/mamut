@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('app.controllers.associatedParty',[])
-.controller('AssociatedPartyCtrl', ['$scope', 'associatedPartyFactory',  function($scope, associatedPartyFactory) {
+.controller('AssociatedPartyCtrl', ['$scope', 'AssociatedPartyFactory',  function($scope, AssociatedPartyFactory) {
 	
-	var associatedPartyFactory = new associatedPartyFactory();
-	$scope.associatedParty = associatedPartyFactory.associatedParty;
+	var associatedPartyFactoryLocal = new AssociatedPartyFactory();
+	$scope.associatedParty = associatedPartyFactoryLocal.associatedParty;
 	$scope.formData.associatedParty = [];
 
 	var origAP = angular.copy($scope.associatedParty);
@@ -16,13 +16,13 @@ angular.module('app.controllers.associatedParty',[])
 	};
 
 	$scope.addAssociatedParty = function(list, associatedParty) {
-		associatedPartyFactory.add(list, associatedParty);
+		associatedPartyFactoryLocal.add(list, associatedParty);
 		$scope.associatedParty = origAP;
 		origAP = angular.copy($scope.associatedParty);
 	};
 
 	$scope.removeAssociatedParty = function(list, associatedParty) {
-		associatedPartyFactory.delete(list, associatedParty);
+		associatedPartyFactoryLocal.delete(list, associatedParty);
 	};
 
 	$scope.editAssociatedParty = function(list, associatedParty) {

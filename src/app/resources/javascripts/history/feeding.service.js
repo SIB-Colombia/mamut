@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.feeding',[])
-.factory('feedingFactory', function(){
+.factory('FeedingFactory', function(){
 	return function() {
 		this.thropic = {
 			strategy: '',

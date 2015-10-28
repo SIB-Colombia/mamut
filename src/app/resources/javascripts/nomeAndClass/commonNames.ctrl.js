@@ -1,18 +1,18 @@
 'use strict';
 
 angular.module('app.controllers.commonName',[])
-.controller('CommonNameCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory', 'commonNameFactory', function($scope,referenceFactory,ancillaryDataFactory,commonNameFactory) {
+.controller('CommonNameCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', 'CommonNameFactory', function($scope,ReferenceFactory,AncillaryDataFactory,CommonNameFactory) {
 	//Common Name element
-	var commonNameFactory = new commonNameFactory();
-	$scope.commonName = commonNameFactory.commonName;
+	var commonNameFactoryLocal = new CommonNameFactory();
+	$scope.commonName = commonNameFactoryLocal.commonName;
 
 	//Ancillary
-	var ancillaryDataFactory = new ancillaryDataFactory();
-	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
 
 	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	var referenceFactoryLocal = new ReferenceFactory();
+	$scope.reference = referenceFactoryLocal.reference;
 
 	//comon name vector for FormData
 	$scope.formData.commonNameAtomized = [];
@@ -26,7 +26,7 @@ angular.module('app.controllers.commonName',[])
 	//ADD
 	$scope.addCommonNamesAtomized = function(commonNameAtomized, commonName) {
 		if (commonName.name !== '') {
-			commonNameFactory.add(commonNameAtomized, commonName);
+			commonNameFactoryLocal.add(commonNameAtomized, commonName);
 			//Reset the scope variable
 			$scope.commonName = origCN;
 			origCN = angular.copy($scope.commonName);
@@ -36,7 +36,7 @@ angular.module('app.controllers.commonName',[])
 
 	//DELETE
 	$scope.removeCommonNamesAtomized = function(commonNameAtomized, commonName) {
-		commonNameFactory.delete(commonNameAtomized, commonName);
+		commonNameFactoryLocal.delete(commonNameAtomized, commonName);
 	};
 
 	//EDIT
@@ -53,7 +53,7 @@ angular.module('app.controllers.commonName',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -61,7 +61,7 @@ angular.module('app.controllers.commonName',[])
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
@@ -70,7 +70,7 @@ angular.module('app.controllers.commonName',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactory.addTo(referenceList,reference);
+			referenceFactoryLocal.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
@@ -79,7 +79,7 @@ angular.module('app.controllers.commonName',[])
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactory.deleteFrom(referenceList,reference);	
+		referenceFactoryLocal.deleteFrom(referenceList,reference);	
 	};
 	
 	$scope.editReference = function(referenceList,reference) {

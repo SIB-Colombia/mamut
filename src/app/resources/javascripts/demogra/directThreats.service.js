@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.directThreats',[])
-.factory('directThreatsFactory', function(){
+.factory('DirectThreatsFactory', function(){
 	return function() {
 		this.directThreats = {
 			directThreatsAtomized: {

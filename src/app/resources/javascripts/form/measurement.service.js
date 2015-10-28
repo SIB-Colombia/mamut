@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.measurement',[])
-.factory('measurementFactory', function(){
+.factory('MeasurementFactory', function(){
 	return function() {
 		this.measurement = {
 			measurementOrFact : {

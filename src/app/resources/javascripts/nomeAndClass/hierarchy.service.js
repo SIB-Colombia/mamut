@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.hierarchy',[])
-.factory('hierarchyFactory', function(){
+.factory('HierarchyFactory', function(){
 	return function() {
 		this.hierarchy = {
 			classification: '',

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.territory',[])
-.factory('territoryFactory', function(){
+.factory('TerritoryFactory', function(){
 	return function() {
 		this.territory = {
 			territoryAtomized: {

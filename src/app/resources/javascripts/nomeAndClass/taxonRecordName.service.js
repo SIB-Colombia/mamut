@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.taxonRecordName',[])
-.factory('taxonRecordNameFactory', function(){
+.factory('TaxonRecordNameFactory', function(){
 	return function() {
 		this.taxonRecordName = {
 			scientificName: {

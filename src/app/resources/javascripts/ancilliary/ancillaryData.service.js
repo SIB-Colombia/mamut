@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.ancillary',[])
-.factory('ancillaryDataFactory', function(){
+.factory('AncillaryDataFactory', function(){
 	return function() {
 		this.ancillaryData = {
 			identifier:'',

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.reproduction',[])
-.factory('reproductionFactory', function(){
+.factory('ReproductionFactory', function(){
 	return function() {
 		this.reproduction = {
 			reproductionAtomized: [],

@@ -8,8 +8,8 @@ module.exports = function(parent) {
 	parent.use(serveStatic(path.join(__dirname, './../../src/public')));
 
 	logger = new (winston.Logger)({
-	transports: [
-		new (winston.transports.Console)()
-	]
-});
+		transports: [
+			new (winston.transports.Console)()
+		]
+	});
 };

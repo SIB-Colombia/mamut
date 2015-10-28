@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('app.controllers.populationBiology',[])
-.controller('PopulationBiologyCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory','populationBiologyFactory', function($scope,referenceFactory,ancillaryDataFactory,populationBiologyFactory) {
+.controller('PopulationBiologyCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','PopulationBiologyFactory', function($scope,ReferenceFactory,AncillaryDataFactory,PopulationBiologyFactory) {
 	
-	var populationBiologyFactory = new populationBiologyFactory();
-	$scope.populationBiologyAtomized = populationBiologyFactory.populationBiologyAtomized;
-	$scope.formData.populationBiology = populationBiologyFactory.populationBiology;
+	var populationBiologyFactoryLocal = new PopulationBiologyFactory();
+	$scope.populationBiologyAtomized = populationBiologyFactoryLocal.populationBiologyAtomized;
+	$scope.formData.populationBiology = populationBiologyFactoryLocal.populationBiology;
 	
 	//Ancillary
-	var ancillaryDataFactory = new ancillaryDataFactory();
-	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
 	
 	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	var referenceFactoryLocal = new ReferenceFactory();
+	$scope.reference = referenceFactoryLocal.reference;
 	
 	//Local variables for reset objects
 	var origPBA = angular.copy($scope.populationBiologyAtomized);
@@ -28,14 +28,14 @@ angular.module('app.controllers.populationBiology',[])
 	
 	$scope.addPopulationBiologyAtomized = function(list, populationBiologyAtomized) {
 		if (populationBiologyAtomized.region !== '') {
-			populationBiologyFactory.add(list, populationBiologyAtomized);
+			populationBiologyFactoryLocal.add(list, populationBiologyAtomized);
 
 			$scope.populationBiologyAtomized = origPBA;
 			origPBA = angular.copy($scope.populationBiologyAtomized);
 		}
 	};
 	$scope.removePopulation = function(list, populationBiologyAtomized) {
-		populationBiologyFactory.delete(list, populationBiologyAtomized);
+		populationBiologyFactoryLocal.delete(list, populationBiologyAtomized);
 	};
 
 	$scope.editPopulation = function(list, populationBiologyAtomized) {
@@ -44,7 +44,7 @@ angular.module('app.controllers.populationBiology',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -53,7 +53,7 @@ angular.module('app.controllers.populationBiology',[])
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
@@ -68,7 +68,7 @@ angular.module('app.controllers.populationBiology',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactory.addTo(referenceList,reference);
+			referenceFactoryLocal.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
@@ -77,7 +77,7 @@ angular.module('app.controllers.populationBiology',[])
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactory.deleteFrom(referenceList,reference);
+		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
 	$scope.editReference = function(referenceList,reference) {

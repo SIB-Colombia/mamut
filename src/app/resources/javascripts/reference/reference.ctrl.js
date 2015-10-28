@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('app.controllers.reference',[])
-.controller('ReferenceCrtl', ['$scope', 'referenceFactory', function($scope, referenceFactory){
+.controller('ReferenceCrtl', ['$scope', 'ReferenceFactory', function($scope, ReferenceFactory){
 
 	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	var referenceFactoryLocal = new ReferenceFactory();
+	$scope.reference = referenceFactoryLocal.reference;
 	
 	$scope.formData.references = [];
 	var origR = angular.copy($scope.reference);
@@ -18,21 +18,21 @@ angular.module('app.controllers.reference',[])
 
 	$scope.addReference = function (referenceList, reference){
 		if (reference.source !== '') {
-			referenceFactory.addTo(referenceList, reference);
+			referenceFactoryLocal.addTo(referenceList, reference);
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 		}
 	};
 
 	$scope.removeReference = function (referenceList, reference){
-		referenceFactory.deleteFrom(referenceList,reference);
+		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
 	};
 
-	$scope.cancelReference = function(referenceList,reference) {
+	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 	};
 }]);

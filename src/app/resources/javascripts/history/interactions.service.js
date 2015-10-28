@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.interactions',[])
-.factory('interactionsFactory', function(){
+.factory('InteractionsFactory', function(){
 	return function() {
 		this.interactionsAtomizedType = {
 			interactionSpecies: '',

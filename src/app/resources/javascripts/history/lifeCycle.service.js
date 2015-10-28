@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.lifeCycle',[])
-.factory('lifeCycleFactory', function(){
+.factory('LifeCycleFactory', function(){
 	return function() {
 		this.lifeCycle = {
 			lifeCycleAtomized: [],

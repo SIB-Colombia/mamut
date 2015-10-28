@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.synonmy',[])
-.factory('synonmyFactory', function(){
+.factory('SynonmyFactory', function(){
 	return function() {
 		this.synonmy = {
 			synonymName: {

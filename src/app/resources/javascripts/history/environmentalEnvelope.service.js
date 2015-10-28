@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.environmentalEnvelope',[])
-.factory('environmentalEnvelopeFactory', function(){
+.factory('EnvironmentalEnvelopeFactory', function(){
 	return function() {
 		this.environmentalEnvelope = {
 			environmentalEnvelopeAtomized: [],

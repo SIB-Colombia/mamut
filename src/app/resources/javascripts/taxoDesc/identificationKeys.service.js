@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.identificationKeys',[])
-.factory('identificationKeysFactory', function(){
+.factory('IdentificationKeysFactory', function(){
 	return function() {
 		this.identificationKeys = {
 			keys: [],

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.migratory',[])
-.factory('migratoryFactory', function(){
+.factory('MigratoryFactory', function(){
 	return function() {
 		this.migratoryAtomizedType = {
 			causes: [],

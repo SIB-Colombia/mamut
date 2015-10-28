@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.endemic',[])
-.factory('endemicFactory', function(){
+.factory('EndemicFactory', function(){
 	return function() {
 		this.endemicAtomizedType = {
 			endemicTo: [],

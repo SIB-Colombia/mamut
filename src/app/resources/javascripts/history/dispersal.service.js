@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.dispersal',[])
-.factory('dispersalFactory', function(){
+.factory('DispersalFactory', function(){
 	return function() {
 		this.dispersal = {
 			dispersalAtomized: {

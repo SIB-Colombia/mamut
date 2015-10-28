@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.molecularData',[])
-.factory('molecularDataFactory', function(){
+.factory('MolecularDataFactory', function(){
 	return function() {
 		this.molecularDataAtomizedType = {
 			measurementOrFact: {
@@ -49,6 +49,9 @@ angular.module('app.services.molecularData',[])
 			molecularDataAtomized: [],
 			molecularDataUnstructured: '',
 			ancillaryData: []
+		};
+		this.add = function(molecularDataAtomizedType, molecular){
+			molecularDataAtomizedType.push(molecular);
 		};
 	};
 });

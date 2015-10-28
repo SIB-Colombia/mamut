@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.legislation',[])
-.factory('legislationFactory', function(){
+.factory('LegislationFactory', function(){
 	return function() {
 		this.legislationAtomizedType = {
 			legislationName: '',

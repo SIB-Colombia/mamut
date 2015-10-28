@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('app.controllers.taxonRecordName',[])
-.controller('TaxonRecordNameCtrl', ['$scope','taxonRecordNameFactory', function($scope, taxonRecordNameFactory) {
+.controller('TaxonRecordNameCtrl', ['$scope','TaxonRecordNameFactory', function($scope, TaxonRecordNameFactory) {
 	
-	var taxonRecordNameFactory = new taxonRecordNameFactory();
-	$scope.formData.taxonRecordName = taxonRecordNameFactory.taxonRecordName;
+	var taxonRecordNameFactoryLocal = new TaxonRecordNameFactory();
+	$scope.formData.taxonRecordName = taxonRecordNameFactoryLocal.taxonRecordName;
 
 	$scope.findLanguageName = function(languageIso){
-        if(languageIso!= undefined && languageIso != ''){
+        if(languageIso!== undefined && languageIso !== ''){
             for (var d = 0, len = $scope.idiomas.length; d < len; d += 1) {
                 if ($scope.idiomas[d].ISO === languageIso) {
                     return $scope.idiomas[d].Idioma;
@@ -299,7 +299,6 @@ angular.module('app.controllers.taxonRecordName',[])
 						$.getJSON('http://api.gbif.org/v1/species/' + keyValue + '/vernacularNames',function(data_1) {
 							if (data_1.results.length > 0) {
 								$scope.$apply(function() {
-									var langName = '';
 									for (var i = 0; i < data_1.results.length; i++) {
 										$scope.formData.commonNameAtomized.push({
 											name: (data_1.results[i].vernacularName !== undefined) ? data_1.results[i].vernacularName : '',

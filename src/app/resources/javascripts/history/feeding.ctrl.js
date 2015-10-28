@@ -1,20 +1,20 @@
 'use strict';
 
 angular.module('app.controllers.feeding',[])
-.controller('FeedingCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory','feedingFactory', function($scope,referenceFactory,ancillaryDataFactory,feedingFactory) {
+.controller('FeedingCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','FeedingFactory', function($scope,ReferenceFactory,AncillaryDataFactory,FeedingFactory) {
 	//feeding
-	var feedingFactory = new feedingFactory();
-	$scope.thropic = feedingFactory.thropic;
-	$scope.feedingAtomizedType = feedingFactory.feedingAtomizedType;
-	$scope.formData.feeding = feedingFactory.feeding;
+	var feedingFactoryLocal = new FeedingFactory();
+	$scope.thropic = feedingFactoryLocal.thropic;
+	$scope.feedingAtomizedType = feedingFactoryLocal.feedingAtomizedType;
+	$scope.formData.feeding = feedingFactoryLocal.feeding;
 
 	//Ancillary
-	var ancillaryDataFactory = new ancillaryDataFactory();
-	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
 	
 	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	var referenceFactoryLocal = new ReferenceFactory();
+	$scope.reference = referenceFactoryLocal.reference;
 
 	var origFA = angular.copy($scope.feedingAtomizedType);
 	var origR = angular.copy($scope.reference);
@@ -28,7 +28,7 @@ angular.module('app.controllers.feeding',[])
 
 	$scope.addFeedingAtomizedType = function(feeding, feedingAtomizedType) {
 		if (feeding.type !== '') {
-			feedingFactory.add(feeding,feedingAtomizedType);
+			feedingFactoryLocal.add(feeding,feedingAtomizedType);
 			//Reset the scope variable
 			$scope.feedingAtomizedType = origFA;
 			origFA = angular.copy($scope.feedingAtomizedType);
@@ -36,12 +36,12 @@ angular.module('app.controllers.feeding',[])
 		}
 	};
 	$scope.removeFeedingAtomizedType= function(list,feedingAtomizedType){
-		feedingFactory.delete(list,feedingAtomizedType);	
+		feedingFactoryLocal.delete(list,feedingAtomizedType);	
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -50,7 +50,7 @@ angular.module('app.controllers.feeding',[])
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
@@ -65,7 +65,7 @@ angular.module('app.controllers.feeding',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactory.addTo(referenceList,reference);
+			referenceFactoryLocal.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
@@ -74,7 +74,7 @@ angular.module('app.controllers.feeding',[])
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactory.deleteFrom(referenceList,reference);
+		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
 	$scope.editReference = function(referenceList,reference) {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.associatedParty',[])
-.factory('associatedPartyFactory', function(){
+.factory('AssociatedPartyFactory', function(){
 	return function() {
 		this.associatedParty = {
 			firstName: '',

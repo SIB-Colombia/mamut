@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.threatStatus',[])
-.factory('threatStatusFactory', function(){
+.factory('ThreatStatusFactory', function(){
 	return function() {
 		this.threatStatusClass = {
 			threatStatusAtomized: {

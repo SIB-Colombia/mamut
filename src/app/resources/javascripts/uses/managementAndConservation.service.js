@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.managementAndConservation',[])
-.factory('managementAndConservationAtomizedFactory', function(){
+.factory('ManagementAndConservationAtomizedFactory', function(){
 	return function() {
 		this.managementAndConservationAtomizedType = {
 			type: '',

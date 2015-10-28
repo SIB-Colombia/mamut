@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('app.controllers.threatStatus',[])
-.controller('ThreatStatusCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory','threatStatusFactory', function($scope,referenceFactory,ancillaryDataFactory,threatStatusFactory) {
+.controller('ThreatStatusCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','ThreatStatusFactory', function($scope,ReferenceFactory,AncillaryDataFactory,ThreatStatusFactory) {
 	
-	var threatStatusFactory= new threatStatusFactory();
-	$scope.threatStatusClass = threatStatusFactory.threatStatusClass;
+	var threatStatusFactoryLocal = new ThreatStatusFactory();
+	$scope.threatStatusClass = threatStatusFactoryLocal.threatStatusClass;
 	$scope.formData.threatStatus = [];
 	
 	//Ancillary
-	var ancillaryDataFactory = new ancillaryDataFactory();
-	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
 	
 	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	var referenceFactoryLocal = new ReferenceFactory();
+	$scope.reference = referenceFactoryLocal.reference;
 	
 	//Local variables for reset objects
 	var origTSC =  angular.copy($scope.threatStatusClass);
@@ -28,7 +28,7 @@ angular.module('app.controllers.threatStatus',[])
 
 	$scope.addThreatStatusClass = function(list, threatStatusClass) {
 		//if (threatStatusClass.threatStatusAtomized.threatCategory !== '') {
-			threatStatusFactory.add(list, threatStatusClass);
+			threatStatusFactoryLocal.add(list, threatStatusClass);
 			//Reset the scope variable
 			$scope.threatStatusClass = origTSC;
 			origTSC = angular.copy($scope.threatStatusClass);
@@ -36,7 +36,7 @@ angular.module('app.controllers.threatStatus',[])
 	};
 
 	$scope.removeThreatStatus = function(list, threatStatusClass) {
-		threatStatusFactory.delete(list, threatStatusClass);
+		threatStatusFactoryLocal.delete(list, threatStatusClass);
 	};
 
 	$scope.editThreatStatus = function(list, threatStatusClass) {
@@ -45,7 +45,7 @@ angular.module('app.controllers.threatStatus',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -54,7 +54,7 @@ angular.module('app.controllers.threatStatus',[])
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
@@ -69,7 +69,7 @@ angular.module('app.controllers.threatStatus',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactory.addTo(referenceList,reference);
+			referenceFactoryLocal.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
@@ -78,7 +78,7 @@ angular.module('app.controllers.threatStatus',[])
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactory.deleteFrom(referenceList,reference);
+		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
 	$scope.editReference = function(referenceList,reference) {

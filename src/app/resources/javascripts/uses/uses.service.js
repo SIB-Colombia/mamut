@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.use',[])
-.factory('usesFactory', function(){
+.factory('UsesFactory', function(){
 	return function() {
 		this.usesAtomizedType = {
 			sourceOfInformation: {

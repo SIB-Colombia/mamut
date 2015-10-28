@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.distribution',[])
-.factory('distributionFactory', function(){
+.factory('DistributionFactory', function(){
 	return function() {
 		this.distributionOpt2 = {
 			country: '',

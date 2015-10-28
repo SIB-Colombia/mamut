@@ -1,18 +1,18 @@
 'use strict';
 
 angular.module('app.controllers.use',[])
-.controller('UsesCtrl', ['$scope','referenceFactory', 'ancillaryDataFactory','usesFactory', function($scope,referenceFactory,ancillaryDataFactory,usesFactory) {
+.controller('UsesCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','UsesFactory', function($scope,ReferenceFactory,AncillaryDataFactory,UsesFactory) {
 	
-	var usesFactory = new usesFactory();
-	$scope.usesAtomizedType = usesFactory.usesAtomizedType;
+	var usesFactoryLocal = new UsesFactory();
+	$scope.usesAtomizedType = usesFactoryLocal.usesAtomizedType;
 	
 	//Ancillary
-	var ancillaryDataFactory = new ancillaryDataFactory();
-	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
 	
 	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	var referenceFactoryLocal = new ReferenceFactory();
+	$scope.reference = referenceFactoryLocal.reference;
 	
 	//Local variables for reset objects
 	var origUA = angular.copy($scope.usesAtomizedType);
@@ -26,27 +26,27 @@ angular.module('app.controllers.use',[])
 	};
 
 	$scope.addUsesAtomized = function(list, usesAtomized) {
-		usesFactory.add(list, usesAtomized);
+		usesFactoryLocal.add(list, usesAtomized);
 		//Reset the scope variable
 		$scope.usesAtomizedType = origUA;
 		origUA = angular.copy($scope.usesAtomizedType);
 	};
 
 	$scope.removeUsesAtomized = function(list,usesAtomized){
-		usesFactory.delete(list, usesAtomized);
+		usesFactoryLocal.delete(list, usesAtomized);
 	};
 
 	$scope.editUsesAtomized = function(list,usesAtomized){
 		$scope.usesAtomizedType =  angular.copy(usesAtomized);
 	};
 
-	$scope.cancelUsesAtomized = function(list,usesAtomized){
+	$scope.cancelUsesAtomized = function(){
 		$scope.usesAtomizedType =  angular.copy(origUA);
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -55,7 +55,7 @@ angular.module('app.controllers.use',[])
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
@@ -70,7 +70,7 @@ angular.module('app.controllers.use',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactory.addTo(referenceList,reference);
+			referenceFactoryLocal.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
@@ -79,7 +79,7 @@ angular.module('app.controllers.use',[])
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactory.deleteFrom(referenceList,reference);
+		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
 	$scope.editReference = function(referenceList,reference) {

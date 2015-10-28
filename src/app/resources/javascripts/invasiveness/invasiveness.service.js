@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.invasiveness',[])
-.factory('invasivenessFactory', function(){
+.factory('InvasivenessFactory', function(){
 	return function() {
 		this.invasivenessAtomizedType = {
 			origin: '',

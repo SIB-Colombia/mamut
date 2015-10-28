@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services.populationBiology',[])
-.factory('populationBiologyFactory', function(){
+.factory('PopulationBiologyFactory', function(){
 	return function() {
 		this.populationBiologyAtomized = {
 			region: '',
