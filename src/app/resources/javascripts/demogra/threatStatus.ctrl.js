@@ -20,6 +20,12 @@ angular.module('app.controllers.threatStatus',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addThreatStatus = function(){
+		if($scope.threatStatusClass.threatStatusUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.addThreatStatusClass = function(list, threatStatusClass) {
 		//if (threatStatusClass.threatStatusAtomized.threatCategory !== '') {
 			threatStatusFactory.add(list, threatStatusClass);
@@ -43,6 +49,7 @@ angular.module('app.controllers.threatStatus',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryThreat').collapse("hide");
 		}
 	};
 
@@ -52,6 +59,12 @@ angular.module('app.controllers.threatStatus',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryThreat').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryThreat').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -60,6 +73,7 @@ angular.module('app.controllers.threatStatus',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceThreat').collapse("hide");
 		}
 	};
 
@@ -69,5 +83,11 @@ angular.module('app.controllers.threatStatus',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceThreat').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceThreat').collapse("hide");
 	};
 }]);

@@ -20,6 +20,12 @@ angular.module('app.controllers.feeding',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addFeeding = function(){
+		if($scope.formData.feeding.feedingUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.addFeedingAtomizedType = function(feeding, feedingAtomizedType) {
 		if (feeding.type !== '') {
 			feedingFactory.add(feeding,feedingAtomizedType);
@@ -39,6 +45,7 @@ angular.module('app.controllers.feeding',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryFeeding').collapse("hide");
 		}
 	};
 
@@ -48,6 +55,12 @@ angular.module('app.controllers.feeding',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryFeeding').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryFeeding').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -56,6 +69,7 @@ angular.module('app.controllers.feeding',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceFeeding').collapse("hide");
 		}
 	};
 
@@ -65,6 +79,11 @@ angular.module('app.controllers.feeding',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceFeeding').collapse("show");
 	};
 	
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceFeeding').collapse("hide");
+	};
 }]);

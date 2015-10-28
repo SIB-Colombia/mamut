@@ -18,12 +18,19 @@ angular.module('app.controllers.territory',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 	
+	$scope.addTerritory = function(){
+		if($scope.formData.territory.territoryUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryTerritory').collapse("hide");
 		}
 	};
 
@@ -33,6 +40,12 @@ angular.module('app.controllers.territory',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryTerritory').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryTerritory').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -41,6 +54,7 @@ angular.module('app.controllers.territory',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceTerritory').collapse("hide");
 		}
 	};
 
@@ -50,5 +64,11 @@ angular.module('app.controllers.territory',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceTerritory').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceTerritory').collapse("hide");
 	};
 }]);

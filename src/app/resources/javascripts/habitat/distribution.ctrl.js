@@ -59,6 +59,7 @@ angular.module('app.controllers.distribution',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryDistribution').collapse("hide");
 		}
 	};
 
@@ -68,6 +69,12 @@ angular.module('app.controllers.distribution',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryDistribution').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryDistribution').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -76,6 +83,7 @@ angular.module('app.controllers.distribution',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceDistribution').collapse("hide");
 		}
 	};
 
@@ -85,5 +93,11 @@ angular.module('app.controllers.distribution',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceDistribution').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceDistribution').collapse("hide");
 	};
 }]);

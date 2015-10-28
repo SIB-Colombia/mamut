@@ -18,6 +18,12 @@ angular.module('app.controllers.ecologicalSignificance',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addEcologicalSignificance = function(){
+		if($scope.formData.ecologicalSignificance.ecologicalSignificanceUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.removeEcologicalSignificanceAtomized= function(list,ecologicalSignificanceAtomized){
 		ecologicalSignificanceFactory.delete(list,ecologicalSignificanceAtomized);	
 	};
@@ -28,6 +34,7 @@ angular.module('app.controllers.ecologicalSignificance',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryEcologicalSignificance').collapse("hide");
 		}
 	};
 
@@ -37,6 +44,12 @@ angular.module('app.controllers.ecologicalSignificance',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryEcologicalSignificance').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryEcologicalSignificance').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -45,6 +58,7 @@ angular.module('app.controllers.ecologicalSignificance',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceEcologicalSignificance').collapse("hide");
 		}
 	};
 
@@ -54,5 +68,11 @@ angular.module('app.controllers.ecologicalSignificance',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceEcologicalSignificance').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceEcologicalSignificance').collapse("hide");
 	};
 }]);

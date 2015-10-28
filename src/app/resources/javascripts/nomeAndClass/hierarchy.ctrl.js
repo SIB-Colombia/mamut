@@ -30,6 +30,7 @@ angular.module('app.controllers.hierarchy',[])
 			//Reset the scope variable
 			$scope.hierarchy = origH;
 			origH = angular.copy($scope.hierarchy);
+			$('#hierarchyForm').collapse("hide");
 		}
 	};
 
@@ -41,6 +42,13 @@ angular.module('app.controllers.hierarchy',[])
 	//EDIT
 	$scope.editHierarchy = function(hierarchy, hier) {
 		$scope.hierarchy = angular.copy(hier);
+		$('#hierarchyForm').collapse("show");
+	};
+
+	//CANCEL
+	$scope.cancelHierarchy = function() {
+		$scope.hierarchy = angular.copy(origH);
+		$('#hierarchyForm').collapse("hide");
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
@@ -66,6 +74,7 @@ angular.module('app.controllers.hierarchy',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceHierarchy').collapse("hide");
 		}
 	};
 
@@ -75,5 +84,11 @@ angular.module('app.controllers.hierarchy',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceHierarchy').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceHierarchy').collapse("hide");
 	};
 }]);

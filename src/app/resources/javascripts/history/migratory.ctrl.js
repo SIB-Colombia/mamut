@@ -20,6 +20,12 @@ angular.module('app.controllers.migratory',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addMigratory = function(){
+		if($scope.formData.migratory.migratoryAtomized !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.addMigratoryAtomizedType = function(list,migratoryAtomizedType){
 		migratoryFactory.add(list,migratoryAtomizedType);
 		$scope.migratoryAtomizedType = origMA;
@@ -34,12 +40,17 @@ angular.module('app.controllers.migratory',[])
 		$scope.migratoryAtomizedType = angular.copy(migratoryAtomized);
 	};
 
+	$scope.cancelMigratoryAtomized = function() {
+		$scope.migratoryAtomizedType = angular.copy(origMA);
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryMigratory').collapse("hide");
 		}
 	};
 
@@ -49,6 +60,12 @@ angular.module('app.controllers.migratory',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryMigratory').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryMigratory').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -57,6 +74,7 @@ angular.module('app.controllers.migratory',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceMigratory').collapse("hide");
 		}
 	};
 
@@ -66,5 +84,11 @@ angular.module('app.controllers.migratory',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceMigratory').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceMigratory').collapse("hide");
 	};
 }]);

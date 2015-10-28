@@ -5,7 +5,6 @@ angular.module('app.services.environmentalEnvelope',[])
 	return function() {
 		this.environmentalEnvelope = {
 			environmentalEnvelopeAtomized: [],
-			ancillaryDataA: [],
 			environmentalEnvelopeUnstructured: '',
 			ancillaryData: []
 		};

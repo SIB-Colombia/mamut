@@ -8,19 +8,33 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.formData.invasiveness = invasivenessFactory.invasiveness;
 	
 	//Ancillary
-	var ancillaryDataFactory = new ancillaryDataFactory();
-	$scope.ancillaryData = ancillaryDataFactory.ancillaryData;
+	var ancillaryDataFactoryUn = new ancillaryDataFactory();
+	$scope.ancillaryData = ancillaryDataFactoryUn.ancillaryData;
 	
-	//reference
-	var referenceFactory = new referenceFactory();
-	$scope.reference = referenceFactory.reference;
+	//reference unstructure
+	var referenceFactoryUn = new referenceFactory();
+	$scope.reference = referenceFactoryUn.reference;
+
+	//reference ato
+	var referenceFactoryAto = new referenceFactory();
+	$scope.referenceAto = referenceFactoryAto.reference;
+
+	//Ancillary
+	var ancillaryDataFactoryAto = new ancillaryDataFactory();
+	$scope.ancillaryDataAto = ancillaryDataFactoryAto.ancillaryData;
 	
 	//Local variables for reset objects
 	var origI = angular.copy($scope.invasivenessAtomizedType);
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
+
+	$scope.addInvasiveness = function(){
+		if($scope.formData.invasiveness.invasivenessUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
 	
-	$scope.addInvasiveness = function(list, invasiveness) {
+	$scope.addInvasivenessAtomizedType = function(list, invasiveness) {
 		invasivenessFactory.add(list, invasiveness);
 		//Reset the scope variable
 		$scope.invasivenessAtomizedType = origI;
@@ -34,39 +48,102 @@ angular.module('app.controllers.invasiveness',[])
 
 	$scope.editInvasivenessAtomized = function(list,invasiveness) {
 		$scope.invasivenessAtomizedType = angular.copy(invasiveness);
+		angular.forEach($scope.origin, function(item) {
+
+            if(invasiveness.origin!==null && invasiveness.origin == item.name){
+            	console.log($scope.ori);
+				item.checked = true;
+			}
+        });
+		
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryUn.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryInvasiveness').collapse("hide");
 		}
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
-		ancillaryDataFactory.deleteFrom(ancillaryDataList,ancillaryData);
+		ancillaryDataFactoryUn.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryInvasiveness').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryInvasiveness').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactory.addTo(referenceList,reference);
+			referenceFactoryUn.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceInvasiveness').collapse("hide");
 		}
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactory.deleteFrom(referenceList,reference);
+		referenceFactoryUn.deleteFrom(referenceList,reference);
 	};
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceInvasiveness').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceInvasiveness').collapse("hide");
+	};
+
+	//Atomized fields
+	$scope.addAncillaryDataAto = function(ancillaryDataList,ancillaryData){
+		if(ancillaryData.source !== ''){
+			referenceFactoryAto.addTo(ancillaryDataList,ancillaryData);
+			//Reset the scope variable
+			$scope.ancillaryDataAto = origAD;
+			origAD = angular.copy($scope.ancillaryDataAto);
+			$('#ancillaryInvasivenessAto').collapse("hide");
+		}
+	};
+
+	$scope.editAncillaryDataAto = function(ancillaryDataList,ancillaryData) {
+		$scope.ancillaryDataAto = angular.copy(ancillaryData);
+		$('#ancillaryInvasivenessAto').collapse("show");
+	};
+
+	$scope.cancelAncillaryDataAto = function() {
+		$scope.ancillaryDataAto = angular.copy(origAD);
+		$('#ancillaryInvasivenessAto').collapse("hide");
+	};
+
+	$scope.addReferenceAto = function(referenceList,reference){
+		if(reference.type !== ''){
+			referenceFactoryAto.addTo(referenceList,reference);
+			//Reset the scope variable
+			$scope.referenceAto = origR;
+			origR = angular.copy($scope.referenceAto);
+			$('#referenceInvasivenessAto').collapse("hide");
+		}
+	};
+
+	$scope.editReferenceAto = function(referenceList,reference) {
+		$scope.referenceAto = angular.copy(reference);
+		$('#referenceInvasivenessAto').collapse("show");
+	};
+
+	$scope.cancelReferenceAto = function() {
+		$scope.referenceAto = angular.copy(origR);
+		$('#referenceInvasivenessAto').collapse("hide");
 	};
 }]);

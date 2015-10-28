@@ -13,7 +13,13 @@ angular.module('app.controllers.ancillary',[])
 	$scope.formData.ancillaryData = [];
 	var origAD = angular.copy($scope.ancillaryData);
 	var origR = angular.copy($scope.reference);
-	//$scope.reference = referenceFactory.reference;
+
+	$scope.addAncillaries = function(){
+		if($scope.formData.ancillaryData.length > 0){
+			console.log('enviar cambios');
+		}
+	};
+
 
 	$scope.addAncillaryData = function(ancillaryDataList, ancillary){
 		if (ancillary.source !== '') {
@@ -35,12 +41,17 @@ angular.module('app.controllers.ancillary',[])
 		$scope.ancillaryData = angular.copy(ancillary);
 	};
 
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+	};
+
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
 			referenceFactory.addTo(referenceList,reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceAncillary').collapse("hide");
 		}
 	};
 
@@ -50,6 +61,12 @@ angular.module('app.controllers.ancillary',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceAncillary').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceAncillary').collapse("hide");
 	};
 
 	$scope.getInfoLicence = function(url, ancillary) {

@@ -17,12 +17,19 @@ angular.module('app.controllers.behavior',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addBehavior = function(){
+		if($scope.formData.behavior.behaviorUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryBehavior').collapse("hide");
 		}
 	};
 
@@ -32,6 +39,12 @@ angular.module('app.controllers.behavior',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryBehavior').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryBehavior').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -40,6 +53,7 @@ angular.module('app.controllers.behavior',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceBehavior').collapse("hide");
 		}
 	};
 
@@ -49,5 +63,11 @@ angular.module('app.controllers.behavior',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceBehavior').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceBehavior').collapse("hide");
 	};
 }]);

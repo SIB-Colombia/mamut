@@ -18,6 +18,12 @@ angular.module('app.controllers.dispersal',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addDispersal = function(){
+		if($scope.formData.dispersal.dispersalUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.removeDispersalAtomized= function(list,purpose){
 		dispersalFactory.delete(list,purpose);	
 	};
@@ -28,6 +34,7 @@ angular.module('app.controllers.dispersal',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryDispersal').collapse("hide");
 		}
 	};
 
@@ -37,6 +44,12 @@ angular.module('app.controllers.dispersal',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryDispersal').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryDispersal').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -45,6 +58,7 @@ angular.module('app.controllers.dispersal',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceDispersal').collapse("hide");
 		}
 	};
 
@@ -54,5 +68,11 @@ angular.module('app.controllers.dispersal',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceDispersal').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceDispersal').collapse("hide");
 	};
 }]);

@@ -30,6 +30,7 @@ angular.module('app.controllers.commonName',[])
 			//Reset the scope variable
 			$scope.commonName = origCN;
 			origCN = angular.copy($scope.commonName);
+			$('#commonNameForm').collapse("hide");
 		}
 	};
 
@@ -41,6 +42,13 @@ angular.module('app.controllers.commonName',[])
 	//EDIT
 	$scope.editCommonNamesAtomized = function(commonNameAtomized, commonName) {
 		$scope.commonName = angular.copy(commonName);
+		$('#commonNameForm').collapse("show");
+	};
+
+	//CANCEL
+	$scope.cancelCommonNamesAtomized = function() {
+		$scope.commonName = angular.copy(origCN);
+		$('#commonNameForm').collapse("hide");
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
@@ -66,6 +74,7 @@ angular.module('app.controllers.commonName',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceCommonName').collapse("hide");
 		}	
 	};
 
@@ -75,5 +84,11 @@ angular.module('app.controllers.commonName',[])
 	
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceCommonName').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceCommonName').collapse("hide");
 	};
 }]);

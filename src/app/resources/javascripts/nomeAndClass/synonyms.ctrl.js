@@ -30,6 +30,7 @@ angular.module('app.controllers.synonmy',[])
 			//Reset the scope variable
 			$scope.synonmy = origS;
 			origS = angular.copy($scope.synonmy);
+			$('#sysnonymForm').collapse("hide");
 		}
 	};
 
@@ -41,6 +42,13 @@ angular.module('app.controllers.synonmy',[])
 	//EDIT
 	$scope.editSynonymsAtomized = function(synonymsAtomized, synonmy) {
 		$scope.synonmy = angular.copy(synonmy);
+		$('#sysnonymForm').collapse("show");
+	};
+
+	//CANCEL
+	$scope.cancelSynonym = function() {
+		$scope.synonmy = angular.copy(origS);
+		$('#sysnonymForm').collapse("hide");
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
@@ -67,6 +75,7 @@ angular.module('app.controllers.synonmy',[])
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.isCollapsed_1 = true;
+			$('#referenceSysnonym').collapse("hide");
 		}	
 	};
 
@@ -76,5 +85,11 @@ angular.module('app.controllers.synonmy',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceSysnonym').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceSysnonym').collapse("hide");
 	};
 }]);

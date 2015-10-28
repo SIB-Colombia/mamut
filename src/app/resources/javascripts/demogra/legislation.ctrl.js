@@ -20,6 +20,12 @@ angular.module('app.controllers.legislation',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addLegislation = function(){
+		if($scope.formData.legislation.legislationUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.addLegislationAtomized= function(list,legislationAtomized){
 		if(legislationAtomized.legislationName !== ''){
 			legislationFactory.add(list,legislationAtomized);
@@ -43,6 +49,7 @@ angular.module('app.controllers.legislation',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryLegislation').collapse("hide");
 		}
 	};
 
@@ -52,6 +59,12 @@ angular.module('app.controllers.legislation',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryLegislation').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryLegislation').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -60,6 +73,7 @@ angular.module('app.controllers.legislation',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceLegislation').collapse("hide");
 		}
 	};
 
@@ -69,5 +83,11 @@ angular.module('app.controllers.legislation',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceLegislation').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceLegislation').collapse("hide");
 	};
 }]);

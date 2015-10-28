@@ -18,6 +18,12 @@ angular.module('app.controllers.environmentalEnvelope',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addEnvironmentalEnvelope = function(){
+		if($scope.formData.environmentalEnvelope.environmentalEnvelopeUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.removeEnvironmentalEnvelopeAtomized= function(list,environmentalEnvelopeAtomized){
 		environmentalEnvelopeFactory.delete(list,environmentalEnvelopeAtomized);	
 	};
@@ -28,6 +34,7 @@ angular.module('app.controllers.environmentalEnvelope',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryEnvironmentalEnvelope').collapse("hide");
 		}
 	};
 
@@ -37,6 +44,12 @@ angular.module('app.controllers.environmentalEnvelope',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryEnvironmentalEnvelope').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryEnvironmentalEnvelope').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -45,6 +58,7 @@ angular.module('app.controllers.environmentalEnvelope',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceEnvironmentalEnvelope').collapse("hide");
 		}
 	};
 
@@ -54,5 +68,11 @@ angular.module('app.controllers.environmentalEnvelope',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceEnvironmentalEnvelope').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceEnvironmentalEnvelope').collapse("hide");
 	};
 }]);

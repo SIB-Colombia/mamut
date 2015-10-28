@@ -17,6 +17,12 @@ angular.module('app.controllers.reproduction',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 	
+	$scope.addReproduction = function(){
+		if($scope.formData.reproduction.reproductionUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.removeReproductionAtomized= function(list,reproductionAtomized){
 		reproductionFactory.delete(list,reproductionAtomized);	
 	};
@@ -27,6 +33,7 @@ angular.module('app.controllers.reproduction',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryReproduction').collapse("hide");
 		}
 	};
 
@@ -36,6 +43,12 @@ angular.module('app.controllers.reproduction',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryReproduction').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryReproduction').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -44,6 +57,7 @@ angular.module('app.controllers.reproduction',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceReproduction').collapse("hide");
 		}
 	};
 
@@ -53,5 +67,11 @@ angular.module('app.controllers.reproduction',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceReproduction').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceReproduction').collapse("hide");
 	};
 }]);

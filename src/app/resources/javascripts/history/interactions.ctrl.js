@@ -20,6 +20,12 @@ angular.module('app.controllers.interactions',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addInteraction = function(){
+		if($scope.formData.interactions.interactionsUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.addInteractionAtomizedType = function(list,interactionsAtomizedType){
 		if(interactionsAtomizedType.interactionSpecies !== ''){
 			interactionsFactory.add(list,interactionsAtomizedType);
@@ -41,12 +47,17 @@ angular.module('app.controllers.interactions',[])
 		$scope.interactionsAtomizedType = angular.copy(interactionsAtomizedType);
 	};
 
+	$scope.cancelInteractionAtomizedType = function() {
+		$scope.interactionsAtomizedType = angular.copy(origIA);
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryInteraction').collapse("hide");
 		}
 	};
 
@@ -56,6 +67,12 @@ angular.module('app.controllers.interactions',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryInteraction').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryInteraction').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -64,6 +81,7 @@ angular.module('app.controllers.interactions',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceInteraction').collapse("hide");
 		}
 	};
 
@@ -73,5 +91,11 @@ angular.module('app.controllers.interactions',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceInteraction').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceInteraction').collapse("hide");
 	};
 }]);

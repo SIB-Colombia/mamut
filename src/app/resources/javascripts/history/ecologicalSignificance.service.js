@@ -5,7 +5,6 @@ angular.module('app.services.ecologicalSignificance',[])
 	return function() {
 		this.ecologicalSignificance = {
 			ecologicalSignificanceAtomized: [],
-			ancillaryDataA: [],
 			ecologicalSignificanceUnstructured: '',
 			ancillaryData: []
 		};

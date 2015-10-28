@@ -5,7 +5,6 @@ angular.module('app.services.habitat',[])
 	return function() {
 		this.habitat = {
 			habitatAtomized: [],
-			ancillaryDataA: [],
 			habitatUnstructured: '',
 			ancillaryData: []
 		};

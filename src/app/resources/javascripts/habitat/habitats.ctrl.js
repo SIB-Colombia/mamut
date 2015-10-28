@@ -19,6 +19,12 @@ angular.module('app.controllers.habitat',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 	
+	$scope.addHabitat = function(){
+		if($scope.formData.habitat.habitatUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.removeHabitatAtomized= function(list,habitatAtomized){
 		habitatsFactory.delete(list,habitatAtomized);	
 	};
@@ -29,6 +35,7 @@ angular.module('app.controllers.habitat',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryHabitat').collapse("hide");
 		}
 	};
 
@@ -38,6 +45,12 @@ angular.module('app.controllers.habitat',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryHabitat').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryHabitat').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -46,6 +59,7 @@ angular.module('app.controllers.habitat',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceHabitat').collapse("hide");
 		}
 	};
 
@@ -55,5 +69,11 @@ angular.module('app.controllers.habitat',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceHabitat').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceHabitat').collapse("hide");
 	};
 }]);

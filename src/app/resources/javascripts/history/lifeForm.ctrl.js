@@ -19,6 +19,12 @@ angular.module('app.controllers.lifeForm',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 	
+	$scope.addLifeForm = function(){
+		if($scope.formData.lifeForm.lifeFormUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.removeLifeFormAtomized= function(list,lifeFormAtomized){
 		lifeFormFactory.delete(list,lifeFormAtomized);	
 	};
@@ -29,6 +35,7 @@ angular.module('app.controllers.lifeForm',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryLifeForm').collapse("hide");
 		}
 	};
 
@@ -38,6 +45,12 @@ angular.module('app.controllers.lifeForm',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryLifeForm').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryLifeForm').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -46,6 +59,7 @@ angular.module('app.controllers.lifeForm',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceLifeForm').collapse("hide");
 		}
 	};
 
@@ -55,5 +69,11 @@ angular.module('app.controllers.lifeForm',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceLifeForm').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceLifeForm').collapse("hide");
 	};
 }]);

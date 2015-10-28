@@ -6,6 +6,8 @@ div(ng-controller='InteractionsCtrl')
 				spant
 					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Interactions"|translate}}')
 						span.glyphicon.glyphicon-info-sign
+			button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addInteraction()') 
+				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			div.table-responsive(ng-show='(formData.interactions.interactionsAtomized).length')
 				table.table.table-bordered
@@ -64,6 +66,7 @@ div(ng-controller='InteractionsCtrl')
 										button.btn(ng-click='removeInteractionSpeciesType(interactionsAtomizedType.interactionSpeciesType,interactionSpeciesType)')
 											span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)') Guardar
+			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='cancelInteractionAtomizedType()') Cancelar
 			.form-group
 				hr
 				label(for='interactionUnstructured', translate='') simplePliCTerm.name.InteractionUnstructured
@@ -102,7 +105,7 @@ div(ng-controller='InteractionsCtrl')
 
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
-							div(collapse='isCollapsed')
+							div(collapse='isCollapsed', id ='ancillaryInteraction' )
 								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
 								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
 								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
@@ -138,7 +141,7 @@ div(ng-controller='InteractionsCtrl')
 															button.btn(ng-click='editReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				
-										div(collapse='isCollapsed_1')
+										div(collapse='isCollapsed_1', id='referenceInteraction')
 											.form-group
 												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
 													option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
@@ -164,4 +167,6 @@ div(ng-controller='InteractionsCtrl')
 												input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()') Cancelar
 								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.interactions.ancillaryData,ancillaryData)', translate='') Guardar
+								button.btn.btn-primary.btn-sm(type='button', ng-click='cancelAncillaryData()') Cancelar

@@ -5,6 +5,8 @@ div(ng-controller='ReferenceCrtl')
 				spant
 					| {{"simplePliCTerm.name.References"|translate}}
 					spant
+				button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addReferences()') 
+					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 			.panel-body
 				div.table-responsive(ng-show='(formData.references).length')
 					table.table.table-striped
@@ -115,7 +117,8 @@ div(ng-controller='ReferenceCrtl')
 							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.link
 							.col-xs-10
 								input(type='text', ng-model='reference.link')
-						button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(formData.references,reference)', translate='') Guardar Referencia 
+						button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(formData.references,reference)', translate='') Guardar Referencia
+						button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()', translate='') Cancelar 
 
 .col-xs-6.col-xs-offset-3
 	ul.pager

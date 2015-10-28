@@ -34,6 +34,10 @@ angular.module('app.controllers.endemic',[])
 		endemicFactory.delete(list, endemicAtomized);
 	};
 
+	$scope.editEndemic = function(list, endemicAtomized) {
+		$scope.endemicAtomizedType = angular.copy(endemicAtomized);
+	};
+
 	$scope.addEndemicTo = function(endemicAtomized, endemicTo) {
 		if (endemicTo !== '') {
 			endemicAtomized.push(endemicTo);
@@ -52,6 +56,7 @@ angular.module('app.controllers.endemic',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryEndemic').collapse("hide");
 		}
 	};
 
@@ -61,6 +66,12 @@ angular.module('app.controllers.endemic',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryEndemic').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryEndemic').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -69,6 +80,7 @@ angular.module('app.controllers.endemic',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceEndemic').collapse("hide");
 		}
 	};
 
@@ -78,5 +90,11 @@ angular.module('app.controllers.endemic',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceEndemic').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceEndemic').collapse("hide");
 	};
 }]);

@@ -18,12 +18,19 @@ angular.module('app.controllers.directThreats',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addDirectThreats = function(){
+		if($scope.formData.directThreats.directThreatsUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryDirect').collapse("hide");
 		}
 	};
 
@@ -33,6 +40,12 @@ angular.module('app.controllers.directThreats',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryDirect').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryDirect').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -41,6 +54,7 @@ angular.module('app.controllers.directThreats',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceDirect').collapse("hide");
 		}
 	};
 
@@ -50,5 +64,11 @@ angular.module('app.controllers.directThreats',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceDirect').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceDirect').collapse("hide");
 	};
 }]);

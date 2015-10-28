@@ -6,6 +6,8 @@ div(ng-controller='ManagementAndConservationCtrl')
 				spant
 					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ManagementAndConservation"|translate}}')
 						span.glyphicon.glyphicon-info-sign
+			button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addManagement()') 
+				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			div.table-responsive(ng-show='(formData.usesManagementAndConservation.managementAndConservationAtomized).length')
 				table.table.table-bordered
@@ -90,7 +92,7 @@ div(ng-controller='ManagementAndConservationCtrl')
 												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 						button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
-							div(collapse='isCollapsed')
+							div(collapse='isCollapsed',id='ancillaryManagement')
 								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
 								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
 								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
@@ -126,7 +128,7 @@ div(ng-controller='ManagementAndConservationCtrl')
 															button.btn(ng-click='editReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				
-										div(collapse='isCollapsed_1')
+										div(collapse='isCollapsed_1',id='referenceManagement')
 											.form-group
 												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
 													option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
@@ -152,7 +154,10 @@ div(ng-controller='ManagementAndConservationCtrl')
 												input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()') Cancelar
 								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(managementAndConservationAtomizedType.ancillaryData,ancillaryData)', translate='') Guardar
+								button.btn.btn-primary.btn-sm(type='button', ng-click='cancelAncillaryData()') Cancelar
 			
 			.form-group
 				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addManagementAndConservation(formData.usesManagementAndConservation.managementAndConservationAtomized, managementAndConservationAtomizedType)') Guardar 
+				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='cancelManagementAndConservation()') Cancelar 

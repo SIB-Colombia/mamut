@@ -19,6 +19,12 @@ angular.module('app.controllers.use',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addUse = function(){
+		if($scope.formData.usesManagementAndConservation.usesAtomized.length > 0 ){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.addUsesAtomized = function(list, usesAtomized) {
 		usesFactory.add(list, usesAtomized);
 		//Reset the scope variable
@@ -34,12 +40,17 @@ angular.module('app.controllers.use',[])
 		$scope.usesAtomizedType =  angular.copy(usesAtomized);
 	};
 
+	$scope.cancelUsesAtomized = function(list,usesAtomized){
+		$scope.usesAtomizedType =  angular.copy(origUA);
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryUse').collapse("hide");
 		}
 	};
 
@@ -49,6 +60,12 @@ angular.module('app.controllers.use',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryUse').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryUse').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -57,6 +74,7 @@ angular.module('app.controllers.use',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceUse').collapse("hide");
 		}
 	};
 
@@ -66,5 +84,11 @@ angular.module('app.controllers.use',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceUse').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceUse').collapse("hide");
 	};
 }]);

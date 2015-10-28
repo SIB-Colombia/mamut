@@ -20,6 +20,12 @@ angular.module('app.controllers.managementAndConservation',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addManagement = function(){
+		if($scope.formData.usesManagementAndConservation.managementAndConservationAtomized.length !== ''){
+			console.log('enviar cambios');
+		}
+	};
+
 	$scope.addManagementAndConservation = function(list, managementAndConservation) {
 		managementAndConservationAtomizedFactory.add(list, managementAndConservation);
 		//Reset the scope variable
@@ -35,12 +41,17 @@ angular.module('app.controllers.managementAndConservation',[])
 		$scope.managementAndConservationAtomizedType = angular.copy(managementAndConservation);
 	};
 
+	$scope.cancelManagementAndConservation = function() {
+		$scope.managementAndConservationAtomizedType = angular.copy(origMC);
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactory.addTo(ancillaryDataList,ancillaryData);
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryManagement').collapse("hide");
 		}
 	};
 
@@ -50,6 +61,12 @@ angular.module('app.controllers.managementAndConservation',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryManagement').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryManagement').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -58,6 +75,7 @@ angular.module('app.controllers.managementAndConservation',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referenceManagement').collapse("hide");
 		}
 	};
 
@@ -67,6 +85,12 @@ angular.module('app.controllers.managementAndConservation',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referenceManagement').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referenceManagement').collapse("hide");
 	};
 	
 }]);

@@ -9,6 +9,12 @@ angular.module('app.controllers.associatedParty',[])
 
 	var origAP = angular.copy($scope.associatedParty);
 
+	$scope.addAssociated = function() {
+		if($scope.formData.associatedParty.length > 0){
+			console.log('enviar');
+		}
+	};
+
 	$scope.addAssociatedParty = function(list, associatedParty) {
 		associatedPartyFactory.add(list, associatedParty);
 		$scope.associatedParty = origAP;
@@ -21,6 +27,10 @@ angular.module('app.controllers.associatedParty',[])
 
 	$scope.editAssociatedParty = function(list, associatedParty) {
 		$scope.associatedParty = angular.copy(associatedParty);
+	};
+
+	$scope.cancelAssociatedParty = function() {
+		$scope.associatedParty = angular.copy(origAP);
 	};
 	
 }]);

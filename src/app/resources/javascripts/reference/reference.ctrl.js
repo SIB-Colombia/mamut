@@ -10,6 +10,12 @@ angular.module('app.controllers.reference',[])
 	$scope.formData.references = [];
 	var origR = angular.copy($scope.reference);
 
+	$scope.addReferences = function(){
+		if($scope.formData.references.length > 0){
+			console.log('enviar');
+		}
+	};
+
 	$scope.addReference = function (referenceList, reference){
 		if (reference.source !== '') {
 			referenceFactory.addTo(referenceList, reference);
@@ -24,5 +30,9 @@ angular.module('app.controllers.reference',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+	};
+
+	$scope.cancelReference = function(referenceList,reference) {
+		$scope.reference = angular.copy(origR);
 	};
 }]);

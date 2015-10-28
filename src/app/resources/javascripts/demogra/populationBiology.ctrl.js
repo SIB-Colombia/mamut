@@ -20,7 +20,13 @@ angular.module('app.controllers.populationBiology',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
-	$scope.addPopulationBiology = function(list, populationBiologyAtomized) {
+	$scope.addPopulationBiology = function(){
+		if($scope.formData.populationBiology.populationBiologyUnstructured !== ''){
+			console.log('enviar cambios');
+		}
+	};
+	
+	$scope.addPopulationBiologyAtomized = function(list, populationBiologyAtomized) {
 		if (populationBiologyAtomized.region !== '') {
 			populationBiologyFactory.add(list, populationBiologyAtomized);
 
@@ -42,6 +48,7 @@ angular.module('app.controllers.populationBiology',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$('#ancillaryPopulation').collapse("hide");
 		}
 	};
 
@@ -51,6 +58,12 @@ angular.module('app.controllers.populationBiology',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$('#ancillaryPopulation').collapse("show");
+	};
+
+	$scope.cancelAncillaryData = function() {
+		$scope.ancillaryData = angular.copy(origAD);
+		$('#ancillaryPopulation').collapse("hide");
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -59,6 +72,7 @@ angular.module('app.controllers.populationBiology',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$('#referencePopulation').collapse("hide");
 		}
 	};
 
@@ -68,5 +82,11 @@ angular.module('app.controllers.populationBiology',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$('#referencePopulation').collapse("show");
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$('#referencePopulation').collapse("hide");
 	};
 }]);
