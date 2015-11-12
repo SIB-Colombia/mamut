@@ -8,6 +8,12 @@ angular.module('app.controllers.form',[])
 			$scope.ubicacion = res.data;
 		});
 
+	//Special distributon for applies to in threat status
+	$scope.ubicacion_appliesTo = [
+		{"countryName": "Colombia","countryIso": "CO"},
+		{"countryName": "Global","countryIso": "GLO"}
+	];	
+
 	$http.get('/resources/language.json')
 		.then(function(res) {
 			$scope.idiomas = res.data;
@@ -167,6 +173,9 @@ angular.module('app.controllers.form',[])
 			}
 			if (things.reference_type !== undefined) {
 				$scope.reference_type = things.reference_type;
+			}
+			if (things.apendiceCITES !== undefined) {
+				$scope.apendiceCITES = things.apendiceCITES;
 			}
 
 		})

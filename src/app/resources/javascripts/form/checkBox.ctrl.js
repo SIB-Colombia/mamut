@@ -194,6 +194,15 @@ angular.module('app.controllers.checkBox',[])
             $scope.threatStatusClass.threatStatusAtomized.authority.push(name.name);
         }
     };
+
+    $scope.updateSelectionApendiceCITES = function updateSelectionApendiceCITES(element, list) {
+        angular.forEach(list, function(item) {
+            item.checked = false;
+        });
+        element.checked= true;
+        $scope.threatStatusClass.threatStatusAtomized.apendiceCITES = element.name;
+    };
+
     $scope.updateSelectionProtectionLegal = function updateSelectionProtectionLegal(element, list) {
         angular.forEach(list, function(item) {
             item.checked = false;

@@ -146,4 +146,5 @@ angular.module('app.controllers.invasiveness',[])
 		$scope.referenceAto = angular.copy(origR);
 		$('#referenceInvasivenessAto').collapse("hide");
 	};
+
 }]);

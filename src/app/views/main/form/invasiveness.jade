@@ -132,15 +132,30 @@ div(ng-controller='InvasivenessCtrl')
 				.form-group
 					label.col-xs-2.control-label(for='modified', translate='') simplePliCTerm.name.modified
 					.col-xs-10
-						input#modified(type='date', ng-model='invasivenessAtomizedType.modified')
+						div(ng-controller='DatepickerCtrl')
+							p.input-group
+								input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", ng-model="invasivenessAtomizedType.modified", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" )
+								span.input-group-btn
+									button.btn.btn-default(type="button",ng-click="open($event)")
+										i.glyphicon.glyphicon-calendar
 				.form-group
 					label.col-xs-2.control-label(for='startValidateDate', translate='') simplePliCTerm.name.startValidateDate
 					.col-xs-10
-						input#startValidateDate(type='date', ng-model='invasivenessAtomizedType.startValidateDate')
+						div(ng-controller='DatepickerCtrl')
+							p.input-group
+								input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", ng-model="invasivenessAtomizedType.startValidateDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" )
+								span.input-group-btn
+									button.btn.btn-default(type="button",ng-click="open($event)")
+										i.glyphicon.glyphicon-calendar
 				.form-group
 					label.col-xs-2.control-label(for='endValidateDate', translate='') simplePliCTerm.name.endValidateDate
 					.col-xs-10
-						input#endValidateDate(type='date', ng-model='invasivenessAtomizedType.endValidateDate')
+						div(ng-controller='DatepickerCtrl')
+							p.input-group
+								input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", ng-model="invasivenessAtomizedType.endValidateDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" )
+								span.input-group-btn
+									button.btn.btn-default(type="button",ng-click="open($event)")
+										i.glyphicon.glyphicon-calendar
 				.form-group
 					label.col-xs-2.control-label(for='countryCode', translate='') simplePliCTerm.name.countryCode
 					.col-xs-10
@@ -219,7 +234,12 @@ div(ng-controller='InvasivenessCtrl')
 				.form-group
 					label.col-xs-2.control-label(for='publicationDate', translate='') simplePliCTerm.name.publicationDate
 					.col-xs-10
-						input#publicationDate(type='date', ng-model='invasivenessAtomizedType.publicationDate')
+						div(ng-controller='DatepickerCtrl')
+							p.input-group
+								input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", ng-model="invasivenessAtomizedType.publicationDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" )
+								span.input-group-btn
+									button.btn.btn-default(type="button",ng-click="open($event)")
+										i.glyphicon.glyphicon-calendar
 				.form-group
 					label.col-xs-2.control-label(for='localityType', translate='') simplePliCTerm.name.localityType
 					.col-xs-10
@@ -294,7 +314,7 @@ div(ng-controller='InvasivenessCtrl')
 						.form-group
 							button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 							.col-xs-10
-								div(collapse='isCollapsed', id='ancillaryInvasivenessAto')
+								div(uib-collapse='isCollapsed', id='ancillaryInvasivenessAto')
 									input(type='text', ng-model='ancillaryDataAto.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
 									input(type='text', ng-model='ancillaryDataAto.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
 									input(type='text', ng-model='ancillaryDataAto.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
@@ -330,7 +350,7 @@ div(ng-controller='InvasivenessCtrl')
 																button.btn(ng-click='editReferenceAto(ancillaryDataAto.reference,ref,referenceAto)')
 																	span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 					
-											div(collapse='isCollapsed_1',id='referenceInvasivenessAto')
+											div(uib-collapse='isCollapsed_1',id='referenceInvasivenessAto')
 												.form-group
 													select(ng-model='referenceAto.type', ng-options='type.original as type.view for type in reference_type ')
 														option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
@@ -396,7 +416,7 @@ div(ng-controller='InvasivenessCtrl')
 						.form-group
 							button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 							.col-xs-10
-								div(collapse='isCollapsed',id='ancillaryInvasiveness')
+								div(uib-collapse='isCollapsed',id='ancillaryInvasiveness')
 									input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
 									input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
 									input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
@@ -432,7 +452,7 @@ div(ng-controller='InvasivenessCtrl')
 																button.btn(ng-click='editReference(ancillaryData.reference,ref)')
 																	span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 					
-											div(collapse='isCollapsed_1',id='referenceInvasiveness')
+											div(uib-collapse='isCollapsed_1',id='referenceInvasiveness')
 												.form-group
 													select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
 														option(value='') - {{"simplePliCTerm.name.Type"|translate}} 

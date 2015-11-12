@@ -27,7 +27,7 @@ div(ng-controller='LifeCycleCtrl')
 								button.btn(ng-click='removeLifeCycleAtomized(formData.lifeCycle.lifeCycleAtomized, lifeCycleAtomized)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 								
-			.form-group
+			//.form-group
 				div(ng-controller='MeasurementCtrl')
 					.col-xs-5
 						select(ng-model='lifeCycleAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in lifeCycles | unique:'measurementtype'")
@@ -38,7 +38,7 @@ div(ng-controller='LifeCycleCtrl')
 					.col-xs-2
 						button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(formData.lifeCycle.lifeCycleAtomized, measurementOrFact)') Guardar 
 			.form-group
-				hr
+				//hr
 				label(for='lifeCycleUnstructured', translate='') simplePliCTerm.name.LifeCycleUnstructured
 				em (opcional)
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.LifeCycleUnstructured"|translate}}')
@@ -75,7 +75,7 @@ div(ng-controller='LifeCycleCtrl')
 
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
-							div(collapse='isCollapsed', id='ancillaryLifeCycle')
+							div(uib-collapse='isCollapsed', id='ancillaryLifeCycle')
 								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
 								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
 								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
@@ -111,7 +111,7 @@ div(ng-controller='LifeCycleCtrl')
 															button.btn(ng-click='editReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				
-										div(collapse='isCollapsed_1',id='referenceLifeCycle')
+										div(uib-collapse='isCollapsed_1',id='referenceLifeCycle')
 											.form-group
 												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
 													option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
@@ -135,7 +135,7 @@ div(ng-controller='LifeCycleCtrl')
 												input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
 												input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
 												input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
-												input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+												//input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
 											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()') Cancelar
 								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.lifeCycle.ancillaryData,ancillaryData)', translate='') Guardar

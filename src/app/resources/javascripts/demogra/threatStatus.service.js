@@ -14,6 +14,7 @@ angular.module('app.services.threatStatus',[])
 					municipality: '',
 					locality: ''
 				},
+				apendiceCITES:'',
 				ancillaryData: []
 			},
 			threatStatusUnstructured: '',

@@ -27,7 +27,6 @@ angular.module('app.controllers.ancillary',[])
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			if(image !== undefined){
-				var image = $(document).getElementById("image");
 				image.parentNode.removeChild(image);
 			}
 		}
@@ -112,6 +111,7 @@ angular.module('app.controllers.ancillary',[])
 							.then(function(res) {
 								var data_1 = res.data.replace('jsonFlickrApi(', '').replace(')', '').replace(/\n/g, '');
 								var objetoJSONFinal_1 = JSON.parse(data_1);
+								console.log(objetoJSONFinal_1);
 								if (typeof objetoJSONFinal_1.sizes.size[5].source !== 'undefined') {
 									ancillary.source = (objetoJSONFinal_1.sizes.size[5].source).replace(/'/g, "\''");
 									$scope.imageurl = (objetoJSONFinal_1.sizes.size[5].source).replace(/'/g, "\''");
@@ -136,6 +136,44 @@ angular.module('app.controllers.ancillary',[])
 					},
 					success: function(data) {
 						console.log(data);
+					}
+				});
+			}
+			if (url.indexOf('www.youtube.com') > -1) {
+				var video_id = (url_parts[url_parts.length - 1]).split('=')[1];
+				console.log(video_id);
+				$.ajax({
+					url: 'https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics%2Cstatus&id='+video_id+'&key=AIzaSyBNk4m-R-PyUt5hmtpBc3CaQ-fophHIjkQ',
+					dataType: 'JSONP',
+					jsonpCallback: 'callback',
+					type: 'GET',
+					headers: {
+						'Api-User-Agent': 'Example/1.0'
+					},
+					success: function(data) {
+						console.log(data);
+						console.log(data.items[0].snippet.channelTitle);
+						ancillary.license = data.items[0].contentDetails.licensedContent;
+						ancillary.rightsHolder = data.items[0].snippet.channelTitle;
+						ancillary.bibliographicCitation = data.items[0].snippet.description;
+					}
+				});
+			}
+
+						
+			if (url.indexOf('www.xeno-canto.org/') > -1) {
+				var sound_id = (url_parts[url_parts.length - 1]);
+				console.log(sound_id);
+
+				$.ajax({
+					url: 'http://www.xeno-canto.org/api/2/recordings?query=nr:'+ sound_id,
+					dataType: 'JSONP',
+					jsonpCallback: 'callback',
+					type: 'GET',
+					success: function(data) {
+						var data_1 = data.replace(/\n/g, '');
+						var objetoJSONFinal_1 = JSON.parse(data);
+						console.log(objetoJSONFinal_1);
 					}
 				});
 			}

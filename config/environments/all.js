@@ -4,6 +4,7 @@ var compression = require('compression');
 var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 module.exports = function(parent) {
 	parent.set('port', normalizePort(process.env.PORT || '5000'));
@@ -11,6 +12,7 @@ module.exports = function(parent) {
 	parent.use(favicon(__dirname + '/../../src/public/images/sib.ico'));
 	parent.use(morgan('dev'));
 	parent.use(compression());
+	parent.use(session({secret: 'ssshhhhh'}));
 	parent.use(bodyParser.json());
 	parent.use(bodyParser.urlencoded({ extended: false }));
 	parent.use(require('stylus').middleware(__dirname + './../../src/public/stylesheets'));

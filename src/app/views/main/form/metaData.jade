@@ -14,7 +14,7 @@
 	div(ng-controller='CollapseDemoCtrl')
 		button.btn.btn-success(ng-click='isCollapsed = !isCollapsed', translate='') simplePliCTerm.name.dataset
 		hr
-		div(collapse='isCollapsed')
+		div(uib-collapse='isCollapsed')
 			.form-group
 				h4 alternateIdentifier:
 				input(type='text', ng-model='formData.dataset.alternateIdentifier')

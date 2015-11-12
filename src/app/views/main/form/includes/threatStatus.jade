@@ -51,17 +51,24 @@ div(ng-controller='ThreatStatusCtrl')
 				label.col-xs-2.control-label(for='appliesTo', translate='') simplePliCTerm.name.AppliesTo
 				div(ng-controller='UbicacionCtrl')
 					.col-xs-3
-						select(ng-model='threatStatusClass.threatStatusAtomized.appliesTo.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
+						select(ng-model='threatStatusClass.threatStatusAtomized.appliesTo.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion_appliesTo ')
 							option(value='') {{"simplePliCTerm.name.countryCode"|translate}}
-					.col-xs-3
+					//.col-xs-3
 						select(ng-model='threatStatusClass.threatStatusAtomized.appliesTo.stateProvince', ng-disabled='!threatStatusClass.threatStatusAtomized.appliesTo.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
 							option(value='') {{"simplePliCTerm.name.stateProvince"|translate}}
-					.col-xs-2
+					//.col-xs-2
 						select(ng-model='threatStatusClass.threatStatusAtomized.appliesTo.county', ng-disabled='!threatStatusClass.threatStatusAtomized.appliesTo.country || !threatStatusClass.threatStatusAtomized.appliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
 							option(value='') {{"simplePliCTerm.name.county"|translate}}
 					.col-xs-2
-						button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addThreatStatusClass(formData.threatStatus, threatStatusClass)') Guardar
+						button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addThreatStatusClass(formData.threatStatus, threatStatusClass)') Guardar
 			.form-group
+				label.col-xs-2.control-label(for='apendice', translate='') Apendice CITES
+				.col-xs-10
+					.panel(ng-controller='CheckBoxCrtl')
+						div(ng-repeat='ac in apendiceCITES')
+							input(type='checkbox', ng-model='ac.checked', ng-click='updateSelectionApendiceCITES(ac, apendiceCITES)')
+							| {{ac.name}}
+			//.form-group
 				hr
 				label(for='threatStatusUnstructured', translate='') simplePliCTerm.name.ThreatStatusUnstructured
 				em (opcional)
@@ -98,7 +105,7 @@ div(ng-controller='ThreatStatusCtrl')
 												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
-							div(collapse='isCollapsed', id='ancillaryThreat')
+							div(uib-collapse='isCollapsed', id='ancillaryThreat')
 								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
 								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
 								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
@@ -134,7 +141,7 @@ div(ng-controller='ThreatStatusCtrl')
 															button.btn(ng-click='editReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				
-										div(collapse='isCollapsed_1',id='referenceThreat')
+										div(uib-collapse='isCollapsed_1',id='referenceThreat')
 											.form-group
 												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
 													option(value='') - {{"simplePliCTerm.name.Type"|translate}} 

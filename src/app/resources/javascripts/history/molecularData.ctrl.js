@@ -20,6 +20,11 @@ angular.module('app.controllers.molecularData',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.addMolecularData = function(){
+		if($scope.formData.molecularData.molecularDataUnstructured.length > 0){
+			console.log('enviar cambios');
+		}
+	};
 	$scope.addMolecularDataAtomizedType = function(molecularDataAtomizedType, molecular) {
 		if (molecular.measurementOrFact.measurementType !== '') {
 			molecularDataFactoryLocal.add(molecularDataAtomizedType, molecular);
