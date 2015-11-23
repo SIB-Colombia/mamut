@@ -50,10 +50,9 @@ div(ng-controller='UsesCtrl')
 			.form-group
 				label.col-xs-2.control-label(for='partUsed', translate='') simplePliCTerm.name.PartUsed
 				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='pu in partUsed')
-							input(type='checkbox', ng-model='pu.checked', ng-click='updateSelectionPartUsedCategory(pu, partUsed)')
-							| {{tc.name}}
+					input#partUsed(type='text', ng-model='usesAtomizedType.partUsed')
+					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.PartUsed"|translate}}')
+						span.glyphicon.glyphicon-info-sign
 			.form-group
 				label.col-xs-2.control-label(for='users', translate='') simplePliCTerm.name.Users
 				.col-xs-10
@@ -99,10 +98,9 @@ div(ng-controller='UsesCtrl')
 			.form-group
 				label.col-xs-2.control-label(for='useTypeAtomized', translate='') simplePliCTerm.name.UseTypeAtomized
 				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='uta in useTypeAtomized')
-							input(type='checkbox', ng-model='uta.checked', ng-click='updateSelectionUseTypeAtomized(uta, useTypeAtomized)')
-							| {{uta.name}}
+					input#useTypeAtomized(type='text', ng-model='usesAtomizedType.useTypeAtomized')
+					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.UseTypeAtomized"|translate}}')
+						span.glyphicon.glyphicon-info-sign
 			.form-group
 				label.col-xs-2.control-label(for='economics', translate='') simplePliCTerm.name.Economics
 				.col-xs-10

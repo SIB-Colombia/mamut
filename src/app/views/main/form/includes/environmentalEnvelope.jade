@@ -28,10 +28,9 @@ div(ng-controller='EnvironmentalEnvelopeCtrl')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			div(ng-controller='MeasurementCtrl')
 				.col-xs-5
-					select(ng-model='environmentalEnvelopeAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in environmentalEnvelopes | unique:'measurementtype'")
-						option(value='') - Seleccione -
+					input(type='text', ng-model='environmentalEnvelopeAtomized.measurementOrFact.measurementValue')
 				.col-xs-5
-					select(ng-model='environmentalEnvelopeAtomized.measurementOrFact.measurementValue', ng-disabled='!environmentalEnvelopeAtomized.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+					select(ng-model='environmentalEnvelopeAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in environmentalEnvelopes | unique:'measurementtype'")
 						option(value='') - Seleccione -
 				.col-xs-2
 					button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(formData.environmentalEnvelope.environmentalEnvelopeAtomized, measurementOrFact)') Guardar 

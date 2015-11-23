@@ -5,7 +5,18 @@ angular.module('app.services.threatStatus',[])
 	return function() {
 		this.threatStatusClass = {
 			threatStatusAtomized: {
-				threatCategory: '',
+				threatCategory: {
+					measurementID: '',
+					measurementType: '',
+					measurementValue: '',
+					measurementAccuracy: '',
+					measurementUnit: '',
+					measurementDeterminedDate: '',
+					measurementDeterminedBy: [],
+					measurementMethod: '',
+					measurementRemarks: '',
+					relatedTo: ''
+				},
 				authority: [],
 				appliesTo: {
 					country: '',

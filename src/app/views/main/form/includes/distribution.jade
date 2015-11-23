@@ -45,10 +45,20 @@ div(ng-controller='DistributionCtrl')
 				label.col-xs-2.control-label(for='temporalCoverage', translate='') simplePliCTerm.name.TemporalCoverage
 				.col-xs-3
 					label {{simplePliCTerm.name.startDate|translate}} 
-						input#startValidateDate(type='date', ng-model='distributionClass.temporalCoverage.startDate')
+					div(ng-controller='DatepickerCtrl')
+						p.input-group
+							input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", ng-model="distributionClass.temporalCoverage.startDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" )
+							span.input-group-btn
+								button.btn.btn-default(type="button",ng-click="open($event)")
+									i.glyphicon.glyphicon-calendar
 				.col-xs-3
-					label {{simplePliCTerm.name.endDate|translate}} 
-						input#endValidateDate(type='date', ng-model='distributionClass.temporalCoverage.endDate')
+					label {{simplePliCTerm.name.endDate|translate}}
+					div(ng-controller='DatepickerCtrl')
+						p.input-group
+							input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", ng-model="distributionClass.temporalCoverage.endDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" )
+							span.input-group-btn
+								button.btn.btn-default(type="button",ng-click="open($event)")
+									i.glyphicon.glyphicon-calendar 
 			.form-group
 
 				label.col-xs-2.control-label(for='temporalCoverage', translate='') Distribución atomizada

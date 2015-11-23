@@ -167,9 +167,7 @@ angular.module('app.controllers.ancillary',[])
 
 				$.ajax({
 					url: 'http://www.xeno-canto.org/api/2/recordings?query=nr:'+ sound_id,
-					dataType: 'JSONP',
-					jsonpCallback: 'callback',
-					type: 'GET',
+					dataType: 'json',
 					success: function(data) {
 						var data_1 = data.replace(/\n/g, '');
 						var objetoJSONFinal_1 = JSON.parse(data);

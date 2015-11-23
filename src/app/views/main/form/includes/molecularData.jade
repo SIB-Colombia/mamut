@@ -9,9 +9,6 @@ div(ng-controller='MolecularDataCtrl')
 				button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addMolecularData()') 
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
-			//.selected-item(ng-repeat='measurementOrFact in formData.molecularData.molecularDataAtomized.measurementOrFact')
-				div(ng-show='measurementOrFact')
-					div {{measurementOrFact}}
 			//.form-group
 				div(ng-controller='MeasurementCtrl')
 					select(ng-model='molecularDataAtomizedType.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in molecularDatas | unique:'measurementtype'")
@@ -24,6 +21,16 @@ div(ng-controller='MolecularDataCtrl')
 					textarea(rows='3', name='relatedTo', ng-model='molecularDataAtomizedType.relatedTo')
 				.col-xs-2
 					button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addMolecularDataAtomizedType(formData.molecularData.molecularDataAtomized,molecularDataAtomizedType)') Guardar
+			.form-group
+				div.table-responsive(ng-show='(formData.molecularData.molecularDataAtomized).length')
+					table.table.table-striped
+						tbody
+							tr(ng-repeat="molecularDataAtomizedType in formData.molecularData.molecularDataAtomized track by $index")
+								td
+									| {{molecularDataAtomizedType.relatedTo}}
+								td
+									button.btn(ng-click='removeMolecularDataAtomizedType(formData.molecularData.molecularDataAtomized, molecularDataAtomizedType)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			.form-group
 				hr
 				label(for='molecularDataUnstructured', translate='') simplePliCTerm.name.MolecularDataUnstructured

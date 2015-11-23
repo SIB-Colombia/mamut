@@ -43,21 +43,12 @@ div(ng-controller='MigratoryCtrl')
 			.form-group
 				label.col-xs-2.control-label(for='causes', translate='') simplePliCTerm.name.Causes
 				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='cause in migratoryCauses')
-						.action-checkbox
-							input(id='{{cause.name}}', type='checkbox', value='{{cause.name}}', ng-checked='migratoryAtomizedType.causes.indexOf(cause.name) > -1', ng-click='toggleSelection(migratoryAtomizedType.causes,cause.name)')
-							label(for='{{cause.name}}')
-								| {{cause.name}}
+					input(type='text', ng-model='migratoryAtomizedType.causes')
+
 			.form-group
 				label.col-xs-2.control-label(for='causes', translate='') simplePliCTerm.name.Patterns
 				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='pattern in migratoryPatterns')
-						.action-checkbox
-							input(id='{{pattern.name}}', type='checkbox', value='{{pattern.name}}', ng-checked='migratoryAtomizedType.patterns.indexOf(pattern.name) > -1', ng-click='toggleSelection(migratoryAtomizedType.patterns,pattern.name)')
-							label(for='{{pattern.name}}')
-								| {{pattern.name}}
+					input(type='text', ng-model='migratoryAtomizedType.patterns')
 			.form-group
 				label.col-xs-2.control-label(for='routes', translate='') simplePliCTerm.name.Routes
 				.col-xs-10

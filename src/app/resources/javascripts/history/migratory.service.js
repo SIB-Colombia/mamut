@@ -4,8 +4,8 @@ angular.module('app.services.migratory',[])
 .factory('MigratoryFactory', function(){
 	return function() {
 		this.migratoryAtomizedType = {
-			causes: [],
-			patterns: [],
+			causes: '',
+			patterns: '',
 			routes: [],
 			season: '',
 			ancillaryData: []

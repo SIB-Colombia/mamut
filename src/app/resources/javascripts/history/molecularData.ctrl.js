@@ -34,6 +34,10 @@ angular.module('app.controllers.molecularData',[])
 		}
 	};
 
+	$scope.removeMolecularDataAtomizedType= function(molecular,molecularDataAtomizedType){
+		molecularDataFactoryLocal.delete(molecular,molecularDataAtomizedType);	
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);

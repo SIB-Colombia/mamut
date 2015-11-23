@@ -27,12 +27,13 @@ angular.module('app.controllers.threatStatus',[])
 	};
 
 	$scope.addThreatStatusClass = function(list, threatStatusClass) {
-		//if (threatStatusClass.threatStatusAtomized.threatCategory !== '') {
+		if (threatStatusClass.threatStatusAtomized.threatCategory !== '') {
 			threatStatusFactoryLocal.add(list, threatStatusClass);
 			//Reset the scope variable
 			$scope.threatStatusClass = origTSC;
 			origTSC = angular.copy($scope.threatStatusClass);
-		//}
+			$('input:checkbox').removeAttr('checked');
+		}
 	};
 
 	$scope.removeThreatStatus = function(list, threatStatusClass) {

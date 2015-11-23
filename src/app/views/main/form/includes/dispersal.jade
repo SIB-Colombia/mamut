@@ -53,11 +53,8 @@ div(ng-controller='DispersalCtrl')
 			.form-group
 				label.col-xs-2.control-label(for='distance', translate='') simplePliCTerm.name.Distance
 				div(ng-controller='MeasurementCtrl')
-					.col-xs-4
-						input(type='text', ng-model='formData.dispersal.dispersalAtomized.distance.measurementtypeValue')
-					.col-xs-4
-						select(ng-model='formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementvalue for attr in distance | unique:'measurementtype'")
-							option(value='') - Seleccione -
+					.col-xs-10
+						input(type='text', ng-model='formData.dispersal.dispersalAtomized.distance')
 			.form-group
 				hr
 				label(for='dispersalUnstructured', translate='') simplePliCTerm.name.DispersalUnstructured

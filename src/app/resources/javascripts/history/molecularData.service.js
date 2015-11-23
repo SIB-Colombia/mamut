@@ -53,5 +53,9 @@ angular.module('app.services.molecularData',[])
 		this.add = function(molecularDataAtomizedType, molecular){
 			molecularDataAtomizedType.push(molecular);
 		};
+		this.delete = function(list,molecularDataAtomizedType){
+			var index = list.indexOf(molecularDataAtomizedType);
+			list.splice(index,1);
+		};
 	};
 });

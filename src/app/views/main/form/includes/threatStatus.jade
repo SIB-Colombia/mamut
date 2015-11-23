@@ -16,6 +16,7 @@ div(ng-controller='ThreatStatusCtrl')
 							th {{"simplePliCTerm.name.Authority"|translate}}
 							th {{"simplePliCTerm.name.ThreatCategory"|translate}}
 							th {{"simplePliCTerm.name.AppliesTo"|translate}}
+							th Apendice CITES
 							th
 					
 					tbody
@@ -25,14 +26,17 @@ div(ng-controller='ThreatStatusCtrl')
 									div(ng-show='authority')
 										| {{authority}}
 							td
-								| {{threatStatusClass.threatStatusAtomized.threatCategory}}	
+								| {{threatStatusClass.threatStatusAtomized.threatCategory.measurementType}}	- {{threatStatusClass.threatStatusAtomized.threatCategory.measurementValue}}
 							td
-								| {{threatStatusClass.threatStatusAtomized.appliesTo.country}} - {{threatStatusClass.threatStatusAtomized.appliesTo.stateProvince}} - {{threatStatusClass.threatStatusAtomized.appliesTo.county}}
+								| {{threatStatusClass.threatStatusAtomized.appliesTo.country}} 
+							td 
+								| {{threatStatusClass.threatStatusAtomized.apendiceCITES}}
 							td
-								button.btn(ng-click='removeThreatStatus(formData.threatStatus,threatStatusAtomized)')
+								button.btn(ng-click='removeThreatStatus(formData.threatStatus,threatStatusClass)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
-								button.btn(ng-click='editThreatStatus(formData.threatStatus,threatStatusAtomized)')
+								button.btn(ng-click='editThreatStatus(formData.threatStatus,threatStatusClass)')
 									span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+
 			.form-group
 				label.col-xs-2.control-label(for='authority', translate='') simplePliCTerm.name.Authority
 				.col-xs-10
@@ -42,11 +46,13 @@ div(ng-controller='ThreatStatusCtrl')
 							| {{aut.name}}
 			.form-group
 				label.col-xs-2.control-label(for='threatCategory', translate='') simplePliCTerm.name.ThreatCategory
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='tc in threatCategory')
-							input(type='checkbox', ng-model='tc.checked', ng-click='updateSelectionThreatCategory(tc, threatCategory)')
-							| {{tc.name}}
+				div(ng-controller='MeasurementCtrl')
+					.col-xs-5
+						select(ng-model='threatStatusClass.threatStatusAtomized.threatCategory.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in threatCategory | unique:'measurementtype'")
+							option(value='') - Seleccione -
+					.col-xs-5
+						select(ng-model='threatStatusClass.threatStatusAtomized.threatCategory.measurementValue', ng-disabled='!threatStatusClass.threatStatusAtomized.threatCategory.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+							option(value='') - Seleccione -
 			.form-group
 				label.col-xs-2.control-label(for='appliesTo', translate='') simplePliCTerm.name.AppliesTo
 				div(ng-controller='UbicacionCtrl')
@@ -59,8 +65,7 @@ div(ng-controller='ThreatStatusCtrl')
 					//.col-xs-2
 						select(ng-model='threatStatusClass.threatStatusAtomized.appliesTo.county', ng-disabled='!threatStatusClass.threatStatusAtomized.appliesTo.country || !threatStatusClass.threatStatusAtomized.appliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
 							option(value='') {{"simplePliCTerm.name.county"|translate}}
-					.col-xs-2
-						button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addThreatStatusClass(formData.threatStatus, threatStatusClass)') Guardar
+					
 			.form-group
 				label.col-xs-2.control-label(for='apendice', translate='') Apendice CITES
 				.col-xs-10
@@ -68,6 +73,8 @@ div(ng-controller='ThreatStatusCtrl')
 						div(ng-repeat='ac in apendiceCITES')
 							input(type='checkbox', ng-model='ac.checked', ng-click='updateSelectionApendiceCITES(ac, apendiceCITES)')
 							| {{ac.name}}
+			.form-group
+				button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addThreatStatusClass(formData.threatStatus, threatStatusClass)') Guardar
 			//.form-group
 				hr
 				label(for='threatStatusUnstructured', translate='') simplePliCTerm.name.ThreatStatusUnstructured

@@ -177,14 +177,6 @@ angular.module('app.controllers.checkBox',[])
         $scope.populationBiologyAtomized.region = element.name;
     };
 
-    $scope.updateSelectionThreatCategory = function updateSelectionThreatCategory(element, list) {
-        angular.forEach(list, function(item) {
-            item.checked = false;
-        });
-        element.checked= true;
-        $scope.threatStatusClass.threatStatusAtomized.threatCategory = element.name;
-    };
-
     $scope.updateSelectionAutority = function updateSelectionAutority(name) {
          var idx = $scope.threatStatusClass.threatStatusAtomized.authority.indexOf(name);
         if (idx > -1) {

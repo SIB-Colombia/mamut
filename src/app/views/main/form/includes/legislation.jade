@@ -45,10 +45,7 @@ div(ng-controller='LegislationCtrl')
 			.form-group
 				label.col-xs-2.control-label(for='protectionLegalStatus', translate='') simplePliCTerm.name.ProtectionLegalStatus
 				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='lp in legislationProtection')
-							input(type='checkbox', ng-model='lp.checked', ng-click='updateSelectionProtectionLegal(lp,legislationProtection)')
-							| {{lp.name}}
+					input(type='text', ng-model='legislationAtomizedType.protectionLegalStatus')
 			.form-group
 				label.col-xs-2.control-label(for='LegislationRead', translate='') simplePliCTerm.name.LegislationRead
 				.col-xs-10
@@ -56,24 +53,15 @@ div(ng-controller='LegislationCtrl')
 			.form-group
 				label.col-xs-2.control-label(for='status', translate='') simplePliCTerm.name.Status
 				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='ls in legislationStatus')
-							input(type='checkbox', ng-model='ls.checked', ng-click='updateSelectionProtectionLegalStatus(ls,legislationStatus)')
-							| {{ls.name}}
+					input(type='text', ng-model='legislationAtomizedType.status')
 			.form-group
 				label.col-xs-2.control-label(for='Type', translate='') simplePliCTerm.name.Type
 				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='lt in legislationType')
-							input(type='checkbox', ng-model='lt.checked', ng-click='updateSelectionProtectionLegalType(lt,legislationType)')
-							| {{lt.name}}
+					input(type='text', ng-model='legislationAtomizedType.type')
 			.form-group
 				label.col-xs-2.control-label(for='Norm', translate='') simplePliCTerm.name.Norm
 				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='ln in legislationNorm')
-							input(type='checkbox', ng-model='ln.checked', ng-click='updateSelectionProtectionLegalNorm(ln,legislationNorm)')
-							| {{ln.name}}
+					input(type='text', ng-model='legislationAtomizedType.norm')
 			.form-group
 				label.col-xs-2.control-label(for='appliesTo', translate='') simplePliCTerm.name.AppliesTo
 				div(ng-controller='UbicacionCtrl')
@@ -83,11 +71,11 @@ div(ng-controller='LegislationCtrl')
 					.col-xs-3
 						select(ng-model='legislationAtomizedType.appliesTo.stateProvince', ng-disabled='!legislationAtomizedType.appliesTo.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
 							option(value='') {{"simplePliCTerm.name.stateProvince"|translate}}
-					.col-xs-2
+					.col-xs-3
 						select(ng-model='legislationAtomizedType.appliesTo.county', ng-disabled='!legislationAtomizedType.appliesTo.country || !legislationAtomizedType.appliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
 							option(value='') {{"simplePliCTerm.name.county"|translate}}
-					.col-xs-2
-						button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addLegislationAtomized(formData.legislation.legislationAtomized,legislationAtomizedType)') Guardar
+			.form-group		
+					button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addLegislationAtomized(formData.legislation.legislationAtomized,legislationAtomizedType)') Guardar
 			.form-group
 				hr
 				label(for='legislationUnstructured', translate='') simplePliCTerm.name.LegislationUnstructured

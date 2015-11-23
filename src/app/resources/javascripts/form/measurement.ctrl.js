@@ -218,30 +218,19 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('environmentalEnvelopeAtomized.measurementOrFact.measurementType', function(name) {
 		if (name !== undefined) {
-			delete $scope.environmentalEnvelopeAtomized.measurementOrFact.measurementValue;
-			$scope.selectedAttr.length = 0;
-
-			angular.forEach($scope.environmentalEnvelopes, function(attr) {
-				if (attr.measurementtype === name) {
-					$scope.selectedAttr.push(attr);
-				}
-			});
-		}
-	});
-	$scope.$watch('environmentalEnvelopeAtomized.measurementOrFact.measurementValue', function(name) {
-		if (name !== undefined) {
 			$scope.measurementOrFact = new MeasurementFactory().measurement;
 			measurementCopy = angular.copy($scope.measurementOrFact);
-			angular.forEach($scope.selectedAttr, function(attr) {
-				if (attr.measurementvalue === name) {
-					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
-					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
+			angular.forEach($scope.environmentalEnvelopes, function(attr) {
+				if (attr.measurementtype === name) {
+					$scope.measurementOrFact.measurementOrFact.measurementType = name;
+					$scope.measurementOrFact.measurementOrFact.measurementValue = $scope.environmentalEnvelopeAtomized.measurementOrFact.measurementValue;
 					$scope.measurementOrFact.ancillaryData.bibliographicCitation = attr.referencia;
 					$scope.measurementOrFact.ancillaryData.source = attr.url;
 				}
 			});
 		}
 	});
+
 	$scope.$watch('ecologicalSignificanceAtomized.measurementOrFact.measurementType', function(name) {
 		if (name !== undefined) {
 			delete $scope.ecologicalSignificanceAtomized.measurementOrFact.measurementValue;
@@ -340,6 +329,31 @@ angular.module('app.controllers.measurement',[])
 					$scope.directThreats.directThreatsAtomized.measurementOrFact.measurementValue = name;
 					$scope.directThreats.directThreatsAtomized.ancillaryData.bibliographicCitation = attr.referencia;
 					$scope.directThreats.directThreatsAtomized.ancillaryData.source = attr.url;
+				}
+			});
+		}
+	});
+
+	$scope.$watch('threatStatusClass.threatStatusAtomized.threatCategory.measurementType', function(name) {
+		if (name !== undefined) {
+			delete $scope.threatStatusClass.threatStatusAtomized.threatCategory.measurementValue;
+			$scope.selectedAttr.length = 0;
+
+			angular.forEach($scope.threatCategory, function(attr) {
+				if (attr.measurementtype === name) {
+					$scope.selectedAttr.push(attr);
+				}
+			});
+		}
+	});
+	$scope.$watch('threatStatusClass.threatStatusAtomized.threatCategory.measurementValue', function(name) {
+		if (name !== undefined) {
+			$scope.measurementOrFact = new MeasurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
+			angular.forEach($scope.selectedAttr, function(attr) {
+				if (attr.measurementvalue === name) {
+					$scope.threatStatusClass.threatStatusAtomized.threatCategory.measurementType = attr.measurementtype;
+					$scope.threatStatusClass.threatStatusAtomized.threatCategory.measurementValue = name;
 				}
 			});
 		}
