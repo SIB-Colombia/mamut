@@ -58,6 +58,10 @@ angular.module('app.controllers.invasiveness',[])
 		
 	};
 
+	$scope.cancelInvasivenessAtomizedType = function() {
+		$scope.invasivenessAtomizedType = angular.copy(origI);
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryUn.addTo(ancillaryDataList,ancillaryData);

@@ -30,7 +30,7 @@ div(ng-controller='ManagementAndConservationCtrl')
 							td
 								.selected-item(ng-repeat='actions in managementAndConservationAtomized.actions')
 									div(ng-show='actions')
-										| {{actions}}
+										| {{actions.measurementOrFact.measurementType}} - {{actions.measurementOrFact.measurementValue}}
 							td
 								button.btn(ng-click='removeManagementAndConservation(formData.usesManagementAndConservation.managementAndConservationAtomized,managementAndConservationAtomized)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
@@ -38,7 +38,6 @@ div(ng-controller='ManagementAndConservationCtrl')
 									span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 			.form-group
 				label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Type
-				.col-xs-10
 					.panel(ng-controller='CheckBoxCrtl')
 						div(ng-repeat='mt in managementType')
 							input(type='checkbox', ng-model='mt.checked', ng-click='updateSelectionManagementType(mt, managementType)')
@@ -55,11 +54,27 @@ div(ng-controller='ManagementAndConservationCtrl')
 				label.col-xs-2.control-label(for='actions', translate='') simplePliCTerm.name.Actions
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Actions"|translate}}')
 						span.glyphicon.glyphicon-info-sign
-				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='ma in managementAction')
-							input(type='checkbox', ng-model='ma.checked', ng-click='updateSelectionManagementAction(ma)')
-							| {{ma.name}}
+				div(ng-controller='MeasurementCtrl')
+					.col-xs-4
+						select(ng-model='managementAction.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in managementAction | unique:'measurementtype'")
+							option(value='') - Seleccione -
+					.col-xs-4
+						select(ng-model='managementAction.measurementValue', ng-disabled='!managementAction.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr')
+							option(value='') - Seleccione -
+					.col-xs-2
+						button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(managementAndConservationAtomizedType.actions, measurementOrFact)') Guardar
+			.form-group
+				div.table-responsive(ng-show='(managementAndConservationAtomizedType.actions).length')
+					table.table.table-striped
+						tbody
+							tr(ng-repeat="action in managementAndConservationAtomizedType.actions track by $index")
+								td
+									| {{action.measurementOrFact.measurementType}}
+								td
+									| {{action.measurementOrFact.measurementValue}}
+								td
+									button.btn(ng-click='removeAction(managementAndConservationAtomizedType.actions, action)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			.form-group
 				label.col-xs-2.control-label(for='humanAndEnvironmentalRelevance', translate='') simplePliCTerm.name.HumanAndEnvironmentalRelevance
 				.col-xs-10

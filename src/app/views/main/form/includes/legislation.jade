@@ -74,7 +74,7 @@ div(ng-controller='LegislationCtrl')
 					.col-xs-3
 						select(ng-model='legislationAtomizedType.appliesTo.county', ng-disabled='!legislationAtomizedType.appliesTo.country || !legislationAtomizedType.appliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
 							option(value='') {{"simplePliCTerm.name.county"|translate}}
-			.form-group		
+			.form-group
 					button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addLegislationAtomized(formData.legislation.legislationAtomized,legislationAtomizedType)') Guardar
 			.form-group
 				hr

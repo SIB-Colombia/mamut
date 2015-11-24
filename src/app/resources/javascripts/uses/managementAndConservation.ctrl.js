@@ -45,6 +45,11 @@ angular.module('app.controllers.managementAndConservation',[])
 		$scope.managementAndConservationAtomizedType = angular.copy(origMC);
 	};
 
+	$scope.removeAction = function(list, action) {
+		var index = list.indexOf(action);
+		list.splice(index,1);
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);

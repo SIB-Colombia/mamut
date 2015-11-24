@@ -30,8 +30,8 @@ angular.module('app.services.invasiveness',[])
 			whatImpact: '',
 			vector: '',
 			route: '',
-			target: [],
-			mechanism: [],
+			target: '',
+			mechanism: '',
 			ancillaryData: []
 		};
 

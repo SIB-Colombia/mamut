@@ -5,7 +5,7 @@ angular.module('app.services.dispersal',[])
 	return function() {
 		this.dispersal = {
 			dispersalAtomized: {
-				purpose: [],
+				purpose: '',
 				type: '',
 				structureDispersed: '',
 				distance: ''

@@ -26,8 +26,8 @@ angular.module('app.controllers.ancillary',[])
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList, ancillary);
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
-			if(image !== undefined){
-				image.parentNode.removeChild(image);
+			if($scope.image !== undefined){
+				$scope.image.parentNode.removeChild($scope.image);
 			}
 		}
 	};
@@ -170,7 +170,7 @@ angular.module('app.controllers.ancillary',[])
 					dataType: 'json',
 					success: function(data) {
 						var data_1 = data.replace(/\n/g, '');
-						var objetoJSONFinal_1 = JSON.parse(data);
+						var objetoJSONFinal_1 = JSON.parse(data_1);
 						console.log(objetoJSONFinal_1);
 					}
 				});

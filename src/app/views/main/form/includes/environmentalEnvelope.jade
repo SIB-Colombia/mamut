@@ -27,11 +27,12 @@ div(ng-controller='EnvironmentalEnvelopeCtrl')
 								button.btn(ng-click='removeEnvironmentalEnvelopeAtomized(formData.environmentalEnvelope.environmentalEnvelopeAtomized,environmentalEnvelopeAtomized)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			div(ng-controller='MeasurementCtrl')
-				.col-xs-5
-					input(type='text', ng-model='environmentalEnvelopeAtomized.measurementOrFact.measurementValue')
+				
 				.col-xs-5
 					select(ng-model='environmentalEnvelopeAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in environmentalEnvelopes | unique:'measurementtype'")
 						option(value='') - Seleccione -
+				.col-xs-5
+					input(type='text', ng-model='measurementOrFact.measurementOrFact.measurementValue')
 				.col-xs-2
 					button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(formData.environmentalEnvelope.environmentalEnvelopeAtomized, measurementOrFact)') Guardar 
 			hr

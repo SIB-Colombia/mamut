@@ -13,7 +13,7 @@ div(ng-controller='TerritoryCtrl')
 				label.col-xs-2.control-label(for='extentOfOccurrence', translate='') simplePliCTerm.name.ExtentOfOccurrence
 				.col-xs-10
 					div(ng-controller='MeasurementCtrl')
-						.col-xs-3
+						.col-xs-9
 							input(type='text', ng-model='territoryAtomized.extentOfOccurrence.measurementValue')
 						//.col-xs-3
 							select(ng-model='territoryAtomized.extentOfOccurrence.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in extentOfOccurrence | unique:'measurementtype'")
@@ -37,12 +37,12 @@ div(ng-controller='TerritoryCtrl')
 											span(class="glyphicon glyphicon-trash", aria-hidden='true')
 
 					div(ng-controller='MeasurementCtrl')
-						.col-xs-3
+						.col-xs-9
 							input(type='text', ng-model='territoryAtomized.areaOfOccupancy.measurementValue')
 						//.col-xs-3
 							select(ng-model='territoryAtomized.areaOfOccupancy.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in areaOfOccupancy | unique:'measurementtype'")
 								option(value='') - Seleccione -
-						.col-xs-3			
+						.col-xs-1
 							button.btn.btn-success.btn-sm.pull-right(ng-click='addMeasurementOrFactVector(formData.territory.territoryAtomized.areaOfOccupancy, measurementOrFact)') Guardar
 				
 			.form-group

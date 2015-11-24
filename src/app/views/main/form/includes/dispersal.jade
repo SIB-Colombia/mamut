@@ -9,31 +9,10 @@ div(ng-controller='DispersalCtrl')
 			button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addDispersal()') 
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
-			div.table-responsive(ng-show='(formData.dispersal.dispersalAtomized.purpose).length')
-				table.table.table-bordered
-					thead
-						tr
-							th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
-							th
-					
-					tbody
-						tr(ng-repeat="purpose in formData.dispersal.dispersalAtomized.purpose track by $index")
-							td
-								| {{purpose}}
-							td
-								button.btn(ng-click='removeDispersalAtomized(formData.dispersal.dispersalAtomized.purpose,purpose)')
-									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			.form-group
 				label.col-xs-2.control-label(for='purpose', translate='') simplePliCTerm.name.Purpose
-				div(ng-controller='MeasurementCtrl')
-					.col-xs-4
-						select(ng-model='dispersalAtomized.purpose.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in purposes | unique:'measurementtype'")
-							option(value='') - Seleccione -
-					.col-xs-4
-						select(ng-model='dispersalAtomized.purpose.measurementValue', ng-disabled='!dispersalAtomized.purpose.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
-							option(value='') - Seleccione -
-					.col-xs-2
-						button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(formData.dispersal.dispersalAtomized.purpose, measurementOrFact)') Guardar proposito 
+				.col-xs-10
+					input(type='text', ng-model='formData.dispersal.dispersalAtomized.purpose')
 			.form-group
 				label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Type
 				.col-xs-10
@@ -52,9 +31,8 @@ div(ng-controller='DispersalCtrl')
 								| {{structure.name}}
 			.form-group
 				label.col-xs-2.control-label(for='distance', translate='') simplePliCTerm.name.Distance
-				div(ng-controller='MeasurementCtrl')
-					.col-xs-10
-						input(type='text', ng-model='formData.dispersal.dispersalAtomized.distance')
+				.col-xs-10
+					input(type='text', ng-model='formData.dispersal.dispersalAtomized.distance')
 			.form-group
 				hr
 				label(for='dispersalUnstructured', translate='') simplePliCTerm.name.DispersalUnstructured

@@ -43,7 +43,7 @@ div(ng-controller='DistributionCtrl')
 							| {{ds.name}}
 			.form-group
 				label.col-xs-2.control-label(for='temporalCoverage', translate='') simplePliCTerm.name.TemporalCoverage
-				.col-xs-3
+				.col-xs-4
 					label {{simplePliCTerm.name.startDate|translate}} 
 					div(ng-controller='DatepickerCtrl')
 						p.input-group
@@ -51,7 +51,7 @@ div(ng-controller='DistributionCtrl')
 							span.input-group-btn
 								button.btn.btn-default(type="button",ng-click="open($event)")
 									i.glyphicon.glyphicon-calendar
-				.col-xs-3
+				.col-xs-4
 					label {{simplePliCTerm.name.endDate|translate}}
 					div(ng-controller='DatepickerCtrl')
 						p.input-group
