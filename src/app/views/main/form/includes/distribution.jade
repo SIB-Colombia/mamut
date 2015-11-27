@@ -6,7 +6,7 @@ div(ng-controller='DistributionCtrl')
 				spant
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Distribution"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-			button.btn.btn-success.btn-xs.pull-right(ng-click='addDistribution(formData.distribution,distributionClass)')
+			//button.btn.btn-success.btn-xs.pull-right(ng-click='addDistribution(formData.distribution,distributionClass)')
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			div.table-responsive(ng-show='(formData.distribution).length')
@@ -16,6 +16,7 @@ div(ng-controller='DistributionCtrl')
 							th {{"simplePliCTerm.name.DistributionScope"|translate}}
 							th {{"simplePliCTerm.name.TemporalCoverage"|translate}}
 							th Distribución atomizada
+							th {{"simplePliCTerm.name.DistributionUnstructured"|translate}}
 							th
 					
 					tbody
@@ -28,6 +29,8 @@ div(ng-controller='DistributionCtrl')
 								.selected-item(ng-repeat='distributionA in distribution.distributionAtomized')
 									div(ng-show='distributionA')
 										| {{distributionA.country}} - {{distributionA.stateProvince}} - {{distributionA.county}}
+							td
+								| {{distribution.distributionUnstructured}}
 							td
 								button.btn(ng-click='removeDistribution(formData.distribution,distribution)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
@@ -80,7 +83,7 @@ div(ng-controller='DistributionCtrl')
 						table.table.table-bordered
 							thead
 								tr
-									th {{"simplePliCTerm.name.countryCode"|translate}}
+									th {{"simplePliCTerm.name.country"|translate}}
 									th {{"simplePliCTerm.name.stateProvince"|translate}}
 									th {{"simplePliCTerm.name.county"|translate}}
 									th
@@ -96,6 +99,7 @@ div(ng-controller='DistributionCtrl')
 									td
 										button.btn(ng-click='removeDistributionOpt2(distributionClass.distributionAtomized,distribution)')
 											span(class="glyphicon glyphicon-trash", aria-hidden='true')
+						
 			.form-group
 				.col-xs-2
 					label(for='distributionUnstructured', translate='') simplePliCTerm.name.DistributionUnstructured
@@ -199,5 +203,7 @@ div(ng-controller='DistributionCtrl')
 										button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()') Cancelar
 							button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(distributionClass.ancillaryData,ancillaryData)', translate='') Guardar
 							button.btn.btn-primary.btn-sm(type='button', ng-click='cancelAncillaryData()') Cancelar
+			.form-group
+				button.btn.btn-success.btn-sm.pull-right(ng-click='addDistribution(formData.distribution,distributionClass)') Guardar
 
 			

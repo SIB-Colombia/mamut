@@ -1,11 +1,8 @@
 'use strict';
 
 angular.module('app.controllers.identificationKeys',[])
-.controller('IdentificationKeysCtrl', ['$scope','ReferenceFactory','AncillaryDataFactory','IdentificationKeysFactory', function($scope,ReferenceFactory,AncillaryDataFactory,IdentificationKeysFactory) {
-	//identificationKeys
-	var identificationKeysFactoryLocal = new IdentificationKeysFactory();
-	$scope.formData.identificationKeys = identificationKeysFactoryLocal.identificationKeys;
-	
+.controller('IdentificationKeysCtrl', ['$scope','ReferenceFactory','AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
 	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
@@ -27,6 +24,10 @@ angular.module('app.controllers.identificationKeys',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

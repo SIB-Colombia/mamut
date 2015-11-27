@@ -14,9 +14,6 @@ angular.module('app.controllers.synonmy',[])
 	var referenceFactoryLocal = new ReferenceFactory();
 	$scope.reference = referenceFactoryLocal.reference;
 
-	//synonyms vector for FormData
-	$scope.formData.synonymsAtomized = [];
-
 	//reset variables
 	var origS = angular.copy($scope.synonmy);
 	var origR = angular.copy($scope.reference);
@@ -54,6 +51,10 @@ angular.module('app.controllers.synonmy',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

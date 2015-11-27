@@ -6,23 +6,21 @@ div(ng-controller='ManagementAndConservationCtrl')
 				spant
 					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ManagementAndConservation"|translate}}')
 						span.glyphicon.glyphicon-info-sign
-			button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addManagement()') 
+			//button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addManagement()') 
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
-			div.table-responsive(ng-show='(formData.usesManagementAndConservation.managementAndConservationAtomized).length')
+			div.table-responsive(ng-show='(formData.usesManagementAndConservation.managementAndConservation.managementAndConservationAtomized).length')
 				table.table.table-bordered
 					thead
 						tr
-							th {{"simplePliCTerm.name.Type"|translate}}
 							th {{"simplePliCTerm.name.Objectives"|translate}}
 							th {{"simplePliCTerm.name.ManagementPlan"|translate}}
 							th {{"simplePliCTerm.name.Actions"|translate}}
+							th {{"simplePliCTerm.name.Type"|translate}}
 							th
 					
 					tbody
-						tr(ng-repeat="managementAndConservationAtomized in formData.usesManagementAndConservation.managementAndConservationAtomized track by $index")
-							td
-								| {{managementAndConservationAtomized.type}}
+						tr(ng-repeat="managementAndConservationAtomized in formData.usesManagementAndConservation.managementAndConservation.managementAndConservationAtomized track by $index")
 							td
 								| {{managementAndConservationAtomized.objective}}	
 							td
@@ -32,16 +30,13 @@ div(ng-controller='ManagementAndConservationCtrl')
 									div(ng-show='actions')
 										| {{actions.measurementOrFact.measurementType}} - {{actions.measurementOrFact.measurementValue}}
 							td
-								button.btn(ng-click='removeManagementAndConservation(formData.usesManagementAndConservation.managementAndConservationAtomized,managementAndConservationAtomized)')
+								| {{managementAndConservationAtomized.type}}
+							td
+								button.btn(ng-click='removeManagementAndConservation(formData.usesManagementAndConservation.managementAndConservation.managementAndConservationAtomized,managementAndConservationAtomized)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
-								button.btn(ng-click='editManagementAndConservation(formData.usesManagementAndConservation.managementAndConservationAtomized,managementAndConservationAtomized)')
+								button.btn(ng-click='editManagementAndConservation(formData.usesManagementAndConservation.managementAndConservation.managementAndConservationAtomized,managementAndConservationAtomized)')
 									span(class="glyphicon glyphicon-pencil", aria-hidden='true')
-			.form-group
-				label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Type
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='mt in managementType')
-							input(type='checkbox', ng-model='mt.checked', ng-click='updateSelectionManagementType(mt, managementType)')
-							| {{mt.name}}
+
 			.form-group
 				label.col-xs-2.control-label(for='objectives', translate='') simplePliCTerm.name.Objectives
 				.col-xs-10
@@ -63,6 +58,7 @@ div(ng-controller='ManagementAndConservationCtrl')
 							option(value='') - Seleccione -
 					.col-xs-2
 						button.btn.btn-success.btn-xs.pull-right(ng-click='addMeasurementOrFactVector(managementAndConservationAtomizedType.actions, measurementOrFact)') Guardar
+
 			.form-group
 				div.table-responsive(ng-show='(managementAndConservationAtomizedType.actions).length')
 					table.table.table-striped
@@ -76,13 +72,25 @@ div(ng-controller='ManagementAndConservationCtrl')
 									button.btn(ng-click='removeAction(managementAndConservationAtomizedType.actions, action)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			.form-group
+				label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Type
+				.col-xs-10
+					input#type(type='text', ng-model='managementAndConservationAtomizedType.type')
+			.form-group
 				label.col-xs-2.control-label(for='humanAndEnvironmentalRelevance', translate='') simplePliCTerm.name.HumanAndEnvironmentalRelevance
 				.col-xs-10
 					input#humanAndEnvironmentalrelevanc(type='text', ng-model='managementAndConservationAtomizedType.humanAndEnvironmentalrelevanc')
+
 			.form-group
+				hr
+				label(for='managementAndConservationUnstructured', translate='') simplePliCTerm.name.ManagementAndConservationUnstructured
+				em (opcional)
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ManagementAndConservationUnstructured"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+				textarea(rows='3', name='dispersal', ng-model='formData.usesManagementAndConservation.managementAndConservation.managementAndConservationUnstructured')
+
 				div(ng-controller='CollapseDemoCtrl')
 					.form-group
-						div.table-responsive(ng-show='(managementAndConservationAtomizedType.ancillaryData).length')
+						div.table-responsive(ng-show='(formData.usesManagementAndConservation.managementAndConservation.ancillaryData).length')
 							table.table.table-bordered
 								thead
 									tr
@@ -93,7 +101,7 @@ div(ng-controller='ManagementAndConservationCtrl')
 										th
 								
 								tbody
-									tr(ng-repeat="ancillary in managementAndConservationAtomizedType.ancillaryData track by $index")
+									tr(ng-repeat="ancillary in formData.usesManagementAndConservation.managementAndConservation.ancillaryData track by $index")
 										td
 											| {{ancillary.bibliographicCitation}}
 										td
@@ -103,11 +111,12 @@ div(ng-controller='ManagementAndConservationCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(managementAndConservationAtomizedType.ancillaryData,ancillary)')
+											button.btn(ng-click='removeAncillaryData(formData.usesManagementAndConservation.managementAndConservation.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
-											button.btn(ng-click='editAncillaryData(managementAndConservationAtomizedType.ancillaryData,ancillary)')
+											button.btn(ng-click='editAncillaryData(formData.usesManagementAndConservation.managementAndConservation.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
-						button.btn.btn-primary.btn-sm(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+													
+						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(uib-collapse='isCollapsed',id='ancillaryManagement')
 								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
@@ -139,7 +148,7 @@ div(ng-controller='ManagementAndConservationCtrl')
 															| {{ref.source}}
 														td
 															| {{ref.title}}
-														ref
+														td
 															button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-trash", aria-hidden='true')
 															button.btn(ng-click='editReference(ancillaryData.reference,ref)')
@@ -172,9 +181,5 @@ div(ng-controller='ManagementAndConservationCtrl')
 												//input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
 											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()') Cancelar
-								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(managementAndConservationAtomizedType.ancillaryData,ancillaryData)', translate='') Guardar
+								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.usesManagementAndConservation.managementAndConservation.ancillaryData,ancillaryData)', translate='') Guardar
 								button.btn.btn-primary.btn-sm(type='button', ng-click='cancelAncillaryData()') Cancelar
-			
-			.form-group
-				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addManagementAndConservation(formData.usesManagementAndConservation.managementAndConservationAtomized, managementAndConservationAtomizedType)') Guardar 
-				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='cancelManagementAndConservation()') Cancelar 

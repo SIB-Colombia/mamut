@@ -1,7 +1,186 @@
 'use strict';
 
 angular.module('app.controllers.form',[])
-.controller('formController', ['$scope', '$http', function($scope, $http) {
+.controller('formController', ['$scope', '$http', '$rootScope', 'DirectThreatsFactory', 'LegislationFactory', 'PopulationBiologyFactory', 'TerritoryFactory', 'HabitatsFactory', 'AnnualCycleFactory', 'BehaviorFactory',
+	'DispersalFactory','EcologicalSignificanceFactory', 'EnvironmentalEnvelopeFactory', 'FeedingFactory', 'InteractionsFactory', 'LifeCycleFactory', 'LifeFormFactory', 'MigratoryFactory', 'MolecularDataFactory',
+	'ReproductionFactory','InvasivenessFactory','TaxonRecordNameFactory','FullDescriptionFactory','IdentificationKeysFactory','ManagementAndConservationAtomizedFactory',
+	function($scope, $http, $rootScope, DirectThreatsFactory, LegislationFactory, PopulationBiologyFactory, TerritoryFactory, HabitatsFactory, AnnualCycleFactory,BehaviorFactory,DispersalFactory,EcologicalSignificanceFactory,
+		EnvironmentalEnvelopeFactory,FeedingFactory,InteractionsFactory,LifeCycleFactory,LifeFormFactory,MigratoryFactory,MolecularDataFactory,ReproductionFactory,InvasivenessFactory,TaxonRecordNameFactory,FullDescriptionFactory,IdentificationKeysFactory,ManagementAndConservationAtomizedFactory) {
+
+	$scope.directThreatsFactoryLocal = new DirectThreatsFactory();
+	$scope.legislationFactoryLocal = new LegislationFactory();
+	$scope.populationBiologyFactoryLocal = new PopulationBiologyFactory();
+	$scope.territoryFactoryLocal = new TerritoryFactory();
+	$scope.habitatsFactoryLocal = new HabitatsFactory();
+	$scope.annualCycleFactoryLocal = new AnnualCycleFactory();
+	$scope.behaviorFactoryLocal = new BehaviorFactory();
+	$scope.dispersalFactoryLocal = new DispersalFactory();
+	$scope.ecologicalSignificanceFactoryLocal = new EcologicalSignificanceFactory();
+	$scope.environmentalEnvelopeFactoryLocal = new EnvironmentalEnvelopeFactory();
+	$scope.feedingFactoryLocal = new FeedingFactory();
+	$scope.interactionsFactoryLocal = new InteractionsFactory();
+	$scope.lifeCycleFactoryLocal = new LifeCycleFactory();
+	$scope.lifeFormFactoryLocal = new LifeFormFactory();
+	$scope.migratoryFactoryLocal = new MigratoryFactory();
+	$scope.molecularDataFactoryLocal = new MolecularDataFactory();
+	$scope.reproductionFactoryLocal = new ReproductionFactory();
+	$scope.invasivenessFactoryLocal = new InvasivenessFactory();
+	$scope.taxonRecordNameFactoryLocal = new TaxonRecordNameFactory();
+	$scope.fullDescriptionFactoryLocal = new FullDescriptionFactory();
+	$scope.identificationKeysFactoryLocal = new IdentificationKeysFactory();
+	$scope.managementAndConservationAtomizedFactoryLocal = new ManagementAndConservationAtomizedFactory();
+
+	//General Form
+	$scope.formData = {
+		ancillaryData : [],
+		associatedParty : [],
+		abstract : '',
+		directThreats : $scope.directThreatsFactoryLocal.directThreats,
+		legislation : $scope.legislationFactoryLocal.legislation,
+		populationBiology : $scope.populationBiologyFactoryLocal.populationBiology,
+		territory : $scope.territoryFactoryLocal.territory,
+		threatStatus : [],
+		distribution : [],
+		endemicAtomized : [],
+		habitat : $scope.habitatsFactoryLocal.habitat,
+		annualCycle : $scope.annualCycleFactoryLocal.annualCycle,
+		behavior : $scope.behaviorFactoryLocal.behavior,
+		dispersal : $scope.dispersalFactoryLocal.dispersal,
+		ecologicalSignificance : $scope.ecologicalSignificanceFactoryLocal.ecologicalSignificance,
+		environmentalEnvelope  : $scope.environmentalEnvelopeFactoryLocal.environmentalEnvelope,
+		feeding : $scope.feedingFactoryLocal.feeding,
+		interactions : $scope.interactionsFactoryLocal.interactions,
+		lifeCycle : $scope.lifeCycleFactoryLocal.lifeCycle,
+		lifeForm : $scope.lifeFormFactoryLocal.lifeForm,
+		migratory : $scope.migratoryFactoryLocal.migratory,
+		molecularData : $scope.molecularDataFactoryLocal.molecularData,
+		reproduction : $scope.reproductionFactoryLocal.reproduction,
+		invasiveness : $scope.invasivenessFactoryLocal.invasiveness,
+		commonNameAtomized : [],
+		hierarchy : [],
+		synonymsAtomized : [],
+		taxonRecordName : $scope.taxonRecordNameFactoryLocal.taxonRecordName,
+		references : [],
+		briefDescription : '',
+		fullDescription : $scope.fullDescriptionFactoryLocal.fullDescription,
+		identificationKeys : $scope.identificationKeysFactoryLocal.identificationKeys,
+		usesManagementAndConservation : $scope.managementAndConservationAtomizedFactoryLocal.usesManagementAndConservation
+	};
+
+	oboe({
+		url: 'http://s3.amazonaws.com/mutis/vocabularies/test/editorPrueba.json',
+		method: 'GET'
+	})
+	.done(function(elements) {
+		if(elements.abstract !== undefined){
+			$scope.formData.abstract = elements.abstract;
+		}
+		if(elements.ancillaryData !== undefined){
+			$scope.formData.ancillaryData = elements.ancillaryData;
+		}
+		if(elements.associatedParty !== undefined){
+			$scope.formData.associatedParty = elements.associatedParty;
+		}
+		if(elements.behavior !== undefined){
+			$scope.formData.behavior = elements.behavior;
+		}
+		if(elements.commonNameAtomized !== undefined){
+			$scope.formData.commonNameAtomized = elements.commonNameAtomized;
+		}
+		if(elements.directThreats !== undefined){
+			$scope.formData.directThreats = elements.directThreats;
+		}
+		if(elements.dispersal !== undefined){
+			$scope.formData.dispersal = elements.dispersal;
+
+			angular.forEach($scope.dispersalType, function(item) {
+	            if(elements.dispersal.dispersalAtomized.type!==null && elements.dispersal.dispersalAtomized.type === item.name){
+	  				item.checked = true;
+				}
+        	});
+
+        	angular.forEach($scope.structureDispersed, function(item) {
+	            if(elements.dispersal.dispersalAtomized.structureDispersed!==null && elements.dispersal.dispersalAtomized.structureDispersed === item.name){
+	  				item.checked = true;
+				}
+        	});
+		}
+		if(elements.distribution !== undefined){
+			$scope.formData.distribution = elements.distribution;
+		}
+		if(elements.ecologicalSignificance !== undefined){
+			$scope.formData.ecologicalSignificance = elements.ecologicalSignificance;
+		}
+		if(elements.endemicAtomized !== undefined){
+			$scope.formData.endemicAtomized = elements.endemicAtomized;
+		}
+		if(elements.environmentalEnvelope !== undefined){
+			$scope.formData.environmentalEnvelope = elements.environmentalEnvelope;
+		}
+		if(elements.feeding !== undefined){
+			$scope.formData.feeding = elements.feeding;
+		}
+		if(elements.fullDescription !== undefined){
+			$scope.formData.fullDescription = elements.fullDescription;
+		}
+		if(elements.habitat !== undefined){
+			$scope.formData.habitat = elements.habitat;
+		}
+		if(elements.hierarchy !== undefined){
+			$scope.formData.hierarchy = elements.hierarchy;
+		}
+		if(elements.identificationKeys !== undefined){
+			$scope.formData.identificationKeys = elements.identificationKeys;
+		}
+		if(elements.interactions !== undefined){
+			$scope.formData.interactions = elements.interactions;
+		}
+		if(elements.invasiveness !== undefined){
+			$scope.formData.invasiveness = elements.invasiveness;
+		}
+		if(elements.legislation !== undefined){
+			$scope.formData.legislation = elements.legislation;
+		}
+		if(elements.lifeCycle !== undefined){
+			$scope.formData.lifeCycle = elements.lifeCycle;
+		}
+		if(elements.lifeForm !== undefined){
+			$scope.formData.lifeForm = elements.lifeForm;
+		}
+		if(elements.migratory !== undefined){
+			$scope.formData.migratory = elements.migratory;
+		}
+		if(elements.molecularData !== undefined){
+			$scope.formData.molecularData = elements.molecularData;
+		}
+		if(elements.populationBiology !== undefined){
+			$scope.formData.populationBiology = elements.populationBiology;
+		}
+		if(elements.references !== undefined){
+			$scope.formData.references = elements.references;
+		}
+		if(elements.reproduction !== undefined){
+			$scope.formData.reproduction = elements.reproduction;
+		}
+		if(elements.synonymsAtomized !== undefined){
+			$scope.formData.synonymsAtomized = elements.synonymsAtomized;
+		}
+		if(elements.taxonRecordName !== undefined){
+			$scope.formData.taxonRecordName = elements.taxonRecordName;
+		}
+		if(elements.territory !== undefined){
+			$scope.formData.territory = elements.territory;
+		}
+		if(elements.threatStatus !== undefined){
+			$scope.formData.threatStatus = elements.threatStatus;
+		}
+		if(elements.usesManagementAndConservation !== undefined){
+			$scope.formData.usesManagementAndConservation = elements.usesManagementAndConservation;
+		}
+	}).fail(function() {
+
+		// we don't got it
+	});
 
 	$http.get('/resources/distribution.json')
 		.then(function(res) {
@@ -186,8 +365,7 @@ angular.module('app.controllers.form',[])
 
 		//Variables
 
-		//General Form
-		$scope.formData = {};
+
 		
 		$scope.selectedAttr = [];
 		$scope.date = new Date();	

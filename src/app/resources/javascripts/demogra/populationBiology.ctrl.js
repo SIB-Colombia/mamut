@@ -1,11 +1,9 @@
 'use strict';
 
 angular.module('app.controllers.populationBiology',[])
-.controller('PopulationBiologyCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','PopulationBiologyFactory', function($scope,ReferenceFactory,AncillaryDataFactory,PopulationBiologyFactory) {
+.controller('PopulationBiologyCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory',function($scope,ReferenceFactory,AncillaryDataFactory) {
 	
-	var populationBiologyFactoryLocal = new PopulationBiologyFactory();
-	$scope.populationBiologyAtomized = populationBiologyFactoryLocal.populationBiologyAtomized;
-	$scope.formData.populationBiology = populationBiologyFactoryLocal.populationBiology;
+	$scope.populationBiologyAtomized = $scope.populationBiologyFactoryLocal.populationBiologyAtomized;
 	
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -28,14 +26,14 @@ angular.module('app.controllers.populationBiology',[])
 	
 	$scope.addPopulationBiologyAtomized = function(list, populationBiologyAtomized) {
 		if (populationBiologyAtomized.region !== '') {
-			populationBiologyFactoryLocal.add(list, populationBiologyAtomized);
+			$scope.populationBiologyFactoryLocal.add(list, populationBiologyAtomized);
 
 			$scope.populationBiologyAtomized = origPBA;
 			origPBA = angular.copy($scope.populationBiologyAtomized);
 		}
 	};
 	$scope.removePopulation = function(list, populationBiologyAtomized) {
-		populationBiologyFactoryLocal.delete(list, populationBiologyAtomized);
+		$scope.populationBiologyFactoryLocal.delete(list, populationBiologyAtomized);
 	};
 
 	$scope.editPopulation = function(list, populationBiologyAtomized) {
@@ -45,6 +43,10 @@ angular.module('app.controllers.populationBiology',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

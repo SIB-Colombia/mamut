@@ -1,12 +1,10 @@
 'use strict';
 
 angular.module('app.controllers.invasiveness',[])
-.controller('InvasivenessCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','InvasivenessFactory', function($scope,ReferenceFactory,AncillaryDataFactory,InvasivenessFactory) {
-	
-	var invasivenessFactoryLocal = new InvasivenessFactory();
-	$scope.invasivenessAtomizedType = invasivenessFactoryLocal.invasivenessAtomizedType;
-	$scope.formData.invasiveness = invasivenessFactoryLocal.invasiveness;
-	
+.controller('InvasivenessCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+
+	$scope.invasivenessAtomizedType = $scope.invasivenessFactoryLocal.invasivenessAtomizedType;
+
 	//Ancillary
 	var ancillaryDataFactoryUn = new AncillaryDataFactory();
 	$scope.ancillaryData = ancillaryDataFactoryUn.ancillaryData;
@@ -35,36 +33,35 @@ angular.module('app.controllers.invasiveness',[])
 	};
 	
 	$scope.addInvasivenessAtomizedType = function(list, invasiveness) {
-		invasivenessFactoryLocal.add(list, invasiveness);
+		$scope.invasivenessFactoryLocal.add(list, invasiveness);
 		//Reset the scope variable
 		$scope.invasivenessAtomizedType = origI;
 		origI = angular.copy($scope.invasivenessAtomizedType);
-		$('input:checkbox').removeAttr('checked');
+		$scope.UpdateCheckBoxes(invasiveness, false);
 	};
 
 	$scope.removeInvasivenessAtomized= function(list,invasiveness){
-		invasivenessFactoryLocal.delete(list,invasiveness);	
+		$scope.invasivenessFactoryLocal.delete(list,invasiveness);	
 	};
 
 	$scope.editInvasivenessAtomized = function(list,invasiveness) {
 		$scope.invasivenessAtomizedType = angular.copy(invasiveness);
-		angular.forEach($scope.origin, function(item) {
-
-            if(invasiveness.origin!==null && invasiveness.origin === item.name){
-            	console.log($scope.ori);
-				item.checked = true;
-			}
-        });
-		
+		$scope.UpdateCheckBoxes(invasiveness, true);		
 	};
 
-	$scope.cancelInvasivenessAtomizedType = function() {
+	$scope.cancelInvasivenessAtomizedType = function(invasiveness) {
 		$scope.invasivenessAtomizedType = angular.copy(origI);
+		$scope.UpdateCheckBoxes(invasiveness,false);
+
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryUn.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryUn.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryUn.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
@@ -113,7 +110,11 @@ angular.module('app.controllers.invasiveness',[])
 	//Atomized fields
 	$scope.addAncillaryDataAto = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			referenceFactoryAto.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryAto.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryAto.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryAto.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryDataAto = origAD;
 			origAD = angular.copy($scope.ancillaryDataAto);
@@ -149,6 +150,82 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.cancelReferenceAto = function() {
 		$scope.referenceAto = angular.copy(origR);
 		$('#referenceInvasivenessAto').collapse("hide");
+	};
+
+	$scope.UpdateCheckBoxes = function(invasiveness,state){
+		angular.forEach($scope.origin, function(item) {
+            if(invasiveness.origin!==null && invasiveness.origin === item.name){
+  				item.checked = state;
+			}
+        });
+
+        angular.forEach($scope.presence, function(item) {
+            if(invasiveness.presence!==null && invasiveness.presence === item.name){
+  				item.checked = state;
+			}
+        });
+
+        angular.forEach($scope.persistence, function(item) {
+            if(invasiveness.persistence!==null && invasiveness.persistence === item.name){
+  				item.checked = state;
+			}
+        });
+
+        angular.forEach($scope.distribution, function(item) {
+        	angular.forEach(invasiveness.distribution, function(distribution) {
+        		if(distribution!==null && distribution === item.name){
+	  				item.checked = state;
+				}
+        	});
+        });
+
+        angular.forEach($scope.harmful, function(item) {
+            if(invasiveness.harmful!==null && invasiveness.harmful === item.name){
+  				item.checked = state;
+			}
+        });
+
+        angular.forEach($scope.abundance, function(item) {
+            if(invasiveness.abundance!==null && invasiveness.abundance === item.name){
+  				item.checked = state;
+			}
+        });
+
+        angular.forEach($scope.trend, function(item) {
+            if(invasiveness.trend!==null && invasiveness.trend === item.name){
+  				item.checked = state;
+			}
+        });
+
+        angular.forEach($scope.rateOfSpread, function(item) {
+            if(invasiveness.rateOfSpread!==null && invasiveness.rateOfSpread === item.name){
+  				item.checked = state;
+			}
+        });
+
+        angular.forEach($scope.regulatoryListing, function(item) {
+            if(invasiveness.regulatoryListing!==null && invasiveness.regulatoryListing === item.name){
+  				item.checked = state;
+			}
+        });
+
+        angular.forEach($scope.localityType, function(item) {
+            if(invasiveness.localityType!==null && invasiveness.localityType === item.name){
+  				item.checked = state;
+			}
+        });
+
+        angular.forEach($scope.locationStandard, function(item) {
+            if(invasiveness.locationValue!==null && invasiveness.locationValue === item.name){
+  				item.checked = state;
+			}
+        });
+
+        angular.forEach($scope.publicationDatePrecision, function(item) {
+            if(invasiveness.publicationDatePrecision!==null && invasiveness.publicationDatePrecision === item.name){
+  				item.checked = state;
+			}
+        });
 	};
 
 }]);

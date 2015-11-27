@@ -1,11 +1,9 @@
 'use strict';
 
 angular.module('app.controllers.managementAndConservation',[])
-.controller('ManagementAndConservationCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','ManagementAndConservationAtomizedFactory', function($scope,ReferenceFactory,AncillaryDataFactory,ManagementAndConservationAtomizedFactory) {
+.controller('ManagementAndConservationCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
 	
-	var managementAndConservationAtomizedFactoryLocal = new ManagementAndConservationAtomizedFactory();
-	$scope.managementAndConservationAtomizedType = managementAndConservationAtomizedFactoryLocal.managementAndConservationAtomizedType;
-	$scope.formData.usesManagementAndConservation = managementAndConservationAtomizedFactoryLocal.usesManagementAndConservation;
+	$scope.managementAndConservationAtomizedType = $scope.managementAndConservationAtomizedFactoryLocal.managementAndConservationAtomizedType;
 	
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -27,14 +25,14 @@ angular.module('app.controllers.managementAndConservation',[])
 	};
 
 	$scope.addManagementAndConservation = function(list, managementAndConservation) {
-		managementAndConservationAtomizedFactoryLocal.add(list, managementAndConservation);
+		$scope.managementAndConservationAtomizedFactoryLocal.add(list, managementAndConservation);
 		//Reset the scope variable
 		$scope.managementAndConservationAtomizedType = origMC;
 		origMC = angular.copy($scope.managementAndConservationAtomizedType);
 	};
 
 	$scope.removeManagementAndConservation = function(list, managementAndConservation) {
-		managementAndConservationAtomizedFactoryLocal.delete(list, managementAndConservation);
+		$scope.managementAndConservationAtomizedFactoryLocal.delete(list, managementAndConservation);
 	};
 
 	$scope.editManagementAndConservation = function(list, managementAndConservation) {
@@ -53,6 +51,10 @@ angular.module('app.controllers.managementAndConservation',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

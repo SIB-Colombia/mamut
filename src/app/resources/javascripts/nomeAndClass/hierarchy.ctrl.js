@@ -14,8 +14,6 @@ angular.module('app.controllers.hierarchy',[])
 	var referenceFactoryLocal = new ReferenceFactory();
 	$scope.reference = referenceFactoryLocal.reference;
 	
-	//hierarchy vector for FormData
-	$scope.formData.hierarchy = [];
 
 	//reset variables
 	var origH = angular.copy($scope.hierarchy);
@@ -54,6 +52,10 @@ angular.module('app.controllers.hierarchy',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

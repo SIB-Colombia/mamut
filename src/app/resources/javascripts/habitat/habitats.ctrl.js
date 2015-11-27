@@ -1,11 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.habitat',[])
-.controller('HabitatsCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','HabitatsFactory', function($scope,ReferenceFactory,AncillaryDataFactory,HabitatsFactory) {
-	
-	//habitat
-	var habitatsFactoryLocal = new HabitatsFactory();
-	$scope.formData.habitat = habitatsFactoryLocal.habitat;
+.controller('HabitatsCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
 	
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -26,12 +22,16 @@ angular.module('app.controllers.habitat',[])
 	};
 
 	$scope.removeHabitatAtomized= function(list,habitatAtomized){
-		habitatsFactoryLocal.delete(list,habitatAtomized);	
+		$scope.habitatsFactoryLocal.delete(list,habitatAtomized);	
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

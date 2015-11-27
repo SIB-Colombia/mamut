@@ -1,10 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.reproduction',[])
-.controller('ReproductionCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','ReproductionFactory', function($scope,ReferenceFactory,AncillaryDataFactory,ReproductionFactory) {
-	//reproduction
-	var reproductionFactoryLocal = new ReproductionFactory();
-	$scope.formData.reproduction = reproductionFactoryLocal.reproduction;
+.controller('ReproductionCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
 	
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -24,12 +21,16 @@ angular.module('app.controllers.reproduction',[])
 	};
 
 	$scope.removeReproductionAtomized= function(list,reproductionAtomized){
-		reproductionFactoryLocal.delete(list,reproductionAtomized);	
+		$scope.reproductionFactoryLocal.delete(list,reproductionAtomized);	
 	};
 	
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

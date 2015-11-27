@@ -1,12 +1,10 @@
 'use strict';
 
 angular.module('app.controllers.legislation',[])
-.controller('LegislationCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','LegislationFactory', function($scope,ReferenceFactory,AncillaryDataFactory,LegislationFactory) {
+.controller('LegislationCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory',function($scope,ReferenceFactory,AncillaryDataFactory) {
 	
-	var legislationFactoryLocal = new LegislationFactory();
-	$scope.legislationAtomizedType = legislationFactoryLocal.legislationAtomizedType;
-	$scope.formData.legislation = legislationFactoryLocal.legislation;
-	
+	$scope.legislationAtomizedType = $scope.legislationFactoryLocal.legislationAtomizedType;
+
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
 	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
@@ -28,24 +26,31 @@ angular.module('app.controllers.legislation',[])
 
 	$scope.addLegislationAtomized= function(list,legislationAtomized){
 		if(legislationAtomized.legislationName !== ''){
-			legislationFactoryLocal.add(list,legislationAtomized);
+			$scope.legislationFactoryLocal.add(list,legislationAtomized);
 			//Reset the scope variable
 			$scope.legislationAtomizedType = origLA;
 			origLA = angular.copy($scope.legislationAtomizedType);
 		}	
 	};
 
-	$scope.removeLegislation = function(list, legislationAtomized) {
-		legislationFactoryLocal.delete(list,legislationAtomized);
+	$scope.removeLegislationAtomized = function(list, legislationAtomized) {
+		$scope.legislationFactoryLocal.delete(list,legislationAtomized);
 	};
 
-	$scope.editLegislation = function(list, legislationAtomized) {
+	$scope.editLegislationAtomized = function(list, legislationAtomized) {
 		$scope.legislationAtomizedType = angular.copy(legislationAtomized);
+	};
+	$scope.cancelLegislationAtomized = function() {
+		$scope.legislationAtomizedType = angular.copy(origLA);
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

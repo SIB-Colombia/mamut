@@ -7,7 +7,7 @@ div(ng-controller='InvasivenessCtrl')
 					spant
 						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Invasiveness"|translate}}')
 							span.glyphicon.glyphicon-info-sign
-				button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addInvasiveness()') 
+				//button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addInvasiveness()') 
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 			.panel-body
 				div.table-responsive(ng-show='(formData.invasiveness.invasivenessAtomized).length')
@@ -382,7 +382,7 @@ div(ng-controller='InvasivenessCtrl')
 				
 				.form-group
 					button.btn.btn-success.btn-sm(type='button', ng-click='addInvasivenessAtomizedType(formData.invasiveness.invasivenessAtomized, invasivenessAtomizedType)') Guardar
-					button.btn.btn-success.btn-sm(type='button', ng-click='cancelInvasivenessAtomizedType()') Cancelar
+					button.btn.btn-success.btn-sm(type='button', ng-click='cancelInvasivenessAtomizedType(invasivenessAtomizedType)') Cancelar
 				.form-group
 					hr
 					label(for='invasivenessUnstructured', translate='') Descripción

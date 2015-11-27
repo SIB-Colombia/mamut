@@ -5,7 +5,6 @@ angular.module('app.controllers.associatedParty',[])
 	
 	var associatedPartyFactoryLocal = new AssociatedPartyFactory();
 	$scope.associatedParty = associatedPartyFactoryLocal.associatedParty;
-	$scope.formData.associatedParty = [];
 
 	var origAP = angular.copy($scope.associatedParty);
 

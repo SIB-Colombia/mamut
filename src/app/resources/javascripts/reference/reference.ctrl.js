@@ -7,7 +7,6 @@ angular.module('app.controllers.reference',[])
 	var referenceFactoryLocal = new ReferenceFactory();
 	$scope.reference = referenceFactoryLocal.reference;
 	
-	$scope.formData.references = [];
 	var origR = angular.copy($scope.reference);
 
 	$scope.addReferences = function(){

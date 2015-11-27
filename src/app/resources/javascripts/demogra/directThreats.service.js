@@ -5,18 +5,42 @@ angular.module('app.services.directThreats',[])
 	return function() {
 		this.directThreats = {
 			directThreatsAtomized: {
-				measurementID: '',
-				measurementType: '',
-				measurementValue: '',
-				measurementAccuracy: '',
-				measurementUnit: '',
-				measurementDeterminedDate: '',
-				measurementDeterminedBy: [],
-				measurementMethod: '',
-				measurementRemarks: '',
-				relatedTo: ''
+				measurementOrFact : {
+					measurementID: '',
+					measurementType: '',
+					measurementValue: '',
+					measurementAccuracy: '',
+					measurementUnit: '',
+					measurementDeterminedDate: '',
+					measurementDeterminedBy: [],
+					measurementMethod: '',
+					measurementRemarks: '',
+					relatedTo: ''
+				},
+				ancillaryData : {
+					identifier:'',
+					dataType:'',
+					mimeType:'',
+					agent:[],
+					created:'',
+					modified:'',
+					license:'',
+					rights:'',
+					rightsHolder:'',
+					bibliographicCitation:'',
+					audience:[],
+					source:'',
+					subject:[],
+					description:'',
+					mediaURL:[],
+					thumbnailURL:'',
+					location:'',
+					geoPoint:'',
+					reference:[],
+					additionalInformation:'',
+					dataObject:''
+				}
 			},
-			ancillaryDataA: [],
 			directThreatsUnstructured: '',
 			ancillaryData: []
 		};

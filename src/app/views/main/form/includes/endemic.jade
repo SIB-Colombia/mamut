@@ -6,7 +6,7 @@ div(ng-controller='EndemicCtrl')
 				spant
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.EndemicAtomized"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-			button.btn.btn-success.btn-xs.pull-right(ng-click='addEndemic(formData.endemicAtomized,endemicAtomizedType)')
+			//button.btn.btn-success.btn-xs.pull-right(ng-click='addEndemic(formData.endemicAtomized,endemicAtomizedType)')
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true') 
 		.panel-body
 			div.table-responsive(ng-show='(formData.endemicAtomized).length')
@@ -53,7 +53,6 @@ div(ng-controller='EndemicCtrl')
 				label.col-xs-2.control-label(for='endemicIn', translate='') simplePliCTerm.name.EndemicIn
 				.col-xs-10
 					input(type='text', ng-model='endemicAtomizedType.endemicIn')
-				
 				
 			div(ng-controller='CollapseDemoCtrl')
 				.form-group
@@ -149,3 +148,5 @@ div(ng-controller='EndemicCtrl')
 										button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()') Cancelar
 							button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(endemicAtomizedType.ancillaryData,ancillaryData)', translate='') Guardar
 							button.btn.btn-primary.btn-sm(type='button', ng-click='cancelAncillaryData()') Cancelar
+			.form-group
+				button.btn.btn-success.btn-sm.pull-right(ng-click='addEndemic(formData.endemicAtomized,endemicAtomizedType)') Guardar

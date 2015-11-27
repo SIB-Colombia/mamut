@@ -1,10 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.ecologicalSignificance',[])
-.controller('EcologicalSignificanceCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','EcologicalSignificanceFactory', function($scope,ReferenceFactory,AncillaryDataFactory,EcologicalSignificanceFactory) {
-	
-	var ecologicalSignificanceFactoryLocal = new EcologicalSignificanceFactory();
-	$scope.formData.ecologicalSignificance = ecologicalSignificanceFactoryLocal.ecologicalSignificance;
+.controller('EcologicalSignificanceCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
 	
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -25,12 +22,16 @@ angular.module('app.controllers.ecologicalSignificance',[])
 	};
 
 	$scope.removeEcologicalSignificanceAtomized= function(list,ecologicalSignificanceAtomized){
-		ecologicalSignificanceFactoryLocal.delete(list,ecologicalSignificanceAtomized);	
+		$scope.ecologicalSignificanceFactoryLocal.delete(list,ecologicalSignificanceAtomized);	
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

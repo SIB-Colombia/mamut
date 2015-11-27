@@ -1,11 +1,9 @@
 'use strict';
 
 angular.module('app.controllers.migratory',[])
-.controller('MigratoryCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','MigratoryFactory', function($scope,ReferenceFactory,AncillaryDataFactory,MigratoryFactory) {
+.controller('MigratoryCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
 	
-	var migratoryFactoryLocal = new MigratoryFactory();
-	$scope.migratoryAtomizedType = migratoryFactoryLocal.migratoryAtomizedType;
-	$scope.formData.migratory = migratoryFactoryLocal.migratory;
+	$scope.migratoryAtomizedType = $scope.migratoryFactoryLocal.migratoryAtomizedType;
 	
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -27,13 +25,13 @@ angular.module('app.controllers.migratory',[])
 	};
 
 	$scope.addMigratoryAtomizedType = function(list,migratoryAtomizedType){
-		migratoryFactoryLocal.add(list,migratoryAtomizedType);
+		$scope.migratoryFactoryLocal.add(list,migratoryAtomizedType);
 		$scope.migratoryAtomizedType = origMA;
 		origMA = angular.copy($scope.migratoryAtomizedType);
 	};
 
 	$scope.removeMigratoryAtomized = function(list,migratoryAtomized){
-		migratoryFactoryLocal.delete(list,migratoryAtomized);
+		$scope.migratoryFactoryLocal.delete(list,migratoryAtomized);
 	};
 
 	$scope.editMigratoryAtomized = function(list,migratoryAtomized) {
@@ -47,6 +45,10 @@ angular.module('app.controllers.migratory',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

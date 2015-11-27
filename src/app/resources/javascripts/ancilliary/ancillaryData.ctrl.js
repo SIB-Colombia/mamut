@@ -10,7 +10,6 @@ angular.module('app.controllers.ancillary',[])
 	var referenceFactoryLocal = new ReferenceFactory();
 	$scope.reference = referenceFactoryLocal.reference;
 
-	$scope.formData.ancillaryData = [];
 	var origAD = angular.copy($scope.ancillaryData);
 	var origR = angular.copy($scope.reference);
 
@@ -23,7 +22,13 @@ angular.module('app.controllers.ancillary',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList, ancillary){
 		if (ancillary.source !== '') {
+			
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList, ancillary);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
+
+			//Reset var
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			if($scope.image !== undefined){

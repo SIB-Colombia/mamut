@@ -6,7 +6,7 @@ div(ng-controller='MolecularDataCtrl')
 				spant
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.MolecularData"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-				button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addMolecularData()') 
+				//button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addMolecularData()') 
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			//.form-group
@@ -68,7 +68,7 @@ div(ng-controller='MolecularDataCtrl')
 												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
-							div(uib-collapse='isCollapsed')
+							div(uib-collapse='isCollapsed', id="ancillaryMolecular")
 								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
 								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
 								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
@@ -104,7 +104,7 @@ div(ng-controller='MolecularDataCtrl')
 															button.btn(ng-click='editReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				
-										div(uib-collapse='isCollapsed_1')
+										div(uib-collapse='isCollapsed_1', id="referenceMolecular")
 											.form-group
 												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
 													option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
@@ -130,4 +130,6 @@ div(ng-controller='MolecularDataCtrl')
 												input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												//input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()', translate='') Cancelar
 								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.molecularData.ancillaryData,ancillaryData)', translate='') Guardar
+								button.btn.btn-primary.btn-sm(type='button', ng-click='cancelAncillaryData()', translate='') Cancelar

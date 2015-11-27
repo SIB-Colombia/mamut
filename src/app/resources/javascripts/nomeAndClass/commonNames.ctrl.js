@@ -14,9 +14,6 @@ angular.module('app.controllers.commonName',[])
 	var referenceFactoryLocal = new ReferenceFactory();
 	$scope.reference = referenceFactoryLocal.reference;
 
-	//comon name vector for FormData
-	$scope.formData.commonNameAtomized = [];
-	
 	//reset variables
 	var origCN = angular.copy($scope.commonName);
 	var origR = angular.copy($scope.reference);
@@ -54,6 +51,10 @@ angular.module('app.controllers.commonName',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

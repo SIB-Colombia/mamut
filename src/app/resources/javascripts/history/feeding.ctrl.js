@@ -1,12 +1,10 @@
 'use strict';
 
 angular.module('app.controllers.feeding',[])
-.controller('FeedingCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','FeedingFactory', function($scope,ReferenceFactory,AncillaryDataFactory,FeedingFactory) {
+.controller('FeedingCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
 	//feeding
-	var feedingFactoryLocal = new FeedingFactory();
-	$scope.thropic = feedingFactoryLocal.thropic;
-	$scope.feedingAtomizedType = feedingFactoryLocal.feedingAtomizedType;
-	$scope.formData.feeding = feedingFactoryLocal.feeding;
+	$scope.thropic = $scope.feedingFactoryLocal.thropic;
+	$scope.feedingAtomizedType = $scope.feedingFactoryLocal.feedingAtomizedType;
 
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -28,7 +26,7 @@ angular.module('app.controllers.feeding',[])
 
 	$scope.addFeedingAtomizedType = function(feeding, feedingAtomizedType) {
 		if (feeding.type !== '') {
-			feedingFactoryLocal.add(feeding,feedingAtomizedType);
+			$scope.feedingFactoryLocal.add(feeding,feedingAtomizedType);
 			//Reset the scope variable
 			$scope.feedingAtomizedType = origFA;
 			origFA = angular.copy($scope.feedingAtomizedType);
@@ -36,12 +34,16 @@ angular.module('app.controllers.feeding',[])
 		}
 	};
 	$scope.removeFeedingAtomizedType= function(list,feedingAtomizedType){
-		feedingFactoryLocal.delete(list,feedingAtomizedType);	
+		$scope.feedingFactoryLocal.delete(list,feedingAtomizedType);	
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

@@ -2,7 +2,6 @@
 
 angular.module('app.controllers.abstract',[])
 .controller('AbstractCtrl', ['$scope', function($scope) {
-	$scope.formData.abstract = '';
 	//ADD
 	$scope.addAbstract = function() {
 		if ($scope.formData.abstract !== '') {

@@ -3,6 +3,7 @@
 angular.module('app.services.managementAndConservation',[])
 .factory('ManagementAndConservationAtomizedFactory', function(){
 	return function() {
+
 		this.managementAndConservationAtomizedType = {
 			type: '',
 			objective: '',
@@ -11,12 +12,14 @@ angular.module('app.services.managementAndConservation',[])
 			humanAndEnvironmentalrelevanc: '',
 			ancillaryData: []
 		};
-		
+
 		this.usesManagementAndConservation = {
 			usesAtomized: [],
-			managementAndConservationAtomized: [],
-			managementAndConservationUnstructured: '',
-			ancillaryData: []
+			managementAndConservation : {
+				managementAndConservationAtomized : [],
+				managementAndConservationUnstructured : '',
+				ancillaryData: []
+			}
 		};
 
 		this.add = function(list,managementAndConservationAtomizedType){

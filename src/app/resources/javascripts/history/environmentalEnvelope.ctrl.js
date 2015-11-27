@@ -1,11 +1,8 @@
 'use strict';
 
 angular.module('app.controllers.environmentalEnvelope',[])
-.controller('EnvironmentalEnvelopeCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','EnvironmentalEnvelopeFactory', function($scope,ReferenceFactory,AncillaryDataFactory,EnvironmentalEnvelopeFactory) {
-	
-	var environmentalEnvelopeFactoryLocal = new EnvironmentalEnvelopeFactory();
-	$scope.formData.environmentalEnvelope = environmentalEnvelopeFactoryLocal.environmentalEnvelope;
-	
+.controller('EnvironmentalEnvelopeCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+		
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
 	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
@@ -25,12 +22,16 @@ angular.module('app.controllers.environmentalEnvelope',[])
 	};
 
 	$scope.removeEnvironmentalEnvelopeAtomized= function(list,environmentalEnvelopeAtomized){
-		environmentalEnvelopeFactoryLocal.delete(list,environmentalEnvelopeAtomized);	
+		$scope.environmentalEnvelopeFactoryLocal.delete(list,environmentalEnvelopeAtomized);	
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

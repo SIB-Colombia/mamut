@@ -40,9 +40,7 @@ angular.module('app.services.molecularData',[])
 					additionalInformation:'',
 					dataObject:''
 				}
-			},
-			relatedTo: '',
-			ancillaryData: []
+			}
 		};
 
 		this.molecularData = {

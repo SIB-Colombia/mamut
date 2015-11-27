@@ -1,11 +1,8 @@
 'use strict';
 
 angular.module('app.controllers.lifeCycle',[])
-.controller('LifeCycleCtrl', ['$scope', 'ReferenceFactory', 'AncillaryDataFactory','LifeCycleFactory', function($scope,ReferenceFactory,AncillaryDataFactory,LifeCycleFactory) {
-	//lifeCycle
-	var lifeCycleFactoryLocal = new LifeCycleFactory();
-	$scope.formData.lifeCycle = lifeCycleFactoryLocal.lifeCycle;
-	
+.controller('LifeCycleCtrl', ['$scope', 'ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
 	$scope.ancillaryData = ancillaryDataFactoryLocal.ancillaryData;
@@ -24,12 +21,16 @@ angular.module('app.controllers.lifeCycle',[])
 	};
 
 	$scope.removeLifeCycleAtomized= function(list,lifeCycleAtomized){
-		lifeCycleFactoryLocal.delete(list,lifeCycleAtomized);	
+		$scope.lifeCycleFactoryLocal.delete(list,lifeCycleAtomized);	
 	};
 	
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

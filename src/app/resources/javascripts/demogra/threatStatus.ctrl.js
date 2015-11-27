@@ -5,7 +5,6 @@ angular.module('app.controllers.threatStatus',[])
 	
 	var threatStatusFactoryLocal = new ThreatStatusFactory();
 	$scope.threatStatusClass = threatStatusFactoryLocal.threatStatusClass;
-	$scope.formData.threatStatus = [];
 	
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -47,6 +46,10 @@ angular.module('app.controllers.threatStatus',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

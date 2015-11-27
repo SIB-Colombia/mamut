@@ -6,7 +6,6 @@ angular.module('app.controllers.distribution',[])
 	var distributionFactoryLocal = new DistributionFactory();
 	$scope.distributionOpt2 = distributionFactoryLocal.distributionOpt2;
 	$scope.distributionClass = distributionFactoryLocal.distributionClass;
-	$scope.formData.distribution = [];
 	
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -56,6 +55,10 @@ angular.module('app.controllers.distribution',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

@@ -6,7 +6,7 @@ div(ng-controller='ThreatStatusCtrl')
 				spant
 					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ThreatStatus"|translate}}')
 						span.glyphicon.glyphicon-info-sign
-			button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addThreatStatus()') 
+			//button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addThreatStatus()') 
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			div.table-responsive(ng-show='(formData.threatStatus).length')
@@ -34,7 +34,7 @@ div(ng-controller='ThreatStatusCtrl')
 							td
 								button.btn(ng-click='removeThreatStatus(formData.threatStatus,threatStatusClass)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
-								button.btn(ng-click='editThreatStatus(formData.threatStatus,threatStatusClass)')
+								//button.btn(ng-click='editThreatStatus(formData.threatStatus,threatStatusClass)')
 									span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 
 			.form-group

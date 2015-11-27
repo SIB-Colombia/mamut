@@ -1,10 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.dispersal',[])
-.controller('DispersalCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','DispersalFactory', function($scope,ReferenceFactory,AncillaryDataFactory,DispersalFactory) {
-	//dispersal
-	var dispersalFactoryLocal = new DispersalFactory();
-	$scope.formData.dispersal = dispersalFactoryLocal.dispersal;
+.controller('DispersalCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory',function($scope,ReferenceFactory,AncillaryDataFactory) {
 
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -25,12 +22,16 @@ angular.module('app.controllers.dispersal',[])
 	};
 
 	$scope.removeDispersalAtomized= function(list,purpose){
-		dispersalFactoryLocal.delete(list,purpose);	
+		$scope.dispersalFactoryLocal.delete(list,purpose);	
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

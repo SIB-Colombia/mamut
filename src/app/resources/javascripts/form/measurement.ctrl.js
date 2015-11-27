@@ -324,10 +324,10 @@ angular.module('app.controllers.measurement',[])
 			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
-					$scope.directThreats.directThreatsAtomized.measurementOrFact.measurementType = attr.measurementtype;
-					$scope.directThreats.directThreatsAtomized.measurementOrFact.measurementValue = name;
-					$scope.directThreats.directThreatsAtomized.ancillaryData.bibliographicCitation = attr.referencia;
-					$scope.directThreats.directThreatsAtomized.ancillaryData.source = attr.url;
+					$scope.formData.directThreats.directThreatsAtomized.measurementOrFact.measurementType = attr.measurementtype;
+					$scope.formData.directThreats.directThreatsAtomized.measurementOrFact.measurementValue = name;
+					$scope.formData.directThreats.directThreatsAtomized.ancillaryData.bibliographicCitation = attr.referencia;
+					$scope.formData.directThreats.directThreatsAtomized.ancillaryData.source = attr.url;
 				}
 			});
 		}

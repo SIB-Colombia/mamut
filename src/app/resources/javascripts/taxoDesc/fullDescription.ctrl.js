@@ -1,10 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.fullDescription',[])
-.controller('FullDescriptionCtrl', ['$scope', 'ReferenceFactory', 'AncillaryDataFactory', 'FullDescriptionFactory', function($scope, ReferenceFactory,AncillaryDataFactory,FullDescriptionFactory) {
-	//fullDescription
-	var fullDescriptionFactoryLocal = new FullDescriptionFactory();
-	$scope.formData.fullDescription = fullDescriptionFactoryLocal.fullDescription;
+.controller('FullDescriptionCtrl', ['$scope', 'ReferenceFactory', 'AncillaryDataFactory',  function($scope, ReferenceFactory,AncillaryDataFactory) {
 	
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -27,6 +24,10 @@ angular.module('app.controllers.fullDescription',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			});
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
