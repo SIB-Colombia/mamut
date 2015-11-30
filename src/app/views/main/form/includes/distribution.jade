@@ -24,7 +24,7 @@ div(ng-controller='DistributionCtrl')
 							td
 								| {{distribution.distributionScope.type}}
 							td
-								| {{distribution.temporalCoverage.startDate}} - {{distribution.temporalCoverage.endDate}}	
+								| {{distribution.temporalCoverage.startDate|split:'T':0}} / {{distribution.temporalCoverage.endDate|split:'T':0}}	
 							td
 								.selected-item(ng-repeat='distributionA in distribution.distributionAtomized')
 									div(ng-show='distributionA')

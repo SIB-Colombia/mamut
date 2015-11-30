@@ -29,11 +29,11 @@ div(ng-controller='InvasivenessCtrl')
 										div(ng-show='invasivenessAtomizedType.harmful')
 											| {{"simplePliCTerm.name.harmful"|translate}} : {{invasivenessAtomizedType.harmful}}
 										div(ng-show='invasivenessAtomizedType.modified')
-											| {{"simplePliCTerm.name.modified"|translate}} : {{invasivenessAtomizedType.modified}}
+											| {{"simplePliCTerm.name.modified"|translate}} : {{invasivenessAtomizedType.modified|split:'T':0}}
 										div(ng-show='invasivenessAtomizedType.startValidateDate')
-											| {{"simplePliCTerm.name.startValidateDate"|translate}} : {{invasivenessAtomizedType.startValidateDate}}	
+											| {{"simplePliCTerm.name.startValidateDate"|translate}} : {{invasivenessAtomizedType.startValidateDate|split:'T':0}}	
 										div(ng-show='invasivenessAtomizedType.endValidateDate')
-											| {{"simplePliCTerm.name.endValidateDate"|translate}} : {{invasivenessAtomizedType.endValidateDate}}
+											| {{"simplePliCTerm.name.endValidateDate"|translate}} : {{invasivenessAtomizedType.endValidateDate|split:'T':0}}
 										div(ng-show='invasivenessAtomizedType.countryCode')
 											| {{"simplePliCTerm.name.countryCode"|translate}} : {{invasivenessAtomizedType.countryCode}}
 										div(ng-show='invasivenessAtomizedType.stateProvince')
