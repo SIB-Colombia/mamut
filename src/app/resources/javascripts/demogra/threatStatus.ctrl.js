@@ -26,7 +26,7 @@ angular.module('app.controllers.threatStatus',[])
 	};
 
 	$scope.addThreatStatusClass = function(list, threatStatusClass) {
-		if (!(JSON.stringify(threatStatusClass) === JSON.stringify(origTSC))){
+		if (JSON.stringify(threatStatusClass) !== JSON.stringify(origTSC)){
 			threatStatusFactoryLocal.add(list, threatStatusClass);
 			//Reset the scope variable
 			$scope.threatStatusClass = origTSC;

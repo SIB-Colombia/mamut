@@ -26,7 +26,7 @@ angular.module('app.controllers.use',[])
 	};
 
 	$scope.addUsesAtomized = function(list, usesAtomized) {
-		if (!(JSON.stringify(usesAtomized) === JSON.stringify(origUA))){
+		if (JSON.stringify(usesAtomized) !== JSON.stringify(origUA)){
 			usesFactoryLocal.add(list, usesAtomized);
 			//Reset the scope variable
 			$scope.usesAtomizedType = origUA;

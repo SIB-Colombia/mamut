@@ -25,7 +25,7 @@ angular.module('app.controllers.feeding',[])
 	};
 
 	$scope.addFeedingAtomizedType = function(feeding, feedingAtomizedType) {
-		if (!(JSON.stringify(feedingAtomizedType) === JSON.stringify(origFA))){
+		if (JSON.stringify(feedingAtomizedType) !== JSON.stringify(origFA)){
 			$scope.feedingFactoryLocal.add(feeding,feedingAtomizedType);
 			//Reset the scope variable
 			$scope.feedingAtomizedType = origFA;

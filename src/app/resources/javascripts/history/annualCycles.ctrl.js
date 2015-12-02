@@ -19,7 +19,7 @@ angular.module('app.controllers.annualCycle',[])
 	var origAD = angular.copy($scope.ancillaryData);
 	
 	$scope.addAnnualCycleAtomizedType = function(annualCycleAtomizedType, annualCycle) {
-		if (!(JSON.stringify(annualCycleAtomizedType) === JSON.stringify(origAU))){
+		if (JSON.stringify(annualCycleAtomizedType) !== JSON.stringify(origAU)){
 			$scope.annualCycleFactoryLocal.add(annualCycleAtomizedType, annualCycle);
 			$scope.annualCycleAtomizedType = origAU;
 			origAU = angular.copy($scope.annualCycleAtomizedType);

@@ -25,7 +25,7 @@ angular.module('app.controllers.migratory',[])
 	};
 
 	$scope.addMigratoryAtomizedType = function(list,migratoryAtomizedType){
-		if (!(JSON.stringify(migratoryAtomizedType) === JSON.stringify(origMA))){
+		if (JSON.stringify(migratoryAtomizedType) !== JSON.stringify(origMA)){
 			$scope.migratoryFactoryLocal.add(list,migratoryAtomizedType);
 			$scope.migratoryAtomizedType = origMA;
 			origMA = angular.copy($scope.migratoryAtomizedType);

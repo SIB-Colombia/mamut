@@ -24,7 +24,7 @@ angular.module('app.controllers.molecularData',[])
 		}
 	};
 	$scope.addMolecularDataAtomizedType = function(list, molecular) {
-		if (!(JSON.stringify(molecular) === JSON.stringify(origMD))){
+		if (JSON.stringify(molecular) !== JSON.stringify(origMD)){
 			$scope.molecularDataFactoryLocal.add(list, molecular);
 			$scope.molecularDataAtomizedType = origMD;
 			origMD = angular.copy($scope.molecularDataAtomizedType);

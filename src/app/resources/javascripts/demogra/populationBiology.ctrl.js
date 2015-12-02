@@ -25,7 +25,7 @@ angular.module('app.controllers.populationBiology',[])
 	};
 	
 	$scope.addPopulationBiologyAtomized = function(list, populationBiologyAtomized) {
-		if (!(JSON.stringify(populationBiologyAtomized) === JSON.stringify(origPBA))){
+		if (JSON.stringify(populationBiologyAtomized) !== JSON.stringify(origPBA)){
 			$scope.populationBiologyFactoryLocal.add(list, populationBiologyAtomized);
 
 			$scope.populationBiologyAtomized = origPBA;

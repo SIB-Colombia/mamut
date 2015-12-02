@@ -22,7 +22,7 @@ angular.module('app.controllers.synonmy',[])
 
 	//ADD
 	$scope.addSynonymsAtomized = function(synonymsAtomized, synonmy) {
-		if (!(JSON.stringify(synonmy) === JSON.stringify(origS))){
+		if (JSON.stringify(synonmy) !== JSON.stringify(origS)){
 			synonmyFactoryLocal.add(synonymsAtomized, synonmy);
 			//Reset the scope variable
 			$scope.synonmy = origS;

@@ -22,7 +22,7 @@ angular.module('app.controllers.distribution',[])
 	var origAD = angular.copy($scope.ancillaryData);
 
 	$scope.addDistributionOpt2 = function(distributionClass, opt2) {
-		if (!(JSON.stringify(opt2) === JSON.stringify(origDO))){
+		if (JSON.stringify(opt2) !== JSON.stringify(origDO)){
 			distributionFactoryLocal.addOpt2(distributionClass, opt2);
 			//Reset the scope variable
 			$scope.distributionOpt2 = origDO;
@@ -35,7 +35,7 @@ angular.module('app.controllers.distribution',[])
 	};
 
 	$scope.addDistribution = function(list, distributionClass) {
-		if (!(JSON.stringify(distributionClass) === JSON.stringify(origDC))){
+		if (JSON.stringify(distributionClass) !== JSON.stringify(origDC)){
 			distributionFactoryLocal.addClass(list, distributionClass);
 			//Reset the scope variable
 			$scope.distributionClass = origDC;

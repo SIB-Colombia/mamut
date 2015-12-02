@@ -21,7 +21,7 @@ angular.module('app.controllers.endemic',[])
 	var origAD = angular.copy($scope.ancillaryData);
 
 	$scope.addEndemic = function(list, endemicAtomized) {
-		if (!(JSON.stringify(endemicAtomized) === JSON.stringify(origEA))){
+		if (JSON.stringify(endemicAtomized) !== JSON.stringify(origEA)){
 			endemicFactoryLocal.add(list, endemicAtomized);
 			//Reset the scope variable
 			$scope.endemicAtomizedType = origEA;

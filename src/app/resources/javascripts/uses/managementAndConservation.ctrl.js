@@ -25,7 +25,7 @@ angular.module('app.controllers.managementAndConservation',[])
 	};
 
 	$scope.addManagementAndConservation = function(list, managementAndConservation) {
-		if (!(JSON.stringify(managementAndConservation) === JSON.stringify(origMC))){
+		if (JSON.stringify(managementAndConservation) !== JSON.stringify(origMC)){
 			$scope.managementAndConservationAtomizedFactoryLocal.add(list, managementAndConservation);
 			//Reset the scope variable
 			$scope.managementAndConservationAtomizedType = origMC;

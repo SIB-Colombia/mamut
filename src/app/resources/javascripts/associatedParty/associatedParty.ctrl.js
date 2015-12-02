@@ -15,7 +15,7 @@ angular.module('app.controllers.associatedParty',[])
 	};
 
 	$scope.addAssociatedParty = function(list, associatedParty) {
-		if (!(JSON.stringify(associatedParty) === JSON.stringify(origAP))){
+		if (JSON.stringify(associatedParty) !== JSON.stringify(origAP)){
 			associatedPartyFactoryLocal.add(list, associatedParty);
 			$scope.associatedParty = origAP;
 			origAP = angular.copy($scope.associatedParty);

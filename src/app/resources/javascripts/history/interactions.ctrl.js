@@ -25,7 +25,7 @@ angular.module('app.controllers.interactions',[])
 	};
 
 	$scope.addInteractionAtomizedType = function(list,interactionsAtomizedType){
-		if (!(JSON.stringify(interactionsAtomizedType) === JSON.stringify(origIA))){
+		if (JSON.stringify(interactionsAtomizedType) !== JSON.stringify(origIA)){
 			$scope.interactionsFactoryLocal.add(list,interactionsAtomizedType);
 			//Reset the scope variable
 			$scope.interactionsAtomizedType = origIA;

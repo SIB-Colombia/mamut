@@ -23,7 +23,7 @@ angular.module('app.controllers.hierarchy',[])
 
 	//ADD
 	$scope.addHierarchy = function(hierarchy, hier) {
-		if (!(JSON.stringify(hier) === JSON.stringify(origH))){
+		if (JSON.stringify(hier) !== JSON.stringify(origH)){
 			hierarchyFactoryLocal.add(hierarchy, hier);
 			//Reset the scope variable
 			$scope.hierarchy = origH;
@@ -94,7 +94,7 @@ angular.module('app.controllers.hierarchy',[])
 				$scope.ancillaryData = angular.copy(ancillary);
 			}
 		});
-	}
+	};
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){

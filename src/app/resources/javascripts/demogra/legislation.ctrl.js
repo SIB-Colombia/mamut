@@ -25,7 +25,7 @@ angular.module('app.controllers.legislation',[])
 	};
 
 	$scope.addLegislationAtomized= function(list,legislationAtomized){
-		if (!(JSON.stringify(legislationAtomized) === JSON.stringify(origLA))){
+		if (JSON.stringify(legislationAtomized) !== JSON.stringify(origLA)){
 			$scope.legislationFactoryLocal.add(list,legislationAtomized);
 			//Reset the scope variable
 			$scope.legislationAtomizedType = origLA;

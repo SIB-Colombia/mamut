@@ -22,7 +22,7 @@ angular.module('app.controllers.commonName',[])
 
 	//ADD
 	$scope.addCommonNamesAtomized = function(commonNameAtomized, commonName) {
-		if (!(JSON.stringify(commonName) === JSON.stringify(origCN))){
+		if (JSON.stringify(commonName) !== JSON.stringify(origCN)){
 			commonNameFactoryLocal.add(commonNameAtomized, commonName);
 			//Reset the scope variable
 			$scope.commonName = origCN;
@@ -93,7 +93,7 @@ angular.module('app.controllers.commonName',[])
 				$scope.ancillaryData = angular.copy(ancillary);
 			}
 		});
-	}
+	};
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){

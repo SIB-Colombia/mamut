@@ -33,7 +33,7 @@ angular.module('app.controllers.invasiveness',[])
 	};
 	
 	$scope.addInvasivenessAtomizedType = function(list, invasiveness) {
-		if (!(JSON.stringify(invasiveness) === JSON.stringify(origI))){
+		if (JSON.stringify(invasiveness) !== JSON.stringify(origI)){
 			$scope.invasivenessFactoryLocal.add(list, invasiveness);
 			//Reset the scope variable
 			$scope.invasivenessAtomizedType = origI;
@@ -59,7 +59,7 @@ angular.module('app.controllers.invasiveness',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryUn.addTo(ancillaryDataList,ancillaryData);
 			var insert = true;
 			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
 			    if(ancillaryData.source!==null && ancillaryData.source === ancillary.source){
@@ -74,9 +74,9 @@ angular.module('app.controllers.invasiveness',[])
 			});
 
 			if(insert){
-				ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+				ancillaryDataFactoryUn.addTo($scope.formData.ancillaryData,ancillaryData);
 				angular.forEach(ancillaryData.reference, function(reference) {
-					referenceFactoryLocal.addTo($scope.formData.references,reference);
+					referenceFactoryUn.addTo($scope.formData.references,reference);
 				});
 			}
 
@@ -138,7 +138,7 @@ angular.module('app.controllers.invasiveness',[])
 	//Atomized fields
 	$scope.addAncillaryDataAto = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			ancillaryDataFactoryAto.addTo(ancillaryDataList,ancillaryData);
 			var insert = true;
 			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
 			    if(ancillaryData.source!==null && ancillaryData.source === ancillary.source){
@@ -153,9 +153,9 @@ angular.module('app.controllers.invasiveness',[])
 			});
 
 			if(insert){
-				ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+				ancillaryDataFactoryAto.addTo($scope.formData.ancillaryData,ancillaryData);
 				angular.forEach(ancillaryData.reference, function(reference) {
-					referenceFactoryLocal.addTo($scope.formData.references,reference);
+					referenceFactoryAto.addTo($scope.formData.references,reference);
 				});
 			}
 

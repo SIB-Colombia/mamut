@@ -21,7 +21,7 @@ angular.module('app.controllers.ancillary',[])
 
 
 	$scope.addAncillaryData = function(ancillaryDataList, ancillary){
-		if (!(JSON.stringify(ancillary) === JSON.stringify(origAD))){
+		if (JSON.stringify(ancillary) !== JSON.stringify(origAD)){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList, ancillary);
 			angular.forEach(ancillary.reference, function(reference) {
 				referenceFactoryLocal.addTo($scope.formData.references,reference);

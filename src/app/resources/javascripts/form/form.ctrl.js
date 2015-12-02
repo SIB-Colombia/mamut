@@ -378,7 +378,7 @@ angular.module('app.controllers.form',[])
 				   'Content-Type': 'application/JSON'
 				 },
 				 data: $scope.formData
-			}
+			};
 
 			$http(req).then(function (response) {
 	           if(response.data.message==='Record created!'){
@@ -391,16 +391,16 @@ angular.module('app.controllers.form',[])
 	return function(input, splitChar, splitIndex) {
 		// do some bounds checking here to ensure it has that index
 		return input.split(splitChar)[splitIndex];
-	}
+	};
 })
 .filter('references_translate', function() {
 	return function(input,scope) {
 		// do some bounds checking here to ensure it has that index
 		angular.forEach(scope.reference_type, function(item) {
 	        if(input!==null && input === item.original){
-				input = item.view
+				input = item.view;
 			}
 		});
 		return input;
-	}
+	};
 });

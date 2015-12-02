@@ -73,7 +73,7 @@ angular.module('app.controllers.fullDescription',[])
 				$scope.ancillaryData = angular.copy(ancillary);
 			}
 		});
-	}
+	};
 
 
 	$scope.addReference = function(referenceList,reference){
