@@ -27,14 +27,32 @@ angular.module('app.controllers.reproduction',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
-			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
-			angular.forEach(ancillaryData.reference, function(reference) {
-				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			var insert = true;
+			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
+			    if(ancillaryData.source!==null && ancillaryData.source === ancillary.source){
+			    	angular.forEach(ancillary.reference, function(reference) {
+						angular.forEach(ancillaryData.reference, function(reference_anci) {
+							if(reference.source!==null && reference.source === reference_anci.source){
+								insert = false;
+							}
+						});
+					});
+				}
 			});
+
+			if(insert){
+				ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+				angular.forEach(ancillaryData.reference, function(reference) {
+					referenceFactoryLocal.addTo($scope.formData.references,reference);
+				});
+			}
+
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$('#ancillaryReproduction').collapse("hide");
+		}else{
+			alert("La fuente debe ser diligenciada");
 		}
 	};
 
@@ -50,6 +68,14 @@ angular.module('app.controllers.reproduction',[])
 	$scope.cancelAncillaryData = function() {
 		$scope.ancillaryData = angular.copy(origAD);
 		$('#ancillaryReproduction').collapse("hide");
+	};
+
+	$scope.findAncillary = function(ancillaryData){
+		angular.forEach($scope.formData.ancillaryData, function(ancillary) {
+	        if(ancillaryData!==null && ancillaryData === ancillary.source){
+				$scope.ancillaryData = angular.copy(ancillary);
+			}
+		});
 	};
 
 	$scope.addReference = function(referenceList,reference){

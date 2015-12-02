@@ -33,11 +33,13 @@ angular.module('app.controllers.invasiveness',[])
 	};
 	
 	$scope.addInvasivenessAtomizedType = function(list, invasiveness) {
-		$scope.invasivenessFactoryLocal.add(list, invasiveness);
-		//Reset the scope variable
-		$scope.invasivenessAtomizedType = origI;
-		origI = angular.copy($scope.invasivenessAtomizedType);
-		$scope.UpdateCheckBoxes(invasiveness, false);
+		if (!(JSON.stringify(invasiveness) === JSON.stringify(origI))){
+			$scope.invasivenessFactoryLocal.add(list, invasiveness);
+			//Reset the scope variable
+			$scope.invasivenessAtomizedType = origI;
+			origI = angular.copy($scope.invasivenessAtomizedType);
+			$scope.UpdateCheckBoxes(invasiveness, false);
+		}
 	};
 
 	$scope.removeInvasivenessAtomized= function(list,invasiveness){
@@ -57,16 +59,34 @@ angular.module('app.controllers.invasiveness',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactoryUn.addTo(ancillaryDataList,ancillaryData);
-			ancillaryDataFactoryUn.addTo($scope.formData.ancillaryData,ancillaryData);
-			angular.forEach(ancillaryData.reference, function(reference) {
-				referenceFactoryUn.addTo($scope.formData.references,reference);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			var insert = true;
+			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
+			    if(ancillaryData.source!==null && ancillaryData.source === ancillary.source){
+			    	angular.forEach(ancillary.reference, function(reference) {
+						angular.forEach(ancillaryData.reference, function(reference_anci) {
+							if(reference.source!==null && reference.source === reference_anci.source){
+								insert = false;
+							}
+						});
+					});
+				}
 			});
+
+			if(insert){
+				ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+				angular.forEach(ancillaryData.reference, function(reference) {
+					referenceFactoryLocal.addTo($scope.formData.references,reference);
+				});
+			}
+
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$('#ancillaryInvasiveness').collapse("hide");
-		}
+		}else{
+			alert("La fuente debe ser diligenciada");
+		}	
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
@@ -81,6 +101,14 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.cancelAncillaryData = function() {
 		$scope.ancillaryData = angular.copy(origAD);
 		$('#ancillaryInvasiveness').collapse("hide");
+	};
+
+	$scope.findAncillary = function(ancillaryData){
+		angular.forEach($scope.formData.ancillaryData, function(ancillary) {
+	        if(ancillaryData!==null && ancillaryData === ancillary.source){
+				$scope.ancillaryData = angular.copy(ancillary);
+			}
+		});
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -110,16 +138,34 @@ angular.module('app.controllers.invasiveness',[])
 	//Atomized fields
 	$scope.addAncillaryDataAto = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
-			ancillaryDataFactoryAto.addTo(ancillaryDataList,ancillaryData);
-			ancillaryDataFactoryAto.addTo($scope.formData.ancillaryData,ancillaryData);
-			angular.forEach(ancillaryData.reference, function(reference) {
-				referenceFactoryAto.addTo($scope.formData.references,reference);
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			var insert = true;
+			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
+			    if(ancillaryData.source!==null && ancillaryData.source === ancillary.source){
+			    	angular.forEach(ancillary.reference, function(reference) {
+						angular.forEach(ancillaryData.reference, function(reference_anci) {
+							if(reference.source!==null && reference.source === reference_anci.source){
+								insert = false;
+							}
+						});
+					});
+				}
 			});
+
+			if(insert){
+				ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+				angular.forEach(ancillaryData.reference, function(reference) {
+					referenceFactoryLocal.addTo($scope.formData.references,reference);
+				});
+			}
+
 			//Reset the scope variable
-			$scope.ancillaryDataAto = origAD;
-			origAD = angular.copy($scope.ancillaryDataAto);
+			$scope.ancillaryData = origAD;
+			origAD = angular.copy($scope.ancillaryData);
 			$('#ancillaryInvasivenessAto').collapse("hide");
-		}
+		}else{
+			alert("La fuente debe ser diligenciada");
+		}	
 	};
 
 	$scope.editAncillaryDataAto = function(ancillaryDataList,ancillaryData) {
@@ -130,6 +176,14 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.cancelAncillaryDataAto = function() {
 		$scope.ancillaryDataAto = angular.copy(origAD);
 		$('#ancillaryInvasivenessAto').collapse("hide");
+	};
+
+	$scope.findAncillaryAto = function(ancillaryData){
+		angular.forEach($scope.formData.ancillaryData, function(ancillary) {
+	        if(ancillaryData!==null && ancillaryData === ancillary.source){
+				$scope.ancillaryData = angular.copy(ancillary);
+			}
+		});
 	};
 
 	$scope.addReferenceAto = function(referenceList,reference){
@@ -150,6 +204,14 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.cancelReferenceAto = function() {
 		$scope.referenceAto = angular.copy(origR);
 		$('#referenceInvasivenessAto').collapse("hide");
+	};
+
+	$scope.findAncillaryAto = function(ancillaryData){
+		angular.forEach($scope.formData.ancillaryData, function(ancillary) {
+	        if(ancillaryData!==null && ancillaryData === ancillary.source){
+				$scope.ancillaryDataAto = angular.copy(ancillary);
+			}
+		});
 	};
 
 	$scope.UpdateCheckBoxes = function(invasiveness,state){

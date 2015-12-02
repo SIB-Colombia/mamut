@@ -25,10 +25,12 @@ angular.module('app.controllers.managementAndConservation',[])
 	};
 
 	$scope.addManagementAndConservation = function(list, managementAndConservation) {
-		$scope.managementAndConservationAtomizedFactoryLocal.add(list, managementAndConservation);
-		//Reset the scope variable
-		$scope.managementAndConservationAtomizedType = origMC;
-		origMC = angular.copy($scope.managementAndConservationAtomizedType);
+		if (!(JSON.stringify(managementAndConservation) === JSON.stringify(origMC))){
+			$scope.managementAndConservationAtomizedFactoryLocal.add(list, managementAndConservation);
+			//Reset the scope variable
+			$scope.managementAndConservationAtomizedType = origMC;
+			origMC = angular.copy($scope.managementAndConservationAtomizedType);
+		}
 	};
 
 	$scope.removeManagementAndConservation = function(list, managementAndConservation) {
@@ -51,15 +53,33 @@ angular.module('app.controllers.managementAndConservation',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
-			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
-			angular.forEach(ancillaryData.reference, function(reference) {
-				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			var insert = true;
+			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
+			    if(ancillaryData.source!==null && ancillaryData.source === ancillary.source){
+			    	angular.forEach(ancillary.reference, function(reference) {
+						angular.forEach(ancillaryData.reference, function(reference_anci) {
+							if(reference.source!==null && reference.source === reference_anci.source){
+								insert = false;
+							}
+						});
+					});
+				}
 			});
+
+			if(insert){
+				ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+				angular.forEach(ancillaryData.reference, function(reference) {
+					referenceFactoryLocal.addTo($scope.formData.references,reference);
+				});
+			}
+
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$('#ancillaryManagement').collapse("hide");
-		}
+		}else{
+			alert("La fuente debe ser diligenciada");
+		}	
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
@@ -74,6 +94,14 @@ angular.module('app.controllers.managementAndConservation',[])
 	$scope.cancelAncillaryData = function() {
 		$scope.ancillaryData = angular.copy(origAD);
 		$('#ancillaryManagement').collapse("hide");
+	};
+
+	$scope.findAncillary = function(ancillaryData){
+		angular.forEach($scope.formData.ancillaryData, function(ancillary) {
+	        if(ancillaryData!==null && ancillaryData === ancillary.source){
+				$scope.ancillaryData = angular.copy(ancillary);
+			}
+		});
 	};
 
 	$scope.addReference = function(referenceList,reference){

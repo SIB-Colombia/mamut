@@ -16,7 +16,7 @@ angular.module('app.controllers.reference',[])
 	};
 
 	$scope.addReference = function (referenceList, reference){
-		if (reference.source !== '') {
+		if (!(JSON.stringify(reference) === JSON.stringify(origR))){
 			referenceFactoryLocal.addTo(referenceList, reference);
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);

@@ -21,18 +21,18 @@ angular.module('app.controllers.ancillary',[])
 
 
 	$scope.addAncillaryData = function(ancillaryDataList, ancillary){
-		if (ancillary.source !== '') {
-			
+		if (!(JSON.stringify(ancillary) === JSON.stringify(origAD))){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList, ancillary);
-			angular.forEach(ancillaryData.reference, function(reference) {
+			angular.forEach(ancillary.reference, function(reference) {
 				referenceFactoryLocal.addTo($scope.formData.references,reference);
 			});
-
 			//Reset var
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
-			if($scope.image !== undefined){
-				$scope.image.parentNode.removeChild($scope.image);
+
+			var imageDOM = document.getElementById("imageD");
+			if(imageDOM !== undefined && imageDOM!==null){
+				imageDOM.parentNode.removeChild(imageDOM);
 			}
 		}
 	};
@@ -116,7 +116,6 @@ angular.module('app.controllers.ancillary',[])
 							.then(function(res) {
 								var data_1 = res.data.replace('jsonFlickrApi(', '').replace(')', '').replace(/\n/g, '');
 								var objetoJSONFinal_1 = JSON.parse(data_1);
-								console.log(objetoJSONFinal_1);
 								if (typeof objetoJSONFinal_1.sizes.size[5].source !== 'undefined') {
 									ancillary.source = (objetoJSONFinal_1.sizes.size[5].source).replace(/'/g, "\''");
 									$scope.imageurl = (objetoJSONFinal_1.sizes.size[5].source).replace(/'/g, "\''");
@@ -146,7 +145,6 @@ angular.module('app.controllers.ancillary',[])
 			}
 			if (url.indexOf('www.youtube.com') > -1) {
 				var video_id = (url_parts[url_parts.length - 1]).split('=')[1];
-				console.log(video_id);
 				$.ajax({
 					url: 'https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics%2Cstatus&id='+video_id+'&key=AIzaSyBNk4m-R-PyUt5hmtpBc3CaQ-fophHIjkQ',
 					dataType: 'JSONP',
@@ -156,8 +154,6 @@ angular.module('app.controllers.ancillary',[])
 						'Api-User-Agent': 'Example/1.0'
 					},
 					success: function(data) {
-						console.log(data);
-						console.log(data.items[0].snippet.channelTitle);
 						ancillary.license = data.items[0].contentDetails.licensedContent;
 						ancillary.rightsHolder = data.items[0].snippet.channelTitle;
 						ancillary.bibliographicCitation = data.items[0].snippet.description;

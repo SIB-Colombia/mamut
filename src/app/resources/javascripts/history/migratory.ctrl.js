@@ -25,9 +25,11 @@ angular.module('app.controllers.migratory',[])
 	};
 
 	$scope.addMigratoryAtomizedType = function(list,migratoryAtomizedType){
-		$scope.migratoryFactoryLocal.add(list,migratoryAtomizedType);
-		$scope.migratoryAtomizedType = origMA;
-		origMA = angular.copy($scope.migratoryAtomizedType);
+		if (!(JSON.stringify(migratoryAtomizedType) === JSON.stringify(origMA))){
+			$scope.migratoryFactoryLocal.add(list,migratoryAtomizedType);
+			$scope.migratoryAtomizedType = origMA;
+			origMA = angular.copy($scope.migratoryAtomizedType);
+		}
 	};
 
 	$scope.removeMigratoryAtomized = function(list,migratoryAtomized){
@@ -45,14 +47,32 @@ angular.module('app.controllers.migratory',[])
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
-			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
-			angular.forEach(ancillaryData.reference, function(reference) {
-				referenceFactoryLocal.addTo($scope.formData.references,reference);
+			var insert = true;
+			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
+			    if(ancillaryData.source!==null && ancillaryData.source === ancillary.source){
+			    	angular.forEach(ancillary.reference, function(reference) {
+						angular.forEach(ancillaryData.reference, function(reference_anci) {
+							if(reference.source!==null && reference.source === reference_anci.source){
+								insert = false;
+							}
+						});
+					});
+				}
 			});
+
+			if(insert){
+				ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+				angular.forEach(ancillaryData.reference, function(reference) {
+					referenceFactoryLocal.addTo($scope.formData.references,reference);
+				});
+			}
+
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$('#ancillaryMigratory').collapse("hide");
+		}else{
+			alert("La fuente debe ser diligenciada");
 		}
 	};
 
@@ -69,6 +89,15 @@ angular.module('app.controllers.migratory',[])
 		$scope.ancillaryData = angular.copy(origAD);
 		$('#ancillaryMigratory').collapse("hide");
 	};
+
+	$scope.findAncillary = function(ancillaryData){
+		angular.forEach($scope.formData.ancillaryData, function(ancillary) {
+	        if(ancillaryData!==null && ancillaryData === ancillary.source){
+				$scope.ancillaryData = angular.copy(ancillary);
+			}
+		});
+	};
+
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){

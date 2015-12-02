@@ -5,7 +5,7 @@ div(ng-controller='HierarchyCtrl')
 				spant {{"simplePliCTerm.name.Hierarchy"|translate}}
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Hierarchy"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-				button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed = !isCollapsed')
+				//button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed = !isCollapsed')
 					span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true', id = 'iconH')
 			.panel-body
 				div.table-responsive(ng-show='(formData.hierarchy).length')
@@ -182,6 +182,8 @@ div(ng-controller='HierarchyCtrl')
 													span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 
 							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+							button.btn-xs(ng-click='findAncillary(ancillaryData.source)')
+								span.glyphicon.glyphicon-search
 							.panel.panel-default
 								.panel-heading
 									spant {{"simplePliCTerm.name.References"|translate}}
@@ -195,7 +197,7 @@ div(ng-controller='HierarchyCtrl')
 										table.table.table-striped
 											thead
 												tr
-													th {{"simplePliCTerm.name.Type"|translate}}
+													th {{"simplePliCTerm.name.type"|translate}}
 													th {{"simplePliCTerm.name.Source"|translate}}
 													th {{"simplePliCTerm.name.title"|translate}}
 													th
@@ -203,7 +205,7 @@ div(ng-controller='HierarchyCtrl')
 											tbody
 												tr(ng-repeat="ref in ancillaryData.reference track by $index")
 													td
-														| {{ref.type}}
+														| {{ref.type|references_translate:this}}
 													td
 														| {{ref.source}}
 													td

@@ -114,22 +114,22 @@ div(ng-controller='DistributionCtrl')
 								table.table.table-bordered
 									thead
 										tr
+											th {{"simplePliCTerm.name.source"|translate}}
 											th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
 											th {{"simplePliCTerm.name.license"|translate}}
 											th {{"simplePliCTerm.name.rights"|translate}}
-											th {{"simplePliCTerm.name.source"|translate}}
 											th
 									
 									tbody
 										tr(ng-repeat="ancillary in distributionClass.ancillaryData track by $index")
+											td
+												| {{ancillary.source}}	
 											td
 												| {{ancillary.bibliographicCitation}}
 											td
 												| {{ancillary.license}}	
 											td
 												| {{ancillary.rights}}
-											td
-												| {{ancillary.source}}	
 											td
 												button.btn(ng-click='removeAncillaryData(distributionClass.ancillaryData,ancillary)')
 													span(class="glyphicon glyphicon-trash", aria-hidden='true')
@@ -139,10 +139,12 @@ div(ng-controller='DistributionCtrl')
 					div(ng-controller='CollapseDemoCtrl')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						div(uib-collapse='isCollapsed', id='ancillaryDistribution')
+							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+							button.btn-xs(ng-click='findAncillary(ancillaryData.source)')
+								span.glyphicon.glyphicon-search
 							input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
 							input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
 							input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
-							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
 							.panel.panel-default
 								.panel-heading
 									spant {{"simplePliCTerm.name.References"|translate}}
@@ -155,7 +157,7 @@ div(ng-controller='DistributionCtrl')
 										table.table.table-striped
 											thead
 												tr
-													th {{"simplePliCTerm.name.Type"|translate}}
+													th {{"simplePliCTerm.name.type"|translate}}
 													th {{"simplePliCTerm.name.Source"|translate}}
 													th {{"simplePliCTerm.name.title"|translate}}
 													th
@@ -163,7 +165,7 @@ div(ng-controller='DistributionCtrl')
 											tbody
 												tr(ng-repeat="ref in ancillaryData.reference track by $index")
 													td
-														| {{ref.type}}
+														| {{ref.type|references_translate:this}}
 													td
 														| {{ref.source}}
 													td
@@ -177,7 +179,7 @@ div(ng-controller='DistributionCtrl')
 									div(uib-collapse='isCollapsed_1', id='referenceDistribution')
 										.form-group
 											select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
-												option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
+												option(value='') - {{"simplePliCTerm.name.type"|translate}} 
 											input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 											input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
 											input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')

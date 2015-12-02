@@ -89,22 +89,22 @@ div(ng-controller='ThreatStatusCtrl')
 							table.table.table-bordered
 								thead
 									tr
+										th {{"simplePliCTerm.name.source"|translate}}
 										th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
 										th {{"simplePliCTerm.name.license"|translate}}
 										th {{"simplePliCTerm.name.rights"|translate}}
-										th {{"simplePliCTerm.name.source"|translate}}
 										th
 								
 								tbody
 									tr(ng-repeat="ancillary in threatStatusClass.ancillaryData track by $index")
 										td
+											| {{ancillary.source}}	
+										td
 											| {{ancillary.bibliographicCitation}}
 										td
 											| {{ancillary.license}}	
 										td
-											| {{ancillary.rights}}
-										td
-											| {{ancillary.source}}	
+											| {{ancillary.rights}}	
 										td
 											button.btn(ng-click='removeAncillaryData(threatStatusClass.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
@@ -113,10 +113,12 @@ div(ng-controller='ThreatStatusCtrl')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(uib-collapse='isCollapsed', id='ancillaryThreat')
+								input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+								button.btn-xs(ng-click='findAncillary(ancillaryData.source)')
+									span.glyphicon.glyphicon-search
 								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
 								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
 								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
-								input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
 								.panel.panel-default
 									.panel-heading
 										spant {{"simplePliCTerm.name.References"|translate}}
@@ -137,7 +139,7 @@ div(ng-controller='ThreatStatusCtrl')
 												tbody
 													tr(ng-repeat="ref in ancillaryData.reference track by $index")
 														td
-															| {{ref.type}}
+															| {{ref.type|references_translate:this}}
 														td
 															| {{ref.source}}
 														td

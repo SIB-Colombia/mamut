@@ -572,7 +572,7 @@
     "simplePliCTerm.name.DescriptionLifeStages": "Descripción Etapas de vida",
     "simplePliCTerm.definition.DescriptionLifeStages": "Percentage of individuals that belong to each life stage.",
     "simplePliCTerm.comments.DescriptionLifeStages": "Example: ",
-    "simplePliCTerm.name.ProportionIndividualsPerStage": "Proporción de inviduos por etapa",
+    "simplePliCTerm.name.ProportionIndividualsPerStage": "Proporción de individuos por etapa",
     "simplePliCTerm.definition.ProportionIndividualsPerStage": "Percentage of individuals that belong to each life stage.",
     "simplePliCTerm.comments.ProportionIndividualsPerStage": "Example: ",
     "simplePliCTerm.name.CarryingCapacity": "Capacidad de carga",

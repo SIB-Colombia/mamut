@@ -70,8 +70,9 @@ div(ng-controller='SynonmyCtrl')
 													span(class="glyphicon glyphicon-trash", aria-hidden='true')
 												button.btn(ng-click='editAncillaryData(synonmy.ancillaryData,ancillary)')
 													span(class="glyphicon glyphicon-pencil", aria-hidden='true')
-						.col-xs-8
 							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+							button.btn-xs(ng-click='findAncillary(ancillaryData.source)')
+								span.glyphicon.glyphicon-search
 							.panel.panel-default
 								.panel-heading
 									spant {{"simplePliCTerm.name.References"|translate}}
@@ -84,7 +85,7 @@ div(ng-controller='SynonmyCtrl')
 										table.table.table-striped
 											thead
 												tr
-													th {{"simplePliCTerm.name.Type"|translate}}
+													th {{"simplePliCTerm.name.type"|translate}}
 													th {{"simplePliCTerm.name.Source"|translate}}
 													th {{"simplePliCTerm.name.title"|translate}}
 													th
@@ -92,7 +93,7 @@ div(ng-controller='SynonmyCtrl')
 											tbody
 												tr(ng-repeat="ref in ancillaryData.reference track by $index")
 													td
-														| {{ref.type}}
+														| {{ref.type|references_translate:this}}
 													td
 														| {{ref.source}}
 													td
@@ -106,7 +107,7 @@ div(ng-controller='SynonmyCtrl')
 									div(uib-collapse='isCollapsed_1' , id='referenceSysnonym')
 										.form-group
 											select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
-												option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
+												option(value='') - {{"simplePliCTerm.name.type"|translate}} 
 											input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 											input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
 											input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
@@ -128,10 +129,10 @@ div(ng-controller='SynonmyCtrl')
 											input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
 											input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 											//input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-										button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia 
+										button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar
 										button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()') Cancelar
-						.col-xs-2
-							button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addAncillaryData(synonmy.ancillaryData,ancillaryData)', translate='') Guardar I. Adicional
+					.form-group
+						button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addAncillaryData(synonmy.ancillaryData,ancillaryData)', translate='') Guardar I. Adicional
 					.form-group
 						button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addSynonymsAtomized(formData.synonymsAtomized,synonmy)') Guardar
 						button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='cancelSynonym()') Cancelar

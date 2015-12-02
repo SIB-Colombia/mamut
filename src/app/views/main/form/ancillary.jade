@@ -14,19 +14,19 @@ div(ng-controller='AncillaryDataCtrl')
 					table.table.table-striped
 						thead
 							tr
-								th {{"simplePliCTerm.name.license"|translate}}
 								th {{"simplePliCTerm.name.rights"|translate}}
+								th {{"simplePliCTerm.name.license"|translate}}
 								th {{"simplePliCTerm.name.source"|translate}}
 								th
 						
 						tbody
 							tr(ng-repeat="ancillary in formData.ancillaryData")
 								td
-									div(ng-show='ancillary.license')
-										| {{ancillary.license}}
-								td
 									div(ng-show='ancillary.rightsHolder')
 										|  {{ancillary.rightsHolder}}
+								td
+									div(ng-show='ancillary.license')
+										| {{ancillary.license}}
 								td
 									div(ng-show='ancillary.source')
 										| {{ancillary.source}}
@@ -35,6 +35,13 @@ div(ng-controller='AncillaryDataCtrl')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
 									button.btn(ng-click='editAncillaryData(formData.ancillaryData,ancillary)')
 										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+				.form-group
+					label.col-xs-2.control-label(for='source', translate='') simplePliCTerm.name.mediaURL
+					.col-xs-10
+						input(type='text', ng-model='ancillaryData.mediaURL')
+						button.btn-xs(type='button', ng-click='getInfoLicence(ancillaryData.mediaURL, ancillaryData)')
+							span.glyphicon.glyphicon-search
+						
 				.form-group
 					label.col-xs-2.control-label(for='license', translate='') simplePliCTerm.name.license
 					.col-xs-10
@@ -59,16 +66,9 @@ div(ng-controller='AncillaryDataCtrl')
 						input(type='text', ng-model='ancillaryData.source')
 						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.source"|translate}}')
 							span.glyphicon.glyphicon-info-sign
+				
 				.form-group
-					label.col-xs-2.control-label(for='source', translate='') simplePliCTerm.name.mediaURL
-					.col-xs-8
-						input(type='text', ng-model='ancillaryData.mediaURL')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.mediaURL"|translate}}')
-							span.glyphicon.glyphicon-info-sign
-					.col-xs-2
-						button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='getInfoLicence(ancillaryData.mediaURL, ancillaryData)') Obetener información
-				.form-group
-					img(id='image', ng-src='{{ imageurl }}')
+					img(id="imageD", ng-src="{{ imageurl || '//:0' }}")
 				
 				.form-group
 					label.col-xs-2.control-label(for='source', translate='') simplePliCTerm.name.References
@@ -83,7 +83,7 @@ div(ng-controller='AncillaryDataCtrl')
 									table.table.table-striped
 										thead
 											tr
-												th {{"simplePliCTerm.name.Type"|translate}}
+												th {{"simplePliCTerm.name.type"|translate}}
 												th {{"simplePliCTerm.name.Source"|translate}}
 												th {{"simplePliCTerm.name.title"|translate}}
 												th
@@ -91,7 +91,7 @@ div(ng-controller='AncillaryDataCtrl')
 										tbody
 											tr(ng-repeat="ref in ancillaryData.reference track by $index")
 												td
-													| {{ref.type}}
+													| {{ref.type|references_translate:this}}
 												td
 													| {{ref.source}}
 												td
@@ -105,7 +105,7 @@ div(ng-controller='AncillaryDataCtrl')
 								div(uib-collapse='isCollapsed_1', id='referenceAncillary')
 									.form-group
 										select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
-											option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
+											option(value='') - {{"simplePliCTerm.name.type"|translate}} 
 										input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 										input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
 										input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
@@ -137,3 +137,7 @@ div(ng-controller='AncillaryDataCtrl')
 			a.btn.btn-block(ui-sref='form.references')
 				span.glyphicon.glyphicon-circle-arrow-left
 				|  Sección Anterior
+		li
+			button.btn.btn-success.btn-sm(type='button', ng-click="saveFile()") 
+				|  Guardar Ficha 
+				span.glyphicon.glyphicon-floppy-disk

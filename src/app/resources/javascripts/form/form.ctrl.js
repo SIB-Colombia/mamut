@@ -67,7 +67,7 @@ angular.module('app.controllers.form',[])
 		usesManagementAndConservation : $scope.managementAndConservationAtomizedFactoryLocal.usesManagementAndConservation
 	};
 
-	oboe({
+	/*oboe({
 		url: 'http://s3.amazonaws.com/mutis/vocabularies/test/editorPrueba.json',
 		method: 'GET'
 	})
@@ -180,7 +180,7 @@ angular.module('app.controllers.form',[])
 	}).fail(function() {
 
 		// we don't got it
-	});
+	});*/
 
 	$http.get('/resources/distribution.json')
 		.then(function(res) {
@@ -368,11 +368,39 @@ angular.module('app.controllers.form',[])
 
 		
 		$scope.selectedAttr = [];
-		$scope.date = new Date();	
+		$scope.date = new Date();
+		
+		$scope.saveFile = function(){
+			var req = {
+				 method: 'POST',
+				 url: 'http://192.168.205.12:3000/post-record',
+				 headers: {
+				   'Content-Type': 'application/JSON'
+				 },
+				 data: $scope.formData
+			}
+
+			$http(req).then(function (response) {
+	           if(response.data.message==='Record created!'){
+	           		alert('Felicitaciones, su ficha se ha guardado exitosamente!!!');
+	           }
+	        });
+		};	
 }])
 .filter('split', function() {
 	return function(input, splitChar, splitIndex) {
-	// do some bounds checking here to ensure it has that index
-	return input.split(splitChar)[splitIndex];
+		// do some bounds checking here to ensure it has that index
+		return input.split(splitChar)[splitIndex];
+	}
+})
+.filter('references_translate', function() {
+	return function(input,scope) {
+		// do some bounds checking here to ensure it has that index
+		angular.forEach(scope.reference_type, function(item) {
+	        if(input!==null && input === item.original){
+				input = item.view
+			}
+		});
+		return input;
 	}
 });
