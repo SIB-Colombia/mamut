@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('app.controllers.form',[])
-.controller('formController', ['$scope', '$http', '$rootScope', '$routeParams', '$resource', 'DirectThreatsFactory', 'LegislationFactory', 'PopulationBiologyFactory', 'TerritoryFactory', 'HabitatsFactory', 'AnnualCycleFactory', 'BehaviorFactory',
+.controller('formController', ['$scope', '$http', '$rootScope', '$routeParams', '$resource', '$location', 'DirectThreatsFactory', 'LegislationFactory', 'PopulationBiologyFactory', 'TerritoryFactory', 'HabitatsFactory', 'AnnualCycleFactory', 'BehaviorFactory',
 	'DispersalFactory','EcologicalSignificanceFactory', 'EnvironmentalEnvelopeFactory', 'FeedingFactory', 'InteractionsFactory', 'LifeCycleFactory', 'LifeFormFactory', 'MigratoryFactory', 'MolecularDataFactory',
 	'ReproductionFactory','InvasivenessFactory','TaxonRecordNameFactory','FullDescriptionFactory','IdentificationKeysFactory','ManagementAndConservationAtomizedFactory',
-	function($scope, $http, $rootScope, $routeParams, $resource , DirectThreatsFactory, LegislationFactory, PopulationBiologyFactory, TerritoryFactory, HabitatsFactory, AnnualCycleFactory,BehaviorFactory,DispersalFactory,EcologicalSignificanceFactory,
+	function($scope, $http, $rootScope, $routeParams, $resource , $location, DirectThreatsFactory, LegislationFactory, PopulationBiologyFactory, TerritoryFactory, HabitatsFactory, AnnualCycleFactory,BehaviorFactory,DispersalFactory,EcologicalSignificanceFactory,
 		EnvironmentalEnvelopeFactory,FeedingFactory,InteractionsFactory,LifeCycleFactory,LifeFormFactory,MigratoryFactory,MolecularDataFactory,ReproductionFactory,InvasivenessFactory,TaxonRecordNameFactory,FullDescriptionFactory,IdentificationKeysFactory,ManagementAndConservationAtomizedFactory) {
 
 	//Factories
@@ -123,6 +123,7 @@ angular.module('app.controllers.form',[])
 				$http(req).then(function (response) {
 		           if(response.data.message==='Record update!'){
 		           		alert('Felicitaciones, su ficha se ha actualizado exitosamente!!!');
+		           		document.location.href = "/";
 		           }
 		        });	
 		   	}else{
@@ -138,6 +139,7 @@ angular.module('app.controllers.form',[])
 				$http(req_1).then(function (response) {
 		           if(response.data.message==='Record created!'){
 		           		alert('Felicitaciones, su ficha se ha guardado exitosamente!!!');
+		           		document.location.href = "/";
 		           }
 		        });
 
