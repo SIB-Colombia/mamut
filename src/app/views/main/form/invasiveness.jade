@@ -83,8 +83,8 @@ div(ng-controller='InvasivenessCtrl')
 					label.col-xs-2.control-label(for='origin', translate='') simplePliCTerm.name.origin
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='ori in origin')
-								input(type='checkbox', ng-model='ori.checked', ng-click='updateSelectionOrigin(ori, origin)')
+							div(ng-repeat='ori in lenguajes.origin')
+								input(type='checkbox', ng-model='ori.checked', ng-click='updateSelectionOrigin(ori, lenguajes.origin)')
 								| {{ori.name}}
 								spant(ng-show='ori.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{ori.help}}')
@@ -93,8 +93,8 @@ div(ng-controller='InvasivenessCtrl')
 					label.col-xs-2.control-label(for='presence', translate='') simplePliCTerm.name.presence
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='pre in presence')
-								input(type='checkbox', ng-model='pre.checked', ng-click='updateSelectionPresence(pre, presence)')
+							div(ng-repeat='pre in lenguajes.presence')
+								input(type='checkbox', ng-model='pre.checked', ng-click='updateSelectionPresence(pre, lenguajes.presence)')
 								| {{pre.name}}
 								spant(ng-show='pre.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{pre.help}}')
@@ -103,8 +103,8 @@ div(ng-controller='InvasivenessCtrl')
 					label.col-xs-2.control-label(for='persistence', translate='') simplePliCTerm.name.persistence
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='per in persistence')
-								input(type='checkbox', ng-model='per.checked', ng-click='updateSelectionPersistence(per, persistence)')
+							div(ng-repeat='per in lenguajes.persistence')
+								input(type='checkbox', ng-model='per.checked', ng-click='updateSelectionPersistence(per, lenguajes.persistence)')
 								| {{per.name}}
 								spant(ng-show='per.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{per.help}}')
@@ -113,8 +113,8 @@ div(ng-controller='InvasivenessCtrl')
 					label.col-xs-2.control-label(for='distribution', translate='') simplePliCTerm.name.distribution
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='dis in distribution')
-								input(type='checkbox', ng-model='dis.checked', ng-click='updateSelectionDistribution(dis, distribution)')
+							div(ng-repeat='dis in lenguajes.distribution')
+								input(type='checkbox', ng-model='dis.checked', ng-click='updateSelectionDistribution(dis, lenguajes.distribution)')
 								| {{dis.name}}
 								spant(ng-show='dis.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{dis.help}}')
@@ -123,8 +123,8 @@ div(ng-controller='InvasivenessCtrl')
 					label.col-xs-2.control-label(for='harmful', translate='') simplePliCTerm.name.harmful
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='har in harmful')
-								input(type='checkbox', ng-model='har.checked', ng-click='updateSelectionHarmful(har, harmful)')
+							div(ng-repeat='har in lenguajes.harmful')
+								input(type='checkbox', ng-model='har.checked', ng-click='updateSelectionHarmful(har, lenguajes.harmful)')
 								| {{har.name}}
 								spant(ng-show='har.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{har.help}}')
@@ -191,8 +191,8 @@ div(ng-controller='InvasivenessCtrl')
 					label.col-xs-2.control-label(for='abundance', translate='') simplePliCTerm.name.abundance
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='abu in abundance')
-								input(type='checkbox', ng-model='abu.checked', ng-click='updateSelectionAbundance(abu, abundance)')
+							div(ng-repeat='abu in lenguajes.abundance')
+								input(type='checkbox', ng-model='abu.checked', ng-click='updateSelectionAbundance(abu, lenguajes.abundance)')
 								| {{abu.name}}
 								spant(ng-show='abu.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{abu.help}}')
@@ -201,8 +201,8 @@ div(ng-controller='InvasivenessCtrl')
 					label.col-xs-2.control-label(for='trend', translate='') simplePliCTerm.name.trend
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='tre in trend')
-								input(type='checkbox', ng-model='tre.checked', ng-click='updateSelectionTrend(tre, trend)')
+							div(ng-repeat='tre in lenguajes.trend')
+								input(type='checkbox', ng-model='tre.checked', ng-click='updateSelectionTrend(tre, lenguajes.trend)')
 								| {{tre.name}}
 								spant(ng-show='tre.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{tre.help}}')
@@ -211,8 +211,8 @@ div(ng-controller='InvasivenessCtrl')
 					label.col-xs-2.control-label(for='rateOfSpread', translate='') simplePliCTerm.name.rateOfSpread
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='ros in rateOfSpread')
-								input(type='checkbox', ng-model='ros.checked', ng-click='updateSelectionRateOfSpread(ros, rateOfSpread)')
+							div(ng-repeat='ros in lenguajes.rateOfSpread')
+								input(type='checkbox', ng-model='ros.checked', ng-click='updateSelectionRateOfSpread(ros, lenguajes.rateOfSpread)')
 								| {{ros.name}}
 								spant(ng-show='ros.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{ros.help}}')
@@ -221,8 +221,8 @@ div(ng-controller='InvasivenessCtrl')
 					label.col-xs-2.control-label(for='regulatoryListing', translate='') simplePliCTerm.name.regulatoryListing
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='rl in regulatoryListing')
-								input(type='checkbox', ng-model='rl.checked', ng-click='updateSelectionRegulatoryListing(rl, regulatoryListing)')
+							div(ng-repeat='rl in lenguajes.regulatoryListing')
+								input(type='checkbox', ng-model='rl.checked', ng-click='updateSelectionRegulatoryListing(rl, lenguajes.regulatoryListing)')
 								| {{rl.name}}
 								spant(ng-show='rl.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{rl.help}}')
@@ -244,8 +244,8 @@ div(ng-controller='InvasivenessCtrl')
 					label.col-xs-2.control-label(for='localityType', translate='') simplePliCTerm.name.localityType
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='lt in localityType')
-								input(type='checkbox', ng-model='lt.checked', ng-click='updateSelectionLocalityType(lt, localityType)')
+							div(ng-repeat='lt in lenguajes.localityType')
+								input(type='checkbox', ng-model='lt.checked', ng-click='updateSelectionLocalityType(lt, lenguajes.localityType)')
 								| {{lt.name}}
 								spant(ng-show='lt.help')
 									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lt.help}}')
@@ -254,15 +254,15 @@ div(ng-controller='InvasivenessCtrl')
 					label.col-xs-2.control-label(for='locationValue', translate='') simplePliCTerm.name.locationValue
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='ls in locationStandard')
-								input(type='checkbox', ng-model='ls.checked', ng-click='updateSelectionLocationValue(ls, locationStandard)')
+							div(ng-repeat='ls in lenguajes.locationStandard')
+								input(type='checkbox', ng-model='ls.checked', ng-click='updateSelectionLocationValue(ls, lenguajes.locationStandard)')
 								| {{ls.name}}
 				.form-group
 					label.col-xs-2.control-label(for='publicationDatePrecision', translate='') simplePliCTerm.name.publicationDatePrecision
 					.col-xs-10
 						.panel(ng-controller='CheckBoxCrtl')
-							div(ng-repeat='pdp in publicationDatePrecision')
-								input(type='checkbox', ng-model='pdp.checked', ng-click='updateSelectionPublicationDatePrecision(pdp, publicationDatePrecision)')
+							div(ng-repeat='pdp in lenguajes.publicationDatePrecision')
+								input(type='checkbox', ng-model='pdp.checked', ng-click='updateSelectionPublicationDatePrecision(pdp, lenguajes.publicationDatePrecision)')
 								| {{pdp.name}}
 				.form-group
 					label.col-xs-2.control-label(for='WhatImpact', translate='') simplePliCTerm.name.WhatImpact
@@ -459,7 +459,7 @@ div(ng-controller='InvasivenessCtrl')
 					
 											div(uib-collapse='isCollapsed_1',id='referenceInvasiveness')
 												.form-group
-													select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+													select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 														option(value='') - {{"simplePliCTerm.name.type"|translate}} 
 													input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 													input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')

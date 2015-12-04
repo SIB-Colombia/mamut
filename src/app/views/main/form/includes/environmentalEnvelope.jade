@@ -29,7 +29,7 @@ div(ng-controller='EnvironmentalEnvelopeCtrl')
 			div(ng-controller='MeasurementCtrl')
 				
 				.col-xs-5
-					select(ng-model='environmentalEnvelopeAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in environmentalEnvelopes | unique:'measurementtype'")
+					select(ng-model='environmentalEnvelopeAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.environmentalEnvelopes | unique:'measurementtype'")
 						option(value='') - Seleccione -
 				.col-xs-5
 					input(type='text', ng-model='measurementOrFact.measurementOrFact.measurementValue')
@@ -111,7 +111,7 @@ div(ng-controller='EnvironmentalEnvelopeCtrl')
 			
 									div(uib-collapse='isCollapsed_1', id='referenceEnvironmentalEnvelope')
 										.form-group
-											select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+											select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 												option(value='') - {{"simplePliCTerm.name.type"|translate}} 
 											input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 											input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')

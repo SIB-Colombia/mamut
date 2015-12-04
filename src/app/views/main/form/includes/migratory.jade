@@ -133,7 +133,7 @@ div(ng-controller='MigratoryCtrl')
 				
 										div(uib-collapse='isCollapsed_1', id='referenceMigratory')
 											.form-group
-												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+												select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 													option(value='') - {{"simplePliCTerm.name.type"|translate}} 
 												input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 												input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')

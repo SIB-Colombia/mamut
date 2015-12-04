@@ -10,7 +10,7 @@ div(ng-controller='AncillaryDataCtrl')
 				//button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addAncillaries()') 
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 			.panel-body
-				div(ng-show='(formData.ancillaryData).length')
+				div.table-responsive(ng-show='(formData.ancillaryData).length')
 					table.table.table-striped
 						thead
 							tr
@@ -104,7 +104,7 @@ div(ng-controller='AncillaryDataCtrl')
 		
 								div(uib-collapse='isCollapsed_1', id='referenceAncillary')
 									.form-group
-										select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+										select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 											option(value='') - {{"simplePliCTerm.name.type"|translate}} 
 										input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 										input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')

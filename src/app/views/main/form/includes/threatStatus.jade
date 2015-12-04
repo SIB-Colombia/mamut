@@ -41,14 +41,14 @@ div(ng-controller='ThreatStatusCtrl')
 				label.col-xs-2.control-label(for='authority', translate='') simplePliCTerm.name.Authority
 				.col-xs-10
 					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='aut in authority')
+						div(ng-repeat='aut in lenguajes.authority')
 							input(type='checkbox', ng-model='aut.checked', ng-click='updateSelectionAutority(aut)')
 							| {{aut.name}}
 			.form-group
 				label.col-xs-2.control-label(for='threatCategory', translate='') simplePliCTerm.name.ThreatCategory
 				div(ng-controller='MeasurementCtrl')
 					.col-xs-5
-						select(ng-model='threatStatusClass.threatStatusAtomized.threatCategory.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in threatCategory | unique:'measurementtype'")
+						select(ng-model='threatStatusClass.threatStatusAtomized.threatCategory.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.threatCategory | unique:'measurementtype'")
 							option(value='') - Seleccione -
 					.col-xs-5
 						select(ng-model='threatStatusClass.threatStatusAtomized.threatCategory.measurementValue', ng-disabled='!threatStatusClass.threatStatusAtomized.threatCategory.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
@@ -70,8 +70,8 @@ div(ng-controller='ThreatStatusCtrl')
 				label.col-xs-2.control-label(for='apendice', translate='') Apendice CITES
 				.col-xs-10
 					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='ac in apendiceCITES')
-							input(type='checkbox', ng-model='ac.checked', ng-click='updateSelectionApendiceCITES(ac, apendiceCITES)')
+						div(ng-repeat='ac in lenguajes.apendiceCITES')
+							input(type='checkbox', ng-model='ac.checked', ng-click='updateSelectionApendiceCITES(ac, lenguajes.apendiceCITES)')
 							| {{ac.name}}
 			.form-group
 				button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addThreatStatusClass(formData.threatStatus, threatStatusClass)') Guardar
@@ -152,7 +152,7 @@ div(ng-controller='ThreatStatusCtrl')
 				
 										div(uib-collapse='isCollapsed_1',id='referenceThreat')
 											.form-group
-												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+												select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 													option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
 												input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 												input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')

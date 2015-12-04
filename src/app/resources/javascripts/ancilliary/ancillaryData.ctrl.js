@@ -74,7 +74,7 @@ angular.module('app.controllers.ancillary',[])
 	};
 
 	$scope.getInfoLicence = function(url, ancillary) {
-		if (url !== undefined) {
+		if (url !== undefined && url !== '') {
 			var url_parts = url.split('/');
 			if (url.indexOf('www.flickr.com') > -1) {
 				var photo_id = url_parts[5];

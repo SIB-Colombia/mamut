@@ -24,7 +24,7 @@ div(ng-controller='BehaviorCtrl')
 			.form-group
 				div(ng-controller='MeasurementCtrl')
 					.col-xs-5
-						select(ng-model='behaviorAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in behaviors | unique:'measurementtype'")
+						select(ng-model='behaviorAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.behaviors | unique:'measurementtype'")
 							option(value='') - Seleccione -
 					.col-xs-5
 						select(ng-model='behaviorAtomized.measurementValue', ng-disabled='!behaviorAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
@@ -109,7 +109,7 @@ div(ng-controller='BehaviorCtrl')
 				
 										div(uib-collapse='isCollapsed_1',id='referenceBehavior')
 											.form-group
-												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+												select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 													option(value='') - {{"simplePliCTerm.name.type"|translate}} 
 												input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 												input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')

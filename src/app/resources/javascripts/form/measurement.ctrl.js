@@ -59,7 +59,7 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('reproductionAtomized.measurementType', function(name) {
 		if (name !== undefined) {
-			delete $scope.lenguajes.reproductionAtomized.measurementValue;
+			delete $scope.reproductionAtomized.measurementValue;
 			$scope.selectedAttr.length = 0;
 
 			angular.forEach($scope.lenguajes.reproduction, function(attr) {
@@ -89,7 +89,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.dispersalAtomized.purpose.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.purposes, function(attr) {
+			angular.forEach($scope.lenguajes.purposes, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
@@ -116,7 +116,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.formData.dispersal.dispersalAtomized.distance.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.distance, function(attr) {
+			angular.forEach($scope.lenguajes.distance, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
@@ -142,7 +142,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.behaviorAtomized.measurementValue;
 			$scope.selectedAttr.length = 0;
 			
-			angular.forEach($scope.behaviors, function(attr) {
+			angular.forEach($scope.lenguajes.behaviors, function(attr) {
 				if (attr.measurementtype === name) {
 
 					$scope.selectedAttr.push(attr);
@@ -169,7 +169,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.molecularDataAtomizedType.measurementOrFact.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.molecularData, function(attr) {
+			angular.forEach($scope.lenguajes.molecularData, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
@@ -195,7 +195,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.interactionsAtomizedType.interactionSpeciesType.measurementOrFact.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.interactionSpeciesType, function(attr) {
+			angular.forEach($scope.lenguajes.interactionSpeciesType, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
@@ -220,7 +220,7 @@ angular.module('app.controllers.measurement',[])
 		if (name !== undefined) {
 			$scope.measurementOrFact = new MeasurementFactory().measurement;
 			measurementCopy = angular.copy($scope.measurementOrFact);
-			angular.forEach($scope.environmentalEnvelopes, function(attr) {
+			angular.forEach($scope.lenguajes.environmentalEnvelopes, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = name;
 					$scope.measurementOrFact.ancillaryData.bibliographicCitation = attr.referencia;
@@ -235,7 +235,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.ecologicalSignificanceAtomized.measurementOrFact.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.ecologicalSignificances, function(attr) {
+			angular.forEach($scope.lenguajes.ecologicalSignificances, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
@@ -263,7 +263,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.habitatAtomized.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.habitat, function(attr) {
+			angular.forEach($scope.lenguajes.habitat, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
@@ -311,7 +311,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.directThreatsAtomized.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.directThreats, function(attr) {
+			angular.forEach($scope.lenguajes.directThreats, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
@@ -338,7 +338,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.managementAction.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.managementAction, function(attr) {
+			angular.forEach($scope.lenguajes.managementAction, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
@@ -365,7 +365,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.threatStatusClass.threatStatusAtomized.threatCategory.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.threatCategory, function(attr) {
+			angular.forEach($scope.lenguajes.threatCategory, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}

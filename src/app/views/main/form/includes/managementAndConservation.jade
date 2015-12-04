@@ -51,7 +51,7 @@ div(ng-controller='ManagementAndConservationCtrl')
 						span.glyphicon.glyphicon-info-sign
 				div(ng-controller='MeasurementCtrl')
 					.col-xs-4
-						select(ng-model='managementAction.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in managementAction | unique:'measurementtype'")
+						select(ng-model='managementAction.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.managementAction | unique:'measurementtype'")
 							option(value='') - Seleccione -
 					.col-xs-4
 						select(ng-model='managementAction.measurementValue', ng-disabled='!managementAction.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr')
@@ -158,7 +158,7 @@ div(ng-controller='ManagementAndConservationCtrl')
 				
 										div(uib-collapse='isCollapsed_1',id='referenceManagement')
 											.form-group
-												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+												select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 													option(value='') - {{"simplePliCTerm.name.type"|translate}} 
 												input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 												input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')

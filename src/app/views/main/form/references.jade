@@ -35,7 +35,7 @@ div(ng-controller='ReferenceCrtl')
 						.form-group
 							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.type
 							.col-xs-10
-								select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+								select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 									option(value='') - Seleccione -
 						.form-group
 							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Source

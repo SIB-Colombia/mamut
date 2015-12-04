@@ -17,17 +17,17 @@ div(ng-controller='DispersalCtrl')
 				label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Type
 				.col-xs-10
 					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='type in dispersalType')
+						div(ng-repeat='type in lenguajes.dispersalType')
 							.action-checkbox
-								input(type='checkbox', ng-model='type.checked', ng-click='updateSelectionDispersalType(type, dispersalType)')
+								input(type='checkbox', ng-model='type.checked', ng-click='updateSelectionDispersalType(type, lenguajes.dispersalType)')
 								| {{type.name}}
 			.form-group
 				label.col-xs-2.control-label(for='structureDispersed', translate='') simplePliCTerm.name.StructureDispersed
 				.col-xs-10
 					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='structure in structureDispersed')
+						div(ng-repeat='structure in lenguajes.structureDispersed')
 							.action-checkbox
-								input(type='checkbox', ng-model='structure.checked', ng-click='updateSelectionStructureDispersed(structure, structureDispersed)')
+								input(type='checkbox', ng-model='structure.checked', ng-click='updateSelectionStructureDispersed(structure, lenguajes.structureDispersed)')
 								| {{structure.name}}
 			.form-group
 				label.col-xs-2.control-label(for='distance', translate='') simplePliCTerm.name.Distance
@@ -112,7 +112,7 @@ div(ng-controller='DispersalCtrl')
 				
 										div(uib-collapse='isCollapsed_1',id='referenceDispersal')
 											.form-group
-												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+												select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 													option(value='') - {{"simplePliCTerm.name.type"|translate}} 
 												input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 												input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')

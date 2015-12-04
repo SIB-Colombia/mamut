@@ -41,8 +41,8 @@ div(ng-controller='DistributionCtrl')
 				label.col-xs-2.control-label(for='distributionScope', translate='') simplePliCTerm.name.DistributionScope
 				.col-xs-10
 					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='ds in distributionScope')
-							input(type='checkbox', ng-model='ds.checked', ng-click='updateSelectionDistributionScope(ds, distributionScope)')
+						div(ng-repeat='ds in lenguajes.distributionScope')
+							input(type='checkbox', ng-model='ds.checked', ng-click='updateSelectionDistributionScope(ds, lenguajes.distributionScope)')
 							| {{ds.name}}
 			.form-group
 				label.col-xs-2.control-label(for='temporalCoverage', translate='') simplePliCTerm.name.TemporalCoverage
@@ -178,7 +178,7 @@ div(ng-controller='DistributionCtrl')
 			
 									div(uib-collapse='isCollapsed_1', id='referenceDistribution')
 										.form-group
-											select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+											select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 												option(value='') - {{"simplePliCTerm.name.type"|translate}} 
 											input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 											input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')

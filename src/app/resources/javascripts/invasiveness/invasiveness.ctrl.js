@@ -215,25 +215,25 @@ angular.module('app.controllers.invasiveness',[])
 	};
 
 	$scope.UpdateCheckBoxes = function(invasiveness,state){
-		angular.forEach($scope.origin, function(item) {
+		angular.forEach($scope.lenguajes.origin, function(item) {
             if(invasiveness.origin!==null && invasiveness.origin === item.name){
   				item.checked = state;
 			}
         });
 
-        angular.forEach($scope.presence, function(item) {
+        angular.forEach($scope.lenguajes.presence, function(item) {
             if(invasiveness.presence!==null && invasiveness.presence === item.name){
   				item.checked = state;
 			}
         });
 
-        angular.forEach($scope.persistence, function(item) {
+        angular.forEach($scope.lenguajes.persistence, function(item) {
             if(invasiveness.persistence!==null && invasiveness.persistence === item.name){
   				item.checked = state;
 			}
         });
 
-        angular.forEach($scope.distribution, function(item) {
+        angular.forEach($scope.lenguajes.distribution, function(item) {
         	angular.forEach(invasiveness.distribution, function(distribution) {
         		if(distribution!==null && distribution === item.name){
 	  				item.checked = state;
@@ -241,49 +241,49 @@ angular.module('app.controllers.invasiveness',[])
         	});
         });
 
-        angular.forEach($scope.harmful, function(item) {
+        angular.forEach($scope.lenguajes.harmful, function(item) {
             if(invasiveness.harmful!==null && invasiveness.harmful === item.name){
   				item.checked = state;
 			}
         });
 
-        angular.forEach($scope.abundance, function(item) {
+        angular.forEach($scope.lenguajes.abundance, function(item) {
             if(invasiveness.abundance!==null && invasiveness.abundance === item.name){
   				item.checked = state;
 			}
         });
 
-        angular.forEach($scope.trend, function(item) {
+        angular.forEach($scope.lenguajes.trend, function(item) {
             if(invasiveness.trend!==null && invasiveness.trend === item.name){
   				item.checked = state;
 			}
         });
 
-        angular.forEach($scope.rateOfSpread, function(item) {
+        angular.forEach($scope.lenguajes.rateOfSpread, function(item) {
             if(invasiveness.rateOfSpread!==null && invasiveness.rateOfSpread === item.name){
   				item.checked = state;
 			}
         });
 
-        angular.forEach($scope.regulatoryListing, function(item) {
+        angular.forEach($scope.lenguajes.regulatoryListing, function(item) {
             if(invasiveness.regulatoryListing!==null && invasiveness.regulatoryListing === item.name){
   				item.checked = state;
 			}
         });
 
-        angular.forEach($scope.localityType, function(item) {
+        angular.forEach($scope.lenguajes.localityType, function(item) {
             if(invasiveness.localityType!==null && invasiveness.localityType === item.name){
   				item.checked = state;
 			}
         });
 
-        angular.forEach($scope.locationStandard, function(item) {
+        angular.forEach($scope.lenguajes.locationStandard, function(item) {
             if(invasiveness.locationValue!==null && invasiveness.locationValue === item.name){
   				item.checked = state;
 			}
         });
 
-        angular.forEach($scope.publicationDatePrecision, function(item) {
+        angular.forEach($scope.lenguajes.publicationDatePrecision, function(item) {
             if(invasiveness.publicationDatePrecision!==null && invasiveness.publicationDatePrecision === item.name){
   				item.checked = state;
 			}

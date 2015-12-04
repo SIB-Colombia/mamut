@@ -32,7 +32,7 @@ angular.module('app.controllers.form',[])
 	$scope.managementAndConservationAtomizedFactoryLocal = new ManagementAndConservationAtomizedFactory();
 			
 	if($scope.formDataGet!==undefined){
-		$scope.formData = $scope.formDataGet
+		$scope.formData = $scope.formDataGet;
 	} else{
 		//New general Form
 		$scope.formData = {
@@ -93,140 +93,11 @@ angular.module('app.controllers.form',[])
 		if ($scope.lenguajes.event !== undefined) {
 			$scope.event = $scope.lenguajes.event;
 		}
-		if ($scope.lenguajes.purposes !== undefined) {
-			$scope.purposes = $scope.lenguajes.purposes;
-		}
-		if ($scope.lenguajes.dispersalType !== undefined) {
-			$scope.dispersalType = $scope.lenguajes.dispersalType;
-		}
-		if ($scope.lenguajes.structureDispersed !== undefined) {
-			$scope.structureDispersed = $scope.lenguajes.structureDispersed;
-		}
 		if ($scope.lenguajes.distance !== undefined) {
 			$scope.distance = $scope.lenguajes.distance;
 		}
-		if ($scope.lenguajes.behaviors !== undefined) {
-			$scope.behaviors = $scope.lenguajes.behaviors;
-		}
-		if ($scope.lenguajes.interactionSpeciesType !== undefined) {
-			$scope.interactionSpeciesType = $scope.lenguajes.interactionSpeciesType;
-		}
-		if ($scope.lenguajes.molecularDatas !== undefined) {
-			$scope.molecularDatas = $scope.lenguajes.molecularDatas;
-		}
-		if ($scope.lenguajes.migratoryCauses !== undefined) {
-			$scope.migratoryCauses = $scope.lenguajes.migratoryCauses;
-		}
-		if ($scope.lenguajes.migratoryPatterns !== undefined) {
-			$scope.migratoryPatterns = $scope.lenguajes.migratoryPatterns;
-		}
-		if ($scope.lenguajes.ecologicalSignificances !== undefined) {
-			$scope.ecologicalSignificances = $scope.lenguajes.ecologicalSignificances;
-		}
-		if ($scope.lenguajes.environmentalEnvelopes !== undefined) {
-			$scope.environmentalEnvelopes = $scope.lenguajes.environmentalEnvelopes;
-		}
-		if ($scope.lenguajes.origin !== undefined) {
-			$scope.origin = $scope.lenguajes.origin;
-		}
-		if ($scope.lenguajes.presence !== undefined) {
-			$scope.presence = $scope.lenguajes.presence;
-		}
-		if ($scope.lenguajes.persistence !== undefined) {
-			$scope.persistence = $scope.lenguajes.persistence;
-		}
-		if ($scope.lenguajes.distribution !== undefined) {
-			$scope.distribution = $scope.lenguajes.distribution;
-		}
-		if ($scope.lenguajes.harmful !== undefined) {
-			$scope.harmful = $scope.lenguajes.harmful;
-		}
-		if ($scope.lenguajes.abundance !== undefined) {
-			$scope.abundance = $scope.lenguajes.abundance;
-		}
-		if ($scope.lenguajes.trend !== undefined) {
-			$scope.trend = $scope.lenguajes.trend;
-		}
-		if ($scope.lenguajes.rateOfSpread !== undefined) {
-			$scope.rateOfSpread = $scope.lenguajes.rateOfSpread;
-		}
-		if ($scope.lenguajes.regulatoryListing !== undefined) {
-			$scope.regulatoryListing = $scope.lenguajes.regulatoryListing;
-		}
-		if ($scope.lenguajes.localityType !== undefined) {
-			$scope.localityType = $scope.lenguajes.localityType;
-		}
-		if ($scope.lenguajes.locationStandard !== undefined) {
-			$scope.locationStandard = $scope.lenguajes.locationStandard;
-		}
-		if ($scope.lenguajes.publicationDatePrecision !== undefined) {
-			$scope.publicationDatePrecision = $scope.lenguajes.publicationDatePrecision;
-		}
-		if ($scope.lenguajes.habitat !== undefined) {
-			$scope.habitat = $scope.lenguajes.habitat;
-		}
-		if ($scope.lenguajes.distributionScope !== undefined) {
-			$scope.distributionScope = $scope.lenguajes.distributionScope;
-		}
-		if ($scope.lenguajes.extentOfOccurrence !== undefined) {
-			$scope.extentOfOccurrence = $scope.lenguajes.extentOfOccurrence;
-		}
-		if ($scope.lenguajes.areaOfOccupancy !== undefined) {
-			$scope.areaOfOccupancy = $scope.lenguajes.areaOfOccupancy;
-		}
-		if ($scope.lenguajes.region !== undefined) {
-			$scope.region = $scope.lenguajes.region;
-		}
-		if ($scope.lenguajes.mortalityRate !== undefined) {
-			$scope.mortalityRate = $scope.lenguajes.mortalityRate;
-		}
-		if ($scope.lenguajes.birthRate !== undefined) {
-			$scope.birthRate = $scope.lenguajes.birthRate;
-		}
-		if ($scope.lenguajes.avaregeDensity !== undefined) {
-			$scope.avaregeDensity = $scope.lenguajes.avaregeDensity;
-		}
-		if ($scope.lenguajes.populationGrowthRate !== undefined) {
-			$scope.populationGrowthRate = $scope.lenguajes.populationGrowthRate;
-		}
-		if ($scope.lenguajes.threatCategory !== undefined) {
-			$scope.threatCategory = $scope.lenguajes.threatCategory;
-		}
-		if ($scope.lenguajes.authority !== undefined) {
-			$scope.authority = $scope.lenguajes.authority;
-		}
-		if ($scope.lenguajes.directThreats !== undefined) {
-			$scope.directThreats = $scope.lenguajes.directThreats;
-		}
-		if ($scope.lenguajes.legislationProtection !== undefined) {
-			$scope.legislationProtection = $scope.lenguajes.legislationProtection;
-		}
-		if ($scope.lenguajes.legislationStatus !== undefined) {
-			$scope.legislationStatus = $scope.lenguajes.legislationStatus;
-		}
-		if ($scope.lenguajes.legislationType !== undefined) {
-			$scope.legislationType = $scope.lenguajes.legislationType;
-		}
-		if ($scope.lenguajes.legislationNorm !== undefined) {
-			$scope.legislationNorm = $scope.lenguajes.legislationNorm;
-		}
 		if ($scope.lenguajes.partUsed !== undefined) {
 			$scope.partUsed = $scope.lenguajes.partUsed;
-		}
-		if ($scope.lenguajes.useTypeAtomized !== undefined) {
-			$scope.useTypeAtomized = $scope.lenguajes.useTypeAtomized;
-		}
-		if ($scope.lenguajes.managementType !== undefined) {
-			$scope.managementType = $scope.lenguajes.managementType;
-		}
-		if ($scope.lenguajes.managementAction !== undefined) {
-			$scope.managementAction = $scope.lenguajes.managementAction;
-		}
-		if ($scope.lenguajes.reference_type !== undefined) {
-			$scope.reference_type = $scope.lenguajes.reference_type;
-		}
-		if ($scope.lenguajes.apendiceCITES !== undefined) {
-			$scope.apendiceCITES = $scope.lenguajes.apendiceCITES;
 		}
 	}
 		//Variables
@@ -239,11 +110,10 @@ angular.module('app.controllers.form',[])
 		$scope.saveFile = function(){
 			if($scope.formData._id!==undefined){
 				var id = $scope.formData._id;
-				delete $scope.formData["_id"];
-
+	
 				var req = {
 					 method: 'PUT',
-					 url: 'http://192.168.205.12:3000/update-record/'+id,
+					 url: 'http://apimamut.elasticbeanstalk.com/update-record/'+id,
 					 headers: {
 					   'Content-Type': 'application/JSON'
 					 },
@@ -256,7 +126,7 @@ angular.module('app.controllers.form',[])
 		           }
 		        });	
 		   	}else{
-				var req = {
+				var req_1 = {
 					 method: 'POST',
 					 url: 'http://apimamut.elasticbeanstalk.com/post-record',
 					 headers: {
@@ -265,7 +135,7 @@ angular.module('app.controllers.form',[])
 					 data: $scope.formData
 				};
 
-				$http(req).then(function (response) {
+				$http(req_1).then(function (response) {
 		           if(response.data.message==='Record created!'){
 		           		alert('Felicitaciones, su ficha se ha guardado exitosamente!!!');
 		           }
@@ -283,7 +153,7 @@ angular.module('app.controllers.form',[])
 .filter('references_translate', function() {
 	return function(input,scope) {
 		// do some bounds checking here to ensure it has that index
-		angular.forEach(scope.reference_type, function(item) {
+		angular.forEach(scope.lenguajes.reference_type, function(item) {
 	        if(input!==null && input === item.original){
 				input = item.view;
 			}

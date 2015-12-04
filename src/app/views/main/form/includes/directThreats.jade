@@ -12,7 +12,7 @@ div(ng-controller='DirectThreatsCtrl')
 			.form-group
 				div(ng-controller='MeasurementCtrl')
 					.col-xs-5
-						select(ng-model='directThreatsAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in directThreats | unique:'measurementtype'")
+						select(ng-model='directThreatsAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.directThreats | unique:'measurementtype'")
 							option(value='') - Seleccione -
 					.col-xs-5
 						select(ng-model='directThreatsAtomized.measurementValue', ng-disabled='!directThreatsAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
@@ -94,7 +94,7 @@ div(ng-controller='DirectThreatsCtrl')
 				
 										div(uib-collapse='isCollapsed_1',id='referenceDirect')
 											.form-group
-												select(ng-model='reference.type', ng-options='type.original as type.view for type in reference_type ')
+												select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 													option(value='') - {{"simplePliCTerm.name.type"|translate}} 
 												input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
 												input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
