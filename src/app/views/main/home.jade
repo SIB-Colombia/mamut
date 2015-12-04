@@ -13,8 +13,8 @@ block content
 					table(ng-table="tableParams", class="table table-striped table-bordered table-hover table-condensed")
 						tr(ng-repeat="field in $data")
 							td(data-title="'Id'")
-								//a(href="/edit?id={{field._id}}")
-								| {{field._id}}
+								a(href="/edit?id={{field._id}}")
+									| {{field._id}}
 
 							td(data-title="'Taxon'"){{field.taxonRecordName.scientificName.simple}}	
 							td(data-title="'Creador'")

@@ -16,7 +16,7 @@ angular.module('app.controllers.checkBox',[])
         }
     };
 
-    $scope.updateSelectionFeeding = function updateSelectionEvent(element, list) {
+    $scope.updateSelectionEvent = function updateSelectionEvent(element, list) {
         angular.forEach(list, function(item) {
             item.checked = false;
         });

@@ -33,16 +33,16 @@ div(ng-controller='FeedingCtrl')
 				label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.type
 				.col-xs-10
 					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='source in primaryDietSource')
-							input(type='checkbox', ng-model='source.checked', ng-click='updateSelectionFeeding(source, primaryDietSource)')
+						div(ng-repeat='source in lenguajes.primaryDietSource')
+							input(type='checkbox', ng-model='source.checked', ng-click='updateSelectionFeeding(source, lenguajes.primaryDietSource)')
 							| {{source.name}}
 			.form-group
 				label.col-xs-2.control-label(for='strategy', translate='') simplePliCTerm.name.Strategy
 				.col-xs-10
 					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='strategy in strategies')
+						div(ng-repeat='strategy in lenguajes.strategies')
 							.action-checkbox
-								input(type='checkbox', ng-model='strategy.checked', ng-click='updateSelectionThropic(strategy, strategies)')
+								input(type='checkbox', ng-model='strategy.checked', ng-click='updateSelectionThropic(strategy, lenguajes.strategies)')
 								| {{strategy.name}}
 			
 			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addFeedingAtomizedType(formData.feeding.feedingAtomized,feedingAtomizedType)') Guardar

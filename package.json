@@ -39,7 +39,10 @@
     "serve-favicon": "~2.3.0",
     "serve-static": "^1.10.0",
     "winston": "^1.0.1",
-    "express-session": "^1.12.1"
+    "express-session": "^1.12.1",
+    "stylus": "^0.52.0",
+    "wrench": "^1.5.8",
+    "requirejs": "^2.1.20"
   },
   "devDependencies": {
     "bower": "latest",

@@ -10,7 +10,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.lifeFormAtomized.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.lifeForms, function(attr) {
+			angular.forEach($scope.lenguajes.lifeForms, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
@@ -36,7 +36,7 @@ angular.module('app.controllers.measurement',[])
 			delete $scope.lifeCycleAtomized.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.lifeCycles, function(attr) {
+			angular.forEach($scope.lenguajes.lifeCycles, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}
@@ -59,10 +59,10 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('reproductionAtomized.measurementType', function(name) {
 		if (name !== undefined) {
-			delete $scope.reproductionAtomized.measurementValue;
+			delete $scope.lenguajes.reproductionAtomized.measurementValue;
 			$scope.selectedAttr.length = 0;
 
-			angular.forEach($scope.reproduction, function(attr) {
+			angular.forEach($scope.lenguajes.reproduction, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.selectedAttr.push(attr);
 				}

@@ -29,7 +29,7 @@ div(ng-controller='ReproductionCtrl')
 			.form-group
 				div(ng-controller='MeasurementCtrl')
 					.col-xs-5
-						select(ng-model='reproductionAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in reproduction | unique:'measurementtype'")
+						select(ng-model='reproductionAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.reproduction | unique:'measurementtype'")
 							option(value='') - Seleccione -
 					.col-xs-5
 						select(ng-model='reproductionAtomized.measurementValue', ng-disabled='!reproductionAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
