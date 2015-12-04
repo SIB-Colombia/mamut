@@ -62,7 +62,15 @@ module.exports = function(parent, options) {
 			switch (key) {
 				case 'index':
 					method = 'get';
+					path = '/new';
+					break;
+				case 'home':
+					method = 'get';
 					path = '/';
+					break;
+				case 'edit':
+					method = 'get';
+					path = '/edit';
 					break;
 				default:
 					throw new Error('unrecognized route: ' + name + '.' + key);

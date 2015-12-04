@@ -1,11 +1,13 @@
 'use strict';
 
 angular.module('app.controllers.form',[])
-.controller('formController', ['$scope', '$http', '$rootScope', 'DirectThreatsFactory', 'LegislationFactory', 'PopulationBiologyFactory', 'TerritoryFactory', 'HabitatsFactory', 'AnnualCycleFactory', 'BehaviorFactory',
+.controller('formController', ['$scope', '$http', '$rootScope', '$routeParams', '$resource', 'DirectThreatsFactory', 'LegislationFactory', 'PopulationBiologyFactory', 'TerritoryFactory', 'HabitatsFactory', 'AnnualCycleFactory', 'BehaviorFactory',
 	'DispersalFactory','EcologicalSignificanceFactory', 'EnvironmentalEnvelopeFactory', 'FeedingFactory', 'InteractionsFactory', 'LifeCycleFactory', 'LifeFormFactory', 'MigratoryFactory', 'MolecularDataFactory',
 	'ReproductionFactory','InvasivenessFactory','TaxonRecordNameFactory','FullDescriptionFactory','IdentificationKeysFactory','ManagementAndConservationAtomizedFactory',
-	function($scope, $http, $rootScope, DirectThreatsFactory, LegislationFactory, PopulationBiologyFactory, TerritoryFactory, HabitatsFactory, AnnualCycleFactory,BehaviorFactory,DispersalFactory,EcologicalSignificanceFactory,
+	function($scope, $http, $rootScope, $routeParams, $resource , DirectThreatsFactory, LegislationFactory, PopulationBiologyFactory, TerritoryFactory, HabitatsFactory, AnnualCycleFactory,BehaviorFactory,DispersalFactory,EcologicalSignificanceFactory,
 		EnvironmentalEnvelopeFactory,FeedingFactory,InteractionsFactory,LifeCycleFactory,LifeFormFactory,MigratoryFactory,MolecularDataFactory,ReproductionFactory,InvasivenessFactory,TaxonRecordNameFactory,FullDescriptionFactory,IdentificationKeysFactory,ManagementAndConservationAtomizedFactory) {
+
+	//console.log($scope.formData);
 
 	$scope.directThreatsFactoryLocal = new DirectThreatsFactory();
 	$scope.legislationFactoryLocal = new LegislationFactory();
@@ -67,6 +69,10 @@ angular.module('app.controllers.form',[])
 		usesManagementAndConservation : $scope.managementAndConservationAtomizedFactoryLocal.usesManagementAndConservation
 	};
 
+
+	//console.log($scope.formData);
+	
+	
 	/*oboe({
 		url: 'http://s3.amazonaws.com/mutis/vocabularies/test/editorPrueba.json',
 		method: 'GET'
@@ -373,7 +379,7 @@ angular.module('app.controllers.form',[])
 		$scope.saveFile = function(){
 			var req = {
 				 method: 'POST',
-				 url: 'http://192.168.205.12:3000/post-record',
+				 url: 'http://apimamut.elasticbeanstalk.com/post-record',
 				 headers: {
 				   'Content-Type': 'application/JSON'
 				 },
