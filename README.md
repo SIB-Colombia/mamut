@@ -1,1 +1,2 @@
-Mamut: Web based form editor for species information described in Plinian Core Colombia Profile 
+# Catalogue of Biodiversity: Data editor
+Data elements editor for plinianCore archive to json persistance

@@ -1,0 +1,4767 @@
+[
+	{
+		"countryName": "Colombia",
+		"countryIso": "CO",
+		"departments":[{
+			"departmentName":"Amazonas",
+			"departmentIso":"CO-AMA",
+			"counties":[
+				{
+					"countyIso" : "91001",
+					"countyName" : "Leticia"
+				},
+				{
+					"countyIso" : "91263",
+					"countyName" : "El encanto"
+				},
+				{
+					"countyIso" : "91405",
+					"countyName" : "La chorrera"
+				},
+				{
+					"countyIso" : "91407",
+					"countyName" : "La pedrera"
+				},
+				{
+					"countyIso" : "91430",
+					"countyName" : "La victoria"
+				},
+				{
+					"countyIso" : "91460",
+					"countyName" : "Miriti - paraná"
+				},
+				{
+					"countyIso" : "91530",
+					"countyName" : "Puerto alegría"
+				},
+				{
+					"countyIso" : "91536",
+					"countyName" : "Puerto arica"
+				},
+				{
+					"countyIso" : "91540",
+					"countyName" : "Puerto nariño"
+				},
+				{
+					"countyIso" : "91669",
+					"countyName" : "Puerto santander"
+				},
+				{
+					"countyIso" : "91798",
+					"countyName" : "Tarapacá"
+				}
+			]
+		},
+		{
+			"departmentName":"Antioquia",
+			"departmentIso":"CO-ANT",
+			"counties":[
+				{
+					"countyIso" : "05001",
+					"countyName" : "Medellín"
+				},
+				{
+					"countyIso" : "05002",
+					"countyName" : "Abejorral"
+				},
+				{
+					"countyIso" : "05004",
+					"countyName" : "Abriaquí"
+				},
+				{
+					"countyIso" : "05021",
+					"countyName" : "AlejandrÍa"
+				},
+				{
+					"countyIso" : "05030",
+					"countyName" : "Amagá"
+				},
+				{
+					"countyIso" : "05031",
+					"countyName" : "Amalfi"
+				},
+				{
+					"countyIso" : "05034",
+					"countyName" : "Andes"
+				},
+				{
+					"countyIso" : "05036",
+					"countyName" : "Angelópolis"
+				},
+				{
+					"countyIso" : "05038",
+					"countyName" : "Angostura"
+				},
+				{
+					"countyIso" : "05040",
+					"countyName" : "AnorÍ"
+				},
+				{
+					"countyIso" : "05042",
+					"countyName" : "Santafé de antioquia"
+				},
+				{
+					"countyIso" : "05044",
+					"countyName" : "Anza"
+				},
+				{
+					"countyIso" : "05045",
+					"countyName" : "Apartadó"
+				},
+				{
+					"countyIso" : "05051",
+					"countyName" : "Arboletes"
+				},
+				{
+					"countyIso" : "05055",
+					"countyName" : "Argelia"
+				},
+				{
+					"countyIso" : "05059",
+					"countyName" : "Armenia"
+				},
+				{
+					"countyIso" : "05079",
+					"countyName" : "Barbosa"
+				},
+				{
+					"countyIso" : "05086",
+					"countyName" : "Belmira"
+				},
+				{
+					"countyIso" : "05088",
+					"countyName" : "Bello"
+				},
+				{
+					"countyIso" : "05091",
+					"countyName" : "Betania"
+				},
+				{
+					"countyIso" : "05093",
+					"countyName" : "Betulia"
+				},
+				{
+					"countyIso" : "05101",
+					"countyName" : "Ciudad bolívar"
+				},
+				{
+					"countyIso" : "05107",
+					"countyName" : "Briceño"
+				},
+				{
+					"countyIso" : "05113",
+					"countyName" : "Buriticá"
+				},
+				{
+					"countyIso" : "05120",
+					"countyName" : "Cáceres"
+				},
+				{
+					"countyIso" : "05125",
+					"countyName" : "Caicedo"
+				},
+				{
+					"countyIso" : "05129",
+					"countyName" : "Caldas"
+				},
+				{
+					"countyIso" : "05134",
+					"countyName" : "Campamento"
+				},
+				{
+					"countyIso" : "05138",
+					"countyName" : "Cañasgordas"
+				},
+				{
+					"countyIso" : "05142",
+					"countyName" : "Caracolí"
+				},
+				{
+					"countyIso" : "05145",
+					"countyName" : "Caramanta"
+				},
+				{
+					"countyIso" : "05147",
+					"countyName" : "Carepa"
+				},
+				{
+					"countyIso" : "05148",
+					"countyName" : "El carmen de viboral"
+				},
+				{
+					"countyIso" : "05150",
+					"countyName" : "Carolina"
+				},
+				{
+					"countyIso" : "05154",
+					"countyName" : "Caucasia"
+				},
+				{
+					"countyIso" : "05172",
+					"countyName" : "Chigorodó"
+				},
+				{
+					"countyIso" : "05190",
+					"countyName" : "Cisneros"
+				},
+				{
+					"countyIso" : "05197",
+					"countyName" : "Cocorná"
+				},
+				{
+					"countyIso" : "05206",
+					"countyName" : "Concepción"
+				},
+				{
+					"countyIso" : "05209",
+					"countyName" : "Concordia"
+				},
+				{
+					"countyIso" : "05212",
+					"countyName" : "Copacabana"
+				},
+				{
+					"countyIso" : "05234",
+					"countyName" : "Dabeiba"
+				},
+				{
+					"countyIso" : "05237",
+					"countyName" : "Donmatías"
+				},
+				{
+					"countyIso" : "05240",
+					"countyName" : "Ebéjico"
+				},
+				{
+					"countyIso" : "05250",
+					"countyName" : "El bagre"
+				},
+				{
+					"countyIso" : "05264",
+					"countyName" : "Entrerrios"
+				},
+				{
+					"countyIso" : "05266",
+					"countyName" : "Envigado"
+				},
+				{
+					"countyIso" : "05282",
+					"countyName" : "Fredonia"
+				},
+				{
+					"countyIso" : "05284",
+					"countyName" : "Frontino"
+				},
+				{
+					"countyIso" : "05306",
+					"countyName" : "Giraldo"
+				},
+				{
+					"countyIso" : "05308",
+					"countyName" : "Girardota"
+				},
+				{
+					"countyIso" : "05310",
+					"countyName" : "Gómez plata"
+				},
+				{
+					"countyIso" : "05313",
+					"countyName" : "Granada"
+				},
+				{
+					"countyIso" : "05315",
+					"countyName" : "Guadalupe"
+				},
+				{
+					"countyIso" : "05318",
+					"countyName" : "Guarne"
+				},
+				{
+					"countyIso" : "05321",
+					"countyName" : "Guatape"
+				},
+				{
+					"countyIso" : "05347",
+					"countyName" : "Heliconia"
+				},
+				{
+					"countyIso" : "05353",
+					"countyName" : "Hispania"
+				},
+				{
+					"countyIso" : "05360",
+					"countyName" : "Itagui"
+				},
+				{
+					"countyIso" : "05361",
+					"countyName" : "Ituango"
+				},
+				{
+					"countyIso" : "05364",
+					"countyName" : "Jardín"
+				},
+				{
+					"countyIso" : "05368",
+					"countyName" : "Jericó"
+				},
+				{
+					"countyIso" : "05376",
+					"countyName" : "La ceja"
+				},
+				{
+					"countyIso" : "05380",
+					"countyName" : "La estrella"
+				},
+				{
+					"countyIso" : "05390",
+					"countyName" : "La pintada"
+				},
+				{
+					"countyIso" : "05400",
+					"countyName" : "La unión"
+				},
+				{
+					"countyIso" : "05411",
+					"countyName" : "Liborina"
+				},
+				{
+					"countyIso" : "05425",
+					"countyName" : "Maceo"
+				},
+				{
+					"countyIso" : "05440",
+					"countyName" : "Marinilla"
+				},
+				{
+					"countyIso" : "05467",
+					"countyName" : "Montebello"
+				},
+				{
+					"countyIso" : "05475",
+					"countyName" : "Murindó"
+				},
+				{
+					"countyIso" : "05480",
+					"countyName" : "Mutatá"
+				},
+				{
+					"countyIso" : "05483",
+					"countyName" : "Nariño"
+				},
+				{
+					"countyIso" : "05490",
+					"countyName" : "NecoclÍ"
+				},
+				{
+					"countyIso" : "05495",
+					"countyName" : "Nechí"
+				},
+				{
+					"countyIso" : "05501",
+					"countyName" : "Olaya"
+				},
+				{
+					"countyIso" : "05541",
+					"countyName" : "Peñol"
+				},
+				{
+					"countyIso" : "05543",
+					"countyName" : "Peque"
+				},
+				{
+					"countyIso" : "05576",
+					"countyName" : "Pueblorrico"
+				},
+				{
+					"countyIso" : "05579",
+					"countyName" : "Puerto berrío"
+				},
+				{
+					"countyIso" : "05585",
+					"countyName" : "Puerto nare"
+				},
+				{
+					"countyIso" : "05591",
+					"countyName" : "Puerto triunfo"
+				},
+				{
+					"countyIso" : "05604",
+					"countyName" : "Remedios"
+				},
+				{
+					"countyIso" : "05607",
+					"countyName" : "Retiro"
+				},
+				{
+					"countyIso" : "05615",
+					"countyName" : "Rionegro"
+				},
+				{
+					"countyIso" : "05628",
+					"countyName" : "Sabanalarga"
+				},
+				{
+					"countyIso" : "05631",
+					"countyName" : "Sabaneta"
+				},
+				{
+					"countyIso" : "05642",
+					"countyName" : "Salgar"
+				},
+				{
+					"countyIso" : "05647",
+					"countyName" : "San andrés de cuerquia"
+				},
+				{
+					"countyIso" : "05649",
+					"countyName" : "San carlos"
+				},
+				{
+					"countyIso" : "05652",
+					"countyName" : "San francisco"
+				},
+				{
+					"countyIso" : "05656",
+					"countyName" : "San jerónimo"
+				},
+				{
+					"countyIso" : "05658",
+					"countyName" : "San josé de la montaña"
+				},
+				{
+					"countyIso" : "05659",
+					"countyName" : "San juan de urabá"
+				},
+				{
+					"countyIso" : "05660",
+					"countyName" : "San luis"
+				},
+				{
+					"countyIso" : "05664",
+					"countyName" : "San pedro de los milagros"
+				},
+				{
+					"countyIso" : "05665",
+					"countyName" : "San pedro de uraba"
+				},
+				{
+					"countyIso" : "05667",
+					"countyName" : "San rafael"
+				},
+				{
+					"countyIso" : "05670",
+					"countyName" : "San roque"
+				},
+				{
+					"countyIso" : "05674",
+					"countyName" : "San vicente"
+				},
+				{
+					"countyIso" : "05679",
+					"countyName" : "Santa bárbara"
+				},
+				{
+					"countyIso" : "05686",
+					"countyName" : "Santa rosa de osos"
+				},
+				{
+					"countyIso" : "05690",
+					"countyName" : "Santo domingo"
+				},
+				{
+					"countyIso" : "05697",
+					"countyName" : "El santuario"
+				},
+				{
+					"countyIso" : "05736",
+					"countyName" : "Segovia"
+				},
+				{
+					"countyIso" : "05756",
+					"countyName" : "Sonson"
+				},
+				{
+					"countyIso" : "05761",
+					"countyName" : "Sopetrán"
+				},
+				{
+					"countyIso" : "05789",
+					"countyName" : "Támesis"
+				},
+				{
+					"countyIso" : "05790",
+					"countyName" : "Tarazá"
+				},
+				{
+					"countyIso" : "05792",
+					"countyName" : "Tarso"
+				},
+				{
+					"countyIso" : "05809",
+					"countyName" : "Titiribí"
+				},
+				{
+					"countyIso" : "05819",
+					"countyName" : "Toledo"
+				},
+				{
+					"countyIso" : "05837",
+					"countyName" : "Turbo"
+				},
+				{
+					"countyIso" : "05842",
+					"countyName" : "Uramita"
+				},
+				{
+					"countyIso" : "05847",
+					"countyName" : "Urrao"
+				},
+				{
+					"countyIso" : "05854",
+					"countyName" : "Valdivia"
+				},
+				{
+					"countyIso" : "05856",
+					"countyName" : "Valparaíso"
+				},
+				{
+					"countyIso" : "05858",
+					"countyName" : "Vegachi"
+				},
+				{
+					"countyIso" : "05861",
+					"countyName" : "Venecia"
+				},
+				{
+					"countyIso" : "05873",
+					"countyName" : "Vigía del fuerte"
+				},
+				{
+					"countyIso" : "05885",
+					"countyName" : "YalÍ"
+				},
+				{
+					"countyIso" : "05887",
+					"countyName" : "Yarumal"
+				},
+				{
+					"countyIso" : "05890",
+					"countyName" : "Yolombó"
+				},
+				{
+					"countyIso" : "05893",
+					"countyName" : "Yondó"
+				},
+				{
+					"countyIso" : "05895",
+					"countyName" : "Zaragoza"
+				}
+			]
+		},
+		{
+			"departmentName":"Arauca",
+			"departmentIso":"CO-ARA",
+			"counties":[
+				{
+					"countyIso" : "81001",
+					"countyName" : "Arauca"
+				},
+				{
+					"countyIso" : "81065",
+					"countyName" : "Arauquita"
+				},
+				{
+					"countyIso" : "81220",
+					"countyName" : "Cravo norte"
+				},
+				{
+					"countyIso" : "81300",
+					"countyName" : "Fortul"
+				},
+				{
+					"countyIso" : "81591",
+					"countyName" : "Puerto rondón"
+				},
+				{
+					"countyIso" : "81736",
+					"countyName" : "Saravena"
+				},
+				{
+					"countyIso" : "81794",
+					"countyName" : "Tame"
+				}
+			]
+		},
+		{
+			"departmentName":"Atlántico",
+			"departmentIso":"CO-ATL",
+			"counties":[
+				{
+					"countyIso" : "08001",
+					"countyName" : "Barranquilla"
+				},
+				{
+					"countyIso" : "08078",
+					"countyName" : "Baranoa"
+				},
+				{
+					"countyIso" : "08137",
+					"countyName" : "Campo de la cruz"
+				},
+				{
+					"countyIso" : "08141",
+					"countyName" : "Candelaria"
+				},
+				{
+					"countyIso" : "08296",
+					"countyName" : "Galapa"
+				},
+				{
+					"countyIso" : "08372",
+					"countyName" : "Juan de acosta"
+				},
+				{
+					"countyIso" : "08421",
+					"countyName" : "Luruaco"
+				},
+				{
+					"countyIso" : "08433",
+					"countyName" : "Malambo"
+				},
+				{
+					"countyIso" : "08436",
+					"countyName" : "Manatí"
+				},
+				{
+					"countyIso" : "08520",
+					"countyName" : "Palmar de varela"
+				},
+				{
+					"countyIso" : "08549",
+					"countyName" : "Piojó"
+				},
+				{
+					"countyIso" : "08558",
+					"countyName" : "Polonuevo"
+				},
+				{
+					"countyIso" : "08560",
+					"countyName" : "Ponedera"
+				},
+				{
+					"countyIso" : "08573",
+					"countyName" : "Puerto colombia"
+				},
+				{
+					"countyIso" : "08606",
+					"countyName" : "Repelón"
+				},
+				{
+					"countyIso" : "08634",
+					"countyName" : "Sabanagrande"
+				},
+				{
+					"countyIso" : "08638",
+					"countyName" : "Sabanalarga"
+				},
+				{
+					"countyIso" : "08675",
+					"countyName" : "Santa lucía"
+				},
+				{
+					"countyIso" : "08685",
+					"countyName" : "Santo tomás"
+				},
+				{
+					"countyIso" : "08758",
+					"countyName" : "Soledad"
+				},
+				{
+					"countyIso" : "08770",
+					"countyName" : "Suan"
+				},
+				{
+					"countyIso" : "08832",
+					"countyName" : "Tubará"
+				},
+				{
+					"countyIso" : "08849",
+					"countyName" : "Usiacurí"
+				}
+			]
+		},
+		{
+			"departmentName":"Bolívar",
+			"departmentIso":"CO-BOL",
+			"counties":[
+				{
+					"countyIso" : "13001",
+					"countyName" : "Cartagena"
+				},
+				{
+					"countyIso" : "13006",
+					"countyName" : "Achí"
+				},
+				{
+					"countyIso" : "13030",
+					"countyName" : "Altos del rosario"
+				},
+				{
+					"countyIso" : "13042",
+					"countyName" : "Arenal"
+				},
+				{
+					"countyIso" : "13052",
+					"countyName" : "Arjona"
+				},
+				{
+					"countyIso" : "13062",
+					"countyName" : "Arroyohondo"
+				},
+				{
+					"countyIso" : "13074",
+					"countyName" : "Barranco de loba"
+				},
+				{
+					"countyIso" : "13140",
+					"countyName" : "Calamar"
+				},
+				{
+					"countyIso" : "13160",
+					"countyName" : "Cantagallo"
+				},
+				{
+					"countyIso" : "13188",
+					"countyName" : "Cicuco"
+				},
+				{
+					"countyIso" : "13212",
+					"countyName" : "Córdoba"
+				},
+				{
+					"countyIso" : "13222",
+					"countyName" : "Clemencia"
+				},
+				{
+					"countyIso" : "13244",
+					"countyName" : "El carmen de bolívar"
+				},
+				{
+					"countyIso" : "13248",
+					"countyName" : "El guamo"
+				},
+				{
+					"countyIso" : "13268",
+					"countyName" : "El peñón"
+				},
+				{
+					"countyIso" : "13300",
+					"countyName" : "Hatillo de loba"
+				},
+				{
+					"countyIso" : "13430",
+					"countyName" : "Magangué"
+				},
+				{
+					"countyIso" : "13433",
+					"countyName" : "Mahates"
+				},
+				{
+					"countyIso" : "13440",
+					"countyName" : "Margarita"
+				},
+				{
+					"countyIso" : "13442",
+					"countyName" : "María la baja"
+				},
+				{
+					"countyIso" : "13458",
+					"countyName" : "Montecristo"
+				},
+				{
+					"countyIso" : "13468",
+					"countyName" : "Mompós"
+				},
+				{
+					"countyIso" : "13473",
+					"countyName" : "Morales"
+				},
+				{
+					"countyIso" : "13490",
+					"countyName" : "Norosí"
+				},
+				{
+					"countyIso" : "13549",
+					"countyName" : "Pinillos"
+				},
+				{
+					"countyIso" : "13580",
+					"countyName" : "Regidor"
+				},
+				{
+					"countyIso" : "13600",
+					"countyName" : "Río viejo"
+				},
+				{
+					"countyIso" : "13620",
+					"countyName" : "San cristóbal"
+				},
+				{
+					"countyIso" : "13647",
+					"countyName" : "San estanislao"
+				},
+				{
+					"countyIso" : "13650",
+					"countyName" : "San fernando"
+				},
+				{
+					"countyIso" : "13654",
+					"countyName" : "San jacinto"
+				},
+				{
+					"countyIso" : "13655",
+					"countyName" : "San jacinto del cauca"
+				},
+				{
+					"countyIso" : "13657",
+					"countyName" : "San juan nepomuceno"
+				},
+				{
+					"countyIso" : "13667",
+					"countyName" : "San martín de loba"
+				},
+				{
+					"countyIso" : "13670",
+					"countyName" : "San pablo"
+				},
+				{
+					"countyIso" : "13673",
+					"countyName" : "Santa catalina"
+				},
+				{
+					"countyIso" : "13683",
+					"countyName" : "Santa rosa"
+				},
+				{
+					"countyIso" : "13688",
+					"countyName" : "Santa rosa del sur"
+				},
+				{
+					"countyIso" : "13744",
+					"countyName" : "Simití"
+				},
+				{
+					"countyIso" : "13760",
+					"countyName" : "Soplaviento"
+				},
+				{
+					"countyIso" : "13780",
+					"countyName" : "Talaigua nuevo"
+				},
+				{
+					"countyIso" : "13810",
+					"countyName" : "Tiquisio"
+				},
+				{
+					"countyIso" : "13836",
+					"countyName" : "Turbaco"
+				},
+				{
+					"countyIso" : "13838",
+					"countyName" : "Turbaná"
+				},
+				{
+					"countyIso" : "13873",
+					"countyName" : "Villanueva"
+				},
+				{
+					"countyIso" : "13894",
+					"countyName" : "Zambrano"
+				}
+			]
+		},
+		{
+			"departmentName":"Boyacá",
+			"departmentIso":"CO-BOY",
+			"counties":[
+				{
+					"countyIso" : "15001",
+					"countyName" : "Tunja"
+				},
+				{
+					"countyIso" : "15022",
+					"countyName" : "Almeida"
+				},
+				{
+					"countyIso" : "15047",
+					"countyName" : "Aquitania"
+				},
+				{
+					"countyIso" : "15051",
+					"countyName" : "Arcabuco"
+				},
+				{
+					"countyIso" : "15087",
+					"countyName" : "Belén"
+				},
+				{
+					"countyIso" : "15090",
+					"countyName" : "Berbeo"
+				},
+				{
+					"countyIso" : "15092",
+					"countyName" : "Betéitiva"
+				},
+				{
+					"countyIso" : "15097",
+					"countyName" : "Boavita"
+				},
+				{
+					"countyIso" : "15104",
+					"countyName" : "Boyacá"
+				},
+				{
+					"countyIso" : "15106",
+					"countyName" : "Briceño"
+				},
+				{
+					"countyIso" : "15109",
+					"countyName" : "Buenavista"
+				},
+				{
+					"countyIso" : "15114",
+					"countyName" : "Busbanzá"
+				},
+				{
+					"countyIso" : "15131",
+					"countyName" : "Caldas"
+				},
+				{
+					"countyIso" : "15135",
+					"countyName" : "Campohermoso"
+				},
+				{
+					"countyIso" : "15162",
+					"countyName" : "Cerinza"
+				},
+				{
+					"countyIso" : "15172",
+					"countyName" : "Chinavita"
+				},
+				{
+					"countyIso" : "15176",
+					"countyName" : "Chiquinquirá"
+				},
+				{
+					"countyIso" : "15180",
+					"countyName" : "Chiscas"
+				},
+				{
+					"countyIso" : "15183",
+					"countyName" : "Chita"
+				},
+				{
+					"countyIso" : "15185",
+					"countyName" : "Chitaraque"
+				},
+				{
+					"countyIso" : "15187",
+					"countyName" : "Chivatá"
+				},
+				{
+					"countyIso" : "15189",
+					"countyName" : "Ciénega"
+				},
+				{
+					"countyIso" : "15204",
+					"countyName" : "Cómbita"
+				},
+				{
+					"countyIso" : "15212",
+					"countyName" : "Coper"
+				},
+				{
+					"countyIso" : "15215",
+					"countyName" : "Corrales"
+				},
+				{
+					"countyIso" : "15218",
+					"countyName" : "CovarachÍa"
+				},
+				{
+					"countyIso" : "15223",
+					"countyName" : "Cubará"
+				},
+				{
+					"countyIso" : "15224",
+					"countyName" : "Cucaita"
+				},
+				{
+					"countyIso" : "15226",
+					"countyName" : "Cuítiva"
+				},
+				{
+					"countyIso" : "15232",
+					"countyName" : "Chíquiza"
+				},
+				{
+					"countyIso" : "15236",
+					"countyName" : "Chivor"
+				},
+				{
+					"countyIso" : "15238",
+					"countyName" : "Duitama"
+				},
+				{
+					"countyIso" : "15244",
+					"countyName" : "El cocuy"
+				},
+				{
+					"countyIso" : "15248",
+					"countyName" : "El espino"
+				},
+				{
+					"countyIso" : "15272",
+					"countyName" : "Firavitoba"
+				},
+				{
+					"countyIso" : "15276",
+					"countyName" : "Floresta"
+				},
+				{
+					"countyIso" : "15293",
+					"countyName" : "Gachantivá"
+				},
+				{
+					"countyIso" : "15296",
+					"countyName" : "Gameza"
+				},
+				{
+					"countyIso" : "15299",
+					"countyName" : "Garagoa"
+				},
+				{
+					"countyIso" : "15317",
+					"countyName" : "Guacamayas"
+				},
+				{
+					"countyIso" : "15322",
+					"countyName" : "Guateque"
+				},
+				{
+					"countyIso" : "15325",
+					"countyName" : "Guayatá"
+				},
+				{
+					"countyIso" : "15332",
+					"countyName" : "Güicán"
+				},
+				{
+					"countyIso" : "15362",
+					"countyName" : "Iza"
+				},
+				{
+					"countyIso" : "15367",
+					"countyName" : "jenesano"
+				},
+				{
+					"countyIso" : "15368",
+					"countyName" : "Jericó"
+				},
+				{
+					"countyIso" : "15377",
+					"countyName" : "Labranzagrande"
+				},
+				{
+					"countyIso" : "15380",
+					"countyName" : "La capilla"
+				},
+				{
+					"countyIso" : "15401",
+					"countyName" : "La victoria"
+				},
+				{
+					"countyIso" : "15403",
+					"countyName" : "La uvita"
+				},
+				{
+					"countyIso" : "15407",
+					"countyName" : "Villa de leyva"
+				},
+				{
+					"countyIso" : "15425",
+					"countyName" : "Macanal"
+				},
+				{
+					"countyIso" : "15442",
+					"countyName" : "Maripí"
+				},
+				{
+					"countyIso" : "15455",
+					"countyName" : "Miraflores"
+				},
+				{
+					"countyIso" : "15464",
+					"countyName" : "Mongua"
+				},
+				{
+					"countyIso" : "15466",
+					"countyName" : "Monguí"
+				},
+				{
+					"countyIso" : "15469",
+					"countyName" : "Moniquirá"
+				},
+				{
+					"countyIso" : "15476",
+					"countyName" : "Motavita"
+				},
+				{
+					"countyIso" : "15480",
+					"countyName" : "Muzo"
+				},
+				{
+					"countyIso" : "15491",
+					"countyName" : "Nobsa"
+				},
+				{
+					"countyIso" : "15494",
+					"countyName" : "Nuevo colón"
+				},
+				{
+					"countyIso" : "15500",
+					"countyName" : "Oicatá"
+				},
+				{
+					"countyIso" : "15507",
+					"countyName" : "Otanche"
+				},
+				{
+					"countyIso" : "15511",
+					"countyName" : "Pachavita"
+				},
+				{
+					"countyIso" : "15514",
+					"countyName" : "Páez"
+				},
+				{
+					"countyIso" : "15516",
+					"countyName" : "Paipa"
+				},
+				{
+					"countyIso" : "15518",
+					"countyName" : "Pajarito"
+				},
+				{
+					"countyIso" : "15522",
+					"countyName" : "Panqueba"
+				},
+				{
+					"countyIso" : "15531",
+					"countyName" : "Pauna"
+				},
+				{
+					"countyIso" : "15533",
+					"countyName" : "Paya"
+				},
+				{
+					"countyIso" : "15537",
+					"countyName" : "Paz de río"
+				},
+				{
+					"countyIso" : "15542",
+					"countyName" : "Pesca"
+				},
+				{
+					"countyIso" : "15550",
+					"countyName" : "Pisba"
+				},
+				{
+					"countyIso" : "15572",
+					"countyName" : "Puerto boyacá"
+				},
+				{
+					"countyIso" : "15580",
+					"countyName" : "Quípama"
+				},
+				{
+					"countyIso" : "15599",
+					"countyName" : "Ramiriquí"
+				},
+				{
+					"countyIso" : "15600",
+					"countyName" : "Ráquira"
+				},
+				{
+					"countyIso" : "15621",
+					"countyName" : "Rondón"
+				},
+				{
+					"countyIso" : "15632",
+					"countyName" : "Saboyá"
+				},
+				{
+					"countyIso" : "15638",
+					"countyName" : "Sáchica"
+				},
+				{
+					"countyIso" : "15646",
+					"countyName" : "Samacá"
+				},
+				{
+					"countyIso" : "15660",
+					"countyName" : "San eduardo"
+				},
+				{
+					"countyIso" : "15664",
+					"countyName" : "San josé de pare"
+				},
+				{
+					"countyIso" : "15667",
+					"countyName" : "San luis de gaceno"
+				},
+				{
+					"countyIso" : "15673",
+					"countyName" : "San mateo"
+				},
+				{
+					"countyIso" : "15676",
+					"countyName" : "San miguel de sema"
+				},
+				{
+					"countyIso" : "15681",
+					"countyName" : "San pablo de borbur"
+				},
+				{
+					"countyIso" : "15686",
+					"countyName" : "Santana"
+				},
+				{
+					"countyIso" : "15690",
+					"countyName" : "Santa maría"
+				},
+				{
+					"countyIso" : "15693",
+					"countyName" : "Santa rosa de viterbo"
+				},
+				{
+					"countyIso" : "15696",
+					"countyName" : "Santa sofía"
+				},
+				{
+					"countyIso" : "15720",
+					"countyName" : "Sativanorte"
+				},
+				{
+					"countyIso" : "15723",
+					"countyName" : "Sativasur"
+				},
+				{
+					"countyIso" : "15740",
+					"countyName" : "Siachoque"
+				},
+				{
+					"countyIso" : "15753",
+					"countyName" : "Soatá"
+				},
+				{
+					"countyIso" : "15755",
+					"countyName" : "Socota"
+				},
+				{
+					"countyIso" : "15757",
+					"countyName" : "Socha"
+				},
+				{
+					"countyIso" : "15759",
+					"countyName" : "Sogamoso"
+				},
+				{
+					"countyIso" : "15761",
+					"countyName" : "Somondoco"
+				},
+				{
+					"countyIso" : "15762",
+					"countyName" : "Sora"
+				},
+				{
+					"countyIso" : "15763",
+					"countyName" : "Sotaquirá"
+				},
+				{
+					"countyIso" : "15764",
+					"countyName" : "Soracá"
+				},
+				{
+					"countyIso" : "15774",
+					"countyName" : "Susacón"
+				},
+				{
+					"countyIso" : "15776",
+					"countyName" : "Sutamarchán"
+				},
+				{
+					"countyIso" : "15778",
+					"countyName" : "Sutatenza"
+				},
+				{
+					"countyIso" : "15790",
+					"countyName" : "Tasco"
+				},
+				{
+					"countyIso" : "15798",
+					"countyName" : "Tenza"
+				},
+				{
+					"countyIso" : "15804",
+					"countyName" : "Tibaná"
+				},
+				{
+					"countyIso" : "15806",
+					"countyName" : "Tibasosa"
+				},
+				{
+					"countyIso" : "15808",
+					"countyName" : "Tinjacá"
+				},
+				{
+					"countyIso" : "15810",
+					"countyName" : "Tipacoque"
+				},
+				{
+					"countyIso" : "15814",
+					"countyName" : "Toca"
+				},
+				{
+					"countyIso" : "15816",
+					"countyName" : "Togüí"
+				},
+				{
+					"countyIso" : "15820",
+					"countyName" : "Tópaga"
+				},
+				{
+					"countyIso" : "15822",
+					"countyName" : "Tota"
+				},
+				{
+					"countyIso" : "15832",
+					"countyName" : "Tununguá"
+				},
+				{
+					"countyIso" : "15835",
+					"countyName" : "Turmequé"
+				},
+				{
+					"countyIso" : "15837",
+					"countyName" : "Tuta"
+				},
+				{
+					"countyIso" : "15839",
+					"countyName" : "Tutazá"
+				},
+				{
+					"countyIso" : "15842",
+					"countyName" : "Umbita"
+				},
+				{
+					"countyIso" : "15861",
+					"countyName" : "Ventaquemada"
+				},
+				{
+					"countyIso" : "15879",
+					"countyName" : "Viracachá"
+				},
+				{
+					"countyIso" : "15897",
+					"countyName" : "Zetaquira"
+				}
+			]
+
+		},
+		{
+			"departmentName":"Caldas",
+			"departmentIso":"CO-CAL",
+			"counties":[
+				{
+					"countyIso" : "17001",
+					"countyName" : "Manizales"
+				},
+				{
+					"countyIso" : "17013",
+					"countyName" : "Aguadas"
+				},
+				{
+					"countyIso" : "17042",
+					"countyName" : "Anserma"
+				},
+				{
+					"countyIso" : "17050",
+					"countyName" : "Aranzazu"
+				},
+				{
+					"countyIso" : "17088",
+					"countyName" : "Belalcázar"
+				},
+				{
+					"countyIso" : "17174",
+					"countyName" : "Chinchiná"
+				},
+				{
+					"countyIso" : "17272",
+					"countyName" : "Filadelfia"
+				},
+				{
+					"countyIso" : "17380",
+					"countyName" : "La dorada"
+				},
+				{
+					"countyIso" : "17388",
+					"countyName" : "La merced"
+				},
+				{
+					"countyIso" : "17433",
+					"countyName" : "Manzanares"
+				},
+				{
+					"countyIso" : "17442",
+					"countyName" : "Marmato"
+				},
+				{
+					"countyIso" : "17444",
+					"countyName" : "Marquetalia"
+				},
+				{
+					"countyIso" : "17446",
+					"countyName" : "Marulanda"
+				},
+				{
+					"countyIso" : "17486",
+					"countyName" : "Neira"
+				},
+				{
+					"countyIso" : "17495",
+					"countyName" : "Norcasia"
+				},
+				{
+					"countyIso" : "17513",
+					"countyName" : "Pácora"
+				},
+				{
+					"countyIso" : "17524",
+					"countyName" : "Palestina"
+				},
+				{
+					"countyIso" : "17541",
+					"countyName" : "Pensilvania"
+				},
+				{
+					"countyIso" : "17614",
+					"countyName" : "Riosucio"
+				},
+				{
+					"countyIso" : "17616",
+					"countyName" : "Risaralda"
+				},
+				{
+					"countyIso" : "17653",
+					"countyName" : "Salamina"
+				},
+				{
+					"countyIso" : "17662",
+					"countyName" : "Samaná"
+				},
+				{
+					"countyIso" : "17665",
+					"countyName" : "San josé"
+				},
+				{
+					"countyIso" : "17777",
+					"countyName" : "Supía"
+				},
+				{
+					"countyIso" : "17867",
+					"countyName" : "Victoria"
+				},
+				{
+					"countyIso" : "17873",
+					"countyName" : "Villamaría"
+				},
+				{
+					"countyIso" : "17877",
+					"countyName" : "Viterbo"
+				}
+			]
+		},
+		{
+			"departmentName":"Caquetá",
+			"departmentIso":"CO-CAQ",
+			"counties":[
+				{
+					"countyIso" : "18001",
+					"countyName" : "Florencia"
+				},
+				{
+					"countyIso" : "18029",
+					"countyName" : "Albania"
+				},
+				{
+					"countyIso" : "18094",
+					"countyName" : "Belén de los andaquies"
+				},
+				{
+					"countyIso" : "18150",
+					"countyName" : "Cartagena del chairá"
+				},
+				{
+					"countyIso" : "18205",
+					"countyName" : "Curillo"
+				},
+				{
+					"countyIso" : "18247",
+					"countyName" : "El doncello"
+				},
+				{
+					"countyIso" : "18256",
+					"countyName" : "El paujil"
+				},
+				{
+					"countyIso" : "18410",
+					"countyName" : "La montañita"
+				},
+				{
+					"countyIso" : "18460",
+					"countyName" : "Milán"
+				},
+				{
+					"countyIso" : "18479",
+					"countyName" : "Morelia"
+				},
+				{
+					"countyIso" : "18592",
+					"countyName" : "Puerto rico"
+				},
+				{
+					"countyIso" : "18610",
+					"countyName" : "San josé del fragua"
+				},
+				{
+					"countyIso" : "18753",
+					"countyName" : "San vicente del caguan"
+				},
+				{
+					"countyIso" : "18756",
+					"countyName" : "Solano"
+				},
+				{
+					"countyIso" : "18785",
+					"countyName" : "Solita"
+				},
+				{
+					"countyIso" : "18860",
+					"countyName" : "Valparaíso"
+				}
+			]
+		},
+		{
+			"departmentName":"Casanare",
+			"departmentIso":"CO-CAS",
+			"counties":[
+				{
+					"countyIso" : "85001",
+					"countyName" : "Yopal"
+				},
+				{
+					"countyIso" : "85010",
+					"countyName" : "Aguazul"
+				},
+				{
+					"countyIso" : "85015",
+					"countyName" : "Chameza"
+				},
+				{
+					"countyIso" : "85125",
+					"countyName" : "Hato corozal"
+				},
+				{
+					"countyIso" : "85136",
+					"countyName" : "La salina"
+				},
+				{
+					"countyIso" : "85139",
+					"countyName" : "Maní"
+				},
+				{
+					"countyIso" : "85162",
+					"countyName" : "Monterrey"
+				},
+				{
+					"countyIso" : "85225",
+					"countyName" : "Nunchía"
+				},
+				{
+					"countyIso" : "85230",
+					"countyName" : "Orocué"
+				},
+				{
+					"countyIso" : "85250",
+					"countyName" : "Paz de ariporo"
+				},
+				{
+					"countyIso" : "85263",
+					"countyName" : "Pore"
+				},
+				{
+					"countyIso" : "85279",
+					"countyName" : "Recetor"
+				},
+				{
+					"countyIso" : "85300",
+					"countyName" : "Sabanalarga"
+				},
+				{
+					"countyIso" : "85315",
+					"countyName" : "Sácama"
+				},
+				{
+					"countyIso" : "85325",
+					"countyName" : "San luis de palenque"
+				},
+				{
+					"countyIso" : "85400",
+					"countyName" : "Támara"
+				},
+				{
+					"countyIso" : "85410",
+					"countyName" : "Tauramena"
+				},
+				{
+					"countyIso" : "85430",
+					"countyName" : "Trinidad"
+				},
+				{
+					"countyIso" : "85440",
+					"countyName" : "Villanueva"
+				}
+			]
+		},
+		{
+			"departmentName":"Cesar",
+			"departmentIso":"CO-CES",
+			"counties":[
+				{
+					"countyIso" : "20001",
+					"countyName" : "Valledupar"
+				},
+				{
+					"countyIso" : "20011",
+					"countyName" : "Aguachica"
+				},
+				{
+					"countyIso" : "20013",
+					"countyName" : "Agustín codazzi"
+				},
+				{
+					"countyIso" : "20032",
+					"countyName" : "Astrea"
+				},
+				{
+					"countyIso" : "20045",
+					"countyName" : "Becerril"
+				},
+				{
+					"countyIso" : "20060",
+					"countyName" : "Bosconia"
+				},
+				{
+					"countyIso" : "20175",
+					"countyName" : "Chimichagua"
+				},
+				{
+					"countyIso" : "20178",
+					"countyName" : "Chiriguaná"
+				},
+				{
+					"countyIso" : "20228",
+					"countyName" : "Curumaní"
+				},
+				{
+					"countyIso" : "20238",
+					"countyName" : "El copey"
+				},
+				{
+					"countyIso" : "20250",
+					"countyName" : "El paso"
+				},
+				{
+					"countyIso" : "20295",
+					"countyName" : "Gamarra"
+				},
+				{
+					"countyIso" : "20310",
+					"countyName" : "González"
+				},
+				{
+					"countyIso" : "20383",
+					"countyName" : "La gloria"
+				},
+				{
+					"countyIso" : "20400",
+					"countyName" : "La jagua de ibirico"
+				},
+				{
+					"countyIso" : "20443",
+					"countyName" : "Manaure"
+				},
+				{
+					"countyIso" : "20517",
+					"countyName" : "Pailitas"
+				},
+				{
+					"countyIso" : "20550",
+					"countyName" : "Pelaya"
+				},
+				{
+					"countyIso" : "20570",
+					"countyName" : "Pueblo bello"
+				},
+				{
+					"countyIso" : "20614",
+					"countyName" : "Río de oro"
+				},
+				{
+					"countyIso" : "20621",
+					"countyName" : "La paz"
+				},
+				{
+					"countyIso" : "20710",
+					"countyName" : "San alberto"
+				},
+				{
+					"countyIso" : "20750",
+					"countyName" : "San diego"
+				},
+				{
+					"countyIso" : "20770",
+					"countyName" : "San martín"
+				},
+				{
+					"countyIso" : "20787",
+					"countyName" : "Tamalameque"
+				}
+			]
+		},
+		{
+			"departmentName":"Chocó",
+			"departmentIso":"CO-CHO",
+			"counties":[
+				{
+					"countyIso" : "27001",
+					"countyName" : "Quibdó"
+				},
+				{
+					"countyIso" : "27006",
+					"countyName" : "Acandí"
+				},
+				{
+					"countyIso" : "27025",
+					"countyName" : "Alto baudó"
+				},
+				{
+					"countyIso" : "27050",
+					"countyName" : "Atrato"
+				},
+				{
+					"countyIso" : "27073",
+					"countyName" : "Bagadó"
+				},
+				{
+					"countyIso" : "27075",
+					"countyName" : "Bahía solano"
+				},
+				{
+					"countyIso" : "27077",
+					"countyName" : "Bajo baudó"
+				},
+				{
+					"countyIso" : "27099",
+					"countyName" : "Bojaya"
+				},
+				{
+					"countyIso" : "27135",
+					"countyName" : "El cantón del san pablo"
+				},
+				{
+					"countyIso" : "27150",
+					"countyName" : "Carmen del darien"
+				},
+				{
+					"countyIso" : "27160",
+					"countyName" : "Cértegui"
+				},
+				{
+					"countyIso" : "27205",
+					"countyName" : "Condoto"
+				},
+				{
+					"countyIso" : "27245",
+					"countyName" : "El carmen de atrato"
+				},
+				{
+					"countyIso" : "27250",
+					"countyName" : "El litoral del san juan"
+				},
+				{
+					"countyIso" : "27361",
+					"countyName" : "Istmina"
+				},
+				{
+					"countyIso" : "27372",
+					"countyName" : "Juradó"
+				},
+				{
+					"countyIso" : "27413",
+					"countyName" : "Lloró"
+				},
+				{
+					"countyIso" : "27425",
+					"countyName" : "Medio atrato"
+				},
+				{
+					"countyIso" : "27430",
+					"countyName" : "Medio baudó"
+				},
+				{
+					"countyIso" : "27450",
+					"countyName" : "Medio san juan"
+				},
+				{
+					"countyIso" : "27491",
+					"countyName" : "Nóvita"
+				},
+				{
+					"countyIso" : "27495",
+					"countyName" : "Nuquí"
+				},
+				{
+					"countyIso" : "27580",
+					"countyName" : "Río iró"
+				},
+				{
+					"countyIso" : "27600",
+					"countyName" : "Río quito"
+				},
+				{
+					"countyIso" : "27615",
+					"countyName" : "Riosucio"
+				},
+				{
+					"countyIso" : "27660",
+					"countyName" : "San josé del palmar"
+				},
+				{
+					"countyIso" : "27745",
+					"countyName" : "Sipí"
+				},
+				{
+					"countyIso" : "27787",
+					"countyName" : "Tadó"
+				},
+				{
+					"countyIso" : "27800",
+					"countyName" : "Unguía"
+				},
+				{
+					"countyIso" : "27810",
+					"countyName" : "Unión panamericana"
+				}
+			]
+		},
+		{
+			"departmentName":"Córdoba",
+			"departmentIso":"CO-COR",
+			"counties":[
+				{
+					"countyIso" : "23001",
+					"countyName" : "Montería"
+				},
+				{
+					"countyIso" : "23068",
+					"countyName" : "Ayapel"
+				},
+				{
+					"countyIso" : "23079",
+					"countyName" : "Buenavista"
+				},
+				{
+					"countyIso" : "23090",
+					"countyName" : "Canalete"
+				},
+				{
+					"countyIso" : "23162",
+					"countyName" : "Cereté"
+				},
+				{
+					"countyIso" : "23168",
+					"countyName" : "Chimá"
+				},
+				{
+					"countyIso" : "23182",
+					"countyName" : "Chinú"
+				},
+				{
+					"countyIso" : "23189",
+					"countyName" : "Ciénaga de oro"
+				},
+				{
+					"countyIso" : "23300",
+					"countyName" : "Cotorra"
+				},
+				{
+					"countyIso" : "23350",
+					"countyName" : "La apartada"
+				},
+				{
+					"countyIso" : "23417",
+					"countyName" : "Lorica"
+				},
+				{
+					"countyIso" : "23419",
+					"countyName" : "Los córdobas"
+				},
+				{
+					"countyIso" : "23464",
+					"countyName" : "Momil"
+				},
+				{
+					"countyIso" : "23466",
+					"countyName" : "Montelíbano"
+				},
+				{
+					"countyIso" : "23500",
+					"countyName" : "Moñitos"
+				},
+				{
+					"countyIso" : "23555",
+					"countyName" : "Planeta rica"
+				},
+				{
+					"countyIso" : "23570",
+					"countyName" : "Pueblo nuevo"
+				},
+				{
+					"countyIso" : "23574",
+					"countyName" : "Puerto escondido"
+				},
+				{
+					"countyIso" : "23580",
+					"countyName" : "Puerto libertador"
+				},
+				{
+					"countyIso" : "23586",
+					"countyName" : "Purísima"
+				},
+				{
+					"countyIso" : "23660",
+					"countyName" : "Sahagún"
+				},
+				{
+					"countyIso" : "23670",
+					"countyName" : "San andrés sotavento"
+				},
+				{
+					"countyIso" : "23672",
+					"countyName" : "San antero"
+				},
+				{
+					"countyIso" : "23675",
+					"countyName" : "San bernardo del viento"
+				},
+				{
+					"countyIso" : "23678",
+					"countyName" : "San carlos"
+				},
+				{
+					"countyIso" : "23682",
+					"countyName" : "San josé de uré"
+				},
+				{
+					"countyIso" : "23686",
+					"countyName" : "San pelayo"
+				},
+				{
+					"countyIso" : "23807",
+					"countyName" : "Tierralta"
+				},
+				{
+					"countyIso" : "23815",
+					"countyName" : "Tuchín"
+				},
+				{
+					"countyIso" : "23855",
+					"countyName" : "Valencia"
+				}
+			]
+		},
+		{
+			"departmentName":"Cundinamarca",
+			"departmentIso":"CO-CUN",
+			"counties":[
+				{
+					"countyIso" : "25001",
+					"countyName" : "Agua de dios"
+				},
+				{
+					"countyIso" : "25019",
+					"countyName" : "Albán"
+				},
+				{
+					"countyIso" : "25035",
+					"countyName" : "Anapoima"
+				},
+				{
+					"countyIso" : "25040",
+					"countyName" : "Anolaima"
+				},
+				{
+					"countyIso" : "25053",
+					"countyName" : "Arbeláez"
+				},
+				{
+					"countyIso" : "25086",
+					"countyName" : "Beltrán"
+				},
+				{
+					"countyIso" : "25095",
+					"countyName" : "Bituima"
+				},
+				{
+					"countyIso" : "25099",
+					"countyName" : "Bojacá"
+				},
+				{
+					"countyIso" : "25120",
+					"countyName" : "Cabrera"
+				},
+				{
+					"countyIso" : "25123",
+					"countyName" : "Cachipay"
+				},
+				{
+					"countyIso" : "25126",
+					"countyName" : "Cajicá"
+				},
+				{
+					"countyIso" : "25148",
+					"countyName" : "Caparrapí"
+				},
+				{
+					"countyIso" : "25151",
+					"countyName" : "Caqueza"
+				},
+				{
+					"countyIso" : "25154",
+					"countyName" : "Carmen de carupa"
+				},
+				{
+					"countyIso" : "25168",
+					"countyName" : "Chaguaní"
+				},
+				{
+					"countyIso" : "25175",
+					"countyName" : "ChÍa"
+				},
+				{
+					"countyIso" : "25178",
+					"countyName" : "chipaque"
+				},
+				{
+					"countyIso" : "25181",
+					"countyName" : "Choachí"
+				},
+				{
+					"countyIso" : "25183",
+					"countyName" : "Chocontá"
+				},
+				{
+					"countyIso" : "25200",
+					"countyName" : "Cogua"
+				},
+				{
+					"countyIso" : "25214",
+					"countyName" : "Cota"
+				},
+				{
+					"countyIso" : "25224",
+					"countyName" : "Cucunubá"
+				},
+				{
+					"countyIso" : "25245",
+					"countyName" : "El colegio"
+				},
+				{
+					"countyIso" : "25258",
+					"countyName" : "El peñón"
+				},
+				{
+					"countyIso" : "25260",
+					"countyName" : "El rosal"
+				},
+				{
+					"countyIso" : "25269",
+					"countyName" : "Facatativá"
+				},
+				{
+					"countyIso" : "25279",
+					"countyName" : "Fomeque"
+				},
+				{
+					"countyIso" : "25281",
+					"countyName" : "Fosca"
+				},
+				{
+					"countyIso" : "25286",
+					"countyName" : "Funza"
+				},
+				{
+					"countyIso" : "25288",
+					"countyName" : "Fúquene"
+				},
+				{
+					"countyIso" : "25290",
+					"countyName" : "Fusagasugá"
+				},
+				{
+					"countyIso" : "25293",
+					"countyName" : "Gachala"
+				},
+				{
+					"countyIso" : "25295",
+					"countyName" : "Gachancipá"
+				},
+				{
+					"countyIso" : "25297",
+					"countyName" : "Gachetá"
+				},
+				{
+					"countyIso" : "25299",
+					"countyName" : "Gama"
+				},
+				{
+					"countyIso" : "25307",
+					"countyName" : "Girardot"
+				},
+				{
+					"countyIso" : "25312",
+					"countyName" : "Granada"
+				},
+				{
+					"countyIso" : "25317",
+					"countyName" : "Guachetá"
+				},
+				{
+					"countyIso" : "25320",
+					"countyName" : "Guaduas"
+				},
+				{
+					"countyIso" : "25322",
+					"countyName" : "Guasca"
+				},
+				{
+					"countyIso" : "25324",
+					"countyName" : "Guataquí"
+				},
+				{
+					"countyIso" : "25326",
+					"countyName" : "Guatavita"
+				},
+				{
+					"countyIso" : "25328",
+					"countyName" : "Guayabal de siquima"
+				},
+				{
+					"countyIso" : "25335",
+					"countyName" : "Guayabetal"
+				},
+				{
+					"countyIso" : "25339",
+					"countyName" : "Gutiérrez"
+				},
+				{
+					"countyIso" : "25368",
+					"countyName" : "Jerusalén"
+				},
+				{
+					"countyIso" : "25372",
+					"countyName" : "Junín"
+				},
+				{
+					"countyIso" : "25377",
+					"countyName" : "La calera"
+				},
+				{
+					"countyIso" : "25386",
+					"countyName" : "La mesa"
+				},
+				{
+					"countyIso" : "25394",
+					"countyName" : "La palma"
+				},
+				{
+					"countyIso" : "25398",
+					"countyName" : "La peña"
+				},
+				{
+					"countyIso" : "25402",
+					"countyName" : "La vega"
+				},
+				{
+					"countyIso" : "25407",
+					"countyName" : "Lenguazaque"
+				},
+				{
+					"countyIso" : "25426",
+					"countyName" : "Macheta"
+				},
+				{
+					"countyIso" : "25430",
+					"countyName" : "Madrid"
+				},
+				{
+					"countyIso" : "25436",
+					"countyName" : "Manta"
+				},
+				{
+					"countyIso" : "25438",
+					"countyName" : "Medina"
+				},
+				{
+					"countyIso" : "25473",
+					"countyName" : "Mosquera"
+				},
+				{
+					"countyIso" : "25483",
+					"countyName" : "Nariño"
+				},
+				{
+					"countyIso" : "25486",
+					"countyName" : "Nemocón"
+				},
+				{
+					"countyIso" : "25488",
+					"countyName" : "Nilo"
+				},
+				{
+					"countyIso" : "25489",
+					"countyName" : "Nimaima"
+				},
+				{
+					"countyIso" : "25491",
+					"countyName" : "Nocaima"
+				},
+				{
+					"countyIso" : "25506",
+					"countyName" : "Venecia"
+				},
+				{
+					"countyIso" : "25513",
+					"countyName" : "Pacho"
+				},
+				{
+					"countyIso" : "25518",
+					"countyName" : "Paime"
+				},
+				{
+					"countyIso" : "25524",
+					"countyName" : "Pandi"
+				},
+				{
+					"countyIso" : "25530",
+					"countyName" : "Paratebueno"
+				},
+				{
+					"countyIso" : "25535",
+					"countyName" : "Pasca"
+				},
+				{
+					"countyIso" : "25572",
+					"countyName" : "Puerto salgar"
+				},
+				{
+					"countyIso" : "25580",
+					"countyName" : "Pulí"
+				},
+				{
+					"countyIso" : "25592",
+					"countyName" : "Quebradanegra"
+				},
+				{
+					"countyIso" : "25594",
+					"countyName" : "Quetame"
+				},
+				{
+					"countyIso" : "25596",
+					"countyName" : "Quipile"
+				},
+				{
+					"countyIso" : "25599",
+					"countyName" : "Apulo"
+				},
+				{
+					"countyIso" : "25612",
+					"countyName" : "Ricaurte"
+				},
+				{
+					"countyIso" : "25645",
+					"countyName" : "San antonio del tequendama"
+				},
+				{
+					"countyIso" : "25649",
+					"countyName" : "San bernardo"
+				},
+				{
+					"countyIso" : "25653",
+					"countyName" : "San cayetano"
+				},
+				{
+					"countyIso" : "25658",
+					"countyName" : "San francisco"
+				},
+				{
+					"countyIso" : "25662",
+					"countyName" : "San juan de río seco"
+				},
+				{
+					"countyIso" : "25718",
+					"countyName" : "Sasaima"
+				},
+				{
+					"countyIso" : "25736",
+					"countyName" : "Sesquilé"
+				},
+				{
+					"countyIso" : "25740",
+					"countyName" : "Sibaté"
+				},
+				{
+					"countyIso" : "25743",
+					"countyName" : "Silvania"
+				},
+				{
+					"countyIso" : "25745",
+					"countyName" : "Simijaca"
+				},
+				{
+					"countyIso" : "25754",
+					"countyName" : "Soacha"
+				},
+				{
+					"countyIso" : "25758",
+					"countyName" : "Sopó"
+				},
+				{
+					"countyIso" : "25769",
+					"countyName" : "Subachoque"
+				},
+				{
+					"countyIso" : "25772",
+					"countyName" : "Suesca"
+				},
+				{
+					"countyIso" : "25777",
+					"countyName" : "Supatá"
+				},
+				{
+					"countyIso" : "25779",
+					"countyName" : "Susa"
+				},
+				{
+					"countyIso" : "25781",
+					"countyName" : "Sutatausa"
+				},
+				{
+					"countyIso" : "25785",
+					"countyName" : "Tabio"
+				},
+				{
+					"countyIso" : "25793",
+					"countyName" : "Tausa"
+				},
+				{
+					"countyIso" : "25797",
+					"countyName" : "Tena"
+				},
+				{
+					"countyIso" : "25799",
+					"countyName" : "Tenjo"
+				},
+				{
+					"countyIso" : "25805",
+					"countyName" : "Tibacuy"
+				},
+				{
+					"countyIso" : "25807",
+					"countyName" : "Tibirita"
+				},
+				{
+					"countyIso" : "25815",
+					"countyName" : "Tocaima"
+				},
+				{
+					"countyIso" : "25817",
+					"countyName" : "Tocancipá"
+				},
+				{
+					"countyIso" : "25823",
+					"countyName" : "Topaipí"
+				},
+				{
+					"countyIso" : "25839",
+					"countyName" : "Ubalá"
+				},
+				{
+					"countyIso" : "25841",
+					"countyName" : "Ubaque"
+				},
+				{
+					"countyIso" : "25843",
+					"countyName" : "Villa de san diego de ubate"
+				},
+				{
+					"countyIso" : "25845",
+					"countyName" : "Une"
+				},
+				{
+					"countyIso" : "25851",
+					"countyName" : "Útica"
+				},
+				{
+					"countyIso" : "25862",
+					"countyName" : "Vergara"
+				},
+				{
+					"countyIso" : "25867",
+					"countyName" : "Vianí"
+				},
+				{
+					"countyIso" : "25871",
+					"countyName" : "Villagómez"
+				},
+				{
+					"countyIso" : "25873",
+					"countyName" : "Villapinzón"
+				},
+				{
+					"countyIso" : "25875",
+					"countyName" : "Villeta"
+				},
+				{
+					"countyIso" : "25878",
+					"countyName" : "Viotá"
+				},
+				{
+					"countyIso" : "25885",
+					"countyName" : "Yacopí"
+				},
+				{
+					"countyIso" : "25898",
+					"countyName" : "Zipacón"
+				},
+				{
+					"countyIso" : "25899",
+					"countyName" : "Zipaquirá"
+				}
+			]
+		},
+		{
+			"departmentName":"Bogotá Distrito Capital",
+			"departmentIso":"CO-DC",
+			"counties":[
+				{
+					"countyIso" : "11001",
+					"countyName" : "Bogotá D.C."
+				}
+			]
+		},
+		{
+			"departmentName":"Guainía",
+			"departmentIso":"CO-GUA",
+			"counties":[
+				{
+					"countyIso" : "94001",
+					"countyName" : "Inírida"
+				},
+				{
+					"countyIso" : "94343",
+					"countyName" : "Barranco minas"
+				},
+				{
+					"countyIso" : "94663",
+					"countyName" : "Mapiripana"
+				},
+				{
+					"countyIso" : "94883",
+					"countyName" : "San felipe"
+				},
+				{
+					"countyIso" : "94884",
+					"countyName" : "Puerto colombia"
+				},
+				{
+					"countyIso" : "94885",
+					"countyName" : "La guadalupe"
+				},
+				{
+					"countyIso" : "94886",
+					"countyName" : "Cacahual"
+				},
+				{
+					"countyIso" : "94887",
+					"countyName" : "Pana pana"
+				},
+				{
+					"countyIso" : "94888",
+					"countyName" : "Morichal"
+				}
+			]
+		},
+		{
+			"departmentName":"Guaviare",
+			"departmentIso":"CO-GUV",
+			"counties":[
+				{
+					"countyIso" : "95001",
+					"countyName" : "San josé del guaviare"
+				},
+				{
+					"countyIso" : "95015",
+					"countyName" : "Calamar"
+				},
+				{
+					"countyIso" : "95025",
+					"countyName" : "El retorno"
+				},
+				{
+					"countyIso" : "95200",
+					"countyName" : "Miraflores"
+				}
+			]
+
+		},
+		{
+			"departmentName":"Huila",
+			"departmentIso":"CO-HUI",
+			"counties":[
+				{
+					"countyIso" : "41001",
+					"countyName" : "Neiva"
+				},
+				{
+					"countyIso" : "41006",
+					"countyName" : "Acevedo"
+				},
+				{
+					"countyIso" : "41013",
+					"countyName" : "Agrado"
+				},
+				{
+					"countyIso" : "41016",
+					"countyName" : "Aipe"
+				},
+				{
+					"countyIso" : "41020",
+					"countyName" : "Algeciras"
+				},
+				{
+					"countyIso" : "41026",
+					"countyName" : "Altamira"
+				},
+				{
+					"countyIso" : "41078",
+					"countyName" : "Baraya"
+				},
+				{
+					"countyIso" : "41132",
+					"countyName" : "Campoalegre"
+				},
+				{
+					"countyIso" : "41206",
+					"countyName" : "Colombia"
+				},
+				{
+					"countyIso" : "41244",
+					"countyName" : "Elías"
+				},
+				{
+					"countyIso" : "41298",
+					"countyName" : "Garzón"
+				},
+				{
+					"countyIso" : "41306",
+					"countyName" : "Gigante"
+				},
+				{
+					"countyIso" : "41319",
+					"countyName" : "Guadalupe"
+				},
+				{
+					"countyIso" : "41349",
+					"countyName" : "Hobo"
+				},
+				{
+					"countyIso" : "41357",
+					"countyName" : "Iquira"
+				},
+				{
+					"countyIso" : "41359",
+					"countyName" : "Isnos"
+				},
+				{
+					"countyIso" : "41378",
+					"countyName" : "La argentina"
+				},
+				{
+					"countyIso" : "41396",
+					"countyName" : "La plata"
+				},
+				{
+					"countyIso" : "41483",
+					"countyName" : "Nátaga"
+				},
+				{
+					"countyIso" : "41503",
+					"countyName" : "Oporapa"
+				},
+				{
+					"countyIso" : "41518",
+					"countyName" : "Paicol"
+				},
+				{
+					"countyIso" : "41524",
+					"countyName" : "Palermo"
+				},
+				{
+					"countyIso" : "41530",
+					"countyName" : "Palestina"
+				},
+				{
+					"countyIso" : "41548",
+					"countyName" : "Pital"
+				},
+				{
+					"countyIso" : "41551",
+					"countyName" : "Pitalito"
+				},
+				{
+					"countyIso" : "41615",
+					"countyName" : "Rivera"
+				},
+				{
+					"countyIso" : "41660",
+					"countyName" : "Saladoblanco"
+				},
+				{
+					"countyIso" : "41668",
+					"countyName" : "San agustín"
+				},
+				{
+					"countyIso" : "41676",
+					"countyName" : "Santa maría"
+				},
+				{
+					"countyIso" : "41770",
+					"countyName" : "Suaza"
+				},
+				{
+					"countyIso" : "41791",
+					"countyName" : "Tarqui"
+				},
+				{
+					"countyIso" : "41797",
+					"countyName" : "Tesalia"
+				},
+				{
+					"countyIso" : "41799",
+					"countyName" : "Tello"
+				},
+				{
+					"countyIso" : "41801",
+					"countyName" : "Teruel"
+				},
+				{
+					"countyIso" : "41807",
+					"countyName" : "Timaná"
+				},
+				{
+					"countyIso" : "41872",
+					"countyName" : "Villavieja"
+				},
+				{
+					"countyIso" : "41885",
+					"countyName" : "Yaguará"
+				}
+			]
+		},
+		{
+			"departmentName":"La Guajira",
+			"departmentIso":"CO-LAG",
+			"counties":[
+				{
+					"countyIso" : "44001",
+					"countyName" : "Riohacha"
+				},
+				{
+					"countyIso" : "44035",
+					"countyName" : "Albania"
+				},
+				{
+					"countyIso" : "44078",
+					"countyName" : "Barrancas"
+				},
+				{
+					"countyIso" : "44090",
+					"countyName" : "Dibulla"
+				},
+				{
+					"countyIso" : "44098",
+					"countyName" : "Distracción"
+				},
+				{
+					"countyIso" : "44110",
+					"countyName" : "El molino"
+				},
+				{
+					"countyIso" : "44279",
+					"countyName" : "Fonseca"
+				},
+				{
+					"countyIso" : "44378",
+					"countyName" : "Hatonuevo"
+				},
+				{
+					"countyIso" : "44420",
+					"countyName" : "La jagua del pilar"
+				},
+				{
+					"countyIso" : "44430",
+					"countyName" : "Maicao"
+				},
+				{
+					"countyIso" : "44560",
+					"countyName" : "Manaure"
+				},
+				{
+					"countyIso" : "44650",
+					"countyName" : "San juan del cesar"
+				},
+				{
+					"countyIso" : "44847",
+					"countyName" : "Uribia"
+				},
+				{
+					"countyIso" : "44855",
+					"countyName" : "Urumita"
+				},
+				{
+					"countyIso" : "44874",
+					"countyName" : "Villanueva"
+				}
+			]
+		},
+		{
+			"departmentName":"Magdalena",
+			"departmentIso":"CO-MAG",
+			"counties":[
+				{
+					"countyIso" : "47001",
+					"countyName" : "Santa marta"
+				},
+				{
+					"countyIso" : "47030",
+					"countyName" : "Algarrobo"
+				},
+				{
+					"countyIso" : "47053",
+					"countyName" : "Aracataca"
+				},
+				{
+					"countyIso" : "47058",
+					"countyName" : "Ariguaní"
+				},
+				{
+					"countyIso" : "47161",
+					"countyName" : "Cerro san antonio"
+				},
+				{
+					"countyIso" : "47170",
+					"countyName" : "Chibolo"
+				},
+				{
+					"countyIso" : "47189",
+					"countyName" : "Ciénaga"
+				},
+				{
+					"countyIso" : "47205",
+					"countyName" : "Concordia"
+				},
+				{
+					"countyIso" : "47245",
+					"countyName" : "El banco"
+				},
+				{
+					"countyIso" : "47258",
+					"countyName" : "El piñon"
+				},
+				{
+					"countyIso" : "47268",
+					"countyName" : "El retén"
+				},
+				{
+					"countyIso" : "47288",
+					"countyName" : "Fundación"
+				},
+				{
+					"countyIso" : "47318",
+					"countyName" : "Guamal"
+				},
+				{
+					"countyIso" : "47460",
+					"countyName" : "Nueva granada"
+				},
+				{
+					"countyIso" : "47541",
+					"countyName" : "Pedraza"
+				},
+				{
+					"countyIso" : "47545",
+					"countyName" : "Pijiño del carmen"
+				},
+				{
+					"countyIso" : "47551",
+					"countyName" : "Pivijay"
+				},
+				{
+					"countyIso" : "47555",
+					"countyName" : "Plato"
+				},
+				{
+					"countyIso" : "47570",
+					"countyName" : "Puebloviejo"
+				},
+				{
+					"countyIso" : "47605",
+					"countyName" : "Remolino"
+				},
+				{
+					"countyIso" : "47660",
+					"countyName" : "Sabanas de san angel"
+				},
+				{
+					"countyIso" : "47675",
+					"countyName" : "Salamina"
+				},
+				{
+					"countyIso" : "47692",
+					"countyName" : "San sebastián de buenavista"
+				},
+				{
+					"countyIso" : "47703",
+					"countyName" : "San zenón"
+				},
+				{
+					"countyIso" : "47707",
+					"countyName" : "Santa ana"
+				},
+				{
+					"countyIso" : "47720",
+					"countyName" : "Santa bárbara de pinto"
+				},
+				{
+					"countyIso" : "47745",
+					"countyName" : "Sitionuevo"
+				},
+				{
+					"countyIso" : "47798",
+					"countyName" : "Tenerife"
+				},
+				{
+					"countyIso" : "47960",
+					"countyName" : "Zapayán"
+				},
+				{
+					"countyIso" : "47980",
+					"countyName" : "Zona bananera"
+				}
+			]
+		},
+		{
+			"departmentName":"Meta",
+			"departmentIso":"CO-MET",
+			"counties":[
+				{
+					"countyIso" : "50001",
+					"countyName" : "Villavicencio"
+				},
+				{
+					"countyIso" : "50006",
+					"countyName" : "Acacías"
+				},
+				{
+					"countyIso" : "50110",
+					"countyName" : "Barranca de upía"
+				},
+				{
+					"countyIso" : "50124",
+					"countyName" : "Cabuyaro"
+				},
+				{
+					"countyIso" : "50150",
+					"countyName" : "Castilla la nueva"
+				},
+				{
+					"countyIso" : "50223",
+					"countyName" : "Cubarral"
+				},
+				{
+					"countyIso" : "50226",
+					"countyName" : "Cumaral"
+				},
+				{
+					"countyIso" : "50245",
+					"countyName" : "El calvario"
+				},
+				{
+					"countyIso" : "50251",
+					"countyName" : "El castillo"
+				},
+				{
+					"countyIso" : "50270",
+					"countyName" : "El dorado"
+				},
+				{
+					"countyIso" : "50287",
+					"countyName" : "Fuente de oro"
+				},
+				{
+					"countyIso" : "50313",
+					"countyName" : "Granada"
+				},
+				{
+					"countyIso" : "50318",
+					"countyName" : "Guamal"
+				},
+				{
+					"countyIso" : "50325",
+					"countyName" : "Mapiripán"
+				},
+				{
+					"countyIso" : "50330",
+					"countyName" : "Mesetas"
+				},
+				{
+					"countyIso" : "50350",
+					"countyName" : "La macarena"
+				},
+				{
+					"countyIso" : "50370",
+					"countyName" : "Uribe"
+				},
+				{
+					"countyIso" : "50400",
+					"countyName" : "Lejanías"
+				},
+				{
+					"countyIso" : "50450",
+					"countyName" : "Puerto concordia"
+				},
+				{
+					"countyIso" : "50568",
+					"countyName" : "Puerto gaitán"
+				},
+				{
+					"countyIso" : "50573",
+					"countyName" : "Puerto lópez"
+				},
+				{
+					"countyIso" : "50577",
+					"countyName" : "Puerto lleras"
+				},
+				{
+					"countyIso" : "50590",
+					"countyName" : "Puerto rico"
+				},
+				{
+					"countyIso" : "50606",
+					"countyName" : "Restrepo"
+				},
+				{
+					"countyIso" : "50680",
+					"countyName" : "San carlos de guaroa"
+				},
+				{
+					"countyIso" : "50683",
+					"countyName" : "San juan de arama"
+				},
+				{
+					"countyIso" : "50686",
+					"countyName" : "San juanito"
+				},
+				{
+					"countyIso" : "50689",
+					"countyName" : "San martín"
+				},
+				{
+					"countyIso" : "50711",
+					"countyName" : "Vistahermosa"
+				}
+			]
+		},
+		{
+			"departmentName":"Nariño",
+			"departmentIso":"CO-NAR",
+			"counties":[
+				{
+					"countyIso" : "52001",
+					"countyName" : "Pasto"
+				},
+				{
+					"countyIso" : "52019",
+					"countyName" : "Albán"
+				},
+				{
+					"countyIso" : "52022",
+					"countyName" : "Aldana"
+				},
+				{
+					"countyIso" : "52036",
+					"countyName" : "Ancuyá"
+				},
+				{
+					"countyIso" : "52051",
+					"countyName" : "Arboleda"
+				},
+				{
+					"countyIso" : "52079",
+					"countyName" : "Barbacoas"
+				},
+				{
+					"countyIso" : "52083",
+					"countyName" : "Belén"
+				},
+				{
+					"countyIso" : "52110",
+					"countyName" : "Buesaco"
+				},
+				{
+					"countyIso" : "52203",
+					"countyName" : "Colón"
+				},
+				{
+					"countyIso" : "52207",
+					"countyName" : "Consaca"
+				},
+				{
+					"countyIso" : "52210",
+					"countyName" : "Contadero"
+				},
+				{
+					"countyIso" : "52215",
+					"countyName" : "Córdoba"
+				},
+				{
+					"countyIso" : "52224",
+					"countyName" : "Cuaspud"
+				},
+				{
+					"countyIso" : "52227",
+					"countyName" : "Cumbal"
+				},
+				{
+					"countyIso" : "52233",
+					"countyName" : "Cumbitara"
+				},
+				{
+					"countyIso" : "52240",
+					"countyName" : "Chachagüí"
+				},
+				{
+					"countyIso" : "52250",
+					"countyName" : "El charco"
+				},
+				{
+					"countyIso" : "52254",
+					"countyName" : "El peñol"
+				},
+				{
+					"countyIso" : "52256",
+					"countyName" : "El rosario"
+				},
+				{
+					"countyIso" : "52258",
+					"countyName" : "El tablón de gómez"
+				},
+				{
+					"countyIso" : "52260",
+					"countyName" : "El tambo"
+				},
+				{
+					"countyIso" : "52287",
+					"countyName" : "Funes"
+				},
+				{
+					"countyIso" : "52317",
+					"countyName" : "Guachucal"
+				},
+				{
+					"countyIso" : "52320",
+					"countyName" : "Guaitarilla"
+				},
+				{
+					"countyIso" : "52323",
+					"countyName" : "Gualmatán"
+				},
+				{
+					"countyIso" : "52352",
+					"countyName" : "Iles"
+				},
+				{
+					"countyIso" : "52354",
+					"countyName" : "Imués"
+				},
+				{
+					"countyIso" : "52356",
+					"countyName" : "Ipiales"
+				},
+				{
+					"countyIso" : "52378",
+					"countyName" : "La cruz"
+				},
+				{
+					"countyIso" : "52381",
+					"countyName" : "La florida"
+				},
+				{
+					"countyIso" : "52385",
+					"countyName" : "La llanada"
+				},
+				{
+					"countyIso" : "52390",
+					"countyName" : "La tola"
+				},
+				{
+					"countyIso" : "52399",
+					"countyName" : "La unión"
+				},
+				{
+					"countyIso" : "52405",
+					"countyName" : "Leiva"
+				},
+				{
+					"countyIso" : "52411",
+					"countyName" : "Linares"
+				},
+				{
+					"countyIso" : "52418",
+					"countyName" : "Los andes"
+				},
+				{
+					"countyIso" : "52427",
+					"countyName" : "Magüí"
+				},
+				{
+					"countyIso" : "52435",
+					"countyName" : "Mallama"
+				},
+				{
+					"countyIso" : "52473",
+					"countyName" : "Mosquera"
+				},
+				{
+					"countyIso" : "52480",
+					"countyName" : "Nariño"
+				},
+				{
+					"countyIso" : "52490",
+					"countyName" : "Olaya herrera"
+				},
+				{
+					"countyIso" : "52506",
+					"countyName" : "Ospina"
+				},
+				{
+					"countyIso" : "52520",
+					"countyName" : "Francisco pizarro"
+				},
+				{
+					"countyIso" : "52540",
+					"countyName" : "Policarpa"
+				},
+				{
+					"countyIso" : "52560",
+					"countyName" : "Potosí"
+				},
+				{
+					"countyIso" : "52565",
+					"countyName" : "Providencia"
+				},
+				{
+					"countyIso" : "52573",
+					"countyName" : "Puerres"
+				},
+				{
+					"countyIso" : "52585",
+					"countyName" : "Pupiales"
+				},
+				{
+					"countyIso" : "52612",
+					"countyName" : "Ricaurte"
+				},
+				{
+					"countyIso" : "52621",
+					"countyName" : "Roberto payán"
+				},
+				{
+					"countyIso" : "52678",
+					"countyName" : "Samaniego"
+				},
+				{
+					"countyIso" : "52683",
+					"countyName" : "Sandoná"
+				},
+				{
+					"countyIso" : "52685",
+					"countyName" : "San bernardo"
+				},
+				{
+					"countyIso" : "52687",
+					"countyName" : "San lorenzo"
+				},
+				{
+					"countyIso" : "52693",
+					"countyName" : "San pablo"
+				},
+				{
+					"countyIso" : "52694",
+					"countyName" : "San pedro de cartago"
+				},
+				{
+					"countyIso" : "52696",
+					"countyName" : "Santa bárbara"
+				},
+				{
+					"countyIso" : "52699",
+					"countyName" : "Santacruz"
+				},
+				{
+					"countyIso" : "52720",
+					"countyName" : "Sapuyes"
+				},
+				{
+					"countyIso" : "52786",
+					"countyName" : "Taminango"
+				},
+				{
+					"countyIso" : "52788",
+					"countyName" : "Tangua"
+				},
+				{
+					"countyIso" : "52835",
+					"countyName" : "San andres de tumaco"
+				},
+				{
+					"countyIso" : "52838",
+					"countyName" : "Túquerres"
+				},
+				{
+					"countyIso" : "52885",
+					"countyName" : "Yacuanquer"
+				}
+			]
+		},
+		{
+			"departmentName":"Norte de santander",
+			"departmentIso":"CO-NSA",
+			"counties":[
+				{
+					"countyIso" : "54001",
+					"countyName" : "Cúcuta"
+				},
+				{
+					"countyIso" : "54003",
+					"countyName" : "Abrego"
+				},
+				{
+					"countyIso" : "54051",
+					"countyName" : "Arboledas"
+				},
+				{
+					"countyIso" : "54099",
+					"countyName" : "Bochalema"
+				},
+				{
+					"countyIso" : "54109",
+					"countyName" : "Bucarasica"
+				},
+				{
+					"countyIso" : "54125",
+					"countyName" : "Cácota"
+				},
+				{
+					"countyIso" : "54128",
+					"countyName" : "Cachirá"
+				},
+				{
+					"countyIso" : "54172",
+					"countyName" : "Chinácota"
+				},
+				{
+					"countyIso" : "54174",
+					"countyName" : "Chitagá"
+				},
+				{
+					"countyIso" : "54206",
+					"countyName" : "Convención"
+				},
+				{
+					"countyIso" : "54223",
+					"countyName" : "Cucutilla"
+				},
+				{
+					"countyIso" : "54239",
+					"countyName" : "Durania"
+				},
+				{
+					"countyIso" : "54245",
+					"countyName" : "El carmen"
+				},
+				{
+					"countyIso" : "54250",
+					"countyName" : "El tarra"
+				},
+				{
+					"countyIso" : "54261",
+					"countyName" : "El zulia"
+				},
+				{
+					"countyIso" : "54313",
+					"countyName" : "Gramalote"
+				},
+				{
+					"countyIso" : "54344",
+					"countyName" : "Hacarí"
+				},
+				{
+					"countyIso" : "54347",
+					"countyName" : "Herrán"
+				},
+				{
+					"countyIso" : "54377",
+					"countyName" : "Labateca"
+				},
+				{
+					"countyIso" : "54385",
+					"countyName" : "La esperanza"
+				},
+				{
+					"countyIso" : "54398",
+					"countyName" : "La playa"
+				},
+				{
+					"countyIso" : "54405",
+					"countyName" : "Los patios"
+				},
+				{
+					"countyIso" : "54418",
+					"countyName" : "Lourdes"
+				},
+				{
+					"countyIso" : "54480",
+					"countyName" : "Mutiscua"
+				},
+				{
+					"countyIso" : "54498",
+					"countyName" : "Ocaña"
+				},
+				{
+					"countyIso" : "54518",
+					"countyName" : "Pamplona"
+				},
+				{
+					"countyIso" : "54520",
+					"countyName" : "Pamplonita"
+				},
+				{
+					"countyIso" : "54553",
+					"countyName" : "Puerto santander"
+				},
+				{
+					"countyIso" : "54599",
+					"countyName" : "Ragonvalia"
+				},
+				{
+					"countyIso" : "54660",
+					"countyName" : "Salazar"
+				},
+				{
+					"countyIso" : "54670",
+					"countyName" : "San calixto"
+				},
+				{
+					"countyIso" : "54673",
+					"countyName" : "San cayetano"
+				},
+				{
+					"countyIso" : "54680",
+					"countyName" : "Santiago"
+				},
+				{
+					"countyIso" : "54720",
+					"countyName" : "Sardinata"
+				},
+				{
+					"countyIso" : "54743",
+					"countyName" : "Silos"
+				},
+				{
+					"countyIso" : "54800",
+					"countyName" : "Teorama"
+				},
+				{
+					"countyIso" : "54810",
+					"countyName" : "Tibú"
+				},
+				{
+					"countyIso" : "54820",
+					"countyName" : "Toledo"
+				},
+				{
+					"countyIso" : "54871",
+					"countyName" : "Villa caro"
+				},
+				{
+					"countyIso" : "54874",
+					"countyName" : "Villa del rosario"
+				}
+			]
+		},
+		{
+			"departmentName":"Putumayo",
+			"departmentIso":"CO-PUT",
+			"counties":[
+				{
+					"countyIso" : "86001",
+					"countyName" : "Mocoa"
+				},
+				{
+					"countyIso" : "86219",
+					"countyName" : "Colón"
+				},
+				{
+					"countyIso" : "86320",
+					"countyName" : "Orito"
+				},
+				{
+					"countyIso" : "86568",
+					"countyName" : "Puerto asís"
+				},
+				{
+					"countyIso" : "86569",
+					"countyName" : "Puerto caicedo"
+				},
+				{
+					"countyIso" : "86571",
+					"countyName" : "Puerto guzmán"
+				},
+				{
+					"countyIso" : "86573",
+					"countyName" : "Puerto leguízamo"
+				},
+				{
+					"countyIso" : "86749",
+					"countyName" : "Sibundoy"
+				},
+				{
+					"countyIso" : "86755",
+					"countyName" : "San francisco"
+				},
+				{
+					"countyIso" : "86757",
+					"countyName" : "San miguel"
+				},
+				{
+					"countyIso" : "86760",
+					"countyName" : "Santiago"
+				},
+				{
+					"countyIso" : "86865",
+					"countyName" : "Valle del guamuez"
+				},
+				{
+					"countyIso" : "86885",
+					"countyName" : "Villagarzón"
+				}
+			]
+		},
+		{
+			"departmentName":"Quindío",
+			"departmentIso":"CO-QUI",
+			"counties":[
+				{
+					"countyIso" : "63001",
+					"countyName" : "Armenia"
+				},
+				{
+					"countyIso" : "63111",
+					"countyName" : "Buenavista"
+				},
+				{
+					"countyIso" : "63130",
+					"countyName" : "Calarca"
+				},
+				{
+					"countyIso" : "63190",
+					"countyName" : "Circasia"
+				},
+				{
+					"countyIso" : "63212",
+					"countyName" : "Córdoba"
+				},
+				{
+					"countyIso" : "63272",
+					"countyName" : "Filandia"
+				},
+				{
+					"countyIso" : "63302",
+					"countyName" : "Génova"
+				},
+				{
+					"countyIso" : "63401",
+					"countyName" : "La tebaida"
+				},
+				{
+					"countyIso" : "63470",
+					"countyName" : "Montenegro"
+				},
+				{
+					"countyIso" : "63548",
+					"countyName" : "Pijao"
+				},
+				{
+					"countyIso" : "63594",
+					"countyName" : "Quimbaya"
+				},
+				{
+					"countyIso" : "63690",
+					"countyName" : "Salento"
+				}
+			]
+		},
+		{
+			"departmentName":"Risaralda",
+			"departmentIso":"CO-RIS",
+			"counties":[
+				{
+					"countyIso" : "66001",
+					"countyName" : "Pereira"
+				},
+				{
+					"countyIso" : "66045",
+					"countyName" : "Apía"
+				},
+				{
+					"countyIso" : "66075",
+					"countyName" : "Balboa"
+				},
+				{
+					"countyIso" : "66088",
+					"countyName" : "Belén de umbría"
+				},
+				{
+					"countyIso" : "66170",
+					"countyName" : "Dosquebradas"
+				},
+				{
+					"countyIso" : "66318",
+					"countyName" : "Guática"
+				},
+				{
+					"countyIso" : "66383",
+					"countyName" : "La celia"
+				},
+				{
+					"countyIso" : "66400",
+					"countyName" : "La virginia"
+				},
+				{
+					"countyIso" : "66440",
+					"countyName" : "Marsella"
+				},
+				{
+					"countyIso" : "66456",
+					"countyName" : "Mistrató"
+				},
+				{
+					"countyIso" : "66572",
+					"countyName" : "Pueblo rico"
+				},
+				{
+					"countyIso" : "66594",
+					"countyName" : "Quinchía"
+				},
+				{
+					"countyIso" : "66682",
+					"countyName" : "Santa rosa de cabal"
+				},
+				{
+					"countyIso" : "66687",
+					"countyName" : "Santuario"
+				}
+			]
+		},
+		{
+			"departmentName":"San Andrés, Providencia y Santa Catalina",
+			"departmentIso":"CO-SAP",
+			"counties":[
+				{
+					"countyIso" : "88001",
+					"countyName" : "San andrés"
+				},
+				{
+					"countyIso" : "88564",
+					"countyName" : "Providencia"
+				}
+			]
+		},
+		{
+			"departmentName":"Santander",
+			"departmentIso":"CO-SAN",
+			"counties":[
+				{
+					"countyIso" : "68001",
+					"countyName" : "Bucaramanga"
+				},
+				{
+					"countyIso" : "68013",
+					"countyName" : "Aguada"
+				},
+				{
+					"countyIso" : "68020",
+					"countyName" : "Albania"
+				},
+				{
+					"countyIso" : "68051",
+					"countyName" : "Aratoca"
+				},
+				{
+					"countyIso" : "68077",
+					"countyName" : "Barbosa"
+				},
+				{
+					"countyIso" : "68079",
+					"countyName" : "Barichara"
+				},
+				{
+					"countyIso" : "68081",
+					"countyName" : "Barrancabermeja"
+				},
+				{
+					"countyIso" : "68092",
+					"countyName" : "Betulia"
+				},
+				{
+					"countyIso" : "68101",
+					"countyName" : "Bolívar"
+				},
+				{
+					"countyIso" : "68121",
+					"countyName" : "Cabrera"
+				},
+				{
+					"countyIso" : "68132",
+					"countyName" : "California"
+				},
+				{
+					"countyIso" : "68147",
+					"countyName" : "Capitanejo"
+				},
+				{
+					"countyIso" : "68152",
+					"countyName" : "Carcasí"
+				},
+				{
+					"countyIso" : "68160",
+					"countyName" : "Cepitá"
+				},
+				{
+					"countyIso" : "68162",
+					"countyName" : "Cerrito"
+				},
+				{
+					"countyIso" : "68167",
+					"countyName" : "Charalá"
+				},
+				{
+					"countyIso" : "68169",
+					"countyName" : "Charta"
+				},
+				{
+					"countyIso" : "68176",
+					"countyName" : "Chima"
+				},
+				{
+					"countyIso" : "68179",
+					"countyName" : "Chipatá"
+				},
+				{
+					"countyIso" : "68190",
+					"countyName" : "Cimitarra"
+				},
+				{
+					"countyIso" : "68207",
+					"countyName" : "Concepción"
+				},
+				{
+					"countyIso" : "68209",
+					"countyName" : "Confines"
+				},
+				{
+					"countyIso" : "68211",
+					"countyName" : "Contratación"
+				},
+				{
+					"countyIso" : "68217",
+					"countyName" : "Coromoro"
+				},
+				{
+					"countyIso" : "68229",
+					"countyName" : "Curití"
+				},
+				{
+					"countyIso" : "68235",
+					"countyName" : "El carmen de chucurí"
+				},
+				{
+					"countyIso" : "68245",
+					"countyName" : "El guacamayo"
+				},
+				{
+					"countyIso" : "68250",
+					"countyName" : "El peñón"
+				},
+				{
+					"countyIso" : "68255",
+					"countyName" : "El playón"
+				},
+				{
+					"countyIso" : "68264",
+					"countyName" : "Encino"
+				},
+				{
+					"countyIso" : "68266",
+					"countyName" : "Enciso"
+				},
+				{
+					"countyIso" : "68271",
+					"countyName" : "Florián"
+				},
+				{
+					"countyIso" : "68276",
+					"countyName" : "Floridablanca"
+				},
+				{
+					"countyIso" : "68296",
+					"countyName" : "Galán"
+				},
+				{
+					"countyIso" : "68298",
+					"countyName" : "Gambita"
+				},
+				{
+					"countyIso" : "68307",
+					"countyName" : "Girón"
+				},
+				{
+					"countyIso" : "68318",
+					"countyName" : "Guaca"
+				},
+				{
+					"countyIso" : "68320",
+					"countyName" : "Guadalupe"
+				},
+				{
+					"countyIso" : "68322",
+					"countyName" : "Guapotá"
+				},
+				{
+					"countyIso" : "68324",
+					"countyName" : "Guavatá"
+				},
+				{
+					"countyIso" : "68327",
+					"countyName" : "Güepsa"
+				},
+				{
+					"countyIso" : "68344",
+					"countyName" : "Hato"
+				},
+				{
+					"countyIso" : "68368",
+					"countyName" : "Jesús maría"
+				},
+				{
+					"countyIso" : "68370",
+					"countyName" : "Jordán"
+				},
+				{
+					"countyIso" : "68377",
+					"countyName" : "La belleza"
+				},
+				{
+					"countyIso" : "68385",
+					"countyName" : "Landázuri"
+				},
+				{
+					"countyIso" : "68397",
+					"countyName" : "La paz"
+				},
+				{
+					"countyIso" : "68406",
+					"countyName" : "Lebrija"
+				},
+				{
+					"countyIso" : "68418",
+					"countyName" : "Los santos"
+				},
+				{
+					"countyIso" : "68425",
+					"countyName" : "Macaravita"
+				},
+				{
+					"countyIso" : "68432",
+					"countyName" : "Málaga"
+				},
+				{
+					"countyIso" : "68444",
+					"countyName" : "Matanza"
+				},
+				{
+					"countyIso" : "68464",
+					"countyName" : "Mogotes"
+				},
+				{
+					"countyIso" : "68468",
+					"countyName" : "Molagavita"
+				},
+				{
+					"countyIso" : "68498",
+					"countyName" : "Ocamonte"
+				},
+				{
+					"countyIso" : "68500",
+					"countyName" : "Oiba"
+				},
+				{
+					"countyIso" : "68502",
+					"countyName" : "Onzaga"
+				},
+				{
+					"countyIso" : "68522",
+					"countyName" : "Palmar"
+				},
+				{
+					"countyIso" : "68524",
+					"countyName" : "Palmas del socorro"
+				},
+				{
+					"countyIso" : "68533",
+					"countyName" : "Páramo"
+				},
+				{
+					"countyIso" : "68547",
+					"countyName" : "Piedecuesta"
+				},
+				{
+					"countyIso" : "68549",
+					"countyName" : "Pinchote"
+				},
+				{
+					"countyIso" : "68572",
+					"countyName" : "Puente nacional"
+				},
+				{
+					"countyIso" : "68573",
+					"countyName" : "Puerto parra"
+				},
+				{
+					"countyIso" : "68575",
+					"countyName" : "Puerto wilches"
+				},
+				{
+					"countyIso" : "68615",
+					"countyName" : "Rionegro"
+				},
+				{
+					"countyIso" : "68655",
+					"countyName" : "Sabana de torres"
+				},
+				{
+					"countyIso" : "68669",
+					"countyName" : "San andrés"
+				},
+				{
+					"countyIso" : "68673",
+					"countyName" : "San benito"
+				},
+				{
+					"countyIso" : "68679",
+					"countyName" : "San gil"
+				},
+				{
+					"countyIso" : "68682",
+					"countyName" : "San joaquín"
+				},
+				{
+					"countyIso" : "68684",
+					"countyName" : "San josé de miranda"
+				},
+				{
+					"countyIso" : "68686",
+					"countyName" : "San miguel"
+				},
+				{
+					"countyIso" : "68689",
+					"countyName" : "San vicente de chucuri"
+				},
+				{
+					"countyIso" : "68705",
+					"countyName" : "Santa bárbara"
+				},
+				{
+					"countyIso" : "68720",
+					"countyName" : "Santa helena del opon"
+				},
+				{
+					"countyIso" : "68745",
+					"countyName" : "Simacota"
+				},
+				{
+					"countyIso" : "68755",
+					"countyName" : "Socorro"
+				},
+				{
+					"countyIso" : "68770",
+					"countyName" : "Suaita"
+				},
+				{
+					"countyIso" : "68773",
+					"countyName" : "Sucre"
+				},
+				{
+					"countyIso" : "68780",
+					"countyName" : "Suratá"
+				},
+				{
+					"countyIso" : "68820",
+					"countyName" : "Tona"
+				},
+				{
+					"countyIso" : "68855",
+					"countyName" : "Valle de san josé"
+				},
+				{
+					"countyIso" : "68861",
+					"countyName" : "Vélez"
+				},
+				{
+					"countyIso" : "68867",
+					"countyName" : "Vetas"
+				},
+				{
+					"countyIso" : "68872",
+					"countyName" : "Villanueva"
+				},
+				{
+					"countyIso" : "68895",
+					"countyName" : "Zapatoca"
+				}
+			]
+		},
+		{
+			"departmentName":"Sucre",
+			"departmentIso":"CO-SUC",
+			"counties":[
+				{
+					"countyIso" : "70001",
+					"countyName" : "Sincelejo"
+				},
+				{
+					"countyIso" : "70110",
+					"countyName" : "Buenavista"
+				},
+				{
+					"countyIso" : "70124",
+					"countyName" : "Caimito"
+				},
+				{
+					"countyIso" : "70204",
+					"countyName" : "Coloso"
+				},
+				{
+					"countyIso" : "70215",
+					"countyName" : "Corozal"
+				},
+				{
+					"countyIso" : "70221",
+					"countyName" : "Coveñas"
+				},
+				{
+					"countyIso" : "70230",
+					"countyName" : "Chalán"
+				},
+				{
+					"countyIso" : "70233",
+					"countyName" : "El roble"
+				},
+				{
+					"countyIso" : "70235",
+					"countyName" : "Galeras"
+				},
+				{
+					"countyIso" : "70265",
+					"countyName" : "Guaranda"
+				},
+				{
+					"countyIso" : "70400",
+					"countyName" : "La unión"
+				},
+				{
+					"countyIso" : "70418",
+					"countyName" : "Los palmitos"
+				},
+				{
+					"countyIso" : "70429",
+					"countyName" : "Majagual"
+				},
+				{
+					"countyIso" : "70473",
+					"countyName" : "Morroa"
+				},
+				{
+					"countyIso" : "70508",
+					"countyName" : "Ovejas"
+				},
+				{
+					"countyIso" : "70523",
+					"countyName" : "Palmito"
+				},
+				{
+					"countyIso" : "70670",
+					"countyName" : "Sampúes"
+				},
+				{
+					"countyIso" : "70678",
+					"countyName" : "San benito abad"
+				},
+				{
+					"countyIso" : "70702",
+					"countyName" : "San juan de betulia"
+				},
+				{
+					"countyIso" : "70708",
+					"countyName" : "San marcos"
+				},
+				{
+					"countyIso" : "70713",
+					"countyName" : "San onofre"
+				},
+				{
+					"countyIso" : "70717",
+					"countyName" : "San pedro"
+				},
+				{
+					"countyIso" : "70742",
+					"countyName" : "San luis de sincé"
+				},
+				{
+					"countyIso" : "70771",
+					"countyName" : "Sucre"
+				},
+				{
+					"countyIso" : "70820",
+					"countyName" : "Santiago de tolú"
+				},
+				{
+					"countyIso" : "70823",
+					"countyName" : "Tolú viejo"
+				}
+			]
+		},
+		{
+			"departmentName":"Tolima",
+			"departmentIso":"CO-TOL",
+			"counties":[
+				{
+					"countyIso" : "73001",
+					"countyName" : "Ibagué"
+				},
+				{
+					"countyIso" : "73024",
+					"countyName" : "Alpujarra"
+				},
+				{
+					"countyIso" : "73026",
+					"countyName" : "Alvarado"
+				},
+				{
+					"countyIso" : "73030",
+					"countyName" : "Ambalema"
+				},
+				{
+					"countyIso" : "73043",
+					"countyName" : "Anzoátegui"
+				},
+				{
+					"countyIso" : "73055",
+					"countyName" : "Armero"
+				},
+				{
+					"countyIso" : "73067",
+					"countyName" : "Ataco"
+				},
+				{
+					"countyIso" : "73124",
+					"countyName" : "Cajamarca"
+				},
+				{
+					"countyIso" : "73148",
+					"countyName" : "Carmen de apicalá"
+				},
+				{
+					"countyIso" : "73152",
+					"countyName" : "Casabianca"
+				},
+				{
+					"countyIso" : "73168",
+					"countyName" : "Chaparral"
+				},
+				{
+					"countyIso" : "73200",
+					"countyName" : "Coello"
+				},
+				{
+					"countyIso" : "73217",
+					"countyName" : "Coyaima"
+				},
+				{
+					"countyIso" : "73226",
+					"countyName" : "Cunday"
+				},
+				{
+					"countyIso" : "73236",
+					"countyName" : "Dolores"
+				},
+				{
+					"countyIso" : "73268",
+					"countyName" : "Espinal"
+				},
+				{
+					"countyIso" : "73270",
+					"countyName" : "Falan"
+				},
+				{
+					"countyIso" : "73275",
+					"countyName" : "Flandes"
+				},
+				{
+					"countyIso" : "73283",
+					"countyName" : "Fresno"
+				},
+				{
+					"countyIso" : "73319",
+					"countyName" : "Guamo"
+				},
+				{
+					"countyIso" : "73347",
+					"countyName" : "Herveo"
+				},
+				{
+					"countyIso" : "73349",
+					"countyName" : "Honda"
+				},
+				{
+					"countyIso" : "73352",
+					"countyName" : "Icononzo"
+				},
+				{
+					"countyIso" : "73408",
+					"countyName" : "Lérida"
+				},
+				{
+					"countyIso" : "73411",
+					"countyName" : "Líbano"
+				},
+				{
+					"countyIso" : "73443",
+					"countyName" : "San sebastián de mariquita"
+				},
+				{
+					"countyIso" : "73449",
+					"countyName" : "Melgar"
+				},
+				{
+					"countyIso" : "73461",
+					"countyName" : "Murillo"
+				},
+				{
+					"countyIso" : "73483",
+					"countyName" : "Natagaima"
+				},
+				{
+					"countyIso" : "73504",
+					"countyName" : "Ortega"
+				},
+				{
+					"countyIso" : "73520",
+					"countyName" : "Palocabildo"
+				},
+				{
+					"countyIso" : "73547",
+					"countyName" : "Piedras"
+				},
+				{
+					"countyIso" : "73555",
+					"countyName" : "Planadas"
+				},
+				{
+					"countyIso" : "73563",
+					"countyName" : "Prado"
+				},
+				{
+					"countyIso" : "73585",
+					"countyName" : "Purificación"
+				},
+				{
+					"countyIso" : "73616",
+					"countyName" : "Rioblanco"
+				},
+				{
+					"countyIso" : "73622",
+					"countyName" : "Roncesvalles"
+				},
+				{
+					"countyIso" : "73624",
+					"countyName" : "Rovira"
+				},
+				{
+					"countyIso" : "73671",
+					"countyName" : "Saldaña"
+				},
+				{
+					"countyIso" : "73675",
+					"countyName" : "San antonio"
+				},
+				{
+					"countyIso" : "73678",
+					"countyName" : "San luis"
+				},
+				{
+					"countyIso" : "73686",
+					"countyName" : "Santa isabel"
+				},
+				{
+					"countyIso" : "73770",
+					"countyName" : "Suárez"
+				},
+				{
+					"countyIso" : "73854",
+					"countyName" : "Valle de san juan"
+				},
+				{
+					"countyIso" : "73861",
+					"countyName" : "Venadillo"
+				},
+				{
+					"countyIso" : "73870",
+					"countyName" : "Villahermosa"
+				},
+				{
+					"countyIso" : "73873",
+					"countyName" : "Villarrica"
+				}
+			]
+		},
+		{
+			"departmentName":"Valle del Cauca",
+			"departmentIso":"CO-VAC",
+			"counties":[
+				{
+					"countyIso" : "76001",
+					"countyName" : "Cali"
+				},
+				{
+					"countyIso" : "76020",
+					"countyName" : "Alcalá"
+				},
+				{
+					"countyIso" : "76036",
+					"countyName" : "Andalucía"
+				},
+				{
+					"countyIso" : "76041",
+					"countyName" : "Ansermanuevo"
+				},
+				{
+					"countyIso" : "76054",
+					"countyName" : "Argelia"
+				},
+				{
+					"countyIso" : "76100",
+					"countyName" : "Bolívar"
+				},
+				{
+					"countyIso" : "76109",
+					"countyName" : "Buenaventura"
+				},
+				{
+					"countyIso" : "76111",
+					"countyName" : "Guadalajara de buga"
+				},
+				{
+					"countyIso" : "76113",
+					"countyName" : "Bugalagrande"
+				},
+				{
+					"countyIso" : "76122",
+					"countyName" : "Caicedonia"
+				},
+				{
+					"countyIso" : "76126",
+					"countyName" : "Calima"
+				},
+				{
+					"countyIso" : "76130",
+					"countyName" : "Candelaria"
+				},
+				{
+					"countyIso" : "76147",
+					"countyName" : "Cartago"
+				},
+				{
+					"countyIso" : "76233",
+					"countyName" : "Dagua"
+				},
+				{
+					"countyIso" : "76243",
+					"countyName" : "El águila"
+				},
+				{
+					"countyIso" : "76246",
+					"countyName" : "El cairo"
+				},
+				{
+					"countyIso" : "76248",
+					"countyName" : "El cerrito"
+				},
+				{
+					"countyIso" : "76250",
+					"countyName" : "El dovio"
+				},
+				{
+					"countyIso" : "76275",
+					"countyName" : "Florida"
+				},
+				{
+					"countyIso" : "76306",
+					"countyName" : "Ginebra"
+				},
+				{
+					"countyIso" : "76318",
+					"countyName" : "Guacarí"
+				},
+				{
+					"countyIso" : "76364",
+					"countyName" : "Jamundí"
+				},
+				{
+					"countyIso" : "76377",
+					"countyName" : "La cumbre"
+				},
+				{
+					"countyIso" : "76400",
+					"countyName" : "La unión"
+				},
+				{
+					"countyIso" : "76403",
+					"countyName" : "La victoria"
+				},
+				{
+					"countyIso" : "76497",
+					"countyName" : "Obando"
+				},
+				{
+					"countyIso" : "76520",
+					"countyName" : "Palmira"
+				},
+				{
+					"countyIso" : "76563",
+					"countyName" : "Pradera"
+				},
+				{
+					"countyIso" : "76606",
+					"countyName" : "Restrepo"
+				},
+				{
+					"countyIso" : "76616",
+					"countyName" : "Riofrío"
+				},
+				{
+					"countyIso" : "76622",
+					"countyName" : "Roldanillo"
+				},
+				{
+					"countyIso" : "76670",
+					"countyName" : "San pedro"
+				},
+				{
+					"countyIso" : "76736",
+					"countyName" : "Sevilla"
+				},
+				{
+					"countyIso" : "76823",
+					"countyName" : "Toro"
+				},
+				{
+					"countyIso" : "76828",
+					"countyName" : "Trujillo"
+				},
+				{
+					"countyIso" : "76834",
+					"countyName" : "Tuluá"
+				},
+				{
+					"countyIso" : "76845",
+					"countyName" : "Ulloa"
+				},
+				{
+					"countyIso" : "76863",
+					"countyName" : "Versalles"
+				},
+				{
+					"countyIso" : "76869",
+					"countyName" : "Vijes"
+				},
+				{
+					"countyIso" : "76890",
+					"countyName" : "Yotoco"
+				},
+				{
+					"countyIso" : "76892",
+					"countyName" : "Yumbo"
+				},
+				{
+					"countyIso" : "76895",
+					"countyName" : "Zarzal"
+				}
+			]
+		},
+		{
+			"departmentName":"Vaupés",
+			"departmentIso":"CO-VAU",
+			"counties":[
+				{
+					"countyIso" : "97001",
+					"countyName" : "Mitú"
+				},
+				{
+					"countyIso" : "97161",
+					"countyName" : "Caruru"
+				},
+				{
+					"countyIso" : "97511",
+					"countyName" : "Pacoa"
+				},
+				{
+					"countyIso" : "97666",
+					"countyName" : "Taraira"
+				},
+				{
+					"countyIso" : "97777",
+					"countyName" : "Papunaua"
+				},
+				{
+					"countyIso" : "97889",
+					"countyName" : "Yavaraté"
+				}
+			]
+
+		},
+		{
+			"departmentName":"Vichada",
+			"departmentIso":"CO-VID",
+			"counties":[
+				{
+					"countyIso" : "99001",
+					"countyName" : "Puerto carreño"
+				},
+				{
+					"countyIso" : "99524",
+					"countyName" : "La primavera"
+				},
+				{
+					"countyIso" : "99624",
+					"countyName" : "Santa rosalía"
+				},
+				{
+					"countyIso" : "99773",
+					"countyName" : "Cumaribo"
+				}
+			]
+		}
+		]
+	},
+	{"countryName":"Afganistán","countryIso":"AF"},
+	{"countryName":"Albania","countryIso":"AL"},
+	{"countryName":"Alemania","countryIso":"DE"},
+	{"countryName":"Algeria","countryIso":"DZ"},
+	{"countryName":"Andorra","countryIso":"AD"},
+	{"countryName":"Angola","countryIso":"AO"},
+	{"countryName":"Anguila","countryIso":"AI"},
+	{"countryName":"Antártida","countryIso":"AQ"},
+	{"countryName":"Antigua y Barbuda","countryIso":"AG"},
+	{"countryName":"Antillas Neerlandesas","countryIso":"AN"},
+	{"countryName":"Arabia Saudita","countryIso":"SA"},
+	{"countryName":"Argentina","countryIso":"AR"},
+	{"countryName":"Armenia","countryIso":"AM"},
+	{"countryName":"Aruba","countryIso":"AW"},
+	{"countryName":"Australia","countryIso":"AU"},
+	{"countryName":"Austria","countryIso":"AT"},
+	{"countryName":"Azerbayán","countryIso":"AZ"},
+	{"countryName":"Bélgica","countryIso":"BE"},
+	{"countryName":"Bahamas","countryIso":"BS"},
+	{"countryName":"Bahrein","countryIso":"BH"},
+	{"countryName":"Bangladesh","countryIso":"BD"},
+	{"countryName":"Barbados","countryIso":"BB"},
+	{"countryName":"Belice","countryIso":"BZ"},
+	{"countryName":"Benín","countryIso":"BJ"},
+	{"countryName":"Bhután","countryIso":"BT"},
+	{"countryName":"Bielorrusia","countryIso":"BY"},
+	{"countryName":"Birmania","countryIso":"MM"},
+	{"countryName":"Bolivia","countryIso":"BO"},
+	{"countryName":"Bosnia y Herzegovina","countryIso":"BA"},
+	{"countryName":"Botsuana","countryIso":"BW"},
+	{"countryName":"Brasil","countryIso":"BR"},
+	{"countryName":"Brunéi","countryIso":"BN"},
+	{"countryName":"Bulgaria","countryIso":"BG"},
+	{"countryName":"Burkina Faso","countryIso":"BF"},
+	{"countryName":"Burundi","countryIso":"BI"},
+	{"countryName":"Cabo Verde","countryIso":"CV"},
+	{"countryName":"Camboya","countryIso":"KH"},
+	{"countryName":"Camerún","countryIso":"CM"},
+	{"countryName":"Canadá","countryIso":"CA"},
+	{"countryName":"Chad","countryIso":"TD"},
+	{"countryName":"Chile","countryIso":"CL"},
+	{"countryName":"China","countryIso":"CN"},
+	{"countryName":"Chipre","countryIso":"CY"},
+	{"countryName":"Ciudad del Vaticano","countryIso":"VA"},
+	{"countryName":"Comoras","countryIso":"KM"},
+	{"countryName":"Congo","countryIso":"CG"},
+	{"countryName":"Congo","countryIso":"CD"},
+	{"countryName":"Corea del Norte","countryIso":"KP"},
+	{"countryName":"Corea del Sur","countryIso":"KR"},
+	{"countryName":"Costa de Marfil","countryIso":"CI"},
+	{"countryName":"Costa Rica","countryIso":"CR"},
+	{"countryName":"Croacia","countryIso":"HR"},
+	{"countryName":"Cuba","countryIso":"CU"},
+	{"countryName":"Dinamarca","countryIso":"DK"},
+	{"countryName":"Dominica","countryIso":"DM"},
+	{"countryName":"Ecuador","countryIso":"EC"},
+	{"countryName":"Egipto","countryIso":"EG"},
+	{"countryName":"El Salvador","countryIso":"SV"},
+	{"countryName":"Emiratos Árabes Unidos","countryIso":"AE"},
+	{"countryName":"Eritrea","countryIso":"ER"},
+	{"countryName":"Eslovaquia","countryIso":"SK"},
+	{"countryName":"Eslovenia","countryIso":"SI"},
+	{"countryName":"España","countryIso":"ES"},
+	{"countryName":"Estados Unidos de América","countryIso":"US"},
+	{"countryName":"Estonia","countryIso":"EE"},
+	{"countryName":"Etiopía","countryIso":"ET"},
+	{"countryName":"Filipinas","countryIso":"PH"},
+	{"countryName":"Finlandia","countryIso":"FI"},
+	{"countryName":"Fiyi","countryIso":"FJ"},
+	{"countryName":"Francia","countryIso":"FR"},
+	{"countryName":"Gabón","countryIso":"GA"},
+	{"countryName":"Gambia","countryIso":"GM"},
+	{"countryName":"Georgia","countryIso":"GE"},
+	{"countryName":"Ghana","countryIso":"GH"},
+	{"countryName":"Gibraltar","countryIso":"GI"},
+	{"countryName":"Granada","countryIso":"GD"},
+	{"countryName":"Grecia","countryIso":"GR"},
+	{"countryName":"Groenlandia","countryIso":"GL"},
+	{"countryName":"Guadalupe","countryIso":"GP"},
+	{"countryName":"Guam","countryIso":"GU"},
+	{"countryName":"Guatemala","countryIso":"GT"},
+	{"countryName":"Guayana Francesa","countryIso":"GF"},
+	{"countryName":"Guernsey","countryIso":"GG"},
+	{"countryName":"Guinea","countryIso":"GN"},
+	{"countryName":"Guinea Ecuatorial","countryIso":"GQ"},
+	{"countryName":"Guinea-Bissau","countryIso":"GW"},
+	{"countryName":"Guyana","countryIso":"GY"},
+	{"countryName":"Haití","countryIso":"HT"},
+	{"countryName":"Honduras","countryIso":"HN"},
+	{"countryName":"Hong kong","countryIso":"HK"},
+	{"countryName":"Hungría","countryIso":"HU"},
+	{"countryName":"India","countryIso":"IN"},
+	{"countryName":"Indonesia","countryIso":"ID"},
+	{"countryName":"Irán","countryIso":"IR"},
+	{"countryName":"Irak","countryIso":"IQ"},
+	{"countryName":"Irlanda","countryIso":"IE"},
+	{"countryName":"Isla Bouvet","countryIso":"BV"},
+	{"countryName":"Isla de Man","countryIso":"IM"},
+	{"countryName":"Isla de Navidad","countryIso":"CX"},
+	{"countryName":"Isla Norfolk","countryIso":"NF"},
+	{"countryName":"Islandia","countryIso":"IS"},
+	{"countryName":"Islas Bermudas","countryIso":"BM"},
+	{"countryName":"Islas Caimán","countryIso":"KY"},
+	{"countryName":"Islas Cocos (Keeling)","countryIso":"CC"},
+	{"countryName":"Islas Cook","countryIso":"CK"},
+	{"countryName":"Islas de Åland","countryIso":"AX"},
+	{"countryName":"Islas Feroe","countryIso":"FO"},
+	{"countryName":"Islas Georgias del Sur y Sandwich del Sur","countryIso":"GS"},
+	{"countryName":"Islas Heard y McDonald","countryIso":"HM"},
+	{"countryName":"Islas Maldivas","countryIso":"MV"},
+	{"countryName":"Islas Malvinas","countryIso":"FK"},
+	{"countryName":"Islas Marianas del Norte","countryIso":"MP"},
+	{"countryName":"Islas Marshall","countryIso":"MH"},
+	{"countryName":"Islas Pitcairn","countryIso":"PN"},
+	{"countryName":"Islas Salomón","countryIso":"SB"},
+	{"countryName":"Islas Turcas y Caicos","countryIso":"TC"},
+	{"countryName":"Islas Ultramarinas Menores de Estados Unidos","countryIso":"UM"},
+	{"countryName":"Islas Vírgenes Británicas","countryIso":"VG"},
+	{"countryName":"Islas Vírgenes de los Estados Unidos","countryIso":"VI"},
+	{"countryName":"Israel","countryIso":"IL"},
+	{"countryName":"Italia","countryIso":"IT"},
+	{"countryName":"Jamaica","countryIso":"JM"},
+	{"countryName":"Japón","countryIso":"JP"},
+	{"countryName":"Jersey","countryIso":"JE"},
+	{"countryName":"Jordania","countryIso":"JO"},
+	{"countryName":"Kazajistán","countryIso":"KZ"},
+	{"countryName":"Kenia","countryIso":"KE"},
+	{"countryName":"Kirgizstán","countryIso":"KG"},
+	{"countryName":"Kiribati","countryIso":"KI"},
+	{"countryName":"Kuwait","countryIso":"KW"},
+	{"countryName":"Líbano","countryIso":"LB"},
+	{"countryName":"Laos","countryIso":"LA"},
+	{"countryName":"Lesoto","countryIso":"LS"},
+	{"countryName":"Letonia","countryIso":"LV"},
+	{"countryName":"Liberia","countryIso":"LR"},
+	{"countryName":"Libia","countryIso":"LY"},
+	{"countryName":"Liechtenstein","countryIso":"LI"},
+	{"countryName":"Lituania","countryIso":"LT"},
+	{"countryName":"Luxemburgo","countryIso":"LU"},
+	{"countryName":"México","countryIso":"MX"},
+	{"countryName":"Mónaco","countryIso":"MC"},
+	{"countryName":"Macao","countryIso":"MO"},
+	{"countryName":"Macedônia","countryIso":"MK"},
+	{"countryName":"Madagascar","countryIso":"MG"},
+	{"countryName":"Malasia","countryIso":"MY"},
+	{"countryName":"Malawi","countryIso":"MW"},
+	{"countryName":"Mali","countryIso":"ML"},
+	{"countryName":"Malta","countryIso":"MT"},
+	{"countryName":"Marruecos","countryIso":"MA"},
+	{"countryName":"Martinica","countryIso":"MQ"},
+	{"countryName":"Mauricio","countryIso":"MU"},
+	{"countryName":"Mauritania","countryIso":"MR"},
+	{"countryName":"Mayotte","countryIso":"YT"},
+	{"countryName":"Micronesia","countryIso":"FM"},
+	{"countryName":"Moldavia","countryIso":"MD"},
+	{"countryName":"Mongolia","countryIso":"MN"},
+	{"countryName":"Montenegro","countryIso":"ME"},
+	{"countryName":"Montserrat","countryIso":"MS"},
+	{"countryName":"Mozambique","countryIso":"MZ"},
+	{"countryName":"Namibia","countryIso":"NA"},
+	{"countryName":"Nauru","countryIso":"NR"},
+	{"countryName":"Nepal","countryIso":"NP"},
+	{"countryName":"Nicaragua","countryIso":"NI"},
+	{"countryName":"Niger","countryIso":"NE"},
+	{"countryName":"Nigeria","countryIso":"NG"},
+	{"countryName":"Niue","countryIso":"NU"},
+	{"countryName":"Noruega","countryIso":"NO"},
+	{"countryName":"Nueva Caledonia","countryIso":"NC"},
+	{"countryName":"Nueva Zelanda","countryIso":"NZ"},
+	{"countryName":"Omán","countryIso":"OM"},
+	{"countryName":"Países Bajos","countryIso":"NL"},
+	{"countryName":"Pakistán","countryIso":"PK"},
+	{"countryName":"Palau","countryIso":"PW"},
+	{"countryName":"Palestina","countryIso":"PS"},
+	{"countryName":"Panamá","countryIso":"PA"},
+	{"countryName":"Papúa Nueva Guinea","countryIso":"PG"},
+	{"countryName":"Paraguay","countryIso":"PY"},
+	{"countryName":"Perú","countryIso":"PE"},
+	{"countryName":"Polinesia Francesa","countryIso":"PF"},
+	{"countryName":"Polonia","countryIso":"PL"},
+	{"countryName":"Portugal","countryIso":"PT"},
+	{"countryName":"Puerto Rico","countryIso":"PR"},
+	{"countryName":"Qatar","countryIso":"QA"},
+	{"countryName":"Reino Unido","countryIso":"GB"},
+	{"countryName":"República Centroafricana","countryIso":"CF"},
+	{"countryName":"República Checa","countryIso":"CZ"},
+	{"countryName":"República Dominicana","countryIso":"DO"},
+	{"countryName":"Reunión","countryIso":"RE"},
+	{"countryName":"Ruanda","countryIso":"RW"},
+	{"countryName":"Rumanía","countryIso":"RO"},
+	{"countryName":"Rusia","countryIso":"RU"},
+	{"countryName":"Sahara Occidental","countryIso":"EH"},
+	{"countryName":"Samoa","countryIso":"WS"},
+	{"countryName":"Samoa Americana","countryIso":"AS"},
+	{"countryName":"San Bartolomé","countryIso":"BL"},
+	{"countryName":"San Cristóbal y Nieves","countryIso":"KN"},
+	{"countryName":"San Marino","countryIso":"SM"},
+	{"countryName":"San Martín (Francia)","countryIso":"MF"},
+	{"countryName":"San Pedro y Miquelón","countryIso":"PM"},
+	{"countryName":"San Vicente y las Granadinas","countryIso":"VC"},
+	{"countryName":"Santa Elena","countryIso":"SH"},
+	{"countryName":"Santa Lucía","countryIso":"LC"},
+	{"countryName":"Santo Tomé y Príncipe","countryIso":"ST"},
+	{"countryName":"Senegal","countryIso":"SN"},
+	{"countryName":"Serbia","countryIso":"RS"},
+	{"countryName":"Seychelles","countryIso":"SC"},
+	{"countryName":"Sierra Leona","countryIso":"SL"},
+	{"countryName":"Singapur","countryIso":"SG"},
+	{"countryName":"Siria","countryIso":"SY"},
+	{"countryName":"Somalia","countryIso":"SO"},
+	{"countryName":"Sri lanka","countryIso":"LK"},
+	{"countryName":"Sudáfrica","countryIso":"ZA"},
+	{"countryName":"Sudán","countryIso":"SD"},
+	{"countryName":"Suecia","countryIso":"SE"},
+	{"countryName":"Suiza","countryIso":"CH"},
+	{"countryName":"Surinám","countryIso":"SR"},
+	{"countryName":"Svalbard y Jan Mayen","countryIso":"SJ"},
+	{"countryName":"Swazilandia","countryIso":"SZ"},
+	{"countryName":"Tadjikistán","countryIso":"TJ"},
+	{"countryName":"Tailandia","countryIso":"TH"},
+	{"countryName":"Taiwán","countryIso":"TW"},
+	{"countryName":"Tanzania","countryIso":"TZ"},
+	{"countryName":"Territorio Británico del Océano Índico","countryIso":"IO"},
+	{"countryName":"Territorios Australes y Antárticas Franceses","countryIso":"TF"},
+	{"countryName":"Timor Oriental","countryIso":"TL"},
+	{"countryName":"Togo","countryIso":"TG"},
+	{"countryName":"Tokelau","countryIso":"TK"},
+	{"countryName":"Tonga","countryIso":"TO"},
+	{"countryName":"Trinidad y Tobago","countryIso":"TT"},
+	{"countryName":"Tunez","countryIso":"TN"},
+	{"countryName":"Turkmenistán","countryIso":"TM"},
+	{"countryName":"Turquía","countryIso":"TR"},
+	{"countryName":"Tuvalu","countryIso":"TV"},
+	{"countryName":"Ucrania","countryIso":"UA"},
+	{"countryName":"Uganda","countryIso":"UG"},
+	{"countryName":"Uruguay","countryIso":"UY"},
+	{"countryName":"Uzbekistán","countryIso":"UZ"},
+	{"countryName":"Vanuatu","countryIso":"VU"},
+	{"countryName":"Venezuela","countryIso":"VE"},
+	{"countryName":"Vietnam","countryIso":"VN"},
+	{"countryName":"Wallis y Futuna","countryIso":"WF"},
+	{"countryName":"Yemen","countryIso":"YE"},
+	{"countryName":"Yibuti","countryIso":"DJ"},
+	{"countryName":"Zambia","countryIso":"ZM"},
+	{"countryName":"Zimbabue","countryIso":"ZW"}
+]

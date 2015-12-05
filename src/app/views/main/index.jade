@@ -1,0 +1,7 @@
+extends ../../layouts/final/layout
+
+block content
+	div(ng-app="formApp" ng-controller="formController" , ng-init="formDataGet = #{JSON.stringify(json)} ; lenguajes = #{JSON.stringify(lenguajes)}")
+		// views will be injected here
+		.container
+			div(ui-view)

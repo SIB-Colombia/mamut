@@ -1,0 +1,211 @@
+div(ng-controller='DistributionCtrl')
+	.panel.panel-default
+		.panel-heading
+			spant
+				| {{"simplePliCTerm.name.Distribution"|translate}}
+				spant
+				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Distribution"|translate}}')
+					span.glyphicon.glyphicon-info-sign
+			//button.btn.btn-success.btn-xs.pull-right(ng-click='addDistribution(formData.distribution,distributionClass)')
+				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
+		.panel-body
+			div.table-responsive(ng-show='(formData.distribution).length')
+				table.table.table-bordered
+					thead
+						tr
+							th {{"simplePliCTerm.name.DistributionScope"|translate}}
+							th {{"simplePliCTerm.name.TemporalCoverage"|translate}}
+							th Distribución atomizada
+							th {{"simplePliCTerm.name.DistributionUnstructured"|translate}}
+							th
+					
+					tbody
+						tr(ng-repeat="distribution in formData.distribution")
+							td
+								| {{distribution.distributionScope.type}}
+							td
+								| {{distribution.temporalCoverage.startDate|split:'T':0}} / {{distribution.temporalCoverage.endDate|split:'T':0}}	
+							td
+								.selected-item(ng-repeat='distributionA in distribution.distributionAtomized')
+									div(ng-show='distributionA')
+										| {{distributionA.country}} - {{distributionA.stateProvince}} - {{distributionA.county}}
+							td
+								| {{distribution.distributionUnstructured}}
+							td
+								button.btn(ng-click='removeDistribution(formData.distribution,distribution)')
+									span(class="glyphicon glyphicon-trash", aria-hidden='true')
+								button.btn(ng-click='editDistribution(formData.distribution,distribution)')
+									span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+				hr
+			.form-group
+				label.col-xs-2.control-label(for='distributionScope', translate='') simplePliCTerm.name.DistributionScope
+				.col-xs-10
+					.panel(ng-controller='CheckBoxCrtl')
+						div(ng-repeat='ds in lenguajes.distributionScope')
+							input(type='checkbox', ng-model='ds.checked', ng-click='updateSelectionDistributionScope(ds, lenguajes.distributionScope)')
+							| {{ds.name}}
+			.form-group
+				label.col-xs-2.control-label(for='temporalCoverage', translate='') simplePliCTerm.name.TemporalCoverage
+				.col-xs-4
+					label {{simplePliCTerm.name.startDate|translate}} 
+					div(ng-controller='DatepickerCtrl')
+						p.input-group
+							input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", ng-model="distributionClass.temporalCoverage.startDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" )
+							span.input-group-btn
+								button.btn.btn-default(type="button",ng-click="open($event)")
+									i.glyphicon.glyphicon-calendar
+				.col-xs-4
+					label {{simplePliCTerm.name.endDate|translate}}
+					div(ng-controller='DatepickerCtrl')
+						p.input-group
+							input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", ng-model="distributionClass.temporalCoverage.endDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" )
+							span.input-group-btn
+								button.btn.btn-default(type="button",ng-click="open($event)")
+									i.glyphicon.glyphicon-calendar 
+			.form-group
+
+				label.col-xs-2.control-label(for='temporalCoverage', translate='') Distribución atomizada
+				div(ng-controller='UbicacionCtrl')
+					.col-xs-3
+						select(ng-model='distributionOpt2.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
+							option(value='') {{"simplePliCTerm.name.country"|translate}}
+					.col-xs-3
+						select(ng-model='distributionOpt2.stateProvince', ng-disabled='!distributionOpt2.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
+							option(value='') {{"simplePliCTerm.name.stateProvince"|translate}}
+					.col-xs-3
+						select(ng-model='distributionOpt2.county', ng-disabled='!distributionOpt2.country || !distributionOpt2.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
+							option(value='') {{"simplePliCTerm.name.county"|translate}}
+					.col-xs-1
+						button.btn.btn-success.btn-xs.pull-right(ng-click='addDistributionOpt2(distributionClass.distributionAtomized,distributionOpt2)') Agregar
+				label.col-xs-2.control-label(for='temporalCoverage', translate='') 
+				.col-xs-10
+					div.table-responsive(ng-show='(distributionClass.distributionAtomized).length')
+						table.table.table-bordered
+							thead
+								tr
+									th {{"simplePliCTerm.name.country"|translate}}
+									th {{"simplePliCTerm.name.stateProvince"|translate}}
+									th {{"simplePliCTerm.name.county"|translate}}
+									th
+							
+							tbody
+								tr(ng-repeat="distribution in distributionClass.distributionAtomized")
+									td
+										| {{distribution.country}}
+									td
+										| {{distribution.stateProvince}}	
+									td
+										| {{distribution.county}}
+									td
+										button.btn(ng-click='removeDistributionOpt2(distributionClass.distributionAtomized,distribution)')
+											span(class="glyphicon glyphicon-trash", aria-hidden='true')
+						
+			.form-group
+				.col-xs-2
+					label(for='distributionUnstructured', translate='') simplePliCTerm.name.DistributionUnstructured
+					em (opcional)
+					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.DistributionUnstructured"|translate}}')
+						span.glyphicon.glyphicon-info-sign
+				.col-xs-10
+					textarea(rows='3', name='distribution', ng-model='distributionClass.distributionUnstructured')
+				
+					.form-group
+						div.table-responsive(ng-show='(distributionClass.ancillaryData).length')
+								table.table.table-bordered
+									thead
+										tr
+											th {{"simplePliCTerm.name.source"|translate}}
+											th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
+											th {{"simplePliCTerm.name.license"|translate}}
+											th {{"simplePliCTerm.name.rights"|translate}}
+											th
+									
+									tbody
+										tr(ng-repeat="ancillary in distributionClass.ancillaryData track by $index")
+											td
+												| {{ancillary.source}}	
+											td
+												| {{ancillary.bibliographicCitation}}
+											td
+												| {{ancillary.license}}	
+											td
+												| {{ancillary.rights}}
+											td
+												button.btn(ng-click='removeAncillaryData(distributionClass.ancillaryData,ancillary)')
+													span(class="glyphicon glyphicon-trash", aria-hidden='true')
+												button.btn(ng-click='editAncillaryData(distributionClass.ancillaryData,ancillary)')
+													span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+									
+					div(ng-controller='CollapseDemoCtrl')
+						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+						div(uib-collapse='isCollapsed', id='ancillaryDistribution')
+							input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+							button.btn-xs(ng-click='findAncillary(ancillaryData.source)')
+								span.glyphicon.glyphicon-search
+							input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+							input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+							input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+							.panel.panel-default
+								.panel-heading
+									spant {{"simplePliCTerm.name.References"|translate}}
+									button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
+										span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
+										span.glyphicon.glyphicon-info-sign
+								.panel-body
+									div.table-responsive(ng-show='(ancillaryData.reference).length')
+										table.table.table-striped
+											thead
+												tr
+													th {{"simplePliCTerm.name.type"|translate}}
+													th {{"simplePliCTerm.name.Source"|translate}}
+													th {{"simplePliCTerm.name.title"|translate}}
+													th
+											
+											tbody
+												tr(ng-repeat="ref in ancillaryData.reference track by $index")
+													td
+														| {{ref.type|references_translate:this}}
+													td
+														| {{ref.source}}
+													td
+														| {{ref.title}}
+													td
+														button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
+															span(class="glyphicon glyphicon-trash", aria-hidden='true')
+														button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+															span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+			
+									div(uib-collapse='isCollapsed_1', id='referenceDistribution')
+										.form-group
+											select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
+												option(value='') - {{"simplePliCTerm.name.type"|translate}} 
+											input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+											input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+											input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+											input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+											input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+											input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+											input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+											input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+											input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+											input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+											input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+											input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+											input(type='text', ng-model='reference.city', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+											input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+											input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+											input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+											input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+											input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+											input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+											input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+											//input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+										button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+										button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()') Cancelar
+							button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(distributionClass.ancillaryData,ancillaryData)', translate='') Guardar
+							button.btn.btn-primary.btn-sm(type='button', ng-click='cancelAncillaryData()') Cancelar
+			.form-group
+				button.btn.btn-success.btn-sm.pull-right(ng-click='addDistribution(formData.distribution,distributionClass)') Guardar
+
+			

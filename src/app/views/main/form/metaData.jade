@@ -1,0 +1,63 @@
+.form-group
+	h3(translate='') simplePliCTerm.name.Dataset_ID
+	hr
+	input(type='text', name='datasetID', ng-model='formData.datasetID')
+	br
+	h3(translate='') simplePliCTerm.name.dateStamp
+	hr
+	input(type='text', name='dataStamp', ng-model='formData.dataStamp')
+	br
+	h3(translate='') simplePliCTerm.name.citation
+	hr
+	input(type='text', name='citation', ng-model='formData.citation')
+	br
+	div(ng-controller='CollapseDemoCtrl')
+		button.btn.btn-success(ng-click='isCollapsed = !isCollapsed', translate='') simplePliCTerm.name.dataset
+		hr
+		div(uib-collapse='isCollapsed')
+			.form-group
+				h4 alternateIdentifier:
+				input(type='text', ng-model='formData.dataset.alternateIdentifier')
+				h4 title:
+				input(type='text', ng-model='formData.dataset.title')
+				h4 creator:
+				input(type='text', ng-model='formData.dataset.creator')
+				h4 metadataProvider:
+				input(type='text', ng-model='formData.dataset.metadataProvider')
+				h4 associatedParty:
+				input(type='text', ng-model='formData.dataset.associatedParty')
+				h4 pubDate:
+				input(type='text', ng-model='formData.dataset.pubDate')
+				h4 language:
+				input(type='text', ng-model='formData.dataset.language')
+				h4 abstract:
+				input(type='text', ng-model='formData.dataset.abstract')
+				h4 keyworset:
+				input(type='text', ng-model='formData.dataset.keyworset')
+				h4 additionalInfo:
+				input(type='text', ng-model='formData.dataset.additionalInfo')
+				h4 intellectialRights:
+				input(type='text', ng-model='formData.dataset.intellectialRights')
+				h4 distribution:
+				input(type='text', ng-model='formData.dataset.distribution')
+				h4 coverage:
+				input(type='text', ng-model='formData.dataset.coverage')
+				h4 contact:
+				input(type='text', ng-model='formData.dataset.contact')
+				h4 methods:
+				input(type='text', ng-model='formData.dataset.methods')
+				h4 project:
+				input(type='text', ng-model='formData.dataset.project')
+	h3(translate='') simplePliCTerm.name.resourceLogoUrl
+	hr
+	input(type='text', name='resourceLogoUrl', ng-model='formData.resourceLogoUrl')
+	br
+	h3(translate='') simplePliCTerm.name.References
+	hr
+	input(type='text', name='reference', ng-model='formData.reference')
+	br
+.form-group.row
+	.col-xs-6.col-xs-offset-3
+		a.btn.btn-block(ui-sref='form.baseElem')
+			| Siguiente Sección 
+			span.glyphicon.glyphicon-circle-arrow-right

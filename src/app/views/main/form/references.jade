@@ -1,0 +1,132 @@
+div(ng-controller='ReferenceCrtl')
+	.form-group
+		.panel.panel-default
+			.panel-heading
+				spant
+					| {{"simplePliCTerm.name.References"|translate}}
+					spant
+				//button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addReferences()') 
+					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
+			.panel-body
+				div.table-responsive(ng-show='(formData.references).length')
+					table.table.table-striped
+						thead
+							tr
+								th {{"simplePliCTerm.name.type"|translate}}
+								th {{"simplePliCTerm.name.Source"|translate}}
+								th {{"simplePliCTerm.name.title"|translate}}
+								th
+						
+						tbody
+							tr(ng-repeat="ref in formData.references track by $index")
+								td
+									| {{ref.type|references_translate:this}}
+								td
+									| {{ref.source}}
+								td
+									| {{ref.title}}
+								td
+									button.btn(ng-click='removeReference(formData.references,ref)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
+									button.btn(ng-click='editReference(formData.references,ref)')
+										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+				.form-group
+					div
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.type
+							.col-xs-10
+								select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
+									option(value='') - Seleccione -
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Source
+							.col-xs-10
+								input(type='text', ng-model='reference.source')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.title
+							.col-xs-10
+								input(type='text', ng-model='reference.title')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.authors
+							.col-xs-10
+								input(type='text', ng-model='reference.authors')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.year
+							.col-xs-10
+								input(type='text', ng-model='reference.year')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.volume
+							.col-xs-10
+								input(type='text', ng-model='reference.volume')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.issue
+							.col-xs-10
+								input(type='text', ng-model='reference.issue')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.pages
+							.col-xs-10
+								input(type='text', ng-model='reference.pages')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.series
+							.col-xs-10
+								input(type='text', ng-model='reference.series')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.chapter
+							.col-xs-10
+								input(type='text', ng-model='reference.chapter')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.websites
+							.col-xs-10
+								input(type='text', ng-model='reference.websites')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.accessed
+							.col-xs-10
+								input(type='text', ng-model='reference.accessed')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.publisher
+							.col-xs-10
+								input(type='text', ng-model='reference.publisher')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.city
+							.col-xs-10
+								input(type='text', ng-model='reference.city')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.edition
+							.col-xs-10
+								input(type='text', ng-model='reference.edition')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.institution
+							.col-xs-10
+								input(type='text', ng-model='reference.institution')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.keywords
+							.col-xs-10
+								input(type='text', ng-model='reference.keywords')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.doi
+							.col-xs-10
+								input(type='text', ng-model='reference.doi')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.isbn
+							.col-xs-10
+								input(type='text', ng-model='reference.isbn')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.issn
+							.col-xs-10
+								input(type='text', ng-model='reference.issn')
+						//.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.link
+							.col-xs-10
+								input(type='text', ng-model='reference.link')
+						button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(formData.references,reference)', translate='') Guardar Referencia
+						button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()', translate='') Cancelar 
+
+.col-xs-6.col-xs-offset-3
+	ul.pager
+		li
+			a.btn.btn-block(ui-sref='form.associatedParty')
+				span.glyphicon.glyphicon-circle-arrow-left
+				|	Sección Anterior
+		li
+			a.btn.btn-block(ui-sref='form.ancillary')
+				| Siguiente Sección 
+				span.glyphicon.glyphicon-circle-arrow-right

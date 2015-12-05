@@ -1,0 +1,14 @@
+.form-group
+	//div(ng-include="'./form/includes/briefDescription.html'")
+	div(ng-include="'./form/includes/fullDescription.html'")
+	div(ng-include="'./form/includes/identificationKeys.html'")
+.col-xs-6.col-xs-offset-3
+	ul.pager
+		li
+			a.btn.btn-block(ui-sref='form.nomeAndClass')
+				span.glyphicon.glyphicon-circle-arrow-left
+				|	Sección Anterior
+		li
+			a.btn.btn-block(ui-sref='form.history')
+				| Siguiente Sección 
+				span.glyphicon.glyphicon-circle-arrow-right
