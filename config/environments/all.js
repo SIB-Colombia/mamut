@@ -18,9 +18,9 @@ module.exports = function(parent) {
 	parent.use(require('stylus').middleware(__dirname + './../../src/public/stylesheets'));
 
 	// Load configuration according to environment
-	if(process.env.NODE_ENV === 'development') {
+	if(process.env.NODE_ENV === 'production') {
 		require('./development')(parent);
-	} else if(process.env.NODE_ENV === 'production') {
+	} else if(process.env.NODE_ENV === 'development') {
 		require('./production')(parent);
 	} else {
 		require('./development')(parent);
