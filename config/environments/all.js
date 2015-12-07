@@ -17,6 +17,8 @@ module.exports = function(parent) {
 	parent.use(bodyParser.urlencoded({ extended: false }));
 	parent.use(require('stylus').middleware(__dirname + './../../src/public/stylesheets'));
 
+	var logger = "";
+
 	// Load configuration according to environment
 	if(process.env.NODE_ENV === 'development') {
 		require('./development')(parent);
