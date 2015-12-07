@@ -1,0 +1,543 @@
+
+<div ng-controller="InvasivenessCtrl">
+  <div class="form-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <spant>{{"simplePliCTerm.name.Invasiveness" | translate}}
+          <spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Invasiveness&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
+        </spant>
+        <!--button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addInvasiveness()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
+        -->
+      </div>
+      <div class="panel-body">
+        <div ng-show="(formData.invasiveness.invasivenessAtomized).length" class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              <tr ng-repeat="invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized track by $index">
+                <td>
+                  <div class="parrafo-pegado">
+                    <div ng-show="invasivenessAtomizedType.origin">{{"simplePliCTerm.name.origin"|translate}} : {{invasivenessAtomizedType.origin}}</div>
+                    <div ng-show="invasivenessAtomizedType.presence">{{"simplePliCTerm.name.presence"|translate}} : {{invasivenessAtomizedType.presence}}</div>
+                    <div ng-show="invasivenessAtomizedType.persistence">{{"simplePliCTerm.name.persistence"|translate}} : {{invasivenessAtomizedType.persistence}}</div>
+                    <div ng-repeat="distribution in invasivenessAtomizedType.distribution" class="selected-item">
+                      <div ng-show="distribution">{{"simplePliCTerm.name.distribution"|translate}} : {{distribution}}</div>
+                    </div>
+                    <div ng-show="invasivenessAtomizedType.harmful">{{"simplePliCTerm.name.harmful"|translate}} : {{invasivenessAtomizedType.harmful}}</div>
+                    <div ng-show="invasivenessAtomizedType.modified">{{"simplePliCTerm.name.modified"|translate}} : {{invasivenessAtomizedType.modified|split:'T':0}}</div>
+                    <div ng-show="invasivenessAtomizedType.startValidateDate">{{"simplePliCTerm.name.startValidateDate"|translate}} : {{invasivenessAtomizedType.startValidateDate|split:'T':0}}	</div>
+                    <div ng-show="invasivenessAtomizedType.endValidateDate">{{"simplePliCTerm.name.endValidateDate"|translate}} : {{invasivenessAtomizedType.endValidateDate|split:'T':0}}</div>
+                    <div ng-show="invasivenessAtomizedType.countryCode">{{"simplePliCTerm.name.countryCode"|translate}} : {{invasivenessAtomizedType.countryCode}}</div>
+                    <div ng-show="invasivenessAtomizedType.stateProvince">{{"simplePliCTerm.name.stateProvince"|translate}} : {{invasivenessAtomizedType.stateProvince}}</div>
+                    <div ng-show="invasivenessAtomizedType.county">{{"simplePliCTerm.name.county"|translate}} : {{invasivenessAtomizedType.county}}	</div>
+                    <div ng-show="invasivenessAtomizedType.localityName">{{"simplePliCTerm.name.localityName"|translate}} : {{invasivenessAtomizedType.localityName}}	</div>
+                    <div ng-show="invasivenessAtomizedType.language">{{"simplePliCTerm.name.language"|translate}} : {{invasivenessAtomizedType.language}}</div>
+                    <div ng-show="invasivenessAtomizedType.citation">{{"simplePliCTerm.name.citation"|translate}} : {{invasivenessAtomizedType.citation}}</div>
+                    <div ng-show="invasivenessAtomizedType.abundance">{{"simplePliCTerm.name.abundance"|translate}} : {{invasivenessAtomizedType.abundance}}	</div>
+                    <div ng-show="invasivenessAtomizedType.trend">{{"simplePliCTerm.name.trend"|translate}} : {{invasivenessAtomizedType.trend}}</div>
+                    <div ng-show="invasivenessAtomizedType.rateOfSpread">{{"simplePliCTerm.name.rateOfSpread"|translate}} : {{invasivenessAtomizedType.rateOfSpread}}</div>
+                    <div ng-show="invasivenessAtomizedType.regulatoryListing">{{"simplePliCTerm.name.regulatoryListing"|translate}} : {{invasivenessAtomizedType.regulatoryListing}}</div>
+                    <div ng-show="invasivenessAtomizedType.memo">{{"simplePliCTerm.name.memo"|translate}} : {{invasivenessAtomizedType.memo}}	</div>
+                    <div ng-show="invasivenessAtomizedType.publicationDate">{{"simplePliCTerm.name.publicationDate"|translate}} : {{invasivenessAtomizedType.publicationDate}}</div>
+                    <div ng-show="invasivenessAtomizedType.localityType">{{"simplePliCTerm.name.localityType"|translate}} : {{invasivenessAtomizedType.localityType}}</div>
+                    <div ng-show="invasivenessAtomizedType.locationValue">{{"simplePliCTerm.name.locationValue"|translate}} : {{invasivenessAtomizedType.locationValue}}</div>
+                    <div ng-show="invasivenessAtomizedType.publicationDatePrecision">{{"simplePliCTerm.name.publicationDatePrecision"|translate}} : {{invasivenessAtomizedType.publicationDatePrecision}}	</div>
+                    <div ng-show="invasivenessAtomizedType.whatImpact">{{"simplePliCTerm.name.WhatImpact"|translate}} : {{invasivenessAtomizedType.whatImpact}}	</div>
+                    <div ng-show="invasivenessAtomizedType.vector">{{"simplePliCTerm.name.vector"|translate}} : {{invasivenessAtomizedType.vector}}</div>
+                    <div ng-show="invasivenessAtomizedType.route">{{"simplePliCTerm.name.route"|translate}} : {{invasivenessAtomizedType.route}}</div>
+                    <div ng-show="invasivenessAtomizedType.target">{{"simplePliCTerm.name.target"|translate}} : {{invasivenessAtomizedType.target}}	</div>
+                    <div ng-show="invasivenessAtomizedType.mechanism">{{"simplePliCTerm.name.Mechanism"|translate}} : {{invasivenessAtomizedType.mechanism}}		</div>
+                  </div>
+                </td>
+                <td>
+                  <button ng-click="removeInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                  <button ng-click="editInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-group">
+          <label for="origin" translate="" class="col-xs-2 control-label">simplePliCTerm.name.origin</label>
+          <div class="col-xs-10">
+            <div ng-controller="CheckBoxCrtl" class="panel">
+              <div ng-repeat="ori in lenguajes.origin">
+                <input type="checkbox" ng-model="ori.checked" ng-click="updateSelectionOrigin(ori, lenguajes.origin)"/>{{ori.name}}
+                <spant ng-show="ori.help"><a data-container="body" data-toggle="popover" data-placement="left" title="{{ori.help}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="presence" translate="" class="col-xs-2 control-label">simplePliCTerm.name.presence</label>
+          <div class="col-xs-10">
+            <div ng-controller="CheckBoxCrtl" class="panel">
+              <div ng-repeat="pre in lenguajes.presence">
+                <input type="checkbox" ng-model="pre.checked" ng-click="updateSelectionPresence(pre, lenguajes.presence)"/>{{pre.name}}
+                <spant ng-show="pre.help"><a data-container="body" data-toggle="popover" data-placement="left" title="{{pre.help}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="persistence" translate="" class="col-xs-2 control-label">simplePliCTerm.name.persistence</label>
+          <div class="col-xs-10">
+            <div ng-controller="CheckBoxCrtl" class="panel">
+              <div ng-repeat="per in lenguajes.persistence">
+                <input type="checkbox" ng-model="per.checked" ng-click="updateSelectionPersistence(per, lenguajes.persistence)"/>{{per.name}}
+                <spant ng-show="per.help"><a data-container="body" data-toggle="popover" data-placement="left" title="{{per.help}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="distribution" translate="" class="col-xs-2 control-label">simplePliCTerm.name.distribution</label>
+          <div class="col-xs-10">
+            <div ng-controller="CheckBoxCrtl" class="panel">
+              <div ng-repeat="dis in lenguajes.distribution">
+                <input type="checkbox" ng-model="dis.checked" ng-click="updateSelectionDistribution(dis, lenguajes.distribution)"/>{{dis.name}}
+                <spant ng-show="dis.help"><a data-container="body" data-toggle="popover" data-placement="left" title="{{dis.help}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="harmful" translate="" class="col-xs-2 control-label">simplePliCTerm.name.harmful</label>
+          <div class="col-xs-10">
+            <div ng-controller="CheckBoxCrtl" class="panel">
+              <div ng-repeat="har in lenguajes.harmful">
+                <input type="checkbox" ng-model="har.checked" ng-click="updateSelectionHarmful(har, lenguajes.harmful)"/>{{har.name}}
+                <spant ng-show="har.help"><a data-container="body" data-toggle="popover" data-placement="left" title="{{har.help}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="modified" translate="" class="col-xs-2 control-label">simplePliCTerm.name.modified</label>
+          <div class="col-xs-10">
+            <div ng-controller="DatepickerCtrl">
+              <p class="input-group">
+                <input type="text" uib-datepicker-popup="yyyy/MM/dd" ng-model="invasivenessAtomizedType.modified" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" class="form-control"/><span class="input-group-btn">
+                  <button type="button" ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="startValidateDate" translate="" class="col-xs-2 control-label">simplePliCTerm.name.startValidateDate</label>
+          <div class="col-xs-10">
+            <div ng-controller="DatepickerCtrl">
+              <p class="input-group">
+                <input type="text" uib-datepicker-popup="yyyy/MM/dd" ng-model="invasivenessAtomizedType.startValidateDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" class="form-control"/><span class="input-group-btn">
+                  <button type="button" ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="endValidateDate" translate="" class="col-xs-2 control-label">simplePliCTerm.name.endValidateDate</label>
+          <div class="col-xs-10">
+            <div ng-controller="DatepickerCtrl">
+              <p class="input-group">
+                <input type="text" uib-datepicker-popup="yyyy/MM/dd" ng-model="invasivenessAtomizedType.endValidateDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" class="form-control"/><span class="input-group-btn">
+                  <button type="button" ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="countryCode" translate="" class="col-xs-2 control-label">simplePliCTerm.name.countryCode</label>
+          <div class="col-xs-10">
+            <div ng-controller="UbicacionCtrl">
+              <select ng-model="invasivenessAtomizedType.countryCode" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
+                <option value="">- Seleccione -</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="stateProvince" translate="" class="col-xs-2 control-label">simplePliCTerm.name.stateProvince</label>
+          <div class="col-xs-10">
+            <div ng-controller="UbicacionCtrl">
+              <select ng-model="invasivenessAtomizedType.stateProvince" ng-disabled="!invasivenessAtomizedType.countryCode" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
+                <option value="">- Seleccione -</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="county" translate="" class="col-xs-2 control-label">simplePliCTerm.name.county</label>
+          <div class="col-xs-10">
+            <div ng-controller="UbicacionCtrl">
+              <select ng-model="invasivenessAtomizedType.county" ng-disabled="!invasivenessAtomizedType.countryCode || !invasivenessAtomizedType.stateProvince" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
+                <option value="">- Seleccione -</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="localityName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.localityName</label>
+          <div class="col-xs-10">
+            <input type="text" name="localityName" ng-model="invasivenessAtomizedType.localityName"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="language" translate="" class="col-xs-2 control-label">simplePliCTerm.name.language</label>
+          <div class="col-xs-10">
+            <select ng-model="invasivenessAtomizedType.language" ng-options="lang.Idioma as lang.Idioma for lang in idiomas ">
+              <option value="">- Seleccione -</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="citation" translate="" class="col-xs-2 control-label">simplePliCTerm.name.citation</label>
+          <div class="col-xs-10">
+            <input type="text" name="citation" ng-model="invasivenessAtomizedType.citation"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="abundance" translate="" class="col-xs-2 control-label">simplePliCTerm.name.abundance</label>
+          <div class="col-xs-10">
+            <div ng-controller="CheckBoxCrtl" class="panel">
+              <div ng-repeat="abu in lenguajes.abundance">
+                <input type="checkbox" ng-model="abu.checked" ng-click="updateSelectionAbundance(abu, lenguajes.abundance)"/>{{abu.name}}
+                <spant ng-show="abu.help"><a data-container="body" data-toggle="popover" data-placement="left" title="{{abu.help}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="trend" translate="" class="col-xs-2 control-label">simplePliCTerm.name.trend</label>
+          <div class="col-xs-10">
+            <div ng-controller="CheckBoxCrtl" class="panel">
+              <div ng-repeat="tre in lenguajes.trend">
+                <input type="checkbox" ng-model="tre.checked" ng-click="updateSelectionTrend(tre, lenguajes.trend)"/>{{tre.name}}
+                <spant ng-show="tre.help"><a data-container="body" data-toggle="popover" data-placement="left" title="{{tre.help}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="rateOfSpread" translate="" class="col-xs-2 control-label">simplePliCTerm.name.rateOfSpread</label>
+          <div class="col-xs-10">
+            <div ng-controller="CheckBoxCrtl" class="panel">
+              <div ng-repeat="ros in lenguajes.rateOfSpread">
+                <input type="checkbox" ng-model="ros.checked" ng-click="updateSelectionRateOfSpread(ros, lenguajes.rateOfSpread)"/>{{ros.name}}
+                <spant ng-show="ros.help"><a data-container="body" data-toggle="popover" data-placement="left" title="{{ros.help}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="regulatoryListing" translate="" class="col-xs-2 control-label">simplePliCTerm.name.regulatoryListing</label>
+          <div class="col-xs-10">
+            <div ng-controller="CheckBoxCrtl" class="panel">
+              <div ng-repeat="rl in lenguajes.regulatoryListing">
+                <input type="checkbox" ng-model="rl.checked" ng-click="updateSelectionRegulatoryListing(rl, lenguajes.regulatoryListing)"/>{{rl.name}}
+                <spant ng-show="rl.help"><a data-container="body" data-toggle="popover" data-placement="left" title="{{rl.help}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="memo" translate="" class="col-xs-2 control-label">simplePliCTerm.name.memo</label>
+          <div class="col-xs-10">
+            <textarea rows="3" name="memo" ng-model="invasivenessAtomizedType.memo"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="publicationDate" translate="" class="col-xs-2 control-label">simplePliCTerm.name.publicationDate</label>
+          <div class="col-xs-10">
+            <div ng-controller="DatepickerCtrl">
+              <p class="input-group">
+                <input type="text" uib-datepicker-popup="yyyy/MM/dd" ng-model="invasivenessAtomizedType.publicationDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" class="form-control"/><span class="input-group-btn">
+                  <button type="button" ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="localityType" translate="" class="col-xs-2 control-label">simplePliCTerm.name.localityType</label>
+          <div class="col-xs-10">
+            <div ng-controller="CheckBoxCrtl" class="panel">
+              <div ng-repeat="lt in lenguajes.localityType">
+                <input type="checkbox" ng-model="lt.checked" ng-click="updateSelectionLocalityType(lt, lenguajes.localityType)"/>{{lt.name}}
+                <spant ng-show="lt.help"><a data-container="body" data-toggle="popover" data-placement="left" title="{{lt.help}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="locationValue" translate="" class="col-xs-2 control-label">simplePliCTerm.name.locationValue</label>
+          <div class="col-xs-10">
+            <div ng-controller="CheckBoxCrtl" class="panel">
+              <div ng-repeat="ls in lenguajes.locationStandard">
+                <input type="checkbox" ng-model="ls.checked" ng-click="updateSelectionLocationValue(ls, lenguajes.locationStandard)"/>{{ls.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="publicationDatePrecision" translate="" class="col-xs-2 control-label">simplePliCTerm.name.publicationDatePrecision</label>
+          <div class="col-xs-10">
+            <div ng-controller="CheckBoxCrtl" class="panel">
+              <div ng-repeat="pdp in lenguajes.publicationDatePrecision">
+                <input type="checkbox" ng-model="pdp.checked" ng-click="updateSelectionPublicationDatePrecision(pdp, lenguajes.publicationDatePrecision)"/>{{pdp.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="WhatImpact" translate="" class="col-xs-2 control-label">simplePliCTerm.name.WhatImpact</label>
+          <div class="col-xs-10">
+            <textarea rows="3" name="whatImpact" ng-model="invasivenessAtomizedType.whatImpact"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="vector" translate="" class="col-xs-2 control-label">simplePliCTerm.name.vector</label>
+          <div class="col-xs-10">
+            <textarea rows="3" name="whatImpact" ng-model="invasivenessAtomizedType.vector"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="route" translate="" class="col-xs-2 control-label">simplePliCTerm.name.route</label>
+          <div class="col-xs-10">
+            <textarea rows="3" name="route" ng-model="invasivenessAtomizedType.route"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="target" translate="" class="col-xs-2 control-label">simplePliCTerm.name.target</label>
+          <div class="col-xs-10">
+            <textarea rows="3" name="route" ng-model="invasivenessAtomizedType.target"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Mechanism" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Mechanism</label>
+          <div class="col-xs-10">
+            <textarea rows="3" name="mechanism" ng-model="invasivenessAtomizedType.mechanism"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div ng-show="(invasivenessAtomizedType.ancillaryData).length" class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>{{"simplePliCTerm.name.source"|translate}}</th>
+                  <th>{{"simplePliCTerm.name.bibliographicCitation"|translate}}</th>
+                  <th>{{"simplePliCTerm.name.license"|translate}}</th>
+                  <th>{{"simplePliCTerm.name.rights"|translate}}</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="ancillary in invasivenessAtomizedType.ancillaryData track by $index">
+                  <td>{{ancillary.source}}	</td>
+                  <td>{{ancillary.bibliographicCitation}}</td>
+                  <td>{{ancillary.license}}	</td>
+                  <td>{{ancillary.rights}}	</td>
+                  <td>
+                    <button ng-click="removeAncillaryData(invasivenessAtomizedType.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                    <button ng-click="editAncillaryDataAto(invasivenessAtomizedType.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div ng-controller="CollapseDemoCtrl">
+            <div class="form-group">
+              <button type="button" ng-click="isCollapsed = !isCollapsed" class="btn btn-primary btn-sm">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
+              <div class="col-xs-10">
+                <div uib-collapse="isCollapsed" id="ancillaryInvasivenessAto">
+                  <input type="text" ng-model="ancillaryDataAto.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
+                  <button ng-click="findAncillaryAto(ancillaryDataAto.source)" class="btn-xs"><span class="glyphicon glyphicon-search"></span></button>
+                  <input type="text" ng-model="ancillaryDataAto.bibliographicCitation" placeholder="{{&quot;simplePliCTerm.name.bibliographicCitation&quot;|translate}}"/>
+                  <input type="text" ng-model="ancillaryDataAto.license" placeholder="{{&quot;simplePliCTerm.name.license&quot;|translate}}"/>
+                  <input type="text" ng-model="ancillaryDataAto.rights" placeholder="{{&quot;simplePliCTerm.name.rights&quot;|translate}}"/>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <spant>{{"simplePliCTerm.name.References"|translate}}</spant>
+                      <button ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+                    </div>
+                    <div class="panel-body">
+                      <div ng-show="(ancillaryDataAto.reference).length" class="table-responsive">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>{{"simplePliCTerm.name.type"|translate}}</th>
+                              <th>{{"simplePliCTerm.name.Source"|translate}}</th>
+                              <th>{{"simplePliCTerm.name.title"|translate}}</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="ref in ancillaryDataAto.reference track by $index">
+                              <td>{{ref.type|references_translate:this}}</td>
+                              <td>{{ref.source}}</td>
+                              <td>{{ref.title}}</td>
+                              <td>
+                                <button ng-click="removeReference(ancillaryDataAto.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                                <button ng-click="editReferenceAto(ancillaryDataAto.reference,ref,referenceAto)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div uib-collapse="isCollapsed_1" id="referenceInvasivenessAto">
+                        <div class="form-group">
+                          <select ng-model="referenceAto.type" ng-options="type.original as type.view for type in reference_type ">
+                            <option value="">- {{"simplePliCTerm.name.type"|translate}} </option>
+                          </select>
+                          <input type="text" ng-model="referenceAto.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.city" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
+                          <input type="text" ng-model="referenceAto.link" placeholder="{{&quot;simplePliCTerm.name.link&quot;|translate}}"/>
+                        </div>
+                        <button type="button" ng-click="addReferenceAto(ancillaryDataAto.reference,referenceAto)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Referencia</button>
+                        <button type="button" ng-click="cancelReferenceAto()" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" ng-click="addAncillaryDataAto(invasivenessAtomizedType.ancillaryData,ancillaryDataAto)" translate="" class="btn btn-primary btn-sm">Guardar</button>
+                  <button type="button" ng-click="cancelAncillaryDataAto()" class="btn btn-primary btn-sm">Cancelar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="button" ng-click="addInvasivenessAtomizedType(formData.invasiveness.invasivenessAtomized, invasivenessAtomizedType)" class="btn btn-success btn-sm">Guardar</button>
+          <button type="button" ng-click="cancelInvasivenessAtomizedType(invasivenessAtomizedType)" class="btn btn-success btn-sm">Cancelar</button>
+        </div>
+        <div class="form-group">
+          <hr/>
+          <label for="invasivenessUnstructured" translate="">Descripción</label><em>(opcional)</em>
+          <textarea rows="3" name="invasiveness" ng-model="formData.invasiveness.invasivenessUnstructured"></textarea>
+          <div ng-show="(formData.invasiveness.ancillaryData).length" class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>{{"simplePliCTerm.name.source"|translate}}</th>
+                  <th>{{"simplePliCTerm.name.bibliographicCitation"|translate}}</th>
+                  <th>{{"simplePliCTerm.name.license"|translate}}</th>
+                  <th>{{"simplePliCTerm.name.rights"|translate}}</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="ancillary in formData.invasiveness.ancillaryData track by $index">
+                  <td>{{ancillary.source}}	</td>
+                  <td>{{ancillary.bibliographicCitation}}</td>
+                  <td>{{ancillary.license}}	</td>
+                  <td>{{ancillary.rights}}	</td>
+                  <td>
+                    <button ng-click="removeAncillaryData(formData.invasiveness.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                    <button ng-click="editAncillaryData(formData.invasiveness.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div ng-controller="CollapseDemoCtrl">
+            <div class="form-group">
+              <button type="button" ng-click="isCollapsed = !isCollapsed" class="btn btn-primary btn-sm pull-right">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
+              <div class="col-xs-10">
+                <div uib-collapse="isCollapsed" id="ancillaryInvasiveness">
+                  <input type="text" ng-model="ancillaryData.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
+                  <button ng-click="findAncillary(ancillaryData.source)" class="btn-xs"><span class="glyphicon glyphicon-search"></span></button>
+                  <input type="text" ng-model="ancillaryData.bibliographicCitation" placeholder="{{&quot;simplePliCTerm.name.bibliographicCitation&quot;|translate}}"/>
+                  <input type="text" ng-model="ancillaryData.license" placeholder="{{&quot;simplePliCTerm.name.license&quot;|translate}}"/>
+                  <input type="text" ng-model="ancillaryData.rights" placeholder="{{&quot;simplePliCTerm.name.rights&quot;|translate}}"/>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <spant>{{"simplePliCTerm.name.References"|translate}}</spant>
+                      <button ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+                    </div>
+                    <div class="panel-body">
+                      <div ng-show="(ancillaryData.reference).length" class="table-responsive">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>{{"simplePliCTerm.name.type"|translate}}</th>
+                              <th>{{"simplePliCTerm.name.Source"|translate}}</th>
+                              <th>{{"simplePliCTerm.name.title"|translate}}</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="ref in ancillaryData.reference track by $index">
+                              <td>{{ref.type|references_translate:this}}</td>
+                              <td>{{ref.source}}</td>
+                              <td>{{ref.title}}</td>
+                              <td>
+                                <button ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                                <button ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div uib-collapse="isCollapsed_1" id="referenceInvasiveness">
+                        <div class="form-group">
+                          <select ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
+                            <option value="">- {{"simplePliCTerm.name.type"|translate}} </option>
+                          </select>
+                          <input type="text" ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.city" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
+                          <input type="text" ng-model="reference.link" placeholder="{{&quot;simplePliCTerm.name.link&quot;|translate}}"/>
+                        </div>
+                        <button type="button" ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Referencia</button>
+                        <button type="button" ng-click="cancelReference()" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" ng-click="addAncillaryData(formData.invasiveness.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Guardar</button>
+                  <button type="button" ng-click="cancelAncillaryData()" class="btn btn-primary btn-sm">Cancelar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6 col-xs-offset-3">
+    <ul class="pager">
+      <li><a ui-sref="form.historyC" class="btn btn-block"><span class="glyphicon glyphicon-circle-arrow-left"></span>	Sección Anterior</a></li>
+      <li><a ui-sref="form.habitat" class="btn btn-block">Siguiente Sección <span class="glyphicon glyphicon-circle-arrow-right"></span></a></li>
+    </ul>
+  </div>
+</div>

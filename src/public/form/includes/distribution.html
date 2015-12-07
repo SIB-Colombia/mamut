@@ -1,0 +1,234 @@
+
+<div ng-controller="DistributionCtrl">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <spant>{{"simplePliCTerm.name.Distribution"|translate}}
+        <spant></spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Distribution&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+      </spant>
+      <!--button.btn.btn-success.btn-xs.pull-right(ng-click='addDistribution(formData.distribution,distributionClass)')span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
+      -->
+    </div>
+    <div class="panel-body">
+      <div ng-show="(formData.distribution).length" class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>{{"simplePliCTerm.name.DistributionScope"|translate}}</th>
+              <th>{{"simplePliCTerm.name.TemporalCoverage"|translate}}</th>
+              <th>Distribución atomizada</th>
+              <th>{{"simplePliCTerm.name.DistributionUnstructured"|translate}}</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="distribution in formData.distribution">
+              <td>{{distribution.distributionScope.type}}</td>
+              <td>{{distribution.temporalCoverage.startDate|split:'T':0}} / {{distribution.temporalCoverage.endDate|split:'T':0}}	</td>
+              <td>
+                <div ng-repeat="distributionA in distribution.distributionAtomized" class="selected-item">
+                  <div ng-show="distributionA">{{distributionA.country}} - {{distributionA.stateProvince}} - {{distributionA.county}}</div>
+                </div>
+              </td>
+              <td>{{distribution.distributionUnstructured}}</td>
+              <td>
+                <button ng-click="removeDistribution(formData.distribution,distribution)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                <button ng-click="editDistribution(formData.distribution,distribution)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr/>
+      </div>
+      <div class="form-group">
+        <label for="distributionScope" translate="" class="col-xs-2 control-label">simplePliCTerm.name.DistributionScope</label>
+        <div class="col-xs-10">
+          <div ng-controller="CheckBoxCrtl" class="panel">
+            <div ng-repeat="ds in lenguajes.distributionScope">
+              <input type="checkbox" ng-model="ds.checked" ng-click="updateSelectionDistributionScope(ds, lenguajes.distributionScope)"/>{{ds.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="temporalCoverage" translate="" class="col-xs-2 control-label">simplePliCTerm.name.TemporalCoverage</label>
+        <div class="col-xs-4">
+          <label>{{simplePliCTerm.name.startDate|translate}} </label>
+          <div ng-controller="DatepickerCtrl">
+            <p class="input-group">
+              <input type="text" uib-datepicker-popup="yyyy/MM/dd" ng-model="distributionClass.temporalCoverage.startDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" class="form-control"/><span class="input-group-btn">
+                <button type="button" ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
+            </p>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <label>{{simplePliCTerm.name.endDate|translate}}</label>
+          <div ng-controller="DatepickerCtrl">
+            <p class="input-group">
+              <input type="text" uib-datepicker-popup="yyyy/MM/dd" ng-model="distributionClass.temporalCoverage.endDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" class="form-control"/><span class="input-group-btn">
+                <button type="button" ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"> </i></button></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="temporalCoverage" translate="" class="col-xs-2 control-label">Distribución atomizada</label>
+        <div ng-controller="UbicacionCtrl">
+          <div class="col-xs-3">
+            <select ng-model="distributionOpt2.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
+              <option value="">{{"simplePliCTerm.name.country"|translate}}</option>
+            </select>
+          </div>
+          <div class="col-xs-3">
+            <select ng-model="distributionOpt2.stateProvince" ng-disabled="!distributionOpt2.country" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
+              <option value="">{{"simplePliCTerm.name.stateProvince"|translate}}</option>
+            </select>
+          </div>
+          <div class="col-xs-3">
+            <select ng-model="distributionOpt2.county" ng-disabled="!distributionOpt2.country || !distributionOpt2.stateProvince" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
+              <option value="">{{"simplePliCTerm.name.county"|translate}}</option>
+            </select>
+          </div>
+          <div class="col-xs-1">
+            <button ng-click="addDistributionOpt2(distributionClass.distributionAtomized,distributionOpt2)" class="btn btn-success btn-xs pull-right">Agregar</button>
+          </div>
+        </div>
+        <label for="temporalCoverage" translate="" class="col-xs-2 control-label"> </label>
+        <div class="col-xs-10">
+          <div ng-show="(distributionClass.distributionAtomized).length" class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>{{"simplePliCTerm.name.country"|translate}}</th>
+                  <th>{{"simplePliCTerm.name.stateProvince"|translate}}</th>
+                  <th>{{"simplePliCTerm.name.county"|translate}}</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="distribution in distributionClass.distributionAtomized">
+                  <td>{{distribution.country}}</td>
+                  <td>{{distribution.stateProvince}}	</td>
+                  <td>{{distribution.county}}</td>
+                  <td>
+                    <button ng-click="removeDistributionOpt2(distributionClass.distributionAtomized,distribution)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-2">
+          <label for="distributionUnstructured" translate="">simplePliCTerm.name.DistributionUnstructured</label><em>(opcional)</em><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.DistributionUnstructured&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+        <div class="col-xs-10">
+          <textarea rows="3" name="distribution" ng-model="distributionClass.distributionUnstructured"></textarea>
+          <div class="form-group">
+            <div ng-show="(distributionClass.ancillaryData).length" class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>{{"simplePliCTerm.name.source"|translate}}</th>
+                    <th>{{"simplePliCTerm.name.bibliographicCitation"|translate}}</th>
+                    <th>{{"simplePliCTerm.name.license"|translate}}</th>
+                    <th>{{"simplePliCTerm.name.rights"|translate}}</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="ancillary in distributionClass.ancillaryData track by $index">
+                    <td>{{ancillary.source}}	</td>
+                    <td>{{ancillary.bibliographicCitation}}</td>
+                    <td>{{ancillary.license}}	</td>
+                    <td>{{ancillary.rights}}</td>
+                    <td>
+                      <button ng-click="removeAncillaryData(distributionClass.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                      <button ng-click="editAncillaryData(distributionClass.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div ng-controller="CollapseDemoCtrl">
+            <button type="button" ng-click="isCollapsed = !isCollapsed" class="btn btn-primary btn-sm pull-right">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
+            <div uib-collapse="isCollapsed" id="ancillaryDistribution">
+              <input type="text" ng-model="ancillaryData.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
+              <button ng-click="findAncillary(ancillaryData.source)" class="btn-xs"><span class="glyphicon glyphicon-search"></span></button>
+              <input type="text" ng-model="ancillaryData.bibliographicCitation" placeholder="{{&quot;simplePliCTerm.name.bibliographicCitation&quot;|translate}}"/>
+              <input type="text" ng-model="ancillaryData.license" placeholder="{{&quot;simplePliCTerm.name.license&quot;|translate}}"/>
+              <input type="text" ng-model="ancillaryData.rights" placeholder="{{&quot;simplePliCTerm.name.rights&quot;|translate}}"/>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <spant>{{"simplePliCTerm.name.References"|translate}}</spant>
+                  <button ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+                </div>
+                <div class="panel-body">
+                  <div ng-show="(ancillaryData.reference).length" class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>{{"simplePliCTerm.name.type"|translate}}</th>
+                          <th>{{"simplePliCTerm.name.Source"|translate}}</th>
+                          <th>{{"simplePliCTerm.name.title"|translate}}</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="ref in ancillaryData.reference track by $index">
+                          <td>{{ref.type|references_translate:this}}</td>
+                          <td>{{ref.source}}</td>
+                          <td>{{ref.title}}</td>
+                          <td>
+                            <button ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                            <button ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div uib-collapse="isCollapsed_1" id="referenceDistribution">
+                    <div class="form-group">
+                      <select ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
+                        <option value="">- {{"simplePliCTerm.name.type"|translate}} </option>
+                      </select>
+                      <input type="text" ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.city" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
+                      <input type="text" ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
+                      <!--input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
+                    </div>
+                    <button type="button" ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Referencia</button>
+                    <button type="button" ng-click="cancelReference()" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                  </div>
+                </div>
+              </div>
+              <button type="button" ng-click="addAncillaryData(distributionClass.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Guardar</button>
+              <button type="button" ng-click="cancelAncillaryData()" class="btn btn-primary btn-sm">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button ng-click="addDistribution(formData.distribution,distributionClass)" class="btn btn-success btn-sm pull-right">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

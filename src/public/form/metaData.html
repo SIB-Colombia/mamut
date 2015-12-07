@@ -1,0 +1,61 @@
+
+<div class="form-group">
+  <h3 translate="">simplePliCTerm.name.Dataset_ID</h3>
+  <hr/>
+  <input type="text" name="datasetID" ng-model="formData.datasetID"/><br/>
+  <h3 translate="">simplePliCTerm.name.dateStamp</h3>
+  <hr/>
+  <input type="text" name="dataStamp" ng-model="formData.dataStamp"/><br/>
+  <h3 translate="">simplePliCTerm.name.citation</h3>
+  <hr/>
+  <input type="text" name="citation" ng-model="formData.citation"/><br/>
+  <div ng-controller="CollapseDemoCtrl">
+    <button ng-click="isCollapsed = !isCollapsed" translate="" class="btn btn-success">simplePliCTerm.name.dataset</button>
+    <hr/>
+    <div uib-collapse="isCollapsed">
+      <div class="form-group">
+        <h4>alternateIdentifier:</h4>
+        <input type="text" ng-model="formData.dataset.alternateIdentifier"/>
+        <h4>title:</h4>
+        <input type="text" ng-model="formData.dataset.title"/>
+        <h4>creator:</h4>
+        <input type="text" ng-model="formData.dataset.creator"/>
+        <h4>metadataProvider:</h4>
+        <input type="text" ng-model="formData.dataset.metadataProvider"/>
+        <h4>associatedParty:</h4>
+        <input type="text" ng-model="formData.dataset.associatedParty"/>
+        <h4>pubDate:</h4>
+        <input type="text" ng-model="formData.dataset.pubDate"/>
+        <h4>language:</h4>
+        <input type="text" ng-model="formData.dataset.language"/>
+        <h4>abstract:</h4>
+        <input type="text" ng-model="formData.dataset.abstract"/>
+        <h4>keyworset:</h4>
+        <input type="text" ng-model="formData.dataset.keyworset"/>
+        <h4>additionalInfo:</h4>
+        <input type="text" ng-model="formData.dataset.additionalInfo"/>
+        <h4>intellectialRights:</h4>
+        <input type="text" ng-model="formData.dataset.intellectialRights"/>
+        <h4>distribution:</h4>
+        <input type="text" ng-model="formData.dataset.distribution"/>
+        <h4>coverage:</h4>
+        <input type="text" ng-model="formData.dataset.coverage"/>
+        <h4>contact:</h4>
+        <input type="text" ng-model="formData.dataset.contact"/>
+        <h4>methods:</h4>
+        <input type="text" ng-model="formData.dataset.methods"/>
+        <h4>project:</h4>
+        <input type="text" ng-model="formData.dataset.project"/>
+      </div>
+    </div>
+  </div>
+  <h3 translate="">simplePliCTerm.name.resourceLogoUrl</h3>
+  <hr/>
+  <input type="text" name="resourceLogoUrl" ng-model="formData.resourceLogoUrl"/><br/>
+  <h3 translate="">simplePliCTerm.name.References</h3>
+  <hr/>
+  <input type="text" name="reference" ng-model="formData.reference"/><br/>
+</div>
+<div class="form-group row">
+  <div class="col-xs-6 col-xs-offset-3"><a ui-sref="form.baseElem" class="btn btn-block">Siguiente Sección <span class="glyphicon glyphicon-circle-arrow-right"></span></a></div>
+</div>

@@ -1,0 +1,261 @@
+
+<div ng-controller="PopulationBiologyCtrl">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <spant>{{"simplePliCTerm.name.PopulationBiology"|translate}}
+        <spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.PopulationBiology&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
+      </spant>
+      <!--button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addPopulationBiology()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
+      -->
+    </div>
+    <div class="panel-body">
+      <div ng-show="(formData.populationBiology.populationBiologyAtomized).length" class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>{{"simplePliCTerm.name.Region"|translate}}</th>
+              <th>{{"simplePliCTerm.name.AbundanceData"|translate}}</th>
+              <th>{{"simplePliCTerm.name.DensityData"|translate}}</th>
+              <th>{{"simplePliCTerm.name.PatternDistrubution"|translate}}</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="populationBiologyAtomized in formData.populationBiology.populationBiologyAtomized track by $index">
+              <td>{{populationBiologyAtomized.region.measurementValue}}</td>
+              <td>{{populationBiologyAtomized.abundanceData.measurementValue}}	</td>
+              <td>{{populationBiologyAtomized.densityData.measurementValue}}</td>
+              <td>{{populationBiologyAtomized.patternDistribution.measurementValue}}	</td>
+              <td>
+                <button ng-click="removePopulation(formData.populationBiology.populationBiologyAtomized,populationBiologyAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                <button ng-click="editPopulation(formData.populationBiology.populationBiologyAtomized,populationBiologyAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form-group">
+        <label for="Region" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Region</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.region.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Region&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="abundanceData" translate="" class="col-xs-2 control-label">simplePliCTerm.name.AbundanceData</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.abundanceData.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.AbundanceData&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="densityData" translate="" class="col-xs-2 control-label">simplePliCTerm.name.DensityData</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.densityData.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.DensityData&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="patternDistribution" translate="" class="col-xs-2 control-label">simplePliCTerm.name.PatternDistrubution</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.patternDistribution.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.PatternDistrubution&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="size" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Size</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.size.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Size&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="sexRatio" translate="" class="col-xs-2 control-label">simplePliCTerm.name.SexRatio</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.sexRatio.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.SexRatio&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fecundity" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Fecundity</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.fecundity.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Fecundity&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="mortalityRate" translate="" class="col-xs-2 control-label">simplePliCTerm.name.MortalityRate</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.mortalityRate.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.MortalityRate&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="birthRate" translate="" class="col-xs-2 control-label">simplePliCTerm.name.BirthRate</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.birthRate.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.BirthRate&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="numberIndividualsPerObservation" translate="" class="col-xs-2 control-label">simplePliCTerm.name.NumberIndividualsPerObservation</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.numberIndividualsPerObservation.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.NumberIndividualsPerObservation&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="averageDensity" translate="" class="col-xs-2 control-label">simplePliCTerm.name.AverageDensity</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.averageDensity.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.AverageDensity&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="populationTrend" translate="" class="col-xs-2 control-label">simplePliCTerm.name.PopulationTrend</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.populationTrend.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.PopulationTrend&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="recruitment" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Recruitment</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.recruitment.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Recruitment&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="populationGrowthRate" translate="" class="col-xs-2 control-label">simplePliCTerm.name.PopulationGrowthRate</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.populationGrowthRate.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.PopulationGrowthRate&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="emigration" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Emigration</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.emigration.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Emigration&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="immigration" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Immigration</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.immigration.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Immigration&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="descriptionLifeStages" translate="" class="col-xs-2 control-label">simplePliCTerm.name.DescriptionLifeStages</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.descriptionLifeStages.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.DescriptionLifeStages&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="proportionIndividualsPerStageLife" translate="" class="col-xs-2 control-label">simplePliCTerm.name.ProportionIndividualsPerStage</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.proportionIndividualsPerStageLife.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.ProportionIndividualsPerStage&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="carryingCapacity" translate="" class="col-xs-2 control-label">simplePliCTerm.name.CarryingCapacity</label>
+        <div class="col-xs-10">
+          <input type="text" ng-model="populationBiologyAtomized.carryingCapacity.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.CarryingCapacity&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+      </div>
+      <button type="button" ng-click="addPopulationBiologyAtomized(formData.populationBiology.populationBiologyAtomized, populationBiologyAtomized)" class="btn btn-success btn-sm pull-right">Guardar</button>
+      <div class="form-group">
+        <hr/>
+        <label for="populationBiologyUnstructured" translate="" class="col-xs-2 control-label">simplePliCTerm.name.PopulationBiologyUnstructured</label><em>(opcional)</em><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.PopulationBiologyUnstructured&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        <textarea rows="3" name="populationBiology" ng-model="formData.populationBiology.populationBiologyUnstructured"></textarea>
+        <div ng-controller="CollapseDemoCtrl">
+          <div class="form-group">
+            <div ng-show="(formData.populationBiology.ancillaryData).length" class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>{{"simplePliCTerm.name.source"|translate}}</th>
+                    <th>{{"simplePliCTerm.name.bibliographicCitation"|translate}}</th>
+                    <th>{{"simplePliCTerm.name.license"|translate}}</th>
+                    <th>{{"simplePliCTerm.name.rights"|translate}}</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="ancillary in formData.populationBiology.ancillaryData track by $index">
+                    <td>{{ancillary.source}}	</td>
+                    <td>{{ancillary.bibliographicCitation}}</td>
+                    <td>{{ancillary.license}}	</td>
+                    <td>{{ancillary.rights}}	</td>
+                    <td>
+                      <button ng-click="removeAncillaryData(formData.populationBiology.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                      <button ng-click="editAncillaryData(formData.populationBiology.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button type="button" ng-click="isCollapsed = !isCollapsed" class="btn btn-primary btn-sm pull-right">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
+            <div class="col-xs-10">
+              <div uib-collapse="isCollapsed" id="ancillaryPopulation">
+                <input type="text" ng-model="ancillaryData.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
+                <button ng-click="findAncillary(ancillaryData.source)" class="btn-xs"><span class="glyphicon glyphicon-search"></span></button>
+                <input type="text" ng-model="ancillaryData.bibliographicCitation" placeholder="{{&quot;simplePliCTerm.name.bibliographicCitation&quot;|translate}}"/>
+                <input type="text" ng-model="ancillaryData.license" placeholder="{{&quot;simplePliCTerm.name.license&quot;|translate}}"/>
+                <input type="text" ng-model="ancillaryData.rights" placeholder="{{&quot;simplePliCTerm.name.rights&quot;|translate}}"/>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <spant>{{"simplePliCTerm.name.References"|translate}}</spant>
+                    <button ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+                  </div>
+                  <div class="panel-body">
+                    <div ng-show="(ancillaryData.reference).length" class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>{{"simplePliCTerm.name.type"|translate}}</th>
+                            <th>{{"simplePliCTerm.name.Source"|translate}}</th>
+                            <th>{{"simplePliCTerm.name.title"|translate}}</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="ref in ancillaryData.reference track by $index">
+                            <td>{{ref.type|references_translate:this}}</td>
+                            <td>{{ref.source}}</td>
+                            <td>{{ref.title}}</td>
+                            <td>
+                              <button ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                              <button ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div uib-collapse="isCollapsed_1" id="referencePopulation">
+                      <div class="form-group">
+                        <select ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
+                          <option value="">- {{"simplePliCTerm.name.type"|translate}} </option>
+                        </select>
+                        <input type="text" ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.city" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
+                        <input type="text" ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
+                        <!--input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
+                      </div>
+                      <button type="button" ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Referencia</button>
+                      <button type="button" ng-click="cancelReference()" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" ng-click="addAncillaryData(formData.populationBiology.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Guardar</button>
+                <button type="button" ng-click="cancelAncillaryData()" class="btn btn-primary btn-sm">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
