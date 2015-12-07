@@ -1,0 +1,15 @@
+
+<div class="form-group">
+  <div ng-include="'./form/includes/lifeForm.html'"></div>
+  <div ng-include="'./form/includes/lifeCycle.html'"></div>
+  <div ng-include="'./form/includes/reproduction.html'"></div>
+  <!--div(ng-include="'./form/includes/annualCycles.html'")-->
+  <div ng-include="'./form/includes/feeding.html'"></div>
+  <div ng-include="'./form/includes/dispersal.html'"></div>
+</div>
+<div class="col-xs-6 col-xs-offset-3">
+  <ul class="pager">
+    <li><a ui-sref="form.taxoDesc" class="btn btn-block"><span class="glyphicon glyphicon-circle-arrow-left"></span>	Sección Anterior</a></li>
+    <li><a ui-sref="form.historyC" class="btn btn-block">	Siguiente Sección <span class="glyphicon glyphicon-circle-arrow-right"></span></a></li>
+  </ul>
+</div>

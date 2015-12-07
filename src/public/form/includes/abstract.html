@@ -1,0 +1,15 @@
+
+<div ng-controller="AbstractCtrl">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <spant>{{"simplePliCTerm.name.Abstract"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Abstract&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+      <!--button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addAbstract()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
+      -->
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <textarea rows="3" name="abstract" ng-model="formData.abstract"></textarea>
+      </div>
+    </div>
+  </div>
+</div>

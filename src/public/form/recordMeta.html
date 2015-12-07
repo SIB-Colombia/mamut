@@ -1,0 +1,26 @@
+
+<div class="form-group">
+  <h3 translate="">simplePliCTerm.name.Language</h3>
+  <hr/>
+  <input type="text" name="language" ng-model="formData.language"/><br/>
+  <h3 translate="">simplePliCTerm.name.Version</h3>
+  <hr/>
+  <input type="text" name="version" ng-model="formData.version.preferredFlag"/><br/>
+  <h3 translate="">simplePliCTerm.name.Revision</h3>
+  <hr/>
+  <div ng-repeat="rev in formData.revisiones">
+    <div class="form-group">
+      <h4 translate="">simplePliCTerm.name.associatedParty</h4>
+      <input type="text" ng-model="rev.associatedParty"/><br/>
+      <h4 translate="">simplePliCTerm.name.pubDate</h4>
+      <input type="text" ng-model="rev.pubDate"/><br/>
+      <h4 translate="">simplePliCTerm.name.created</h4>
+      <input type="text" ng-model="rev.created"/>
+      <button type="button" ng-show="$last" ng-click="removeRevision()" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-minus"></span></button>
+    </div>
+  </div>
+  <button type="button" ng-click="addRevision(formData.revisiones)" class="btn btn-primary btn-sm">Agregar Revisión<span class="glyphicon glyphicon-plus"></span></button>
+</div>
+<div class="form-group row">
+  <div class="col-xs-6 col-xs-offset-3"><a ui-sref="form.nomeAndClass" class="btn btn-block">Siguiente Sección <span class="glyphicon glyphicon-circle-arrow-right"></span></a></div>
+</div>

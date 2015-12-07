@@ -1,0 +1,132 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		title= title
+		meta(name='description', content='')
+		meta(name='viewport', content='width=device-width,initial-scale=1')
+
+		<!-- build:css(src/public) stylesheets/final/vendor.css -->
+		//- bower:css
+		link(rel='stylesheet', href='/bower_components/ng-table/dist/ng-table.min.css')
+		//- endbower
+		<!-- endbuild -->
+
+		<!-- build:css(src/public) stylesheets/final/app.css -->
+		//- inject:css
+		link(rel="stylesheet", href="/stylesheets/style.css")
+		link(rel="stylesheet", href="/stylesheets/final/app-f2b8147ed1.css")
+		link(rel="stylesheet", href="/stylesheets/final/vendor-604892c5e1.css")
+		//- endinject
+		<!-- endbuild -->
+
+	body
+		.wrapper
+			//include ../includes/header
+			block content
+			//include ../includes/footer
+
+		script(src="/bower_components/jquery/dist/jquery.min.js")
+		script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
+		script(src="/bower_components/angular/angular.min.js")
+		script(src="/bower_components/angular-cookies/angular-cookies.js")
+		script(src="/bower_components/angular-sanitize/angular-sanitize.js")
+		script(src="/bower_components/angular-translate/angular-translate.js")
+		script(src="/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js")
+		script(src="/bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js")
+		script(src="/bower_components/angular-translate-storage-local/angular-translate-storage-local.js")
+		script(src="/bower_components/angular-ui/build/angular-ui.min.js")
+		script(src="/bower_components/angular-ui-router/release/angular-ui-router.min.js")
+		script(src="/bower_components/angular-animate/angular-animate.min.js")
+		script(src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js")
+		script(src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js")
+		script(src="/bower_components/ng-file-upload/ng-file-upload.min.js")
+		script(src="/bower_components/angular-modal-service/dst/angular-modal-service.min.js")
+		script(src="/bower_components/oboe/dist/oboe-browser.min.js")
+		script(src="/bower_components/angular-route/angular-route.min.js")
+		script(src="/bower_components/angular-resource/angular-resource.min.js")
+
+		<!-- build:js(src/public) javascripts/final/app.js -->
+		//- inject:js
+		script(src="/javascripts/uses/uses.service.js")
+		script(src="/javascripts/uses/uses.ctrl.js")
+		script(src="/javascripts/uses/managementAndConservation.service.js")
+		script(src="/javascripts/uses/managementAndConservation.ctrl.js")
+		script(src="/javascripts/taxoDesc/identificationKeys.service.js")
+		script(src="/javascripts/taxoDesc/identificationKeys.ctrl.js")
+		script(src="/javascripts/taxoDesc/fullDescription.service.js")
+		script(src="/javascripts/taxoDesc/fullDescription.ctrl.js")
+		script(src="/javascripts/taxoDesc/briefDescription.ctrl.js")
+		script(src="/javascripts/reference/reference.service.js")
+		script(src="/javascripts/reference/reference.ctrl.js")
+		script(src="/javascripts/nomeAndClass/taxonRecordName.service.js")
+		script(src="/javascripts/nomeAndClass/taxonRecordName.ctrl.js")
+		script(src="/javascripts/nomeAndClass/synonyms.service.js")
+		script(src="/javascripts/nomeAndClass/synonyms.ctrl.js")
+		script(src="/javascripts/nomeAndClass/hierarchy.service.js")
+		script(src="/javascripts/nomeAndClass/hierarchy.ctrl.js")
+		script(src="/javascripts/nomeAndClass/commonNames.service.js")
+		script(src="/javascripts/nomeAndClass/commonNames.ctrl.js")
+		script(src="/javascripts/invasiveness/invasiveness.service.js")
+		script(src="/javascripts/invasiveness/invasiveness.ctrl.js")
+		script(src="/javascripts/history/reproduction.service.js")
+		script(src="/javascripts/history/reproduction.ctrl.js")
+		script(src="/javascripts/history/molecularData.service.js")
+		script(src="/javascripts/history/molecularData.ctrl.js")
+		script(src="/javascripts/history/migratory.service.js")
+		script(src="/javascripts/history/migratory.ctrl.js")
+		script(src="/javascripts/history/lifeForm.service.js")
+		script(src="/javascripts/history/lifeForm.ctrl.js")
+		script(src="/javascripts/history/lifeCycle.service.js")
+		script(src="/javascripts/history/lifeCycle.ctrl.js")
+		script(src="/javascripts/history/interactions.service.js")
+		script(src="/javascripts/history/interactions.ctrl.js")
+		script(src="/javascripts/history/feeding.service.js")
+		script(src="/javascripts/history/feeding.ctrl.js")
+		script(src="/javascripts/history/environmentalEnvelope.service.js")
+		script(src="/javascripts/history/environmentalEnvelope.ctrl.js")
+		script(src="/javascripts/history/ecologicalSignificance.service.js")
+		script(src="/javascripts/history/ecologicalSignificance.ctrl.js")
+		script(src="/javascripts/history/dispersal.service.js")
+		script(src="/javascripts/history/dispersal.ctrl.js")
+		script(src="/javascripts/history/behavior.service.js")
+		script(src="/javascripts/history/behavior.ctrl.js")
+		script(src="/javascripts/history/annualCycles.service.js")
+		script(src="/javascripts/history/annualCycles.ctrl.js")
+		script(src="/javascripts/habitat/habitats.service.js")
+		script(src="/javascripts/habitat/habitats.ctrl.js")
+		script(src="/javascripts/habitat/endemic.service.js")
+		script(src="/javascripts/habitat/endemic.ctrl.js")
+		script(src="/javascripts/habitat/distribution.service.js")
+		script(src="/javascripts/habitat/distribution.ctrl.js")
+		script(src="/javascripts/form/ubicacion.ctrl.js")
+		script(src="/javascripts/form/translate.js")
+		script(src="/javascripts/form/routes.js")
+		script(src="/javascripts/form/measurement.service.js")
+		script(src="/javascripts/form/measurement.ctrl.js")
+		script(src="/javascripts/form/form.service.js")
+		script(src="/javascripts/form/form.ctrl.js")
+		script(src="/javascripts/form/findLanguageName.ctrl.js")
+		script(src="/javascripts/form/datepicker.ctrl.js")
+		script(src="/javascripts/form/collapse.ctrl.js")
+		script(src="/javascripts/form/checkBox.ctrl.js")
+		script(src="/javascripts/demogra/threatStatus.service.js")
+		script(src="/javascripts/demogra/threatStatus.ctrl.js")
+		script(src="/javascripts/demogra/territory.service.js")
+		script(src="/javascripts/demogra/territory.ctrl.js")
+		script(src="/javascripts/demogra/populationBiology.service.js")
+		script(src="/javascripts/demogra/populationBiology.ctrl.js")
+		script(src="/javascripts/demogra/legislation.service.js")
+		script(src="/javascripts/demogra/legislation.ctrl.js")
+		script(src="/javascripts/demogra/directThreats.service.js")
+		script(src="/javascripts/demogra/directThreats.ctrl.js")
+		script(src="/javascripts/baseElem/abstract.ctrl.js")
+		script(src="/javascripts/associatedParty/associatedParty.service.js")
+		script(src="/javascripts/associatedParty/associatedParty.ctrl.js")
+		script(src="/javascripts/ancilliary/ancillaryData.service.js")
+		script(src="/javascripts/ancilliary/ancillaryData.ctrl.js")
+		script(src="/javascripts/home.js")
+		script(src="/javascripts/app.js")
+		//- endinject
+		<!-- endbuild -->
