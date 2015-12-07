@@ -7,7 +7,7 @@ module.exports = function(parent) {
   parent.use(errorhandler());
 	parent.use(serveStatic(path.join(__dirname, './../../src/public')));
 
-	var logger = new (winston.Logger)({
+	logger = new (winston.Logger)({
 		transports: [
 			new (winston.transports.Console)()
 		]
