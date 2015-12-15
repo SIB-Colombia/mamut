@@ -20,6 +20,7 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
                 .then(function(res) {
                    $defer.resolve(res.data);
                }, function(reason) {
+                  console.log(reason);
                    $defer.reject();
                }
            );

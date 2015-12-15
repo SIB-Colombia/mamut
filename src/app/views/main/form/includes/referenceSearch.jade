@@ -1,0 +1,12 @@
+div.modal-header
+	h3.modal-title
+		| Referencias disponibles
+		button.btn.btn-xs.pull-right(ng-click="cancel()")
+			span(class="glyphicon glyphicon-remove", aria-hidden='true')
+div.modal-body
+	div(ng-repeat="item in items")
+		input(type="checkbox", ng-checked="list.indexOf(item) > -1", ng-click="toggleSelection(item)")
+		| {{item.title}}
+
+div.modal-footer
+	

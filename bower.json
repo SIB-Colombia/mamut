@@ -25,7 +25,8 @@
     "oboe": "latest",
     "ng-table":"latest",
     "angular-resource":"latest",
-    "angular-route":"latest"
+    "angular-route":"latest",
+    "bibtex-parser-js" : "https://github.com/ORCID/bibtexParseJs.git"
   },
   "resolutions": {
     "angular": ">=1.3.16"

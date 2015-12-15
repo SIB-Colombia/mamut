@@ -162,4 +162,11 @@ angular.module('app.controllers.form',[])
 		});
 		return input;
 	};
+})
+.filter('references_format', function() {
+	return function(reference) {
+		// do some bounds checking here to ensure it has that index
+		reference = reference.source + reference.title;
+		return reference;
+	};
 });

@@ -22,7 +22,7 @@ div(ng-controller='ReferenceCrtl')
 								td
 									| {{ref.type|references_translate:this}}
 								td
-									| {{ref.source}}
+									| {{ref|references_format}}
 								td
 									| {{ref.title}}
 								td
@@ -31,6 +31,9 @@ div(ng-controller='ReferenceCrtl')
 									button.btn(ng-click='editReference(formData.references,ref)')
 										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				.form-group
+					div(ng-controller="UploadFile")
+						h4 Cargar referencias desde un archivo .bib
+						input(type="file" on-read-file="showContent($fileContent)")
 					div
 						.form-group
 							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.type
@@ -88,7 +91,7 @@ div(ng-controller='ReferenceCrtl')
 						.form-group
 							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.city
 							.col-xs-10
-								input(type='text', ng-model='reference.city')
+								input(type='text', ng-model='reference.address')
 						.form-group
 							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.edition
 							.col-xs-10
@@ -97,6 +100,10 @@ div(ng-controller='ReferenceCrtl')
 							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.institution
 							.col-xs-10
 								input(type='text', ng-model='reference.institution')
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.editors
+							.col-xs-10
+								input(type='text', ng-model='reference.editors')
 						.form-group
 							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.keywords
 							.col-xs-10

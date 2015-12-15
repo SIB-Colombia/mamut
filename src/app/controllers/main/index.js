@@ -23,6 +23,8 @@ exports.edit = function(req, res) {
 
 	request("http://apimamut.elasticbeanstalk.com/get-record/"+id, function(error, response, body) {
 		if (!error && res.statusCode == 200) {
+			body = body.replace(/\{\{(.+?)\}\}/g, '');
+			console.log(body);
 			var data = JSON.parse(body);
 			request("http://s3.amazonaws.com/mutis/vocabularies/test/lenguajesControlados.json", function(error, response, body) {
 				if (!error && res.statusCode == 200) {
