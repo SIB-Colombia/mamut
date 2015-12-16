@@ -1,15 +1,15 @@
 
-<div ng-controller="ThreatStatusCtrl">
+<div data-ng-controller="ThreatStatusCtrl">
   <div class="panel panel-default">
     <div class="panel-heading">
       <spant>{{"simplePliCTerm.name.ThreatStatus"|translate}}
         <spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.ThreatStatus&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
       </spant>
-      <!--button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addThreatStatus()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
+      <!--button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addThreatStatus()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
       -->
     </div>
     <div class="panel-body">
-      <div ng-show="(formData.threatStatus).length" class="table-responsive">
+      <div data-ng-show="(formData.threatStatus).length" class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -21,10 +21,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="threatStatusClass in formData.threatStatus track by $index">
+            <tr data-ng-repeat="threatStatusClass in formData.threatStatus track by $index">
               <td>
-                <div ng-repeat="authority in threatStatusClass.threatStatusAtomized.authority" class="selected-item">
-                  <div ng-show="authority">{{authority}}</div>
+                <div data-ng-repeat="authority in threatStatusClass.threatStatusAtomized.authority" class="selected-item">
+                  <div data-ng-show="authority">{{authority}}</div>
                 </div>
               </td>
               <td>{{threatStatusClass.threatStatusAtomized.threatCategory.measurementType}}	- {{threatStatusClass.threatStatusAtomized.threatCategory.measurementValue}}</td>
@@ -34,8 +34,8 @@
                 {{threatStatusClass.threatStatusAtomized.apendiceCITES}}
               </td>
               <td>
-                <button ng-click="removeThreatStatus(formData.threatStatus,threatStatusClass)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                <!--button.btn(ng-click='editThreatStatus(formData.threatStatus,threatStatusClass)')
+                <button data-ng-click="removeThreatStatus(formData.threatStatus,threatStatusClass)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                <!--button.btn(data-ng-click='editThreatStatus(formData.threatStatus,threatStatusClass)')
                 span(class="glyphicon glyphicon-pencil", aria-hidden='true')
                 
                 -->
@@ -47,23 +47,23 @@
       <div class="form-group">
         <label for="authority" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Authority</label>
         <div class="col-xs-10">
-          <div ng-controller="CheckBoxCrtl" class="panel">
-            <div ng-repeat="aut in lenguajes.authority">
-              <input type="checkbox" ng-model="aut.checked" ng-click="updateSelectionAutority(aut)"/>{{aut.name}}
+          <div data-ng-controller="CheckBoxCrtl" class="panel">
+            <div data-ng-repeat="aut in lenguajes.authority">
+              <input type="checkbox" data-ng-model="aut.checked" data-ng-click="updateSelectionAutority(aut)"/>{{aut.name}}
             </div>
           </div>
         </div>
       </div>
       <div class="form-group">
         <label for="threatCategory" translate="" class="col-xs-2 control-label">simplePliCTerm.name.ThreatCategory</label>
-        <div ng-controller="MeasurementCtrl">
+        <div data-ng-controller="MeasurementCtrl">
           <div class="col-xs-5">
-            <select ng-model="threatStatusClass.threatStatusAtomized.threatCategory.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.threatCategory | unique:'measurementtype'">
+            <select data-ng-model="threatStatusClass.threatStatusAtomized.threatCategory.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.threatCategory | unique:'measurementtype'">
               <option value="">- Seleccione -</option>
             </select>
           </div>
           <div class="col-xs-5">
-            <select ng-model="threatStatusClass.threatStatusAtomized.threatCategory.measurementValue" ng-disabled="!threatStatusClass.threatStatusAtomized.threatCategory.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+            <select data-ng-model="threatStatusClass.threatStatusAtomized.threatCategory.measurementValue" data-ng-disabled="!threatStatusClass.threatStatusAtomized.threatCategory.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
               <option value="">- Seleccione -</option>
             </select>
           </div>
@@ -71,18 +71,18 @@
       </div>
       <div class="form-group">
         <label for="appliesTo" translate="" class="col-xs-2 control-label">simplePliCTerm.name.AppliesTo</label>
-        <div ng-controller="UbicacionCtrl">
+        <div data-ng-controller="UbicacionCtrl">
           <div class="col-xs-3">
-            <select ng-model="threatStatusClass.threatStatusAtomized.appliesTo.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion_appliesTo ">
+            <select data-ng-model="threatStatusClass.threatStatusAtomized.appliesTo.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion_appliesTo ">
               <option value="">{{"simplePliCTerm.name.countryCode"|translate}}</option>
             </select>
           </div>
           <!--.col-xs-3
-          select(ng-model='threatStatusClass.threatStatusAtomized.appliesTo.stateProvince', ng-disabled='!threatStatusClass.threatStatusAtomized.appliesTo.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
+          select(data-ng-model='threatStatusClass.threatStatusAtomized.appliesTo.stateProvince', data-ng-disabled='!threatStatusClass.threatStatusAtomized.appliesTo.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
           	option(value='') {{"simplePliCTerm.name.stateProvince"|translate}}
           -->
           <!--.col-xs-2
-          select(ng-model='threatStatusClass.threatStatusAtomized.appliesTo.county', ng-disabled='!threatStatusClass.threatStatusAtomized.appliesTo.country || !threatStatusClass.threatStatusAtomized.appliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
+          select(data-ng-model='threatStatusClass.threatStatusAtomized.appliesTo.county', data-ng-disabled='!threatStatusClass.threatStatusAtomized.appliesTo.country || !threatStatusClass.threatStatusAtomized.appliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
           	option(value='') {{"simplePliCTerm.name.county"|translate}}
           
           -->
@@ -91,15 +91,15 @@
       <div class="form-group">
         <label for="apendice" translate="" class="col-xs-2 control-label">Apendice CITES</label>
         <div class="col-xs-10">
-          <div ng-controller="CheckBoxCrtl" class="panel">
-            <div ng-repeat="ac in lenguajes.apendiceCITES">
-              <input type="checkbox" ng-model="ac.checked" ng-click="updateSelectionApendiceCITES(ac, lenguajes.apendiceCITES)"/>{{ac.name}}
+          <div data-ng-controller="CheckBoxCrtl" class="panel">
+            <div data-ng-repeat="ac in lenguajes.apendiceCITES">
+              <input type="checkbox" data-ng-model="ac.checked" data-ng-click="updateSelectionApendiceCITES(ac, lenguajes.apendiceCITES)"/>{{ac.name}}
             </div>
           </div>
         </div>
       </div>
       <div class="form-group">
-        <button type="button" ng-click="addThreatStatusClass(formData.threatStatus, threatStatusClass)" class="btn btn-success btn-xs pull-right">Guardar</button>
+        <button type="button" data-ng-click="addThreatStatusClass(formData.threatStatus, threatStatusClass)" class="btn btn-success btn-xs pull-right">Guardar</button>
       </div>
       <!--.form-group
       hr
@@ -107,11 +107,11 @@
       em (opcional)
       a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ThreatStatusUnstructured"|translate}}')
       	span.glyphicon.glyphicon-info-sign
-      textarea(rows='3', name='threatStatus', ng-model='threatStatusClass.threatStatusUnstructured')
+      textarea(rows='3', name='threatStatus', data-ng-model='threatStatusClass.threatStatusUnstructured')
       
-      div(ng-controller='CollapseDemoCtrl')
+      div(data-ng-controller='CollapseDemoCtrl')
       	.form-group
-      		div.table-responsive(ng-show='(threatStatusClass.ancillaryData).length')
+      		div.table-responsive(data-ng-show='(threatStatusClass.ancillaryData).length')
       			table.table.table-bordered
       				thead
       					tr
@@ -122,7 +122,7 @@
       						th
       				
       				tbody
-      					tr(ng-repeat="ancillary in threatStatusClass.ancillaryData track by $index")
+      					tr(data-ng-repeat="ancillary in threatStatusClass.ancillaryData track by $index")
       						td
       							| {{ancillary.source}}	
       						td
@@ -132,28 +132,28 @@
       						td
       							| {{ancillary.rights}}	
       						td
-      							button.btn(ng-click='removeAncillaryData(threatStatusClass.ancillaryData,ancillary)')
+      							button.btn(data-ng-click='removeAncillaryData(threatStatusClass.ancillaryData,ancillary)')
       								span(class="glyphicon glyphicon-trash", aria-hidden='true')
-      							button.btn(ng-click='editAncillaryData(threatStatusClass.ancillaryData,ancillary)')
+      							button.btn(data-ng-click='editAncillaryData(threatStatusClass.ancillaryData,ancillary)')
       								span(class="glyphicon glyphicon-pencil", aria-hidden='true')
-      		button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+      		button.btn.btn-primary.btn-sm.pull-right(type='button', data-ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
       		.col-xs-10
       			div(uib-collapse='isCollapsed', id='ancillaryThreat')
-      				input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
-      				button.btn-xs(ng-click='findAncillary(ancillaryData.source)')
+      				input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+      				button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')
       					span.glyphicon.glyphicon-search
-      				input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
-      				input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
-      				input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+      				input(type='text', data-ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+      				input(type='text', data-ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+      				input(type='text', data-ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
       				.panel.panel-default
       					.panel-heading
       						spant {{"simplePliCTerm.name.References"|translate}}
-      						button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
+      						button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed_1 = !isCollapsed_1')
       							span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
       						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
       							span.glyphicon.glyphicon-info-sign
       					.panel-body
-      						div.table-responsive(ng-show='(ancillaryData.reference).length')
+      						div.table-responsive(data-ng-show='(ancillaryData.reference).length')
       							table.table.table-striped
       								thead
       									tr
@@ -163,7 +163,7 @@
       										th
       								
       								tbody
-      									tr(ng-repeat="ref in ancillaryData.reference track by $index")
+      									tr(data-ng-repeat="ref in ancillaryData.reference track by $index")
       										td
       											| {{ref.type|references_translate:this}}
       										td
@@ -171,40 +171,40 @@
       										td
       											| {{ref.title}}
       										td
-      											button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
+      											button.btn(data-ng-click='removeReference(ancillaryData.reference,ref)')
       												span(class="glyphicon glyphicon-trash", aria-hidden='true')
-      											button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+      											button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
       												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
       
       						div(uib-collapse='isCollapsed_1',id='referenceThreat')
       							.form-group
-      								select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
+      								select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
       									option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
-      								input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
-      								input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
-      								input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
-      								input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
-      								input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
-      								input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
-      								input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
-      								input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
-      								input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
-      								input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
-      								input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
-      								input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
-      								input(type='text', ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
-      								input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
-      								input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
-      								input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
-      								input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
-      								input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
-      								input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
-      								input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
-      								input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-      							button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
-      							button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()') Cancelar
-      				button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(threatStatusClass.ancillaryData,ancillaryData)', translate='') Guardar
-      				button.btn.btn-primary.btn-sm(type='button', ng-click='cancelAncillaryData()') Cancelar
+      								input(type='text', data-ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+      								input(type='text', data-ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+      								input(type='text', data-ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+      								input(type='text', data-ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+      								input(type='text', data-ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+      								input(type='text', data-ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+      								input(type='text', data-ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+      								input(type='text', data-ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+      								input(type='text', data-ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+      								input(type='text', data-ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+      								input(type='text', data-ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+      								input(type='text', data-ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+      								input(type='text', data-ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+      								input(type='text', data-ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+      								input(type='text', data-ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+      								input(type='text', data-ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+      								input(type='text', data-ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+      								input(type='text', data-ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+      								input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+      								input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+      								input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+      							button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+      							button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()') Cancelar
+      				button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(threatStatusClass.ancillaryData,ancillaryData)', translate='') Guardar
+      				button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar
       -->
     </div>
   </div>

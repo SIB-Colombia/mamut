@@ -1,4 +1,4 @@
-div(ng-controller='AnnualCyclesCtrl')
+div(data-ng-controller='AnnualCyclesCtrl')
 	.panel.panel-default
 		.panel-heading
 			spant
@@ -7,31 +7,31 @@ div(ng-controller='AnnualCyclesCtrl')
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AnnualCycles"|translate}}')
 					span.glyphicon.glyphicon-info-sign
 		.panel-body
-			.selected-item(ng-repeat='annualCycleAtomized in formData.annualCycle.annualCycleAtomized')
-				div(ng-show='annualCycleAtomized')
+			.selected-item(data-ng-repeat='annualCycleAtomized in formData.annualCycle.annualCycleAtomized')
+				div(data-ng-show='annualCycleAtomized')
 					div Evento: {{annualCycleAtomized.Event}}
 					div Start Time: {{annualCycleAtomized.startTimeInterval| date: 'yyyy-MM-dd'}}
 					div End Time: {{annualCycleAtomized.endTimeInterval| date: 'yyyy-MM-dd'}}
 			.form-group
 				label.col-xs-2.control-label(for='event', translate='') simplePliCTerm.name.Event
 				.col-xs-10
-					.panel(ng-controller='CheckBoxCrtl')
-						div(ng-repeat='eve in event')
-							input(type='checkbox', ng-model='eve.checked', ng-click='updateSelection(eve, event, annualCycleAtomizedType.Event)')
+					.panel(data-ng-controller='CheckBoxCrtl')
+						div(data-ng-repeat='eve in event')
+							input(type='checkbox', data-ng-model='eve.checked', data-ng-click='updateSelection(eve, event, annualCycleAtomizedType.Event)')
 							| {{eve.name}}
 			.form-group
 				label.col-xs-2.control-label(for='startTimeInterval', translate='') simplePliCTerm.name.startTimeInterval
 				.col-xs-10
-					input#startTimeInterval(type='date', ng-model='annualCycleAtomizedType.startTimeInterval')
+					input#startTimeInterval(type='date', data-ng-model='annualCycleAtomizedType.startTimeInterval')
 			.form-group
 				label.col-xs-2.control-label(for='endTimeInterval', translate='') simplePliCTerm.name.endTimeInterval
 				.col-xs-10
-					input#endTimeInterval(type='date', ng-model='annualCycleAtomizedType.endTimeInterval')
+					input#endTimeInterval(type='date', data-ng-model='annualCycleAtomizedType.endTimeInterval')
 		
-			div(ng-controller='CollapseDemoCtrl')
+			div(data-ng-controller='CollapseDemoCtrl')
 				.form-group
 					label.col-xs-2.control-label(for='startTimeInterval', translate='') simplePliCTerm.name.AncillaryData
-					div.table-responsive(ng-show='(annualCycleAtomizedType.ancillaryData).length')
+					div.table-responsive(data-ng-show='(annualCycleAtomizedType.ancillaryData).length')
 							table.table.table-bordered
 								thead
 									tr
@@ -42,7 +42,7 @@ div(ng-controller='AnnualCyclesCtrl')
 										th
 								
 								tbody
-									tr(ng-repeat="ancillary in annualCycleAtomizedType.ancillaryData track by $index")
+									tr(data-ng-repeat="ancillary in annualCycleAtomizedType.ancillaryData track by $index")
 										td
 											| {{ancillary.bibliographicCitation}}
 										td
@@ -52,30 +52,30 @@ div(ng-controller='AnnualCyclesCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(annualCycleAtomizedType.ancillaryData,ancillary)')
+											button.btn(data-ng-click='removeAncillaryData(annualCycleAtomizedType.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
-											button.btn(ng-click='editAncillaryData(annualCycleAtomizedType.ancillaryData,ancillary)')
+											button.btn(data-ng-click='editAncillaryData(annualCycleAtomizedType.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 					.col-xs-10
-						input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
-						input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
-						input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
-						input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+						input(type='text', data-ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+						input(type='text', data-ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+						input(type='text', data-ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+						input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
 						.panel.panel-default
 							.panel-heading
 								spant {{"simplePliCTerm.name.References"|translate}}
 								a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
 									span.glyphicon.glyphicon-info-sign
-								span(ng-controller="ModalCtrl")
+								span(data-ng-controller="ModalCtrl")
 									script(type = "text/ng-template" id="referenceSearch")
 										include referenceSearch
-									button.btn.btn-success.btn-xs.pull-right(ng-click="open(formData.references,ancillaryData.reference)")
+									button.btn.btn-success.btn-xs.pull-right(data-ng-click="open(formData.references,ancillaryData.reference)")
 										span.glyphicon.glyphicon-search
-								button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
+								button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed_1 = !isCollapsed_1')
 									span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
 								
 							.panel-body
-								div.table-responsive(ng-show='(ancillaryData.reference).length')
+								div.table-responsive(data-ng-show='(ancillaryData.reference).length')
 									table.table.table-striped
 										thead
 											tr
@@ -85,7 +85,7 @@ div(ng-controller='AnnualCyclesCtrl')
 												th
 										
 										tbody
-											tr(ng-repeat="ref in ancillaryData.reference track by $index")
+											tr(data-ng-repeat="ref in ancillaryData.reference track by $index")
 												td
 													| {{ref.type|references_translate:this}}
 												td
@@ -93,50 +93,50 @@ div(ng-controller='AnnualCyclesCtrl')
 												td
 													| {{ref.title}}
 												td
-													button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
+													button.btn(data-ng-click='removeReference(ancillaryData.reference,ref)')
 														span(class="glyphicon glyphicon-trash", aria-hidden='true')
-													button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+													button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
 														span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 		
 								div(uib-collapse='isCollapsed_1')
 									.form-group
-										select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
+										select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 											option(value='') - {{"simplePliCTerm.name.type"|translate}} 
-										input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
-										input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
-										input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
-										input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
-										input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
-										input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
-										input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
-										input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
-										input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
-										input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
-										input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
-										input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
-										input(type='text', ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
-										input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
-										input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
-										input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
-										input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
-										input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
-										input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
-										input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
-										//input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-									button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Agregar Referencia
-						button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(annualCycleAtomizedType.ancillaryData,ancillaryData)', translate='') Agregar Información adicional
-			button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addAnnualCycleAtomizedType(formData.annualCycle.annualCycleAtomized, annualCycleAtomizedType)') Guardar
+										input(type='text', data-ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+										input(type='text', data-ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+										input(type='text', data-ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+										input(type='text', data-ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+										input(type='text', data-ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+										input(type='text', data-ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+										input(type='text', data-ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+										input(type='text', data-ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+										input(type='text', data-ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+										input(type='text', data-ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+										input(type='text', data-ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+										input(type='text', data-ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+										input(type='text', data-ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+										input(type='text', data-ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+										input(type='text', data-ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+										input(type='text', data-ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+										input(type='text', data-ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+										input(type='text', data-ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+										input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+										input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+										//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+									button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Agregar Referencia
+						button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(annualCycleAtomizedType.ancillaryData,ancillaryData)', translate='') Agregar Información adicional
+			button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addAnnualCycleAtomizedType(formData.annualCycle.annualCycleAtomized, annualCycleAtomizedType)') Guardar
 			.form-group
 				hr
 				label(for='annualCyclesUnstructured', translate='') simplePliCTerm.name.AnnualCyclesUnstructured
 				em (opcional)
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AnnualCyclesUnstructured"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-				textarea(rows='3', name='annualCycle', ng-model='formData.annualCycle.annualCycleUnstructured')
+				textarea(rows='3', name='annualCycle', data-ng-model='formData.annualCycle.annualCycleUnstructured')
 
-				div(ng-controller='CollapseDemoCtrl')
+				div(data-ng-controller='CollapseDemoCtrl')
 					.form-group
-						div.table-responsive(ng-show='(formData.annualCycle.ancillaryData).length')
+						div.table-responsive(data-ng-show='(formData.annualCycle.ancillaryData).length')
 							table.table.table-bordered
 								thead
 									tr
@@ -147,7 +147,7 @@ div(ng-controller='AnnualCyclesCtrl')
 										th
 								
 								tbody
-									tr(ng-repeat="ancillary in formData.annualCycle.ancillaryData track by $index")
+									tr(data-ng-repeat="ancillary in formData.annualCycle.ancillaryData track by $index")
 										td
 											| {{ancillary.bibliographicCitation}}
 										td
@@ -157,24 +157,24 @@ div(ng-controller='AnnualCyclesCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(ng-click='removeAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)')
+											button.btn(data-ng-click='removeAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
-						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+						button.btn.btn-primary.btn-sm.pull-right(type='button', data-ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(uib-collapse='isCollapsed')
-								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
-								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
-								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
-								input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+								input(type='text', data-ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+								input(type='text', data-ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+								input(type='text', data-ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+								input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
 								.panel.panel-default
 									.panel-heading
 										spant {{"simplePliCTerm.name.References"|translate}}
-										button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
+										button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed_1 = !isCollapsed_1')
 											span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
 										a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
 											span.glyphicon.glyphicon-info-sign
 									.panel-body
-										div.table-responsive(ng-show='(ancillaryData.reference).length')
+										div.table-responsive(data-ng-show='(ancillaryData.reference).length')
 											table.table.table-striped
 												thead
 													tr
@@ -184,7 +184,7 @@ div(ng-controller='AnnualCyclesCtrl')
 														th
 												
 												tbody
-													tr(ng-repeat="ref in ancillaryData.reference track by $index")
+													tr(data-ng-repeat="ref in ancillaryData.reference track by $index")
 														td
 															| {{ref.type|references_translate:this}}
 														td
@@ -192,33 +192,33 @@ div(ng-controller='AnnualCyclesCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,reference)')
+															button.btn(data-ng-click='removeReference(ancillaryData.reference,reference)')
 																span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				
 										div(uib-collapse='isCollapsed_1')
 											.form-group
-												select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
+												select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 													option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
-												input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
-												input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
-												input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
-												input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
-												input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
-												input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
-												input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
-												input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
-												input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
-												input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
-												input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
-												input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
-												input(type='text', ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
-												input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
-												input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
-												input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
-												input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
-												input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
-												input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
-												input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
-												input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
-								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)', translate='') Guardar
+												input(type='text', data-ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+												input(type='text', data-ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+												input(type='text', data-ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+												input(type='text', data-ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+												input(type='text', data-ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+												input(type='text', data-ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+												input(type='text', data-ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+												input(type='text', data-ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+												input(type='text', data-ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+												input(type='text', data-ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+												input(type='text', data-ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+												input(type='text', data-ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+												input(type='text', data-ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+												input(type='text', data-ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+												input(type='text', data-ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+												input(type='text', data-ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+												input(type='text', data-ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+												input(type='text', data-ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+												input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+												input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+											button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)', translate='') Guardar

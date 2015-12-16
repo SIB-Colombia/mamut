@@ -1,16 +1,16 @@
 
-<div ng-controller="AssociatedPartyCtrl">
+<div data-ng-controller="AssociatedPartyCtrl">
   <div class="form-group">
     <div class="panel panel-default">
       <div class="panel-heading">
         <spant>{{"simplePliCTerm.name.associatedParty"|translate}}
           <spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.associatedParty&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
         </spant>
-        <!--button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addAssociated()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
+        <!--button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addAssociated()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
         -->
       </div>
       <div class="panel-body">
-        <div ng-show="(formData.associatedParty).length" class="table-responsive">
+        <div data-ng-show="(formData.associatedParty).length" class="table-responsive">
           <table class="table table-bordered">
             <thead>
               <tr>
@@ -21,13 +21,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="associatedParty in formData.associatedParty track by $index">
+              <tr data-ng-repeat="associatedParty in formData.associatedParty track by $index">
                 <td>{{associatedParty.firstName}} {{associatedParty.lastName}}</td>
                 <td>{{associatedParty.position}}	</td>
                 <td>{{associatedParty.organisation}}	</td>
                 <td>
-                  <button ng-click="removeAssociatedParty(formData.associatedParty,associatedParty)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                  <button ng-click="editAssociatedParty(formData.associatedParty,associatedParty)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                  <button data-ng-click="removeAssociatedParty(formData.associatedParty,associatedParty)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                  <button data-ng-click="editAssociatedParty(formData.associatedParty,associatedParty)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                 </td>
               </tr>
             </tbody>
@@ -36,38 +36,38 @@
         <div class="form-group">
           <label for="givenName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.givenName</label>
           <div class="col-xs-10">
-            <input type="text" ng-model="associatedParty.firstName"/>
+            <input type="text" data-ng-model="associatedParty.firstName"/>
           </div>
         </div>
         <div class="form-group">
           <label for="surName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.surName</label>
           <div class="col-xs-10">
-            <input type="text" ng-model="associatedParty.lastName"/>
+            <input type="text" data-ng-model="associatedParty.lastName"/>
           </div>
         </div>
         <div class="form-group">
           <label for="positionName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.positionName</label>
           <div class="col-xs-10">
-            <input type="text" ng-model="associatedParty.position"/>
+            <input type="text" data-ng-model="associatedParty.position"/>
           </div>
         </div>
         <div class="form-group">
           <label for="organizationName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.organizationName</label>
           <div class="col-xs-10">
-            <input type="text" ng-model="associatedParty.organisation"/>
+            <input type="text" data-ng-model="associatedParty.organisation"/>
           </div>
         </div>
         <div class="form-group">
           <label for="deliverypoint" translate="" class="col-xs-2 control-label">simplePliCTerm.name.deliverypoint</label>
           <div class="col-xs-10">
-            <input type="text" ng-model="associatedParty.address"/>
+            <input type="text" data-ng-model="associatedParty.address"/>
           </div>
         </div>
         <div class="form-group">
           <label for="country" translate="" class="col-xs-2 control-label">simplePliCTerm.name.country</label>
           <div class="col-xs-10">
-            <div ng-controller="UbicacionCtrl">
-              <select ng-model="associatedParty.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
+            <div data-ng-controller="UbicacionCtrl">
+              <select data-ng-model="associatedParty.country" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
                 <option value="">- Seleccione -</option>
               </select>
             </div>
@@ -76,8 +76,8 @@
         <div class="form-group">
           <label for="administrativeArea" translate="" class="col-xs-2 control-label">simplePliCTerm.name.administrativeArea</label>
           <div class="col-xs-10">
-            <div ng-controller="UbicacionCtrl">
-              <select ng-model="associatedParty.state" ng-disabled="!associatedParty.country" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
+            <div data-ng-controller="UbicacionCtrl">
+              <select data-ng-model="associatedParty.state" data-ng-disabled="!associatedParty.country" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
                 <option value="">- Seleccione -</option>
               </select>
             </div>
@@ -86,8 +86,8 @@
         <div class="form-group">
           <label for="city" translate="" class="col-xs-2 control-label">simplePliCTerm.name.city</label>
           <div class="col-xs-10">
-            <div ng-controller="UbicacionCtrl">
-              <select ng-model="associatedParty.city" ng-disabled="!associatedParty.country || !associatedParty.state" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
+            <div data-ng-controller="UbicacionCtrl">
+              <select data-ng-model="associatedParty.city" data-ng-disabled="!associatedParty.country || !associatedParty.state" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
                 <option value="">- Seleccione -</option>
               </select>
             </div>
@@ -96,35 +96,35 @@
         <div class="form-group">
           <label for="postalCode" translate="" class="col-xs-2 control-label">simplePliCTerm.name.postalCode</label>
           <div class="col-xs-10">
-            <input type="text" ng-model="associatedParty.postalCode"/>
+            <input type="text" data-ng-model="associatedParty.postalCode"/>
           </div>
         </div>
         <div class="form-group">
           <label for="phone" translate="" class="col-xs-2 control-label">simplePliCTerm.name.phone</label>
           <div class="col-xs-10">
-            <input type="text" ng-model="associatedParty.phone"/>
+            <input type="text" data-ng-model="associatedParty.phone"/>
           </div>
         </div>
         <div class="form-group">
           <label for="electronicMailAddress" translate="" class="col-xs-2 control-label">simplePliCTerm.name.electronicMailAddress</label>
           <div class="col-xs-10">
-            <input type="text" ng-model="associatedParty.email"/>
+            <input type="text" data-ng-model="associatedParty.email"/>
           </div>
         </div>
         <div class="form-group">
           <label for="onlineUrl" translate="" class="col-xs-2 control-label">simplePliCTerm.name.onlineUrl</label>
           <div class="col-xs-10">
-            <input type="text" ng-model="associatedParty.homepage"/>
+            <input type="text" data-ng-model="associatedParty.homepage"/>
           </div>
         </div>
         <div class="form-group">
           <label for="role" translate="" class="col-xs-2 control-label">simplePliCTerm.name.role</label>
           <div class="col-xs-10">
-            <input type="text" ng-model="associatedParty.role"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.role&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+            <input type="text" data-ng-model="associatedParty.role"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.role&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
           </div>
         </div>
-        <button type="button" ng-click="addAssociatedParty(formData.associatedParty, associatedParty)" class="btn btn-success btn-sm pull-right">Guardar </button>
-        <button type="button" ng-click="cancelAssociatedParty()" class="btn btn-success btn-sm pull-right">Cancelar </button>
+        <button type="button" data-ng-click="addAssociatedParty(formData.associatedParty, associatedParty)" class="btn btn-success btn-sm pull-right">Guardar </button>
+        <button type="button" data-ng-click="cancelAssociatedParty()" class="btn btn-success btn-sm pull-right">Cancelar </button>
       </div>
     </div>
   </div>

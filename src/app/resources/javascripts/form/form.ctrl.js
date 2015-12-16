@@ -110,7 +110,6 @@ angular.module('app.controllers.form',[])
 		$scope.saveFile = function(){
 			if($scope.formData._id!==undefined){
 				var id = $scope.formData._id;
-	
 				var req = {
 					 method: 'PUT',
 					 url: 'http://apimamut.elasticbeanstalk.com/update-record/'+id,
@@ -165,8 +164,45 @@ angular.module('app.controllers.form',[])
 })
 .filter('references_format', function() {
 	return function(reference) {
-		// do some bounds checking here to ensure it has that index
-		reference = reference.source + reference.title;
-		return reference;
+		var ref = '';
+		switch(reference.entryType){
+
+			case 'book':
+				if(reference.authors.length === 1){
+					ref += reference.authors;
+				}else if(reference.authors.length === 2){
+					ref += reference.authors[0] + ' & ' +  reference.authors[1];
+				}else if(reference.authors.length === 3){
+					ref += reference.authors[0] + ' , ' +  reference.authors[1]+ ' & ' +  reference.authors[2];
+				}else{
+					var i = 0;
+					while (i < reference.authors.length) {
+					    ref += reference.authors[i] + ' et al. ';
+					    i++;
+					}
+				}
+				break;
+			case 'misc':
+				
+				break;
+			case 'incollection':
+				
+				break;
+			case 'article':
+				
+				break;
+			case 'phdthesis':
+				
+				break;
+			case 'techreport':
+				
+				break;
+			case 'inproceedings':
+				
+				break;
+			default:
+				break;
+		}
+		return ref;
 	};
 });

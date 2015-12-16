@@ -1,4 +1,4 @@
-div(ng-controller='AssociatedPartyCtrl')
+div(data-ng-controller='AssociatedPartyCtrl')
 	.form-group
 		.panel.panel-default
 			.panel-heading
@@ -7,10 +7,10 @@ div(ng-controller='AssociatedPartyCtrl')
 					spant
 						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.associatedParty"|translate}}')
 							span.glyphicon.glyphicon-info-sign
-				//button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addAssociated()') 
+				//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addAssociated()') 
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 			.panel-body
-				div.table-responsive(ng-show='(formData.associatedParty).length')
+				div.table-responsive(data-ng-show='(formData.associatedParty).length')
 					table.table.table-bordered
 						thead
 							tr
@@ -20,7 +20,7 @@ div(ng-controller='AssociatedPartyCtrl')
 								th
 						
 						tbody
-							tr(ng-repeat="associatedParty in formData.associatedParty track by $index")
+							tr(data-ng-repeat="associatedParty in formData.associatedParty track by $index")
 								td
 									| {{associatedParty.firstName}} {{associatedParty.lastName}}
 								td
@@ -28,72 +28,72 @@ div(ng-controller='AssociatedPartyCtrl')
 								td
 									| {{associatedParty.organisation}}	
 								td
-									button.btn(ng-click='removeAssociatedParty(formData.associatedParty,associatedParty)')
+									button.btn(data-ng-click='removeAssociatedParty(formData.associatedParty,associatedParty)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
-									button.btn(ng-click='editAssociatedParty(formData.associatedParty,associatedParty)')
+									button.btn(data-ng-click='editAssociatedParty(formData.associatedParty,associatedParty)')
 										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				.form-group
 					label.col-xs-2.control-label(for='givenName', translate='') simplePliCTerm.name.givenName
 					.col-xs-10
-						input(type='text', ng-model='associatedParty.firstName')
+						input(type='text', data-ng-model='associatedParty.firstName')
 				.form-group
 					label.col-xs-2.control-label(for='surName', translate='') simplePliCTerm.name.surName
 					.col-xs-10
-						input(type='text', ng-model='associatedParty.lastName')
+						input(type='text', data-ng-model='associatedParty.lastName')
 				.form-group
 					label.col-xs-2.control-label(for='positionName', translate='') simplePliCTerm.name.positionName
 					.col-xs-10
-						input(type='text', ng-model='associatedParty.position')
+						input(type='text', data-ng-model='associatedParty.position')
 				.form-group
 					label.col-xs-2.control-label(for='organizationName', translate='') simplePliCTerm.name.organizationName
 					.col-xs-10
-						input(type='text', ng-model='associatedParty.organisation')
+						input(type='text', data-ng-model='associatedParty.organisation')
 				.form-group
 					label.col-xs-2.control-label(for='deliverypoint', translate='') simplePliCTerm.name.deliverypoint
 					.col-xs-10
-						input(type='text', ng-model='associatedParty.address')
+						input(type='text', data-ng-model='associatedParty.address')
 				.form-group
 					label.col-xs-2.control-label(for='country', translate='') simplePliCTerm.name.country
 					.col-xs-10
-						div(ng-controller='UbicacionCtrl')
-							select(ng-model='associatedParty.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
+						div(data-ng-controller='UbicacionCtrl')
+							select(data-ng-model='associatedParty.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
 								option(value='') - Seleccione -
 				.form-group
 					label.col-xs-2.control-label(for='administrativeArea', translate='') simplePliCTerm.name.administrativeArea
 					.col-xs-10
-						div(ng-controller='UbicacionCtrl')
-							select(ng-model='associatedParty.state', ng-disabled='!associatedParty.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
+						div(data-ng-controller='UbicacionCtrl')
+							select(data-ng-model='associatedParty.state', data-ng-disabled='!associatedParty.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
 								option(value='') - Seleccione -
 				.form-group
 					label.col-xs-2.control-label(for='city', translate='') simplePliCTerm.name.city
 					.col-xs-10
-						div(ng-controller='UbicacionCtrl')
-							select(ng-model='associatedParty.city', ng-disabled='!associatedParty.country || !associatedParty.state', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
+						div(data-ng-controller='UbicacionCtrl')
+							select(data-ng-model='associatedParty.city', data-ng-disabled='!associatedParty.country || !associatedParty.state', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
 								option(value='') - Seleccione -
 				.form-group
 					label.col-xs-2.control-label(for='postalCode', translate='') simplePliCTerm.name.postalCode
 					.col-xs-10
-						input(type='text', ng-model='associatedParty.postalCode')
+						input(type='text', data-ng-model='associatedParty.postalCode')
 				.form-group
 					label.col-xs-2.control-label(for='phone', translate='') simplePliCTerm.name.phone
 					.col-xs-10
-						input(type='text', ng-model='associatedParty.phone')
+						input(type='text', data-ng-model='associatedParty.phone')
 				.form-group
 					label.col-xs-2.control-label(for='electronicMailAddress', translate='') simplePliCTerm.name.electronicMailAddress
 					.col-xs-10
-						input(type='text', ng-model='associatedParty.email')
+						input(type='text', data-ng-model='associatedParty.email')
 				.form-group
 					label.col-xs-2.control-label(for='onlineUrl', translate='') simplePliCTerm.name.onlineUrl
 					.col-xs-10
-						input(type='text', ng-model='associatedParty.homepage')
+						input(type='text', data-ng-model='associatedParty.homepage')
 				.form-group
 					label.col-xs-2.control-label(for='role', translate='') simplePliCTerm.name.role
 					.col-xs-10
-						input(type='text', ng-model='associatedParty.role')
+						input(type='text', data-ng-model='associatedParty.role')
 						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.role"|translate}}')
 							span.glyphicon.glyphicon-info-sign
-				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='addAssociatedParty(formData.associatedParty, associatedParty)') Guardar 
-				button.btn.btn-success.btn-sm.pull-right(type='button', ng-click='cancelAssociatedParty()') Cancelar 
+				button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addAssociatedParty(formData.associatedParty, associatedParty)') Guardar 
+				button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='cancelAssociatedParty()') Cancelar 
 	.col-xs-6.col-xs-offset-3
 		ul.pager
 			li

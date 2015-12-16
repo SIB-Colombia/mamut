@@ -94,7 +94,7 @@ angular.module('app.controllers.upload',[])
 					skeleton_reference.type=reference.entryType;
 					break;
 				case 'misc':
-					skeleton_reference.type='web_page';
+					skeleton_reference.type='miscellany';
 					(reference.entryTags.booktitle !== undefined) ? skeleton_reference.source =  $scope.replaceSC(reference.entryTags.booktitle) : skeleton_reference.source = '';
 					break;
 				case 'incollection':

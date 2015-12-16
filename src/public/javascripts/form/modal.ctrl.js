@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.modal',[])
-.controller('ModalCtrl', function ($scope, $uibModal, $log) {
+.controller('ModalCtrl', function ($scope, $uibModal) {
 
   $scope.animationsEnabled = true;
 
@@ -21,10 +21,10 @@ angular.module('app.controllers.modal',[])
       }
     });
 
-    modalInstance.result.then(function (selectedItem) {
-      //$scope.selected = selectedItem;
+    modalInstance.result.then(function () {
+      
     }, function () {
-      //$log.info('Modal dismissed at: ' + new Date());
+    
     });
   };
 

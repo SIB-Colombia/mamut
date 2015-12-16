@@ -1,7 +1,7 @@
 extends ../../layouts/layout_min
 
 block content
-	div(ng-app="homeApp" ng-controller="homeController as home")
+	div(data-ng-app="homeApp" data-ng-controller="homeController as home")
 		// views will be injected here
 		.container
 			.row
@@ -10,14 +10,14 @@ block content
 						h1 EDITOR DE FICHAS
 					a.pull-right(href="/new")
 						p Crear una nueva ficha
-					table(ng-table="tableParams", class="table table-striped table-bordered table-hover table-condensed")
-						tr(ng-repeat="field in $data")
+					table(data-ng-table="tableParams", class="table table-striped table-bordered table-hover table-condensed")
+						tr(data-ng-repeat="field in $data")
 							td(data-title="'Id'")
 								a(href="/edit?id={{field._id}}")
 									| {{field._id}}
 
-							td(data-title="'Taxon'"){{field.taxonRecordName.scientificName.simple}}	
+							td(data-title="'Taxon'") {{field.taxonRecordName.scientificName.simple}}	
 							td(data-title="'Creador'")
-								.selected-item(ng-repeat='associatedParty in field.associatedParty')
+								.selected-item(data-ng-repeat='associatedParty in field.associatedParty')
 									| {{associatedParty.firstName}}-{{associatedParty.lastName}}				
 					

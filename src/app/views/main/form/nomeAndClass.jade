@@ -1,14 +1,14 @@
 .form-group
-	div(ng-controller='TaxonRecordNameCtrl')
-		input(type='text', name='taxonRecordName', ng-model='taxonNameResearch')
-		button.btn.btn-success.btn-sm(ng-click='getTaxonInformation(taxonNameResearch)') Traer información
-		div(ng-show='formData.taxonRecordName.scientificName.simple')
+	div(data-ng-controller='TaxonRecordNameCtrl')
+		input(type='text', name='taxonRecordName', data-ng-model='taxonNameResearch')
+		button.btn.btn-success.btn-sm(data-ng-click='getTaxonInformation(taxonNameResearch)') Traer información
+		div(data-ng-show='formData.taxonRecordName.scientificName.simple')
 			.panel.panel-default
 				.panel-heading
 					div
 						spant(for='canonicalName', translate='') simplePliCTerm.name.ScientificName
 						| 		   			{{formData.taxonRecordName.scientificName.simple}}
-					div(ng-show='formData.taxonRecordName.scientificName.publishedln.simple')
+					div(data-ng-show='formData.taxonRecordName.scientificName.publishedln.simple')
 						div Publicado en :{{formData.taxonRecordName.scientificName.publishedln.simple}}
 	div(ng-include="'./form/includes/hierarchy.html'")
 	div(ng-include="'./form/includes/abstract.html'")

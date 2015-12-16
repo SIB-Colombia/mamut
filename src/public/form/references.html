@@ -1,16 +1,16 @@
 
-<div ng-controller="ReferenceCrtl">
+<div data-ng-controller="ReferenceCrtl">
   <div class="form-group">
     <div class="panel panel-default">
       <div class="panel-heading">
         <spant>{{"simplePliCTerm.name.References"|translate}}
           <spant></spant>
         </spant>
-        <!--button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addReferences()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
+        <!--button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addReferences()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
         -->
       </div>
       <div class="panel-body">
-        <div ng-show="(formData.references).length" class="table-responsive">
+        <div data-ng-show="(formData.references).length" class="table-responsive">
           <table class="table table-striped">
             <thead>
               <tr>
@@ -21,20 +21,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="ref in formData.references track by $index">
+              <tr data-ng-repeat="ref in formData.references track by $index">
                 <td>{{ref.type|references_translate:this}}</td>
-                <td>{{ref|references_format}}</td>
+                <td>{{ref.source}}</td>
                 <td>{{ref.title}}</td>
                 <td>
-                  <button ng-click="removeReference(formData.references,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                  <button ng-click="editReference(formData.references,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                  <button data-ng-click="removeReference(formData.references,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                  <button data-ng-click="editReference(formData.references,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="form-group">
-          <div ng-controller="UploadFile">
+          <div data-ng-controller="UploadFile">
             <h4>Cargar referencias desde un archivo .bib</h4>
             <input type="file" on-read-file="showContent($fileContent)"/>
           </div>
@@ -42,7 +42,7 @@
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.type</label>
               <div class="col-xs-10">
-                <select ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
+                <select data-ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
                   <option value="">- Seleccione -</option>
                 </select>
               </div>
@@ -50,130 +50,130 @@
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Source</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.source"/>
+                <input type="text" data-ng-model="reference.source"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.title</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.title"/>
+                <input type="text" data-ng-model="reference.title"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.authors</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.authors"/>
+                <input type="text" data-ng-model="reference.authors"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.year</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.year"/>
+                <input type="text" data-ng-model="reference.year"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.volume</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.volume"/>
+                <input type="text" data-ng-model="reference.volume"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.issue</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.issue"/>
+                <input type="text" data-ng-model="reference.issue"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.pages</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.pages"/>
+                <input type="text" data-ng-model="reference.pages"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.series</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.series"/>
+                <input type="text" data-ng-model="reference.series"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.chapter</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.chapter"/>
+                <input type="text" data-ng-model="reference.chapter"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.websites</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.websites"/>
+                <input type="text" data-ng-model="reference.websites"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.accessed</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.accessed"/>
+                <input type="text" data-ng-model="reference.accessed"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.publisher</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.publisher"/>
+                <input type="text" data-ng-model="reference.publisher"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.city</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.address"/>
+                <input type="text" data-ng-model="reference.address"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.edition</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.edition"/>
+                <input type="text" data-ng-model="reference.edition"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.institution</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.institution"/>
+                <input type="text" data-ng-model="reference.institution"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.editors</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.editors"/>
+                <input type="text" data-ng-model="reference.editors"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.keywords</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.keywords"/>
+                <input type="text" data-ng-model="reference.keywords"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.doi</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.doi"/>
+                <input type="text" data-ng-model="reference.doi"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.isbn</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.isbn"/>
+                <input type="text" data-ng-model="reference.isbn"/>
               </div>
             </div>
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.issn</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="reference.issn"/>
+                <input type="text" data-ng-model="reference.issn"/>
               </div>
             </div>
             <!--.form-group
             label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.link
             .col-xs-10
-            	input(type='text', ng-model='reference.link')
+            	input(type='text', data-ng-model='reference.link')
             -->
-            <button type="button" ng-click="addReference(formData.references,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Referencia</button>
-            <button type="button" ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs pull-right">Cancelar </button>
+            <button type="button" data-ng-click="addReference(formData.references,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Referencia</button>
+            <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs pull-right">Cancelar </button>
           </div>
         </div>
       </div>

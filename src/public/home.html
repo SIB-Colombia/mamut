@@ -12,7 +12,7 @@
   <body>
     <div class="wrapper">
       <!--include ../includes/header-->
-      <div ng-app="homeApp" ng-controller="homeController as home">
+      <div data-ng-app="homeApp" data-ng-controller="homeController as home">
         <!-- views will be injected here-->
         <div class="container">
           <div class="row">
@@ -21,12 +21,12 @@
                 <h1>EDITOR DE FICHAS</h1>
               </div><a href="/new" class="pull-right">
                 <p>Crear una nueva ficha</p></a>
-              <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
-                <tr ng-repeat="field in $data">
+              <table data-ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
+                <tr data-ng-repeat="field in $data">
                   <td data-title="'Id'"><a href="/edit?id={{field._id}}">{{field._id}}</a></td>
                   <td data-title="'Taxon'">{{field.taxonRecordName.scientificName.simple}}	</td>
                   <td data-title="'Creador'">
-                    <div ng-repeat="associatedParty in field.associatedParty" class="selected-item">{{associatedParty.firstName}}-{{associatedParty.lastName}}				</div>
+                    <div data-ng-repeat="associatedParty in field.associatedParty" class="selected-item">{{associatedParty.firstName}}-{{associatedParty.lastName}}				</div>
                   </td>
                 </tr>
               </table>

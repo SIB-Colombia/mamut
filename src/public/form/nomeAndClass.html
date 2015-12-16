@@ -1,15 +1,15 @@
 
 <div class="form-group">
-  <div ng-controller="TaxonRecordNameCtrl">
-    <input type="text" name="taxonRecordName" ng-model="taxonNameResearch"/>
-    <button ng-click="getTaxonInformation(taxonNameResearch)" class="btn btn-success btn-sm">Traer información</button>
-    <div ng-show="formData.taxonRecordName.scientificName.simple">
+  <div data-ng-controller="TaxonRecordNameCtrl">
+    <input type="text" name="taxonRecordName" data-ng-model="taxonNameResearch"/>
+    <button data-ng-click="getTaxonInformation(taxonNameResearch)" class="btn btn-success btn-sm">Traer información</button>
+    <div data-ng-show="formData.taxonRecordName.scientificName.simple">
       <div class="panel panel-default">
         <div class="panel-heading">
           <div>
             <spant for="canonicalName" translate="">simplePliCTerm.name.ScientificName</spant>		   			{{formData.taxonRecordName.scientificName.simple}}
           </div>
-          <div ng-show="formData.taxonRecordName.scientificName.publishedln.simple">
+          <div data-ng-show="formData.taxonRecordName.scientificName.publishedln.simple">
             <div>Publicado en :{{formData.taxonRecordName.scientificName.publishedln.simple}}</div>
           </div>
         </div>

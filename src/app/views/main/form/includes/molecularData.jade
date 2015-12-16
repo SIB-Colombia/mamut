@@ -1,4 +1,4 @@
-div(ng-controller='MolecularDataCtrl')
+div(data-ng-controller='MolecularDataCtrl')
 	.panel.panel-default
 		.panel-heading
 			spant
@@ -6,30 +6,30 @@ div(ng-controller='MolecularDataCtrl')
 				spant
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.MolecularData"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-				//button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addMolecularData()') 
+				//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addMolecularData()') 
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			//.form-group
-				div(ng-controller='MeasurementCtrl')
-					select(ng-model='molecularDataAtomizedType.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in molecularDatas | unique:'measurementtype'")
+				div(data-ng-controller='MeasurementCtrl')
+					select(data-ng-model='molecularDataAtomizedType.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in molecularDatas | unique:'measurementtype'")
 						option(value='') - Seleccione -
-					select(ng-model='molecularDataAtomizedType.measurementOrFact.measurementValue', ng-disabled='!molecularDataAtomizedType.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+					select(data-ng-model='molecularDataAtomizedType.measurementOrFact.measurementValue', data-ng-disabled='!molecularDataAtomizedType.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
 						option(value='') - Seleccione -
 			.form-group
 				label.col-xs-2.control-label(for='relatedTo', translate='') simplePliCTerm.name.Related to
 				.col-xs-8
-					textarea(rows='3', name='relatedTo', ng-model='molecularDataAtomizedType.relatedTo')
+					textarea(rows='3', name='relatedTo', data-ng-model='molecularDataAtomizedType.relatedTo')
 				.col-xs-2
-					button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addMolecularDataAtomizedType(formData.molecularData.molecularDataAtomized,molecularDataAtomizedType)') Guardar
+					button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addMolecularDataAtomizedType(formData.molecularData.molecularDataAtomized,molecularDataAtomizedType)') Guardar
 			.form-group
-				div.table-responsive(ng-show='(formData.molecularData.molecularDataAtomized).length')
+				div.table-responsive(data-ng-show='(formData.molecularData.molecularDataAtomized).length')
 					table.table.table-striped
 						tbody
-							tr(ng-repeat="molecularDataAtomizedType in formData.molecularData.molecularDataAtomized track by $index")
+							tr(data-ng-repeat="molecularDataAtomizedType in formData.molecularData.molecularDataAtomized track by $index")
 								td
 									| {{molecularDataAtomizedType.relatedTo}}
 								td
-									button.btn(ng-click='removeMolecularDataAtomizedType(formData.molecularData.molecularDataAtomized, molecularDataAtomizedType)')
+									button.btn(data-ng-click='removeMolecularDataAtomizedType(formData.molecularData.molecularDataAtomized, molecularDataAtomizedType)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			.form-group
 				hr
@@ -37,11 +37,11 @@ div(ng-controller='MolecularDataCtrl')
 				em (opcional)
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.MolecularDataUnstructured"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-				textarea(rows='3', name='molecularData', ng-model='formData.molecularData.molecularDataUnstructured')
+				textarea(rows='3', name='molecularData', data-ng-model='formData.molecularData.molecularDataUnstructured')
 
-				div(ng-controller='CollapseDemoCtrl')
+				div(data-ng-controller='CollapseDemoCtrl')
 					.form-group
-						div.table-responsive(ng-show='(formData.molecularData.ancillaryData).length')
+						div.table-responsive(data-ng-show='(formData.molecularData.ancillaryData).length')
 							table.table.table-bordered
 								thead
 									tr
@@ -52,7 +52,7 @@ div(ng-controller='MolecularDataCtrl')
 										th
 								
 								tbody
-									tr(ng-repeat="ancillary in formData.molecularData.ancillaryData track by $index")
+									tr(data-ng-repeat="ancillary in formData.molecularData.ancillaryData track by $index")
 										td
 											| {{ancillary.source}}	
 										td
@@ -62,34 +62,34 @@ div(ng-controller='MolecularDataCtrl')
 										td
 											| {{ancillary.rights}}	
 										td
-											button.btn(ng-click='removeAncillaryData(formData.molecularData.ancillaryData,ancillary)')
+											button.btn(data-ng-click='removeAncillaryData(formData.molecularData.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
-											button.btn(ng-click='editAncillaryData(formData.molecularData.ancillaryData,ancillary)')
+											button.btn(data-ng-click='editAncillaryData(formData.molecularData.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
-						button.btn.btn-primary.btn-sm.pull-right(type='button', ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
+						button.btn.btn-primary.btn-sm.pull-right(type='button', data-ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(uib-collapse='isCollapsed', id="ancillaryMolecular")
-								input(type='text', ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
-								button.btn-xs(ng-click='findAncillary(ancillaryData.source)')
+								input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+								button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')
 									span.glyphicon.glyphicon-search
-								input(type='text', ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
-								input(type='text', ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
-								input(type='text', ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+								input(type='text', data-ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
+								input(type='text', data-ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+								input(type='text', data-ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
 								.panel.panel-default
 									.panel-heading
 										spant {{"simplePliCTerm.name.References"|translate}}
 										a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
 											span.glyphicon.glyphicon-info-sign
-										span(ng-controller="ModalCtrl")
+										span(data-ng-controller="ModalCtrl")
 											script(type = "text/ng-template" id="referenceSearch")
 												include referenceSearch
-											button.btn.btn-success.btn-xs.pull-right(ng-click="open(formData.references,ancillaryData.reference)")
+											button.btn.btn-success.btn-xs.pull-right(data-ng-click="open(formData.references,ancillaryData.reference)")
 												span.glyphicon.glyphicon-search
-										button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed_1 = !isCollapsed_1')
+										button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed_1 = !isCollapsed_1')
 											span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
 										
 									.panel-body
-										div.table-responsive(ng-show='(ancillaryData.reference).length')
+										div.table-responsive(data-ng-show='(ancillaryData.reference).length')
 											table.table.table-striped
 												thead
 													tr
@@ -99,7 +99,7 @@ div(ng-controller='MolecularDataCtrl')
 														th
 												
 												tbody
-													tr(ng-repeat="ref in ancillaryData.reference track by $index")
+													tr(data-ng-repeat="ref in ancillaryData.reference track by $index")
 														td
 															| {{ref.type|references_translate:this}}
 														td
@@ -107,37 +107,37 @@ div(ng-controller='MolecularDataCtrl')
 														td
 															| {{ref.title}}
 														td
-															button.btn(ng-click='removeReference(ancillaryData.reference,ref)')
+															button.btn(data-ng-click='removeReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-trash", aria-hidden='true')
-															button.btn(ng-click='editReference(ancillaryData.reference,ref)')
+															button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
 																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				
 										div(uib-collapse='isCollapsed_1', id="referenceMolecular")
 											.form-group
-												select(ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
+												select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 													option(value='') - {{"simplePliCTerm.name.type"|translate}} 
-												input(type='text', ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
-												input(type='text', ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
-												input(type='text', ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
-												input(type='text', ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
-												input(type='text', ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
-												input(type='text', ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
-												input(type='text', ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
-												input(type='text', ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
-												input(type='text', ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
-												input(type='text', ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
-												input(type='text', ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
-												input(type='text', ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
-												input(type='text', ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
-												input(type='text', ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
-												input(type='text', ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
-												input(type='text', ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
-												input(type='text', ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
-												input(type='text', ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
-												input(type='text', ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
-												input(type='text', ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
-												//input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
-											button.btn.btn-primary.btn-xs.pull-right(type='button', ng-click='cancelReference()', translate='') Cancelar
-								button.btn.btn-primary.btn-sm(type='button', ng-click='addAncillaryData(formData.molecularData.ancillaryData,ancillaryData)', translate='') Guardar
-								button.btn.btn-primary.btn-sm(type='button', ng-click='cancelAncillaryData()', translate='') Cancelar
+												input(type='text', data-ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+												input(type='text', data-ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+												input(type='text', data-ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+												input(type='text', data-ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+												input(type='text', data-ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+												input(type='text', data-ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+												input(type='text', data-ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+												input(type='text', data-ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+												input(type='text', data-ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+												input(type='text', data-ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+												input(type='text', data-ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+												input(type='text', data-ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+												input(type='text', data-ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+												input(type='text', data-ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+												input(type='text', data-ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+												input(type='text', data-ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+												input(type='text', data-ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+												input(type='text', data-ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+												input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+												//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+											button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+											button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()', translate='') Cancelar
+								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.molecularData.ancillaryData,ancillaryData)', translate='') Guardar
+								button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()', translate='') Cancelar

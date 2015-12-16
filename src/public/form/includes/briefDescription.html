@@ -1,15 +1,15 @@
 
-<div ng-controller="BriefDescriptionCtrl">
+<div data-ng-controller="BriefDescriptionCtrl">
   <div class="panel panel-default">
     <div class="panel-heading">
       <spant>{{"simplePliCTerm.name.BriefDescription"|translate}} 
         <spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.BriefDescription&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
       </spant>
-      <!--button.btn.btn-success.btn-xs.pull-right(type='button', ng-click='addBriefDescription()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
+      <!--button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addBriefDescription()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
       -->
     </div>
     <div class="panel-body">
-      <textarea rows="3" name="briefDescription" ng-model="formData.briefDescription"></textarea>
+      <textarea rows="3" name="briefDescription" data-ng-model="formData.briefDescription"></textarea>
     </div>
   </div>
 </div>

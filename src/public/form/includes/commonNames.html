@@ -1,13 +1,13 @@
 
-<div ng-controller="CommonNameCtrl">
-  <div ng-controller="CollapseDemoCtrl">
+<div data-ng-controller="CommonNameCtrl">
+  <div data-ng-controller="CollapseDemoCtrl">
     <div class="panel panel-default">
       <div class="panel-heading">
         <spant>{{"simplePliCTerm.name.CommonNamesAtomized"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.CommonNamesAtomized&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
-        <button ng-click="isCollapsed = !isCollapsed" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}" aria-hidden="true"></span></button>
+        <button data-ng-click="isCollapsed = !isCollapsed" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}" aria-hidden="true"></span></button>
       </div>
       <div class="panel-body">
-        <div ng-show="(formData.commonNameAtomized).length" class="table-responsive">
+        <div data-ng-show="(formData.commonNameAtomized).length" class="table-responsive">
           <table class="table table-striped">
             <thead>
               <tr>
@@ -19,22 +19,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="commonName in formData.commonNameAtomized track by $index| orderBy:'-language'">
+              <tr data-ng-repeat="commonName in formData.commonNameAtomized track by $index| orderBy:'-language'">
                 <td>
-                  <div ng-show="commonName.name">{{commonName.name}}</div>
+                  <div data-ng-show="commonName.name">{{commonName.name}}</div>
                 </td>
                 <td>
-                  <div ng-show="commonName.language">{{commonName.language}}</div>
+                  <div data-ng-show="commonName.language">{{commonName.language}}</div>
                 </td>
                 <td>
-                  <div ng-show="commonName.usedIn.distributionUnstructured">{{commonName.usedIn.distributionUnstructured}}</div>
+                  <div data-ng-show="commonName.usedIn.distributionUnstructured">{{commonName.usedIn.distributionUnstructured}}</div>
                 </td>
                 <td>
-                  <div ng-show="commonName.usedBy">{{commonName.usedBy}}</div>
+                  <div data-ng-show="commonName.usedBy">{{commonName.usedBy}}</div>
                 </td>
                 <td>
-                  <button ng-click="removeCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                  <button ng-click="editCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                  <button data-ng-click="removeCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                  <button data-ng-click="editCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                 </td>
               </tr>
             </tbody>
@@ -46,13 +46,13 @@
             <div class="form-group">
               <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Name</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="commonName.name"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Name&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+                <input type="text" data-ng-model="commonName.name"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Name&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
               </div>
             </div>
             <div class="form-group">
               <label for="language" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Language</label>
               <div class="col-xs-10">
-                <select ng-model="commonName.language" ng-options="lang.Idioma as lang.Idioma for lang in idiomas ">
+                <select data-ng-model="commonName.language" ng-options="lang.Idioma as lang.Idioma for lang in idiomas ">
                   <option value="">- Seleccione -</option>
                 </select><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Language&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
               </div>
@@ -60,19 +60,19 @@
             <div class="form-group">
               <label for="usedIn" translate="" class="col-xs-2 control-label">simplePliCTerm.name.UsedIn</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="commonName.usedIn.distributionUnstructured"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.UsedIn&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+                <input type="text" data-ng-model="commonName.usedIn.distributionUnstructured"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.UsedIn&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
               </div>
             </div>
             <div class="form-group">
               <label for="usedBy" translate="" class="col-xs-2 control-label">simplePliCTerm.name.UsedBy</label>
               <div class="col-xs-10">
-                <input type="text" ng-model="commonName.usedBy"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.UsedBy&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+                <input type="text" data-ng-model="commonName.usedBy"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.UsedBy&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
               </div>
             </div>
             <div class="form-group">
               <label for="ancillaryData" translate="" class="col-xs-2 control-label">simplePliCTerm.name.AncillaryData</label>
               <div class="col-xs-10">
-                <div ng-show="(commonName.ancillaryData).length" class="table-responsive">
+                <div data-ng-show="(commonName.ancillaryData).length" class="table-responsive">
                   <table class="table table-striped">
                     <thead>
                       <tr>
@@ -81,39 +81,39 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr ng-repeat="ancillary in commonName.ancillaryData track by $index">
+                      <tr data-ng-repeat="ancillary in commonName.ancillaryData track by $index">
                         <td>{{ancillary.source}}</td>
                         <td>
-                          <button ng-click="removeAncillaryData(commonName.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                          <button ng-click="editAncillaryData(commonName.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                          <button data-ng-click="removeAncillaryData(commonName.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                          <button data-ng-click="editAncillaryData(commonName.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                <input type="text" ng-model="ancillaryData.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
-                <button ng-click="findAncillary(ancillaryData.source)" class="btn-xs"><span class="glyphicon glyphicon-search"></span></button>
+                <input type="text" data-ng-model="ancillaryData.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
+                <button data-ng-click="findAncillary(ancillaryData.source)" class="btn-xs"><span class="glyphicon glyphicon-search"></span></button>
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <spant>{{"simplePliCTerm.name.References"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a><span ng-controller="ModalCtrl">
+                    <spant>{{"simplePliCTerm.name.References"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a><span data-ng-controller="ModalCtrl">
                       <script type="text/ng-template" id="referenceSearch">
                         <div class="modal-header">
                           <h3 class="modal-title">Referencias disponibles
-                            <button ng-click="cancel()" class="btn btn-xs pull-right"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
+                            <button data-ng-click="cancel()" class="btn btn-xs pull-right"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
                           </h3>
                         </div>
                         <div class="modal-body">
-                          <div ng-repeat="item in items">
-                            <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" ng-click="toggleSelection(item)"/>{{item.title}}
+                          <div data-ng-repeat="item in items">
+                            <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" data-ng-click="toggleSelection(item)"/>{{item.title}}
                           </div>
                         </div>
                         <div class="modal-footer"></div>
                       </script>
-                      <button ng-click="open(formData.references,ancillaryData.reference)" class="btn btn-success btn-xs pull-right"><span class="glyphicon glyphicon-search"></span></button></span>
-                    <button ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button>
+                      <button data-ng-click="open(formData.references,ancillaryData.reference)" class="btn btn-success btn-xs pull-right"><span class="glyphicon glyphicon-search"></span></button></span>
+                    <button data-ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button>
                   </div>
                   <div class="panel-body">
-                    <div ng-show="(ancillaryData.reference).length" class="table-responsive">
+                    <div data-ng-show="(ancillaryData.reference).length" class="table-responsive">
                       <table class="table table-striped">
                         <thead>
                           <tr>
@@ -124,13 +124,13 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr ng-repeat="ref in ancillaryData.reference track by $index">
+                          <tr data-ng-repeat="ref in ancillaryData.reference track by $index">
                             <td>{{ref.type|references_translate:this}}</td>
                             <td>{{ref.source}}</td>
                             <td>{{ref.title}}</td>
                             <td>
-                              <button ng-click="removeReference(ancillaryData.reference,reference)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                              <button ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                              <button data-ng-click="removeReference(ancillaryData.reference,reference)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                              <button data-ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                             </td>
                           </tr>
                         </tbody>
@@ -138,44 +138,44 @@
                     </div>
                     <div uib-collapse="isCollapsed_1" id="referenceCommonName">
                       <div class="form-group">
-                        <select ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
+                        <select data-ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
                           <option value="">- {{"simplePliCTerm.name.type"|translate}} </option>
                         </select>
-                        <input type="text" ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
-                        <!--input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
+                        <input type="text" data-ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
+                        <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
                       </div>
-                      <button type="button" ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar </button>
-                      <button type="button" ng-click="cancelReference()" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                      <button type="button" data-ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar </button>
+                      <button type="button" data-ng-click="cancelReference()" class="btn btn-primary btn-xs pull-right">Cancelar</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <button type="button" ng-click="addAncillaryData(commonName.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-xs pull-right">Guardar I. Adicional</button>
+              <button type="button" data-ng-click="addAncillaryData(commonName.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-xs pull-right">Guardar I. Adicional</button>
             </div>
             <div class="form-group">
-              <button type="button" ng-click="addCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn btn-success btn-sm pull-right">Guardar</button>
-              <button type="button" ng-click="cancelCommonNamesAtomized()" class="btn btn-success btn-sm pull-right">Cancelar</button>
+              <button type="button" data-ng-click="addCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn btn-success btn-sm pull-right">Guardar</button>
+              <button type="button" data-ng-click="cancelCommonNamesAtomized()" class="btn btn-success btn-sm pull-right">Cancelar</button>
             </div>
           </div>
         </div>

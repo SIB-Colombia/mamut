@@ -1,93 +1,93 @@
 
-<div ng-controller="HierarchyCtrl">
-  <div ng-controller="CollapseDemoCtrl">
+<div data-ng-controller="HierarchyCtrl">
+  <div data-ng-controller="CollapseDemoCtrl">
     <div class="panel panel-default">
       <div class="panel-heading">
         <spant>{{"simplePliCTerm.name.Hierarchy"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Hierarchy&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
-        <!--button.btn.btn-success.btn-xs.pull-right(ng-click='isCollapsed = !isCollapsed')span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true', id = 'iconH')
+        <!--button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed = !isCollapsed')span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true', id = 'iconH')
         -->
       </div>
       <div class="panel-body">
-        <div ng-show="(formData.hierarchy).length" class="table-responsive">
+        <div data-ng-show="(formData.hierarchy).length" class="table-responsive">
           <table class="table table-striped">
             <tbody>
-              <tr ng-repeat="hierarchy in formData.hierarchy track by $index">
+              <tr data-ng-repeat="hierarchy in formData.hierarchy track by $index">
                 <td>
                   <div class="parrafo-pegado">
-                    <div ng-show="hierarchy.classification">
+                    <div data-ng-show="hierarchy.classification">
                       <div>classification :{{hierarchy.classification}}</div>
                     </div>
-                    <div ng-show="hierarchy.recommended">
+                    <div data-ng-show="hierarchy.recommended">
                       <div>recommended :{{hierarchy.recommended}}</div>
                     </div>
-                    <div ng-show="hierarchy.kingdom">
+                    <div data-ng-show="hierarchy.kingdom">
                       <div>
                         <p translate="">simplePliCTerm.name.kingdom</p>: {{hierarchy.kingdom}}
                       </div>
                     </div>
-                    <div ng-show="hierarchy.phylum">
+                    <div data-ng-show="hierarchy.phylum">
                       <div>
                         <p translate="">simplePliCTerm.name.phylum</p>: {{hierarchy.phylum}}
                       </div>
                     </div>
-                    <div ng-show="hierarchy.classHierarchy">
+                    <div data-ng-show="hierarchy.classHierarchy">
                       <div>
                         <p translate="">simplePliCTerm.name.class</p>: {{hierarchy.classHierarchy}}
                       </div>
                     </div>
-                    <div ng-show="hierarchy.order">
+                    <div data-ng-show="hierarchy.order">
                       <div>
                         <p translate="">simplePliCTerm.name.order</p>:{{hierarchy.order}}
                       </div>
                     </div>
-                    <div ng-show="hierarchy.family">
+                    <div data-ng-show="hierarchy.family">
                       <div>
                         <p translate="">simplePliCTerm.name.family</p>:{{hierarchy.family}}
                       </div>
                     </div>
-                    <div ng-show="hierarchy.genus">
+                    <div data-ng-show="hierarchy.genus">
                       <div>
                         <p translate="">simplePliCTerm.name.genus</p>:{{hierarchy.genus}}
                       </div>
                     </div>
-                    <div ng-show="hierarchy.subGenus">
+                    <div data-ng-show="hierarchy.subGenus">
                       <div>
                         <p translate="">simplePliCTerm.name.subgenus</p>:{{hierarchy.subGenus}}
                       </div>
                     </div>
                     <!--
-                    <div ng-show="hierarchy.taxonRank">
+                    <div data-ng-show="hierarchy.taxonRank">
                     <div>Categoría del taxón :{{hierarchy.taxonRank}}</div>
                     </div>
                     -->
-                    <div ng-show="hierarchy.specificEpithet">
+                    <div data-ng-show="hierarchy.specificEpithet">
                       <div>
                         <p translate="">simplePliCTerm.name.specificEpithet</p>:{{hierarchy.specificEpithet}}
                       </div>
                     </div>
-                    <div ng-show="hierarchy.infraspecificEpithet">
+                    <div data-ng-show="hierarchy.infraspecificEpithet">
                       <div>
                         <p translate="">simplePliCTerm.name.infraSpecificEpithet</p>:{{hierarchy.infraspecificEpithet}}
                       </div>
                     </div>
-                    <div ng-show="hierarchy.higherClassification">
+                    <div data-ng-show="hierarchy.higherClassification">
                       <div>
                         <p translate="">simplePliCTerm.name.higherClassification</p>:{{hierarchy.higherClassification}}
                       </div>
                     </div>
                     <!--
-                    <div ng-show="hierarchy.parentTaxon">
+                    <div data-ng-show="hierarchy.parentTaxon">
                     <div>parentTaxon :{{hierarchy.parentTaxon}}</div>
                     </div>
                     -->
-                    <div ng-show="hierarchy.ancillaryData[0].source">
+                    <div data-ng-show="hierarchy.ancillaryData[0].source">
                       <div>Fuente :{{hierarchy.ancillaryData[0].source}}</div>
                     </div>
                   </div>
                 </td>
                 <td>
-                  <button ng-click="removeHierarchy(formData.hierarchy,hierarchy)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                  <button ng-click="editHierarchy(formData.hierarchy,hierarchy); isCollapsed_2 = !isCollapsed_2" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                  <button data-ng-click="removeHierarchy(formData.hierarchy,hierarchy)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                  <button data-ng-click="editHierarchy(formData.hierarchy,hierarchy); isCollapsed_2 = !isCollapsed_2" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                 </td>
               </tr>
             </tbody>
@@ -98,91 +98,91 @@
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">Classification</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.classification"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.classification"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">Recommended</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.recommended"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.recommended"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.kingdom</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.kingdom"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.kingdom&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.kingdom"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.kingdom&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.phylum</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.phylum"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.phylum&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.phylum"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.phylum&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.class</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.classHierarchy"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.class&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.classHierarchy"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.class&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.order</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.order"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.order&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.order"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.order&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.family</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.family"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.family&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.family"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.family&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.genus</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.genus"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.genus&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.genus"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.genus&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.subgenus</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.subGenus"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.subgenus&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.subGenus"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.subgenus&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.taxonRank</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.taxonRank"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.taxonRank&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.taxonRank"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.taxonRank&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.specificEpithet</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.specificEpithet"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.specificEpithet&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.specificEpithet"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.specificEpithet&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.infraSpecificEpithet</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.infraspecificEpithet"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.infraSpecificEpithet&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.infraspecificEpithet"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.infraSpecificEpithet&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.higherClassification</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.higherClassification"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.higherClassification&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.higherClassification"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.higherClassification&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.ParentTaxon</label>
             <div class="col-xs-10">
-              <input type="text" ng-model="hierarchy.parentTaxon"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.ParentTaxon&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <input type="text" data-ng-model="hierarchy.parentTaxon"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.ParentTaxon&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
           <div class="form-group">
             <label for="ancillaryData" translate="" class="col-xs-2 control-label">simplePliCTerm.name.AncillaryData<a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.AncillaryData&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></label>
             <div class="col-xs-10">
-              <div ng-show="(hierarchy.ancillaryData).length" class="table-responsive">
+              <div data-ng-show="(hierarchy.ancillaryData).length" class="table-responsive">
                 <table class="table table-striped">
                   <thead>
                     <tr>
@@ -191,39 +191,39 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr ng-repeat="ancillary in hierarchy.ancillaryData track by $index">
+                    <tr data-ng-repeat="ancillary in hierarchy.ancillaryData track by $index">
                       <td>{{ancillary.source}}</td>
                       <td>
-                        <button ng-click="removeAncillaryData(hierarchy.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                        <button ng-click="editAncillaryData(hierarchy.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                        <button data-ng-click="removeAncillaryData(hierarchy.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                        <button data-ng-click="editAncillaryData(hierarchy.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <input type="text" ng-model="ancillaryData.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
-              <button ng-click="findAncillary(ancillaryData.source)" class="btn-xs"><span class="glyphicon glyphicon-search"></span></button>
+              <input type="text" data-ng-model="ancillaryData.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
+              <button data-ng-click="findAncillary(ancillaryData.source)" class="btn-xs"><span class="glyphicon glyphicon-search"></span></button>
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <spant>{{"simplePliCTerm.name.References"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a><span ng-controller="ModalCtrl">
+                  <spant>{{"simplePliCTerm.name.References"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a><span data-ng-controller="ModalCtrl">
                     <script type="text/ng-template" id="referenceSearch">
                       <div class="modal-header">
                         <h3 class="modal-title">Referencias disponibles
-                          <button ng-click="cancel()" class="btn btn-xs pull-right"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
+                          <button data-ng-click="cancel()" class="btn btn-xs pull-right"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
                         </h3>
                       </div>
                       <div class="modal-body">
-                        <div ng-repeat="item in items">
-                          <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" ng-click="toggleSelection(item)"/>{{item.title}}
+                        <div data-ng-repeat="item in items">
+                          <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" data-ng-click="toggleSelection(item)"/>{{item.title}}
                         </div>
                       </div>
                       <div class="modal-footer"></div>
                     </script>
-                    <button ng-click="open(formData.references,ancillaryData.reference)" class="btn btn-success btn-xs pull-right"><span class="glyphicon glyphicon-search"></span></button></span>
-                  <button ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button>
+                    <button data-ng-click="open(formData.references,ancillaryData.reference)" class="btn btn-success btn-xs pull-right"><span class="glyphicon glyphicon-search"></span></button></span>
+                  <button data-ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button>
                 </div>
                 <div class="panel-body">
-                  <div ng-show="(ancillaryData.reference).length" class="table-responsive">
+                  <div data-ng-show="(ancillaryData.reference).length" class="table-responsive">
                     <table class="table table-striped">
                       <thead>
                         <tr>
@@ -234,13 +234,13 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr ng-repeat="ref in ancillaryData.reference track by $index">
+                        <tr data-ng-repeat="ref in ancillaryData.reference track by $index">
                           <td>{{ref.type|references_translate:this}}</td>
                           <td>{{ref.source}}</td>
                           <td>{{ref.title}}</td>
                           <td>
-                            <button ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                            <button ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                            <button data-ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                            <button data-ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                           </td>
                         </tr>
                       </tbody>
@@ -248,41 +248,41 @@
                   </div>
                   <div uib-collapse="isCollapsed_1" id="referenceHierarchy">
                     <div class="form-group">
-                      <select ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
+                      <select data-ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
                         <option value="">- {{"simplePliCTerm.name.Type"|translate}} </option>
                       </select>
-                      <input type="text" ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
-                      <input type="text" ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
-                      <!--input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
+                      <input type="text" data-ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
+                      <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
+                      <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
                     </div>
-                    <button type="button" ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Referencia </button>
-                    <button type="button" ng-click="cancelReference()" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                    <button type="button" data-ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Referencia </button>
+                    <button type="button" data-ng-click="cancelReference()" class="btn btn-primary btn-xs pull-right">Cancelar</button>
                   </div>
                 </div>
               </div>
-              <button type="button" ng-click="addAncillaryData(hierarchy.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-xs pull-right">Añadir DA<span class="glyphicon glyphicon-plus"></span></button>
+              <button type="button" data-ng-click="addAncillaryData(hierarchy.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-xs pull-right">Añadir DA<span class="glyphicon glyphicon-plus"></span></button>
             </div>
           </div>
-          <button type="button" ng-click="addHierarchy(formData.hierarchy,hierarchy)" class="btn btn-success btn-sm pull-right">Guardar</button>
-          <button type="button" ng-click="cancelHierarchy()" class="btn btn-success btn-sm pull-right">Cancelar</button>
+          <button type="button" data-ng-click="addHierarchy(formData.hierarchy,hierarchy)" class="btn btn-success btn-sm pull-right">Guardar</button>
+          <button type="button" data-ng-click="cancelHierarchy()" class="btn btn-success btn-sm pull-right">Cancelar</button>
         </div>
       </div>
     </div>

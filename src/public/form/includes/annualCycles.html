@@ -1,5 +1,5 @@
 
-<div ng-controller="AnnualCyclesCtrl">
+<div data-ng-controller="AnnualCyclesCtrl">
   <div class="panel panel-default">
     <div class="panel-heading">
       <spant>{{"simplePliCTerm.name.AnnualCycles" | translate}}
@@ -7,8 +7,8 @@
       </spant>
     </div>
     <div class="panel-body">
-      <div ng-repeat="annualCycleAtomized in formData.annualCycle.annualCycleAtomized" class="selected-item">
-        <div ng-show="annualCycleAtomized">
+      <div data-ng-repeat="annualCycleAtomized in formData.annualCycle.annualCycleAtomized" class="selected-item">
+        <div data-ng-show="annualCycleAtomized">
           <div>Evento: {{annualCycleAtomized.Event}}</div>
           <div>Start Time: {{annualCycleAtomized.startTimeInterval| date: 'yyyy-MM-dd'}}</div>
           <div>End Time: {{annualCycleAtomized.endTimeInterval| date: 'yyyy-MM-dd'}}</div>
@@ -17,9 +17,9 @@
       <div class="form-group">
         <label for="event" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Event</label>
         <div class="col-xs-10">
-          <div ng-controller="CheckBoxCrtl" class="panel">
-            <div ng-repeat="eve in event">
-              <input type="checkbox" ng-model="eve.checked" ng-click="updateSelection(eve, event, annualCycleAtomizedType.Event)"/>{{eve.name}}
+          <div data-ng-controller="CheckBoxCrtl" class="panel">
+            <div data-ng-repeat="eve in event">
+              <input type="checkbox" data-ng-model="eve.checked" data-ng-click="updateSelection(eve, event, annualCycleAtomizedType.Event)"/>{{eve.name}}
             </div>
           </div>
         </div>
@@ -27,19 +27,19 @@
       <div class="form-group">
         <label for="startTimeInterval" translate="" class="col-xs-2 control-label">simplePliCTerm.name.startTimeInterval</label>
         <div class="col-xs-10">
-          <input id="startTimeInterval" type="date" ng-model="annualCycleAtomizedType.startTimeInterval"/>
+          <input id="startTimeInterval" type="date" data-ng-model="annualCycleAtomizedType.startTimeInterval"/>
         </div>
       </div>
       <div class="form-group">
         <label for="endTimeInterval" translate="" class="col-xs-2 control-label">simplePliCTerm.name.endTimeInterval</label>
         <div class="col-xs-10">
-          <input id="endTimeInterval" type="date" ng-model="annualCycleAtomizedType.endTimeInterval"/>
+          <input id="endTimeInterval" type="date" data-ng-model="annualCycleAtomizedType.endTimeInterval"/>
         </div>
       </div>
-      <div ng-controller="CollapseDemoCtrl">
+      <div data-ng-controller="CollapseDemoCtrl">
         <div class="form-group">
           <label for="startTimeInterval" translate="" class="col-xs-2 control-label">simplePliCTerm.name.AncillaryData</label>
-          <div ng-show="(annualCycleAtomizedType.ancillaryData).length" class="table-responsive">
+          <div data-ng-show="(annualCycleAtomizedType.ancillaryData).length" class="table-responsive">
             <table class="table table-bordered">
               <thead>
                 <tr>
@@ -51,45 +51,45 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="ancillary in annualCycleAtomizedType.ancillaryData track by $index">
+                <tr data-ng-repeat="ancillary in annualCycleAtomizedType.ancillaryData track by $index">
                   <td>{{ancillary.bibliographicCitation}}</td>
                   <td>{{ancillary.license}}	</td>
                   <td>{{ancillary.rights}}</td>
                   <td>{{ancillary.source}}	</td>
                   <td>
-                    <button ng-click="removeAncillaryData(annualCycleAtomizedType.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                    <button ng-click="editAncillaryData(annualCycleAtomizedType.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                    <button data-ng-click="removeAncillaryData(annualCycleAtomizedType.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                    <button data-ng-click="editAncillaryData(annualCycleAtomizedType.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="col-xs-10">
-            <input type="text" ng-model="ancillaryData.bibliographicCitation" placeholder="{{&quot;simplePliCTerm.name.bibliographicCitation&quot;|translate}}"/>
-            <input type="text" ng-model="ancillaryData.license" placeholder="{{&quot;simplePliCTerm.name.license&quot;|translate}}"/>
-            <input type="text" ng-model="ancillaryData.rights" placeholder="{{&quot;simplePliCTerm.name.rights&quot;|translate}}"/>
-            <input type="text" ng-model="ancillaryData.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
+            <input type="text" data-ng-model="ancillaryData.bibliographicCitation" placeholder="{{&quot;simplePliCTerm.name.bibliographicCitation&quot;|translate}}"/>
+            <input type="text" data-ng-model="ancillaryData.license" placeholder="{{&quot;simplePliCTerm.name.license&quot;|translate}}"/>
+            <input type="text" data-ng-model="ancillaryData.rights" placeholder="{{&quot;simplePliCTerm.name.rights&quot;|translate}}"/>
+            <input type="text" data-ng-model="ancillaryData.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <spant>{{"simplePliCTerm.name.References"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a><span ng-controller="ModalCtrl">
+                <spant>{{"simplePliCTerm.name.References"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a><span data-ng-controller="ModalCtrl">
                   <script type="text/ng-template" id="referenceSearch">
                     <div class="modal-header">
                       <h3 class="modal-title">Referencias disponibles
-                        <button ng-click="cancel()" class="btn btn-xs pull-right"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
+                        <button data-ng-click="cancel()" class="btn btn-xs pull-right"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
                       </h3>
                     </div>
                     <div class="modal-body">
-                      <div ng-repeat="item in items">
-                        <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" ng-click="toggleSelection(item)"/>{{item.title}}
+                      <div data-ng-repeat="item in items">
+                        <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" data-ng-click="toggleSelection(item)"/>{{item.title}}
                       </div>
                     </div>
                     <div class="modal-footer"></div>
                   </script>
-                  <button ng-click="open(formData.references,ancillaryData.reference)" class="btn btn-success btn-xs pull-right"><span class="glyphicon glyphicon-search"></span></button></span>
-                <button ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button>
+                  <button data-ng-click="open(formData.references,ancillaryData.reference)" class="btn btn-success btn-xs pull-right"><span class="glyphicon glyphicon-search"></span></button></span>
+                <button data-ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button>
               </div>
               <div class="panel-body">
-                <div ng-show="(ancillaryData.reference).length" class="table-responsive">
+                <div data-ng-show="(ancillaryData.reference).length" class="table-responsive">
                   <table class="table table-striped">
                     <thead>
                       <tr>
@@ -100,13 +100,13 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr ng-repeat="ref in ancillaryData.reference track by $index">
+                      <tr data-ng-repeat="ref in ancillaryData.reference track by $index">
                         <td>{{ref.type|references_translate:this}}</td>
                         <td>{{ref.source}}</td>
                         <td>{{ref.title}}</td>
                         <td>
-                          <button ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                          <button ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                          <button data-ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                          <button data-ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                         </td>
                       </tr>
                     </tbody>
@@ -114,47 +114,47 @@
                 </div>
                 <div uib-collapse="isCollapsed_1">
                   <div class="form-group">
-                    <select ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
+                    <select data-ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
                       <option value="">- {{"simplePliCTerm.name.type"|translate}} </option>
                     </select>
-                    <input type="text" ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
-                    <input type="text" ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
-                    <!--input(type='text', ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
+                    <input type="text" data-ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
+                    <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
                   </div>
-                  <button type="button" ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs pull-right">Agregar Referencia</button>
+                  <button type="button" data-ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs pull-right">Agregar Referencia</button>
                 </div>
               </div>
             </div>
-            <button type="button" ng-click="addAncillaryData(annualCycleAtomizedType.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Agregar Información adicional</button>
+            <button type="button" data-ng-click="addAncillaryData(annualCycleAtomizedType.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Agregar Información adicional</button>
           </div>
         </div>
       </div>
-      <button type="button" ng-click="addAnnualCycleAtomizedType(formData.annualCycle.annualCycleAtomized, annualCycleAtomizedType)" class="btn btn-success btn-sm pull-right">Guardar</button>
+      <button type="button" data-ng-click="addAnnualCycleAtomizedType(formData.annualCycle.annualCycleAtomized, annualCycleAtomizedType)" class="btn btn-success btn-sm pull-right">Guardar</button>
       <div class="form-group">
         <hr/>
         <label for="annualCyclesUnstructured" translate="">simplePliCTerm.name.AnnualCyclesUnstructured</label><em>(opcional)</em><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.AnnualCyclesUnstructured&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
-        <textarea rows="3" name="annualCycle" ng-model="formData.annualCycle.annualCycleUnstructured"></textarea>
-        <div ng-controller="CollapseDemoCtrl">
+        <textarea rows="3" name="annualCycle" data-ng-model="formData.annualCycle.annualCycleUnstructured"></textarea>
+        <div data-ng-controller="CollapseDemoCtrl">
           <div class="form-group">
-            <div ng-show="(formData.annualCycle.ancillaryData).length" class="table-responsive">
+            <div data-ng-show="(formData.annualCycle.ancillaryData).length" class="table-responsive">
               <table class="table table-bordered">
                 <thead>
                   <tr>
@@ -166,32 +166,32 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="ancillary in formData.annualCycle.ancillaryData track by $index">
+                  <tr data-ng-repeat="ancillary in formData.annualCycle.ancillaryData track by $index">
                     <td>{{ancillary.bibliographicCitation}}</td>
                     <td>{{ancillary.license}}	</td>
                     <td>{{ancillary.rights}}</td>
                     <td>{{ancillary.source}}	</td>
                     <td>
-                      <button ng-click="removeAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                      <button data-ng-click="removeAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <button type="button" ng-click="isCollapsed = !isCollapsed" class="btn btn-primary btn-sm pull-right">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
+            <button type="button" data-ng-click="isCollapsed = !isCollapsed" class="btn btn-primary btn-sm pull-right">{{"simplePliCTerm.name.AncillaryData"|translate}}</button>
             <div class="col-xs-10">
               <div uib-collapse="isCollapsed">
-                <input type="text" ng-model="ancillaryData.bibliographicCitation" placeholder="{{&quot;simplePliCTerm.name.bibliographicCitation&quot;|translate}}"/>
-                <input type="text" ng-model="ancillaryData.license" placeholder="{{&quot;simplePliCTerm.name.license&quot;|translate}}"/>
-                <input type="text" ng-model="ancillaryData.rights" placeholder="{{&quot;simplePliCTerm.name.rights&quot;|translate}}"/>
-                <input type="text" ng-model="ancillaryData.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
+                <input type="text" data-ng-model="ancillaryData.bibliographicCitation" placeholder="{{&quot;simplePliCTerm.name.bibliographicCitation&quot;|translate}}"/>
+                <input type="text" data-ng-model="ancillaryData.license" placeholder="{{&quot;simplePliCTerm.name.license&quot;|translate}}"/>
+                <input type="text" data-ng-model="ancillaryData.rights" placeholder="{{&quot;simplePliCTerm.name.rights&quot;|translate}}"/>
+                <input type="text" data-ng-model="ancillaryData.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <spant>{{"simplePliCTerm.name.References"|translate}}</spant>
-                    <button ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+                    <button data-ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
                   </div>
                   <div class="panel-body">
-                    <div ng-show="(ancillaryData.reference).length" class="table-responsive">
+                    <div data-ng-show="(ancillaryData.reference).length" class="table-responsive">
                       <table class="table table-striped">
                         <thead>
                           <tr>
@@ -202,12 +202,12 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr ng-repeat="ref in ancillaryData.reference track by $index">
+                          <tr data-ng-repeat="ref in ancillaryData.reference track by $index">
                             <td>{{ref.type|references_translate:this}}</td>
                             <td>{{ref.source}}</td>
                             <td>{{ref.title}}</td>
                             <td>
-                              <button ng-click="removeReference(ancillaryData.reference,reference)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                              <button data-ng-click="removeReference(ancillaryData.reference,reference)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
                             </td>
                           </tr>
                         </tbody>
@@ -215,36 +215,36 @@
                     </div>
                     <div uib-collapse="isCollapsed_1">
                       <div class="form-group">
-                        <select ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
+                        <select data-ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
                           <option value="">- {{"simplePliCTerm.name.Type"|translate}} </option>
                         </select>
-                        <input type="text" ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
-                        <input type="text" ng-model="reference.link" placeholder="{{&quot;simplePliCTerm.name.link&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.link" placeholder="{{&quot;simplePliCTerm.name.link&quot;|translate}}"/>
                       </div>
-                      <button type="button" ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Referencia</button>
+                      <button type="button" data-ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Referencia</button>
                     </div>
                   </div>
                 </div>
-                <button type="button" ng-click="addAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Guardar</button>
+                <button type="button" data-ng-click="addAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Guardar</button>
               </div>
             </div>
           </div>
