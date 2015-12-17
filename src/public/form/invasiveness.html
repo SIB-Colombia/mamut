@@ -363,7 +363,7 @@
                           </div>
                           <div class="modal-body">
                             <div data-ng-repeat="item in items">
-                              <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" data-ng-click="toggleSelection(item)"/>{{item.title}}
+                              <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" data-ng-click="toggleSelection(item)"/>{{item|references_format_without_url}}
                             </div>
                           </div>
                           <div class="modal-footer"></div>
@@ -374,25 +374,16 @@
                     <div class="panel-body">
                       <div data-ng-show="(ancillaryDataAto.reference).length" class="table-responsive">
                         <table class="table table-striped">
-                          <thead>
-                            <tr>
-                              <th>{{"simplePliCTerm.name.type"|translate}}</th>
-                              <th>{{"simplePliCTerm.name.Source"|translate}}</th>
-                              <th>{{"simplePliCTerm.name.title"|translate}}</th>
-                              <th></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr data-ng-repeat="ref in ancillaryDataAto.reference track by $index">
-                              <td>{{ref.type|references_translate:this}}</td>
-                              <td>{{ref.source}}</td>
-                              <td>{{ref.title}}</td>
-                              <td>
-                                <button data-ng-click="removeReference(ancillaryDataAto.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                                <button data-ng-click="editReferenceAto(ancillaryDataAto.reference,ref,referenceAto)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
-                              </td>
-                            </tr>
-                          </tbody>
+                          <tbody></tbody>
+                          <tr data-ng-repeat="ref in ancillaryDataAto.reference track by $index">
+                            <td class="col-xs-9">
+                              <textarea disabled="disabled">{{ref|references_format}}</textarea>
+                            </td>
+                            <td class="col-xs-1">
+                              <button data-ng-click="removeReference(ancillaryDataAto.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                              <button data-ng-click="editReferenceAto(ancillaryDataAto.reference,ref,referenceAto)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                            </td>
+                          </tr>
                         </table>
                       </div>
                       <div uib-collapse="isCollapsed_1" id="referenceInvasivenessAto">
@@ -488,7 +479,7 @@
                           </div>
                           <div class="modal-body">
                             <div data-ng-repeat="item in items">
-                              <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" data-ng-click="toggleSelection(item)"/>{{item.title}}
+                              <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" data-ng-click="toggleSelection(item)"/>{{item|references_format_without_url}}
                             </div>
                           </div>
                           <div class="modal-footer"></div>
@@ -499,25 +490,16 @@
                     <div class="panel-body">
                       <div data-ng-show="(ancillaryData.reference).length" class="table-responsive">
                         <table class="table table-striped">
-                          <thead>
-                            <tr>
-                              <th>{{"simplePliCTerm.name.type"|translate}}</th>
-                              <th>{{"simplePliCTerm.name.Source"|translate}}</th>
-                              <th>{{"simplePliCTerm.name.title"|translate}}</th>
-                              <th></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr data-ng-repeat="ref in ancillaryData.reference track by $index">
-                              <td>{{ref.type|references_translate:this}}</td>
-                              <td>{{ref.source}}</td>
-                              <td>{{ref.title}}</td>
-                              <td>
-                                <button data-ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                                <button data-ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
-                              </td>
-                            </tr>
-                          </tbody>
+                          <tbody></tbody>
+                          <tr data-ng-repeat="ref in ancillaryData.reference track by $index">
+                            <td class="col-xs-9">
+                              <textarea disabled="disabled">{{ref|references_format}}</textarea>
+                            </td>
+                            <td class="col-xs-1">
+                              <button data-ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                              <button data-ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                            </td>
+                          </tr>
                         </table>
                       </div>
                       <div uib-collapse="isCollapsed_1" id="referenceInvasiveness">

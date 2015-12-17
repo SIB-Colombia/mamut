@@ -6,6 +6,8 @@ angular.module('app.controllers.reference',[])
 	//reference
 	var referenceFactoryLocal = new ReferenceFactory();
 	$scope.reference = referenceFactoryLocal.reference;
+	$scope.update = false;
+	$scope.OriginalReferenceIndex = -1;
 	
 	var origR = angular.copy($scope.reference);
 
@@ -16,10 +18,18 @@ angular.module('app.controllers.reference',[])
 	};
 
 	$scope.addReference = function (referenceList, reference){
-		if (JSON.stringify(reference) !== JSON.stringify(origR)){
-			referenceFactoryLocal.addTo(referenceList, reference);
-			$scope.reference = origR;
-			origR = angular.copy($scope.reference);
+		if($scope.update){
+			if ($scope.OriginalReferenceIndex !== -1) {
+			    referenceList[$scope.OriginalReferenceIndex] = angular.copy(reference);
+			    $scope.reference = origR;
+				origR = angular.copy($scope.reference);
+			}
+		}else{ 
+			if(JSON.stringify(reference) !== JSON.stringify(origR)){
+				referenceFactoryLocal.addTo(referenceList, reference);
+				$scope.reference = origR;
+				origR = angular.copy($scope.reference);
+			}
 		}
 	};
 
@@ -29,6 +39,8 @@ angular.module('app.controllers.reference',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$scope.update =true;
+		$scope.OriginalReferenceIndex = referenceList.indexOf(reference);
 	};
 
 	$scope.cancelReference = function() {

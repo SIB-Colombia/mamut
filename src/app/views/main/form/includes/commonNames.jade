@@ -103,22 +103,12 @@ div(data-ng-controller='CommonNameCtrl')
 									.panel-body
 										div.table-responsive(data-ng-show='(ancillaryData.reference).length')
 											table.table.table-striped
-												thead
-													tr
-														th {{"simplePliCTerm.name.type"|translate}}
-														th {{"simplePliCTerm.name.Source"|translate}}
-														th {{"simplePliCTerm.name.title"|translate}}
-														th
-												
 												tbody
 													tr(data-ng-repeat="ref in ancillaryData.reference track by $index")
-														td
-															| {{ref.type|references_translate:this}}
-														td
-															| {{ref.source}}
-														td
-															| {{ref.title}}
-														td
+														td.col-xs-9
+															textarea(disabled)
+																| {{ref|references_format}}
+														td.col-xs-1
 															button.btn(data-ng-click='removeReference(ancillaryData.reference,reference)')
 																span(class="glyphicon glyphicon-trash", aria-hidden='true')
 															button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')

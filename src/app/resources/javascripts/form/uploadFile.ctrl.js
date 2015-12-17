@@ -76,7 +76,7 @@ angular.module('app.controllers.upload',[])
 				if((author).indexOf('and') > -1){
 					skeleton_reference.authors = (author).split(" and ");
 				}else{
-					skeleton_reference.authors = author;
+					skeleton_reference.authors = [].concat(author);
 				}
 			}
 
@@ -85,7 +85,7 @@ angular.module('app.controllers.upload',[])
 				if((editor).indexOf('and') > -1){
 					skeleton_reference.editors = (editor).split(" and ");
 				}else{
-					skeleton_reference.editors = editor;
+					skeleton_reference.editors = [].concat(author);
 				}
 			}
 
@@ -117,6 +117,10 @@ angular.module('app.controllers.upload',[])
 					skeleton_reference.type='conference_proceedings';
 					(reference.entryTags.booktitle !== undefined) ? skeleton_reference.source =  $scope.replaceSC(reference.entryTags.booktitle) : skeleton_reference.source = '';
 					(reference.entryTags.organization !== undefined) ? skeleton_reference.institution =  $scope.replaceSC(reference.entryTags.organization) : skeleton_reference.institution = '';
+					break;
+				case 'unpublished':
+					skeleton_reference.type='working_paper';
+					(reference.entryTags.school !== undefined) ? skeleton_reference.institution =  $scope.replaceSC(reference.entryTags.school) : skeleton_reference.institution = '';
 					break;
 				default:
 					break;

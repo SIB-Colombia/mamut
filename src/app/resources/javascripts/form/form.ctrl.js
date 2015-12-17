@@ -164,41 +164,313 @@ angular.module('app.controllers.form',[])
 })
 .filter('references_format', function() {
 	return function(reference) {
+		//referencia general
 		var ref = '';
-		switch(reference.entryType){
+		//autores
+		var authors='';
+		reference.authors = [].concat(reference.authors);
+		if(reference.authors.length === 1){
+			authors += reference.authors;
+		}else if(reference.authors.length === 2){
+			authors += reference.authors[0] + ' & ' +  reference.authors[1];
+		}else if(reference.authors.length === 3){
+			authors += reference.authors[0] + ' , ' +  reference.authors[1]+ ' & ' +  reference.authors[2];
+		}else{
+			authors += reference.authors[0] + ' et al. ';
+		}
 
+		//editores
+		var editors='';
+		reference.editors = [].concat(reference.editors);
+		if(reference.editors.length === 1){
+			editors += reference.editors + ' (ed.)';
+		}else if(reference.editors.length === 2){
+			editors += reference.editors[0] + ' & ' +  reference.editors[1] + ' (eds.)' ;
+		}else if(reference.editors.length === 3){
+			editors += reference.editors[0] + ' , ' +  reference.editors[1]+ ' & ' +  reference.editors[2]+ ' (eds.)';
+		}else{
+			editors += reference.editors[0] + 'et al. (eds.)';
+		}
+
+		//año
+		var year = '';
+		if(reference.year!==undefined&&reference.year!==''){
+			year = ' (' + reference.year + '). ';
+		}else{
+			year = '(S.F.)';
+		}
+
+		//titulo
+		var title = '';
+		if(reference.title!==undefined&&reference.source===''){
+			title = reference.title + '. ';
+		}
+
+		//serie
+		var serie ='';
+		if(reference.series!==undefined&&reference.series!==''){
+			serie = reference.series;
+		}
+
+		//capitulo
+		var chapter ='';
+		if(reference.chapter!==undefined&&reference.chapter!==''){
+			chapter = reference.chapter;
+		}
+
+		//volumen
+		var volume = '';
+		if(reference.volume!==undefined&&reference.volume!==''){
+			volume = ' y ' + reference.volume + '. ';
+		}
+
+		//paginas
+		var pages = '';
+		if(reference.pages!==undefined&&reference.pages!==''){
+			pages = reference.pages + '. ';
+		}
+
+		//edicion
+		var edition = '';
+		if(reference.edition!==undefined&&reference.edition!==''){
+			edition = reference.edition + '. ';
+		}
+
+		//ciudad
+		var city = '';
+		if(reference.address!==undefined&&reference.address!==''){
+			city = reference.address + ': ';
+		}
+
+		//publicador
+		var publisher = '';
+		if(reference.publisher!==undefined&&reference.publisher!==''){
+			publisher = reference.publisher + '. ';
+		}
+
+		//urk
+		var url = '';
+		if(reference.link!==undefined&&reference.link!==''){
+			url = 'Disponible en: '+ reference.link;
+		}
+
+		//doi
+		var doi = '';
+		if(reference.doi!==undefined&&reference.doi!==''){
+			doi = 'Disponible en: '+ reference.doi;
+		}
+
+		//last data accessed
+		var date_accessed = '';
+		if(reference.accessed!==undefined&&reference.accessed!==''){
+			date_accessed = '[ Consultado' + reference.accessed + '].';
+		}
+
+		//isbn
+		var isbn = '';
+		if(reference.isbn!==undefined&&reference.isbn!==''){
+			isbn = reference.isbn;
+		}
+
+		//issn
+		var issn = '';
+		if(reference.issn!==undefined&&reference.issn!==''){
+			issn = reference.issn;
+		}
+
+		//fuente
+		var source = '';
+		if(reference.source!==undefined&&reference.source!==''){
+			source = reference.source + '. ';
+		}
+
+		//isntitucion
+		var institution = '';
+		if(reference.institution!==undefined&&reference.institution!==''){
+			institution = reference.institution + '. ';
+		}
+
+		switch(reference.type){
 			case 'book':
-				if(reference.authors.length === 1){
-					ref += reference.authors;
-				}else if(reference.authors.length === 2){
-					ref += reference.authors[0] + ' & ' +  reference.authors[1];
-				}else if(reference.authors.length === 3){
-					ref += reference.authors[0] + ' , ' +  reference.authors[1]+ ' & ' +  reference.authors[2];
-				}else{
-					var i = 0;
-					while (i < reference.authors.length) {
-					    ref += reference.authors[i] + ' et al. ';
-					    i++;
-					}
+				ref += authors
+				if(authors === ''){
+					ref += editors;
 				}
-				break;
-			case 'misc':
+				ref += year + title + serie + volume + edition+ city + publisher + url + doi + date_accessed  + isbn;
 				
 				break;
-			case 'incollection':
-				
+			case 'miscellany':
+				ref += authors+ year + title +  institution + city + url + doi + date_accessed ;
+				break;
+			case 'book_section':
+				ref += authors+ year + title + 'En: '+ editors + source + serie + chapter + volume + edition+ city + publisher + url + doi + date_accessed  + isbn;
 				break;
 			case 'article':
+				ref += authors+ year + title +  source + volume + 'p.'+ pages + url + doi + date_accessed  + issn;
+				break;
+			case 'thesis':
+				ref += authors+ year + title +  institution + city + 'p.'+pages + url + doi + date_accessed ;
+				break;
+			case 'report':
+				ref += authors+ year + title +  institution + city + 'p.'+pages + url + doi + date_accessed ;
+				break;
+			case 'working_paper':
+				ref += authors+ year + title +  institution + city + 'p.'+pages + url + doi + date_accessed ;
+				break;
+			case 'conference_proceedings':
+				ref += authors+ year + title +  source + institution + city + publisher +pages + url + doi + date_accessed ;
+				break;
+			default:
+				break;
+		}
+		return ref;
+	};
+})
+.filter('references_format_without_url', function() {
+	return function(reference) {
+		//referencia general
+		var ref = '';
+		//autores
+		var authors='';
+		reference.authors = [].concat(reference.authors);
+		if(reference.authors.length === 1){
+			authors += reference.authors;
+		}else if(reference.authors.length === 2){
+			authors += reference.authors[0] + ' & ' +  reference.authors[1];
+		}else if(reference.authors.length === 3){
+			authors += reference.authors[0] + ' , ' +  reference.authors[1]+ ' & ' +  reference.authors[2];
+		}else{
+			authors += reference.authors[0] + ' et al. ';
+		}
+
+		//editores
+		var editors='';
+		reference.editors = [].concat(reference.editors);
+		if(reference.editors.length === 1){
+			editors += reference.editors + ' (ed.)';
+		}else if(reference.editors.length === 2){
+			editors += reference.editors[0] + ' & ' +  reference.editors[1] + ' (eds.)' ;
+		}else if(reference.editors.length === 3){
+			editors += reference.editors[0] + ' , ' +  reference.editors[1]+ ' & ' +  reference.editors[2]+ ' (eds.)';
+		}else{
+			editors += reference.editors[0] + 'et al. (eds.)';
+		}
+
+		//año
+		var year = '';
+		if(reference.year!==undefined&&reference.year!==''){
+			year = ' (' + reference.year + '). ';
+		}else{
+			year = '(S.F.)';
+		}
+
+		//titulo
+		var title = '';
+		if(reference.title!==undefined&&reference.source===''){
+			title = reference.title + '. ';
+		}
+
+		//serie
+		var serie ='';
+		if(reference.series!==undefined&&reference.series!==''){
+			serie = reference.series;
+		}
+
+		//capitulo
+		var chapter ='';
+		if(reference.chapter!==undefined&&reference.chapter!==''){
+			chapter = reference.chapter;
+		}
+
+		//volumen
+		var volume = '';
+		if(reference.volume!==undefined&&reference.volume!==''){
+			volume = ' y ' + reference.volume + '. ';
+		}
+
+		//paginas
+		var pages = '';
+		if(reference.pages!==undefined&&reference.pages!==''){
+			pages = reference.pages + '. ';
+		}
+
+		//edicion
+		var edition = '';
+		if(reference.edition!==undefined&&reference.edition!==''){
+			edition = reference.edition + '. ';
+		}
+
+		//ciudad
+		var city = '';
+		if(reference.address!==undefined&&reference.address!==''){
+			city = reference.address + ': ';
+		}
+
+		//publicador
+		var publisher = '';
+		if(reference.publisher!==undefined&&reference.publisher!==''){
+			publisher = reference.publisher + '. ';
+		}
+
+		//last data accessed
+		var date_accessed = '';
+		if(reference.accessed!==undefined&&reference.accessed!==''){
+			date_accessed = '[ Consultado' + reference.accessed + '].';
+		}
+
+		//isbn
+		var isbn = '';
+		if(reference.isbn!==undefined&&reference.isbn!==''){
+			isbn = reference.isbn;
+		}
+
+		//issn
+		var issn = '';
+		if(reference.issn!==undefined&&reference.issn!==''){
+			issn = reference.issn;
+		}
+
+		//fuente
+		var source = '';
+		if(reference.source!==undefined&&reference.source!==''){
+			source = reference.source + '. ';
+		}
+
+		//isntitucion
+		var institution = '';
+		if(reference.institution!==undefined&&reference.institution!==''){
+			institution = reference.institution + '. ';
+		}
+
+		switch(reference.type){
+			case 'book':
+				ref += authors
+				if(authors === ''){
+					ref += editors;
+				}
+				ref += year + title + serie + volume + edition+ city + publisher + date_accessed  + isbn;
 				
 				break;
-			case 'phdthesis':
-				
+			case 'miscellany':
+				ref += authors+ year + title +  institution + city + date_accessed ;
 				break;
-			case 'techreport':
-				
+			case 'book_section':
+				ref += authors+ year + title + 'En: '+ editors + source + serie + chapter + volume + edition+ city + publisher + date_accessed  + isbn;
 				break;
-			case 'inproceedings':
-				
+			case 'article':
+				ref += authors+ year + title +  source + volume + 'p.'+ pages + date_accessed  + issn;
+				break;
+			case 'thesis':
+				ref += authors+ year + title +  institution + city + 'p.'+pages + date_accessed ;
+				break;
+			case 'report':
+				ref += authors+ year + title +  institution + city + 'p.'+pages + date_accessed ;
+				break;
+			case 'working_paper':
+				ref += authors+ year + title +  institution + city + 'p.'+pages + date_accessed ;
+				break;
+			case 'conference_proceedings':
+				ref += authors+ year + title +  source + institution + city + publisher +pages + date_accessed ;
 				break;
 			default:
 				break;

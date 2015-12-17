@@ -6,7 +6,7 @@ div.modal-header
 div.modal-body
 	div(data-ng-repeat="item in items")
 		input(type="checkbox", ng-checked="list.indexOf(item) > -1", data-ng-click="toggleSelection(item)")
-		| {{item.title}}
+		| {{item|references_format_without_url}}
 
 div.modal-footer
 	

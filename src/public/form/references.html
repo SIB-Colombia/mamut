@@ -11,21 +11,13 @@
       </div>
       <div class="panel-body">
         <div data-ng-show="(formData.references).length" class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>{{"simplePliCTerm.name.type"|translate}}</th>
-                <th>{{"simplePliCTerm.name.Source"|translate}}</th>
-                <th>{{"simplePliCTerm.name.title"|translate}}</th>
-                <th></th>
-              </tr>
-            </thead>
+          <table class="table table-striped">						
             <tbody>
               <tr data-ng-repeat="ref in formData.references track by $index">
-                <td>{{ref.type|references_translate:this}}</td>
-                <td>{{ref.source}}</td>
-                <td>{{ref.title}}</td>
-                <td>
+                <td class="col-xs-9">
+                  <textarea disabled="disabled">{{ref|references_format}}</textarea>
+                </td>
+                <td class="col-xs-1">
                   <button data-ng-click="removeReference(formData.references,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
                   <button data-ng-click="editReference(formData.references,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                 </td>
