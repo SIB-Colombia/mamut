@@ -14,22 +14,22 @@
           <table class="table table-striped">
             <thead>
               <tr>
+                <th>{{"simplePliCTerm.name.source"|translate}}</th>
                 <th>{{"simplePliCTerm.name.rights"|translate}}</th>
                 <th>{{"simplePliCTerm.name.license"|translate}}</th>
-                <th>{{"simplePliCTerm.name.source"|translate}}</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               <tr data-ng-repeat="ancillary in formData.ancillaryData">
                 <td>
+                  <div data-ng-show="ancillary.source">{{ancillary.source}}</div>
+                </td>
+                <td>
                   <div data-ng-show="ancillary.rightsHolder"> {{ancillary.rightsHolder}}</div>
                 </td>
                 <td>
                   <div data-ng-show="ancillary.license">{{ancillary.license}}</div>
-                </td>
-                <td>
-                  <div data-ng-show="ancillary.source">{{ancillary.source}}</div>
                 </td>
                 <td>
                   <button data-ng-click="removeAncillaryData(formData.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
@@ -120,7 +120,7 @@
                     <input type="text" data-ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
                     <input type="text" data-ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
                     <input type="text" data-ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
-                    <input type="text" data-ng-model="reference.websites" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
+                    <input type="text" data-ng-model="reference.link" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
                     <input type="text" data-ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
                     <input type="text" data-ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
                     <input type="text" data-ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>

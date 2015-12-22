@@ -14,22 +14,22 @@ div(data-ng-controller='AncillaryDataCtrl')
 					table.table.table-striped
 						thead
 							tr
+								th {{"simplePliCTerm.name.source"|translate}}
 								th {{"simplePliCTerm.name.rights"|translate}}
 								th {{"simplePliCTerm.name.license"|translate}}
-								th {{"simplePliCTerm.name.source"|translate}}
 								th
 						
 						tbody
 							tr(data-ng-repeat="ancillary in formData.ancillaryData")
+								td
+									div(data-ng-show='ancillary.source')
+										| {{ancillary.source}}
 								td
 									div(data-ng-show='ancillary.rightsHolder')
 										|  {{ancillary.rightsHolder}}
 								td
 									div(data-ng-show='ancillary.license')
 										| {{ancillary.license}}
-								td
-									div(data-ng-show='ancillary.source')
-										| {{ancillary.source}}
 								td
 									button.btn(data-ng-click='removeAncillaryData(formData.ancillaryData,ancillary)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
@@ -111,7 +111,7 @@ div(data-ng-controller='AncillaryDataCtrl')
 										input(type='text', data-ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
 										input(type='text', data-ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
 										input(type='text', data-ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
-										input(type='text', data-ng-model='reference.websites', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+										input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
 										input(type='text', data-ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
 										input(type='text', data-ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
 										input(type='text', data-ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')

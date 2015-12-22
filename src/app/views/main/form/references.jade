@@ -66,7 +66,7 @@ div(data-ng-controller='ReferenceCrtl')
 							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.chapter
 							.col-xs-10
 								input(type='text', data-ng-model='reference.chapter')
-						.form-group
+						//.form-group
 							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.websites
 							.col-xs-10
 								input(type='text', data-ng-model='reference.websites')
@@ -110,8 +110,8 @@ div(data-ng-controller='ReferenceCrtl')
 							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.issn
 							.col-xs-10
 								input(type='text', data-ng-model='reference.issn')
-						//.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.link
+						.form-group
+							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.websites
 							.col-xs-10
 								input(type='text', data-ng-model='reference.link')
 						button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(formData.references,reference)', translate='') Guardar Referencia

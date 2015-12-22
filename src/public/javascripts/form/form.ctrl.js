@@ -202,7 +202,7 @@ angular.module('app.controllers.form',[])
 
 		//titulo
 		var title = '';
-		if(reference.title!==undefined&&reference.source===''){
+		if(reference.title!==undefined&&reference.title!==''){
 			title = reference.title + '. ';
 		}
 
@@ -221,7 +221,7 @@ angular.module('app.controllers.form',[])
 		//volumen
 		var volume = '';
 		if(reference.volume!==undefined&&reference.volume!==''){
-			volume = ' y ' + reference.volume + '. ';
+			volume = ' Vol. ' + reference.volume + '. ';
 		}
 
 		//paginas
@@ -366,7 +366,7 @@ angular.module('app.controllers.form',[])
 
 		//titulo
 		var title = '';
-		if(reference.title!==undefined&&reference.source===''){
+		if(reference.title!==undefined&&reference.title!==''){
 			title = reference.title + '. ';
 		}
 
@@ -385,7 +385,7 @@ angular.module('app.controllers.form',[])
 		//volumen
 		var volume = '';
 		if(reference.volume!==undefined&&reference.volume!==''){
-			volume = ' y ' + reference.volume + '. ';
+			volume = ' Vol. ' + reference.volume + '. ';
 		}
 
 		//paginas

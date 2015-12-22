@@ -21,8 +21,8 @@
                 <h1>EDITOR DE FICHAS</h1>
               </div><a href="/new" class="pull-right">
                 <p>Crear una nueva ficha</p></a>
-              <table data-ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
-                <tr data-ng-repeat="field in $data">
+              <table data-ng-table="tableParams" class="table table-striped table-bordered table-condensed">
+                <tr data-ng-repeat="field in $data track by field._id">
                   <td data-title="'Id'"><a href="/edit?id={{field._id}}">{{field._id}}</a></td>
                   <td data-title="'Taxon'">{{field.taxonRecordName.scientificName.simple}}	</td>
                   <td data-title="'Creador'">

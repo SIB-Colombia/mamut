@@ -93,12 +93,11 @@
                 <input type="text" data-ng-model="reference.chapter"/>
               </div>
             </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.websites</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.websites"/>
-              </div>
-            </div>
+            <!--.form-group
+            label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.websites
+            .col-xs-10
+            	input(type='text', data-ng-model='reference.websites')
+            -->
             <div class="form-group">
               <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.accessed</label>
               <div class="col-xs-10">
@@ -159,11 +158,12 @@
                 <input type="text" data-ng-model="reference.issn"/>
               </div>
             </div>
-            <!--.form-group
-            label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.link
-            .col-xs-10
-            	input(type='text', data-ng-model='reference.link')
-            -->
+            <div class="form-group">
+              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.websites</label>
+              <div class="col-xs-10">
+                <input type="text" data-ng-model="reference.link"/>
+              </div>
+            </div>
             <button type="button" data-ng-click="addReference(formData.references,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Referencia</button>
             <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs pull-right">Cancelar </button>
           </div>
