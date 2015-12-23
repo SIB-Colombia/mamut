@@ -67,7 +67,10 @@ angular.module('app.controllers.synonmy',[])
 			if(insert){
 				ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
 				angular.forEach(ancillaryData.reference, function(reference) {
-					referenceFactoryLocal.addTo($scope.formData.references,reference);
+					var idx = $scope.formData.references.indexOf(reference);
+					if(idx === -1){
+						referenceFactoryLocal.addTo($scope.formData.references,reference);
+					}
 				});
 			}
 

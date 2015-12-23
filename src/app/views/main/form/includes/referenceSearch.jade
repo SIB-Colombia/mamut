@@ -4,7 +4,7 @@ div.modal-header
 		button.btn.btn-xs.pull-right(data-ng-click="cancel()")
 			span(class="glyphicon glyphicon-remove", aria-hidden='true')
 div.modal-body
-	div(data-ng-repeat="item in items")
+	div(data-ng-repeat="item in items track by $index")
 		input(type="checkbox", ng-checked="list.indexOf(item) > -1", data-ng-click="toggleSelection(item)")
 		| {{item|references_format_without_url}}
 

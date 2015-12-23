@@ -76,7 +76,10 @@ angular.module('app.controllers.invasiveness',[])
 			if(insert){
 				ancillaryDataFactoryUn.addTo($scope.formData.ancillaryData,ancillaryData);
 				angular.forEach(ancillaryData.reference, function(reference) {
-					referenceFactoryUn.addTo($scope.formData.references,reference);
+					var idx = $scope.formData.references.indexOf(reference);
+					if(idx === -1){
+						referenceFactoryUn.addTo($scope.formData.references,reference);
+					}
 				});
 			}
 
@@ -155,7 +158,10 @@ angular.module('app.controllers.invasiveness',[])
 			if(insert){
 				ancillaryDataFactoryAto.addTo($scope.formData.ancillaryData,ancillaryData);
 				angular.forEach(ancillaryData.reference, function(reference) {
-					referenceFactoryAto.addTo($scope.formData.references,reference);
+					var idx = $scope.formData.references.indexOf(reference);
+					if(idx === -1){
+						referenceFactoryAto.addTo($scope.formData.references,reference);
+					}
 				});
 			}
 

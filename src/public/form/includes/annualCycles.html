@@ -43,19 +43,32 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th>{{"simplePliCTerm.name.bibliographicCitation"|translate}}</th>
-                  <th>{{"simplePliCTerm.name.license"|translate}}</th>
-                  <th>{{"simplePliCTerm.name.rights"|translate}}</th>
-                  <th>{{"simplePliCTerm.name.source"|translate}}</th>
-                  <th></th>
+                  <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>
+                  <!--th {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
+                  <!--th {{"simplePliCTerm.name.license"|translate}}-->
+                  <!--th {{"simplePliCTerm.name.rights"|translate}}-->
+                  <th class="col-xs-9">{{"simplePliCTerm.name.References"|translate}}</th>
+                  <th class="col-xs-1"></th>
                 </tr>
               </thead>
               <tbody>
                 <tr data-ng-repeat="ancillary in annualCycleAtomizedType.ancillaryData track by $index">
-                  <td>{{ancillary.bibliographicCitation}}</td>
-                  <td>{{ancillary.license}}	</td>
-                  <td>{{ancillary.rights}}</td>
-                  <td>{{ancillary.source}}	</td>
+                  <td>{{ancillary.source}}</td>
+                  <!--td| {{ancillary.bibliographicCitation}}
+                  -->
+                  <!--td| {{ancillary.license}}	
+                  -->
+                  <!--td
+                  | {{ancillary.rights}}
+                  
+                  -->
+                  <td>
+                    <div data-ng-repeat="ref in ancillary.reference track by $index" class="selected-item">
+                      <div data-ng-show="ref">
+                        <textarea disabled="disabled">{{ref|references_format}}</textarea>
+                      </div>
+                    </div>
+                  </td>
                   <td>
                     <button data-ng-click="removeAncillaryData(annualCycleAtomizedType.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
                     <button data-ng-click="editAncillaryData(annualCycleAtomizedType.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
@@ -79,7 +92,7 @@
                       </h3>
                     </div>
                     <div class="modal-body">
-                      <div data-ng-repeat="item in items">
+                      <div data-ng-repeat="item in items track by $index">
                         <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" data-ng-click="toggleSelection(item)"/>{{item|references_format_without_url}}
                       </div>
                     </div>

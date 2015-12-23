@@ -50,22 +50,29 @@ div(data-ng-controller='HabitatsCtrl')
 							table.table.table-bordered
 								thead
 									tr
-										th {{"simplePliCTerm.name.source"|translate}}
-										th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
-										th {{"simplePliCTerm.name.license"|translate}}
-										th {{"simplePliCTerm.name.rights"|translate}}
-										th
+										th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
+										//th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
+										//th {{"simplePliCTerm.name.license"|translate}}
+										//th {{"simplePliCTerm.name.rights"|translate}}
+										th.col-xs-9 {{"simplePliCTerm.name.References"|translate}}
+										th.col-xs-1
 								
 								tbody
 									tr(data-ng-repeat="ancillary in formData.habitat.ancillaryData track by $index")
 										td
-											| {{ancillary.source}}	
-										td
+											| {{ancillary.source}}
+										//td
 											| {{ancillary.bibliographicCitation}}
-										td
+										//td
 											| {{ancillary.license}}	
-										td
+										//td
 											| {{ancillary.rights}}
+
+										td
+											.selected-item(data-ng-repeat='ref in ancillary.reference track by $index')
+												div(data-ng-show='ref')
+													textarea(disabled)
+															| {{ref|references_format}}
 										td
 											button.btn(data-ng-click='removeAncillaryData(formData.habitat.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')

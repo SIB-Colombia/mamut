@@ -24,11 +24,16 @@ angular.module('app.controllers.ancillary',[])
 		if (JSON.stringify(ancillary) !== JSON.stringify(origAD)){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList, ancillary);
 			angular.forEach(ancillary.reference, function(reference) {
-				referenceFactoryLocal.addTo($scope.formData.references,reference);
+				var idx = $scope.formData.references.indexOf(reference);
+				if(idx === -1){
+					referenceFactoryLocal.addTo($scope.formData.references,reference);
+				}
 			});
 			//Reset var
 			$scope.ancillaryData = origAD;
+			$scope.reference = origR;
 			origAD = angular.copy($scope.ancillaryData);
+			origR = angular.copy($scope.reference);
 
 			var imageDOM = document.getElementById("imageD");
 			if(imageDOM !== undefined && imageDOM!==null){

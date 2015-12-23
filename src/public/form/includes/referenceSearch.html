@@ -5,7 +5,7 @@
   </h3>
 </div>
 <div class="modal-body">
-  <div data-ng-repeat="item in items">
+  <div data-ng-repeat="item in items track by $index">
     <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" data-ng-click="toggleSelection(item)"/>{{item|references_format_without_url}}
   </div>
 </div>

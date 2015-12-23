@@ -2,8 +2,7 @@
 
 angular.module('app.controllers.modal',[])
 .controller('ModalCtrl', function ($scope, $uibModal) {
-
-  $scope.animationsEnabled = true;
+   $scope.animationsEnabled = true;
 
   $scope.open = function (references,list) {
 
@@ -62,6 +61,7 @@ angular.module('app.controllers.modal',[])
   };
 
   $scope.cancel = function () {
+    $scope.items = '';
     $uibModalInstance.dismiss('cancel');
   };
 });
