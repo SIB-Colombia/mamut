@@ -13,6 +13,9 @@ angular.module('app.controllers.ancillary',[])
 	var origAD = angular.copy($scope.ancillaryData);
 	var origR = angular.copy($scope.reference);
 
+	//list of lincese
+	$scope.lincese_list = angular.copy($scope.lenguajes.licences);
+
 	$scope.addAncillaries = function(){
 		if($scope.formData.ancillaryData.length > 0){
 			console.log('enviar cambios');
@@ -22,6 +25,11 @@ angular.module('app.controllers.ancillary',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList, ancillary){
 		if (JSON.stringify(ancillary) !== JSON.stringify(origAD)){
+			var license = document.getElementById("ancillaryData.license");
+			if(license !== undefined && license!==null){
+				ancillary.license = license.value;
+				license.parentNode.removeChild(license);
+			}
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList, ancillary);
 			angular.forEach(ancillary.reference, function(reference) {
 				var idx = $scope.formData.references.indexOf(reference);
@@ -39,6 +47,15 @@ angular.module('app.controllers.ancillary',[])
 			if(imageDOM !== undefined && imageDOM!==null){
 				imageDOM.parentNode.removeChild(imageDOM);
 			}
+
+			var license = document.getElementById("ancillaryData.license");
+			if(license !== undefined && license!==null){
+				license.parentNode.removeChild(license);
+			}
+
+			angular.forEach($scope.lincese_list, function(item) {
+  				item.checked = false;
+       		});
 		}
 	};
 
@@ -48,10 +65,41 @@ angular.module('app.controllers.ancillary',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList, ancillary){
 		$scope.ancillaryData = angular.copy(ancillary);
+		var checked_almost_one = false;
+		angular.forEach($scope.lincese_list, function(item) {
+            if(ancillary.license!==null){
+            	if(ancillary.license === item.nombre){
+  					item.checked = true;
+  					checked_almost_one = true;
+				}else{
+					if(item.nombre==='Otra' && !checked_almost_one){
+					 	if(document.getElementById('ancillaryData.license') === null){
+							item.checked = true;
+							var input = document.createElement("input");
+				            input.type = "text";
+				            input.id = "ancillaryData.license";
+				            input.value = ancillary.license;
+				            document.getElementById("ManualLicense").appendChild(input);
+						}else{
+							var license = document.getElementById("ancillaryData.license");
+							license.value = ancillary.license;
+						}
+					}
+				}
+            }
+            
+        });
 	};
 
 	$scope.cancelAncillaryData = function() {
 		$scope.ancillaryData = angular.copy(origAD);
+		angular.forEach($scope.lincese_list, function(item) {
+			item.checked = false;
+   		});
+   		var license = document.getElementById("ancillaryData.license");
+		if(license !== undefined && license!==null){
+			license.parentNode.removeChild(license);
+		}
 	};
 
 	$scope.addReference = function(referenceList,reference){
@@ -87,6 +135,9 @@ angular.module('app.controllers.ancillary',[])
 					.then(function(res) {
 						var data = res.data.replace('jsonFlickrApi(', '').replace(')', '').replace(/\n/g, '');
 						var objetoJSONFinal = JSON.parse(data);
+						ancillary.rightsHolder = objetoJSONFinal.photo.owner.username;
+						ancillary.bibliographicCitation = objetoJSONFinal.photo.description._content;
+						
 						var license;
 						switch (objetoJSONFinal.photo.license) {
 							case "0":
@@ -126,15 +177,34 @@ angular.module('app.controllers.ancillary',[])
 									$scope.imageurl = (objetoJSONFinal_1.sizes.size[5].source).replace(/'/g, "\''");
 								}
 							});
-
-						ancillary.license = license;
-						ancillary.rightsHolder = objetoJSONFinal.photo.owner.username;
-						ancillary.bibliographicCitation = objetoJSONFinal.photo.description._content;
+						
+						var checked_almost_one = false;
+						angular.forEach($scope.lincese_list, function(item) {
+				            if(license!==null){
+				            	if(license === item.nombre){
+				  					item.checked = true;
+				  					checked_almost_one = true;
+								}else{
+									if(item.nombre==='Otra'&& !checked_almost_one){
+									 	if(document.getElementById('ancillaryData.license') === null){
+											item.checked = true;
+											var input = document.createElement("input");
+								            input.type = "text";
+								            input.id = "ancillaryData.license";
+								            input.value = license;
+								            document.getElementById("ManualLicense").appendChild(input);
+										}else{
+											var license_field = document.getElementById("ancillaryData.license");
+											license_field.value = license;
+										}
+									}
+								}
+				            }
+				        });
 					});
 			}
 			if (url.indexOf('commons.wikimedia.org') > -1) {
 				var imagen = (url_parts[url_parts.length - 1]).split(':')[1];
-				console.log(imagen);
 				$.ajax({
 					url: 'https://commons.wikimedia.org/w/api.php?action=query&titles=Image:' + imagen + '&prop=imageinfo&iiprop=extmetadata&format=json',
 					dataType: 'JSONP',
@@ -144,7 +214,41 @@ angular.module('app.controllers.ancillary',[])
 						'Api-User-Agent': 'Example/1.0'
 					},
 					success: function(data) {
-						console.log(data);
+						var info = data.query.pages[Object.keys(data.query.pages)[0]].imageinfo[0].extmetadata;
+						ancillary.source = url;
+						ancillary.rightsHolder = info.Artist.value;
+						ancillary.bibliographicCitation = info.ImageDescription.value;
+						
+						var license ='';
+						if(info.LicenseUrl===undefined){
+							license = info.LicenseShortName.value;
+						}else{
+							license = info.LicenseUrl.value;
+						}
+
+						var checked_almost_one = false;
+						angular.forEach($scope.lincese_list, function(item) {
+				            if(license!==null){
+				            	if(license === item.nombre){
+				  					item.checked = true;
+				  					checked_almost_one = true;
+								}else{
+									if(item.nombre==='Otra' && !checked_almost_one){
+									 	if(document.getElementById('ancillaryData.license') === null){
+											item.checked = true;
+											var input = document.createElement("input");
+								            input.type = "text";
+								            input.id = "ancillaryData.license";
+								            input.value = license;
+								            document.getElementById("ManualLicense").appendChild(input);
+										}else{
+											var license_field = document.getElementById("ancillaryData.license");
+											license_field.value = license;
+										}
+									}
+								}
+				            }
+				        });
 					}
 				});
 			}
@@ -159,7 +263,31 @@ angular.module('app.controllers.ancillary',[])
 						'Api-User-Agent': 'Example/1.0'
 					},
 					success: function(data) {
-						ancillary.license = data.items[0].contentDetails.licensedContent;
+						var license = data.items[0].contentDetails.licensedContent;
+						var checked_almost_one = false;
+						angular.forEach($scope.lincese_list, function(item) {
+				            if(license!==null){
+				            	if(license === item.nombre){
+				  					item.checked = true;
+				  					checked_almost_one = true;
+								}else{
+									if(item.nombre==='Otra'&& !checked_almost_one){
+									 	if(document.getElementById('ancillaryData.license') === null){
+											item.checked = true;
+											var input = document.createElement("input");
+								            input.type = "text";
+								            input.id = "ancillaryData.license";
+								            input.value = license;
+								            document.getElementById("ManualLicense").appendChild(input);
+										}else{
+											var license_field = document.getElementById("ancillaryData.license");
+											license_field.value = license;
+										}
+									}
+								}
+				            }
+				        });
+						
 						ancillary.rightsHolder = data.items[0].snippet.channelTitle;
 						ancillary.bibliographicCitation = data.items[0].snippet.description;
 					}
@@ -169,11 +297,14 @@ angular.module('app.controllers.ancillary',[])
 						
 			if (url.indexOf('www.xeno-canto.org/') > -1) {
 				var sound_id = (url_parts[url_parts.length - 1]);
-				console.log(sound_id);
-
 				$.ajax({
 					url: 'http://www.xeno-canto.org/api/2/recordings?query=nr:'+ sound_id,
-					dataType: 'json',
+					dataType: 'JSONP',
+					jsonpCallback: 'callback',
+					type: 'GET',
+					headers: {
+						'Api-User-Agent': 'Example/1.0'
+					},
 					success: function(data) {
 						var data_1 = data.replace(/\n/g, '');
 						var objetoJSONFinal_1 = JSON.parse(data_1);

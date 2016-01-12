@@ -117,8 +117,21 @@ div(data-ng-controller='InteractionsCtrl')
 								button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')
 									span.glyphicon.glyphicon-search
 								input(type='text', data-ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
-								input(type='text', data-ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
 								input(type='text', data-ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+								.form-group
+									label.control-label(for='license', translate='') simplePliCTerm.name.license
+									panel(data-ng-controller='CheckBoxCrtl')
+										div(data-ng-repeat='lic in lincese_list')
+											input(type='checkbox', data-ng-model='lic.checked', data-ng-click='updateSelectionLicence(lic, lincese_list, "ManualLicenseInteractions")')
+											a(data-ng-href='{{lic.url}}',target="_blank")
+												img(id="image", data-ng-src="{{lic.image_url || '//:0' }}", hspace=10, vspace =7)
+												{{lic.nombre}}
+											spant(data-ng-show='lic.definicion')
+											a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lic.definicion}}')
+												span.glyphicon.glyphicon-info-sign
+										p(id='ManualLicenseInteractions')
+								//input(type='text', data-ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+								
 								.panel.panel-default
 									.panel-heading
 										spant {{"simplePliCTerm.name.References"|translate}}

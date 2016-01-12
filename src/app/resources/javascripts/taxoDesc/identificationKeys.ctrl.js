@@ -15,6 +15,9 @@ angular.module('app.controllers.identificationKeys',[])
 	var origR = angular.copy($scope.referenceSN);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	//list of lincese
+	$scope.lincese_list = angular.copy($scope.lenguajes.licences);
+
 	$scope.addIdentificationKeys = function(){
 		if($scope.formData.identificationKeys.keys !== ''){
 			console.log('enviar cambios');
@@ -23,6 +26,11 @@ angular.module('app.controllers.identificationKeys',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.source !== ''){
+			var license = document.getElementById("ancillaryData.license");
+			if(license !== undefined && license!==null){
+				ancillaryData.license = license.value;
+				license.parentNode.removeChild(license);
+			}
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			var insert = true;
 			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
@@ -51,6 +59,14 @@ angular.module('app.controllers.identificationKeys',[])
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$('#ancillaryIdentificationKeys').collapse("hide");
+			var license = document.getElementById("ancillaryData.license");
+			if(license !== undefined && license!==null){
+				license.parentNode.removeChild(license);
+			}
+
+			angular.forEach($scope.lincese_list, function(item) {
+  				item.checked = false;
+       		});
 		}else{
 			alert("La fuente debe ser diligenciada");
 		}	
@@ -63,10 +79,41 @@ angular.module('app.controllers.identificationKeys',[])
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
 		$('#ancillaryIdentificationKeys').collapse("show");
+		var checked_almost_one = false;
+		angular.forEach($scope.lincese_list, function(item) {
+            if(ancillaryData.license!==null){
+            	if(ancillaryData.license === item.nombre){
+  					item.checked = true;
+  					checked_almost_one = true;
+				}else{
+					if(item.nombre==='Otra' && !checked_almost_one){
+					 	if(document.getElementById('ancillaryData.license') === null){
+							item.checked = true;
+							var input = document.createElement("input");
+				            input.type = "text";
+				            input.id = "ancillaryData.license";
+				            input.value = ancillaryData.license;
+				            document.getElementById("ManualLicenseIdentification").appendChild(input);
+						}else{
+							var license = document.getElementById("ancillaryData.license");
+							license.value = ancillaryData.license;
+						}
+					}
+				}
+            }
+            
+        });
 	};
 
 	$scope.cancelAncillaryData = function() {
 		$scope.ancillaryData = angular.copy(origAD);
+		angular.forEach($scope.lincese_list, function(item) {
+			item.checked = false;
+   		});
+   		var license = document.getElementById("ancillaryData.license");
+		if(license !== undefined && license!==null){
+			license.parentNode.removeChild(license);
+		}
 		$('#ancillaryIdentificationKeys').collapse("hide");
 	};
 

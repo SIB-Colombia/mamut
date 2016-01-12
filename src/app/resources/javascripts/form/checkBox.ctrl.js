@@ -108,6 +108,7 @@ angular.module('app.controllers.checkBox',[])
         $scope.invasivenessAtomizedType.harmful = element.name;
     };
 
+
     $scope.updateSelectionAbundance = function updateSelectionAbundance(element, list) {
         angular.forEach(list, function(item) {
             item.checked = false;
@@ -251,6 +252,23 @@ angular.module('app.controllers.checkBox',[])
         }
         else {
             $scope.managementAndConservationAtomizedType.actions.push(name.name);
+        }
+    };
+     $scope.updateSelectionLicence = function updateSelectionLicence(element, list, ManualLicense) {
+        angular.forEach(list, function(item) {
+            item.checked = false;
+        });
+        element.checked= true;
+        if(element.nombre === 'Otra' && document.getElementById(ManualLicense).children[0] === undefined){
+            var input = document.createElement("input");
+            input.type = "text";
+            input.id = "ancillaryData.license";
+            document.getElementById(ManualLicense).appendChild(input);
+        }else{
+            if(document.getElementById(ManualLicense).children[0] !== undefined){
+               document.getElementById('ancillaryData.license').remove(); 
+            }
+            $scope.ancillaryData.license = element.nombre;
         }
     };
 }]);

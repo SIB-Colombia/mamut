@@ -54,61 +54,75 @@ div(data-ng-controller='FullDescriptionCtrl')
 							button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')
 								span.glyphicon.glyphicon-search
 							input(type='text', data-ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
-							input(type='text', data-ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
 							input(type='text', data-ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+							.form-group
+								label.control-label(for='license', translate='') simplePliCTerm.name.license
+								panel(data-ng-controller='CheckBoxCrtl')
+									div(data-ng-repeat='lic in lincese_list')
+										input(type='checkbox', data-ng-model='lic.checked', data-ng-click='updateSelectionLicence(lic, lincese_list, "ManualLicenseFullDescription")')
+										a(data-ng-href='{{lic.url}}',target="_blank")
+											img(id="image", data-ng-src="{{lic.image_url || '//:0' }}", hspace=10, vspace =7)
+											{{lic.nombre}}
+										spant(data-ng-show='lic.definicion')
+										a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lic.definicion}}')
+											span.glyphicon.glyphicon-info-sign
+									p(id='ManualLicenseFullDescription')
+							//input(type='text', data-ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
+							
 
-							.panel.panel-default
-								.panel-heading
-									spant {{"simplePliCTerm.name.References"|translate}}
-									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
-										span.glyphicon.glyphicon-info-sign
-									span(data-ng-controller="ModalCtrl")
-										script(type = "text/ng-template" id="referenceSearch")
-											include referenceSearch
-										button.btn.btn-success.btn-xs.pull-right(data-ng-click="open(formData.references,ancillaryData.reference)")
-											span.glyphicon.glyphicon-search
-									button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed_1 = !isCollapsed_1')
-										span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
-									
-								.panel-body
-									div.table-responsive(data-ng-show='(ancillaryData.reference).length')
-										table.table.table-striped
-											tbody
-												tr(data-ng-repeat="ref in ancillaryData.reference track by $index")
-													td.col-xs-9
-														textarea(disabled)
-															| {{ref|references_format}}
-													td.col-xs-1
-														button.btn(data-ng-click='removeReference(ancillaryData.reference,ref)')
-															span(class="glyphicon glyphicon-trash", aria-hidden='true')
-														button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
-															span(class="glyphicon glyphicon-pencil", aria-hidden='true')
-									div(uib-collapse='isCollapsed_1', id = 'referenceFullDescripcion')
-										.form-group
-											select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
-												option(value='') - {{"simplePliCTerm.name.type"|translate}} 
-											input(type='text', data-ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
-											input(type='text', data-ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
-											input(type='text', data-ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
-											input(type='text', data-ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
-											input(type='text', data-ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
-											input(type='text', data-ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
-											input(type='text', data-ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
-											input(type='text', data-ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
-											input(type='text', data-ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
-											input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
-											input(type='text', data-ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
-											input(type='text', data-ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
-											input(type='text', data-ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
-											input(type='text', data-ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
-											input(type='text', data-ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
-											input(type='text', data-ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
-											input(type='text', data-ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
-											input(type='text', data-ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
-											input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
-											input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
-											//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-										button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
-										button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()') Cancelar
+							.form-group
+								.panel.panel-default
+									.panel-heading
+										spant {{"simplePliCTerm.name.References"|translate}}
+										a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
+											span.glyphicon.glyphicon-info-sign
+										span(data-ng-controller="ModalCtrl")
+											script(type = "text/ng-template" id="referenceSearch")
+												include referenceSearch
+											button.btn.btn-success.btn-xs.pull-right(data-ng-click="open(formData.references,ancillaryData.reference)")
+												span.glyphicon.glyphicon-search
+										button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed_1 = !isCollapsed_1')
+											span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
+										
+									.panel-body
+										div.table-responsive(data-ng-show='(ancillaryData.reference).length')
+											table.table.table-striped
+												tbody
+													tr(data-ng-repeat="ref in ancillaryData.reference track by $index")
+														td.col-xs-9
+															textarea(disabled)
+																| {{ref|references_format}}
+														td.col-xs-1
+															button.btn(data-ng-click='removeReference(ancillaryData.reference,ref)')
+																span(class="glyphicon glyphicon-trash", aria-hidden='true')
+															button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
+																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+										div(uib-collapse='isCollapsed_1', id = 'referenceFullDescripcion')
+											.form-group
+												select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
+													option(value='') - {{"simplePliCTerm.name.type"|translate}} 
+												input(type='text', data-ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+												input(type='text', data-ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+												input(type='text', data-ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+												input(type='text', data-ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+												input(type='text', data-ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+												input(type='text', data-ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+												input(type='text', data-ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+												input(type='text', data-ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+												input(type='text', data-ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+												input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+												input(type='text', data-ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+												input(type='text', data-ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+												input(type='text', data-ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+												input(type='text', data-ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+												input(type='text', data-ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+												input(type='text', data-ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+												input(type='text', data-ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+												input(type='text', data-ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+												input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+												//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+											button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
+											button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()') Cancelar
 							button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.fullDescription.ancillaryData,ancillaryData)', translate='') Guardar
 							button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar

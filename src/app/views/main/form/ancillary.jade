@@ -52,9 +52,17 @@ div(data-ng-controller='AncillaryDataCtrl')
 				.form-group
 					label.col-xs-2.control-label(for='license', translate='') simplePliCTerm.name.license
 					.col-xs-10
-						input(type='text', data-ng-model='ancillaryData.license')
-						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.license"|translate}}')
-							span.glyphicon.glyphicon-info-sign
+						.panel(data-ng-controller='CheckBoxCrtl')
+							div(data-ng-repeat='lic in lincese_list')
+								input(type='checkbox', data-ng-model='lic.checked', data-ng-click='updateSelectionLicence(lic, lincese_list,"ManualLicense")')
+								a(data-ng-href='{{lic.url}}',target="_blank")
+									img(id="image", data-ng-src="{{lic.image_url || '//:0' }}", hspace=10, vspace =10)
+									{{lic.nombre}}
+								spant(data-ng-show='lic.definicion')
+								a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lic.definicion}}')
+									span.glyphicon.glyphicon-info-sign
+							p(id='ManualLicense')
+							
 				.form-group
 					label.col-xs-2.control-label(for='rights', translate='') simplePliCTerm.name.rights
 					.col-xs-10
@@ -75,7 +83,7 @@ div(data-ng-controller='AncillaryDataCtrl')
 							span.glyphicon.glyphicon-info-sign
 				
 				.form-group
-					img(id="imageD", ng-src="{{ imageurl || '//:0' }}")
+					img(id="imageD", data-ng-src="{{ imageurl || '//:0' }}", class="imgAncilliary")
 				
 				.form-group
 					label.col-xs-2.control-label(for='source', translate='') simplePliCTerm.name.References
