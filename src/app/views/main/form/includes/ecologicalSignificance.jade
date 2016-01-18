@@ -32,7 +32,7 @@ div(data-ng-controller='EcologicalSignificanceCtrl')
 						select(data-ng-model='ecologicalSignificanceAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.ecologicalSignificances | unique:'measurementtype'")
 							option(value='') - Seleccione -
 					.col-xs-5
-						select(data-ng-model='ecologicalSignificanceAtomized.measurementOrFact.measurementValue', data-ng-disabled='!ecologicalSignificanceAtomized.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
+						select(data-ng-model='ecologicalSignificanceAtomized.measurementOrFact.measurementValue', data-ng-disabled='!ecologicalSignificanceAtomized.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr_3 ')
 							option(value='') - Seleccione -
 					.col-xs-2
 						button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(formData.ecologicalSignificance.ecologicalSignificanceAtomized, measurementOrFact)') Guardar 

@@ -12,12 +12,12 @@
       <div class="form-group">
         <div data-ng-controller="MeasurementCtrl">
           <div class="col-xs-5">
-            <select data-ng-model="directThreatsAtomized.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.directThreats | unique:'measurementtype'">
+            <select data-ng-model="formData.directThreats.directThreatsAtomized.measurementOrFact.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.directThreats | unique:'measurementtype'">
               <option value="">- Seleccione -</option>
             </select>
           </div>
           <div class="col-xs-5">
-            <select data-ng-model="directThreatsAtomized.measurementValue" data-ng-disabled="!directThreatsAtomized.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+            <select data-ng-model="formData.directThreats.directThreatsAtomized.measurementOrFact.measurementValue" data-ng-disabled="!formData.directThreats.directThreatsAtomized.measurementOrFact.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr_2 ">
               <option value="">- Seleccione -</option>
             </select>
           </div>

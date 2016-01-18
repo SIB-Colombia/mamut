@@ -33,6 +33,18 @@ angular.module('app.controllers.form',[])
 			
 	if($scope.formDataGet!==undefined){
 		$scope.formData = $scope.formDataGet;
+
+		angular.forEach($scope.lenguajes.dispersalType, function(item) {
+            if($scope.formData.dispersal.dispersalAtomized.type!==null && $scope.formData.dispersal.dispersalAtomized.type === item.name){
+  				item.checked = true;
+			}
+        });
+
+        angular.forEach($scope.lenguajes.structureDispersed, function(item) {
+            if($scope.formData.dispersal.dispersalAtomized.structureDispersed!==null && $scope.formData.dispersal.dispersalAtomized.structureDispersed === item.name){
+  				item.checked = true;
+			}
+        });
 	} else{
 		//New general Form
 		$scope.formData = {
@@ -105,6 +117,8 @@ angular.module('app.controllers.form',[])
 
 		
 		$scope.selectedAttr = [];
+		$scope.selectedAttr_2 = [];
+		$scope.selectedAttr_3 = [];
 		$scope.date = new Date();
 		
 		$scope.saveFile = function(){
