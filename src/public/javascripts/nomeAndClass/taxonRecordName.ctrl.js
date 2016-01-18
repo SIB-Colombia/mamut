@@ -321,6 +321,8 @@ angular.module('app.controllers.taxonRecordName',[])
 						});
 					}
 				});
+			}else{
+				$scope.formData.taxonRecordName.scientificName.simple = taxonName;
 			}
 		});
 	};
