@@ -96,7 +96,7 @@ angular.module('app.controllers.invasiveness',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
-			var license = document.getElementById("ancillaryData.license");
+
 			if(license !== undefined && license!==null){
 				license.parentNode.removeChild(license);
 			}
@@ -221,7 +221,7 @@ angular.module('app.controllers.invasiveness',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
-			var license = document.getElementById("ancillaryData.license");
+
 			if(license !== undefined && license!==null){
 				license.parentNode.removeChild(license);
 			}

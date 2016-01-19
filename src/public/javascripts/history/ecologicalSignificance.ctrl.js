@@ -62,7 +62,7 @@ angular.module('app.controllers.ecologicalSignificance',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
-			var license = document.getElementById("ancillaryData.license");
+
 			if(license !== undefined && license!==null){
 				license.parentNode.removeChild(license);
 			}

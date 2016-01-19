@@ -48,7 +48,6 @@ angular.module('app.controllers.ancillary',[])
 				imageDOM.parentNode.removeChild(imageDOM);
 			}
 
-			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				license.parentNode.removeChild(license);
 			}

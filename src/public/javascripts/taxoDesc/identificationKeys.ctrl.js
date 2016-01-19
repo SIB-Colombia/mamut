@@ -58,8 +58,7 @@ angular.module('app.controllers.identificationKeys',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
-			$('#ancillaryIdentificationKeys').collapse("hide");
-			var license = document.getElementById("ancillaryData.license");
+			
 			if(license !== undefined && license!==null){
 				license.parentNode.removeChild(license);
 			}
@@ -67,6 +66,8 @@ angular.module('app.controllers.identificationKeys',[])
 			angular.forEach($scope.lincese_list, function(item) {
   				item.checked = false;
        		});
+
+       		$('#ancillaryIdentificationKeys').collapse("hide");
 		}else{
 			alert("La fuente debe ser diligenciada");
 		}	

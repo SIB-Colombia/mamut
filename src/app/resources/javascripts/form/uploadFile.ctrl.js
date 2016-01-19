@@ -63,12 +63,40 @@ angular.module('app.controllers.upload',[])
 			skeleton_reference.link = reference.entryTags.url;
 
 
-			(reference.entryTags.title !== undefined) ? skeleton_reference.title =  $scope.replaceSC(reference.entryTags.title) : skeleton_reference.title = '';
-			(reference.entryTags.keywords !== undefined) ? skeleton_reference.keywords = $scope.replaceSC(reference.entryTags.keywords): skeleton_reference.keywords = '';
-			(reference.entryTags['mendeley-tags'] !== undefined) ? skeleton_reference.tags = $scope.replaceSC(reference.entryTags['mendeley-tags']) : skeleton_reference.tags = '';
-			(reference.entryTags.publisher !== undefined) ? skeleton_reference.publisher =  $scope.replaceSC(reference.entryTags.publisher) : skeleton_reference.publisher = '';
-			(reference.entryTags.issue !== undefined) ? skeleton_reference.issue =  $scope.replaceSC(reference.entryTags.annote) : skeleton_reference.issue = '';
-			(reference.entryTags.abstract !== undefined) ? skeleton_reference.abstract =  $scope.replaceSC(reference.entryTags.abstract) : skeleton_reference.abstract = '';
+			if(reference.entryTags.title !== undefined){
+				skeleton_reference.title =  $scope.replaceSC(reference.entryTags.title);
+			} else {
+				skeleton_reference.title = '';
+			}
+
+			if(reference.entryTags.keywords !== undefined){
+				skeleton_reference.keywords = $scope.replaceSC(reference.entryTags.keywords);
+			} else {
+				skeleton_reference.keywords = '';
+			}
+
+			if(reference.entryTags['mendeley-tags'] !== undefined){
+				skeleton_reference.tags = $scope.replaceSC(reference.entryTags['mendeley-tags']);
+			} else {
+				skeleton_reference.tags = '';
+			}
+
+			if(reference.entryTags.publisher !== undefined){
+				skeleton_reference.publisher =  $scope.replaceSC(reference.entryTags.publisher);
+			} else {
+				skeleton_reference.publisher = '';
+			}
+
+			if(reference.entryTags.issue !== undefined){
+				skeleton_reference.issue =  $scope.replaceSC(reference.entryTags.annote);
+			} else {
+				skeleton_reference.issue = '';
+			}
+			if(reference.entryTags.abstract !== undefined){
+				skeleton_reference.abstract =  $scope.replaceSC(reference.entryTags.abstract)
+			} else {
+				skeleton_reference.abstract = '';
+			}
 			
 			
 			if(reference.entryTags.author !== undefined ){
@@ -85,7 +113,7 @@ angular.module('app.controllers.upload',[])
 				if((editor).indexOf('and') > -1){
 					skeleton_reference.editors = (editor).split(" and ");
 				}else{
-					skeleton_reference.editors = [].concat(author);
+					skeleton_reference.editors = [].concat(editor);
 				}
 			}
 
@@ -95,32 +123,64 @@ angular.module('app.controllers.upload',[])
 					break;
 				case 'misc':
 					skeleton_reference.type='miscellany';
-					(reference.entryTags.booktitle !== undefined) ? skeleton_reference.source =  $scope.replaceSC(reference.entryTags.booktitle) : skeleton_reference.source = '';
+					if(reference.entryTags.booktitle !== undefined){
+						skeleton_reference.source =  $scope.replaceSC(reference.entryTags.booktitle);
+					} else {
+						skeleton_reference.source = '';
+					}
 					break;
 				case 'incollection':
 					skeleton_reference.type='book_section';
-					(reference.entryTags.booktitle !== undefined) ? skeleton_reference.source =  $scope.replaceSC(reference.entryTags.booktitle) : skeleton_reference.source = '';
+					if(reference.entryTags.booktitle !== undefined){
+						skeleton_reference.source =  $scope.replaceSC(reference.entryTags.booktitle);
+					} else {
+						skeleton_reference.source = '';
+					}
 					break;
 				case 'article':
 					skeleton_reference.type=reference.entryType;
-					(reference.entryTags.journal !== undefined) ? skeleton_reference.source =  $scope.replaceSC(reference.entryTags.journal) : skeleton_reference.source = '';
+					if(reference.entryTags.journal !== undefined){
+						skeleton_reference.source =  $scope.replaceSC(reference.entryTags.journal);
+					} else {
+						skeleton_reference.source = '';
+					} 
 					break;
 				case 'phdthesis':
 					skeleton_reference.type='thesis';
-					(reference.entryTags.school !== undefined) ? skeleton_reference.institution =  $scope.replaceSC(reference.entryTags.school) : skeleton_reference.institution = '';
+					if(reference.entryTags.school !== undefined){
+						skeleton_reference.institution =  $scope.replaceSC(reference.entryTags.school);
+					} else {
+						skeleton_reference.institution = '';
+					}
 					break;
 				case 'techreport':
 					skeleton_reference.type='report';
-					(reference.entryTags.institution !== undefined) ? skeleton_reference.institution =  $scope.replaceSC(reference.entryTags.institution) : skeleton_reference.institution = '';
+					if(reference.entryTags.institution !== undefined){
+						skeleton_reference.institution =  $scope.replaceSC(reference.entryTags.institution);
+					} else {
+						skeleton_reference.institution = '';
+					}
 					break;
 				case 'inproceedings':
 					skeleton_reference.type='conference_proceedings';
-					(reference.entryTags.booktitle !== undefined) ? skeleton_reference.source =  $scope.replaceSC(reference.entryTags.booktitle) : skeleton_reference.source = '';
-					(reference.entryTags.organization !== undefined) ? skeleton_reference.institution =  $scope.replaceSC(reference.entryTags.organization) : skeleton_reference.institution = '';
+					if(reference.entryTags.booktitle !== undefined){
+						skeleton_reference.source =  $scope.replaceSC(reference.entryTags.booktitle);
+					} else {
+						skeleton_reference.source = '';
+					} 
+					if(reference.entryTags.organization !== undefined){
+						skeleton_reference.institution =  $scope.replaceSC(reference.entryTags.organization);
+					} else {
+						skeleton_reference.institution = '';
+					}
 					break;
 				case 'unpublished':
 					skeleton_reference.type='working_paper';
-					(reference.entryTags.school !== undefined) ? skeleton_reference.institution =  $scope.replaceSC(reference.entryTags.school) : skeleton_reference.institution = '';
+					if(reference.entryTags.school !== undefined){
+						skeleton_reference.institution =  $scope.replaceSC(reference.entryTags.school);
+					} else {
+						skeleton_reference.institution = '';
+					}
 					break;
 				default:
 					break;
