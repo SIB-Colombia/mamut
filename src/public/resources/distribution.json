@@ -94,15 +94,15 @@
 				},
 				{
 					"countyIso" : "05040",
-					"countyName" : "AnorÍ"
+					"countyName" : "Anorí"
 				},
 				{
 					"countyIso" : "05042",
-					"countyName" : "Santafé de antioquia"
+					"countyName" : "Santa fé de antioquia"
 				},
 				{
 					"countyIso" : "05044",
-					"countyName" : "Anza"
+					"countyName" : "Anzá"
 				},
 				{
 					"countyIso" : "05045",
@@ -278,7 +278,7 @@
 				},
 				{
 					"countyIso" : "05321",
-					"countyName" : "Guatape"
+					"countyName" : "Guatapé"
 				},
 				{
 					"countyIso" : "05347",
@@ -290,7 +290,7 @@
 				},
 				{
 					"countyIso" : "05360",
-					"countyName" : "Itagui"
+					"countyName" : "Itagüí"
 				},
 				{
 					"countyIso" : "05361",
@@ -350,7 +350,7 @@
 				},
 				{
 					"countyIso" : "05490",
-					"countyName" : "NecoclÍ"
+					"countyName" : "Necoclí"
 				},
 				{
 					"countyIso" : "05495",
@@ -410,7 +410,7 @@
 				},
 				{
 					"countyIso" : "05647",
-					"countyName" : "San andrés de cuerquia"
+					"countyName" : "San andrés de cuerquía"
 				},
 				{
 					"countyIso" : "05649",
@@ -442,7 +442,7 @@
 				},
 				{
 					"countyIso" : "05665",
-					"countyName" : "San pedro de uraba"
+					"countyName" : "San pedro de urabá"
 				},
 				{
 					"countyIso" : "05667",
@@ -454,7 +454,7 @@
 				},
 				{
 					"countyIso" : "05674",
-					"countyName" : "San vicente"
+					"countyName" : "San vicente ferrer"
 				},
 				{
 					"countyIso" : "05679",
@@ -478,7 +478,7 @@
 				},
 				{
 					"countyIso" : "05756",
-					"countyName" : "Sonson"
+					"countyName" : "Sonsón"
 				},
 				{
 					"countyIso" : "05761",
@@ -526,7 +526,7 @@
 				},
 				{
 					"countyIso" : "05858",
-					"countyName" : "Vegachi"
+					"countyName" : "Vegachí"
 				},
 				{
 					"countyIso" : "05861",
@@ -538,7 +538,7 @@
 				},
 				{
 					"countyIso" : "05885",
-					"countyName" : "YalÍ"
+					"countyName" : "Yalí"
 				},
 				{
 					"countyIso" : "05887",
@@ -696,7 +696,7 @@
 			"counties":[
 				{
 					"countyIso" : "13001",
-					"countyName" : "Cartagena"
+					"countyName" : "Cartagena de indias"
 				},
 				{
 					"countyIso" : "13006",
@@ -986,7 +986,7 @@
 				},
 				{
 					"countyIso" : "15218",
-					"countyName" : "CovarachÍa"
+					"countyName" : "Covarachía"
 				},
 				{
 					"countyIso" : "15223",
@@ -1034,7 +1034,7 @@
 				},
 				{
 					"countyIso" : "15296",
-					"countyName" : "Gameza"
+					"countyName" : "Gámeza"
 				},
 				{
 					"countyIso" : "15299",
@@ -1054,7 +1054,7 @@
 				},
 				{
 					"countyIso" : "15332",
-					"countyName" : "Güicán"
+					"countyName" : "Güicán de la sierra"
 				},
 				{
 					"countyIso" : "15362",
@@ -1062,7 +1062,7 @@
 				},
 				{
 					"countyIso" : "15367",
-					"countyName" : "jenesano"
+					"countyName" : "Jenesano"
 				},
 				{
 					"countyIso" : "15368",
@@ -1362,7 +1362,7 @@
 				},
 				{
 					"countyIso" : "15842",
-					"countyName" : "Umbita"
+					"countyName" : "Úmbita"
 				},
 				{
 					"countyIso" : "15861",
@@ -1547,7 +1547,7 @@
 				},
 				{
 					"countyIso" : "18753",
-					"countyName" : "San vicente del caguan"
+					"countyName" : "San vicente del caguán"
 				},
 				{
 					"countyIso" : "18756",
@@ -1577,7 +1577,7 @@
 				},
 				{
 					"countyIso" : "85015",
-					"countyName" : "Chameza"
+					"countyName" : "Chámeza"
 				},
 				{
 					"countyIso" : "85125",
@@ -1646,6 +1646,55 @@
 			]
 		},
 		{
+			"departmentName":"Cauca",
+			"departmentIso":"CO-CAU",
+			"counties":[
+				{"countyIso": "19001","countyName":"Popayán"},
+				{"countyIso": "19022","countyName":"Almaguer"},
+				{"countyIso": "19050","countyName":"Argelia"},
+				{"countyIso": "19075","countyName":"Balboa"},
+				{"countyIso": "19100","countyName":"Bolívar"},
+				{"countyIso": "19110","countyName":"Buenos aires"},
+				{"countyIso": "19130","countyName":"Cajibío"},
+				{"countyIso": "19137","countyName":"Caldono"},
+				{"countyIso": "19142","countyName":"Caloto"},
+				{"countyIso": "19212","countyName":"Corinto"},
+				{"countyIso": "19256","countyName":"El tambo"},
+				{"countyIso": "19290","countyName":"Florencia"},
+				{"countyIso": "19300","countyName":"Guachené"},
+				{"countyIso": "19318","countyName":"Guapí"},
+				{"countyIso": "19355","countyName":"Inzá"},
+				{"countyIso": "19364","countyName":"Jambaló"},
+				{"countyIso": "19392","countyName":"La sierra"},
+				{"countyIso": "19397","countyName":"La vega"},
+				{"countyIso": "19418","countyName":"López de micay"},
+				{"countyIso": "19450","countyName":"Mercaderes"},
+				{"countyIso": "19455","countyName":"Miranda"},
+				{"countyIso": "19473","countyName":"Morales"},
+				{"countyIso": "19513","countyName":"Padilla"},
+				{"countyIso": "19517","countyName":"Páez"},
+				{"countyIso": "19532","countyName":"Patía"},
+				{"countyIso": "19533","countyName":"Piamonte"},
+				{"countyIso": "19548","countyName":"Piendamó"},
+				{"countyIso": "19573","countyName":"Puerto tejada"},
+				{"countyIso": "19585","countyName":"Puracé"},
+				{"countyIso": "19622","countyName":"Rosas"},
+				{"countyIso": "19693","countyName":"San sebastián"},
+				{"countyIso": "19698","countyName":"Santander de quilichao"},
+				{"countyIso": "19701","countyName":"Santa rosa"},
+				{"countyIso": "19743","countyName":"Silvia"},
+				{"countyIso": "19760","countyName":"Sotara"},
+				{"countyIso": "19780","countyName":"Suárez"},
+				{"countyIso": "19785","countyName":"Sucre"},
+				{"countyIso": "19807","countyName":"Timbío"},
+				{"countyIso": "19809","countyName":"Timbiquí"},
+				{"countyIso": "19821","countyName":"Toribío"},
+				{"countyIso": "19824","countyName":"Totoró"},
+				{"countyIso": "19845","countyName":"Villa rica"}
+
+			]
+		},
+		{
 			"departmentName":"Cesar",
 			"departmentIso":"CO-CES",
 			"counties":[
@@ -1711,7 +1760,7 @@
 				},
 				{
 					"countyIso" : "20443",
-					"countyName" : "Manaure"
+					"countyName" : "Manaure balcón del cesar"
 				},
 				{
 					"countyIso" : "20517",
@@ -1959,7 +2008,7 @@
 				},
 				{
 					"countyIso" : "23586",
-					"countyName" : "Purísima"
+					"countyName" : "Purísima de la concepción"
 				},
 				{
 					"countyIso" : "23660",
@@ -1967,7 +2016,7 @@
 				},
 				{
 					"countyIso" : "23670",
-					"countyName" : "San andrés sotavento"
+					"countyName" : "San andrés de sotavento"
 				},
 				{
 					"countyIso" : "23672",
@@ -2057,7 +2106,7 @@
 				},
 				{
 					"countyIso" : "25151",
-					"countyName" : "Caqueza"
+					"countyName" : "Cáqueza"
 				},
 				{
 					"countyIso" : "25154",
@@ -2069,11 +2118,11 @@
 				},
 				{
 					"countyIso" : "25175",
-					"countyName" : "ChÍa"
+					"countyName" : "Chía"
 				},
 				{
 					"countyIso" : "25178",
-					"countyName" : "chipaque"
+					"countyName" : "Chipaque"
 				},
 				{
 					"countyIso" : "25181",
@@ -2113,7 +2162,7 @@
 				},
 				{
 					"countyIso" : "25279",
-					"countyName" : "Fomeque"
+					"countyName" : "Fómeque"
 				},
 				{
 					"countyIso" : "25281",
@@ -2133,7 +2182,7 @@
 				},
 				{
 					"countyIso" : "25293",
-					"countyName" : "Gachala"
+					"countyName" : "Gachalá"
 				},
 				{
 					"countyIso" : "25295",
@@ -2177,7 +2226,7 @@
 				},
 				{
 					"countyIso" : "25328",
-					"countyName" : "Guayabal de siquima"
+					"countyName" : "Guayabal de síquima"
 				},
 				{
 					"countyIso" : "25335",
@@ -2221,7 +2270,7 @@
 				},
 				{
 					"countyIso" : "25426",
-					"countyName" : "Macheta"
+					"countyName" : "Machetá"
 				},
 				{
 					"countyIso" : "25430",
@@ -2329,7 +2378,7 @@
 				},
 				{
 					"countyIso" : "25662",
-					"countyName" : "San juan de río seco"
+					"countyName" : "San juan de rioseco"
 				},
 				{
 					"countyIso" : "25718",
@@ -2425,7 +2474,7 @@
 				},
 				{
 					"countyIso" : "25843",
-					"countyName" : "Villa de san diego de ubate"
+					"countyName" : "Villa de san diego de ubaté"
 				},
 				{
 					"countyIso" : "25845",
@@ -2610,7 +2659,7 @@
 				},
 				{
 					"countyIso" : "41357",
-					"countyName" : "Iquira"
+					"countyName" : "Íquira"
 				},
 				{
 					"countyIso" : "41359",
@@ -2854,7 +2903,7 @@
 				},
 				{
 					"countyIso" : "47660",
-					"countyName" : "Sabanas de san angel"
+					"countyName" : "Sabanas de san ángel"
 				},
 				{
 					"countyIso" : "47675",
@@ -3058,7 +3107,7 @@
 				},
 				{
 					"countyIso" : "52207",
-					"countyName" : "Consaca"
+					"countyName" : "Consacá"
 				},
 				{
 					"countyIso" : "52210",
@@ -3266,7 +3315,7 @@
 				},
 				{
 					"countyIso" : "52835",
-					"countyName" : "San andres de tumaco"
+					"countyName" : "San andrés de tumaco"
 				},
 				{
 					"countyIso" : "52838",
@@ -3288,7 +3337,7 @@
 				},
 				{
 					"countyIso" : "54003",
-					"countyName" : "Abrego"
+					"countyName" : "Ábrego"
 				},
 				{
 					"countyIso" : "54051",
@@ -3308,7 +3357,7 @@
 				},
 				{
 					"countyIso" : "54128",
-					"countyName" : "Cachirá"
+					"countyName" : "Cáchira"
 				},
 				{
 					"countyIso" : "54172",
@@ -3516,7 +3565,7 @@
 				},
 				{
 					"countyIso" : "63130",
-					"countyName" : "Calarca"
+					"countyName" : "Calarcá"
 				},
 				{
 					"countyIso" : "63190",
@@ -3774,7 +3823,7 @@
 				},
 				{
 					"countyIso" : "68298",
-					"countyName" : "Gambita"
+					"countyName" : "Gámbita"
 				},
 				{
 					"countyIso" : "68307",
@@ -3938,7 +3987,7 @@
 				},
 				{
 					"countyIso" : "68720",
-					"countyName" : "Santa helena del opon"
+					"countyName" : "Santa helena del opón"
 				},
 				{
 					"countyIso" : "68745",
@@ -4004,7 +4053,7 @@
 				},
 				{
 					"countyIso" : "70204",
-					"countyName" : "Coloso"
+					"countyName" : "Colosó"
 				},
 				{
 					"countyIso" : "70215",
@@ -4122,7 +4171,7 @@
 				},
 				{
 					"countyIso" : "73055",
-					"countyName" : "Armero"
+					"countyName" : "Armero guayabal"
 				},
 				{
 					"countyIso" : "73067",
@@ -4474,7 +4523,7 @@
 				},
 				{
 					"countyIso" : "97161",
-					"countyName" : "Caruru"
+					"countyName" : "Carurú"
 				},
 				{
 					"countyIso" : "97511",
