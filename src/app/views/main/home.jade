@@ -8,16 +8,28 @@ block content
 				#form-container
 					.page-header.text-center
 						h1 EDITOR DE FICHAS
-					a.pull-right(href="/new")
-						p Crear una nueva ficha
-					table(data-ng-table="tableParams", class="table table-striped table-bordered table-condensed")
-						tr(data-ng-repeat="field in $data track by field._id")
-							td(data-title="'Id'")
-								a(href="/edit?id={{field._id}}")
-									| {{field._id}}
+					
+					div.divider		
+					div.row
+						div.panel.panel-primary.filterable
+							div.panel-heading
+								h1.panel-title Fichas
+								a.pull-right
+									button.btn.btn-default.btn-xs.btn-filter
+										span.glyphicon.glyphicon-filter Filtro
+								a.pull-right(href="/new")
+									button.btn.btn-success(type="button")
+										h5 CREAR UNA NUEVA FICHA	
 
-							td(data-title="'Taxon'") {{field.taxonRecordName.scientificName.simple}}	
-							td(data-title="'Creador'")
-								.selected-item(data-ng-repeat='associatedParty in field.associatedParty')
-									| {{associatedParty.firstName}}-{{associatedParty.lastName}}				
+							table.table.table-striped.table-bordered.table-condensed(data-ng-table="tableParams")
+								tr(data-ng-repeat="field in $data track by field._id")
+									td(data-title="'Id'")
+										a(href="/edit?id={{field._id}}")
+											| {{field._id}}
+
+									td(data-title="'Taxon'") {{field.taxonRecordName.scientificName.simple}}	
+									td(data-title="'Creador'")
+										.selected-item(data-ng-repeat='associatedParty in field.associatedParty')
+											| {{associatedParty.firstName}}-{{associatedParty.lastName}}
+				
 					

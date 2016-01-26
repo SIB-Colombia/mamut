@@ -84,8 +84,8 @@ div(data-ng-controller='CommonNameCtrl')
 														span(class="glyphicon glyphicon-trash", aria-hidden='true')
 													button.btn(data-ng-click='editAncillaryData(commonName.ancillaryData,ancillary)')
 														span(class="glyphicon glyphicon-pencil", aria-hidden='true')
-								input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
-								button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')
+								//input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+								//button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')
 									span.glyphicon.glyphicon-search
 								.panel.panel-default
 									.panel-heading
@@ -142,7 +142,7 @@ div(data-ng-controller='CommonNameCtrl')
 											button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar 
 											button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()') Cancelar
 						.form-group
-							button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addAncillaryData(commonName.ancillaryData,ancillaryData)', translate='') Guardar I. Adicional
+							button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addAncillaryData(commonName.ancillaryData,ancillaryData)', translate='') Guardar Información adicional
 						.form-group
 							button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addCommonNamesAtomized(formData.commonNameAtomized,commonName)') Guardar
 							button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='cancelCommonNamesAtomized()') Cancelar

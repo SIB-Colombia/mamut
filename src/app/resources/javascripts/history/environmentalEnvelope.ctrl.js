@@ -18,6 +18,12 @@ angular.module('app.controllers.environmentalEnvelope',[])
 	//list of lincese
 	$scope.lincese_list = angular.copy($scope.lenguajes.licences);
 
+	$scope.checked = false; // This will be binded using the ps-open attribute
+
+	$scope.slide = function(){
+	    $scope.checked = !$scope.checked;
+	};
+
 	$scope.addEnvironmentalEnvelope = function(){
 		if($scope.formData.environmentalEnvelope.environmentalEnvelopeUnstructured !== ''){
 			console.log('enviar cambios');
@@ -29,7 +35,7 @@ angular.module('app.controllers.environmentalEnvelope',[])
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
-		if(ancillaryData.source !== ''){
+		if(ancillaryData.license !== ''){
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
@@ -72,7 +78,7 @@ angular.module('app.controllers.environmentalEnvelope',[])
        		});
 			$('#ancillaryEnvironmentalEnvelope').collapse("hide");
 		}else{
-			alert("La fuente debe ser diligenciada");
+			alert("La licencia debe ser seleccionada");
 		}	
 	};
 
@@ -134,7 +140,9 @@ angular.module('app.controllers.environmentalEnvelope',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
-			$('#referenceEnvironmentalEnvelope').collapse("hide");
+			$scope.checked = !$scope.checked;
+		}else{
+			alert("El tipo de referencia debe ser seleccionado");
 		}
 	};
 
@@ -144,11 +152,11 @@ angular.module('app.controllers.environmentalEnvelope',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
-		$('#referenceEnvironmentalEnvelope').collapse("show");
+		$scope.checked = !$scope.checked;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
-		$('#referenceEnvironmentalEnvelope').collapse("hide");
+		$scope.checked = !$scope.checked;
 	};
 }]);

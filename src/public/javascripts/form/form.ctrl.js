@@ -458,7 +458,7 @@ angular.module('app.controllers.form',[])
 
 		switch(reference.type){
 			case 'book':
-				ref += authors
+				ref += authors;
 				if(authors === ''){
 					ref += editors;
 				}

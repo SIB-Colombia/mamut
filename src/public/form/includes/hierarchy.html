@@ -15,10 +15,10 @@
                 <td>
                   <div class="parrafo-pegado">
                     <div data-ng-show="hierarchy.classification">
-                      <div>classification :{{hierarchy.classification}}</div>
+                      <div>classification:{{hierarchy.classification}}</div>
                     </div>
                     <div data-ng-show="hierarchy.recommended">
-                      <div>recommended :{{hierarchy.recommended}}</div>
+                      <div>recommended: {{hierarchy.recommended}}</div>
                     </div>
                     <div data-ng-show="hierarchy.kingdom">
                       <div>
@@ -37,22 +37,22 @@
                     </div>
                     <div data-ng-show="hierarchy.order">
                       <div>
-                        <p translate="">simplePliCTerm.name.order</p>:{{hierarchy.order}}
+                        <p translate="">simplePliCTerm.name.order</p>: {{hierarchy.order}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.family">
                       <div>
-                        <p translate="">simplePliCTerm.name.family</p>:{{hierarchy.family}}
+                        <p translate="">simplePliCTerm.name.family</p>: {{hierarchy.family}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.genus">
                       <div>
-                        <p translate="">simplePliCTerm.name.genus</p>:{{hierarchy.genus}}
+                        <p translate="">simplePliCTerm.name.genus</p>: {{hierarchy.genus}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.subGenus">
                       <div>
-                        <p translate="">simplePliCTerm.name.subgenus</p>:{{hierarchy.subGenus}}
+                        <p translate="">simplePliCTerm.name.subgenus</p>: {{hierarchy.subGenus}}
                       </div>
                     </div>
                     <!--
@@ -62,17 +62,17 @@
                     -->
                     <div data-ng-show="hierarchy.specificEpithet">
                       <div>
-                        <p translate="">simplePliCTerm.name.specificEpithet</p>:{{hierarchy.specificEpithet}}
+                        <p translate="">simplePliCTerm.name.specificEpithet</p>: {{hierarchy.specificEpithet}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.infraspecificEpithet">
                       <div>
-                        <p translate="">simplePliCTerm.name.infraSpecificEpithet</p>:{{hierarchy.infraspecificEpithet}}
+                        <p translate="">simplePliCTerm.name.infraSpecificEpithet</p>: {{hierarchy.infraspecificEpithet}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.higherClassification">
                       <div>
-                        <p translate="">simplePliCTerm.name.higherClassification</p>:{{hierarchy.higherClassification}}
+                        <p translate="">simplePliCTerm.name.higherClassification</p>: {{hierarchy.higherClassification}}
                       </div>
                     </div>
                     <!--
@@ -81,7 +81,7 @@
                     </div>
                     -->
                     <div data-ng-show="hierarchy.ancillaryData[0].source">
-                      <div>Fuente :{{hierarchy.ancillaryData[0].source}}</div>
+                      <div>Fuente: {{hierarchy.ancillaryData[0].source}}</div>
                     </div>
                   </div>
                 </td>
@@ -201,8 +201,9 @@
                   </tbody>
                 </table>
               </div>
-              <input type="text" data-ng-model="ancillaryData.source" placeholder="{{&quot;simplePliCTerm.name.source&quot;|translate}}"/>
-              <button data-ng-click="findAncillary(ancillaryData.source)" class="btn-xs"><span class="glyphicon glyphicon-search"></span></button>
+              <!--input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')-->
+              <!--button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')span.glyphicon.glyphicon-search
+              -->
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <spant>{{"simplePliCTerm.name.References"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a><span data-ng-controller="ModalCtrl">
@@ -270,7 +271,7 @@
                   </div>
                 </div>
               </div>
-              <button type="button" data-ng-click="addAncillaryData(hierarchy.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-xs pull-right">Añadir DA<span class="glyphicon glyphicon-plus"></span></button>
+              <button type="button" data-ng-click="addAncillaryData(hierarchy.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Información adicional</button>
             </div>
           </div>
           <button type="button" data-ng-click="addHierarchy(formData.hierarchy,hierarchy)" class="btn btn-success btn-sm pull-right">Guardar</button>

@@ -93,7 +93,7 @@ angular.module('app.controllers.upload',[])
 				skeleton_reference.issue = '';
 			}
 			if(reference.entryTags.abstract !== undefined){
-				skeleton_reference.abstract =  $scope.replaceSC(reference.entryTags.abstract)
+				skeleton_reference.abstract =  $scope.replaceSC(reference.entryTags.abstract);
 			} else {
 				skeleton_reference.abstract = '';
 			}

@@ -18,6 +18,12 @@ angular.module('app.controllers.behavior',[])
 	//list of lincese
 	$scope.lincese_list = angular.copy($scope.lenguajes.licences);
 
+	$scope.checked = false; // This will be binded using the ps-open attribute
+
+	$scope.slide = function(){
+	    $scope.checked = !$scope.checked;
+	};
+
 	$scope.addBehavior = function(){
 		if($scope.formData.behavior.behaviorUnstructured !== ''){
 			console.log('enviar cambios');
@@ -25,7 +31,7 @@ angular.module('app.controllers.behavior',[])
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
-		if(ancillaryData.source !== ''){
+		if(ancillaryData.license !== ''){
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
@@ -68,7 +74,7 @@ angular.module('app.controllers.behavior',[])
        		});
 			$('#ancillaryBehavior').collapse("hide");
 		}else{
-			alert("La fuente debe ser diligenciada");
+			alert("La licencia debe ser seleccionada");
 		}	
 	};
 
@@ -130,7 +136,9 @@ angular.module('app.controllers.behavior',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
-			$('#referenceBehavior').collapse("hide");
+			$scope.checked = !$scope.checked;
+		}else{
+			alert("El tipo de referencia debe ser seleccionado");
 		}
 	};
 
@@ -140,11 +148,11 @@ angular.module('app.controllers.behavior',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
-		$('#referenceBehavior').collapse("show");
+		$scope.checked = !$scope.checked;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
-		$('#referenceBehavior').collapse("hide");
+		$scope.checked = !$scope.checked;
 	};
 }]);

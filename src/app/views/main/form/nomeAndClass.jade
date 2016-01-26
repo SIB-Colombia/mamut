@@ -7,9 +7,9 @@
 				.panel-heading
 					div
 						spant(for='canonicalName', translate='') simplePliCTerm.name.ScientificName
-						| 		   			{{formData.taxonRecordName.scientificName.simple}}
+						| : {{formData.taxonRecordName.scientificName.simple}}
 					div(data-ng-show='formData.taxonRecordName.scientificName.publishedln.simple')
-						div Publicado en :{{formData.taxonRecordName.scientificName.publishedln.simple}}
+						div Publicado en: {{formData.taxonRecordName.scientificName.publishedln.simple}}
 	div(ng-include="'./form/includes/hierarchy.html'")
 	div(ng-include="'./form/includes/abstract.html'")
 	div(ng-include="'./form/includes/synonyms.html'")

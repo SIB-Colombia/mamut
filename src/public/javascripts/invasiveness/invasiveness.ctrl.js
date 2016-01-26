@@ -30,6 +30,17 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.lincese_list = angular.copy($scope.lenguajes.licences);
 	$scope.lincese_list_ato = angular.copy($scope.lenguajes.licences);
 
+	$scope.checked = false; // This will be binded using the ps-open attribute
+
+	$scope.slide = function(){
+	    $scope.checked = !$scope.checked;
+	};
+
+	$scope.checked_ato = false; // This will be binded using the ps-open attribute
+
+	$scope.slide_ato = function(){
+	    $scope.checked_ato = !$scope.checked_ato;
+	};
 
 	$scope.addInvasiveness = function(){
 		if($scope.formData.invasiveness.invasivenessUnstructured !== ''){
@@ -63,7 +74,7 @@ angular.module('app.controllers.invasiveness',[])
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
-		if(ancillaryData.source !== ''){
+		if(ancillaryData.license !== ''){
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
@@ -106,7 +117,7 @@ angular.module('app.controllers.invasiveness',[])
        		});
 			$('#ancillaryInvasiveness').collapse("hide");
 		}else{
-			alert("La fuente debe ser diligenciada");
+			alert("La licencia debe ser seleccionada");
 		}	
 	};
 
@@ -168,7 +179,9 @@ angular.module('app.controllers.invasiveness',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
-			$('#referenceInvasiveness').collapse("hide");
+			$scope.checked = !$scope.checked;
+		}else{
+			alert("El tipo de referencia debe ser seleccionado");
 		}
 	};
 
@@ -178,17 +191,17 @@ angular.module('app.controllers.invasiveness',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
-		$('#referenceInvasiveness').collapse("show");
+		$scope.checked = !$scope.checked;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
-		$('#referenceInvasiveness').collapse("hide");
+		$scope.checked = !$scope.checked;
 	};
 
 	//Atomized fields
 	$scope.addAncillaryDataAto = function(ancillaryDataList,ancillaryData){
-		if(ancillaryData.source !== ''){
+		if(ancillaryData.license !== ''){
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
@@ -231,7 +244,7 @@ angular.module('app.controllers.invasiveness',[])
        		});
 			$('#ancillaryInvasivenessAto').collapse("hide");
 		}else{
-			alert("La fuente debe ser diligenciada");
+			alert("La licencia debe ser seleccionada");
 		}	
 	};
 
@@ -289,18 +302,20 @@ angular.module('app.controllers.invasiveness',[])
 			//Reset the scope variable
 			$scope.referenceAto = origR;
 			origR = angular.copy($scope.referenceAto);
-			$('#referenceInvasivenessAto').collapse("hide");
+			$scope.checked_ato = !$scope.checked_ato;
+		}else{
+			alert("El tipo de referencia debe ser seleccionado");
 		}
 	};
 
 	$scope.editReferenceAto = function(referenceList,reference) {
 		$scope.referenceAto = angular.copy(reference);
-		$('#referenceInvasivenessAto').collapse("show");
+		$scope.checked_ato = !$scope.checked_ato;
 	};
 
-	$scope.cancelReferenceAto = function() {
+	$scope.cancelReference = function() {
 		$scope.referenceAto = angular.copy(origR);
-		$('#referenceInvasivenessAto').collapse("hide");
+		$scope.checked_ato = !$scope.checked_ato;
 	};
 
 	$scope.findAncillaryAto = function(ancillaryData){

@@ -26,7 +26,8 @@
     "ng-table":"latest",
     "angular-resource":"latest",
     "angular-route":"latest",
-    "bibtex-parser-js" : "https://github.com/ORCID/bibtexParseJs.git"
+    "bibtex-parser-js" : "https://github.com/ORCID/bibtexParseJs.git",
+    "ng-pageslide":"~1.0.8"
   },
   "resolutions": {
     "angular": ">=1.3.16"

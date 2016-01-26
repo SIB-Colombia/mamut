@@ -19,7 +19,6 @@ exports.edit = function(req, res) {
 	
 	var request = require("request");
 	var id = req.query.id;
-	var ob;
 
 	request("http://apimamut.elasticbeanstalk.com/get-record/"+id, function(error, response, body) {
 		if (!error && res.statusCode === 200) {

@@ -3,8 +3,11 @@
 // create our angular app and inject ngAnimate and ui-router
 // =======================================================================================
 angular.module('formApp', 
-	['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.translate', 'ui.directives','ui.filters', 'ui.router','ui.bootstrap','ngAnimate','ngFileUpload', 'angularModalService', 'ngResource', 'ngRoute', 
-	'app.controllers.form','app.controllers.checkBox', 'app.controllers.datepicker', 'app.controllers.collapse','app.controllers.findLanguageName','app.controllers.ubicacion','app.controllers.upload','app.controllers.modal',
+	['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.translate', 'ui.directives','ui.filters', 'ui.router',
+	'ui.bootstrap','ngAnimate','ngFileUpload', 'angularModalService', 'ngResource', 'ngRoute', 'pageslide-directive', 
+	'app.controllers.form','app.controllers.checkBox', 'app.controllers.datepicker', 'app.controllers.collapse',
+	'app.controllers.findLanguageName','app.controllers.ubicacion','app.controllers.upload',
+	'app.controllers.modal', 
 	'app.routes','app.routes.translate',
 	'app.controllers.reference' ,'app.services.reference',
 	'app.controllers.ancillary' ,'app.services.ancillary',

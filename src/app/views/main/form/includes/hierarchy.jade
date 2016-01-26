@@ -15,9 +15,9 @@ div(data-ng-controller='HierarchyCtrl')
 								td
 									.parrafo-pegado
 										div(data-ng-show='hierarchy.classification')
-											div classification :{{hierarchy.classification}}
+											div classification:{{hierarchy.classification}}
 										div(data-ng-show='hierarchy.recommended')
-											div recommended :{{hierarchy.recommended}}
+											div recommended: {{hierarchy.recommended}}
 										div(data-ng-show='hierarchy.kingdom')
 											div
 												p(translate='') simplePliCTerm.name.kingdom
@@ -33,19 +33,19 @@ div(data-ng-controller='HierarchyCtrl')
 										div(data-ng-show='hierarchy.order')
 											div
 												p(translate='') simplePliCTerm.name.order
-												| :{{hierarchy.order}}
+												| : {{hierarchy.order}}
 										div(data-ng-show='hierarchy.family')
 											div
 												p(translate='') simplePliCTerm.name.family
-												| :{{hierarchy.family}}
+												| : {{hierarchy.family}}
 										div(data-ng-show='hierarchy.genus')
 											div
 												p(translate='') simplePliCTerm.name.genus
-												| :{{hierarchy.genus}}
+												| : {{hierarchy.genus}}
 										div(data-ng-show='hierarchy.subGenus')
 											div
 												p(translate='') simplePliCTerm.name.subgenus
-												| :{{hierarchy.subGenus}}
+												| : {{hierarchy.subGenus}}
 										//
 											<div data-ng-show="hierarchy.taxonRank">
 											<div>Categoría del taxón :{{hierarchy.taxonRank}}</div>
@@ -53,21 +53,21 @@ div(data-ng-controller='HierarchyCtrl')
 										div(data-ng-show='hierarchy.specificEpithet')
 											div
 												p(translate='') simplePliCTerm.name.specificEpithet
-												| :{{hierarchy.specificEpithet}}
+												| : {{hierarchy.specificEpithet}}
 										div(data-ng-show='hierarchy.infraspecificEpithet')
 											div
 												p(translate='') simplePliCTerm.name.infraSpecificEpithet
-												| :{{hierarchy.infraspecificEpithet}}
+												| : {{hierarchy.infraspecificEpithet}}
 										div(data-ng-show='hierarchy.higherClassification')
 											div
 												p(translate='') simplePliCTerm.name.higherClassification
-												| :{{hierarchy.higherClassification}}
+												| : {{hierarchy.higherClassification}}
 										//
 											<div data-ng-show="hierarchy.parentTaxon">
 											<div>parentTaxon :{{hierarchy.parentTaxon}}</div>
 											</div>
 										div(data-ng-show='hierarchy.ancillaryData[0].source')
-											div Fuente :{{hierarchy.ancillaryData[0].source}}
+											div Fuente: {{hierarchy.ancillaryData[0].source}}
 								td
 									button.btn(data-ng-click='removeHierarchy(formData.hierarchy,hierarchy)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
@@ -181,8 +181,8 @@ div(data-ng-controller='HierarchyCtrl')
 												button.btn(data-ng-click='editAncillaryData(hierarchy.ancillaryData,ancillary)')
 													span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 
-							input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
-							button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')
+							//input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+							//button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')
 								span.glyphicon.glyphicon-search
 							.panel.panel-default
 								.panel-heading
@@ -240,8 +240,6 @@ div(data-ng-controller='HierarchyCtrl')
 										button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia 
 										button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()') Cancelar
 
-							button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addAncillaryData(hierarchy.ancillaryData,ancillaryData)', translate='')
-								| Añadir DA
-								span.glyphicon.glyphicon-plus
+							button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addAncillaryData(hierarchy.ancillaryData,ancillaryData)', translate='') Guardar Información adicional
 					button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addHierarchy(formData.hierarchy,hierarchy)') Guardar
 					button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='cancelHierarchy()') Cancelar

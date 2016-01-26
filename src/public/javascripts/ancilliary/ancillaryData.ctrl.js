@@ -16,6 +16,12 @@ angular.module('app.controllers.ancillary',[])
 	//list of lincese
 	$scope.lincese_list = angular.copy($scope.lenguajes.licences);
 
+	$scope.checked = false; // This will be binded using the ps-open attribute
+
+	$scope.slide = function(){
+        $scope.checked = !$scope.checked;
+    };
+    
 	$scope.addAncillaries = function(){
 		if($scope.formData.ancillaryData.length > 0){
 			console.log('enviar cambios');
@@ -46,10 +52,6 @@ angular.module('app.controllers.ancillary',[])
 			var imageDOM = document.getElementById("imageD");
 			if(imageDOM !== undefined && imageDOM!==null){
 				imageDOM.parentNode.removeChild(imageDOM);
-			}
-
-			if(license !== undefined && license!==null){
-				license.parentNode.removeChild(license);
 			}
 
 			angular.forEach($scope.lincese_list, function(item) {
@@ -107,7 +109,7 @@ angular.module('app.controllers.ancillary',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
-			$('#referenceAncillary').collapse("hide");
+			$scope.checked = !$scope.checked;
 		}
 	};
 
@@ -117,16 +119,16 @@ angular.module('app.controllers.ancillary',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
-		$('#referenceAncillary').collapse("show");
+		$scope.checked = !$scope.checked;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
-		$('#referenceAncillary').collapse("hide");
+		$scope.checked = !$scope.checked;
 	};
 
 	$scope.getInfoLicence = function(url, ancillary) {
-		if (url !== undefined && url !== '') {
+		if (url !== undefined && url.length > 0) {
 			var url_parts = url.split('/');
 			if (url.indexOf('www.flickr.com') > -1) {
 				var photo_id = url_parts[5];
@@ -203,6 +205,7 @@ angular.module('app.controllers.ancillary',[])
 					});
 			}
 			if (url.indexOf('commons.wikimedia.org') > -1) {
+				
 				var imagen = (url_parts[url_parts.length - 1]).split(':')[1];
 				$.ajax({
 					url: 'https://commons.wikimedia.org/w/api.php?action=query&titles=Image:' + imagen + '&prop=imageinfo&iiprop=extmetadata&format=json',
@@ -213,11 +216,14 @@ angular.module('app.controllers.ancillary',[])
 						'Api-User-Agent': 'Example/1.0'
 					},
 					success: function(data) {
+						console.log(data);
+						$scope.imageurl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/'+imagen+'/320px-'+imagen;
 						var info = data.query.pages[Object.keys(data.query.pages)[0]].imageinfo[0].extmetadata;
 						ancillary.source = url;
 						ancillary.rightsHolder = info.Artist.value;
 						ancillary.bibliographicCitation = info.ImageDescription.value;
 						
+
 						var license ='';
 						if(info.LicenseUrl===undefined){
 							license = info.LicenseShortName.value;

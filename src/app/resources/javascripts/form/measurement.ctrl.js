@@ -73,7 +73,7 @@ angular.module('app.controllers.measurement',[])
 		if (name !== undefined) {
 			$scope.measurementOrFact = new MeasurementFactory().measurement;
 			measurementCopy = angular.copy($scope.measurementOrFact);
-			angular.forEach($scope.selectedAttr, function(attr) {
+			angular.forEach($scope.selectedAttr_2, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
@@ -206,7 +206,7 @@ angular.module('app.controllers.measurement',[])
 		if (name !== undefined) {
 			$scope.measurementOrFact = new MeasurementFactory().measurement;
 			measurementCopy = angular.copy($scope.measurementOrFact);
-			angular.forEach($scope.selectedAttr, function(attr) {
+			angular.forEach($scope.selectedAttr_2, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
@@ -247,7 +247,7 @@ angular.module('app.controllers.measurement',[])
 		if (name !== undefined) {
 			$scope.measurementOrFact = new MeasurementFactory().measurement;
 			measurementCopy = angular.copy($scope.measurementOrFact);
-			angular.forEach($scope.selectedAttr, function(attr) {
+			angular.forEach($scope.selectedAttr_3, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
@@ -322,7 +322,7 @@ angular.module('app.controllers.measurement',[])
 		if (name !== undefined) {
 			$scope.measurementOrFact = new MeasurementFactory().measurement;
 			measurementCopy = angular.copy($scope.measurementOrFact);
-			angular.forEach($scope.selectedAttr, function(attr) {
+			angular.forEach($scope.selectedAttr_2, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.formData.directThreats.directThreatsAtomized.measurementOrFact.measurementType = attr.measurementtype;
 					$scope.formData.directThreats.directThreatsAtomized.measurementOrFact.measurementValue = name;

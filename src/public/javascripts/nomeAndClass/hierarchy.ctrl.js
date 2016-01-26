@@ -50,7 +50,7 @@ angular.module('app.controllers.hierarchy',[])
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
-		if(ancillaryData.source !== ''){
+		if(ancillaryData.license !== ''){
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			var insert = true;
 			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
@@ -79,7 +79,7 @@ angular.module('app.controllers.hierarchy',[])
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 		}else{
-			alert("La fuente debe ser diligenciada");
+			alert("La licencia debe ser seleccionada");
 		}	
 	};
 

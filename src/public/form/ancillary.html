@@ -23,7 +23,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-ng-repeat="ancillary in formData.ancillaryData">
+              <tr data-ng-repeat="ancillary in formData.ancillaryData | filter:{mediaURL:'!null'}">
                 <td>
                   <div data-ng-show="ancillary.source">{{ancillary.source}}</div>
                 </td>
@@ -61,7 +61,7 @@
           <label for="license" translate="" class="col-xs-2 control-label">simplePliCTerm.name.license</label>
           <div class="col-xs-10">
             <div data-ng-controller="CheckBoxCrtl" class="panel">
-              <div data-ng-repeat="lic in lincese_list">
+              <div data-ng-repeat="lic in lincese_list | filter:{nombre : '!Otra'}">
                 <input type="checkbox" data-ng-model="lic.checked" data-ng-click="updateSelectionLicence(lic, lincese_list,&quot;ManualLicense&quot;)"/><a data-ng-href="{{lic.url}}" target="_blank"><img id="image" data-ng-src="{{lic.image_url || '//:0' }}" hspace="10" vspace="10"/>{{lic.nombre}}</a>
                 <spant data-ng-show="lic.definicion"></spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{lic.definicion}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
               </div>
@@ -91,39 +91,40 @@
         <div class="form-group">
           <label for="source" translate="" class="col-xs-2 control-label">simplePliCTerm.name.References</label>
           <div class="col-xs-10">
-            <div class="panel panel-default">
-              <div data-ng-controller="CollapseDemoCtrl"><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a><span data-ng-controller="ModalCtrl">
-                  <script type="text/ng-template" id="referenceSearch">
-                    <div class="modal-header">
-                      <h3 class="modal-title">Referencias disponibles
-                        <button data-ng-click="cancel()" class="btn btn-xs pull-right"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
-                      </h3>
+            <div class="panel panel-default"><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.References&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a><span data-ng-controller="ModalCtrl">
+                <script type="text/ng-template" id="referenceSearch">
+                  <div class="modal-header">
+                    <h3 class="modal-title">Referencias disponibles
+                      <button data-ng-click="cancel()" class="btn btn-xs pull-right"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
+                    </h3>
+                  </div>
+                  <div class="modal-body">
+                    <div data-ng-repeat="item in items track by $index">
+                      <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" data-ng-click="toggleSelection(item)"/>{{item|references_format_without_url}}
                     </div>
-                    <div class="modal-body">
-                      <div data-ng-repeat="item in items track by $index">
-                        <input type="checkbox" ng-checked="list.indexOf(item) &gt; -1" data-ng-click="toggleSelection(item)"/>{{item|references_format_without_url}}
-                      </div>
-                    </div>
-                    <div class="modal-footer"></div>
-                  </script>
-                  <button data-ng-click="open(formData.references,ancillaryData.reference)" class="btn btn-success btn-xs pull-right"><span class="glyphicon glyphicon-search"></span></button></span>
-                <button data-ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button>
-                <div data-ng-show="(ancillaryData.reference).length" class="table-responsive">
-                  <table class="table table-striped">
-                    <tbody>
-                      <tr data-ng-repeat="ref in ancillaryData.reference track by $index">
-                        <td class="col-xs-9">
-                          <textarea disabled="disabled">{{ref|references_format}}</textarea>
-                        </td>
-                        <td class="col-xs-1">
-                          <button data-ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                          <button data-ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div uib-collapse="isCollapsed_1" id="referenceAncillary">
+                  </div>
+                  <div class="modal-footer"></div>
+                </script>
+                <button data-ng-click="open(formData.references,ancillaryData.reference)" class="btn btn-success btn-xs pull-right"><span class="glyphicon glyphicon-search"></span></button></span>
+              <button href="" data-ng-click="slide()" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': !checked , 'glyphicon glyphicon-minus' : checked}" aria-hidden="true"></span></button>
+              <div data-ng-show="(ancillaryData.reference).length" class="table-responsive">
+                <table class="table table-striped">
+                  <tbody>
+                    <tr data-ng-repeat="ref in ancillaryData.reference track by $index">
+                      <td class="col-xs-9">
+                        <textarea disabled="disabled">{{ref|references_format}}</textarea>
+                      </td>
+                      <td class="col-xs-1">
+                        <button data-ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                        <button data-ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div pageslide="pageslide" ps-open="checked" ps-key-listener="true">
+                <div style="padding:30px" id="demo-right">
+                  <h3>Agregar nueva referencia</h3>
                   <div class="form-group">
                     <select data-ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
                       <option value="">- {{"simplePliCTerm.name.type"|translate}} </option>

@@ -79,56 +79,40 @@ div(data-ng-controller='EcologicalSignificanceCtrl')
 												button.btn(data-ng-click='editAncillaryData(formData.ecologicalSignificance.ancillaryData,ancillary)')
 													span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 
-						button.btn.btn-primary.btn-sm.pull-right(type='button', data-ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
-						.col-xs-10
+						button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='isCollapsed = !isCollapsed') Referencias y licencias
+						div.divider
+						.col-xs-9.col-xs-offset-1
 							div(uib-collapse='isCollapsed', id='ancillaryEcologicalSignificance')
-								input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
-								button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')
+								//input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
+								//button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')
 									span.glyphicon.glyphicon-search
-								input(type='text', data-ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
-								input(type='text', data-ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
 								.form-group
-									label.control-label(for='license', translate='') simplePliCTerm.name.license
-									panel(data-ng-controller='CheckBoxCrtl')
-										div(data-ng-repeat='lic in lincese_list')
-											input(type='checkbox', data-ng-model='lic.checked', data-ng-click='updateSelectionLicence(lic, lincese_list, "ManualLicenseEcological")')
-											a(data-ng-href='{{lic.url}}',target="_blank")
-												img(id="image", data-ng-src="{{lic.image_url || '//:0' }}", hspace=10, vspace =7)
-												{{lic.nombre}}
-											spant(data-ng-show='lic.definicion')
-											a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lic.definicion}}')
-												span.glyphicon.glyphicon-info-sign
-										p(id='ManualLicenseEcological')
-								//input(type='text', data-ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
-								
-								.panel.panel-default
-									.panel-heading
-										spant {{"simplePliCTerm.name.References"|translate}}
-										a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
-											span.glyphicon.glyphicon-info-sign
-										span(data-ng-controller="ModalCtrl")
-											script(type = "text/ng-template" id="referenceSearch")
-												include referenceSearch
-											button.btn.btn-success.btn-xs.pull-right(data-ng-click="open(formData.references,ancillaryData.reference)")
-												span.glyphicon.glyphicon-search
-										button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed_1 = !isCollapsed_1')
-											span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
-										
-									.panel-body
-										div.table-responsive(data-ng-show='(ancillaryData.reference).length')
-											table.table.table-striped
-												tbody
-													tr(data-ng-repeat="ref in ancillaryData.reference track by $index")
-														td.col-xs-9
-															textarea(disabled)
-																| {{ref|references_format}}
-														td.col-xs-1
-															button.btn(data-ng-click='removeReference(ancillaryData.reference,ref)')
-																span(class="glyphicon glyphicon-trash", aria-hidden='true')
-															button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
-																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
-				
-										div(uib-collapse='isCollapsed_1', id='referenceEcologicalSignificance')
+									label.control-label(for='reference', translate='') simplePliCTerm.name.References
+									a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
+										span.glyphicon.glyphicon-info-sign
+									span(data-ng-controller="ModalCtrl")
+										script(type = "text/ng-template" id="referenceSearch")
+											include referenceSearch
+										button.btn.btn-success.btn-xs(data-ng-click="open(formData.references,ancillaryData.reference)")
+											span.glyphicon.glyphicon-search
+									button.btn.btn-success.btn-xs(href="", data-ng-click="slide()")
+										span(ng-class="{'glyphicon glyphicon-plus': !checked , 'glyphicon glyphicon-minus' : checked}", aria-hidden='true')
+									hr
+									div.table-responsive(data-ng-show='(ancillaryData.reference).length')
+										table.table.table-striped
+											tbody
+												tr(data-ng-repeat="ref in ancillaryData.reference track by $index")
+													td.col-xs-9
+														textarea(disabled)
+															| {{ref|references_format}}
+													td.col-xs-1
+														button.btn(data-ng-click='removeReference(ancillaryData.reference,ref)')
+															span(class="glyphicon glyphicon-trash", aria-hidden='true')
+														button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
+															span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+									div(pageslide ps-open="checked" ps-key-listener="true")
+										div(style="padding:30px" id="demo-right")
+											h3 Agregar nueva referencia
 											.form-group
 												select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 													option(value='') - {{"simplePliCTerm.name.type"|translate}} 
@@ -153,7 +137,25 @@ div(data-ng-controller='EcologicalSignificanceCtrl')
 												input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
 												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-											button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
-											button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()') Cancelar
+												button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
+												button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()', translate='') Cancelar
+								.form-group
+									label.control-label(for='license', translate='') simplePliCTerm.name.license
+									panel(data-ng-controller='CheckBoxCrtl')
+										div(data-ng-repeat="lic in lincese_list | filter:{nombre : '!Otra'}")
+											input(type='checkbox', data-ng-model='lic.checked', data-ng-click='updateSelectionLicence(lic, lincese_list, "ManualLicenseFullDescription")')
+											a(data-ng-href='{{lic.url}}',target="_blank")
+												img(id="image", data-ng-src="{{lic.image_url || '//:0' }}", hspace=10, vspace =7)
+												{{lic.nombre}}
+											spant(data-ng-show='lic.definicion')
+											a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lic.definicion}}')
+												span.glyphicon.glyphicon-info-sign
+										p(id='ManualLicenseFullDescription')
+										p(style="font-size:90%;")
+											i * Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co
+									label.control-label(for='rights', translate='') simplePliCTerm.name.rights
+									input(type='text', data-ng-model='ancillaryData.rights')
+									label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
+									input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
 								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.ecologicalSignificance.ancillaryData,ancillaryData)', translate='') Guardar
 								button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar

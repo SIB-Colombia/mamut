@@ -17,6 +17,12 @@ angular.module('app.controllers.annualCycle',[])
 	var origAU = angular.copy($scope.annualCycleAtomizedType);
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
+
+	$scope.checked = false; // This will be binded using the ps-open attribute
+
+	$scope.slide = function(){
+	    $scope.checked = !$scope.checked;
+	};
 	
 	$scope.addAnnualCycleAtomizedType = function(annualCycleAtomizedType, annualCycle) {
 		if (JSON.stringify(annualCycleAtomizedType) !== JSON.stringify(origAU)){
@@ -27,7 +33,12 @@ angular.module('app.controllers.annualCycle',[])
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
-		if(ancillaryData.source !== ''){
+		if(ancillaryData.license !== ''){
+			var license = document.getElementById("ancillaryData.license");
+			if(license !== undefined && license!==null){
+				ancillaryData.license = license.value;
+				license.parentNode.removeChild(license);
+			}
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
 			angular.forEach(ancillaryData.reference, function(reference) {
@@ -56,6 +67,9 @@ angular.module('app.controllers.annualCycle',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
+			$scope.checked = !$scope.checked;
+		}else{
+			alert("El tipo de referencia debe ser seleccionado");
 		}
 	};
 
@@ -65,5 +79,11 @@ angular.module('app.controllers.annualCycle',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
+		$scope.checked = !$scope.checked;
+	};
+
+	$scope.cancelReference = function() {
+		$scope.reference = angular.copy(origR);
+		$scope.checked = !$scope.checked;
 	};
 }]);

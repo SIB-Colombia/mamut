@@ -42,7 +42,6 @@ angular.module('app.services.measurement',[])
 		};
 
 		this.addMeasurementOrFactVector = function(measurementOrFact, measurement){
-			console.log(measurement);
 			measurementOrFact.push({'measurementOrFact':measurement.measurementOrFact,'ancillaryData':measurement.ancillaryData});
 		};
 

@@ -15,6 +15,16 @@ angular.module('app.controllers.taxonRecordName',[])
 	//Get Taxomic Information from GBIF
 	$scope.getTaxonInformation = function(taxonName) {
 		var keyValue = '';
+		//drop old information
+		$scope.formData.synonymsAtomized = [];
+		$scope.formData.commonNameAtomized = [];
+		$scope.formData.hierarchy = [];
+		$scope.formData.taxonRecordName.scientificName.simple =  taxonName; 
+		$scope.formData.taxonRecordName.scientificName.rank =  '';
+		$scope.formData.taxonRecordName.scientificName.canonicalName.simple =  '';
+		$scope.formData.taxonRecordName.scientificName.canonicalAuthorship.simple =  '';
+		$scope.formData.taxonRecordName.scientificName.publishedln.simple = '';
+		
 		$.ajaxSetup({
 		    beforeSend: function(xhr) {
 		        xhr.setRequestHeader('Accept-Language', 'en-US,en;q=0.8,es;q=0.6');
@@ -23,10 +33,7 @@ angular.module('app.controllers.taxonRecordName',[])
 		$.getJSON('http://api.gbif.org/v1/species?name=' + taxonName + '&limit=1',function( data ) {
   			if (data.results.length > 0) {
 				$scope.$apply(function() {
-					//drop old information
-					$scope.formData.synonymsAtomized = [];
-					$scope.formData.commonNameAtomized = [];
-					$scope.formData.hierarchy = [];
+					
 					//taxonRecordName
 					$scope.formData.taxonRecordName.scientificName.simple = (data.results[0].scientificName !== undefined) ? data.results[0].scientificName : '';
 					$scope.formData.taxonRecordName.scientificName.rank = (data.results[0].rank !== undefined) ? data.results[0].rank : '';
@@ -321,8 +328,6 @@ angular.module('app.controllers.taxonRecordName',[])
 						});
 					}
 				});
-			}else{
-				$scope.formData.taxonRecordName.scientificName.simple = taxonName;
 			}
 		});
 	};
