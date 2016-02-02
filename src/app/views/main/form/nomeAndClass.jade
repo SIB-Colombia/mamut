@@ -6,8 +6,14 @@
 			.panel.panel-default
 				.panel-heading
 					div
-						spant(for='canonicalName', translate='') simplePliCTerm.name.ScientificName
+						spant(for='scientificName', translate='') simplePliCTerm.name.ScientificName
 						| : {{formData.taxonRecordName.scientificName.simple}}
+					div
+						spant(for='canonicalName', translate='') Nombre canónico
+						| : {{formData.taxonRecordName.scientificName.canonicalName.simple}}
+					div
+						spant(for='canonicalAuthorship', translate='') Autoria del Nombre científico
+						| : {{formData.taxonRecordName.scientificName.canonicalAuthorship.simple}}
 					div(data-ng-show='formData.taxonRecordName.scientificName.publishedln.simple')
 						div Publicado en: {{formData.taxonRecordName.scientificName.publishedln.simple}}
 	div(ng-include="'./form/includes/hierarchy.html'")

@@ -46,10 +46,9 @@ div(data-ng-controller='HierarchyCtrl')
 											div
 												p(translate='') simplePliCTerm.name.subgenus
 												| : {{hierarchy.subGenus}}
-										//
-											<div data-ng-show="hierarchy.taxonRank">
-											<div>Categoría del taxón :{{hierarchy.taxonRank}}</div>
-											</div>
+										div(data-ng-show='hierarchy.taxonRank')
+											div
+												| Categoría del taxón :{{hierarchy.taxonRank}}
 										div(data-ng-show='hierarchy.specificEpithet')
 											div
 												p(translate='') simplePliCTerm.name.specificEpithet
