@@ -10,7 +10,7 @@
     </div>
     <div class="panel-body">
       <div data-ng-show="(formData.endemicAtomized).length" class="table-responsive">
-        <table class="table table-bordered">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th>{{"simplePliCTerm.name.EndemicTo"|translate}}</th>
@@ -39,7 +39,7 @@
         <div class="col-xs-7">
           <input name="endemicTo" type="text" data-ng-model="endemicTo"/>
           <div data-ng-show="(endemicAtomizedType.endemicTo).length" class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th>{{"simplePliCTerm.name.EndemicTo"|translate}}</th>
@@ -70,7 +70,7 @@
       <div data-ng-controller="CollapseDemoCtrl">
         <div class="form-group">
           <div data-ng-show="(endemicAtomizedType.ancillaryData).length" class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>

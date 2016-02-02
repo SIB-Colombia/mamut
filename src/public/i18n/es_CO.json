@@ -275,7 +275,7 @@
     "simplePliCTerm.name.InteractionAtomized": "Interacción atomizada",
     "simplePliCTerm.definition.InteractionAtomized": "Interactions element in structured format.",
     "simplePliCTerm.comments.InteractionAtomized": "Example: ",
-    "simplePliCTerm.name.InteractionSpecies": "Relación con otras especies",
+    "simplePliCTerm.name.InteractionSpecies": "Especie con la que interactúa",
     "simplePliCTerm.definition.InteractionSpecies": "Information category concerning relations between resources (instances or records, such as Occurrences, Taxa, Locations, Events,...). ",
     "simplePliCTerm.comments.InteractionSpecies": "Example: * 'Apis mellifera polinates Cistus ladanifer' * relationshipOfResource: polinator * resourceID: the id of the taxon of the record * relatedResourceID: identifier for a related resource",
     "simplePliCTerm.name.InteractionSpeciesType": "Tipo de Interacción",

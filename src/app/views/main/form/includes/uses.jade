@@ -10,7 +10,7 @@ div(data-ng-controller='UsesCtrl')
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			div.table-responsive(data-ng-show='(formData.usesManagementAndConservation.usesAtomized).length')
-				table.table.table-bordered
+				table.table.table-striped
 					thead
 						tr
 							th {{"simplePliCTerm.name.SourceOfInformation"|translate}}
@@ -133,7 +133,7 @@ div(data-ng-controller='UsesCtrl')
 				div(data-ng-controller='CollapseDemoCtrl')
 					.form-group
 						div.table-responsive(data-ng-show='(usesAtomizedType.ancillaryData).length')
-							table.table.table-bordered
+							table.table.table-striped
 								thead
 									tr
 										th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}

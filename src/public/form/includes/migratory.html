@@ -11,7 +11,7 @@
     <div class="panel-body">
       <div class="form-group">
         <div data-ng-show="(formData.migratory.migratoryAtomized).length" class="table-responsive">
-          <table class="table table-bordered">
+          <table class="table table-striped">
             <thead>
               <tr>
                 <th>{{"simplePliCTerm.name.Causes"|translate}}</th>
@@ -25,7 +25,7 @@
               <tr data-ng-repeat="migratoryAtomized in formData.migratory.migratoryAtomized track by $index">
                 <td>{{migratoryAtomized.causes}}</td>
                 <td>{{migratoryAtomized.patterns}}</td>
-                <td>{{migratoryAtomized.routes}}</td>
+                <td>{{migratoryAtomized.routes|empty_vectors}}</td>
                 <td>{{migratoryAtomized.season}}	</td>
                 <td>
                   <button data-ng-click="removeMigratoryAtomized(formData.migratory.migratoryAtomized,migratoryAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
@@ -69,7 +69,7 @@
         <div data-ng-controller="CollapseDemoCtrl">
           <div class="form-group">
             <div data-ng-show="(formData.migratory.ancillaryData).length" class="table-responsive">
-              <table class="table table-bordered">
+              <table class="table table-striped">
                 <thead>
                   <tr>
                     <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>

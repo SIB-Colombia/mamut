@@ -10,7 +10,7 @@ div(data-ng-controller='EndemicCtrl')
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true') 
 		.panel-body
 			div.table-responsive(data-ng-show='(formData.endemicAtomized).length')
-				table.table.table-bordered
+				table.table.table-striped
 					thead
 						tr
 							th {{"simplePliCTerm.name.EndemicTo"|translate}}
@@ -35,7 +35,7 @@ div(data-ng-controller='EndemicCtrl')
 				.col-xs-7
 					input(name='endemicTo', type='text', data-ng-model='endemicTo')
 					div.table-responsive(data-ng-show='(endemicAtomizedType.endemicTo).length')
-						table.table.table-bordered
+						table.table.table-striped
 							thead
 								tr
 									th {{"simplePliCTerm.name.EndemicTo"|translate}}
@@ -57,7 +57,7 @@ div(data-ng-controller='EndemicCtrl')
 			div(data-ng-controller='CollapseDemoCtrl')
 				.form-group
 					div.table-responsive(data-ng-show='(endemicAtomizedType.ancillaryData).length')
-						table.table.table-bordered
+						table.table.table-striped
 							thead
 								tr
 									th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}

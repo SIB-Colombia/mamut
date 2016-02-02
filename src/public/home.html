@@ -20,24 +20,48 @@
               <div class="page-header text-center">
                 <h1>EDITOR DE FICHAS</h1>
               </div>
-              <div class="divider">		</div>
+              <div class="row">
+                <div class="col-md-3"><a href="/new">
+                    <button type="button" class="btn btn-success">CREAR UNA NUEVA FICHA	</button></a></div>
+                <div class="col-md-9">
+                  <form data-ng-submit="search()">
+                    <div class="input-group">
+                      <input type="search" name="q" x-webkit-speech data-ng-model="searchT" placeholder="Buscar las fichas del creador..." required class="form-control"><span class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button></span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="divider"></div>
               <div class="row">
                 <div class="panel panel-primary filterable">
                   <div class="panel-heading">
-                    <h1 class="panel-title">Fichas</h1><a class="pull-right">
-                      <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter">Filtro</span></button></a><a href="/new" class="pull-right">
-                      <button type="button" class="btn btn-success">
-                        <h5>CREAR UNA NUEVA FICHA	</h5>
-                      </button></a>
+                    <h3 class="panel-title">Fichas</h3>
+                    <button class="btn btn-default btn-xs btn-filter pull-right"><span class="glyphicon glyphicon-filter">Filtro</span></button>
                   </div>
-                  <table data-ng-table="tableParams" class="table table-striped table-bordered table-condensed">
-                    <tr data-ng-repeat="field in $data track by field._id">
-                      <td data-title="'Id'"><a href="/edit?id={{field._id}}">{{field._id}}</a></td>
-                      <td data-title="'Taxon'">{{field.taxonRecordName.scientificName.simple}}	</td>
-                      <td data-title="'Creador'">
-                        <div data-ng-repeat="associatedParty in field.associatedParty" class="selected-item">{{associatedParty.firstName}}-{{associatedParty.lastName}}</div>
-                      </td>
-                    </tr>
+                  <table data-ng-table="tableParams" class="table">
+                    <thead>
+                      <tr class="filters">
+                        <th>
+                          <input type="text" placeholder="Id" disabled class="form-control">
+                        </th>
+                        <th>
+                          <input type="text" placeholder="Taxon" disabled class="form-control">
+                        </th>
+                        <th>
+                          <input type="text" placeholder="Creador" disabled class="form-control">
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-ng-repeat="field in $data track by field._id">
+                        <td> <a href="/edit?id={{field._id}}">{{field._id}}</a></td>
+                        <td>{{field.taxonRecordName.scientificName.simple}}</td>
+                        <td>
+                          <div data-ng-repeat="associatedParty in field.associatedParty" class="selected-item">{{associatedParty.firstName}}-{{associatedParty.lastName}}</div>
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                 </div>
               </div>

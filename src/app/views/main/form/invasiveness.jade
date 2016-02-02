@@ -11,7 +11,7 @@ div(data-ng-controller='InvasivenessCtrl')
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 			.panel-body
 				div.table-responsive(data-ng-show='(formData.invasiveness.invasivenessAtomized).length')
-					table.table.table-bordered
+					table.table.table-striped
 					
 						tbody
 							tr(data-ng-repeat="invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized track by $index")
@@ -286,7 +286,7 @@ div(data-ng-controller='InvasivenessCtrl')
 						textarea(rows='3', name='mechanism', data-ng-model='invasivenessAtomizedType.mechanism')
 				.form-group
 					div.table-responsive(data-ng-show='(invasivenessAtomizedType.ancillaryData).length')
-						table.table.table-bordered
+						table.table.table-striped
 							thead
 								tr
 									th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
@@ -409,7 +409,7 @@ div(data-ng-controller='InvasivenessCtrl')
 					em (opcional)
 					textarea(rows='3', name='invasiveness', data-ng-model='formData.invasiveness.invasivenessUnstructured')
 					div.table-responsive(data-ng-show='(formData.invasiveness.ancillaryData).length')
-						table.table.table-bordered
+						table.table.table-striped
 							thead
 								tr
 									th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}

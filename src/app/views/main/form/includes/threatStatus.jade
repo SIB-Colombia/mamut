@@ -10,7 +10,7 @@ div(data-ng-controller='ThreatStatusCtrl')
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			div.table-responsive(data-ng-show='(formData.threatStatus).length')
-				table.table.table-bordered
+				table.table.table-striped
 					thead
 						tr
 							th {{"simplePliCTerm.name.Authority"|translate}}
@@ -86,7 +86,7 @@ div(data-ng-controller='ThreatStatusCtrl')
 				div(data-ng-controller='CollapseDemoCtrl')
 					.form-group
 						div.table-responsive(data-ng-show='(threatStatusClass.ancillaryData).length')
-							table.table.table-bordered
+							table.table.table-striped
 								thead
 									tr
 										th {{"simplePliCTerm.name.source"|translate}}

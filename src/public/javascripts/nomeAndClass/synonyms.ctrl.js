@@ -19,6 +19,12 @@ angular.module('app.controllers.synonmy',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.checked = false; // This will be binded using the ps-open attribute
+
+	$scope.slide = function(){
+	    $scope.checked = !$scope.checked
+	}
+
 
 	//ADD
 	$scope.addSynonymsAtomized = function(synonymsAtomized, synonmy) {
@@ -104,22 +110,23 @@ angular.module('app.controllers.synonmy',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
-			$scope.isCollapsed_1 = true;
-			$('#referenceSysnonym').collapse("hide");
-		}	
+			$scope.checked = !$scope.checked;
+		}else{
+			alert("El tipo de referencia debe ser seleccionado");
+		}
 	};
 
 	$scope.removeReference = function(referenceList,reference){
-		referenceFactoryLocal.deleteFrom(referenceList,reference);	
+		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
-		$('#referenceSysnonym').collapse("show");
+		$scope.checked = !$scope.checked;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
-		$('#referenceSysnonym').collapse("hide");
+		$scope.checked = !$scope.checked;
 	};
 }]);

@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="ancillaryData" translate="" class="col-xs-2 control-label">simplePliCTerm.name.AncillaryData</label>
+            <label for="ancillaryData" translate="" class="col-xs-2 control-label">Referencias y licencias</label>
             <div class="col-xs-10">
               <div data-ng-show="(synonmy.ancillaryData).length" class="table-responsive">
                 <table class="table table-striped">
@@ -99,7 +99,7 @@
                       <div class="modal-footer"></div>
                     </script>
                     <button data-ng-click="open(formData.references,ancillaryData.reference)" class="btn btn-success btn-xs pull-right"><span class="glyphicon glyphicon-search"></span></button></span>
-                  <button data-ng-click="isCollapsed_1 = !isCollapsed_1" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}" aria-hidden="true"></span></button>
+                  <button href="" data-ng-click="slide()" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': !checked , 'glyphicon glyphicon-minus' : checked}" aria-hidden="true"></span></button>
                 </div>
                 <div class="panel-body">
                   <div data-ng-show="(ancillaryData.reference).length" class="table-responsive">
@@ -117,35 +117,38 @@
                       </tbody>
                     </table>
                   </div>
-                  <div uib-collapse="isCollapsed_1" id="referenceSysnonym">
-                    <div class="form-group">
-                      <select data-ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
-                        <option value="">- {{"simplePliCTerm.name.type"|translate}} </option>
-                      </select>
-                      <input type="text" data-ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.link" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
-                      <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
-                      <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
+                  <div pageslide="pageslide" ps-open="checked" ps-key-listener="true">
+                    <div style="padding:30px" id="demo-right">
+                      <h3>Agregar nueva referencia</h3>
+                      <div class="form-group">
+                        <select data-ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
+                          <option value="">- {{"simplePliCTerm.name.type"|translate}} </option>
+                        </select>
+                        <input type="text" data-ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.link" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
+                        <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
+                        <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
+                        <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs pull-right">Guardar</button>
+                        <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                      </div>
                     </div>
-                    <button type="button" data-ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs pull-right">Guardar</button>
-                    <button type="button" data-ng-click="cancelReference()" class="btn btn-primary btn-xs pull-right">Cancelar</button>
                   </div>
                 </div>
               </div>

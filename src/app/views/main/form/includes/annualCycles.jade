@@ -32,7 +32,7 @@ div(data-ng-controller='AnnualCyclesCtrl')
 				.form-group
 					label.col-xs-2.control-label(for='startTimeInterval', translate='') simplePliCTerm.name.AncillaryData
 					div.table-responsive(data-ng-show='(annualCycleAtomizedType.ancillaryData).length')
-							table.table.table-bordered
+							table.table.table-striped
 								thead
 									tr
 										th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
@@ -154,7 +154,7 @@ div(data-ng-controller='AnnualCyclesCtrl')
 				div(data-ng-controller='CollapseDemoCtrl')
 					.form-group
 						div.table-responsive(data-ng-show='(formData.annualCycle.ancillaryData).length')
-							table.table.table-bordered
+							table.table.table-striped
 								thead
 									tr
 										th {{"simplePliCTerm.name.bibliographicCitation"|translate}}

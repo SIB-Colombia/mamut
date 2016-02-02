@@ -160,7 +160,7 @@ div(data-ng-controller='HierarchyCtrl')
 							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ParentTaxon"|translate}}')
 								span.glyphicon.glyphicon-info-sign
 					.form-group
-						label.col-xs-2.control-label(for='ancillaryData', translate='') simplePliCTerm.name.AncillaryData
+						label.col-xs-2.control-label(for='ancillaryData', translate='') Referencias y licencias
 							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AncillaryData"|translate}}')
 								span.glyphicon.glyphicon-info-sign
 						.col-xs-10
@@ -194,8 +194,8 @@ div(data-ng-controller='HierarchyCtrl')
 											include referenceSearch
 										button.btn.btn-success.btn-xs.pull-right(data-ng-click="open(formData.references,ancillaryData.reference)")
 											span.glyphicon.glyphicon-search
-									button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed_1 = !isCollapsed_1')
-										span(ng-class="{'glyphicon glyphicon-plus': isCollapsed_1 , 'glyphicon glyphicon-minus' : !isCollapsed_1}", aria-hidden='true')
+									button.btn.btn-success.btn-xs(href="", data-ng-click="slide()")
+										span(ng-class="{'glyphicon glyphicon-plus': !checked , 'glyphicon glyphicon-minus' : checked}", aria-hidden='true')
 									
 								.panel-body
 
@@ -212,33 +212,35 @@ div(data-ng-controller='HierarchyCtrl')
 														button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
 															span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 			
-									div(uib-collapse='isCollapsed_1', id='referenceHierarchy')
-										.form-group
-											select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
-												option(value='') - {{"simplePliCTerm.name.Type"|translate}} 
-											input(type='text', data-ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
-											input(type='text', data-ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
-											input(type='text', data-ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
-											input(type='text', data-ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
-											input(type='text', data-ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
-											input(type='text', data-ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
-											input(type='text', data-ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
-											input(type='text', data-ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
-											input(type='text', data-ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
-											input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
-											input(type='text', data-ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
-											input(type='text', data-ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
-											input(type='text', data-ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
-											input(type='text', data-ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
-											input(type='text', data-ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
-											input(type='text', data-ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
-											input(type='text', data-ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
-											input(type='text', data-ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
-											input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
-											input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
-											//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-										button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia 
-										button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()') Cancelar
+									div(pageslide ps-open="checked" ps-key-listener="true")
+										div(style="padding:30px" id="demo-right")
+											h3 Agregar nueva referencia
+											.form-group
+												select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
+													option(value='') - {{"simplePliCTerm.name.type"|translate}} 
+												input(type='text', data-ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+												input(type='text', data-ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+												input(type='text', data-ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+												input(type='text', data-ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+												input(type='text', data-ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+												input(type='text', data-ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+												input(type='text', data-ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+												input(type='text', data-ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+												input(type='text', data-ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+												input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+												input(type='text', data-ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+												input(type='text', data-ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+												input(type='text', data-ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+												input(type='text', data-ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+												input(type='text', data-ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+												input(type='text', data-ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+												input(type='text', data-ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+												input(type='text', data-ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+												input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+												//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+												button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
+												button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 
 							button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addAncillaryData(hierarchy.ancillaryData,ancillaryData)', translate='') Guardar Información adicional
 					button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addHierarchy(formData.hierarchy,hierarchy)') Guardar

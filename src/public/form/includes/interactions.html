@@ -10,7 +10,7 @@
     </div>
     <div class="panel-body">
       <div data-ng-show="(formData.interactions.interactionsAtomized).length" class="table-responsive">
-        <table class="table table-bordered">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th>{{"simplePliCTerm.name.InteractionSpecies"|translate}}</th>
@@ -59,7 +59,7 @@
         </div>
         <div class="col-xs-10">
           <div data-ng-show="(interactionsAtomizedType.interactionSpeciesType).length" class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th>Fuente de Información</th>
@@ -80,7 +80,7 @@
           </div>
         </div>
       </div>
-      <button type="button" data-ng-click="addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)" class="btn btn-success btn-sm pull-right">Guardar</button>
+      <button type="button" data-ng-click="addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)" class="btn btn-success btn-sm pull-right">Guardar interacción</button>
       <button type="button" data-ng-click="cancelInteractionAtomizedType()" class="btn btn-success btn-sm pull-right">Cancelar</button>
       <div class="form-group">
         <hr/>
@@ -89,7 +89,7 @@
         <div data-ng-controller="CollapseDemoCtrl">
           <div class="form-group">
             <div data-ng-show="(formData.interactions.ancillaryData).length" class="table-responsive">
-              <table class="table table-bordered">
+              <table class="table table-striped">
                 <thead>
                   <tr>
                     <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>

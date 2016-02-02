@@ -12,33 +12,15 @@
       <div class="panel-body">
         <div data-ng-show="(formData.ancillaryData).length" class="table-responsive">
           <table class="table table-striped">
-            <thead>
-              <tr>
-                <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>
-                <!--th {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
-                <!--th {{"simplePliCTerm.name.license"|translate}}-->
-                <!--th {{"simplePliCTerm.name.rights"|translate}}-->
-                <th class="col-xs-9">{{"simplePliCTerm.name.References"|translate}}</th>
-                <th class="col-xs-1"></th>
-              </tr>
-            </thead>
             <tbody>
-              <tr data-ng-repeat="ancillary in formData.ancillaryData | filter:{mediaURL:'!null'}">
+              <tr data-ng-repeat="ancillary in formData.ancillaryData " data-ng-if="ancillary.mediaURL.length !== 0">
                 <td>
-                  <div data-ng-show="ancillary.source">{{ancillary.source}}</div>
-                </td>
-                <!--td
-                div(data-ng-show='ancillary.rightsHolder')
-                	|  {{ancillary.rightsHolder}}
-                -->
-                <!--td
-                div(data-ng-show='ancillary.license')
-                	| {{ancillary.license}}
-                -->
-                <td>
-                  <div data-ng-repeat="ref in ancillary.reference track by $index" class="selected-item">
-                    <div data-ng-show="ref">
-                      <textarea disabled="disabled">{{ref|references_format}}</textarea>
+                  <div class="parrafo-pegado">
+                    <div data-ng-show="ancillary.source">{{"simplePliCTerm.name.source"|translate}} : {{ancillary.source}}</div>
+                    <div data-ng-repeat="ref in ancillary.reference track by $index" class="selected-item">
+                      <div data-ng-show="ref">{{"simplePliCTerm.name.References"|translate}} :
+                        <textarea disabled="disabled">{{ref|references_format}}</textarea>
+                      </div>
                     </div>
                   </div>
                 </td>

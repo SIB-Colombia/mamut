@@ -10,22 +10,32 @@
     </div>
     <div class="panel-body">
       <div data-ng-show="(formData.populationBiology.populationBiologyAtomized).length" class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>{{"simplePliCTerm.name.Region"|translate}}</th>
-              <th>{{"simplePliCTerm.name.AbundanceData"|translate}}</th>
-              <th>{{"simplePliCTerm.name.DensityData"|translate}}</th>
-              <th>{{"simplePliCTerm.name.PatternDistrubution"|translate}}</th>
-              <th></th>
-            </tr>
-          </thead>
+        <table class="table table-striped">
           <tbody>
             <tr data-ng-repeat="populationBiologyAtomized in formData.populationBiology.populationBiologyAtomized track by $index">
-              <td>{{populationBiologyAtomized.region.measurementValue}}</td>
-              <td>{{populationBiologyAtomized.abundanceData.measurementValue}}	</td>
-              <td>{{populationBiologyAtomized.densityData.measurementValue}}</td>
-              <td>{{populationBiologyAtomized.patternDistribution.measurementValue}}	</td>
+              <td>
+                <div class="parrafo-pegado">
+                  <div data-ng-show="populationBiologyAtomized.region.measurementValue">{{"simplePliCTerm.name.Region"|translate}} : {{populationBiologyAtomized.region.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.abundanceData.measurementValue">{{"simplePliCTerm.name.AbundanceData"|translate}} : {{populationBiologyAtomized.abundanceData.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.densityData.measurementValue">{{"simplePliCTerm.name.DensityData"|translate}} : {{populationBiologyAtomized.densityData.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.patternDistribution.measurementValue">{{"simplePliCTerm.name.PatternDistrubution"|translate}} : {{populationBiologyAtomized.patternDistribution.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.size.measurementValue">{{"simplePliCTerm.name.Size"|translate}} : {{populationBiologyAtomized.size.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.sexRatio.measurementValue">{{"simplePliCTerm.name.SexRatio"|translate}} : {{populationBiologyAtomized.sexRatio.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.fecundity.measurementValue">{{"simplePliCTerm.name.Fecundity"|translate}} : {{populationBiologyAtomized.fecundity.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.mortalityRate.measurementValue">{{"simplePliCTerm.name.MortalityRate"|translate}} : {{populationBiologyAtomized.mortalityRate.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.birthRate.measurementValue">{{"simplePliCTerm.name.BirthRate"|translate}} : {{populationBiologyAtomized.birthRate.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.numberIndividualsPerObservation.measurementValue">{{"simplePliCTerm.name.NumberIndividualsPerObservation"|translate}} : {{populationBiologyAtomized.numberIndividualsPerObservation.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.averageDensity.measurementValue">{{"simplePliCTerm.name.AverageDensity"|translate}} : {{populationBiologyAtomized.averageDensity.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.populationTrend.measurementValue">{{"simplePliCTerm.name.PopulationTrend"|translate}} : {{populationBiologyAtomized.populationTrend.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.recruitment.measurementValue">{{"simplePliCTerm.name.Recruitment"|translate}} : {{populationBiologyAtomized.recruitment.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.populationGrowthRate.measurementValue">{{"simplePliCTerm.name.PopulationGrowthRate"|translate}} : {{populationBiologyAtomized.populationGrowthRate.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.emigration.measurementValue">{{"simplePliCTerm.name.Emigration"|translate}} : {{populationBiologyAtomized.emigration.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.immigration.measurementValue">{{"simplePliCTerm.name.Immigration"|translate}} : {{populationBiologyAtomized.immigration.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.descriptionLifeStages.measurementValue">{{"simplePliCTerm.name.DescriptionLifeStages"|translate}} : {{populationBiologyAtomized.descriptionLifeStages.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.proportionIndividualsPerStageLife.measurementValue">{{"simplePliCTerm.name.ProportionIndividualsPerStage"|translate}} : {{populationBiologyAtomized.proportionIndividualsPerStageLife.measurementValue}}</div>
+                  <div data-ng-show="populationBiologyAtomized.carryingCapacity.measurementValue">{{"simplePliCTerm.name.CarryingCapacity"|translate}} : {{populationBiologyAtomized.carryingCapacity.measurementValue}}</div>
+                </div>
+              </td>
               <td>
                 <button data-ng-click="removePopulation(formData.populationBiology.populationBiologyAtomized,populationBiologyAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
                 <button data-ng-click="editPopulation(formData.populationBiology.populationBiologyAtomized,populationBiologyAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
@@ -156,7 +166,7 @@
         <div data-ng-controller="CollapseDemoCtrl">
           <div class="form-group">
             <div data-ng-show="(formData.populationBiology.ancillaryData).length" class="table-responsive">
-              <table class="table table-bordered">
+              <table class="table table-striped">
                 <thead>
                   <tr>
                     <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>

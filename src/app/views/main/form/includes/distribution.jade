@@ -10,7 +10,7 @@ div(data-ng-controller='DistributionCtrl')
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			div.table-responsive(data-ng-show='(formData.distribution).length')
-				table.table.table-bordered
+				table.table.table-striped
 					thead
 						tr
 							th {{"simplePliCTerm.name.DistributionScope"|translate}}
@@ -80,7 +80,7 @@ div(data-ng-controller='DistributionCtrl')
 				label.col-xs-2.control-label(for='temporalCoverage', translate='') 
 				.col-xs-10
 					div.table-responsive(data-ng-show='(distributionClass.distributionAtomized).length')
-						table.table.table-bordered
+						table.table.table-striped
 							thead
 								tr
 									th {{"simplePliCTerm.name.country"|translate}}
@@ -111,7 +111,7 @@ div(data-ng-controller='DistributionCtrl')
 				
 			.form-group
 				div.table-responsive(data-ng-show='(distributionClass.ancillaryData).length')
-						table.table.table-bordered
+						table.table.table-striped
 							thead
 								tr
 									th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}

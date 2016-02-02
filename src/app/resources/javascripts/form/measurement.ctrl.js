@@ -137,9 +137,9 @@ angular.module('app.controllers.measurement',[])
 			});
 		}
 	});
-	$scope.$watch('behaviorAtomized.measurementType', function(name) {
+	$scope.$watch('formData.behavior.behaviorAtomized.measurementOrFact.measurementType', function(name) {
 		if (name !== undefined) {
-			delete $scope.behaviorAtomized.measurementValue;
+			delete $scope.formData.behavior.behaviorAtomized.measurementValue;
 			$scope.selectedAttr.length = 0;
 			
 			angular.forEach($scope.lenguajes.behaviors, function(attr) {
@@ -150,16 +150,16 @@ angular.module('app.controllers.measurement',[])
 			});
 		}
 	});
-	$scope.$watch('behaviorAtomized.measurementValue', function(name) {
+	$scope.$watch('formData.behavior.behaviorAtomized.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
 			$scope.measurementOrFact = new MeasurementFactory().measurement;
 			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
-					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
-					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
-					$scope.measurementOrFact.ancillaryData.bibliographicCitation = attr.referencia;
-					$scope.measurementOrFact.ancillaryData.source = attr.url;
+					$scope.formData.behavior.behaviorAtomized.measurementOrFact.measurementType = attr.measurementtype;
+					$scope.formData.behavior.behaviorAtomized.measurementOrFact.measurementValue = name;
+					$scope.formData.behavior.behaviorAtomized.ancillaryData.bibliographicCitation = attr.referencia;
+					$scope.formData.behavior.behaviorAtomized.ancillaryData.source = attr.url;
 				}
 			});
 		}

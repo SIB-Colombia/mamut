@@ -11,7 +11,7 @@
       </div>
       <div class="panel-body">
         <div data-ng-show="(formData.invasiveness.invasivenessAtomized).length" class="table-responsive">
-          <table class="table table-bordered">
+          <table class="table table-striped">
             <tbody>
               <tr data-ng-repeat="invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized track by $index">
                 <td>
@@ -318,7 +318,7 @@
         </div>
         <div class="form-group">
           <div data-ng-show="(invasivenessAtomizedType.ancillaryData).length" class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>
@@ -462,7 +462,7 @@
           <label for="invasivenessUnstructured" translate="">Descripción</label><em>(opcional)</em>
           <textarea rows="3" name="invasiveness" data-ng-model="formData.invasiveness.invasivenessUnstructured"></textarea>
           <div data-ng-show="(formData.invasiveness.ancillaryData).length" class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>

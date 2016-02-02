@@ -10,7 +10,7 @@ div(data-ng-controller='ManagementAndConservationCtrl')
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			div.table-responsive(data-ng-show='(formData.usesManagementAndConservation.managementAndConservation.managementAndConservationAtomized).length')
-				table.table.table-bordered
+				table.table.table-striped
 					thead
 						tr
 							th {{"simplePliCTerm.name.Objectives"|translate}}
@@ -91,7 +91,7 @@ div(data-ng-controller='ManagementAndConservationCtrl')
 				div(data-ng-controller='CollapseDemoCtrl')
 					.form-group
 						div.table-responsive(data-ng-show='(formData.usesManagementAndConservation.managementAndConservation.ancillaryData).length')
-							table.table.table-bordered
+							table.table.table-striped
 								thead
 									tr
 										th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}

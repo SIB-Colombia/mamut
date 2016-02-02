@@ -10,7 +10,7 @@ div(data-ng-controller='EcologicalSignificanceCtrl')
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			div.table-responsive(data-ng-show='(formData.ecologicalSignificance.ecologicalSignificanceAtomized).length')
-				table.table.table-bordered
+				table.table.table-striped
 					thead
 						tr
 							th Fuente de Información
@@ -47,7 +47,7 @@ div(data-ng-controller='EcologicalSignificanceCtrl')
 				div(data-ng-controller='CollapseDemoCtrl')
 					.form-group
 						div.table-responsive(data-ng-show='(formData.ecologicalSignificance.ancillaryData).length')
-								table.table.table-bordered
+								table.table.table-striped
 									thead
 										tr
 											th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}

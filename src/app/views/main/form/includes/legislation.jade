@@ -10,7 +10,7 @@ div(data-ng-controller='LegislationCtrl')
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			div.table-responsive(data-ng-show='(formData.legislation.legislationAtomized).length')
-				table.table.table-bordered
+				table.table.table-striped
 					thead
 						tr
 							th {{"simplePliCTerm.name.LegislationName"|translate}}
@@ -88,7 +88,7 @@ div(data-ng-controller='LegislationCtrl')
 				div(data-ng-controller='CollapseDemoCtrl')
 					.form-group
 						div.table-responsive(data-ng-show='(formData.legislation.ancillaryData).length')
-							table.table.table-bordered
+							table.table.table-striped
 								thead
 									tr
 										th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}

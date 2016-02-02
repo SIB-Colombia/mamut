@@ -11,7 +11,7 @@ div(data-ng-controller='MigratoryCtrl')
 		.panel-body
 			.form-group
 				div.table-responsive(data-ng-show='(formData.migratory.migratoryAtomized).length')
-					table.table.table-bordered
+					table.table.table-striped
 						thead
 							tr
 								th {{"simplePliCTerm.name.Causes"|translate}}
@@ -27,7 +27,7 @@ div(data-ng-controller='MigratoryCtrl')
 								td
 									| {{migratoryAtomized.patterns}}
 								td
-									| {{migratoryAtomized.routes}}
+									| {{migratoryAtomized.routes|empty_vectors}}
 								td
 									| {{migratoryAtomized.season}}	
 								td
@@ -66,7 +66,7 @@ div(data-ng-controller='MigratoryCtrl')
 				div(data-ng-controller='CollapseDemoCtrl')
 					.form-group
 						div.table-responsive(data-ng-show='(formData.migratory.ancillaryData).length')
-							table.table.table-bordered
+							table.table.table-striped
 								thead
 									tr
 										th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}

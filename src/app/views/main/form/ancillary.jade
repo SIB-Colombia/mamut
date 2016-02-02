@@ -13,31 +13,17 @@ div(data-ng-controller='AncillaryDataCtrl')
 
 				div.table-responsive(data-ng-show='(formData.ancillaryData).length')
 					table.table.table-striped
-						thead
-							tr
-								th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
-								//th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
-								//th {{"simplePliCTerm.name.license"|translate}}
-								//th {{"simplePliCTerm.name.rights"|translate}}
-								th.col-xs-9 {{"simplePliCTerm.name.References"|translate}}
-								th.col-xs-1
-						
 						tbody
-							tr(data-ng-repeat="ancillary in formData.ancillaryData | filter:{mediaURL:'!null'}")
+							tr(data-ng-repeat="ancillary in formData.ancillaryData ", data-ng-if="ancillary.mediaURL.length !== 0")
 								td
-									div(data-ng-show='ancillary.source')
-										| {{ancillary.source}}
-								//td
-									div(data-ng-show='ancillary.rightsHolder')
-										|  {{ancillary.rightsHolder}}
-								//td
-									div(data-ng-show='ancillary.license')
-										| {{ancillary.license}}
-								td
-									.selected-item(data-ng-repeat='ref in ancillary.reference track by $index')
-										div(data-ng-show='ref')
-											textarea(disabled)
-													| {{ref|references_format}}
+									.parrafo-pegado
+										div(data-ng-show='ancillary.source')
+											| {{"simplePliCTerm.name.source"|translate}} : {{ancillary.source}}
+										.selected-item(data-ng-repeat='ref in ancillary.reference track by $index')
+											div(data-ng-show='ref')
+												| {{"simplePliCTerm.name.References"|translate}} :
+												textarea(disabled)
+														| {{ref|references_format}}
 								td
 									button.btn(data-ng-click='removeAncillaryData(formData.ancillaryData,ancillary)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')

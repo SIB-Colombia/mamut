@@ -157,8 +157,21 @@ angular.module('app.controllers.form',[])
 		        });
 
 			}
-		};	
+		};
+		$('#btnNext').click(function(){
+			$('.nav-pills.nav-stacked.col-md-2 > .active').next('li').find('a').trigger('click');
+		});
 }])
+.filter('empty_vectors', function() {
+	return function(object) {
+		// do some bounds checking here to ensure it has that index
+        if(object.length===0 ){
+			object = '';
+		}
+
+		return object;
+	};
+})
 .filter('split', function() {
 	return function(input, splitChar, splitIndex) {
 		// do some bounds checking here to ensure it has that index

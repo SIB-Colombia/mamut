@@ -20,7 +20,11 @@ angular.module('app.controllers.hierarchy',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	$scope.checked = false; // This will be binded using the ps-open attribute
 
+	$scope.slide = function(){
+	    $scope.checked = !$scope.checked
+	}
 	//ADD
 	$scope.addHierarchy = function(hierarchy, hier) {
 		if (JSON.stringify(hier) !== JSON.stringify(origH)){
@@ -105,7 +109,9 @@ angular.module('app.controllers.hierarchy',[])
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
-			$('#referenceHierarchy').collapse("hide");
+			$scope.checked = !$scope.checked;
+		}else{
+			alert("El tipo de referencia debe ser seleccionado");
 		}
 	};
 
@@ -115,11 +121,11 @@ angular.module('app.controllers.hierarchy',[])
 
 	$scope.editReference = function(referenceList,reference) {
 		$scope.reference = angular.copy(reference);
-		$('#referenceHierarchy').collapse("show");
+		$scope.checked = !$scope.checked;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
-		$('#referenceHierarchy').collapse("hide");
+		$scope.checked = !$scope.checked;
 	};
 }]);

@@ -8,28 +8,47 @@ block content
 				#form-container
 					.page-header.text-center
 						h1 EDITOR DE FICHAS
-					
-					div.divider		
+					div.row
+						div.col-md-3
+							a(href="/new")
+								button.btn.btn-success(type="button")
+									| CREAR UNA NUEVA FICHA	
+						div.col-md-9
+							form(data-ng-submit="search()")
+								div.input-group
+									input.form-control(type="search" name="q" x-webkit-speech data-ng-model="searchT" placeholder="Buscar las fichas del creador..." required)
+									span.input-group-btn
+										button.btn.btn-default(type="submit")
+											i.glyphicon.glyphicon-search
+						
+					div.divider
 					div.row
 						div.panel.panel-primary.filterable
 							div.panel-heading
-								h1.panel-title Fichas
-								a.pull-right
-									button.btn.btn-default.btn-xs.btn-filter
-										span.glyphicon.glyphicon-filter Filtro
-								a.pull-right(href="/new")
-									button.btn.btn-success(type="button")
-										h5 CREAR UNA NUEVA FICHA	
+								h3.panel-title Fichas
+								button.btn.btn-default.btn-xs.btn-filter.pull-right
+									span.glyphicon.glyphicon-filter Filtro
+								
 
-							table.table.table-striped.table-bordered.table-condensed(data-ng-table="tableParams")
-								tr(data-ng-repeat="field in $data track by field._id")
-									td(data-title="'Id'")
-										a(href="/edit?id={{field._id}}")
-											| {{field._id}}
-
-									td(data-title="'Taxon'") {{field.taxonRecordName.scientificName.simple}}	
-									td(data-title="'Creador'")
-										.selected-item(data-ng-repeat='associatedParty in field.associatedParty')
-											| {{associatedParty.firstName}}-{{associatedParty.lastName}}
+							table.table(data-ng-table="tableParams")
+								thead
+									tr.filters
+										th
+											input.form-control(type="text" placeholder="Id" disabled)
+										th
+											input.form-control(type="text" placeholder="Taxon" disabled)
+										th
+											input.form-control(type="text" placeholder="Creador" disabled)
+								tbody
+									tr(data-ng-repeat="field in $data track by field._id")
+										td 
+											a(href="/edit?id={{field._id}}")
+												| {{field._id}}
+										td
+											{{field.taxonRecordName.scientificName.simple}}
+										td
+											.selected-item(data-ng-repeat='associatedParty in field.associatedParty')
+												| {{associatedParty.firstName}}-{{associatedParty.lastName}}
+										
 				
 					

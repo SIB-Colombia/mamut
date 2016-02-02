@@ -10,7 +10,7 @@ div(data-ng-controller='InteractionsCtrl')
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			div.table-responsive(data-ng-show='(formData.interactions.interactionsAtomized).length')
-				table.table.table-bordered
+				table.table.table-striped
 					thead
 						tr
 							th {{"simplePliCTerm.name.InteractionSpecies"|translate}}
@@ -48,7 +48,7 @@ div(data-ng-controller='InteractionsCtrl')
 						button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(interactionsAtomizedType.interactionSpeciesType, measurementOrFact)') Guardar
 				.col-xs-10
 					div.table-responsive(data-ng-show='(interactionsAtomizedType.interactionSpeciesType).length')
-						table.table.table-bordered
+						table.table.table-striped
 							thead
 								tr
 									th Fuente de Información
@@ -65,7 +65,7 @@ div(data-ng-controller='InteractionsCtrl')
 									td
 										button.btn(data-ng-click='removeInteractionSpeciesType(interactionsAtomizedType.interactionSpeciesType,interactionSpeciesType)')
 											span(class="glyphicon glyphicon-trash", aria-hidden='true')
-			button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)') Guardar
+			button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)') Guardar interacción
 			button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='cancelInteractionAtomizedType()') Cancelar
 			.form-group
 				hr
@@ -78,7 +78,7 @@ div(data-ng-controller='InteractionsCtrl')
 				div(data-ng-controller='CollapseDemoCtrl')
 					.form-group
 						div.table-responsive(data-ng-show='(formData.interactions.ancillaryData).length')
-							table.table.table-bordered
+							table.table.table-striped
 								thead
 									tr
 										th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
