@@ -106,21 +106,21 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>
-                    <!--th {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
-                    <!--th {{"simplePliCTerm.name.license"|translate}}-->
-                    <!--th {{"simplePliCTerm.name.rights"|translate}}-->
+                    <!--th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}-->
+                    <!--th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
+                    <th class="col-xs-1"> {{"simplePliCTerm.name.license"|translate}}</th>
+                    <!--th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}-->
                     <th class="col-xs-9">{{"simplePliCTerm.name.References"|translate}}</th>
                     <th class="col-xs-1"></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr data-ng-repeat="ancillary in formData.legislation.ancillaryData track by $index">
-                    <td>{{ancillary.source}}</td>
+                    <!--td| {{ancillary.source}}
+                    -->
                     <!--td| {{ancillary.bibliographicCitation}}
                     -->
-                    <!--td| {{ancillary.license}}	
-                    -->
+                    <td>{{ancillary.license}}	</td>
                     <!--td
                     | {{ancillary.rights}}
                     
@@ -208,8 +208,10 @@
                         <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
                         <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
                         <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
-                        <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs pull-right">Guardar</button>
-                        <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                        <div class="pull-right">
+                          <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs">Guardar</button>
+                          <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs">Cancelar</button>
+                        </div>
                       </div>
                     </div>
                   </div>

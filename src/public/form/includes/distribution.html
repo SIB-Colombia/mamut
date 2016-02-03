@@ -9,36 +9,6 @@
       -->
     </div>
     <div class="panel-body">
-      <div data-ng-show="(formData.distribution).length" class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>{{"simplePliCTerm.name.DistributionScope"|translate}}</th>
-              <th>{{"simplePliCTerm.name.TemporalCoverage"|translate}}</th>
-              <th>Distribución atomizada</th>
-              <th>{{"simplePliCTerm.name.DistributionUnstructured"|translate}}</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-ng-repeat="distribution in formData.distribution">
-              <td>{{distribution.distributionScope.type}}</td>
-              <td>{{distribution.temporalCoverage.startDate|split:'T':0}} / {{distribution.temporalCoverage.endDate|split:'T':0}}	</td>
-              <td>
-                <div data-ng-repeat="distributionA in distribution.distributionAtomized" class="selected-item">
-                  <div data-ng-show="distributionA">{{distributionA.country}} - {{distributionA.stateProvince}} - {{distributionA.county}}</div>
-                </div>
-              </td>
-              <td>{{distribution.distributionUnstructured}}</td>
-              <td>
-                <button data-ng-click="removeDistribution(formData.distribution,distribution)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                <button data-ng-click="editDistribution(formData.distribution,distribution)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <hr/>
-      </div>
       <div class="form-group">
         <label for="distributionScope" translate="" class="col-xs-2 control-label">simplePliCTerm.name.DistributionScope</label>
         <div class="col-xs-10">
@@ -55,7 +25,7 @@
           <label>{{simplePliCTerm.name.startDate|translate}} </label>
           <div data-ng-controller="DatepickerCtrl">
             <p class="input-group">
-              <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="distributionClass.temporalCoverage.startDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" class="form-control"/><span class="input-group-btn">
+              <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="distributionClass.temporalCoverage.startDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" disabled="disabled" class="form-control"/><span class="input-group-btn">
                 <button type="button" data-ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
             </p>
           </div>
@@ -64,7 +34,7 @@
           <label>{{simplePliCTerm.name.endDate|translate}}</label>
           <div data-ng-controller="DatepickerCtrl">
             <p class="input-group">
-              <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="distributionClass.temporalCoverage.endDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" class="form-control"/><span class="input-group-btn">
+              <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="distributionClass.temporalCoverage.endDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" disabled="disabled" class="form-control"/><span class="input-group-btn">
                 <button type="button" data-ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"> </i></button></span>
             </p>
           </div>
@@ -131,21 +101,21 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>
-                <!--th {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
-                <!--th {{"simplePliCTerm.name.license"|translate}}-->
-                <!--th {{"simplePliCTerm.name.rights"|translate}}-->
+                <!--th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}-->
+                <!--th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
+                <th class="col-xs-1"> {{"simplePliCTerm.name.license"|translate}}</th>
+                <!--th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}-->
                 <th class="col-xs-9">{{"simplePliCTerm.name.References"|translate}}</th>
                 <th class="col-xs-1"></th>
               </tr>
             </thead>
             <tbody>
               <tr data-ng-repeat="ancillary in distributionClass.ancillaryData track by $index">
-                <td>{{ancillary.source}}	</td>
+                <!--td| {{ancillary.source}}	
+                -->
                 <!--td| {{ancillary.bibliographicCitation}}
                 -->
-                <!--td| {{ancillary.license}}	
-                -->
+                <td>{{ancillary.license}}	</td>
                 <!--td
                 | {{ancillary.rights}}
                 
@@ -235,8 +205,10 @@
                     <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
                     <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
                     <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
-                    <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs pull-right">Guardar</button>
-                    <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                    <div class="pull-right">
+                      <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs">Guardar</button>
+                      <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs">Cancelar</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -263,6 +235,35 @@
       </div>
       <div class="form-group">
         <button data-ng-click="addDistribution(formData.distribution,distributionClass)" class="btn btn-success btn-sm pull-right">Guardar</button>
+      </div>
+      <div data-ng-show="(formData.distribution).length" class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>{{"simplePliCTerm.name.DistributionScope"|translate}}</th>
+              <th>{{"simplePliCTerm.name.TemporalCoverage"|translate}}</th>
+              <th>Distribución atomizada</th>
+              <th>{{"simplePliCTerm.name.DistributionUnstructured"|translate}}</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="distribution in formData.distribution">
+              <td>{{distribution.distributionScope.type}}</td>
+              <td><span class="datepicker-date">{{distribution.temporalCoverage.startDate | date:'yyyy/MM/dd'}} - {{distribution.temporalCoverage.endDate | date:'yyyy/MM/dd'}}	</span></td>
+              <td>
+                <div data-ng-repeat="distributionA in distribution.distributionAtomized" class="selected-item">
+                  <div data-ng-show="distributionA">{{distributionA.country}} - {{distributionA.stateProvince}} - {{distributionA.county}}</div>
+                </div>
+              </td>
+              <td>{{distribution.distributionUnstructured}}</td>
+              <td>
+                <button data-ng-click="removeDistribution(formData.distribution,distribution)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                <button data-ng-click="editDistribution(formData.distribution,distribution)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

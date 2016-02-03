@@ -126,10 +126,12 @@ div(data-ng-controller='AncillaryDataCtrl')
 										input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
 										input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 										//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-										button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar
-										button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()', translate='') Cancelar
-				button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click="addAncillaryData(formData.ancillaryData,ancillaryData)") Guardar 
-				button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click="cancelAncillaryData(formData.ancillaryData,ancillaryData)") Cancelar 
+										div.pull-right
+											button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar
+											button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
+				div.pull-right
+					button.btn.btn-success.btn-xs(type='button', data-ng-click="addAncillaryData(formData.ancillaryData,ancillaryData)") Guardar 
+					button.btn.btn-success.btn-xs(type='button', data-ng-click="cancelAncillaryData(formData.ancillaryData,ancillaryData)") Cancelar 
 .col-xs-6.col-xs-offset-3
 	ul.pager
 		li

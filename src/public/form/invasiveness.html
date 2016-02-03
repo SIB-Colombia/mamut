@@ -10,52 +10,6 @@
         -->
       </div>
       <div class="panel-body">
-        <div data-ng-show="(formData.invasiveness.invasivenessAtomized).length" class="table-responsive">
-          <table class="table table-striped">
-            <tbody>
-              <tr data-ng-repeat="invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized track by $index">
-                <td>
-                  <div class="parrafo-pegado">
-                    <div data-ng-show="invasivenessAtomizedType.origin">{{"simplePliCTerm.name.origin"|translate}} : {{invasivenessAtomizedType.origin}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.presence">{{"simplePliCTerm.name.presence"|translate}} : {{invasivenessAtomizedType.presence}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.persistence">{{"simplePliCTerm.name.persistence"|translate}} : {{invasivenessAtomizedType.persistence}}</div>
-                    <div data-ng-repeat="distribution in invasivenessAtomizedType.distribution" class="selected-item">
-                      <div data-ng-show="distribution">{{"simplePliCTerm.name.distribution"|translate}} : {{distribution}}</div>
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.harmful">{{"simplePliCTerm.name.harmful"|translate}} : {{invasivenessAtomizedType.harmful}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.modified">{{"simplePliCTerm.name.modified"|translate}} : {{invasivenessAtomizedType.modified|split:'T':0}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.startValidateDate">{{"simplePliCTerm.name.startValidateDate"|translate}} : {{invasivenessAtomizedType.startValidateDate|split:'T':0}}	</div>
-                    <div data-ng-show="invasivenessAtomizedType.endValidateDate">{{"simplePliCTerm.name.endValidateDate"|translate}} : {{invasivenessAtomizedType.endValidateDate|split:'T':0}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.countryCode">{{"simplePliCTerm.name.countryCode"|translate}} : {{invasivenessAtomizedType.countryCode}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.stateProvince">{{"simplePliCTerm.name.stateProvince"|translate}} : {{invasivenessAtomizedType.stateProvince}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.county">{{"simplePliCTerm.name.county"|translate}} : {{invasivenessAtomizedType.county}}	</div>
-                    <div data-ng-show="invasivenessAtomizedType.localityName">{{"simplePliCTerm.name.localityName"|translate}} : {{invasivenessAtomizedType.localityName}}	</div>
-                    <div data-ng-show="invasivenessAtomizedType.language">{{"simplePliCTerm.name.language"|translate}} : {{invasivenessAtomizedType.language}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.citation">{{"simplePliCTerm.name.citation"|translate}} : {{invasivenessAtomizedType.citation}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.abundance">{{"simplePliCTerm.name.abundance"|translate}} : {{invasivenessAtomizedType.abundance}}	</div>
-                    <div data-ng-show="invasivenessAtomizedType.trend">{{"simplePliCTerm.name.trend"|translate}} : {{invasivenessAtomizedType.trend}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.rateOfSpread">{{"simplePliCTerm.name.rateOfSpread"|translate}} : {{invasivenessAtomizedType.rateOfSpread}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.regulatoryListing">{{"simplePliCTerm.name.regulatoryListing"|translate}} : {{invasivenessAtomizedType.regulatoryListing}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.memo">{{"simplePliCTerm.name.memo"|translate}} : {{invasivenessAtomizedType.memo}}	</div>
-                    <div data-ng-show="invasivenessAtomizedType.publicationDate">{{"simplePliCTerm.name.publicationDate"|translate}} : {{invasivenessAtomizedType.publicationDate}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.localityType">{{"simplePliCTerm.name.localityType"|translate}} : {{invasivenessAtomizedType.localityType}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.locationValue">{{"simplePliCTerm.name.locationValue"|translate}} : {{invasivenessAtomizedType.locationValue}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.publicationDatePrecision">{{"simplePliCTerm.name.publicationDatePrecision"|translate}} : {{invasivenessAtomizedType.publicationDatePrecision}}	</div>
-                    <div data-ng-show="invasivenessAtomizedType.whatImpact">{{"simplePliCTerm.name.WhatImpact"|translate}} : {{invasivenessAtomizedType.whatImpact}}	</div>
-                    <div data-ng-show="invasivenessAtomizedType.vector">{{"simplePliCTerm.name.vector"|translate}} : {{invasivenessAtomizedType.vector}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.route">{{"simplePliCTerm.name.route"|translate}} : {{invasivenessAtomizedType.route}}</div>
-                    <div data-ng-show="invasivenessAtomizedType.target">{{"simplePliCTerm.name.target"|translate}} : {{invasivenessAtomizedType.target}}	</div>
-                    <div data-ng-show="invasivenessAtomizedType.mechanism">{{"simplePliCTerm.name.Mechanism"|translate}} : {{invasivenessAtomizedType.mechanism}}		</div>
-                  </div>
-                </td>
-                <td>
-                  <button data-ng-click="removeInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                  <button data-ng-click="editInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
         <div class="form-group">
           <label for="origin" translate="" class="col-xs-2 control-label">simplePliCTerm.name.origin</label>
           <div class="col-xs-10">
@@ -116,7 +70,7 @@
           <div class="col-xs-10">
             <div data-ng-controller="DatepickerCtrl">
               <p class="input-group">
-                <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="invasivenessAtomizedType.modified" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" class="form-control"/><span class="input-group-btn">
+                <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="invasivenessAtomizedType.modified" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" disabled="disabled" class="form-control"/><span class="input-group-btn">
                   <button type="button" data-ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
               </p>
             </div>
@@ -127,7 +81,7 @@
           <div class="col-xs-10">
             <div data-ng-controller="DatepickerCtrl">
               <p class="input-group">
-                <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="invasivenessAtomizedType.startValidateDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" class="form-control"/><span class="input-group-btn">
+                <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="invasivenessAtomizedType.startValidateDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" disabled="disabled" class="form-control"/><span class="input-group-btn">
                   <button type="button" data-ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
               </p>
             </div>
@@ -138,7 +92,7 @@
           <div class="col-xs-10">
             <div data-ng-controller="DatepickerCtrl">
               <p class="input-group">
-                <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="invasivenessAtomizedType.endValidateDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" class="form-control"/><span class="input-group-btn">
+                <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="invasivenessAtomizedType.endValidateDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" disabled="disabled" class="form-control"/><span class="input-group-btn">
                   <button type="button" data-ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
               </p>
             </div>
@@ -249,7 +203,7 @@
           <div class="col-xs-10">
             <div data-ng-controller="DatepickerCtrl">
               <p class="input-group">
-                <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="invasivenessAtomizedType.publicationDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" class="form-control"/><span class="input-group-btn">
+                <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="invasivenessAtomizedType.publicationDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" disabled="disabled" class="form-control"/><span class="input-group-btn">
                   <button type="button" data-ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
               </p>
             </div>
@@ -380,7 +334,7 @@
                         <div class="modal-footer"></div>
                       </script>
                       <button data-ng-click="open(formData.references,ancillaryDataAto.reference)" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-search"></span></button></span>
-                    <button href="" data-ng-click="slide()" class="btn btn-success btn-xs"><span ng-class="{'glyphicon glyphicon-plus': !checked , 'glyphicon glyphicon-minus' : checked}" aria-hidden="true"></span></button>
+                    <button href="" data-ng-click="slide_ato()" class="btn btn-success btn-xs"><span ng-class="{'glyphicon glyphicon-plus': !checked_ato , 'glyphicon glyphicon-minus' : checked_ato}" aria-hidden="true"></span></button>
                     <hr/>
                     <div data-ng-show="(ancillaryDataAto.reference).length" class="table-responsive">
                       <table class="table table-striped">
@@ -397,36 +351,38 @@
                         </tbody>
                       </table>
                     </div>
-                    <div pageslide="pageslide" ps-open="checked" ps-key-listener="true">
+                    <div pageslide="pageslide" ps-open="checked_ato" ps-key-listener="true">
                       <div style="padding:30px" id="demo-right">
                         <h3>Agregar nueva referencia</h3>
                         <div class="form-group">
-                          <select data-ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
+                          <select data-ng-model="referenceAto.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
                             <option value="">- {{"simplePliCTerm.name.type"|translate}} </option>
                           </select>
-                          <input type="text" data-ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.link" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
-                          <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
-                          <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
-                          <button type="button" data-ng-click="addReferenceAto(ancillaryDataAto.reference,reference, checked)" translate="" class="btn btn-primary btn-xs pull-right">Guardar</button>
-                          <button type="button" data-ng-click="cancelReferenceAto()" translate="" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                          <input type="text" data-ng-model="referenceAto.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.link" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
+                          <input type="text" data-ng-model="referenceAto.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
+                          <!--input(type='text', data-ng-model='referenceAto.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
+                          <div class="pull-right">
+                            <button type="button" data-ng-click="addReferenceAto(ancillaryDataAto.reference,referenceAto)" translate="" class="btn btn-primary btn-xs">Guardar</button>
+                            <button type="button" data-ng-click="cancelReferenceAto()" translate="" class="btn btn-primary btn-xs">Cancelar</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -454,8 +410,56 @@
           </div>
         </div>
         <div class="form-group">
-          <button type="button" data-ng-click="addInvasivenessAtomizedType(formData.invasiveness.invasivenessAtomized, invasivenessAtomizedType)" class="btn btn-success btn-sm">Guardar</button>
-          <button type="button" data-ng-click="cancelInvasivenessAtomizedType(invasivenessAtomizedType)" class="btn btn-success btn-sm">Cancelar</button>
+          <div class="pull-right">
+            <button type="button" data-ng-click="addInvasivenessAtomizedType(formData.invasiveness.invasivenessAtomized, invasivenessAtomizedType)" class="btn btn-success btn-sm">Guardar</button>
+            <button type="button" data-ng-click="cancelInvasivenessAtomizedType(invasivenessAtomizedType)" class="btn btn-success btn-sm">Cancelar</button>
+          </div>
+        </div>
+        <div data-ng-show="(formData.invasiveness.invasivenessAtomized).length" class="table-responsive">
+          <table class="table table-striped">
+            <tbody>
+              <tr data-ng-repeat="invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized track by $index">
+                <td>
+                  <div class="parrafo-pegado">
+                    <div data-ng-show="invasivenessAtomizedType.origin">{{"simplePliCTerm.name.origin"|translate}} : {{invasivenessAtomizedType.origin}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.presence">{{"simplePliCTerm.name.presence"|translate}} : {{invasivenessAtomizedType.presence}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.persistence">{{"simplePliCTerm.name.persistence"|translate}} : {{invasivenessAtomizedType.persistence}}</div>
+                    <div data-ng-repeat="distribution in invasivenessAtomizedType.distribution" class="selected-item">
+                      <div data-ng-show="distribution">{{"simplePliCTerm.name.distribution"|translate}} : {{distribution}}</div>
+                    </div>
+                    <div data-ng-show="invasivenessAtomizedType.harmful">{{"simplePliCTerm.name.harmful"|translate}} : {{invasivenessAtomizedType.harmful}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.modified"><span class="datepicker-date">{{"simplePliCTerm.name.modified"|translate}} : {{invasivenessAtomizedType.modified| date:'yyyy/MM/dd'}}</span></div>
+                    <div data-ng-show="invasivenessAtomizedType.startValidateDate"><span class="datepicker-date">{{"simplePliCTerm.name.startValidateDate"|translate}} : {{invasivenessAtomizedType.startValidateDate| date:'yyyy/MM/dd'}}	</span></div>
+                    <div data-ng-show="invasivenessAtomizedType.endValidateDate"><span class="datepicker-date">{{"simplePliCTerm.name.endValidateDate"|translate}} : {{invasivenessAtomizedType.endValidateDate| date:'yyyy/MM/dd'}}</span></div>
+                    <div data-ng-show="invasivenessAtomizedType.countryCode">{{"simplePliCTerm.name.countryCode"|translate}} : {{invasivenessAtomizedType.countryCode}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.stateProvince">{{"simplePliCTerm.name.stateProvince"|translate}} : {{invasivenessAtomizedType.stateProvince}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.county">{{"simplePliCTerm.name.county"|translate}} : {{invasivenessAtomizedType.county}}	</div>
+                    <div data-ng-show="invasivenessAtomizedType.localityName">{{"simplePliCTerm.name.localityName"|translate}} : {{invasivenessAtomizedType.localityName}}	</div>
+                    <div data-ng-show="invasivenessAtomizedType.language">{{"simplePliCTerm.name.language"|translate}} : {{invasivenessAtomizedType.language}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.citation">{{"simplePliCTerm.name.citation"|translate}} : {{invasivenessAtomizedType.citation}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.abundance">{{"simplePliCTerm.name.abundance"|translate}} : {{invasivenessAtomizedType.abundance}}	</div>
+                    <div data-ng-show="invasivenessAtomizedType.trend">{{"simplePliCTerm.name.trend"|translate}} : {{invasivenessAtomizedType.trend}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.rateOfSpread">{{"simplePliCTerm.name.rateOfSpread"|translate}} : {{invasivenessAtomizedType.rateOfSpread}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.regulatoryListing">{{"simplePliCTerm.name.regulatoryListing"|translate}} : {{invasivenessAtomizedType.regulatoryListing}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.memo">{{"simplePliCTerm.name.memo"|translate}} : {{invasivenessAtomizedType.memo}}	</div>
+                    <div data-ng-show="invasivenessAtomizedType.publicationDate"><span class="datepicker-date">{{"simplePliCTerm.name.publicationDate"|translate}} : {{invasivenessAtomizedType.publicationDate| date:'yyyy/MM/dd'}}</span></div>
+                    <div data-ng-show="invasivenessAtomizedType.localityType">{{"simplePliCTerm.name.localityType"|translate}} : {{invasivenessAtomizedType.localityType}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.locationValue">{{"simplePliCTerm.name.locationValue"|translate}} : {{invasivenessAtomizedType.locationValue}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.publicationDatePrecision">{{"simplePliCTerm.name.publicationDatePrecision"|translate}} : {{invasivenessAtomizedType.publicationDatePrecision}}	</div>
+                    <div data-ng-show="invasivenessAtomizedType.whatImpact">{{"simplePliCTerm.name.WhatImpact"|translate}} : {{invasivenessAtomizedType.whatImpact}}	</div>
+                    <div data-ng-show="invasivenessAtomizedType.vector">{{"simplePliCTerm.name.vector"|translate}} : {{invasivenessAtomizedType.vector}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.route">{{"simplePliCTerm.name.route"|translate}} : {{invasivenessAtomizedType.route}}</div>
+                    <div data-ng-show="invasivenessAtomizedType.target">{{"simplePliCTerm.name.target"|translate}} : {{invasivenessAtomizedType.target}}	</div>
+                    <div data-ng-show="invasivenessAtomizedType.mechanism">{{"simplePliCTerm.name.Mechanism"|translate}} : {{invasivenessAtomizedType.mechanism}}		</div>
+                  </div>
+                </td>
+                <td>
+                  <button data-ng-click="removeInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                  <button data-ng-click="editInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="form-group">
           <hr/>
@@ -465,21 +469,21 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>
-                  <!--th {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
-                  <!--th {{"simplePliCTerm.name.license"|translate}}-->
-                  <!--th {{"simplePliCTerm.name.rights"|translate}}-->
+                  <!--th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}-->
+                  <!--th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
+                  <th class="col-xs-1"> {{"simplePliCTerm.name.license"|translate}}</th>
+                  <!--th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}-->
                   <th class="col-xs-9">{{"simplePliCTerm.name.References"|translate}}</th>
                   <th class="col-xs-1"></th>
                 </tr>
               </thead>
               <tbody>
                 <tr data-ng-repeat="ancillary in formData.invasiveness.ancillaryData track by $index">
-                  <td>{{ancillary.source}}</td>
+                  <!--td| {{ancillary.source}}
+                  -->
                   <!--td| {{ancillary.bibliographicCitation}}
                   -->
-                  <!--td| {{ancillary.license}}	
-                  -->
+                  <td>{{ancillary.license}}	</td>
                   <!--td
                   | {{ancillary.rights}}
                   
@@ -569,8 +573,10 @@
                           <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
                           <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
                           <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
-                          <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs pull-right">Guardar</button>
-                          <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                          <div class="pull-right">
+                            <button type="button" data-ng-click="addReference(ancillaryData.reference,reference)" translate="" class="btn btn-primary btn-xs">Guardar</button>
+                            <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs">Cancelar</button>
+                          </div>
                         </div>
                       </div>
                     </div>

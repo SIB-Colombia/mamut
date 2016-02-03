@@ -8,30 +8,6 @@ div(data-ng-controller='SynonmyCtrl')
 				button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed = !isCollapsed')
 					span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true')
 			.panel-body
-				div.table-responsive(data-ng-show='(formData.synonymsAtomized).length')
-					table.table.table-striped
-						thead
-							tr
-								th {{"simplePliCTerm.name.SynonymName"|translate}}
-								th 
-									div(data-ng-show='synonymAtomized.synonymStatus')
-										| {{"simplePliCTerm.name.SynonymStatus"|translate}}
-								th
-						
-						tbody
-							tr(data-ng-repeat="synonymAtomized in formData.synonymsAtomized track by $index")
-								td
-									div(data-ng-show='synonymAtomized.synonymName.canonicalName.simple')
-										| {{synonymAtomized.synonymName.canonicalName.simple}}
-								td
-									div(data-ng-show='synonymAtomized.synonymStatus')
-										|  {{synonymAtomized.synonymStatus}}
-								td
-									button.btn(data-ng-click='removeSynonymsAtomized(formData.synonymsAtomized,synonymAtomized)')
-										span(class="glyphicon glyphicon-trash", aria-hidden='true')
-									button.btn(data-ng-click='editSynonymsAtomized(formData.synonymsAtomized,synonymAtomized)')
-										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
-					hr
 				div(uib-collapse='isCollapsed', id='sysnonymForm')
 					.form-group
 						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.SynonymName
@@ -58,13 +34,19 @@ div(data-ng-controller='SynonmyCtrl')
 								table.table.table-striped
 									thead
 										tr
-											th {{"simplePliCTerm.name.source"|translate}}
+											th {{"simplePliCTerm.name.license"|translate}}
+											th {{"simplePliCTerm.name.References"|translate}}
 											th
 									
 									tbody
 										tr(data-ng-repeat="ancillary in synonmy.ancillaryData track by $index")
 											td
-												| {{ancillary.source}}
+												| {{ancillary.license}}
+											td 
+												.selected-item(data-ng-repeat='ref in ancillary.reference track by $index')
+													div(data-ng-show='ref')
+														textarea(disabled)
+																| {{ref|references_format}}
 											td
 												button.btn(data-ng-click='removeAncillaryData(synonmy.ancillaryData,ancillary)')
 													span(class="glyphicon glyphicon-trash", aria-hidden='true')
@@ -127,10 +109,51 @@ div(data-ng-controller='SynonmyCtrl')
 												input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
 												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-												button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
-												button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()', translate='') Cancelar
+												div.pull-right
+													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
+													button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
+							.form-group
+								label.control-label(for='license') {{"simplePliCTerm.name.license"|translate}}
+									panel(data-ng-controller='CheckBoxCrtl')
+										div(data-ng-repeat="lic in lincese_list | filter:{nombre : '!Otra'}")
+											input(type='checkbox', data-ng-model='lic.checked', data-ng-click='updateSelectionLicence(lic, lincese_list, "ManualLicenseFullDescription")')
+											a(data-ng-href='{{lic.url}}',target="_blank")
+												img(id="image", data-ng-src="{{lic.image_url || '//:0' }}", hspace=10, vspace =7)
+												{{lic.nombre}}
+											spant(data-ng-show='lic.definicion')
+											a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lic.definicion}}')
+												span.glyphicon.glyphicon-info-sign
+										p(id='ManualLicenseFullDescription')
+										p(style="font-size:90%;")
+											i * Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co
 					.form-group
-						button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addAncillaryData(synonmy.ancillaryData,ancillaryData)', translate='') Guardar Información adicional
+						div.pull-right
+							button.btn.btn-primary.btn-xs(type='button', data-ng-click='addAncillaryData(synonmy.ancillaryData,ancillaryData)', translate='') Guardar Información adicional
 					.form-group
-						button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addSynonymsAtomized(formData.synonymsAtomized,synonmy)') Guardar
-						button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='cancelSynonym()') Cancelar
+						div.pull-right
+							button.btn.btn-success.btn-sm(type='button', data-ng-click='addSynonymsAtomized(formData.synonymsAtomized,synonmy)') Guardar
+							button.btn.btn-success.btn-sm(type='button', data-ng-click='cancelSynonym()') Cancelar
+					hr 
+				div.table-responsive(data-ng-show='(formData.synonymsAtomized).length')
+					table.table.table-striped
+						thead
+							tr
+								th.col-md-6
+									| {{"simplePliCTerm.name.SynonymName"|translate}}
+								th.col-md-2
+									| {{"simplePliCTerm.name.SynonymStatus"|translate}}
+								th.col-md-2
+						
+						tbody
+							tr(data-ng-repeat="synonymAtomized in formData.synonymsAtomized track by $index")
+								td
+									div(data-ng-show='synonymAtomized.synonymName.canonicalName.simple')
+										| {{synonymAtomized.synonymName.canonicalName.simple}}
+								td
+									div(data-ng-show='synonymAtomized.synonymStatus')
+										|  {{synonymAtomized.synonymStatus}}
+								td
+									button.btn(data-ng-click='removeSynonymsAtomized(formData.synonymsAtomized,synonymAtomized)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
+									button.btn(data-ng-click='editSynonymsAtomized(formData.synonymsAtomized,synonymAtomized)')
+										span(class="glyphicon glyphicon-pencil", aria-hidden='true')

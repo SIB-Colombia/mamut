@@ -9,31 +9,6 @@
       -->
     </div>
     <div class="panel-body">
-      <div data-ng-show="(formData.usesManagementAndConservation.usesAtomized).length" class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>{{"simplePliCTerm.name.SourceOfInformation"|translate}}</th>
-              <th>{{"simplePliCTerm.name.Use-Value"|translate}}</th>
-              <th>{{"simplePliCTerm.name.PartUsed"|translate}}</th>
-              <th>{{"simplePliCTerm.name.Users"|translate}}</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-ng-repeat="usesAtomized in formData.usesManagementAndConservation.usesAtomized track by $index">
-              <td>{{usesAtomized.sourceOfInformation.sourceOfInformationText}}</td>
-              <td>{{usesAtomized.useValue}}	</td>
-              <td>{{usesAtomized.partUsed}}</td>
-              <td>{{usesAtomized.users}}	</td>
-              <td>
-                <button data-ng-click="removeUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                <button data-ng-click="editUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
       <div class="form-group">
         <label for="sourceOfInformation" translate="" class="col-xs-2 control-label">simplePliCTerm.name.SourceOfInformation</label>
         <div class="col-xs-10">
@@ -137,21 +112,21 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>
-                    <!--th {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
-                    <!--th {{"simplePliCTerm.name.license"|translate}}-->
-                    <!--th {{"simplePliCTerm.name.rights"|translate}}-->
+                    <!--th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}-->
+                    <!--th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
+                    <th class="col-xs-1"> {{"simplePliCTerm.name.license"|translate}}</th>
+                    <!--th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}-->
                     <th class="col-xs-9">{{"simplePliCTerm.name.References"|translate}}</th>
                     <th class="col-xs-1"></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr data-ng-repeat="ancillary in usesAtomizedType.ancillaryData track by $index">
-                    <td>{{ancillary.source}}</td>
+                    <!--td| {{ancillary.source}}
+                    -->
                     <!--td| {{ancillary.bibliographicCitation}}
                     -->
-                    <!--td| {{ancillary.license}}	
-                    -->
+                    <td>{{ancillary.license}}	</td>
                     <!--td
                     | {{ancillary.rights}}
                     
@@ -239,8 +214,10 @@
                         <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
                         <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
                         <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
-                        <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs pull-right">Guardar</button>
-                        <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                        <div class="pull-right">
+                          <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs">Guardar</button>
+                          <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs">Cancelar</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -268,8 +245,45 @@
         </div>
       </div>
       <div class="form-group">
-        <button type="button" data-ng-click="addUsesAtomized(formData.usesManagementAndConservation.usesAtomized, usesAtomizedType)" class="btn btn-success btn-sm pull-right">Guardar </button>
-        <button type="button" data-ng-click="cancelUsesAtomized()" class="btn btn-success btn-sm pull-right">Cancelar </button>
+        <div class="pull-right">
+          <button type="button" data-ng-click="addUsesAtomized(formData.usesManagementAndConservation.usesAtomized, usesAtomizedType)" class="btn btn-success btn-sm">Guardar </button>
+          <button type="button" data-ng-click="cancelUsesAtomized()" class="btn btn-success btn-sm">Cancelar </button>
+        </div>
+      </div>
+      <div class="divider"> </div>
+      <div class="form-group">
+        <div data-ng-show="(formData.usesManagementAndConservation.usesAtomized).length" class="table-responsive">
+          <table class="table table-striped">
+            <tbody>
+              <tr data-ng-repeat="usesAtomized in formData.usesManagementAndConservation.usesAtomized track by $index">
+                <td>
+                  <div class="parrafo-pegado">
+                    <div data-ng-show="usesAtomized.sourceOfInformation.sourceOfInformationText">{{"simplePliCTerm.name.SourceOfInformation"|translate}} : {{usesAtomized.sourceOfInformation.sourceOfInformationText}}</div>
+                    <div data-ng-show="usesAtomized.useValue">{{"simplePliCTerm.name.Use-Value"|translate}} : {{usesAtomized.useValue}}</div>
+                    <div data-ng-show="usesAtomized.partUsed">{{"simplePliCTerm.name.PartUsed"|translate}} : {{usesAtomized.partUsed}}</div>
+                    <div data-ng-show="usesAtomized.users">{{"simplePliCTerm.name.Users"|translate}} : {{usesAtomized.users}}</div>
+                    <div data-ng-show="usesAtomized.organisms">{{"simplePliCTerm.name.Organisms"|translate}} : {{usesAtomized.organisms}}</div>
+                    <div data-ng-show="usesAtomized.vernacularNameUseAnnotations">{{"simplePliCTerm.name.VernacuarNameUseAnnotations"|translate}} : {{usesAtomized.vernacularNameUseAnnotations}}</div>
+                    <div data-ng-show="usesAtomized.productionDetails">{{"simplePliCTerm.name.ProductionDetails"|translate}} : {{usesAtomized.productionDetails}}</div>
+                    <div data-ng-show="usesAtomized.meansOfApplicationAdministration">{{"simplePliCTerm.name.MeansOfApplication-Administration"|translate}} : {{usesAtomized.meansOfApplicationAdministration}}</div>
+                    <div data-ng-show="usesAtomized.seasonOfAvailabilityUse">{{"simplePliCTerm.name.SeasonOfAvailability-Use"|translate}} : {{usesAtomized.seasonOfAvailabilityUse}}</div>
+                    <div data-ng-show="usesAtomized.conservationExplotationData">{{"simplePliCTerm.name.Conservation-ExplotationData"|translate}} : {{usesAtomized.conservationExplotationData}}</div>
+                    <div data-ng-show="usesAtomized.useTypeAtomized">{{"simplePliCTerm.name.UseTypeAtomized"|translate}} : {{usesAtomized.useTypeAtomized}}</div>
+                    <div data-ng-show="usesAtomized.economics">{{"simplePliCTerm.name.Economics"|translate}} : {{usesAtomized.economics}}</div>
+                    <div data-ng-show="usesAtomized.ratingPopularity">{{"simplePliCTerm.name.RatingPopularity"|translate}} : {{usesAtomized.ratingPopularity}}</div>
+                    <div data-ng-show="usesAtomized.properties">{{"simplePliCTerm.name.Properties"|translate}} : {{usesAtomized.properties}}</div>
+                    <div data-ng-show="usesAtomized.potential">{{"simplePliCTerm.name.Potential"|translate}} : {{usesAtomized.potential}}</div>
+                    <div data-ng-show="usesAtomized.useNotes">{{"simplePliCTerm.name.UsesNotes"|translate}} : {{usesAtomized.useNotes}}</div>
+                  </div>
+                </td>
+                <td>
+                  <button data-ng-click="removeUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                  <button data-ng-click="editUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

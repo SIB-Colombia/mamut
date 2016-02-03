@@ -7,40 +7,6 @@
         <button data-ng-click="isCollapsed = !isCollapsed" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}" aria-hidden="true"></span></button>
       </div>
       <div class="panel-body">
-        <div data-ng-show="(formData.commonNameAtomized).length" class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>{{"simplePliCTerm.name.Name"|translate}}</th>
-                <th>{{"simplePliCTerm.name.Language"|translate}}</th>
-                <th>{{"simplePliCTerm.name.UsedIn"|translate}}</th>
-                <th>{{"simplePliCTerm.name.UsedBy"|translate}}</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-ng-repeat="commonName in formData.commonNameAtomized track by $index| orderBy:'-language'">
-                <td>
-                  <div data-ng-show="commonName.name">{{commonName.name}}</div>
-                </td>
-                <td>
-                  <div data-ng-show="commonName.language">{{commonName.language}}</div>
-                </td>
-                <td>
-                  <div data-ng-show="commonName.usedIn.distributionUnstructured">{{commonName.usedIn.distributionUnstructured}}</div>
-                </td>
-                <td>
-                  <div data-ng-show="commonName.usedBy">{{commonName.usedBy}}</div>
-                </td>
-                <td>
-                  <button data-ng-click="removeCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                  <button data-ng-click="editCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <hr/>
-        </div>
         <div uib-collapse="isCollapsed" id="commonNameForm">
           <div class="form-group">
             <div class="form-group">
@@ -76,13 +42,21 @@
                   <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th>{{"simplePliCTerm.name.source"|translate}}</th>
+                        <th>{{"simplePliCTerm.name.license"|translate}}</th>
+                        <th>{{"simplePliCTerm.name.References"|translate}}</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr data-ng-repeat="ancillary in commonName.ancillaryData track by $index">
-                        <td>{{ancillary.source}}</td>
+                        <td>{{ancillary.license}}</td>
+                        <td> 
+                          <div data-ng-repeat="ref in ancillary.reference track by $index" class="selected-item">
+                            <div data-ng-show="ref">
+                              <textarea disabled="disabled">{{ref|references_format}}</textarea>
+                            </div>
+                          </div>
+                        </td>
                         <td>
                           <button data-ng-click="removeAncillaryData(commonName.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
                           <button data-ng-click="editAncillaryData(commonName.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
@@ -157,12 +131,26 @@
                           <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
                           <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
                           <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
-                          <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs pull-right">Guardar</button>
-                          <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                          <div class="pull-right">
+                            <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs">Guardar</button>
+                            <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs">Cancelar</button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                </div>
+                <div class="form-group">
+                  <label for="license" class="control-label">{{"simplePliCTerm.name.license"|translate}}
+                    <panel data-ng-controller="CheckBoxCrtl">
+                      <div data-ng-repeat="lic in lincese_list | filter:{nombre : '!Otra'}">
+                        <input type="checkbox" data-ng-model="lic.checked" data-ng-click="updateSelectionLicence(lic, lincese_list, &quot;ManualLicenseFullDescription&quot;)"/><a data-ng-href="{{lic.url}}" target="_blank"><img id="image" data-ng-src="{{lic.image_url || '//:0' }}" hspace="10" vspace="7"/>{{lic.nombre}}</a>
+                        <spant data-ng-show="lic.definicion"></spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{lic.definicion}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+                      </div>
+                      <p id="ManualLicenseFullDescription"></p>
+                      <p style="font-size:90%;"><i>* Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co</i></p>
+                    </panel>
+                  </label>
                 </div>
               </div>
             </div>
@@ -170,10 +158,58 @@
               <button type="button" data-ng-click="addAncillaryData(commonName.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-xs pull-right">Guardar Información adicional</button>
             </div>
             <div class="form-group">
-              <button type="button" data-ng-click="addCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn btn-success btn-sm pull-right">Guardar</button>
-              <button type="button" data-ng-click="cancelCommonNamesAtomized()" class="btn btn-success btn-sm pull-right">Cancelar</button>
+              <div class="pull-right">
+                <button type="button" data-ng-click="addCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn btn-success btn-sm">Guardar</button>
+                <button type="button" data-ng-click="cancelCommonNamesAtomized()" class="btn btn-success btn-sm">Cancelar</button>
+              </div>
             </div>
+            <hr/>
           </div>
+        </div>
+        <div data-ng-show="(formData.commonNameAtomized).length" class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th class="col-md-2">
+                   
+                  {{"simplePliCTerm.name.Name"|translate}}
+                </th>
+                <th class="col-md-2">
+                   
+                  {{"simplePliCTerm.name.Language"|translate}}
+                </th>
+                <th class="col-md-2">
+                   
+                  {{"simplePliCTerm.name.UsedIn"|translate}}
+                </th>
+                <th class="col-md-2">
+                   
+                  {{"simplePliCTerm.name.UsedBy"|translate}}
+                </th>
+                <th class="col-md-2"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-ng-repeat="commonName in formData.commonNameAtomized track by $index| orderBy:'-language'">
+                <td>
+                  <div data-ng-show="commonName.name">{{commonName.name}}</div>
+                </td>
+                <td>
+                  <div data-ng-show="commonName.language">{{commonName.language}}</div>
+                </td>
+                <td>
+                  <div data-ng-show="commonName.usedIn.distributionUnstructured">{{commonName.usedIn.distributionUnstructured}}</div>
+                </td>
+                <td>
+                  <div data-ng-show="commonName.usedBy">{{commonName.usedBy}}</div>
+                </td>
+                <td>
+                  <button data-ng-click="removeCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                  <button data-ng-click="editCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

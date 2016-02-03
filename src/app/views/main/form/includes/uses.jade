@@ -9,32 +9,6 @@ div(data-ng-controller='UsesCtrl')
 			//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addUse()') 
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
-			div.table-responsive(data-ng-show='(formData.usesManagementAndConservation.usesAtomized).length')
-				table.table.table-striped
-					thead
-						tr
-							th {{"simplePliCTerm.name.SourceOfInformation"|translate}}
-							th {{"simplePliCTerm.name.Use-Value"|translate}}
-							th {{"simplePliCTerm.name.PartUsed"|translate}}
-							th {{"simplePliCTerm.name.Users"|translate}}
-							th
-					
-					tbody
-						tr(data-ng-repeat="usesAtomized in formData.usesManagementAndConservation.usesAtomized track by $index")
-							td
-								| {{usesAtomized.sourceOfInformation.sourceOfInformationText}}
-							td
-								| {{usesAtomized.useValue}}	
-							td
-								| {{usesAtomized.partUsed}}
-							td
-								| {{usesAtomized.users}}	
-							td
-								button.btn(data-ng-click='removeUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)')
-									span(class="glyphicon glyphicon-trash", aria-hidden='true')
-								button.btn(data-ng-click='editUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)')
-									span(class="glyphicon glyphicon-pencil", aria-hidden='true')
-
 			.form-group
 				label.col-xs-2.control-label(for='sourceOfInformation', translate='') simplePliCTerm.name.SourceOfInformation
 				.col-xs-10
@@ -136,20 +110,20 @@ div(data-ng-controller='UsesCtrl')
 							table.table.table-striped
 								thead
 									tr
-										th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
-										//th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
-										//th {{"simplePliCTerm.name.license"|translate}}
-										//th {{"simplePliCTerm.name.rights"|translate}}
+										//th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
+										//th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}
+										th.col-xs-1  {{"simplePliCTerm.name.license"|translate}}
+										//th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}
 										th.col-xs-9 {{"simplePliCTerm.name.References"|translate}}
 										th.col-xs-1
 								
 								tbody
 									tr(data-ng-repeat="ancillary in usesAtomizedType.ancillaryData track by $index")
-										td
+										//td
 											| {{ancillary.source}}
 										//td
 											| {{ancillary.bibliographicCitation}}
-										//td
+										td
 											| {{ancillary.license}}	
 										//td
 											| {{ancillary.rights}}
@@ -222,8 +196,9 @@ div(data-ng-controller='UsesCtrl')
 												input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
 												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-												button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
-												button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()', translate='') Cancelar
+												div.pull-right
+													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
+													button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 								.form-group
 									label.control-label(for='license', translate='') simplePliCTerm.name.license
 									panel(data-ng-controller='CheckBoxCrtl')
@@ -246,5 +221,52 @@ div(data-ng-controller='UsesCtrl')
 								button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar
 
 			.form-group
-				button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addUsesAtomized(formData.usesManagementAndConservation.usesAtomized, usesAtomizedType)') Guardar 
-				button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='cancelUsesAtomized()') Cancelar 
+				div.pull-right
+					button.btn.btn-success.btn-sm(type='button', data-ng-click='addUsesAtomized(formData.usesManagementAndConservation.usesAtomized, usesAtomizedType)') Guardar 
+					button.btn.btn-success.btn-sm(type='button', data-ng-click='cancelUsesAtomized()') Cancelar 
+			
+			div.divider 
+			.form-group
+				div.table-responsive(data-ng-show='(formData.usesManagementAndConservation.usesAtomized).length')
+					table.table.table-striped
+						tbody
+							tr(data-ng-repeat="usesAtomized in formData.usesManagementAndConservation.usesAtomized track by $index")
+								td
+									.parrafo-pegado
+										div(data-ng-show='usesAtomized.sourceOfInformation.sourceOfInformationText')
+											| {{"simplePliCTerm.name.SourceOfInformation"|translate}} : {{usesAtomized.sourceOfInformation.sourceOfInformationText}}
+										div(data-ng-show='usesAtomized.useValue')
+											| {{"simplePliCTerm.name.Use-Value"|translate}} : {{usesAtomized.useValue}}
+										div(data-ng-show='usesAtomized.partUsed')
+											| {{"simplePliCTerm.name.PartUsed"|translate}} : {{usesAtomized.partUsed}}
+										div(data-ng-show='usesAtomized.users')
+											| {{"simplePliCTerm.name.Users"|translate}} : {{usesAtomized.users}}
+										div(data-ng-show='usesAtomized.organisms')
+											| {{"simplePliCTerm.name.Organisms"|translate}} : {{usesAtomized.organisms}}
+										div(data-ng-show='usesAtomized.vernacularNameUseAnnotations')
+											| {{"simplePliCTerm.name.VernacuarNameUseAnnotations"|translate}} : {{usesAtomized.vernacularNameUseAnnotations}}
+										div(data-ng-show='usesAtomized.productionDetails')
+											| {{"simplePliCTerm.name.ProductionDetails"|translate}} : {{usesAtomized.productionDetails}}
+										div(data-ng-show='usesAtomized.meansOfApplicationAdministration')
+											| {{"simplePliCTerm.name.MeansOfApplication-Administration"|translate}} : {{usesAtomized.meansOfApplicationAdministration}}
+										div(data-ng-show='usesAtomized.seasonOfAvailabilityUse')
+											| {{"simplePliCTerm.name.SeasonOfAvailability-Use"|translate}} : {{usesAtomized.seasonOfAvailabilityUse}}
+										div(data-ng-show='usesAtomized.conservationExplotationData')
+											| {{"simplePliCTerm.name.Conservation-ExplotationData"|translate}} : {{usesAtomized.conservationExplotationData}}
+										div(data-ng-show='usesAtomized.useTypeAtomized')
+											| {{"simplePliCTerm.name.UseTypeAtomized"|translate}} : {{usesAtomized.useTypeAtomized}}
+										div(data-ng-show='usesAtomized.economics')
+											| {{"simplePliCTerm.name.Economics"|translate}} : {{usesAtomized.economics}}
+										div(data-ng-show='usesAtomized.ratingPopularity')
+											| {{"simplePliCTerm.name.RatingPopularity"|translate}} : {{usesAtomized.ratingPopularity}}
+										div(data-ng-show='usesAtomized.properties')
+											| {{"simplePliCTerm.name.Properties"|translate}} : {{usesAtomized.properties}}
+										div(data-ng-show='usesAtomized.potential')
+											| {{"simplePliCTerm.name.Potential"|translate}} : {{usesAtomized.potential}}
+										div(data-ng-show='usesAtomized.useNotes')
+											| {{"simplePliCTerm.name.UsesNotes"|translate}} : {{usesAtomized.useNotes}}
+								td
+									button.btn(data-ng-click='removeUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
+									button.btn(data-ng-click='editUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)')
+										span(class="glyphicon glyphicon-pencil", aria-hidden='true')

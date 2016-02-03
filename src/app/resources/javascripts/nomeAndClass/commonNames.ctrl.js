@@ -19,6 +19,9 @@ angular.module('app.controllers.commonName',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
+	//list of lincese
+	$scope.lincese_list = angular.copy($scope.lenguajes.licences);
+
 	$scope.checked = false; // This will be binded using the ps-open attribute
 
 	$scope.slide = function(){
@@ -55,6 +58,11 @@ angular.module('app.controllers.commonName',[])
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.license !== ''){
+			var license = document.getElementById("ancillaryData.license");
+			if(license !== undefined && license!==null){
+				ancillaryData.license = license.value;
+				license.parentNode.removeChild(license);
+			}
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
 			var insert = true;
 			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
@@ -82,6 +90,13 @@ angular.module('app.controllers.commonName',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			if(license !== undefined && license!==null){
+				license.parentNode.removeChild(license);
+			}
+
+			angular.forEach($scope.lincese_list, function(item) {
+  				item.checked = false;
+       		});
 		}else{
 			alert("La licencia debe ser seleccionada");
 		}		
@@ -93,6 +108,30 @@ angular.module('app.controllers.commonName',[])
 
 	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		var checked_almost_one = false;
+		angular.forEach($scope.lincese_list, function(item) {
+            if(ancillaryData.license!==null){
+            	if(ancillaryData.license === item.nombre){
+  					item.checked = true;
+  					checked_almost_one = true;
+				}else{
+					if(item.nombre==='Otra' && !checked_almost_one){
+					 	if(document.getElementById('ancillaryData.license') === null){
+							item.checked = true;
+							var input = document.createElement("input");
+				            input.type = "text";
+				            input.id = "ancillaryData.license";
+				            input.value = ancillaryData.license;
+				            document.getElementById("ManualLicenseLifeForm").appendChild(input);
+						}else{
+							var license = document.getElementById("ancillaryData.license");
+							license.value = ancillaryData.license;
+						}
+					}
+				}
+            }
+            
+        });
 	};
 
 	$scope.findAncillary = function(ancillaryData){

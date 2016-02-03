@@ -313,7 +313,7 @@ angular.module('app.controllers.invasiveness',[])
 		$scope.checked_ato = !$scope.checked_ato;
 	};
 
-	$scope.cancelReference = function() {
+	$scope.cancelReferenceAto = function() {
 		$scope.referenceAto = angular.copy(origR);
 		$scope.checked_ato = !$scope.checked_ato;
 	};

@@ -10,75 +10,6 @@ div(data-ng-controller='InvasivenessCtrl')
 				//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addInvasiveness()') 
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 			.panel-body
-				div.table-responsive(data-ng-show='(formData.invasiveness.invasivenessAtomized).length')
-					table.table.table-striped
-					
-						tbody
-							tr(data-ng-repeat="invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized track by $index")
-								td
-									.parrafo-pegado
-										div(data-ng-show='invasivenessAtomizedType.origin')
-											| {{"simplePliCTerm.name.origin"|translate}} : {{invasivenessAtomizedType.origin}}
-										div(data-ng-show='invasivenessAtomizedType.presence')
-											| {{"simplePliCTerm.name.presence"|translate}} : {{invasivenessAtomizedType.presence}}
-										div(data-ng-show='invasivenessAtomizedType.persistence')
-											| {{"simplePliCTerm.name.persistence"|translate}} : {{invasivenessAtomizedType.persistence}}
-										.selected-item(data-ng-repeat='distribution in invasivenessAtomizedType.distribution')
-											div(data-ng-show='distribution')
-												| {{"simplePliCTerm.name.distribution"|translate}} : {{distribution}}
-										div(data-ng-show='invasivenessAtomizedType.harmful')
-											| {{"simplePliCTerm.name.harmful"|translate}} : {{invasivenessAtomizedType.harmful}}
-										div(data-ng-show='invasivenessAtomizedType.modified')
-											| {{"simplePliCTerm.name.modified"|translate}} : {{invasivenessAtomizedType.modified|split:'T':0}}
-										div(data-ng-show='invasivenessAtomizedType.startValidateDate')
-											| {{"simplePliCTerm.name.startValidateDate"|translate}} : {{invasivenessAtomizedType.startValidateDate|split:'T':0}}	
-										div(data-ng-show='invasivenessAtomizedType.endValidateDate')
-											| {{"simplePliCTerm.name.endValidateDate"|translate}} : {{invasivenessAtomizedType.endValidateDate|split:'T':0}}
-										div(data-ng-show='invasivenessAtomizedType.countryCode')
-											| {{"simplePliCTerm.name.countryCode"|translate}} : {{invasivenessAtomizedType.countryCode}}
-										div(data-ng-show='invasivenessAtomizedType.stateProvince')
-											| {{"simplePliCTerm.name.stateProvince"|translate}} : {{invasivenessAtomizedType.stateProvince}}
-										div(data-ng-show='invasivenessAtomizedType.county')
-											| {{"simplePliCTerm.name.county"|translate}} : {{invasivenessAtomizedType.county}}	
-										div(data-ng-show='invasivenessAtomizedType.localityName')
-											| {{"simplePliCTerm.name.localityName"|translate}} : {{invasivenessAtomizedType.localityName}}	
-										div(data-ng-show='invasivenessAtomizedType.language')
-											| {{"simplePliCTerm.name.language"|translate}} : {{invasivenessAtomizedType.language}}
-										div(data-ng-show='invasivenessAtomizedType.citation')
-											| {{"simplePliCTerm.name.citation"|translate}} : {{invasivenessAtomizedType.citation}}
-										div(data-ng-show='invasivenessAtomizedType.abundance')
-											| {{"simplePliCTerm.name.abundance"|translate}} : {{invasivenessAtomizedType.abundance}}	
-										div(data-ng-show='invasivenessAtomizedType.trend')
-											| {{"simplePliCTerm.name.trend"|translate}} : {{invasivenessAtomizedType.trend}}
-										div(data-ng-show='invasivenessAtomizedType.rateOfSpread')
-											| {{"simplePliCTerm.name.rateOfSpread"|translate}} : {{invasivenessAtomizedType.rateOfSpread}}
-										div(data-ng-show='invasivenessAtomizedType.regulatoryListing')
-											| {{"simplePliCTerm.name.regulatoryListing"|translate}} : {{invasivenessAtomizedType.regulatoryListing}}
-										div(data-ng-show='invasivenessAtomizedType.memo')
-											| {{"simplePliCTerm.name.memo"|translate}} : {{invasivenessAtomizedType.memo}}	
-										div(data-ng-show='invasivenessAtomizedType.publicationDate')
-											| {{"simplePliCTerm.name.publicationDate"|translate}} : {{invasivenessAtomizedType.publicationDate}}
-										div(data-ng-show='invasivenessAtomizedType.localityType')
-											| {{"simplePliCTerm.name.localityType"|translate}} : {{invasivenessAtomizedType.localityType}}
-										div(data-ng-show='invasivenessAtomizedType.locationValue')
-											| {{"simplePliCTerm.name.locationValue"|translate}} : {{invasivenessAtomizedType.locationValue}}
-										div(data-ng-show='invasivenessAtomizedType.publicationDatePrecision')
-											| {{"simplePliCTerm.name.publicationDatePrecision"|translate}} : {{invasivenessAtomizedType.publicationDatePrecision}}	
-										div(data-ng-show='invasivenessAtomizedType.whatImpact')
-											| {{"simplePliCTerm.name.WhatImpact"|translate}} : {{invasivenessAtomizedType.whatImpact}}	
-										div(data-ng-show='invasivenessAtomizedType.vector')
-											| {{"simplePliCTerm.name.vector"|translate}} : {{invasivenessAtomizedType.vector}}
-										div(data-ng-show='invasivenessAtomizedType.route')
-											| {{"simplePliCTerm.name.route"|translate}} : {{invasivenessAtomizedType.route}}
-										div(data-ng-show='invasivenessAtomizedType.target')
-											| {{"simplePliCTerm.name.target"|translate}} : {{invasivenessAtomizedType.target}}	
-										div(data-ng-show='invasivenessAtomizedType.mechanism')
-											| {{"simplePliCTerm.name.Mechanism"|translate}} : {{invasivenessAtomizedType.mechanism}}		
-								td
-									button.btn(data-ng-click='removeInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)')
-										span(class="glyphicon glyphicon-trash", aria-hidden='true')
-									button.btn(data-ng-click='editInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)')
-										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				.form-group
 					label.col-xs-2.control-label(for='origin', translate='') simplePliCTerm.name.origin
 					.col-xs-10
@@ -134,7 +65,7 @@ div(data-ng-controller='InvasivenessCtrl')
 					.col-xs-10
 						div(data-ng-controller='DatepickerCtrl')
 							p.input-group
-								input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", data-ng-model="invasivenessAtomizedType.modified", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" )
+								input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", data-ng-model="invasivenessAtomizedType.modified", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" , disabled)
 								span.input-group-btn
 									button.btn.btn-default(type="button",data-ng-click="open($event)")
 										i.glyphicon.glyphicon-calendar
@@ -143,7 +74,7 @@ div(data-ng-controller='InvasivenessCtrl')
 					.col-xs-10
 						div(data-ng-controller='DatepickerCtrl')
 							p.input-group
-								input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", data-ng-model="invasivenessAtomizedType.startValidateDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" )
+								input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", data-ng-model="invasivenessAtomizedType.startValidateDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close", disabled )
 								span.input-group-btn
 									button.btn.btn-default(type="button",data-ng-click="open($event)")
 										i.glyphicon.glyphicon-calendar
@@ -152,7 +83,7 @@ div(data-ng-controller='InvasivenessCtrl')
 					.col-xs-10
 						div(data-ng-controller='DatepickerCtrl')
 							p.input-group
-								input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", data-ng-model="invasivenessAtomizedType.endValidateDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" )
+								input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", data-ng-model="invasivenessAtomizedType.endValidateDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close", disabled )
 								span.input-group-btn
 									button.btn.btn-default(type="button",data-ng-click="open($event)")
 										i.glyphicon.glyphicon-calendar
@@ -236,7 +167,7 @@ div(data-ng-controller='InvasivenessCtrl')
 					.col-xs-10
 						div(data-ng-controller='DatepickerCtrl')
 							p.input-group
-								input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", data-ng-model="invasivenessAtomizedType.publicationDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close" )
+								input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", data-ng-model="invasivenessAtomizedType.publicationDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close", disabled)
 								span.input-group-btn
 									button.btn.btn-default(type="button",data-ng-click="open($event)")
 										i.glyphicon.glyphicon-calendar
@@ -335,8 +266,8 @@ div(data-ng-controller='InvasivenessCtrl')
 												include includes/referenceSearch
 											button.btn.btn-success.btn-xs(data-ng-click="open(formData.references,ancillaryDataAto.reference)")
 												span.glyphicon.glyphicon-search
-										button.btn.btn-success.btn-xs(href="", data-ng-click="slide()")
-											span(ng-class="{'glyphicon glyphicon-plus': !checked , 'glyphicon glyphicon-minus' : checked}", aria-hidden='true')
+										button.btn.btn-success.btn-xs(href="", data-ng-click="slide_ato()")
+											span(ng-class="{'glyphicon glyphicon-plus': !checked_ato , 'glyphicon glyphicon-minus' : checked_ato}", aria-hidden='true')
 										hr
 										div.table-responsive(data-ng-show='(ancillaryDataAto.reference).length')
 											table.table.table-striped
@@ -350,35 +281,36 @@ div(data-ng-controller='InvasivenessCtrl')
 																span(class="glyphicon glyphicon-trash", aria-hidden='true')
 															button.btn(data-ng-click='editReference(ancillaryDataAto.reference,ref)')
 																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
-										div(pageslide ps-open="checked" ps-key-listener="true")
+										div(pageslide ps-open="checked_ato" ps-key-listener="true")
 											div(style="padding:30px" id="demo-right")
 												h3 Agregar nueva referencia
 												.form-group
-													select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
+													select(data-ng-model='referenceAto.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 														option(value='') - {{"simplePliCTerm.name.type"|translate}} 
-													input(type='text', data-ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
-													input(type='text', data-ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
-													input(type='text', data-ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
-													input(type='text', data-ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
-													input(type='text', data-ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
-													input(type='text', data-ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
-													input(type='text', data-ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
-													input(type='text', data-ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
-													input(type='text', data-ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
-													input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
-													input(type='text', data-ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
-													input(type='text', data-ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
-													input(type='text', data-ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
-													input(type='text', data-ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
-													input(type='text', data-ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
-													input(type='text', data-ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
-													input(type='text', data-ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
-													input(type='text', data-ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
-													input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
-													input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
-													//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-													button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReferenceAto(ancillaryDataAto.reference,reference, checked)', translate='') Guardar
-													button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReferenceAto()', translate='') Cancelar
+													input(type='text', data-ng-model='referenceAto.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+													input(type='text', data-ng-model='referenceAto.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+													input(type='text', data-ng-model='referenceAto.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+													input(type='text', data-ng-model='referenceAto.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+													input(type='text', data-ng-model='referenceAto.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+													input(type='text', data-ng-model='referenceAto.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+													input(type='text', data-ng-model='referenceAto.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+													input(type='text', data-ng-model='referenceAto.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+													input(type='text', data-ng-model='referenceAto.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+													input(type='text', data-ng-model='referenceAto.link', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+													input(type='text', data-ng-model='referenceAto.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+													input(type='text', data-ng-model='referenceAto.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+													input(type='text', data-ng-model='referenceAto.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+													input(type='text', data-ng-model='referenceAto.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+													input(type='text', data-ng-model='referenceAto.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+													input(type='text', data-ng-model='referenceAto.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+													input(type='text', data-ng-model='referenceAto.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+													input(type='text', data-ng-model='referenceAto.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+													input(type='text', data-ng-model='referenceAto.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+													input(type='text', data-ng-model='referenceAto.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+													//input(type='text', data-ng-model='referenceAto.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
+													div.pull-right
+														button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReferenceAto(ancillaryDataAto.reference,referenceAto)', translate='') Guardar
+														button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReferenceAto()', translate='') Cancelar
 									.form-group
 										label.control-label(for='license', translate='') simplePliCTerm.name.license
 										panel(data-ng-controller='CheckBoxCrtl')
@@ -401,8 +333,81 @@ div(data-ng-controller='InvasivenessCtrl')
 									button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryDataAto()') Cancelar
 				
 				.form-group
-					button.btn.btn-success.btn-sm(type='button', data-ng-click='addInvasivenessAtomizedType(formData.invasiveness.invasivenessAtomized, invasivenessAtomizedType)') Guardar
-					button.btn.btn-success.btn-sm(type='button', data-ng-click='cancelInvasivenessAtomizedType(invasivenessAtomizedType)') Cancelar
+					div.pull-right
+						button.btn.btn-success.btn-sm(type='button', data-ng-click='addInvasivenessAtomizedType(formData.invasiveness.invasivenessAtomized, invasivenessAtomizedType)') Guardar
+						button.btn.btn-success.btn-sm(type='button', data-ng-click='cancelInvasivenessAtomizedType(invasivenessAtomizedType)') Cancelar
+				div.table-responsive(data-ng-show='(formData.invasiveness.invasivenessAtomized).length')
+					table.table.table-striped
+						tbody
+							tr(data-ng-repeat="invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized track by $index")
+								td
+									.parrafo-pegado
+										div(data-ng-show='invasivenessAtomizedType.origin')
+											| {{"simplePliCTerm.name.origin"|translate}} : {{invasivenessAtomizedType.origin}}
+										div(data-ng-show='invasivenessAtomizedType.presence')
+											| {{"simplePliCTerm.name.presence"|translate}} : {{invasivenessAtomizedType.presence}}
+										div(data-ng-show='invasivenessAtomizedType.persistence')
+											| {{"simplePliCTerm.name.persistence"|translate}} : {{invasivenessAtomizedType.persistence}}
+										.selected-item(data-ng-repeat='distribution in invasivenessAtomizedType.distribution')
+											div(data-ng-show='distribution')
+												| {{"simplePliCTerm.name.distribution"|translate}} : {{distribution}}
+										div(data-ng-show='invasivenessAtomizedType.harmful')
+											| {{"simplePliCTerm.name.harmful"|translate}} : {{invasivenessAtomizedType.harmful}}
+										div(data-ng-show='invasivenessAtomizedType.modified')
+											span.datepicker-date
+												| {{"simplePliCTerm.name.modified"|translate}} : {{invasivenessAtomizedType.modified| date:'yyyy/MM/dd'}}
+										div(data-ng-show='invasivenessAtomizedType.startValidateDate')
+											span.datepicker-date
+												| {{"simplePliCTerm.name.startValidateDate"|translate}} : {{invasivenessAtomizedType.startValidateDate| date:'yyyy/MM/dd'}}	
+										div(data-ng-show='invasivenessAtomizedType.endValidateDate')
+											span.datepicker-date
+												| {{"simplePliCTerm.name.endValidateDate"|translate}} : {{invasivenessAtomizedType.endValidateDate| date:'yyyy/MM/dd'}}
+										div(data-ng-show='invasivenessAtomizedType.countryCode')
+											| {{"simplePliCTerm.name.countryCode"|translate}} : {{invasivenessAtomizedType.countryCode}}
+										div(data-ng-show='invasivenessAtomizedType.stateProvince')
+											| {{"simplePliCTerm.name.stateProvince"|translate}} : {{invasivenessAtomizedType.stateProvince}}
+										div(data-ng-show='invasivenessAtomizedType.county')
+											| {{"simplePliCTerm.name.county"|translate}} : {{invasivenessAtomizedType.county}}	
+										div(data-ng-show='invasivenessAtomizedType.localityName')
+											| {{"simplePliCTerm.name.localityName"|translate}} : {{invasivenessAtomizedType.localityName}}	
+										div(data-ng-show='invasivenessAtomizedType.language')
+											| {{"simplePliCTerm.name.language"|translate}} : {{invasivenessAtomizedType.language}}
+										div(data-ng-show='invasivenessAtomizedType.citation')
+											| {{"simplePliCTerm.name.citation"|translate}} : {{invasivenessAtomizedType.citation}}
+										div(data-ng-show='invasivenessAtomizedType.abundance')
+											| {{"simplePliCTerm.name.abundance"|translate}} : {{invasivenessAtomizedType.abundance}}	
+										div(data-ng-show='invasivenessAtomizedType.trend')
+											| {{"simplePliCTerm.name.trend"|translate}} : {{invasivenessAtomizedType.trend}}
+										div(data-ng-show='invasivenessAtomizedType.rateOfSpread')
+											| {{"simplePliCTerm.name.rateOfSpread"|translate}} : {{invasivenessAtomizedType.rateOfSpread}}
+										div(data-ng-show='invasivenessAtomizedType.regulatoryListing')
+											| {{"simplePliCTerm.name.regulatoryListing"|translate}} : {{invasivenessAtomizedType.regulatoryListing}}
+										div(data-ng-show='invasivenessAtomizedType.memo')
+											| {{"simplePliCTerm.name.memo"|translate}} : {{invasivenessAtomizedType.memo}}	
+										div(data-ng-show='invasivenessAtomizedType.publicationDate')
+											span.datepicker-date
+												| {{"simplePliCTerm.name.publicationDate"|translate}} : {{invasivenessAtomizedType.publicationDate| date:'yyyy/MM/dd'}}
+										div(data-ng-show='invasivenessAtomizedType.localityType')
+											| {{"simplePliCTerm.name.localityType"|translate}} : {{invasivenessAtomizedType.localityType}}
+										div(data-ng-show='invasivenessAtomizedType.locationValue')
+											| {{"simplePliCTerm.name.locationValue"|translate}} : {{invasivenessAtomizedType.locationValue}}
+										div(data-ng-show='invasivenessAtomizedType.publicationDatePrecision')
+											| {{"simplePliCTerm.name.publicationDatePrecision"|translate}} : {{invasivenessAtomizedType.publicationDatePrecision}}	
+										div(data-ng-show='invasivenessAtomizedType.whatImpact')
+											| {{"simplePliCTerm.name.WhatImpact"|translate}} : {{invasivenessAtomizedType.whatImpact}}	
+										div(data-ng-show='invasivenessAtomizedType.vector')
+											| {{"simplePliCTerm.name.vector"|translate}} : {{invasivenessAtomizedType.vector}}
+										div(data-ng-show='invasivenessAtomizedType.route')
+											| {{"simplePliCTerm.name.route"|translate}} : {{invasivenessAtomizedType.route}}
+										div(data-ng-show='invasivenessAtomizedType.target')
+											| {{"simplePliCTerm.name.target"|translate}} : {{invasivenessAtomizedType.target}}	
+										div(data-ng-show='invasivenessAtomizedType.mechanism')
+											| {{"simplePliCTerm.name.Mechanism"|translate}} : {{invasivenessAtomizedType.mechanism}}		
+								td
+									button.btn(data-ng-click='removeInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
+									button.btn(data-ng-click='editInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)')
+										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				.form-group
 					hr
 					label(for='invasivenessUnstructured', translate='') Descripción
@@ -412,20 +417,20 @@ div(data-ng-controller='InvasivenessCtrl')
 						table.table.table-striped
 							thead
 								tr
-									th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
-									//th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
-									//th {{"simplePliCTerm.name.license"|translate}}
-									//th {{"simplePliCTerm.name.rights"|translate}}
+									//th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
+									//th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}
+									th.col-xs-1  {{"simplePliCTerm.name.license"|translate}}
+									//th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}
 									th.col-xs-9 {{"simplePliCTerm.name.References"|translate}}
 									th.col-xs-1
 							
 							tbody
 								tr(data-ng-repeat="ancillary in formData.invasiveness.ancillaryData track by $index")
-									td
+									//td
 										| {{ancillary.source}}
 									//td
 										| {{ancillary.bibliographicCitation}}
-									//td
+									td
 										| {{ancillary.license}}	
 									//td
 										| {{ancillary.rights}}
@@ -500,8 +505,9 @@ div(data-ng-controller='InvasivenessCtrl')
 													input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
 													input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 													//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-													button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
-													button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()', translate='') Cancelar
+													div.pull-right
+														button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar
+														button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 									.form-group
 										label.control-label(for='license', translate='') simplePliCTerm.name.license
 										panel(data-ng-controller='CheckBoxCrtl')

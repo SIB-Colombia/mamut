@@ -14,6 +14,7 @@
           <thead>
             <tr>
               <th>{{"simplePliCTerm.name.InteractionSpecies"|translate}}</th>
+              <th>Fuente de Información</th>
               <th>{{"simplePliCTerm.name.InteractionSpeciesType"|translate}}</th>
               <th></th>
             </tr>
@@ -23,7 +24,12 @@
               <td>{{interactionsAtomized.interactionSpecies}}</td>
               <td>
                 <div data-ng-repeat="interactionSpeciesType in interactionsAtomized.interactionSpeciesType" class="selected-item">
-                  <div data-ng-show="interactionSpeciesType">{{interactionSpeciesType.measurementOrFact.measurementType}} {{interactionSpeciesType.measurementOrFact.measurementValue}}	</div>
+                  <div data-ng-show="interactionSpeciesType">{{interactionSpeciesType.measurementOrFact.measurementType}}	</div>
+                </div>
+              </td>
+              <td>
+                <div data-ng-repeat="interactionSpeciesType in interactionsAtomized.interactionSpeciesType" class="selected-item">
+                  <div data-ng-show="interactionSpeciesType">{{interactionSpeciesType.measurementOrFact.measurementValue}}	</div>
                 </div>
               </td>
               <td>
@@ -80,8 +86,10 @@
           </div>
         </div>
       </div>
-      <button type="button" data-ng-click="addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)" class="btn btn-success btn-sm pull-right">Guardar interacción</button>
-      <button type="button" data-ng-click="cancelInteractionAtomizedType()" class="btn btn-success btn-sm pull-right">Cancelar</button>
+      <div class="pull-right">
+        <button type="button" data-ng-click="addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)" class="btn btn-success btn-sm">Guardar interacción</button>
+        <button type="button" data-ng-click="cancelInteractionAtomizedType()" class="btn btn-success btn-sm">Cancelar</button>
+      </div>
       <div class="form-group">
         <hr/>
         <label for="interactionUnstructured" translate="">simplePliCTerm.name.InteractionUnstructured</label><em>(opcional)</em><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.InteractionUnstructured&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
@@ -92,21 +100,21 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th class="col-xs-1">{{"simplePliCTerm.name.source"|translate}}</th>
-                    <!--th {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
-                    <!--th {{"simplePliCTerm.name.license"|translate}}-->
-                    <!--th {{"simplePliCTerm.name.rights"|translate}}-->
+                    <!--th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}-->
+                    <!--th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
+                    <th class="col-xs-1"> {{"simplePliCTerm.name.license"|translate}}</th>
+                    <!--th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}-->
                     <th class="col-xs-9">{{"simplePliCTerm.name.References"|translate}}</th>
                     <th class="col-xs-1"></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr data-ng-repeat="ancillary in formData.interactions.ancillaryData track by $index">
-                    <td>{{ancillary.source}}</td>
+                    <!--td| {{ancillary.source}}
+                    -->
                     <!--td| {{ancillary.bibliographicCitation}}
                     -->
-                    <!--td| {{ancillary.license}}	
-                    -->
+                    <td>{{ancillary.license}}	</td>
                     <!--td
                     | {{ancillary.rights}}
                     
@@ -194,8 +202,10 @@
                         <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
                         <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
                         <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
-                        <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs pull-right">Guardar</button>
-                        <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs pull-right">Cancelar</button>
+                        <div class="pull-right">
+                          <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs">Guardar</button>
+                          <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs">Cancelar</button>
+                        </div>
                       </div>
                     </div>
                   </div>

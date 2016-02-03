@@ -14,6 +14,7 @@ div(data-ng-controller='InteractionsCtrl')
 					thead
 						tr
 							th {{"simplePliCTerm.name.InteractionSpecies"|translate}}
+							th Fuente de Información
 							th {{"simplePliCTerm.name.InteractionSpeciesType"|translate}}
 							th
 					
@@ -24,7 +25,11 @@ div(data-ng-controller='InteractionsCtrl')
 							td
 								.selected-item(data-ng-repeat='interactionSpeciesType in interactionsAtomized.interactionSpeciesType')
 									div(data-ng-show='interactionSpeciesType')
-										| {{interactionSpeciesType.measurementOrFact.measurementType}} {{interactionSpeciesType.measurementOrFact.measurementValue}}	
+										| {{interactionSpeciesType.measurementOrFact.measurementType}}	
+							td
+								.selected-item(data-ng-repeat='interactionSpeciesType in interactionsAtomized.interactionSpeciesType')
+									div(data-ng-show='interactionSpeciesType')
+										|{{interactionSpeciesType.measurementOrFact.measurementValue}}	
 							td
 								button.btn(data-ng-click='removeInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomized)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
@@ -65,8 +70,9 @@ div(data-ng-controller='InteractionsCtrl')
 									td
 										button.btn(data-ng-click='removeInteractionSpeciesType(interactionsAtomizedType.interactionSpeciesType,interactionSpeciesType)')
 											span(class="glyphicon glyphicon-trash", aria-hidden='true')
-			button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)') Guardar interacción
-			button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='cancelInteractionAtomizedType()') Cancelar
+			div.pull-right
+				button.btn.btn-success.btn-sm(type='button', data-ng-click='addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)') Guardar interacción
+				button.btn.btn-success.btn-sm(type='button', data-ng-click='cancelInteractionAtomizedType()') Cancelar
 			.form-group
 				hr
 				label(for='interactionUnstructured', translate='') simplePliCTerm.name.InteractionUnstructured
@@ -81,20 +87,20 @@ div(data-ng-controller='InteractionsCtrl')
 							table.table.table-striped
 								thead
 									tr
-										th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
-										//th {{"simplePliCTerm.name.bibliographicCitation"|translate}}
-										//th {{"simplePliCTerm.name.license"|translate}}
-										//th {{"simplePliCTerm.name.rights"|translate}}
+										//th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
+										//th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}
+										th.col-xs-1  {{"simplePliCTerm.name.license"|translate}}
+										//th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}
 										th.col-xs-9 {{"simplePliCTerm.name.References"|translate}}
 										th.col-xs-1
 								
 								tbody
 									tr(data-ng-repeat="ancillary in formData.interactions.ancillaryData track by $index")
-										td
+										//td
 											| {{ancillary.source}}
 										//td
 											| {{ancillary.bibliographicCitation}}
-										//td
+										td
 											| {{ancillary.license}}	
 										//td
 											| {{ancillary.rights}}
@@ -168,8 +174,9 @@ div(data-ng-controller='InteractionsCtrl')
 												input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
 												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
-												button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
-												button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()', translate='') Cancelar
+												div.pull-right
+													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
+													button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 								.form-group
 									label.control-label(for='license', translate='') simplePliCTerm.name.license
 									panel(data-ng-controller='CheckBoxCrtl')
