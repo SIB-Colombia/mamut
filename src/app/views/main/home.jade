@@ -25,28 +25,25 @@ block content
 					div.row
 						div.panel.panel-primary.filterable
 							div.panel-heading
-								h3.panel-title Fichas
-								button.btn.btn-default.btn-xs.btn-filter.pull-right
-									span.glyphicon.glyphicon-filter Filtro
-								
+								h3.panel-title.text-center FICHAS
 
 							table.table(data-ng-table="tableParams")
 								thead
 									tr.filters
-										th
-											input.form-control(type="text" placeholder="Id" disabled)
-										th
-											input.form-control(type="text" placeholder="Taxon" disabled)
-										th
-											input.form-control(type="text" placeholder="Creador" disabled)
+										th.col-xs-3
+											| ID
+										th.col-xs-4
+											| TAXON
+										th.col-xs-3
+											| CREADOR
 								tbody
 									tr(data-ng-repeat="field in $data track by field._id")
-										td 
+										td.text-center 
 											a(href="/edit?id={{field._id}}")
 												| {{field._id}}
-										td
+										td.text-center
 											{{field.taxonRecordName.scientificName.simple}}
-										td
+										td.text-center
 											.selected-item(data-ng-repeat='associatedParty in field.associatedParty')
 												| {{associatedParty.firstName}}-{{associatedParty.lastName}}
 										

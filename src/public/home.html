@@ -36,28 +36,21 @@
               <div class="row">
                 <div class="panel panel-primary filterable">
                   <div class="panel-heading">
-                    <h3 class="panel-title">Fichas</h3>
-                    <button class="btn btn-default btn-xs btn-filter pull-right"><span class="glyphicon glyphicon-filter">Filtro</span></button>
+                    <h3 class="panel-title text-center">FICHAS</h3>
                   </div>
                   <table data-ng-table="tableParams" class="table">
                     <thead>
                       <tr class="filters">
-                        <th>
-                          <input type="text" placeholder="Id" disabled class="form-control">
-                        </th>
-                        <th>
-                          <input type="text" placeholder="Taxon" disabled class="form-control">
-                        </th>
-                        <th>
-                          <input type="text" placeholder="Creador" disabled class="form-control">
-                        </th>
+                        <th class="col-xs-3">ID</th>
+                        <th class="col-xs-4">TAXON</th>
+                        <th class="col-xs-3">CREADOR</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr data-ng-repeat="field in $data track by field._id">
-                        <td> <a href="/edit?id={{field._id}}">{{field._id}}</a></td>
-                        <td>{{field.taxonRecordName.scientificName.simple}}</td>
-                        <td>
+                        <td class="text-center"> <a href="/edit?id={{field._id}}">{{field._id}}</a></td>
+                        <td class="text-center">{{field.taxonRecordName.scientificName.simple}}</td>
+                        <td class="text-center">
                           <div data-ng-repeat="associatedParty in field.associatedParty" class="selected-item">{{associatedParty.firstName}}-{{associatedParty.lastName}}</div>
                         </td>
                       </tr>
