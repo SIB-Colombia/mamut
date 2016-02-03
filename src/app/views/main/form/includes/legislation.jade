@@ -75,8 +75,9 @@ div(data-ng-controller='LegislationCtrl')
 						select(data-ng-model='legislationAtomizedType.appliesTo.county', data-ng-disabled='!legislationAtomizedType.appliesTo.country || !legislationAtomizedType.appliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
 							option(value='') {{"simplePliCTerm.name.county"|translate}}
 			.form-group
-					button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addLegislationAtomized(formData.legislation.legislationAtomized,legislationAtomizedType)') Guardar
-					button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='cancelLegislationAtomized()') Cancelar
+				div.pull-right
+					button.btn.btn-success.btn-sm(type='button', data-ng-click='addLegislationAtomized(formData.legislation.legislationAtomized,legislationAtomizedType)') Guardar
+					button.btn.btn-success.btn-sm(type='button', data-ng-click='cancelLegislationAtomized()') Cancelar
 			.form-group
 				hr
 				label(for='legislationUnstructured', translate='') simplePliCTerm.name.LegislationUnstructured

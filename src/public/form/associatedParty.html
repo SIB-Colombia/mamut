@@ -123,8 +123,12 @@
             <input type="text" data-ng-model="associatedParty.role"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.role&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
           </div>
         </div>
-        <button type="button" data-ng-click="addAssociatedParty(formData.associatedParty, associatedParty)" class="btn btn-success btn-sm pull-right">Guardar </button>
-        <button type="button" data-ng-click="cancelAssociatedParty()" class="btn btn-success btn-sm pull-right">Cancelar </button>
+        <div class="form-group">
+          <div class="pull-right">
+            <button type="button" data-ng-click="addAssociatedParty(formData.associatedParty, associatedParty)" class="btn btn-success btn-sm">Guardar </button>
+            <button type="button" data-ng-click="cancelAssociatedParty()" class="btn btn-success btn-sm">Cancelar </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

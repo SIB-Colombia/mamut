@@ -53,8 +53,10 @@ div(data-ng-controller='MigratoryCtrl')
 				label.col-xs-2.control-label(for='season', translate='') simplePliCTerm.name.Season
 				.col-xs-10
 					input(type='text', data-ng-model='migratoryAtomizedType.season')
-			button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addMigratoryAtomizedType(formData.migratory.migratoryAtomized,migratoryAtomizedType)') Guardar
-			button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='cancelMigratoryAtomized()') Cancelar
+			.form-group
+				div.pull-right
+					button.btn.btn-success.btn-sm(type='button', data-ng-click='addMigratoryAtomizedType(formData.migratory.migratoryAtomized,migratoryAtomizedType)') Guardar
+					button.btn.btn-success.btn-sm(type='button', data-ng-click='cancelMigratoryAtomized()') Cancelar
 			.form-group
 				hr
 				label(for='migratoryUnstructured', translate='') simplePliCTerm.name.MigratoryUnstructured
