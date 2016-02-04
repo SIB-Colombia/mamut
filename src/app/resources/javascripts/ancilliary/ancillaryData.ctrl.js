@@ -128,13 +128,22 @@ angular.module('app.controllers.ancillary',[])
 	};
 
 	$scope.getInfoLicence = function(url, ancillary) {
+		
+		ancillary.rightsHolder = '';
+		ancillary.bibliographicCitation = '';
+		ancillary.source = '';
+		ancillary.license = '';
+		$scope.imageurl = '';
+		angular.forEach($scope.lincese_list, function(item) {
+			item.checked = false;
+   		});
 		if (url !== undefined && url.length > 0) {
 			var url_parts = url.split('/');
 			if (url.indexOf('www.flickr.com') > -1) {
 				var photo_id = url_parts[5];
 				$http.get('https://api.flickr.com/services/rest/?&method=flickr.photos.getInfo&photo_id=' + photo_id + '&api_key=d70bb0faa317f97f15ecf636ee77c33e&format=json&per_page=500')
 					.then(function(res) {
-						var data = res.data.replace('jsonFlickrApi(', '').replace(')', '').replace(/\n/g, '');
+						var data = res.data.replace('jsonFlickrApi(', '').replace('})', '}').replace(/\n/g, '');
 						var objetoJSONFinal = JSON.parse(data);
 						ancillary.rightsHolder = objetoJSONFinal.photo.owner.username;
 						ancillary.bibliographicCitation = objetoJSONFinal.photo.description._content;
@@ -216,13 +225,10 @@ angular.module('app.controllers.ancillary',[])
 						'Api-User-Agent': 'Example/1.0'
 					},
 					success: function(data) {
-						console.log(data);
-						$scope.imageurl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/'+imagen+'/320px-'+imagen;
 						var info = data.query.pages[Object.keys(data.query.pages)[0]].imageinfo[0].extmetadata;
 						ancillary.source = url;
 						ancillary.rightsHolder = info.Artist.value;
 						ancillary.bibliographicCitation = info.ImageDescription.value;
-						
 
 						var license ='';
 						if(info.LicenseUrl===undefined){
@@ -254,6 +260,21 @@ angular.module('app.controllers.ancillary',[])
 								}
 				            }
 				        });
+					}
+				});
+				$.ajax({
+					url: 'https://commons.wikimedia.org/w/api.php?action=query&titles=Image:' + imagen + '&prop=imageinfo&iiprop=url&format=json',
+					dataType: 'JSONP',
+					jsonpCallback: 'callback',
+					type: 'GET',
+					headers: {
+						'Api-User-Agent': 'Example/1.0'
+					},
+					success: function(data1) {
+						var infoUrl = data1.query.pages[Object.keys(data1.query.pages)[0]].imageinfo[0].url;
+						//var partsUrl = (infoUrl).split('commons');
+						//var urlFine = partsUrl[0]+'commons/thumb' + partsUrl[1];
+						$scope.imageurl = infoUrl;
 					}
 				});
 			}
