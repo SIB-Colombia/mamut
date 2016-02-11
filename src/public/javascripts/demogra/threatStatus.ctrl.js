@@ -22,6 +22,9 @@ angular.module('app.controllers.threatStatus',[])
 	//list of lincese
 	$scope.lincese_list = angular.copy($scope.lenguajes.licences);
 
+	//list of proveedores de contenido
+	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
+
 	$scope.checked = false; // This will be binded using the ps-open attribute
 
 	$scope.slide = function(){

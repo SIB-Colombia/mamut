@@ -12,6 +12,12 @@ angular.module('app.controllers.annualCycle',[])
 	//reference
 	var referenceFactoryLocal = new ReferenceFactory();
 	$scope.reference = referenceFactoryLocal.reference;
+
+	//list of lincese
+	$scope.lincese_list = angular.copy($scope.lenguajes.licences);
+
+	//list of proveedores de contenido
+	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
 	
 	//Local variables for reset objects
 	var origAU = angular.copy($scope.annualCycleAtomizedType);

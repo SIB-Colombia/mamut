@@ -293,7 +293,9 @@
                     <p style="font-size:90%;"><i>* Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co</i></p>
                   </panel>
                   <label for="rights" translate="" class="control-label">simplePliCTerm.name.rights</label>
-                  <input type="text" data-ng-model="ancillaryData.rights"/>
+                  <select data-ng-model="ancillaryData.rights" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
+                    <option value="">- Seleccione -</option>
+                  </select>
                   <label for="bibliographicCitation" translate="" class="control-label">simplePliCTerm.name.bibliographicCitation	</label>
                   <input type="text" data-ng-model="ancillaryData.bibliographicCitation"/>
                 </div>

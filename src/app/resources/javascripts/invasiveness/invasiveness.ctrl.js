@@ -30,6 +30,10 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.lincese_list = angular.copy($scope.lenguajes.licences);
 	$scope.lincese_list_ato = angular.copy($scope.lenguajes.licences);
 
+	//list of proveedores de contenido
+	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
+	$scope.prov_contenido_ato = angular.copy($scope.lenguajes.provContenido);
+
 	$scope.checked = false; // This will be binded using the ps-open attribute
 
 	$scope.slide = function(){

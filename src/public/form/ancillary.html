@@ -53,9 +53,12 @@
         </div>
         <div class="form-group">
           <label for="rights" translate="" class="col-xs-2 control-label">simplePliCTerm.name.rights</label>
-          <div class="col-xs-10">
-            <input type="text" data-ng-model="ancillaryData.rightsHolder"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.rights&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+          <div class="col-xs-9">
+            <select data-ng-model="ancillaryData.rights" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
+              <option value="">- Seleccione -</option>
+            </select>
           </div>
+          <div class="col-xs-1"><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.rights&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></div>
         </div>
         <div class="form-group">
           <label for="bibliographicCitation" translate="" class="col-xs-2 control-label">simplePliCTerm.name.bibliographicCitation</label>
@@ -69,7 +72,7 @@
             <input type="text" data-ng-model="ancillaryData.source"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.source&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
           </div>
         </div>
-        <div class="form-group"><img id="imageD" data-ng-src="{{ imageurl || '//:0' }}" width="360" height="490" class="imgAncilliary"/></div>
+        <div class="form-group"><img id="imageD" data-ng-if="imageurl !== ''" data-ng-src="{{ imageurl || '//:0' }}" class="imgAncilliary"/></div>
         <div class="form-group">
           <label for="source" translate="" class="col-xs-2 control-label">simplePliCTerm.name.References</label>
           <div class="col-xs-10">

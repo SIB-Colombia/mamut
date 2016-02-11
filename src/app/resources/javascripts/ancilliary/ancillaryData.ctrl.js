@@ -16,6 +16,12 @@ angular.module('app.controllers.ancillary',[])
 	//list of lincese
 	$scope.lincese_list = angular.copy($scope.lenguajes.licences);
 
+	//list of proveedores de contenido
+	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
+
+	//imageUrl
+	$scope.imageurl = '';
+
 	$scope.checked = false; // This will be binded using the ps-open attribute
 
 	$scope.slide = function(){
@@ -80,6 +86,7 @@ angular.module('app.controllers.ancillary',[])
 				            input.type = "text";
 				            input.id = "ancillaryData.license";
 				            input.value = ancillary.license;
+				            input.disabled = true;
 				            document.getElementById("ManualLicense").appendChild(input);
 						}else{
 							var license = document.getElementById("ancillaryData.license");
@@ -202,6 +209,7 @@ angular.module('app.controllers.ancillary',[])
 								            input.type = "text";
 								            input.id = "ancillaryData.license";
 								            input.value = license;
+								            input.disabled = true;
 								            document.getElementById("ManualLicense").appendChild(input);
 										}else{
 											var license_field = document.getElementById("ancillaryData.license");
@@ -251,6 +259,7 @@ angular.module('app.controllers.ancillary',[])
 								            input.type = "text";
 								            input.id = "ancillaryData.license";
 								            input.value = license;
+								            input.disabled = true;
 								            document.getElementById("ManualLicense").appendChild(input);
 										}else{
 											var license_field = document.getElementById("ancillaryData.license");
@@ -260,23 +269,24 @@ angular.module('app.controllers.ancillary',[])
 								}
 				            }
 				        });
+				        $.ajax({
+							url: 'https://commons.wikimedia.org/w/api.php?action=query&titles=Image:' + imagen + '&prop=imageinfo&iiprop=url&format=json',
+							dataType: 'JSONP',
+							jsonpCallback: 'callback',
+							type: 'GET',
+							headers: {
+								'Api-User-Agent': 'Example/1.0'
+							},
+							success: function(data1) {
+								var infoUrl = data1.query.pages[Object.keys(data1.query.pages)[0]].imageinfo[0].url;
+								//var partsUrl = (infoUrl).split('commons');
+								//var urlFine = partsUrl[0]+'commons/thumb' + partsUrl[1];
+								$scope.imageurl = infoUrl;
+							}
+						});
 					}
 				});
-				$.ajax({
-					url: 'https://commons.wikimedia.org/w/api.php?action=query&titles=Image:' + imagen + '&prop=imageinfo&iiprop=url&format=json',
-					dataType: 'JSONP',
-					jsonpCallback: 'callback',
-					type: 'GET',
-					headers: {
-						'Api-User-Agent': 'Example/1.0'
-					},
-					success: function(data1) {
-						var infoUrl = data1.query.pages[Object.keys(data1.query.pages)[0]].imageinfo[0].url;
-						//var partsUrl = (infoUrl).split('commons');
-						//var urlFine = partsUrl[0]+'commons/thumb' + partsUrl[1];
-						$scope.imageurl = infoUrl;
-					}
-				});
+				
 			}
 			if (url.indexOf('www.youtube.com') > -1) {
 				var video_id = (url_parts[url_parts.length - 1]).split('=')[1];
@@ -304,6 +314,7 @@ angular.module('app.controllers.ancillary',[])
 								            input.type = "text";
 								            input.id = "ancillaryData.license";
 								            input.value = license;
+								            input.disabled = true;
 								            document.getElementById("ManualLicense").appendChild(input);
 										}else{
 											var license_field = document.getElementById("ancillaryData.license");

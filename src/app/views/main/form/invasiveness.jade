@@ -326,6 +326,8 @@ div(data-ng-controller='InvasivenessCtrl')
 											p(style="font-size:90%;")
 												i * Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co
 										label.control-label(for='rights', translate='') simplePliCTerm.name.rights
+										select(data-ng-model='ancillaryDataAto.rightsHolder', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido_ato | unique:'proveedorDeContenido'")
+											option(value='') - Seleccione -
 										input(type='text', data-ng-model='ancillaryDataAto.rights')
 										label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 										input(type='text', data-ng-model='ancillaryDataAto.bibliographicCitation')
@@ -523,7 +525,8 @@ div(data-ng-controller='InvasivenessCtrl')
 											p(style="font-size:90%;")
 												i * Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co
 										label.control-label(for='rights', translate='') simplePliCTerm.name.rights
-										input(type='text', data-ng-model='ancillaryData.rights')
+										select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
+											option(value='') - Seleccione -
 										label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 										input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
 									button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.invasiveness.ancillaryData,ancillaryData)', translate='') Guardar
