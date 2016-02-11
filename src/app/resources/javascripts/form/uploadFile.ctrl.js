@@ -3,14 +3,15 @@
 angular.module('app.controllers.upload',[])
 .controller('UploadFile', function ($scope) {
     $scope.replaceSC = function(str){
-    	var strClean = (str).replace('{','');
-    	var strI = ((((strClean).replace(/\\'{\\i/g,"í")).replace(/\\'{I/g,"Í")).replace(/\\'\\i/g,"í")).replace(/\\'\\I/g,"Í");
+    
+    	var strI = ((((str).replace(/\\'{\\i/g,"í")).replace(/\\'{I/g,"Í")).replace(/\\'\\i/g,"í")).replace(/\\'\\I/g,"Í");
     	var strO = ((((strI).replace(/\\'{o/g,"ó")).replace(/\\'{O/g,"Ó")).replace(/\\'o/g,"ó")).replace(/\\'O/g,"Ó");
     	var strU = ((((strO).replace(/\\'{u/g,"ú")).replace(/\\'{U/g,"Ú")).replace(/\\'u/g,"ú")).replace(/\\'U/g,"Ú");
     	var strA = ((((strU).replace(/\\'{a/g,"á")).replace(/\\'{A/g,"Á")).replace(/\\'a/g,"á")).replace(/\\'A/g,"Á");
     	var strE = ((((strA).replace(/\\'{e/g,"é")).replace(/\\'{E/g,"É")).replace(/\\'e/g,"é")).replace(/\\'E/g,"É");
     	var strN = ((((strE).replace(/\\~{n/g,"ñ")).replace(/\\~{N/g,"Ñ")).replace(/\\~n/g,"ñ")).replace(/\\~N/g,"Ñ");
-    	var strFinal = (strN).replace(/}/g,"");
+    	var strClean = (strN).replace(/{/g,"");
+    	var strFinal = (strClean).replace(/}/g,"");
     	return strFinal;
     };
     $scope.showContent = function($fileContent){
