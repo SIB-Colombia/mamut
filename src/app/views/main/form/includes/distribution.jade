@@ -10,13 +10,6 @@ div(data-ng-controller='DistributionCtrl')
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			.form-group
-				label.col-xs-2.control-label(for='distributionScope', translate='') simplePliCTerm.name.DistributionScope
-				.col-xs-10
-					.panel(data-ng-controller='CheckBoxCrtl')
-						div(data-ng-repeat='ds in lenguajes.distributionScope')
-							input(type='checkbox', data-ng-model='ds.checked', data-ng-click='updateSelectionDistributionScope(ds, lenguajes.distributionScope)')
-							| {{ds.name}}
-			.form-group
 				label.col-xs-2.control-label(for='temporalCoverage', translate='') simplePliCTerm.name.TemporalCoverage
 				.col-xs-4
 					label {{simplePliCTerm.name.startDate|translate}} 
@@ -33,7 +26,14 @@ div(data-ng-controller='DistributionCtrl')
 							input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", data-ng-model="distributionClass.temporalCoverage.endDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close", disabled )
 							span.input-group-btn
 								button.btn.btn-default(type="button",data-ng-click="open($event)")
-									i.glyphicon.glyphicon-calendar 
+									i.glyphicon.glyphicon-calendar
+			.form-group
+				label.col-xs-2.control-label(for='distributionScope', translate='') simplePliCTerm.name.DistributionScope
+				.col-xs-10
+					.panel(data-ng-controller='CheckBoxCrtl')
+						div(data-ng-repeat='ds in lenguajes.distributionScope')
+							input(type='checkbox', data-ng-model='ds.checked', data-ng-click='updateSelectionDistributionScope(ds, lenguajes.distributionScope)')
+							| {{ds.name}}
 			.form-group
 
 				label.col-xs-2.control-label(for='temporalCoverage', translate='') Distribución atomizada
@@ -88,9 +88,9 @@ div(data-ng-controller='DistributionCtrl')
 								tr
 									//th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
 									//th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}
-									th.col-xs-1  {{"simplePliCTerm.name.license"|translate}}
+									th.col-xs-3  {{"simplePliCTerm.name.license"|translate}}
 									//th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}
-									th.col-xs-9 {{"simplePliCTerm.name.References"|translate}}
+									th.col-xs-6 {{"simplePliCTerm.name.References"|translate}}
 									th.col-xs-1
 							
 							tbody
@@ -196,8 +196,8 @@ div(data-ng-controller='DistributionCtrl')
 							label.control-label(for='rights', translate='') simplePliCTerm.name.rights
 							select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
 								option(value='') - Seleccione -
-							label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
-							input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
+							//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
+							//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
 						button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(distributionClass.ancillaryData,ancillaryData)', translate='') Guardar
 						button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar
 			.form-group

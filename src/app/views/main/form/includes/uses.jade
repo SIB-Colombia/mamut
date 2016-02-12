@@ -112,9 +112,9 @@ div(data-ng-controller='UsesCtrl')
 									tr
 										//th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
 										//th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}
-										th.col-xs-1  {{"simplePliCTerm.name.license"|translate}}
+										th.col-xs-3  {{"simplePliCTerm.name.license"|translate}}
 										//th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}
-										th.col-xs-9 {{"simplePliCTerm.name.References"|translate}}
+										th.col-xs-6 {{"simplePliCTerm.name.References"|translate}}
 										th.col-xs-1
 								
 								tbody
@@ -216,8 +216,8 @@ div(data-ng-controller='UsesCtrl')
 									label.control-label(for='rights', translate='') simplePliCTerm.name.rights
 									select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
 										option(value='') - Seleccione -
-									label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
-									input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
+									//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
+									//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
 								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(usesAtomizedType.ancillaryData,ancillaryData)', translate='') Guardar
 								button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar
 
@@ -235,37 +235,53 @@ div(data-ng-controller='UsesCtrl')
 								td
 									.parrafo-pegado
 										div(data-ng-show='usesAtomized.sourceOfInformation.sourceOfInformationText')
-											| {{"simplePliCTerm.name.SourceOfInformation"|translate}} : {{usesAtomized.sourceOfInformation.sourceOfInformationText}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.SourceOfInformation
+											| : {{usesAtomized.sourceOfInformation.sourceOfInformationText}}
 										div(data-ng-show='usesAtomized.useValue')
-											| {{"simplePliCTerm.name.Use-Value"|translate}} : {{usesAtomized.useValue}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.Use-Value
+											| : {{usesAtomized.useValue}}
 										div(data-ng-show='usesAtomized.partUsed')
-											| {{"simplePliCTerm.name.PartUsed"|translate}} : {{usesAtomized.partUsed}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.PartUsed
+											| : {{usesAtomized.partUsed}}
 										div(data-ng-show='usesAtomized.users')
-											| {{"simplePliCTerm.name.Users"|translate}} : {{usesAtomized.users}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.Users
+											| : {{usesAtomized.users}}
 										div(data-ng-show='usesAtomized.organisms')
-											| {{"simplePliCTerm.name.Organisms"|translate}} : {{usesAtomized.organisms}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.Organisms
+											| : {{usesAtomized.organisms}}
 										div(data-ng-show='usesAtomized.vernacularNameUseAnnotations')
-											| {{"simplePliCTerm.name.VernacuarNameUseAnnotations"|translate}} : {{usesAtomized.vernacularNameUseAnnotations}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.VernacuarNameUseAnnotations
+											| : {{usesAtomized.vernacularNameUseAnnotations}}
 										div(data-ng-show='usesAtomized.productionDetails')
-											| {{"simplePliCTerm.name.ProductionDetails"|translate}} : {{usesAtomized.productionDetails}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.ProductionDetails
+											| : {{usesAtomized.productionDetails}}
 										div(data-ng-show='usesAtomized.meansOfApplicationAdministration')
-											| {{"simplePliCTerm.name.MeansOfApplication-Administration"|translate}} : {{usesAtomized.meansOfApplicationAdministration}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.MeansOfApplication-Administration
+											| : {{usesAtomized.meansOfApplicationAdministration}}
 										div(data-ng-show='usesAtomized.seasonOfAvailabilityUse')
-											| {{"simplePliCTerm.name.SeasonOfAvailability-Use"|translate}} : {{usesAtomized.seasonOfAvailabilityUse}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.SeasonOfAvailability-Use
+											| : {{usesAtomized.seasonOfAvailabilityUse}}
 										div(data-ng-show='usesAtomized.conservationExplotationData')
-											| {{"simplePliCTerm.name.Conservation-ExplotationData"|translate}} : {{usesAtomized.conservationExplotationData}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.Conservation-ExplotationData
+											| : {{usesAtomized.conservationExplotationData}}
 										div(data-ng-show='usesAtomized.useTypeAtomized')
-											| {{"simplePliCTerm.name.UseTypeAtomized"|translate}} : {{usesAtomized.useTypeAtomized}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.UseTypeAtomized
+											| : {{usesAtomized.useTypeAtomized}}
 										div(data-ng-show='usesAtomized.economics')
-											| {{"simplePliCTerm.name.Economics"|translate}} : {{usesAtomized.economics}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.Economics
+											| : {{usesAtomized.economics}}
 										div(data-ng-show='usesAtomized.ratingPopularity')
-											| {{"simplePliCTerm.name.RatingPopularity"|translate}} : {{usesAtomized.ratingPopularity}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.RatingPopularity
+											| : {{usesAtomized.ratingPopularity}}
 										div(data-ng-show='usesAtomized.properties')
-											| {{"simplePliCTerm.name.Properties"|translate}} : {{usesAtomized.properties}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.Properties
+											| : {{usesAtomized.properties}}
 										div(data-ng-show='usesAtomized.potential')
-											| {{"simplePliCTerm.name.Potential"|translate}} : {{usesAtomized.potential}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.Potential
+											| : {{usesAtomized.potential}}
 										div(data-ng-show='usesAtomized.useNotes')
-											| {{"simplePliCTerm.name.UsesNotes"|translate}} : {{usesAtomized.useNotes}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.UsesNotes
+											| : {{usesAtomized.useNotes}}
 								td
 									button.btn(data-ng-click='removeUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')

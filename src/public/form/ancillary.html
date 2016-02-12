@@ -60,12 +60,13 @@
           </div>
           <div class="col-xs-1"><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.rights&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></div>
         </div>
-        <div class="form-group">
-          <label for="bibliographicCitation" translate="" class="col-xs-2 control-label">simplePliCTerm.name.bibliographicCitation</label>
-          <div class="col-xs-10">
-            <textarea rows="3" name="bibliographicCitation" data-ng-model="ancillaryData.bibliographicCitation"></textarea><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.bibliographicCitation&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
-          </div>
-        </div>
+        <!--.form-group
+        label.col-xs-2.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation
+        .col-xs-10
+        	textarea(rows='3', name='bibliographicCitation', data-ng-model='ancillaryData.bibliographicCitation')
+        	a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.bibliographicCitation"|translate}}')
+        		span.glyphicon.glyphicon-info-sign
+        -->
         <div class="form-group">
           <label for="source" translate="" class="col-xs-2 control-label">simplePliCTerm.name.source</label>
           <div class="col-xs-10">

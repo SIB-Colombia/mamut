@@ -15,58 +15,65 @@ div(data-ng-controller='HierarchyCtrl')
 								td
 									.parrafo-pegado
 										div(data-ng-show='hierarchy.classification')
-											div classification:{{hierarchy.classification}}
+											div 
+												p(class='text_type_bold') Classification 
+													| : {{hierarchy.classification}}
 										div(data-ng-show='hierarchy.recommended')
-											div recommended: {{hierarchy.recommended}}
+											div 
+												p(class='text_type_bold') Recommended 
+													| : {{hierarchy.recommended}}
 										div(data-ng-show='hierarchy.kingdom')
 											div
-												p(translate='') simplePliCTerm.name.kingdom
+												p(translate='', class='text_type_bold') simplePliCTerm.name.kingdom
 												| : {{hierarchy.kingdom}}
 										div(data-ng-show='hierarchy.phylum')
 											div
-												p(translate='') simplePliCTerm.name.phylum
+												p(translate='', class='text_type_bold') simplePliCTerm.name.phylum
 												| : {{hierarchy.phylum}}
 										div(data-ng-show='hierarchy.classHierarchy')
 											div
-												p(translate='') simplePliCTerm.name.class
+												p(translate='', class='text_type_bold') simplePliCTerm.name.class
 												| : {{hierarchy.classHierarchy}}
 										div(data-ng-show='hierarchy.order')
 											div
-												p(translate='') simplePliCTerm.name.order
+												p(translate='', class='text_type_bold') simplePliCTerm.name.order
 												| : {{hierarchy.order}}
 										div(data-ng-show='hierarchy.family')
 											div
-												p(translate='') simplePliCTerm.name.family
+												p(translate='', class='text_type_bold') simplePliCTerm.name.family
 												| : {{hierarchy.family}}
 										div(data-ng-show='hierarchy.genus')
 											div
-												p(translate='') simplePliCTerm.name.genus
+												p(translate='', class='text_type_bold') simplePliCTerm.name.genus
 												| : {{hierarchy.genus}}
 										div(data-ng-show='hierarchy.subGenus')
 											div
-												p(translate='') simplePliCTerm.name.subgenus
+												p(translate='', class='text_type_bold') simplePliCTerm.name.subgenus
 												| : {{hierarchy.subGenus}}
 										div(data-ng-show='hierarchy.taxonRank')
 											div
-												| Categoría del taxón :{{hierarchy.taxonRank}}
+												p(class='text_type_bold') Categoría del taxón
+												| : {{hierarchy.taxonRank}}
 										div(data-ng-show='hierarchy.specificEpithet')
 											div
-												p(translate='') simplePliCTerm.name.specificEpithet
+												p(translate='', class='text_type_bold') simplePliCTerm.name.specificEpithet
 												| : {{hierarchy.specificEpithet}}
 										div(data-ng-show='hierarchy.infraspecificEpithet')
 											div
-												p(translate='') simplePliCTerm.name.infraSpecificEpithet
+												p(translate='', class='text_type_bold') simplePliCTerm.name.infraSpecificEpithet
 												| : {{hierarchy.infraspecificEpithet}}
 										div(data-ng-show='hierarchy.higherClassification')
 											div
-												p(translate='') simplePliCTerm.name.higherClassification
+												p(translate='', class='text_type_bold') simplePliCTerm.name.higherClassification
 												| : {{hierarchy.higherClassification}}
 										//
 											<div data-ng-show="hierarchy.parentTaxon">
 											<div>parentTaxon :{{hierarchy.parentTaxon}}</div>
 											</div>
 										div(data-ng-show='hierarchy.ancillaryData[0].source')
-											div Fuente: {{hierarchy.ancillaryData[0].source}}
+											div 
+												p(class='text_type_bold') Fuente 
+												| : {{hierarchy.ancillaryData[0].source}}
 								td
 									button.btn(data-ng-click='removeHierarchy(formData.hierarchy,hierarchy)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')

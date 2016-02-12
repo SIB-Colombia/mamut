@@ -10,16 +10,6 @@
     </div>
     <div class="panel-body">
       <div class="form-group">
-        <label for="distributionScope" translate="" class="col-xs-2 control-label">simplePliCTerm.name.DistributionScope</label>
-        <div class="col-xs-10">
-          <div data-ng-controller="CheckBoxCrtl" class="panel">
-            <div data-ng-repeat="ds in lenguajes.distributionScope">
-              <input type="checkbox" data-ng-model="ds.checked" data-ng-click="updateSelectionDistributionScope(ds, lenguajes.distributionScope)"/>{{ds.name}}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
         <label for="temporalCoverage" translate="" class="col-xs-2 control-label">simplePliCTerm.name.TemporalCoverage</label>
         <div class="col-xs-4">
           <label>{{simplePliCTerm.name.startDate|translate}} </label>
@@ -35,8 +25,18 @@
           <div data-ng-controller="DatepickerCtrl">
             <p class="input-group">
               <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="distributionClass.temporalCoverage.endDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" disabled="disabled" class="form-control"/><span class="input-group-btn">
-                <button type="button" data-ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"> </i></button></span>
+                <button type="button" data-ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
             </p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="distributionScope" translate="" class="col-xs-2 control-label">simplePliCTerm.name.DistributionScope</label>
+        <div class="col-xs-10">
+          <div data-ng-controller="CheckBoxCrtl" class="panel">
+            <div data-ng-repeat="ds in lenguajes.distributionScope">
+              <input type="checkbox" data-ng-model="ds.checked" data-ng-click="updateSelectionDistributionScope(ds, lenguajes.distributionScope)"/>{{ds.name}}
+            </div>
           </div>
         </div>
       </div>
@@ -103,9 +103,9 @@
               <tr>
                 <!--th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}-->
                 <!--th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
-                <th class="col-xs-1"> {{"simplePliCTerm.name.license"|translate}}</th>
+                <th class="col-xs-3"> {{"simplePliCTerm.name.license"|translate}}</th>
                 <!--th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}-->
-                <th class="col-xs-9">{{"simplePliCTerm.name.References"|translate}}</th>
+                <th class="col-xs-6">{{"simplePliCTerm.name.References"|translate}}</th>
                 <th class="col-xs-1"></th>
               </tr>
             </thead>
@@ -227,8 +227,8 @@
               <select data-ng-model="ancillaryData.rights" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
                 <option value="">- Seleccione -</option>
               </select>
-              <label for="bibliographicCitation" translate="" class="control-label">simplePliCTerm.name.bibliographicCitation	</label>
-              <input type="text" data-ng-model="ancillaryData.bibliographicCitation"/>
+              <!--label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	-->
+              <!--input(type='text', data-ng-model='ancillaryData.bibliographicCitation')-->
             </div>
             <button type="button" data-ng-click="addAncillaryData(distributionClass.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Guardar</button>
             <button type="button" data-ng-click="cancelAncillaryData()" class="btn btn-primary btn-sm">Cancelar</button>

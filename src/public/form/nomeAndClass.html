@@ -7,16 +7,18 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <div>
-            <spant for="scientificName" translate="">simplePliCTerm.name.ScientificName</spant>: {{formData.taxonRecordName.scientificName.simple}}
+            <spant for="scientificName" translate="" class="text_type_bold">simplePliCTerm.name.ScientificName</spant>: {{formData.taxonRecordName.scientificName.simple}}
           </div>
           <div>
-            <spant for="canonicalName" translate="">Nombre canónico</spant>: {{formData.taxonRecordName.scientificName.canonicalName.simple}}
+            <spant for="canonicalName" translate="" class="text_type_bold">Nombre canónico</spant>: {{formData.taxonRecordName.scientificName.canonicalName.simple}}
           </div>
           <div>
-            <spant for="canonicalAuthorship" translate="">Autoria del Nombre científico</spant>: {{formData.taxonRecordName.scientificName.canonicalAuthorship.simple}}
+            <spant for="canonicalAuthorship" translate="" class="text_type_bold">Autoria del Nombre científico</spant>: {{formData.taxonRecordName.scientificName.canonicalAuthorship.simple}}
           </div>
           <div data-ng-show="formData.taxonRecordName.scientificName.publishedln.simple">
-            <div>Publicado en: {{formData.taxonRecordName.scientificName.publishedln.simple}}</div>
+            <div> 
+              <spant for="publishedln" translate="" class="text_type_bold">Publicado en</spant>: {{formData.taxonRecordName.scientificName.publishedln.simple}}
+            </div>
           </div>
         </div>
       </div>

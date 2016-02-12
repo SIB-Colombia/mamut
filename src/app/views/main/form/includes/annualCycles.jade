@@ -37,9 +37,9 @@ div(data-ng-controller='AnnualCyclesCtrl')
 									tr
 										//th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
 										//th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}
-										th.col-xs-1  {{"simplePliCTerm.name.license"|translate}}
+										th.col-xs-3  {{"simplePliCTerm.name.license"|translate}}
 										//th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}
-										th.col-xs-9 {{"simplePliCTerm.name.References"|translate}}
+										th.col-xs-6 {{"simplePliCTerm.name.References"|translate}}
 										th.col-xs-1
 								
 								tbody
@@ -141,8 +141,8 @@ div(data-ng-controller='AnnualCyclesCtrl')
 								label.control-label(for='rights', translate='') simplePliCTerm.name.rights
 								select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
 									option(value='') - Seleccione -
-								label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
-								input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
+								//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
+								//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
 						button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(annualCycleAtomizedType.ancillaryData,ancillaryData)', translate='') Agregar Información adicional
 			button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addAnnualCycleAtomizedType(formData.annualCycle.annualCycleAtomized, annualCycleAtomizedType)') Guardar
 			.form-group

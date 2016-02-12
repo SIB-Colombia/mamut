@@ -33,7 +33,7 @@
         <div data-ng-controller="MeasurementCtrl">
           <div class="col-xs-5">
             <select data-ng-model="lifeFormAtomized.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.lifeForms | unique:'measurementtype'">
-              <option value="">- Seleccione -</option>
+              <option value="">- Seleccione una fuente de información -</option>
             </select>
           </div>
           <div class="col-xs-5">
@@ -58,9 +58,9 @@
                   <tr>
                     <!--th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}-->
                     <!--th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}-->
-                    <th class="col-xs-1"> {{"simplePliCTerm.name.license"|translate}}</th>
+                    <th class="col-xs-3"> {{"simplePliCTerm.name.license"|translate}}</th>
                     <!--th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}-->
-                    <th class="col-xs-9">{{"simplePliCTerm.name.References"|translate}}</th>
+                    <th class="col-xs-6">{{"simplePliCTerm.name.References"|translate}}</th>
                     <th class="col-xs-1"></th>
                   </tr>
                 </thead>
@@ -180,8 +180,8 @@
                   <select data-ng-model="ancillaryData.rights" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
                     <option value="">- Seleccione -</option>
                   </select>
-                  <label for="bibliographicCitation" translate="" class="control-label">simplePliCTerm.name.bibliographicCitation	</label>
-                  <input type="text" data-ng-model="ancillaryData.bibliographicCitation"/>
+                  <!--label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	-->
+                  <!--input(type='text', data-ng-model='ancillaryData.bibliographicCitation')-->
                 </div>
                 <button type="button" data-ng-click="addAncillaryData(formData.lifeForm.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Guardar</button>
                 <button type="button" data-ng-click="cancelAncillaryData()" class="btn btn-primary btn-sm">Cancelar</button>

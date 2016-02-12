@@ -30,7 +30,7 @@ div(data-ng-controller='LifeFormCtrl')
 				div(data-ng-controller='MeasurementCtrl')
 					.col-xs-5
 						select(data-ng-model='lifeFormAtomized.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.lifeForms | unique:'measurementtype'")
-							option(value='') - Seleccione -
+							option(value='') - Seleccione una fuente de información -
 					.col-xs-5
 						select(data-ng-model='lifeFormAtomized.measurementValue', data-ng-disabled='!lifeFormAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr')
 							option(value='') - Seleccione -
@@ -52,9 +52,9 @@ div(data-ng-controller='LifeFormCtrl')
 									tr
 										//th.col-xs-1 {{"simplePliCTerm.name.source"|translate}}
 										//th.col-xs-1  {{"simplePliCTerm.name.bibliographicCitation"|translate}}
-										th.col-xs-1  {{"simplePliCTerm.name.license"|translate}}
+										th.col-xs-3  {{"simplePliCTerm.name.license"|translate}}
 										//th.col-xs-1  {{"simplePliCTerm.name.rights"|translate}}
-										th.col-xs-9 {{"simplePliCTerm.name.References"|translate}}
+										th.col-xs-6 {{"simplePliCTerm.name.References"|translate}}
 										th.col-xs-1
 								
 								tbody
@@ -157,7 +157,7 @@ div(data-ng-controller='LifeFormCtrl')
 									label.control-label(for='rights', translate='') simplePliCTerm.name.rights
 									select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
 										option(value='') - Seleccione -
-									label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
-									input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
+									//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
+									//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
 								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.lifeForm.ancillaryData,ancillaryData)', translate='') Guardar
 								button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar

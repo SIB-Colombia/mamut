@@ -15,62 +15,74 @@
                 <td>
                   <div class="parrafo-pegado">
                     <div data-ng-show="hierarchy.classification">
-                      <div>classification:{{hierarchy.classification}}</div>
+                      <div> 
+                        <p class="text_type_bold">
+                          Classification 
+                          : {{hierarchy.classification}}
+                        </p>
+                      </div>
                     </div>
                     <div data-ng-show="hierarchy.recommended">
-                      <div>recommended: {{hierarchy.recommended}}</div>
+                      <div> 
+                        <p class="text_type_bold">
+                          Recommended 
+                          : {{hierarchy.recommended}}
+                        </p>
+                      </div>
                     </div>
                     <div data-ng-show="hierarchy.kingdom">
                       <div>
-                        <p translate="">simplePliCTerm.name.kingdom</p>: {{hierarchy.kingdom}}
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.kingdom</p>: {{hierarchy.kingdom}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.phylum">
                       <div>
-                        <p translate="">simplePliCTerm.name.phylum</p>: {{hierarchy.phylum}}
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.phylum</p>: {{hierarchy.phylum}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.classHierarchy">
                       <div>
-                        <p translate="">simplePliCTerm.name.class</p>: {{hierarchy.classHierarchy}}
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.class</p>: {{hierarchy.classHierarchy}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.order">
                       <div>
-                        <p translate="">simplePliCTerm.name.order</p>: {{hierarchy.order}}
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.order</p>: {{hierarchy.order}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.family">
                       <div>
-                        <p translate="">simplePliCTerm.name.family</p>: {{hierarchy.family}}
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.family</p>: {{hierarchy.family}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.genus">
                       <div>
-                        <p translate="">simplePliCTerm.name.genus</p>: {{hierarchy.genus}}
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.genus</p>: {{hierarchy.genus}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.subGenus">
                       <div>
-                        <p translate="">simplePliCTerm.name.subgenus</p>: {{hierarchy.subGenus}}
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.subgenus</p>: {{hierarchy.subGenus}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.taxonRank">
-                      <div>Categoría del taxón :{{hierarchy.taxonRank}}</div>
+                      <div>
+                        <p class="text_type_bold">Categoría del taxón</p>: {{hierarchy.taxonRank}}
+                      </div>
                     </div>
                     <div data-ng-show="hierarchy.specificEpithet">
                       <div>
-                        <p translate="">simplePliCTerm.name.specificEpithet</p>: {{hierarchy.specificEpithet}}
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.specificEpithet</p>: {{hierarchy.specificEpithet}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.infraspecificEpithet">
                       <div>
-                        <p translate="">simplePliCTerm.name.infraSpecificEpithet</p>: {{hierarchy.infraspecificEpithet}}
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.infraSpecificEpithet</p>: {{hierarchy.infraspecificEpithet}}
                       </div>
                     </div>
                     <div data-ng-show="hierarchy.higherClassification">
                       <div>
-                        <p translate="">simplePliCTerm.name.higherClassification</p>: {{hierarchy.higherClassification}}
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.higherClassification</p>: {{hierarchy.higherClassification}}
                       </div>
                     </div>
                     <!--
@@ -79,7 +91,9 @@
                     </div>
                     -->
                     <div data-ng-show="hierarchy.ancillaryData[0].source">
-                      <div>Fuente: {{hierarchy.ancillaryData[0].source}}</div>
+                      <div> 
+                        <p class="text_type_bold">Fuente </p>: {{hierarchy.ancillaryData[0].source}}
+                      </div>
                     </div>
                   </div>
                 </td>

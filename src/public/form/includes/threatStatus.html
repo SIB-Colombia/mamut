@@ -213,8 +213,8 @@
       					label.control-label(for='rights', translate='') simplePliCTerm.name.rights
       					select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
       					option(value='') - Seleccione -
-      					label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
-      					input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
+      					//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
+      					//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
       				button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(threatStatusClass.ancillaryData,ancillaryData)', translate='') Guardar
       				button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar
       -->
