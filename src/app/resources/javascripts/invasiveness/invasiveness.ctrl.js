@@ -117,8 +117,12 @@ angular.module('app.controllers.invasiveness',[])
 			}
 
 			angular.forEach($scope.lincese_list, function(item) {
-  				item.checked = false;
-       		});
+				if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
+					item.checked = true;
+				}else{
+					item.checked = false;
+				}
+			});
 			$('#ancillaryInvasiveness').collapse("hide");
 		}else{
 			alert("La licencia debe ser seleccionada");
@@ -138,6 +142,7 @@ angular.module('app.controllers.invasiveness',[])
   					item.checked = true;
   					checked_almost_one = true;
 				}else{
+					item.checked = false;
 					if(item.nombre==='Otra' && !checked_almost_one){
 					 	if(document.getElementById('ancillaryData.license') === null){
 							item.checked = true;
@@ -160,8 +165,12 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.cancelAncillaryData = function() {
 		$scope.ancillaryData = angular.copy(origAD);
 		angular.forEach($scope.lincese_list, function(item) {
-			item.checked = false;
-   		});
+			if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
+				item.checked = true;
+			}else{
+				item.checked = false;
+			}
+		});
    		var license = document.getElementById("ancillaryData.license");
 		if(license !== undefined && license!==null){
 			license.parentNode.removeChild(license);
@@ -242,10 +251,14 @@ angular.module('app.controllers.invasiveness',[])
 			if(license !== undefined && license!==null){
 				license.parentNode.removeChild(license);
 			}
-
 			angular.forEach($scope.lincese_list_ato, function(item) {
-  				item.checked = false;
-       		});
+				if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
+					item.checked = true;
+				}else{
+					item.checked = false;
+				}
+			});
+
 			$('#ancillaryInvasivenessAto').collapse("hide");
 		}else{
 			alert("La licencia debe ser seleccionada");
@@ -261,6 +274,7 @@ angular.module('app.controllers.invasiveness',[])
   					item.checked = true;
   					checked_almost_one = true;
 				}else{
+					item.checked = false;
 					if(item.nombre==='Otra' && !checked_almost_one){
 					 	if(document.getElementById('ancillaryData.license') === null){
 							item.checked = true;
@@ -283,8 +297,12 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.cancelAncillaryDataAto = function() {
 		$scope.ancillaryDataAto = angular.copy(origAD);
 		angular.forEach($scope.lincese_list_ato, function(item) {
-			item.checked = false;
-   		});
+			if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
+				item.checked = true;
+			}else{
+				item.checked = false;
+			}
+		});
    		var license = document.getElementById("ancillaryData.license");
 		if(license !== undefined && license!==null){
 			license.parentNode.removeChild(license);

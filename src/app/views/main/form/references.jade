@@ -8,18 +8,7 @@ div(data-ng-controller='ReferenceCrtl')
 				//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addReferences()') 
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 			.panel-body
-				div.table-responsive(data-ng-show='(formData.references).length')
-					table.table.table-striped						
-						tbody
-							tr(data-ng-repeat="ref in formData.references track by $index")
-								td.col-xs-9
-									textarea(disabled)
-										| {{ref|references_format}}
-								td.col-xs-1
-									button.btn(data-ng-click='removeReference(formData.references,ref)')
-										span(class="glyphicon glyphicon-trash", aria-hidden='true')
-									button.btn(data-ng-click='editReference(formData.references,ref)')
-										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
+				
 				.form-group
 					div(data-ng-controller="UploadFile")
 						h4 Cargar referencias desde un archivo .bib
@@ -114,8 +103,25 @@ div(data-ng-controller='ReferenceCrtl')
 							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.websites
 							.col-xs-10
 								input(type='text', data-ng-model='reference.link')
-						button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(formData.references,reference)', translate='') Guardar Referencia
-						button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='cancelReference()', translate='') Cancelar 
+						.form-group
+							div.pull-right
+								button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(formData.references,reference)', translate='') Guardar Referencia
+								button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar 
+
+				div.divider
+
+				div.table-responsive(data-ng-show='(formData.references).length')
+					table.table.table-striped						
+						tbody
+							tr(data-ng-repeat="ref in formData.references track by $index")
+								td.col-xs-11
+									textarea(disabled)
+										| {{ref|references_format}}
+								td.col-xs-1
+									button.btn(data-ng-click='removeReference(formData.references,ref)')
+										span(class="glyphicon glyphicon-trash", aria-hidden='true')
+									button.btn(data-ng-click='editReference(formData.references,ref)')
+										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 
 .col-xs-6.col-xs-offset-3
 	ul.pager

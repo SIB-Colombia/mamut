@@ -861,7 +861,7 @@
     "simplePliCTerm.name.license": "Licencia",
     "simplePliCTerm.definition.license": "License under which the resource is provided. To the greatest extent possible, the Encyclopedia of Life promotes an open-source, open-access approach.",
     "simplePliCTerm.comments.license": "Example: ",
-    "simplePliCTerm.name.rights": "Proveedor de contenidos",
+    "simplePliCTerm.name.rights": "Proveedor de contenido",
     "simplePliCTerm.definition.rights": "Statement of rights associated with the resource. Creative Commons licenses require the resource to be attributed 'in the manner specified by the author or licensor', and this is where that should be specified.",
     "simplePliCTerm.comments.rights": "Example: ",
     "simplePliCTerm.name.source": "Fuente",

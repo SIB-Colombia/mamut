@@ -99,8 +99,12 @@ angular.module('app.controllers.synonmy',[])
 			}
 
 			angular.forEach($scope.lincese_list, function(item) {
-  				item.checked = false;
-       		});
+				if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
+					item.checked = true;
+				}else{
+					item.checked = false;
+				}
+			});
 		}else{
 			alert("La licencia debe ser seleccionada");
 		}	
@@ -119,6 +123,7 @@ angular.module('app.controllers.synonmy',[])
   					item.checked = true;
   					checked_almost_one = true;
 				}else{
+					item.checked = false;
 					if(item.nombre==='Otra' && !checked_almost_one){
 					 	if(document.getElementById('ancillaryData.license') === null){
 							item.checked = true;
