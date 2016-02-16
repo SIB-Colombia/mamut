@@ -11,6 +11,12 @@ angular.module('app.controllers.reference',[])
 	
 	var origR = angular.copy($scope.reference);
 
+	$scope.checked = false; // This will be binded using the ps-open attribute
+
+	$scope.slide = function(){
+        $scope.checked = !$scope.checked;
+    };
+
 	$scope.addReferences = function(){
 		if($scope.formData.references.length > 0){
 			console.log('enviar');
@@ -31,6 +37,7 @@ angular.module('app.controllers.reference',[])
 				origR = angular.copy($scope.reference);
 			}
 		}
+		$scope.checked = !$scope.checked;
 	};
 
 	$scope.removeReference = function (referenceList, reference){
@@ -45,5 +52,6 @@ angular.module('app.controllers.reference',[])
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
+		$scope.checked = !$scope.checked;
 	};
 }]);

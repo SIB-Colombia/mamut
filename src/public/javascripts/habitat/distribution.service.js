@@ -4,7 +4,7 @@ angular.module('app.services.distribution',[])
 .factory('DistributionFactory', function(){
 	return function() {
 		this.distributionOpt2 = {
-			country: '',
+			country: 'Colombia',
 			stateProvince: '',
 			county: '',
 			municipality: '',

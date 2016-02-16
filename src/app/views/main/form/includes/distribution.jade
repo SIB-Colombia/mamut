@@ -80,7 +80,7 @@ div(data-ng-controller='DistributionCtrl')
 						span.glyphicon.glyphicon-info-sign
 				.col-xs-10
 					textarea(rows='3', name='distribution', data-ng-model='distributionClass.distributionUnstructured')
-				
+					
 			.form-group
 				div.table-responsive(data-ng-show='(distributionClass.ancillaryData).length')
 						table.table.table-striped
@@ -203,7 +203,11 @@ div(data-ng-controller='DistributionCtrl')
 			.form-group
 				button.btn.btn-success.btn-sm.pull-right(data-ng-click='addDistribution(formData.distribution,distributionClass)') Guardar
 
+
+			div.divider
+
 			div.table-responsive(data-ng-show='(formData.distribution).length')
+				hr
 				table.table.table-striped
 					thead
 						tr

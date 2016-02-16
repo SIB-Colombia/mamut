@@ -2,7 +2,12 @@
 	{
 		"countryName": "Colombia",
 		"countryIso": "CO",
-		"departments":[{
+		"departments":[
+		{
+			"departmentName":"Todos",
+			"departmentIso":"CO-ALL"
+		},
+		{
 			"departmentName":"Amazonas",
 			"departmentIso":"CO-AMA",
 			"counties":[

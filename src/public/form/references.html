@@ -8,151 +8,47 @@
         </spant>
         <!--button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addReferences()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
         -->
+        <button href="" data-ng-click="slide()" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': !checked , 'glyphicon glyphicon-minus' : checked}" aria-hidden="true"></span></button>
       </div>
       <div class="panel-body">
-        <div class="form-group">
-          <div data-ng-controller="UploadFile">
-            <h4>Cargar referencias desde un archivo .bib</h4>
-            <input type="file" on-read-file="showContent($fileContent)"/>
-          </div>
-          <div>
+        <div pageslide="pageslide" ps-open="checked" ps-key-listener="true">
+          <div style="padding:30px" id="demo-right">
+            <h3>Agregar nueva referencia			</h3>
             <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.type</label>
-              <div class="col-xs-10">
-                <select data-ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
-                  <option value="">- Seleccione -</option>
-                </select>
+              <div data-ng-controller="UploadFile">
+                <h4>Cargar referencias desde un archivo .bib</h4>
+                <input type="file" on-read-file="showContent($fileContent)"/>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Source</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.source"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.title</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.title"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.authors</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.authors"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.year</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.year"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.volume</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.volume"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.issue</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.issue"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.pages</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.pages"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.series</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.series"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.chapter</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.chapter"/>
-              </div>
-            </div>
-            <!--.form-group
-            label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.websites
-            .col-xs-10
-            	input(type='text', data-ng-model='reference.websites')
-            -->
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.accessed</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.accessed"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.publisher</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.publisher"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.city</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.address"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.edition</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.edition"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.institution</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.institution"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.editors</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.editors"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.keywords</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.keywords"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.doi</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.doi"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.isbn</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.isbn"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.issn</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.issn"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.websites</label>
-              <div class="col-xs-10">
-                <input type="text" data-ng-model="reference.link"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="pull-right">
-                <button type="button" data-ng-click="addReference(formData.references,reference)" translate="" class="btn btn-primary btn-xs">Guardar Referencia</button>
-                <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs">Cancelar </button>
+              <div>
+                <div class="form-group">
+                  <select data-ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
+                    <option value="">- {{"simplePliCTerm.name.type"|translate}} </option>
+                  </select>
+                  <input type="text" data-ng-model="reference.source" placeholder="{{&quot;simplePliCTerm.name.Source&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.title" placeholder="{{&quot;simplePliCTerm.name.title&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.authors" placeholder="{{&quot;simplePliCTerm.name.authors&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.year" placeholder="{{&quot;simplePliCTerm.name.year&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.volume" placeholder="{{&quot;simplePliCTerm.name.volume&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.issue" placeholder="{{&quot;simplePliCTerm.name.issue&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.pages" placeholder="{{&quot;simplePliCTerm.name.pages&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.series" placeholder="{{&quot;simplePliCTerm.name.series&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.chapter" placeholder="{{&quot;simplePliCTerm.name.chapter&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.accessed" placeholder="{{&quot;simplePliCTerm.name.accessed&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.publisher" placeholder="{{&quot;simplePliCTerm.name.publisher&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.address" placeholder="{{&quot;simplePliCTerm.name.city&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.edition" placeholder="{{&quot;simplePliCTerm.name.edition&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.institution" placeholder="{{&quot;simplePliCTerm.name.institution&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.editors" placeholder="{{&quot;simplePliCTerm.name.editors&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.keywords" placeholder="{{&quot;simplePliCTerm.name.keywords&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.doi" placeholder="{{&quot;simplePliCTerm.name.doi&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.isbn" placeholder="{{&quot;simplePliCTerm.name.isbn&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
+                  <input type="text" data-ng-model="reference.link" placeholder="{{&quot;simplePliCTerm.name.websites&quot;|translate}}"/>
+                  <div class="pull-right">
+                    <button type="button" data-ng-click="addReference(formData.references,reference)" translate="" class="btn btn-primary btn-xs">Guardar</button>
+                    <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs">Cancelar </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

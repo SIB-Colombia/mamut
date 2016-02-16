@@ -16,7 +16,12 @@
               <tr data-ng-repeat="ancillary in formData.ancillaryData " data-ng-if="ancillary.mediaURL.length !== 0">
                 <td>
                   <div class="parrafo-pegado">
-                    <div data-ng-show="ancillary.source">{{"simplePliCTerm.name.source"|translate}} : {{ancillary.source}}</div>
+                    <div data-ng-show="ancillary.source">
+                      <p translate="" class="text_type_bold">simplePliCTerm.name.source</p>: {{ancillary.source}}
+                    </div>
+                    <div data-ng-show="ancillary.mediaURL">
+                      <p translate="" class="text_type_bold">simplePliCTerm.name.mediaURL</p>: {{ancillary.mediaURL}}
+                    </div>
                     <div data-ng-repeat="ref in ancillary.reference track by $index" class="selected-item">
                       <div data-ng-show="ref">{{"simplePliCTerm.name.References"|translate}} :
                         <textarea disabled="disabled">{{ref|references_format}}</textarea>
@@ -97,7 +102,7 @@
                 <table class="table table-striped">
                   <tbody>
                     <tr data-ng-repeat="ref in ancillaryData.reference track by $index">
-                      <td class="col-xs-9">
+                      <td class="col-xs-8">
                         <textarea disabled="disabled">{{ref|references_format}}</textarea>
                       </td>
                       <td class="col-xs-1">
@@ -144,6 +149,12 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="from-group">
+          <label for="additionalInformation" translate="" class="col-xs-2 control-label">simplePliCTerm.name.additionalInformation</label>
+          <div class="col-xs-10">
+            <textarea rows="3" data-ng-model="ancillaryData.additionalInformation"></textarea>
           </div>
         </div>
         <div class="pull-right">

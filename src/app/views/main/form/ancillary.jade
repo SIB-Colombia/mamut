@@ -18,7 +18,11 @@ div(data-ng-controller='AncillaryDataCtrl')
 								td
 									.parrafo-pegado
 										div(data-ng-show='ancillary.source')
-											| {{"simplePliCTerm.name.source"|translate}} : {{ancillary.source}}
+											p(translate='', class='text_type_bold') simplePliCTerm.name.source
+											| : {{ancillary.source}}
+										div(data-ng-show='ancillary.mediaURL')
+											p(translate='', class='text_type_bold') simplePliCTerm.name.mediaURL
+											| : {{ancillary.mediaURL}}
 										.selected-item(data-ng-repeat='ref in ancillary.reference track by $index')
 											div(data-ng-show='ref')
 												| {{"simplePliCTerm.name.References"|translate}} :
@@ -92,7 +96,7 @@ div(data-ng-controller='AncillaryDataCtrl')
 								table.table.table-striped
 									tbody
 										tr(data-ng-repeat="ref in ancillaryData.reference track by $index")
-											td.col-xs-9
+											td.col-xs-8
 												textarea(disabled)
 													| {{ref|references_format}}
 											td.col-xs-1
@@ -131,6 +135,11 @@ div(data-ng-controller='AncillaryDataCtrl')
 										div.pull-right
 											button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar
 											button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
+				
+				.from-group
+					label.col-xs-2.control-label(for='additionalInformation', translate='') simplePliCTerm.name.additionalInformation
+					.col-xs-10
+						textarea(rows='3', data-ng-model='ancillaryData.additionalInformation')
 				div.pull-right
 					button.btn.btn-success.btn-xs(type='button', data-ng-click="addAncillaryData(formData.ancillaryData,ancillaryData)") Guardar 
 					button.btn.btn-success.btn-xs(type='button', data-ng-click="cancelAncillaryData(formData.ancillaryData,ancillaryData)") Cancelar 

@@ -15,7 +15,7 @@ div(data-ng-controller='SynonmyCtrl')
 							input(type='text', data-ng-model='synonmy.synonymName.canonicalName.simple')
 							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.SynonymName"|translate}}')
 								span.glyphicon.glyphicon-info-sign
-					//.form-group
+					.form-group
 						label.col-xs-2.control-label(for='synonymStatus', translate='') simplePliCTerm.name.SynonymStatus
 						.col-xs-10
 							input(type='text', data-ng-model='synonmy.synonymStatus')
@@ -133,8 +133,9 @@ div(data-ng-controller='SynonmyCtrl')
 						div.pull-right
 							button.btn.btn-success.btn-sm(type='button', data-ng-click='addSynonymsAtomized(formData.synonymsAtomized,synonmy)') Guardar
 							button.btn.btn-success.btn-sm(type='button', data-ng-click='cancelSynonym()') Cancelar
-					hr 
+				div.divider
 				div.table-responsive(data-ng-show='(formData.synonymsAtomized).length')
+					hr 
 					table.table.table-striped
 						thead
 							tr

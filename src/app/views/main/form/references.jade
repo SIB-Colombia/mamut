@@ -7,106 +7,43 @@ div(data-ng-controller='ReferenceCrtl')
 					spant
 				//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addReferences()') 
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
+				button.btn.btn-success.btn-xs.pull-right(href="", data-ng-click="slide()")
+					span(ng-class="{'glyphicon glyphicon-plus': !checked , 'glyphicon glyphicon-minus' : checked}", aria-hidden='true')
 			.panel-body
-				
-				.form-group
-					div(data-ng-controller="UploadFile")
-						h4 Cargar referencias desde un archivo .bib
-						input(type="file" on-read-file="showContent($fileContent)")
-					div
+				div(pageslide ps-open="checked" ps-key-listener="true")
+					div(style="padding:30px" id="demo-right")
+						h3 Agregar nueva referencia			
 						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.type
-							.col-xs-10
-								select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
-									option(value='') - Seleccione -
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Source
-							.col-xs-10
-								input(type='text', data-ng-model='reference.source')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.title
-							.col-xs-10
-								input(type='text', data-ng-model='reference.title')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.authors
-							.col-xs-10
-								input(type='text', data-ng-model='reference.authors')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.year
-							.col-xs-10
-								input(type='text', data-ng-model='reference.year')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.volume
-							.col-xs-10
-								input(type='text', data-ng-model='reference.volume')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.issue
-							.col-xs-10
-								input(type='text', data-ng-model='reference.issue')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.pages
-							.col-xs-10
-								input(type='text', data-ng-model='reference.pages')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.series
-							.col-xs-10
-								input(type='text', data-ng-model='reference.series')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.chapter
-							.col-xs-10
-								input(type='text', data-ng-model='reference.chapter')
-						//.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.websites
-							.col-xs-10
-								input(type='text', data-ng-model='reference.websites')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.accessed
-							.col-xs-10
-								input(type='text', data-ng-model='reference.accessed')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.publisher
-							.col-xs-10
-								input(type='text', data-ng-model='reference.publisher')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.city
-							.col-xs-10
-								input(type='text', data-ng-model='reference.address')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.edition
-							.col-xs-10
-								input(type='text', data-ng-model='reference.edition')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.institution
-							.col-xs-10
-								input(type='text', data-ng-model='reference.institution')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.editors
-							.col-xs-10
-								input(type='text', data-ng-model='reference.editors')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.keywords
-							.col-xs-10
-								input(type='text', data-ng-model='reference.keywords')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.doi
-							.col-xs-10
-								input(type='text', data-ng-model='reference.doi')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.isbn
-							.col-xs-10
-								input(type='text', data-ng-model='reference.isbn')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.issn
-							.col-xs-10
-								input(type='text', data-ng-model='reference.issn')
-						.form-group
-							label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.websites
-							.col-xs-10
-								input(type='text', data-ng-model='reference.link')
-						.form-group
-							div.pull-right
-								button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(formData.references,reference)', translate='') Guardar Referencia
-								button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar 
+							div(data-ng-controller="UploadFile")
+								h4 Cargar referencias desde un archivo .bib
+								input(type="file" on-read-file="showContent($fileContent)")
+							div
+								.form-group
+									select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
+										option(value='') - {{"simplePliCTerm.name.type"|translate}} 
+									input(type='text', data-ng-model='reference.source', placeholder='{{"simplePliCTerm.name.Source"|translate}}')
+									input(type='text', data-ng-model='reference.title', placeholder='{{"simplePliCTerm.name.title"|translate}}')
+									input(type='text', data-ng-model='reference.authors', placeholder='{{"simplePliCTerm.name.authors"|translate}}')
+									input(type='text', data-ng-model='reference.year', placeholder='{{"simplePliCTerm.name.year"|translate}}')
+									input(type='text', data-ng-model='reference.volume', placeholder='{{"simplePliCTerm.name.volume"|translate}}')
+									input(type='text', data-ng-model='reference.issue', placeholder='{{"simplePliCTerm.name.issue"|translate}}')
+									input(type='text', data-ng-model='reference.pages', placeholder='{{"simplePliCTerm.name.pages"|translate}}')
+									input(type='text', data-ng-model='reference.series', placeholder='{{"simplePliCTerm.name.series"|translate}}')
+									input(type='text', data-ng-model='reference.chapter', placeholder='{{"simplePliCTerm.name.chapter"|translate}}')
+									input(type='text', data-ng-model='reference.accessed', placeholder='{{"simplePliCTerm.name.accessed"|translate}}')
+									input(type='text', data-ng-model='reference.publisher', placeholder='{{"simplePliCTerm.name.publisher"|translate}}')
+									input(type='text', data-ng-model='reference.address', placeholder='{{"simplePliCTerm.name.city"|translate}}')
+									input(type='text', data-ng-model='reference.edition', placeholder='{{"simplePliCTerm.name.edition"|translate}}')
+									input(type='text', data-ng-model='reference.institution', placeholder='{{"simplePliCTerm.name.institution"|translate}}')
+									input(type='text', data-ng-model='reference.editors', placeholder='{{"simplePliCTerm.name.editors"|translate}}')
+									input(type='text', data-ng-model='reference.keywords', placeholder='{{"simplePliCTerm.name.keywords"|translate}}')
+									input(type='text', data-ng-model='reference.doi', placeholder='{{"simplePliCTerm.name.doi"|translate}}')
+									input(type='text', data-ng-model='reference.isbn', placeholder='{{"simplePliCTerm.name.isbn"|translate}}')
+									input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
+									input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.websites"|translate}}')
+									div.pull-right
+										button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(formData.references,reference)', translate='') Guardar
+										button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar 
 
 				div.divider
 

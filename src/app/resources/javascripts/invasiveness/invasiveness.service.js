@@ -12,7 +12,7 @@ angular.module('app.services.invasiveness',[])
 			modified: '',
 			startValidateDate: '',
 			endValidateDate: '',
-			countryCode: '',
+			countryCode: 'Colombia',
 			stateProvince: '',
 			county: '',
 			localityName: '',

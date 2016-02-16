@@ -52,7 +52,10 @@ angular.module('app.controllers.distribution',[])
 			//Reset the scope variable
 			$scope.distributionClass = origDC;
 			origDC = angular.copy($scope.distributionClass);
-			$('input:checkbox').removeAttr('checked');
+			angular.forEach($scope.lenguajes.distributionScope, function(item) {
+				item.checked = false;
+
+			});
 		}
 	};
 
@@ -62,6 +65,12 @@ angular.module('app.controllers.distribution',[])
 
 	$scope.editDistribution = function(list,distribution) {
 		$scope.distributionClass = angular.copy(distribution);
+		angular.forEach($scope.lenguajes.distributionScope, function(item) {
+			if(item.name===distribution.distributionScope.type){
+				item.checked = true;
+			}
+
+		});
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){

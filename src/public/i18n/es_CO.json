@@ -874,6 +874,7 @@
     "simplePliCTerm.name.mediaURL": "Enlace multimedia",
     "simplePliCTerm.definition.mediaURL": "A URL reference directly to the media resource.",
     "simplePliCTerm.comments.mediaURL": "Example: ",
+     "simplePliCTerm.name.additionalInformation": "Más información",
     "simplePliCTerm.name.MeasurementOrFact": "Medidas o Hechos",
     "simplePliCTerm.definition.MeasurementOrFact": "The MeasurementOrFactClass has been created to include the information to know with which element MeasurementOrFact is related ,thorugh the element called 'relatedTo'. The classes is used to defined in a conceptual way a ComplexType of the xsd file. Description of the morphology of the taxon (size, weight, perimeter, length, volume, life expectancy, etc.). Makes reference to any meristic data of the species (wing span/maximum/228.6/ cm).",
     "simplePliCTerm.comments.MeasurementOrFact": "Example: "

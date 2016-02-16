@@ -104,6 +104,7 @@ angular.module('app.controllers.commonName',[])
 					item.checked = false;
 				}
 			});
+			document.getElementById("isCollapsed").value = true;
 		}else{
 			alert("La licencia debe ser seleccionada");
 		}		

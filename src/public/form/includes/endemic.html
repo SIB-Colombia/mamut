@@ -35,9 +35,17 @@
         </table>
       </div>
       <div class="form-group">
+        <label for="endemicIn" translate="" class="col-xs-2 control-label">simplePliCTerm.name.EndemicIn</label>
+        <div class="col-xs-10">
+          <input type="text" data-ng-model="endemicAtomizedType.endemicIn" placeholder="Área local o multinacional"/>
+        </div>
+      </div>
+      <div class="form-group">
         <label for="endemicTo" translate="" class="col-xs-2 control-label">simplePliCTerm.name.EndemicTo</label>
         <div class="col-xs-7">
-          <input name="endemicTo" type="text" data-ng-model="endemicTo"/>
+          <select data-ng-model="endemicTo" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
+            <option value="">{{"simplePliCTerm.name.country"|translate}}</option>
+          </select>
           <div data-ng-show="(endemicAtomizedType.endemicTo).length" class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -58,13 +66,7 @@
           </div>
         </div>
         <div class="col-xs-3">
-          <button data-ng-click="addEndemicTo(endemicAtomizedType.endemicTo,endemicTo)" class="btn btn-success btn-xs pull-right">Guardar endemismo para </button>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="endemicIn" translate="" class="col-xs-2 control-label">simplePliCTerm.name.EndemicIn</label>
-        <div class="col-xs-10">
-          <input type="text" data-ng-model="endemicAtomizedType.endemicIn"/>
+          <button data-ng-click="addEndemicTo(endemicAtomizedType.endemicTo,endemicTo)" class="btn btn-success btn-xs">Guardar país</button>
         </div>
       </div>
       <div data-ng-controller="CollapseDemoCtrl">
@@ -207,7 +209,7 @@
         </div>
       </div>
       <div class="form-group">
-        <button data-ng-click="addEndemic(formData.endemicAtomized,endemicAtomizedType)" class="btn btn-success btn-sm pull-right">Guardar</button>
+        <button data-ng-click="addEndemic(formData.endemicAtomized,endemicAtomizedType)" class="btn btn-success btn-sm pull-right">Guardar endemismo</button>
       </div>
     </div>
   </div>

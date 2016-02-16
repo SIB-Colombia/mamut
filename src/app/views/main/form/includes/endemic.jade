@@ -31,9 +31,14 @@ div(data-ng-controller='EndemicCtrl')
 								button.btn(data-ng-click='editEndemic(formData.endemicAtomized,endemicAtomized)')
 									span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 			.form-group
+				label.col-xs-2.control-label(for='endemicIn', translate='') simplePliCTerm.name.EndemicIn
+				.col-xs-10
+					input(type='text', data-ng-model='endemicAtomizedType.endemicIn', placeholder='Área local o multinacional')
+			.form-group
 				label.col-xs-2.control-label(for='endemicTo', translate='') simplePliCTerm.name.EndemicTo
 				.col-xs-7
-					input(name='endemicTo', type='text', data-ng-model='endemicTo')
+					select(data-ng-model='endemicTo', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
+						option(value='') {{"simplePliCTerm.name.country"|translate}}
 					div.table-responsive(data-ng-show='(endemicAtomizedType.endemicTo).length')
 						table.table.table-striped
 							thead
@@ -48,11 +53,8 @@ div(data-ng-controller='EndemicCtrl')
 										button.btn(data-ng-click='removeEndemicTo(endemicAtomizedType.endemicTo,endemicTo)')
 											span(class="glyphicon glyphicon-trash", aria-hidden='true')
 				.col-xs-3
-					button.btn.btn-success.btn-xs.pull-right(data-ng-click='addEndemicTo(endemicAtomizedType.endemicTo,endemicTo)') Guardar endemismo para 
-			.form-group
-				label.col-xs-2.control-label(for='endemicIn', translate='') simplePliCTerm.name.EndemicIn
-				.col-xs-10
-					input(type='text', data-ng-model='endemicAtomizedType.endemicIn')
+					button.btn.btn-success.btn-xs(data-ng-click='addEndemicTo(endemicAtomizedType.endemicTo,endemicTo)') Guardar país
+			
 				
 			div(data-ng-controller='CollapseDemoCtrl')
 				.form-group
@@ -171,4 +173,4 @@ div(data-ng-controller='EndemicCtrl')
 							button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(endemicAtomizedType.ancillaryData,ancillaryData)', translate='') Guardar
 							button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar
 			.form-group
-				button.btn.btn-success.btn-sm.pull-right(data-ng-click='addEndemic(formData.endemicAtomized,endemicAtomizedType)') Guardar
+				button.btn.btn-success.btn-sm.pull-right(data-ng-click='addEndemic(formData.endemicAtomized,endemicAtomizedType)') Guardar endemismo
