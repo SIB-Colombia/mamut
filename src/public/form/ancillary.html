@@ -22,6 +22,9 @@
                     <div data-ng-show="ancillary.mediaURL">
                       <p translate="" class="text_type_bold">simplePliCTerm.name.mediaURL</p>: {{ancillary.mediaURL}}
                     </div>
+                    <div data-ng-show="ancillary.additionalInformation">
+                      <p translate="" class="text_type_bold">simplePliCTerm.name.additionalInformation</p>: {{ancillary.additionalInformation}}
+                    </div>
                     <div data-ng-repeat="ref in ancillary.reference track by $index" class="selected-item">
                       <div data-ng-show="ref">{{"simplePliCTerm.name.References"|translate}} :
                         <textarea disabled="disabled">{{ref|references_format}}</textarea>

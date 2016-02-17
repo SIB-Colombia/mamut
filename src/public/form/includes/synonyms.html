@@ -14,12 +14,13 @@
               <input type="text" data-ng-model="synonmy.synonymName.canonicalName.simple"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.SynonymName&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
-          <div class="form-group">
-            <label for="synonymStatus" translate="" class="col-xs-2 control-label">simplePliCTerm.name.SynonymStatus</label>
-            <div class="col-xs-10">
-              <input type="text" data-ng-model="synonmy.synonymStatus"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.SynonymStatus&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
-            </div>
-          </div>
+          <!--.form-group
+          label.col-xs-2.control-label(for='synonymStatus', translate='') simplePliCTerm.name.SynonymStatus
+          .col-xs-10
+          	input(type='text', data-ng-model='synonmy.synonymStatus')
+          	a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.SynonymStatus"|translate}}')
+          		span.glyphicon.glyphicon-info-sign
+          -->
           <div class="form-group">
             <label for="publishedln" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Publishedln</label>
             <div class="col-xs-10">
@@ -175,9 +176,10 @@
                 <td>
                   <div data-ng-show="synonymAtomized.synonymName.canonicalName.simple">{{synonymAtomized.synonymName.canonicalName.simple}}</div>
                 </td>
-                <td>
-                  <div data-ng-show="synonymAtomized.synonymStatus"> {{synonymAtomized.synonymStatus}}</div>
-                </td>
+                <!--td
+                div(data-ng-show='synonymAtomized.synonymStatus')
+                	|  {{synonymAtomized.synonymStatus}}
+                -->
                 <td>
                   <button data-ng-click="removeSynonymsAtomized(formData.synonymsAtomized,synonymAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
                   <button data-ng-click="editSynonymsAtomized(formData.synonymsAtomized,synonymAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>

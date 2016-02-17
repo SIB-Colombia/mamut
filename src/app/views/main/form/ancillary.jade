@@ -23,6 +23,9 @@ div(data-ng-controller='AncillaryDataCtrl')
 										div(data-ng-show='ancillary.mediaURL')
 											p(translate='', class='text_type_bold') simplePliCTerm.name.mediaURL
 											| : {{ancillary.mediaURL}}
+										div(data-ng-show='ancillary.additionalInformation')
+											p(translate='', class='text_type_bold') simplePliCTerm.name.additionalInformation
+											| : {{ancillary.additionalInformation}}
 										.selected-item(data-ng-repeat='ref in ancillary.reference track by $index')
 											div(data-ng-show='ref')
 												| {{"simplePliCTerm.name.References"|translate}} :

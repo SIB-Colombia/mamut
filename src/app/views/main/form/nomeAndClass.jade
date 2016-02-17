@@ -1,30 +1,37 @@
 .form-group
-	div(data-ng-controller='TaxonRecordNameCtrl')
-		input(type='text', name='taxonRecordName', data-ng-model='taxonNameResearch')
-		button.btn.btn-success.btn-sm(data-ng-click='getTaxonInformation(taxonNameResearch)') Traer información
-		div(data-ng-show='formData.taxonRecordName.scientificName.simple')
-			.panel.panel-default
-				.panel-heading
-					div
-						spant(for='scientificName', translate='' , class='text_type_bold') simplePliCTerm.name.ScientificName
-						| : {{formData.taxonRecordName.scientificName.simple}}
-					div
-						spant(for='canonicalName', translate='' , class='text_type_bold') Nombre canónico
-						| : {{formData.taxonRecordName.scientificName.canonicalName.simple}}
-					div
-						spant(for='canonicalAuthorship', translate='' , class='text_type_bold') Autoria del Nombre científico
-						| : {{formData.taxonRecordName.scientificName.canonicalAuthorship.simple}}
-					div(data-ng-show='formData.taxonRecordName.scientificName.publishedln.simple')
-						div 
-							spant(for='publishedln', translate='' , class='text_type_bold') Publicado en
-							| : {{formData.taxonRecordName.scientificName.publishedln.simple}}
-	div(ng-include="'./form/includes/hierarchy.html'")
-	div(ng-include="'./form/includes/abstract.html'")
-	div(ng-include="'./form/includes/synonyms.html'")
-	div(ng-include="'./form/includes/commonNames.html'")
+  div(data-ng-controller='TaxonRecordNameCtrl')
+    .panel.panel-default
+      .panel-heading
+        spant Nombre del Taxón
+      .panel-body
+        .form-group
+          .col-xs-9
+            input(type='text', name='taxonRecordName', data-ng-model='taxonNameResearch', placeholder='Ingresar nombre científico')
+          .col-xs-3
+            button.btn.btn-success.btn-sm(data-ng-click='getTaxonInformation(taxonNameResearch)') Traer información
+
+        .form-group
+        div(data-ng-show='formData.taxonRecordName.scientificName.simple')
+          .panel.panel-default
+            .panel-heading
+              div
+                spant(for='scientificName', translate='') simplePliCTerm.name.ScientificName
+                | : {{formData.taxonRecordName.scientificName.simple}}
+              div
+                spant(for='canonicalName', translate='') Nombre canónico
+                | : {{formData.taxonRecordName.scientificName.canonicalName.simple}}
+              div
+                spant(for='canonicalAuthorship', translate='') Autoria del Nombre científico
+                | : {{formData.taxonRecordName.scientificName.canonicalAuthorship.simple}}
+              div(data-ng-show='formData.taxonRecordName.scientificName.publishedln.simple')
+                div Publicado en: {{formData.taxonRecordName.scientificName.publishedln.simple}}
+  div(ng-include="'./form/includes/hierarchy.html'")
+  div(ng-include="'./form/includes/abstract.html'")
+  div(ng-include="'./form/includes/synonyms.html'")
+  div(ng-include="'./form/includes/commonNames.html'")
 .col-xs-6.col-xs-offset-3
-	ul.pager
-		li
-			a.btn.btn-block(ui-sref='form.taxoDesc')
-				| Siguiente Sección 
-				span.glyphicon.glyphicon-circle-arrow-right
+  ul.pager
+    li
+      a.btn.btn-block(ui-sref='form.taxoDesc')
+        | Siguiente Sección 
+        span.glyphicon.glyphicon-circle-arrow-right

@@ -871,7 +871,7 @@
     "simplePliCTerm.name.bibliographicCitation": "Citación sugerida para este elemento",
     "simplePliCTerm.definition.bibliographicCitation": "A bibliographic reference for the resource. Sufficient bibliographic details should be included to identify the resources as unambiguously as possible.",
     "simplePliCTerm.comments.bibliographicCitation": "Example: ",
-    "simplePliCTerm.name.mediaURL": "Enlace multimedia",
+    "simplePliCTerm.name.mediaURL": "Enlaces (páginas web y multimedia)",
     "simplePliCTerm.definition.mediaURL": "A URL reference directly to the media resource.",
     "simplePliCTerm.comments.mediaURL": "Example: ",
      "simplePliCTerm.name.additionalInformation": "Más información",
