@@ -27,7 +27,8 @@ angular.module('app.controllers.distribution',[])
 	//list of proveedores de contenido
 	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false; 
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
@@ -35,7 +36,28 @@ angular.module('app.controllers.distribution',[])
 
 	$scope.addDistributionOpt2 = function(distributionClass, opt2) {
 		if (JSON.stringify(opt2) !== JSON.stringify(origDO)){
-			distributionFactoryLocal.addOpt2(distributionClass, opt2);
+			if(opt2.stateProvince === 'TODOS'){
+				angular.forEach($scope.ubicacion, function(attr) {
+					if (attr.countryName === opt2.country) {
+						angular.forEach(attr.departments, function(attr2) {
+							if(attr2.departmentName!=='TODOS'){
+								var opdDepa = {
+									country: attr.countryName,
+									stateProvince: attr2.departmentName,
+									county: '',
+									municipality: '',
+									locality: '',
+									ancillaryData: []
+								};
+								distributionFactoryLocal.addOpt2(distributionClass, opdDepa);
+							}
+						});
+					}
+				});
+			}else{
+				distributionFactoryLocal.addOpt2(distributionClass, opt2);
+			}
+			
 			//Reset the scope variable
 			$scope.distributionOpt2 = origDO;
 			origDO = angular.copy($scope.distributionOpt2);
@@ -81,44 +103,16 @@ angular.module('app.controllers.distribution',[])
 				license.parentNode.removeChild(license);
 			}
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
-			var insert = true;
-			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
-			    if(ancillaryData.source!==null && ancillaryData.source === ancillary.source){
-			    	angular.forEach(ancillary.reference, function(reference) {
-						angular.forEach(ancillaryData.reference, function(reference_anci) {
-							if(reference.source!==null && reference.source === reference_anci.source){
-								insert = false;
-							}
-						});
-					});
-				}
+			//Add all local reference to general reference vector
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
 			});
-
-			if(insert){
-				ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
-				angular.forEach(ancillaryData.reference, function(reference) {
-					var idx = $scope.formData.references.indexOf(reference);
-					if(idx === -1){
-						referenceFactoryLocal.addTo($scope.formData.references,reference);
-					}
-				});
-			}
 
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$scope.resetLicenseList(license,$scope.lincese_list);
 
-			if(license !== undefined && license!==null){
-				license.parentNode.removeChild(license);
-			}
-
-			angular.forEach($scope.lincese_list, function(item) {
-				if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
-					item.checked = true;
-				}else{
-					item.checked = false;
-				}
-			});
 			$('#ancillaryDistribution').collapse("hide");
 		}else{
 			alert("La licencia debe ser seleccionada");
@@ -160,17 +154,8 @@ angular.module('app.controllers.distribution',[])
 
 	$scope.cancelAncillaryData = function() {
 		$scope.ancillaryData = angular.copy(origAD);
-		angular.forEach($scope.lincese_list, function(item) {
-			if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
-				item.checked = true;
-			}else{
-				item.checked = false;
-			}
-		});
-   		var license = document.getElementById("ancillaryData.license");
-		if(license !== undefined && license!==null){
-			license.parentNode.removeChild(license);
-		}
+		var license = document.getElementById("ancillaryData.license");
+		$scope.resetLicenseList(license,$scope.lincese_list);
 		$('#ancillaryDistribution').collapse("hide");
 	};
 

@@ -42,7 +42,7 @@ block content
 											a(href="/edit?id={{field._id}}")
 												| {{field._id}}
 										td.text-center
-											{{field.taxonRecordName.scientificName.simple}}
+											| {{field.taxonRecordName.scientificName.simple}}
 										td.text-center
 											.selected-item(data-ng-repeat='associatedParty in field.associatedParty')
 												| {{associatedParty.firstName}}-{{associatedParty.lastName}}

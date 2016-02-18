@@ -22,7 +22,8 @@ angular.module('app.controllers.ancillary',[])
 	//imageUrl
 	$scope.imageurl = '';
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false; 
 
 	$scope.slide = function(){
         $scope.checked = !$scope.checked;
@@ -43,31 +44,23 @@ angular.module('app.controllers.ancillary',[])
 				license.parentNode.removeChild(license);
 			}
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList, ancillary);
+
+			//Add all local reference to general reference vector
 			angular.forEach(ancillary.reference, function(reference) {
-				var idx = $scope.formData.references.indexOf(reference);
-				if(idx === -1){
-					referenceFactoryLocal.addTo($scope.formData.references,reference);
-				}
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
 			});
+
 			//Reset var
 			$scope.ancillaryData = origAD;
 			$scope.reference = origR;
 			origAD = angular.copy($scope.ancillaryData);
 			origR = angular.copy($scope.reference);
+			$scope.resetLicenseList(license,$scope.lincese_list);
 
 			var imageDOM = document.getElementById("imageD");
 			if(imageDOM !== undefined && imageDOM!==null){
 				imageDOM.parentNode.removeChild(imageDOM);
 			}
-
-			angular.forEach($scope.lincese_list, function(item) {
-  				if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
-  					item.checked = true;
-  				}else{
-  					item.checked = false;
-  				}
-  				
-       		});
 		}
 	};
 
@@ -101,24 +94,13 @@ angular.module('app.controllers.ancillary',[])
 					}
 				}
             }
-            
         });
 	};
 
 	$scope.cancelAncillaryData = function() {
 		$scope.ancillaryData = angular.copy(origAD);
-		angular.forEach($scope.lincese_list, function(item) {
-			if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
-				item.checked = true;
-			}else{
-				item.checked = false;
-			}	
-   		});
-   		
-   		var license = document.getElementById("ancillaryData.license");
-		if(license !== undefined && license!==null){
-			license.parentNode.removeChild(license);
-		}
+		var license = document.getElementById("ancillaryData.license");
+		$scope.resetLicenseList(license,$scope.lincese_list);
 	};
 
 	$scope.addReference = function(referenceList,reference){

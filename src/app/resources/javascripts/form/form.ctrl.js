@@ -121,7 +121,22 @@ angular.module('app.controllers.form',[])
 		$scope.selectedAttr_2 = [];
 		$scope.selectedAttr_3 = [];
 		$scope.date = new Date();
-		
+
+
+		$scope.resetLicenseList = function(license,lincese_list) {
+			if(license !== undefined && license!==null){
+				license.parentNode.removeChild(license);
+			}
+			
+			angular.forEach(lincese_list, function(item) {
+				if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
+					item.checked = true;
+				}else{
+					item.checked = false;
+				}
+			});
+		};
+
 		$scope.saveFile = function(){
 			if($scope.formData._id!==undefined){
 				var id = $scope.formData._id;

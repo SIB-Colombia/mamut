@@ -4,7 +4,7 @@
 // =======================================================================================
 angular.module('formApp', 
 	['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.translate', 'ui.directives','ui.filters', 'ui.router',
-	'ui.bootstrap','ngAnimate','ngFileUpload', 'angularModalService', 'ngResource', 'ngRoute', 'pageslide-directive', 
+	'ui.bootstrap','ngFileUpload', 'angularModalService', 'ngResource', 'ngRoute', 'pageslide-directive', 'ngAnimate',
 	'app.controllers.form','app.controllers.checkBox', 'app.controllers.datepicker', 'app.controllers.collapse',
 	'app.controllers.findLanguageName','app.controllers.ubicacion','app.controllers.upload',
 	'app.controllers.modal', 

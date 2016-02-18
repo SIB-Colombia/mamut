@@ -46,13 +46,12 @@ angular.module('app.controllers.annualCycle',[])
 				license.parentNode.removeChild(license);
 			}
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
-			ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
+			
+			//Add all local reference to general reference vector
 			angular.forEach(ancillaryData.reference, function(reference) {
-				var idx = $scope.formData.references.indexOf(reference);
-				if(idx === -1){
-					referenceFactoryLocal.addTo($scope.formData.references,reference);
-				}
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
 			});
+			
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);

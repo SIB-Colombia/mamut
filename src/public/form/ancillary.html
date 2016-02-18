@@ -13,13 +13,13 @@
         <div data-ng-show="(formData.ancillaryData).length" class="table-responsive">
           <table class="table table-striped">
             <tbody>
-              <tr data-ng-repeat="ancillary in formData.ancillaryData " data-ng-if="ancillary.mediaURL.length !== 0">
+              <tr data-ng-repeat="ancillary in formData.ancillaryData ">
                 <td>
                   <div class="parrafo-pegado">
                     <div data-ng-show="ancillary.source">
                       <p translate="" class="text_type_bold">simplePliCTerm.name.source</p>: {{ancillary.source}}
                     </div>
-                    <div data-ng-show="ancillary.mediaURL">
+                    <div data-ng-if="ancillary.mediaURL.length !== 0">
                       <p translate="" class="text_type_bold">simplePliCTerm.name.mediaURL</p>: {{ancillary.mediaURL}}
                     </div>
                     <div data-ng-show="ancillary.additionalInformation">

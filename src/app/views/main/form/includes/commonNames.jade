@@ -130,13 +130,16 @@ div(data-ng-controller='CommonNameCtrl')
 											input(type='checkbox', data-ng-model='lic.checked', data-ng-click='updateSelectionLicence(lic, lincese_list, "ManualLicenseFullDescription")')
 											a(data-ng-href='{{lic.url}}',target="_blank")
 												img(id="image", data-ng-src="{{lic.image_url || '//:0' }}", hspace=10, vspace =7)
-												{{lic.nombre}}
+												| {{lic.nombre}}
 											spant(data-ng-show='lic.definicion')
 											a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lic.definicion}}')
 												span.glyphicon.glyphicon-info-sign
 										p(id='ManualLicenseFullDescription')
 										p(style="font-size:90%;")
 											i * Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co
+									label.control-label(for='rights', translate='') simplePliCTerm.name.rights
+									select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
+										option(value='') - Seleccione -
 						.form-group
 							button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addAncillaryData(commonName.ancillaryData,ancillaryData)', translate='') Guardar licencia
 						.form-group
@@ -162,7 +165,7 @@ div(data-ng-controller='CommonNameCtrl')
 								th.col-md-2
 						
 						tbody
-							tr(data-ng-repeat="commonName in formData.commonNameAtomized track by $index| orderBy:'-language'")
+							tr(data-ng-repeat="commonName in formData.commonNameAtomized track by $index")
 								td
 									div(data-ng-show='commonName.name')
 										| {{commonName.name}}

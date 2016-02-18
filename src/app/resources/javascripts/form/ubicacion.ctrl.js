@@ -31,6 +31,9 @@ angular.module('app.controllers.ubicacion',[])
 			$scope.invasivenessAtomizedType.county = '';
 			angular.forEach($scope.ubicacion, function(attr) {
 				if (attr.countryName === name) {
+					if(attr.countryName === 'Colombia' && attr.departments.length === 34){
+						attr.departments.splice(0,1);
+					}
 					$scope.selectedAttr = attr;
 				}
 			});
@@ -54,6 +57,9 @@ angular.module('app.controllers.ubicacion',[])
 			$scope.threatStatusClass.threatStatusAtomized.appliesTo.county = '';
 			angular.forEach($scope.ubicacion, function(attr) {
 				if (attr.countryName === name) {
+					if(attr.countryName === 'Colombia' && attr.departments.length === 34){
+						attr.departments.splice(0,1);
+					}
 					$scope.selectedAttr = attr;
 				}
 			});
@@ -77,6 +83,9 @@ angular.module('app.controllers.ubicacion',[])
 			$scope.legislationAtomizedType.appliesTo.county = '';
 			angular.forEach($scope.ubicacion, function(attr) {
 				if (attr.countryName === name) {
+					if(attr.countryName === 'Colombia' && attr.departments.length === 34){
+						attr.departments.splice(0,1);
+					}
 					$scope.selectedAttr = attr;
 				}
 			});
@@ -101,6 +110,9 @@ angular.module('app.controllers.ubicacion',[])
 			$scope.associatedParty.city = '';
 			angular.forEach($scope.ubicacion, function(attr) {
 				if (attr.countryName === name) {
+					if(attr.countryName === 'Colombia' && attr.departments.length === 34){
+						attr.departments.splice(0,1);
+					}
 					$scope.selectedAttr = attr;
 				}
 			});

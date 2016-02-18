@@ -127,7 +127,7 @@ div(data-ng-controller='BehaviorCtrl')
 											input(type='checkbox', data-ng-model='lic.checked', data-ng-click='updateSelectionLicence(lic, lincese_list, "ManualLicenseFullDescription")')
 											a(data-ng-href='{{lic.url}}',target="_blank")
 												img(id="image", data-ng-src="{{lic.image_url || '//:0' }}", hspace=10, vspace =7)
-												{{lic.nombre}}
+												| {{lic.nombre}}
 											spant(data-ng-show='lic.definicion')
 											a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lic.definicion}}')
 												span.glyphicon.glyphicon-info-sign

@@ -28,8 +28,8 @@ angular.module('app.controllers.commonName',[])
 	$scope.checked = false; // This will be binded using the ps-open attribute
 
 	$scope.slide = function(){
-	    $scope.checked = !$scope.checked
-	}
+	    $scope.checked = !$scope.checked;
+	};
 	
 	//ADD
 	$scope.addCommonNamesAtomized = function(commonNameAtomized, commonName) {
@@ -67,44 +67,15 @@ angular.module('app.controllers.commonName',[])
 				license.parentNode.removeChild(license);
 			}
 			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
-			var insert = true;
-			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
-			    if(ancillaryData.source!==null && ancillaryData.source === ancillary.source){
-			    	angular.forEach(ancillary.reference, function(reference) {
-						angular.forEach(ancillaryData.reference, function(reference_anci) {
-							if(reference.source!==null && reference.source === reference_anci.source){
-								insert = false;
-							}
-						});
-					});
-				}
+			//Add all local reference to general reference vector
+			angular.forEach(ancillaryData.reference, function(reference) {
+				referenceFactoryLocal.addTo($scope.formData.references,reference);
 			});
-
-			if(insert){
-				ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
-				angular.forEach(ancillaryData.reference, function(reference) {
-					var idx = $scope.formData.references.indexOf(reference);
-					if(idx === -1){
-						referenceFactoryLocal.addTo($scope.formData.references,reference);
-					}
-				});
-			}
 
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
-			if(license !== undefined && license!==null){
-				license.parentNode.removeChild(license);
-			}
-
-			angular.forEach($scope.lincese_list, function(item) {
-				if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
-					item.checked = true;
-				}else{
-					item.checked = false;
-				}
-			});
-			document.getElementById("isCollapsed").value = true;
+			$scope.resetLicenseList(license,$scope.lincese_list);
 		}else{
 			alert("La licencia debe ser seleccionada");
 		}		

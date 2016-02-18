@@ -14,13 +14,13 @@ div(data-ng-controller='AncillaryDataCtrl')
 				div.table-responsive(data-ng-show='(formData.ancillaryData).length')
 					table.table.table-striped
 						tbody
-							tr(data-ng-repeat="ancillary in formData.ancillaryData ", data-ng-if="ancillary.mediaURL.length !== 0")
+							tr(data-ng-repeat="ancillary in formData.ancillaryData ")
 								td
 									.parrafo-pegado
 										div(data-ng-show='ancillary.source')
 											p(translate='', class='text_type_bold') simplePliCTerm.name.source
 											| : {{ancillary.source}}
-										div(data-ng-show='ancillary.mediaURL')
+										div(data-ng-if="ancillary.mediaURL.length !== 0")
 											p(translate='', class='text_type_bold') simplePliCTerm.name.mediaURL
 											| : {{ancillary.mediaURL}}
 										div(data-ng-show='ancillary.additionalInformation')
@@ -51,7 +51,7 @@ div(data-ng-controller='AncillaryDataCtrl')
 								input(type='checkbox' , data-ng-model='lic.checked', data-ng-click='updateSelectionLicence(lic, lincese_list,"ManualLicense")')
 								a(data-ng-href='{{lic.url}}',target="_blank")
 									img(id="image", data-ng-src="{{lic.image_url || '//:0' }}", hspace=10, vspace =10)
-									{{lic.nombre}}
+									| {{lic.nombre}}
 								spant(data-ng-show='lic.definicion')
 								a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lic.definicion}}')
 									span.glyphicon.glyphicon-info-sign

@@ -17,7 +17,7 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
           q: 'angular',
           page: page,
           per_page: size
-        }
+        };
         $http.get(testUrl, { params: search, headers: { 'Content-Type': 'application/json'} })
          .then(function(res) {
             params.total(res.data.total);
@@ -34,7 +34,7 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
     var searchText = $scope.searchT;
     $scope.tableParams = new ngTableParams({}, {
       counts:[], // hide page counts control
-      getData: function ($defer, params) {
+      getData: function ($defer) {
         var testUrl = 'http://apimamut.elasticbeanstalk.com/search/author/'+searchText;
         $http.get(testUrl, { headers: { 'Content-Type': 'application/json'} })
          .then(function(res) {
@@ -53,7 +53,7 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
         var $panel = $(this).parents('.filterable'),
         $filters = $panel.find('.filters input'),
         $tbody = $panel.find('.table tbody');
-        if ($filters.prop('disabled') == true) {
+        if ($filters.prop('disabled') === true) {
             $filters.prop('disabled', false);
             $filters.first().focus();
         } else {
@@ -66,7 +66,9 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
     $('.filterable .filters input').keyup(function(e){
         /* Ignore tab key */
         var code = e.keyCode || e.which;
-        if (code == '9') return;
+        if (code === '9'){
+          return;  
+        } 
         /* Useful DOM data and selectors */
         var $input = $(this),
         inputContent = $input.val().toLowerCase(),

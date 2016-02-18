@@ -21,7 +21,8 @@ angular.module('app.controllers.directThreats',[])
 	//list of proveedores de contenido
 	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false; 
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
@@ -34,56 +35,25 @@ angular.module('app.controllers.directThreats',[])
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
-		if(ancillaryData.license !== ''){
-			var license = document.getElementById("ancillaryData.license");
-			if(license !== undefined && license!==null){
-				ancillaryData.license = license.value;
-				license.parentNode.removeChild(license);
-			}
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
-			var insert = true;
-			angular.forEach($scope.formData.ancillaryData, function(ancillary) {
-			    if(ancillaryData.source!==null && ancillaryData.source === ancillary.source){
-			    	angular.forEach(ancillary.reference, function(reference) {
-						angular.forEach(ancillaryData.reference, function(reference_anci) {
-							if(reference.source!==null && reference.source === reference_anci.source){
-								insert = false;
-							}
-						});
-					});
-				}
-			});
-
-			if(insert){
-				ancillaryDataFactoryLocal.addTo($scope.formData.ancillaryData,ancillaryData);
-				angular.forEach(ancillaryData.reference, function(reference) {
-					var idx = $scope.formData.references.indexOf(reference);
-					if(idx === -1){
-						referenceFactoryLocal.addTo($scope.formData.references,reference);
-					}
-				});
-			}
-
-			//Reset the scope variable
-			$scope.ancillaryData = origAD;
-			origAD = angular.copy($scope.ancillaryData);
-
-			if(license !== undefined && license!==null){
-				license.parentNode.removeChild(license);
-			}
-
-			angular.forEach($scope.lincese_list, function(item) {
-				if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
-					item.checked = true;
-				}else{
-					item.checked = false;
-				}
-			});
-
-			$('#ancillaryDirect').collapse("hide");
-		}else{
-			alert("La licencia debe ser seleccionada");
+		var license = document.getElementById("ancillaryData.license");
+		if(license !== undefined && license!==null){
+			ancillaryData.license = license.value;
+			license.parentNode.removeChild(license);
 		}
+
+		ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+
+		//Add all local reference to general reference vector
+		angular.forEach(ancillaryData.reference, function(reference) {
+			referenceFactoryLocal.addTo($scope.formData.references,reference);
+		});
+
+		//Reset variables
+		$scope.ancillaryData = origAD;
+		origAD = angular.copy($scope.ancillaryData);
+		$scope.resetLicenseList(license,$scope.lincese_list);
+
+		$('#ancillaryDirect').collapse("hide");
 	};
 
 	$scope.removeAncillaryData = function(ancillaryDataList,ancillaryData){
@@ -107,7 +77,8 @@ angular.module('app.controllers.directThreats',[])
 				            input.type = "text";
 				            input.id = "ancillaryData.license";
 				            input.value = ancillaryData.license;
-				            document.getElementById("ManualLicenseDirectThreats").appendChild(input);
+				            input.disabled = true;
+				            document.getElementById("ManualLicense").appendChild(input);
 						}else{
 							var license = document.getElementById("ancillaryData.license");
 							license.value = ancillaryData.license;
@@ -121,17 +92,8 @@ angular.module('app.controllers.directThreats',[])
 
 	$scope.cancelAncillaryData = function() {
 		$scope.ancillaryData = angular.copy(origAD);
-		angular.forEach($scope.lincese_list, function(item) {
-			if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
-				item.checked = true;
-			}else{
-				item.checked = false;
-			}
-		});
-   		var license = document.getElementById("ancillaryData.license");
-		if(license !== undefined && license!==null){
-			license.parentNode.removeChild(license);
-		}
+		var license = document.getElementById("ancillaryData.license");
+		$scope.resetLicenseList(license,$scope.lincese_list);
 		$('#ancillaryDirect').collapse("hide");
 	};
 

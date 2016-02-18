@@ -37,7 +37,10 @@ angular.module('app.services.reference',[])
 		};
 
 		this.addTo = function(referenceList, reference){
-			referenceList.push(reference);
+			var idx = referenceList.indexOf(reference);
+			if(idx === -1){
+				referenceList.push(reference);
+			}
 		};
 
 		this.deleteFrom = function(referenceList, reference){

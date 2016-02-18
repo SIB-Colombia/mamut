@@ -69,7 +69,7 @@ div(data-ng-controller='LegislationCtrl')
 						select(data-ng-model='legislationAtomizedType.appliesTo.country', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
 							option(value='') {{"simplePliCTerm.name.countryCode"|translate}}
 					.col-xs-3
-						select(data-ng-model='legislationAtomizedType.appliesTo.stateProvince', data-ng-disabled='!legislationAtomizedType.appliesTo.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
+						select(data-ng-model='legislationAtomizedType.appliesTo.stateProvince', data-ng-disabled='!legislationAtomizedType.appliesTo.country', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments')
 							option(value='') {{"simplePliCTerm.name.stateProvince"|translate}}
 					.col-xs-3
 						select(data-ng-model='legislationAtomizedType.appliesTo.county', data-ng-disabled='!legislationAtomizedType.appliesTo.country || !legislationAtomizedType.appliesTo.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
@@ -188,7 +188,7 @@ div(data-ng-controller='LegislationCtrl')
 											input(type='checkbox', data-ng-model='lic.checked', data-ng-click='updateSelectionLicence(lic, lincese_list, "ManualLicenseFullDescription")')
 											a(data-ng-href='{{lic.url}}',target="_blank")
 												img(id="image", data-ng-src="{{lic.image_url || '//:0' }}", hspace=10, vspace =7)
-												{{lic.nombre}}
+												| {{lic.nombre}}
 											spant(data-ng-show='lic.definicion')
 											a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{lic.definicion}}')
 												span.glyphicon.glyphicon-info-sign

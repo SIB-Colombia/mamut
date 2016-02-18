@@ -138,6 +138,10 @@
                     <p id="ManualLicenseFullDescription"></p>
                     <p style="font-size:90%;"><i>* Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co</i></p>
                   </panel>
+                  <label for="rights" translate="" class="control-label">simplePliCTerm.name.rights</label>
+                  <select data-ng-model="ancillaryData.rights" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
+                    <option value="">- Seleccione -</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -178,7 +182,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-ng-repeat="commonName in formData.commonNameAtomized track by $index| orderBy:'-language'">
+              <tr data-ng-repeat="commonName in formData.commonNameAtomized track by $index">
                 <td>
                   <div data-ng-show="commonName.name">{{commonName.name}}</div>
                 </td>
