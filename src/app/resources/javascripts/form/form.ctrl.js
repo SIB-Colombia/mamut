@@ -152,7 +152,6 @@ angular.module('app.controllers.form',[])
 				$http(req).then(function (response) {
 		           if(response.data.message==='Record update!'){
 		           		alert('Felicitaciones, su ficha se ha actualizado exitosamente!!!');
-		           		document.location.href = "/";
 		           }
 		        });	
 		   	}else{
@@ -168,7 +167,6 @@ angular.module('app.controllers.form',[])
 				$http(req_1).then(function (response) {
 		           if(response.data.message==='Record created!'){
 		           		alert('Felicitaciones, su ficha se ha guardado exitosamente!!!');
-		           		document.location.href = "/";
 		           }
 		        });
 

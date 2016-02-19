@@ -1,7 +1,11 @@
 .row
 	#form-container
 		.page-header.text-center
-			h1 EDITOR DE FICHAS
+			div(style="margin:10px;padding:0;display:inline")
+				h1 EDITOR DE FICHAS
+				a.pull-right(href="/")
+					button.btn.btn-success(type="button")
+						span.glyphicon.glyphicon-home
 		ul.nav.nav-pills.nav-stacked.col-md-2
 			li(ui-sref-active="active")
 				a(ui-sref='.nomeAndClass', data-target='#nomeAndClass', data-toggle='tab')
