@@ -2,9 +2,15 @@
 <div class="row">
   <div id="form-container">
     <div class="page-header text-center">
-      <div style="margin:10px;padding:0;display:inline">
-        <h1>EDITOR DE FICHAS</h1><a href="/" class="pull-right">
-          <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-home"></span></button></a>
+      <div style="margin:20px;padding:0;display:inline">
+        <h1>EDITOR DE FICHAS</h1>
+        <div class="pull-right">
+          <div class="col-xs-5"><a href="/">
+              <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-home"></span></button></a></div>
+          <div class="col-xs-5">		
+            <button type="button" data-ng-click="saveFile()" class="btn btn-success"> <span class="glyphicon glyphicon-floppy-disk"></span></button>
+          </div>
+        </div>
       </div>
     </div>
     <ul class="nav nav-pills nav-stacked col-md-2">

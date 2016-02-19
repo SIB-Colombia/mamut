@@ -42,8 +42,9 @@
                     <thead>
                       <tr class="filters">
                         <th class="col-xs-3">ID</th>
-                        <th class="col-xs-4">TAXON</th>
+                        <th class="col-xs-3">TAXON</th>
                         <th class="col-xs-3">CREADOR</th>
+                        <th class="col-xs-3">FECHA DE CREACIÓN</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -52,6 +53,10 @@
                         <td class="text-center">{{field.taxonRecordName.scientificName.simple}}</td>
                         <td class="text-center">
                           <div data-ng-repeat="associatedParty in field.associatedParty" class="selected-item">{{associatedParty.firstName}}-{{associatedParty.lastName}}</div>
+                        </td>
+                        <td class="text-center">
+                           
+                           
                         </td>
                       </tr>
                     </tbody>

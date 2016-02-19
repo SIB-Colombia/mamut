@@ -12,12 +12,14 @@ div(data-ng-controller='ReferenceCrtl')
 			.panel-body
 				div(pageslide ps-open="checked" ps-key-listener="true")
 					div(style="padding:30px" id="demo-right")
-						h3 Agregar nueva referencia			
 						.form-group
-							div(data-ng-controller="UploadFile")
-								h4 Cargar referencias desde un archivo .bib
-								input(type="file" on-read-file="showContent($fileContent)")
+							.panel.panel-default
+								.panel-body
+									div(data-ng-controller="UploadFile")
+										h4 Cargar referencias desde un archivo .bib
+										input(type="file" on-read-file="showContent($fileContent)")
 							div
+								h3 Agregar nueva referencia	
 								.form-group
 									select(data-ng-model='reference.type', ng-options='type.original as type.view for type in lenguajes.reference_type ')
 										option(value='') - {{"simplePliCTerm.name.type"|translate}} 
@@ -70,7 +72,3 @@ div(data-ng-controller='ReferenceCrtl')
 			a.btn.btn-block(ui-sref='form.ancillary')
 				| Siguiente Sección 
 				span.glyphicon.glyphicon-circle-arrow-right
-		li
-			button.btn.btn-success.btn-sm(type='button', data-ng-click="saveFile()") 
-				|  Guardar Ficha 
-				span.glyphicon.glyphicon-floppy-disk

@@ -13,13 +13,17 @@
       <div class="panel-body">
         <div pageslide="pageslide" ps-open="checked" ps-key-listener="true">
           <div style="padding:30px" id="demo-right">
-            <h3>Agregar nueva referencia			</h3>
             <div class="form-group">
-              <div data-ng-controller="UploadFile">
-                <h4>Cargar referencias desde un archivo .bib</h4>
-                <input type="file" on-read-file="showContent($fileContent)"/>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div data-ng-controller="UploadFile">
+                    <h4>Cargar referencias desde un archivo .bib</h4>
+                    <input type="file" on-read-file="showContent($fileContent)"/>
+                  </div>
+                </div>
               </div>
               <div>
+                <h3>Agregar nueva referencia	</h3>
                 <div class="form-group">
                   <select data-ng-model="reference.type" ng-options="type.original as type.view for type in lenguajes.reference_type ">
                     <option value="">- {{"simplePliCTerm.name.type"|translate}} </option>
@@ -77,11 +81,5 @@
   <ul class="pager">
     <li><a ui-sref="form.associatedParty" class="btn btn-block"><span class="glyphicon glyphicon-circle-arrow-left"></span>	Sección Anterior</a></li>
     <li><a ui-sref="form.ancillary" class="btn btn-block">Siguiente Sección <span class="glyphicon glyphicon-circle-arrow-right"></span></a></li>
-    <li>
-      <button type="button" data-ng-click="saveFile()" class="btn btn-success btn-sm">
-         
-         Guardar Ficha <span class="glyphicon glyphicon-floppy-disk"></span>
-      </button>
-    </li>
   </ul>
 </div>

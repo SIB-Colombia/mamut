@@ -32,10 +32,12 @@ block content
 									tr.filters
 										th.col-xs-3
 											| ID
-										th.col-xs-4
+										th.col-xs-3
 											| TAXON
 										th.col-xs-3
 											| CREADOR
+										th.col-xs-3
+											| FECHA DE CREACIÓN
 								tbody
 									tr(data-ng-repeat="field in $data track by field._id")
 										td.text-center 
@@ -46,6 +48,8 @@ block content
 										td.text-center
 											.selected-item(data-ng-repeat='associatedParty in field.associatedParty')
 												| {{associatedParty.firstName}}-{{associatedParty.lastName}}
+										td.text-center 
+											| 
 										
 				
 					
