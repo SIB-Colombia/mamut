@@ -32,20 +32,31 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
 
   $scope.search = function(){
     var searchText = $scope.searchT;
-    $scope.tableParams = new ngTableParams({}, {
-      counts:[], // hide page counts control
-      getData: function ($defer) {
-        var testUrl = 'http://apimamut.elasticbeanstalk.com/search/author/'+searchText;
-        $http.get(testUrl, { headers: { 'Content-Type': 'application/json'} })
-         .then(function(res) {
-            $defer.resolve(res.data);
-          }, function(reason) {
-            console.log(reason);
-            $defer.reject();
+    $scope.tableParams = new ngTableParams({
+          page: 1,
+          count: 10,
+      }, {
+          counts:[], // hide page counts control
+          getData: function ($defer, params) {
+            var page = params.page();
+            var size = params.count();
+            var testUrl = 'http://apimamut.elasticbeanstalk.com/search/author/'+searchText;
+            var search = {
+              q: 'angular',
+              page: page,
+              per_page: size
+            };
+            $http.get(testUrl, { params: search, headers: { 'Content-Type': 'application/json'} })
+             .then(function(res) {
+                params.total(res.data.total);
+                $defer.resolve(res.data);
+              }, function(reason) {
+                console.log(reason);
+                $defer.reject();
+              }
+            );
           }
-        );
-      }
-   });
+       });
   };
 
   $(document).ready(function(){
