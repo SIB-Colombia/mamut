@@ -64,6 +64,9 @@ angular.module('app.controllers.distribution',[])
 		}
 	};
 
+	$scope.editDistributionOpt2 = function(list,opt2) {
+		$scope.distributionOpt2 = angular.copy(opt2);
+	};
 	$scope.removeDistributionOpt2 = function(distributionClass, opt2) {
 		distributionFactoryLocal.deleteOpt2(distributionClass, opt2);
 	};

@@ -165,7 +165,7 @@ div(data-ng-controller='CommonNameCtrl')
 								th.col-md-2
 						
 						tbody
-							tr(data-ng-repeat="commonName in formData.commonNameAtomized track by $index")
+							tr(data-ng-repeat="commonName in formData.commonNameAtomized| orderBy:'language'")
 								td
 									div(data-ng-show='commonName.name')
 										| {{commonName.name}}
