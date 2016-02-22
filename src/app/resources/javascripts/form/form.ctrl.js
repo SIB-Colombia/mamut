@@ -166,6 +166,7 @@ angular.module('app.controllers.form',[])
 
 				$http(req_1).then(function (response) {
 		           if(response.data.message==='Record created!'){
+		           		$scope.formData._id = response.data.id;
 		           		alert('Felicitaciones, su ficha se ha guardado exitosamente!!!');
 		           }
 		        });

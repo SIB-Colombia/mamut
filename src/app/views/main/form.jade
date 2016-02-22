@@ -6,44 +6,44 @@
 				div.pull-right
 					.col-xs-5
 						a(href="/")
-							button.btn.btn-success(type="button")
+							button.btn.btn-info(type="button")
 								span.glyphicon.glyphicon-home
 					.col-xs-5		
 						button.btn.btn-success(type='button', data-ng-click="saveFile()") 
 							span.glyphicon.glyphicon-floppy-disk
 		ul.nav.nav-pills.nav-stacked.col-md-2
 			li(ui-sref-active="active")
-				a(ui-sref='.nomeAndClass', data-target='#nomeAndClass', data-toggle='tab')
+				a(ui-sref='.nomeAndClass', data-target='#nomeAndClass', data-toggle='tab', data-placement='left', title='{{"simplePliCTerm.help.NomenclatureAndClassification"|translate}}')
 					p(translate='') simplePliCTerm.name.NomenclatureAndClassification
 			li(ui-sref-active="active")
-				a(ui-sref='.taxoDesc', data-target='#taxoDesc', data-toggle='tab')
+				a(ui-sref='.taxoDesc', data-target='#taxoDesc', data-toggle='tab' , data-placement='left', title='{{"simplePliCTerm.help.TaxonomicDescription"|translate}}')
 					p(translate='') simplePliCTerm.name.TaxonomicDescription
 			li(ui-sref-active="active")
-				a(ui-sref='.history', data-target='#history', data-toggle='tab')
+				a(ui-sref='.history', data-target='#history', data-toggle='tab', data-placement='left', title='{{"simplePliCTerm.help.NaturalHistoryI"|translate}}')
 					p(translate='') simplePliCTerm.name.NaturalHistoryI
 			li(ui-sref-active="active")
-				a(ui-sref='.historyC', data-target='#historyC', data-toggle='tab')
+				a(ui-sref='.historyC', data-target='#historyC', data-toggle='tab', data-placement='left', title='{{"simplePliCTerm.help.NaturalHistoryII"|translate}}')
 					p(translate='') simplePliCTerm.name.NaturalHistoryII
 			li(ui-sref-active="active")
-				a(ui-sref='.invasiveness', data-target='#invasiveness', data-toggle='tab')
+				a(ui-sref='.invasiveness', data-target='#invasiveness', data-toggle='tab', data-placement='left', title='{{"simplePliCTerm.help.Invasiveness"|translate}}')
 					p(translate='') simplePliCTerm.name.Invasiveness
 			li(ui-sref-active="active")
-				a(ui-sref='.habitat', data-target='#habitat', data-toggle='tab')
+				a(ui-sref='.habitat', data-target='#habitat', data-toggle='tab', data-placement='left', title='{{"simplePliCTerm.help.HabitatAndDistribution"|translate}}')
 					p(translate='') simplePliCTerm.name.HabitatAndDistribution
 			li(ui-sref-active="active")
-				a(ui-sref='.demogra', data-target='#demogra', data-toggle='tab')
+				a(ui-sref='.demogra', data-target='#demogra', data-toggle='tab', data-placement='left', title='{{"simplePliCTerm.help.DemographyAndThreat"|translate}}')
 					p(translate='') simplePliCTerm.name.DemographyAndThreat
 			li(ui-sref-active="active")
-				a(ui-sref='.uses', data-target='#uses', data-toggle='tab')
+				a(ui-sref='.uses', data-target='#uses', data-toggle='tab', data-placement='left', title='{{"simplePliCTerm.help.UsesManagementAndConservation"|translate}}')
 					p(translate='') simplePliCTerm.name.UsesManagementAndConservation
 			li(ui-sref-active="active")
-				a(ui-sref='.associatedParty', data-target='#associatedParty', data-toggle='tab')
+				a(ui-sref='.associatedParty', data-target='#associatedParty', data-toggle='tab', data-placement='left', title='{{"simplePliCTerm.help.associatedParty"|translate}}')
 					p(translate='') simplePliCTerm.name.associatedParty
 			li(ui-sref-active="active")
-				a(ui-sref='.references', data-target='#references', data-toggle='tab')
+				a(ui-sref='.references', data-target='#references', data-toggle='tab', data-placement='left', title='{{"simplePliCTerm.help.References"|translate}}')
 					p(translate='') simplePliCTerm.name.References
 			li(ui-sref-active="active")
-				a(ui-sref='.ancillary', data-target='#ancillary', data-toggle='tab')
+				a(ui-sref='.ancillary', data-target='#ancillary', data-toggle='tab', data-placement='left', title='{{"simplePliCTerm.help.AncillaryData"|translate}}')
 					p(translate='') simplePliCTerm.name.AncillaryData
 		// use ng-submit to catch the form submission and use our Angular function
 		.tab-content.col-md-10
