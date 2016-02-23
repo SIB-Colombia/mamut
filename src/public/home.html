@@ -26,7 +26,7 @@
                 <div class="col-md-9">
                   <form data-ng-submit="search()">
                     <div class="input-group">
-                      <input type="search" name="q" x-webkit-speech data-ng-model="searchT" placeholder="Buscar las fichas del creador..." required class="form-control"><span class="input-group-btn">
+                      <input type="search" name="q" x-webkit-speech data-ng-model="searchT" placeholder="Buscar las fichas por creador o nombre del taxon ..." required class="form-control"><span class="input-group-btn">
                         <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button></span>
                     </div>
                   </form>
@@ -52,7 +52,7 @@
                         <td class="text-center"> <a href="/edit?id={{field._id}}">{{field._id}}</a></td>
                         <td class="text-center">{{field.taxonRecordName.scientificName.simple}}</td>
                         <td class="text-center">
-                          <div data-ng-repeat="associatedParty in field.associatedParty" class="selected-item">{{associatedParty.firstName}}-{{associatedParty.lastName}}</div>
+                          <div data-ng-repeat="associatedParty in field.associatedParty" class="selected-item">{{associatedParty.firstName}} - {{associatedParty.lastName}}</div>
                         </td>
                         <td class="text-center">
                            

@@ -16,7 +16,7 @@ block content
 						div.col-md-9
 							form(data-ng-submit="search()")
 								div.input-group
-									input.form-control(type="search" name="q" x-webkit-speech data-ng-model="searchT" placeholder="Buscar las fichas del creador..." required)
+									input.form-control(type="search" name="q" x-webkit-speech data-ng-model="searchT" placeholder="Buscar las fichas por creador o nombre del taxon ..." required)
 									span.input-group-btn
 										button.btn.btn-default(type="submit")
 											i.glyphicon.glyphicon-search
@@ -47,7 +47,7 @@ block content
 											| {{field.taxonRecordName.scientificName.simple}}
 										td.text-center
 											.selected-item(data-ng-repeat='associatedParty in field.associatedParty')
-												| {{associatedParty.firstName}}-{{associatedParty.lastName}}
+												| {{associatedParty.firstName}} - {{associatedParty.lastName}}
 										td.text-center 
 											| {{field.creation_date}}
 										

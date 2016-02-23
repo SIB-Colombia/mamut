@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('app.controllers.form',[])
-.controller('formController', ['$scope', '$http', '$rootScope', '$routeParams', '$resource', '$location', 'DirectThreatsFactory', 'LegislationFactory', 'PopulationBiologyFactory', 'TerritoryFactory', 'HabitatsFactory', 'AnnualCycleFactory', 'BehaviorFactory',
+.controller('formController', ['$timeout', '$scope', '$http', '$rootScope', '$routeParams', '$resource', '$location', 'DirectThreatsFactory', 'LegislationFactory', 'PopulationBiologyFactory', 'TerritoryFactory', 'HabitatsFactory', 'AnnualCycleFactory', 'BehaviorFactory',
 	'DispersalFactory','EcologicalSignificanceFactory', 'EnvironmentalEnvelopeFactory', 'FeedingFactory', 'InteractionsFactory', 'LifeCycleFactory', 'LifeFormFactory', 'MigratoryFactory', 'MolecularDataFactory',
 	'ReproductionFactory','InvasivenessFactory','TaxonRecordNameFactory','FullDescriptionFactory','IdentificationKeysFactory','ManagementAndConservationAtomizedFactory',
-	function($scope, $http, $rootScope, $routeParams, $resource , $location, DirectThreatsFactory, LegislationFactory, PopulationBiologyFactory, TerritoryFactory, HabitatsFactory, AnnualCycleFactory,BehaviorFactory,DispersalFactory,EcologicalSignificanceFactory,
+	function($timer, $scope, $http, $rootScope, $routeParams, $resource , $location, DirectThreatsFactory, LegislationFactory, PopulationBiologyFactory, TerritoryFactory, HabitatsFactory, AnnualCycleFactory,BehaviorFactory,DispersalFactory,EcologicalSignificanceFactory,
 		EnvironmentalEnvelopeFactory,FeedingFactory,InteractionsFactory,LifeCycleFactory,LifeFormFactory,MigratoryFactory,MolecularDataFactory,ReproductionFactory,InvasivenessFactory,TaxonRecordNameFactory,FullDescriptionFactory,IdentificationKeysFactory,ManagementAndConservationAtomizedFactory) {
 
 	//Factories
@@ -138,41 +138,50 @@ angular.module('app.controllers.form',[])
 		};
 
 		$scope.saveFile = function(){
-			if($scope.formData._id!==undefined){
-				var id = $scope.formData._id;
-				var req = {
-					 method: 'PUT',
-					 url: 'http://apimamut.elasticbeanstalk.com/update-record/'+id,
-					 headers: {
-					   'Content-Type': 'application/JSON'
-					 },
-					 data: $scope.formData
-				};
+			if($scope.formData.taxonRecordName.scientificName.simple!==undefined && $scope.formData.taxonRecordName.scientificName.simple!==''){
+				if($scope.formData._id!==undefined){
+					var id = $scope.formData._id;
+					var req = {
+						 method: 'PUT',
+						 url: 'http://apimamut.elasticbeanstalk.com/update-record/'+id,
+						 headers: {
+						   'Content-Type': 'application/JSON'
+						 },
+						 data: $scope.formData
+					};
 
-				$http(req).then(function (response) {
-		           if(response.data.message==='Record update!'){
-		           		alert('Felicitaciones, su ficha se ha actualizado exitosamente!!!');
-		           }
-		        });	
-		   	}else{
-				var req_1 = {
-					 method: 'POST',
-					 url: 'http://apimamut.elasticbeanstalk.com/post-record',
-					 headers: {
-					   'Content-Type': 'application/JSON'
-					 },
-					 data: $scope.formData
-				};
+					$http(req).then(function (response) {
+			           if(response.data.message==='Record update!'){
+			           		console.log('La ficha se ha actualizado');
+			           }
+			        });	
+			   	}else{
+			   		$scope.formData._id;
+					var req_1 = {
+						 method: 'POST',
+						 url: 'http://apimamut.elasticbeanstalk.com/post-record',
+						 headers: {
+						   'Content-Type': 'application/JSON'
+						 },
+						 data: $scope.formData
+					};
 
-				$http(req_1).then(function (response) {
-		           if(response.data.message==='Record created!'){
-		           		$scope.formData._id = response.data.id;
-		           		alert('Felicitaciones, su ficha se ha guardado exitosamente!!!');
-		           }
-		        });
+					$http(req_1).then(function (response) {
+			           if(response.data.message==='Record created!'){
+			           		$scope.formData._id = response.data.id;
+			           		alert('Su ficha se ha creado correctamente');
+			           }
+			        });
 
+				}
 			}
+			
 		};
+
+		var timeoutId = setInterval(function(){
+			$scope.saveFile();
+		}, 20000);
+
 		$('#btnNext').click(function(){
 			$('.nav-pills.nav-stacked.col-md-2 > .active').next('li').find('a').trigger('click');
 		});

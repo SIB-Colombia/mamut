@@ -125,8 +125,6 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
-			$scope.measurementOrFact = new MeasurementFactory().measurement;
-			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementType = attr.measurementtype;
@@ -152,8 +150,6 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('formData.behavior.behaviorAtomized.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
-			$scope.measurementOrFact = new MeasurementFactory().measurement;
-			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.formData.behavior.behaviorAtomized.measurementOrFact.measurementType = attr.measurementtype;
@@ -320,8 +316,6 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('formData.directThreats.directThreatsAtomized.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
-			$scope.measurementOrFact = new MeasurementFactory().measurement;
-			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr_2, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.formData.directThreats.directThreatsAtomized.measurementOrFact.measurementType = attr.measurementtype;
@@ -374,8 +368,6 @@ angular.module('app.controllers.measurement',[])
 	});
 	$scope.$watch('threatStatusClass.threatStatusAtomized.threatCategory.measurementValue', function(name) {
 		if (name !== undefined) {
-			$scope.measurementOrFact = new MeasurementFactory().measurement;
-			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
 					$scope.threatStatusClass.threatStatusAtomized.threatCategory.measurementType = attr.measurementtype;
@@ -392,8 +384,6 @@ angular.module('app.controllers.measurement',[])
 
 				$scope.measurementOrFact = angular.copy(measurementCopy);
 				measurementCopy = angular.copy($scope.measurementOrFact);
-
-				$scope.selectedAttr.length = 0;
 			}
 		}
 	};
@@ -405,8 +395,6 @@ angular.module('app.controllers.measurement',[])
 				
 				$scope.measurementOrFact = angular.copy(measurementCopy);
 				measurementCopy = angular.copy($scope.measurementOrFact);
-				
-				$scope.selectedAttr.length = 0;
 			}
 		}
 	};
