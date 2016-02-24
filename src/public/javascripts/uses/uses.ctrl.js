@@ -43,7 +43,8 @@ angular.module('app.controllers.use',[])
 		}
 	};
 
-	$scope.addUsesAtomized = function(list, usesAtomized) {
+	$scope.addUsesAtomized = function(list, usesAtomized){
+		console.log('Hola');
 		if (JSON.stringify(usesAtomized) !== JSON.stringify(origUA)){
 			if($scope.index_usesAtomized !== ''){
 				list[$scope.index_usesAtomized] = angular.copy(usesAtomized);

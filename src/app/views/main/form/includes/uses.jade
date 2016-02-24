@@ -1,4 +1,4 @@
-div
+div(data-ng-controller='UsesCtrl')
 	.panel.panel-default
 		.panel-heading
 			spant
@@ -136,7 +136,7 @@ div
 										td
 											button.btn(data-ng-click='removeAncillaryData(usesAtomizedType.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
-											button.btn(data-ng-click='editAncillaryData(usesAtomizedType.ancillaryData,ancillary, $index)')
+											button.btn(data-ng-click='editAncillaryData(usesAtomizedType.ancillaryData,ancillary,$index)')
 												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 						button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='isCollapsed = !isCollapsed') Referencias y licencias
 						div.divider
@@ -197,7 +197,7 @@ div
 												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 												div.pull-right
-													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
+													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference,checked)', translate='') Guardar
 													button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 								.form-group
 									label.control-label(for='license', translate='') simplePliCTerm.name.license
