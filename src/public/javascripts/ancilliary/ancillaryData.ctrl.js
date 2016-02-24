@@ -25,6 +25,10 @@ angular.module('app.controllers.ancillary',[])
 	// This will be binded using the ps-open attribute
 	$scope.checked = false; 
 
+	//to edit
+	$scope.index_ancillary = '';
+	$scope.index_reference = '';
+
 	$scope.slide = function(){
         $scope.checked = !$scope.checked;
     };
@@ -41,9 +45,10 @@ angular.module('app.controllers.ancillary',[])
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillary.license = license.value;
-				license.parentNode.removeChild(license);
 			}
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList, ancillary);
+			
+			//if index is different to '' then replace the item because is an edit option
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillary, $scope.index_ancillary);
 
 			//Add all local reference to general reference vector
 			angular.forEach(ancillary.reference, function(reference) {
@@ -56,6 +61,7 @@ angular.module('app.controllers.ancillary',[])
 			origAD = angular.copy($scope.ancillaryData);
 			origR = angular.copy($scope.reference);
 			$scope.resetLicenseList(license,$scope.lincese_list);
+			$scope.index_ancillary='';
 
 			var imageDOM = document.getElementById("imageD");
 			if(imageDOM !== undefined && imageDOM!==null){
@@ -68,7 +74,8 @@ angular.module('app.controllers.ancillary',[])
 		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillary);
 	};
 
-	$scope.editAncillaryData = function(ancillaryDataList, ancillary){
+	$scope.editAncillaryData = function(ancillaryDataList, ancillary, index){
+		$scope.index_ancillary = index;
 		$scope.ancillaryData = angular.copy(ancillary);
 		var checked_almost_one = false;
 		angular.forEach($scope.lincese_list, function(item) {
@@ -101,15 +108,19 @@ angular.module('app.controllers.ancillary',[])
 		$scope.ancillaryData = angular.copy(origAD);
 		var license = document.getElementById("ancillaryData.license");
 		$scope.resetLicenseList(license,$scope.lincese_list);
+		$scope.index_ancillary='';
 	};
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactoryLocal.addTo(referenceList,reference);
+			//if index is different to '' then replace the item because is an edit option
+			referenceFactoryLocal.addTo(referenceList,reference, $scope.index_reference);
+
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.checked = !$scope.checked;
+			$scope.index_reference = '';
 		}
 	};
 
@@ -117,7 +128,8 @@ angular.module('app.controllers.ancillary',[])
 		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
-	$scope.editReference = function(referenceList,reference) {
+	$scope.editReference = function(referenceList,reference, index) {
+		$scope.index_reference = index;
 		$scope.reference = angular.copy(reference);
 		$scope.checked = !$scope.checked;
 	};
@@ -125,6 +137,7 @@ angular.module('app.controllers.ancillary',[])
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 
 	$scope.getInfoLicence = function(url, ancillary) {

@@ -35,7 +35,7 @@
               </td>
               <td>
                 <button data-ng-click="removeThreatStatus(formData.threatStatus,threatStatusClass)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                <!--button.btn(data-ng-click='editThreatStatus(formData.threatStatus,threatStatusClass)')
+                <!--button.btn(data-ng-click='editThreatStatus(formData.threatStatus,threatStatusClass,$index)')
                 span(class="glyphicon glyphicon-pencil", aria-hidden='true')
                 
                 -->
@@ -134,7 +134,7 @@
       						td
       							button.btn(data-ng-click='removeAncillaryData(threatStatusClass.ancillaryData,ancillary)')
       								span(class="glyphicon glyphicon-trash", aria-hidden='true')
-      							button.btn(data-ng-click='editAncillaryData(threatStatusClass.ancillaryData,ancillary)')
+      							button.btn(data-ng-click='editAncillaryData(threatStatusClass.ancillaryData,ancillary,$index)')
       								span(class="glyphicon glyphicon-pencil", aria-hidden='true')
       		button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='isCollapsed = !isCollapsed') Referencias y licencias
       		div.divider
@@ -165,7 +165,7 @@
       									td.col-xs-1
       										button.btn(data-ng-click='removeReference(ancillaryData.reference,ref)')
       											span(class="glyphicon glyphicon-trash", aria-hidden='true')
-      										button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
+      										button.btn(data-ng-click='editReference(ancillaryData.reference,ref,$index)')
       											span(class="glyphicon glyphicon-pencil", aria-hidden='true')
       					div(pageslide ps-open="checked" ps-key-listener="true")
       						div(style="padding:30px" id="demo-right")

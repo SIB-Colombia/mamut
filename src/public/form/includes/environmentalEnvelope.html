@@ -79,7 +79,7 @@
                   </td>
                   <td>
                     <button data-ng-click="removeAncillaryData(formData.environmentalEnvelope.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                    <button data-ng-click="editAncillaryData(formData.environmentalEnvelope.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                    <button data-ng-click="editAncillaryData(formData.environmentalEnvelope.ancillaryData,ancillary,$index)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                   </td>
                 </tr>
               </tbody>
@@ -119,7 +119,7 @@
                         </td>
                         <td class="col-xs-1">
                           <button data-ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                          <button data-ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                          <button data-ng-click="editReference(ancillaryData.reference,ref,$index)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                         </td>
                       </tr>
                     </tbody>

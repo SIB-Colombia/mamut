@@ -296,7 +296,7 @@
                   </td>
                   <td>
                     <button data-ng-click="removeAncillaryData(invasivenessAtomizedType.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                    <button data-ng-click="editAncillaryDataAto(invasivenessAtomizedType.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                    <button data-ng-click="editAncillaryDataAto(invasivenessAtomizedType.ancillaryData,ancillary,$index)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                   </td>
                 </tr>
               </tbody>
@@ -338,7 +338,7 @@
                             </td>
                             <td class="col-xs-1">
                               <button data-ng-click="removeReference(ancillaryDataAto.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                              <button data-ng-click="editReference(ancillaryDataAto.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                              <button data-ng-click="editReference(ancillaryDataAto.reference,ref,$index)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                             </td>
                           </tr>
                         </tbody>
@@ -411,103 +411,106 @@
             <button type="button" data-ng-click="cancelInvasivenessAtomizedType(invasivenessAtomizedType)" class="btn btn-success btn-sm">Cancelar</button>
           </div>
         </div>
-        <div data-ng-show="(formData.invasiveness.invasivenessAtomized).length" class="table-responsive">
-          <table class="table table-striped">
-            <tbody>
-              <tr data-ng-repeat="invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized track by $index">
-                <td>
-                  <div class="parrafo-pegado">
-                    <div data-ng-show="invasivenessAtomizedType.origin">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.origin</p>: {{invasivenessAtomizedType.origin}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.presence">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.presence</p>: {{invasivenessAtomizedType.presence}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.persistence">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.persistence</p>: {{invasivenessAtomizedType.persistence}}
-                    </div>
-                    <div data-ng-repeat="distribution in invasivenessAtomizedType.distribution" class="selected-item">
-                      <div data-ng-show="distribution">
-                        <p translate="" class="text_type_bold">simplePliCTerm.name.distribution</p>: {{distribution}}
+        <div class="divider"></div>
+        <div class="form-group">
+          <div data-ng-show="(formData.invasiveness.invasivenessAtomized).length" class="table-responsive">
+            <table class="table table-striped">
+              <tbody>
+                <tr data-ng-repeat="invasivenessAtomizedType in formData.invasiveness.invasivenessAtomized track by $index">
+                  <td>
+                    <div class="parrafo-pegado">
+                      <div data-ng-show="invasivenessAtomizedType.origin">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.origin</p>: {{invasivenessAtomizedType.origin}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.presence">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.presence</p>: {{invasivenessAtomizedType.presence}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.persistence">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.persistence</p>: {{invasivenessAtomizedType.persistence}}
+                      </div>
+                      <div data-ng-repeat="distribution in invasivenessAtomizedType.distribution" class="selected-item">
+                        <div data-ng-show="distribution">
+                          <p translate="" class="text_type_bold">simplePliCTerm.name.distribution</p>: {{distribution}}
+                        </div>
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.harmful">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.harmful</p>: {{invasivenessAtomizedType.harmful}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.modified"><span class="datepicker-date">
+                          <p translate="" class="text_type_bold">simplePliCTerm.name.modified</p>: {{invasivenessAtomizedType.modified| date:'yyyy/MM/dd'}}</span></div>
+                      <div data-ng-show="invasivenessAtomizedType.startValidateDate"><span class="datepicker-date">
+                          <p translate="" class="text_type_bold">simplePliCTerm.name.startValidateDate</p>: {{invasivenessAtomizedType.startValidateDate| date:'yyyy/MM/dd'}}	</span></div>
+                      <div data-ng-show="invasivenessAtomizedType.endValidateDate"><span class="datepicker-date">
+                          <p translate="" class="text_type_bold">simplePliCTerm.name.endValidateDate</p>: {{invasivenessAtomizedType.endValidateDate| date:'yyyy/MM/dd'}}</span></div>
+                      <div data-ng-show="invasivenessAtomizedType.countryCode">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.countryCode</p>: {{invasivenessAtomizedType.countryCode}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.stateProvince">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.stateProvince</p>: {{invasivenessAtomizedType.stateProvince}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.county">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.county</p>: {{invasivenessAtomizedType.county}}	
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.localityName">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.localityName</p>: {{invasivenessAtomizedType.localityName}}	
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.language">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.language</p>: {{invasivenessAtomizedType.language}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.citation">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.citation</p>: {{invasivenessAtomizedType.citation}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.abundance">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.abundance</p>: {{invasivenessAtomizedType.abundance}}	
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.trend">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.trend</p>: {{invasivenessAtomizedType.trend}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.rateOfSpread">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.rateOfSpread</p>: {{invasivenessAtomizedType.rateOfSpread}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.regulatoryListing">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.regulatoryListing</p>: {{invasivenessAtomizedType.regulatoryListing}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.memo">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.memo</p>: {{invasivenessAtomizedType.memo}}	
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.publicationDate"><span class="datepicker-date">
+                          <p translate="" class="text_type_bold">simplePliCTerm.name.publicationDate</p>: {{invasivenessAtomizedType.publicationDate| date:'yyyy/MM/dd'}}</span></div>
+                      <div data-ng-show="invasivenessAtomizedType.localityType">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.localityType</p>: {{invasivenessAtomizedType.localityType}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.locationValue">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.locationValue</p>: {{invasivenessAtomizedType.locationValue}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.publicationDatePrecision">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.publicationDatePrecision</p>: {{invasivenessAtomizedType.publicationDatePrecision}}	
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.whatImpact">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.WhatImpact</p>: {{invasivenessAtomizedType.whatImpact}}	
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.vector">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.vector</p>: {{invasivenessAtomizedType.vector}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.route">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.route</p>: {{invasivenessAtomizedType.route}}
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.target">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.target</p>: {{invasivenessAtomizedType.target}}	
+                      </div>
+                      <div data-ng-show="invasivenessAtomizedType.mechanism">
+                        <p translate="" class="text_type_bold">simplePliCTerm.name.Mechanism</p>: {{invasivenessAtomizedType.mechanism}}		
                       </div>
                     </div>
-                    <div data-ng-show="invasivenessAtomizedType.harmful">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.harmful</p>: {{invasivenessAtomizedType.harmful}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.modified"><span class="datepicker-date">
-                        <p translate="" class="text_type_bold">simplePliCTerm.name.modified</p>: {{invasivenessAtomizedType.modified| date:'yyyy/MM/dd'}}</span></div>
-                    <div data-ng-show="invasivenessAtomizedType.startValidateDate"><span class="datepicker-date">
-                        <p translate="" class="text_type_bold">simplePliCTerm.name.startValidateDate</p>: {{invasivenessAtomizedType.startValidateDate| date:'yyyy/MM/dd'}}	</span></div>
-                    <div data-ng-show="invasivenessAtomizedType.endValidateDate"><span class="datepicker-date">
-                        <p translate="" class="text_type_bold">simplePliCTerm.name.endValidateDate</p>: {{invasivenessAtomizedType.endValidateDate| date:'yyyy/MM/dd'}}</span></div>
-                    <div data-ng-show="invasivenessAtomizedType.countryCode">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.countryCode</p>: {{invasivenessAtomizedType.countryCode}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.stateProvince">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.stateProvince</p>: {{invasivenessAtomizedType.stateProvince}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.county">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.county</p>: {{invasivenessAtomizedType.county}}	
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.localityName">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.localityName</p>: {{invasivenessAtomizedType.localityName}}	
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.language">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.language</p>: {{invasivenessAtomizedType.language}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.citation">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.citation</p>: {{invasivenessAtomizedType.citation}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.abundance">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.abundance</p>: {{invasivenessAtomizedType.abundance}}	
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.trend">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.trend</p>: {{invasivenessAtomizedType.trend}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.rateOfSpread">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.rateOfSpread</p>: {{invasivenessAtomizedType.rateOfSpread}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.regulatoryListing">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.regulatoryListing</p>: {{invasivenessAtomizedType.regulatoryListing}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.memo">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.memo</p>: {{invasivenessAtomizedType.memo}}	
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.publicationDate"><span class="datepicker-date">
-                        <p translate="" class="text_type_bold">simplePliCTerm.name.publicationDate</p>: {{invasivenessAtomizedType.publicationDate| date:'yyyy/MM/dd'}}</span></div>
-                    <div data-ng-show="invasivenessAtomizedType.localityType">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.localityType</p>: {{invasivenessAtomizedType.localityType}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.locationValue">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.locationValue</p>: {{invasivenessAtomizedType.locationValue}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.publicationDatePrecision">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.publicationDatePrecision</p>: {{invasivenessAtomizedType.publicationDatePrecision}}	
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.whatImpact">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.WhatImpact</p>: {{invasivenessAtomizedType.whatImpact}}	
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.vector">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.vector</p>: {{invasivenessAtomizedType.vector}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.route">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.route</p>: {{invasivenessAtomizedType.route}}
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.target">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.target</p>: {{invasivenessAtomizedType.target}}	
-                    </div>
-                    <div data-ng-show="invasivenessAtomizedType.mechanism">
-                      <p translate="" class="text_type_bold">simplePliCTerm.name.Mechanism</p>: {{invasivenessAtomizedType.mechanism}}		
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <button data-ng-click="removeInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                  <button data-ng-click="editInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  </td>
+                  <td>
+                    <button data-ng-click="removeInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                    <button data-ng-click="editInvasivenessAtomized(formData.invasiveness.invasivenessAtomized,invasivenessAtomizedType,$index)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="form-group">
           <hr/>
@@ -545,7 +548,7 @@
                   </td>
                   <td>
                     <button data-ng-click="removeAncillaryData(formData.invasiveness.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                    <button data-ng-click="editAncillaryData(formData.invasiveness.ancillaryData,ancillary)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                    <button data-ng-click="editAncillaryData(formData.invasiveness.ancillaryData,ancillary,$index)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                   </td>
                 </tr>
               </tbody>
@@ -587,7 +590,7 @@
                             </td>
                             <td class="col-xs-1">
                               <button data-ng-click="removeReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                              <button data-ng-click="editReference(ancillaryData.reference,ref)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                              <button data-ng-click="editReference(ancillaryData.reference,ref,$index)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                             </td>
                           </tr>
                         </tbody>

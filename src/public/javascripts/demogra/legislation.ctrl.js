@@ -24,7 +24,13 @@ angular.module('app.controllers.legislation',[])
 	//list of proveedores de contenido
 	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false; 
+
+	//to edit
+	$scope.index_legislation = '';
+	$scope.index_ancillary = '';
+	$scope.index_reference = '';
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
@@ -38,10 +44,16 @@ angular.module('app.controllers.legislation',[])
 
 	$scope.addLegislationAtomized= function(list,legislationAtomized){
 		if (JSON.stringify(legislationAtomized) !== JSON.stringify(origLA)){
-			$scope.legislationFactoryLocal.add(list,legislationAtomized);
+			if($scope.index_legislation !== ''){
+				list[$scope.index_legislation] = angular.copy(legislationAtomized);
+			}else{
+				$scope.legislationFactoryLocal.add(list,legislationAtomized);
+			}
+
 			//Reset the scope variable
 			$scope.legislationAtomizedType = origLA;
 			origLA = angular.copy($scope.legislationAtomizedType);
+			$scope.index_legislation = '';
 		}	
 	};
 
@@ -49,11 +61,13 @@ angular.module('app.controllers.legislation',[])
 		$scope.legislationFactoryLocal.delete(list,legislationAtomized);
 	};
 
-	$scope.editLegislationAtomized = function(list, legislationAtomized) {
+	$scope.editLegislationAtomized = function(list, legislationAtomized,index) {
 		$scope.legislationAtomizedType = angular.copy(legislationAtomized);
+		$scope.index_legislation = index;
 	};
 	$scope.cancelLegislationAtomized = function() {
 		$scope.legislationAtomizedType = angular.copy(origLA);
+		$scope.index_legislation = '';
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
@@ -61,9 +75,10 @@ angular.module('app.controllers.legislation',[])
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
-				license.parentNode.removeChild(license);
 			}
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+
+			//if index is different to '' then replace the item because is an edit option
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData,$scope.index_ancillary);
 			
 			//Add all local reference to general reference vector
 			angular.forEach(ancillaryData.reference, function(reference) {
@@ -74,7 +89,7 @@ angular.module('app.controllers.legislation',[])
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$scope.resetLicenseList(license,$scope.lincese_list);
-
+			$scope.index_ancillary='';
 			$('#ancillaryLegislation').collapse("hide");
 		}else{
 			alert("La licencia debe ser seleccionada");
@@ -85,7 +100,8 @@ angular.module('app.controllers.legislation',[])
 		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
-	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData,index) {
+		$scope.index_ancillary = index;
 		$scope.ancillaryData = angular.copy(ancillaryData);
 		var checked_almost_one = false;
 		angular.forEach($scope.lincese_list, function(item) {
@@ -118,7 +134,7 @@ angular.module('app.controllers.legislation',[])
 		$scope.ancillaryData = angular.copy(origAD);
 		var license = document.getElementById("ancillaryData.license");
 		$scope.resetLicenseList(license,$scope.lincese_list);
-   		
+   		$scope.index_ancillary='';
 		$('#ancillaryLegislation').collapse("hide");
 	};
 
@@ -132,11 +148,14 @@ angular.module('app.controllers.legislation',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactoryLocal.addTo(referenceList,reference);
+			//if index is different to '' then replace the item because is an edit option
+			referenceFactoryLocal.addTo(referenceList,reference,$scope.index_reference);
+
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.checked = !$scope.checked;
+			$scope.index_reference = '';
 		}else{
 			alert("El tipo de referencia debe ser seleccionado");
 		}
@@ -146,13 +165,15 @@ angular.module('app.controllers.legislation',[])
 		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
-	$scope.editReference = function(referenceList,reference) {
+	$scope.editReference = function(referenceList,reference,index) {
 		$scope.reference = angular.copy(reference);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = index;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 }]);

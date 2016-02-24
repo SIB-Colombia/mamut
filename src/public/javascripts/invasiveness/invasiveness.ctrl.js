@@ -34,7 +34,15 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
 	$scope.prov_contenido_ato = angular.copy($scope.lenguajes.provContenido);
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false;
+
+	//to edit
+	$scope.index_invasiveness = '';
+	$scope.index_ancillary = '';
+	$scope.index_reference = ''; 
+	$scope.index_ancillary_ato = '';
+	$scope.index_reference_ato = ''; 
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
@@ -54,11 +62,17 @@ angular.module('app.controllers.invasiveness',[])
 	
 	$scope.addInvasivenessAtomizedType = function(list, invasiveness) {
 		if (JSON.stringify(invasiveness) !== JSON.stringify(origI)){
-			$scope.invasivenessFactoryLocal.add(list, invasiveness);
+			if($scope.index_invasiveness !== ''){
+				list[$scope.index_invasiveness] = angular.copy(invasiveness);
+			}else{
+				$scope.invasivenessFactoryLocal.add(list, invasiveness);
+			}
+			
 			//Reset the scope variable
 			$scope.invasivenessAtomizedType = origI;
 			origI = angular.copy($scope.invasivenessAtomizedType);
 			$scope.UpdateCheckBoxes(invasiveness, false);
+			$scope.index_invasiveness = '';
 		}
 	};
 
@@ -66,7 +80,8 @@ angular.module('app.controllers.invasiveness',[])
 		$scope.invasivenessFactoryLocal.delete(list,invasiveness);	
 	};
 
-	$scope.editInvasivenessAtomized = function(list,invasiveness) {
+	$scope.editInvasivenessAtomized = function(list,invasiveness,index) {
+		$scope.index_invasiveness = index;
 		$scope.invasivenessAtomizedType = angular.copy(invasiveness);
 		$scope.UpdateCheckBoxes(invasiveness, true);		
 	};
@@ -74,7 +89,7 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.cancelInvasivenessAtomizedType = function(invasiveness) {
 		$scope.invasivenessAtomizedType = angular.copy(origI);
 		$scope.UpdateCheckBoxes(invasiveness,false);
-
+		$scope.index_invasiveness = '';
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
@@ -82,18 +97,20 @@ angular.module('app.controllers.invasiveness',[])
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
-				license.parentNode.removeChild(license);
 			}
-			ancillaryDataFactoryUn.addTo(ancillaryDataList,ancillaryData);
+			//if index is different to '' then replace the item because is an edit option
+			ancillaryDataFactoryUn.addTo(ancillaryDataList,ancillaryData,$scope.index_ancillary);
+
 			//Add all local reference to general reference vector
 			angular.forEach(ancillaryData.reference, function(reference) {
-				referenceFactoryLocal.addTo($scope.formData.references,reference);
+				referenceFactoryUn.addTo($scope.formData.references,reference);
 			});
 
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$scope.resetLicenseList(license,$scope.lincese_list);
+			$scope.index_ancillary='';
 			$('#ancillaryInvasiveness').collapse("hide");
 		}else{
 			alert("La licencia debe ser seleccionada");
@@ -104,7 +121,8 @@ angular.module('app.controllers.invasiveness',[])
 		ancillaryDataFactoryUn.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
-	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData,index) {
+		$scope.index_ancillary = index;
 		$scope.ancillaryData = angular.copy(ancillaryData);
 		var checked_almost_one = false;
 		angular.forEach($scope.lincese_list, function(item) {
@@ -137,6 +155,7 @@ angular.module('app.controllers.invasiveness',[])
 		$scope.ancillaryData = angular.copy(origAD);
 		var license = document.getElementById("ancillaryData.license");
 		$scope.resetLicenseList(license,$scope.lincese_list);
+		$scope.index_ancillary='';
 		$('#ancillaryInvasiveness').collapse("hide");
 	};
 
@@ -150,11 +169,14 @@ angular.module('app.controllers.invasiveness',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactoryUn.addTo(referenceList,reference);
+			//if index is different to '' then replace the item because is an edit option
+			referenceFactoryUn.addTo(referenceList,reference,$scope.index_reference);
+
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.checked = !$scope.checked;
+			$scope.index_reference = '';
 		}else{
 			alert("El tipo de referencia debe ser seleccionado");
 		}
@@ -164,14 +186,16 @@ angular.module('app.controllers.invasiveness',[])
 		referenceFactoryUn.deleteFrom(referenceList,reference);
 	};
 
-	$scope.editReference = function(referenceList,reference) {
+	$scope.editReference = function(referenceList,reference,index) {
 		$scope.reference = angular.copy(reference);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = index;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 
 	//Atomized fields
@@ -180,25 +204,28 @@ angular.module('app.controllers.invasiveness',[])
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
-				license.parentNode.removeChild(license);
 			}
-			ancillaryDataFactoryAto.addTo(ancillaryDataList,ancillaryData);
+			//if index is different to '' then replace the item because is an edit option
+			ancillaryDataFactoryAto.addTo(ancillaryDataList,ancillaryData,$scope.index_ancillary_ato);
+
 			//Add all local reference to general reference vector
 			angular.forEach(ancillaryData.reference, function(reference) {
-				referenceFactoryLocal.addTo($scope.formData.references,reference);
+				referenceFactoryAto.addTo($scope.formData.references,reference);
 			});
 			
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$scope.resetLicenseList(license,$scope.lincese_list_ato);
+			$scope.index_ancillary_ato='';
 			$('#ancillaryInvasivenessAto').collapse("hide");
 		}else{
 			alert("La licencia debe ser seleccionada");
 		}	
 	};
 
-	$scope.editAncillaryDataAto = function(ancillaryDataList,ancillaryData) {
+	$scope.editAncillaryDataAto = function(ancillaryDataList,ancillaryData,index) {
+		$scope.index_ancillary_ato = index;
 		$scope.ancillaryDataAto = angular.copy(ancillaryData);
 		var checked_almost_one = false;
 		angular.forEach($scope.lincese_list_ato, function(item) {
@@ -231,6 +258,7 @@ angular.module('app.controllers.invasiveness',[])
 		$scope.ancillaryDataAto = angular.copy(origAD);
 		var license = document.getElementById("ancillaryData.license");
 		$scope.resetLicenseList(license,$scope.lincese_list_ato);
+		$scope.index_ancillary_ato='';
 		$('#ancillaryInvasivenessAto').collapse("hide");
 	};
 
@@ -244,24 +272,28 @@ angular.module('app.controllers.invasiveness',[])
 
 	$scope.addReferenceAto = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactoryAto.addTo(referenceList,reference);
+			//if index is different to '' then replace the item because is an edit option
+			referenceFactoryAto.addTo(referenceList,reference,$scope.index_reference_ato);
 			//Reset the scope variable
 			$scope.referenceAto = origR;
 			origR = angular.copy($scope.referenceAto);
 			$scope.checked_ato = !$scope.checked_ato;
+			$scope.index_reference_ato = '';
 		}else{
 			alert("El tipo de referencia debe ser seleccionado");
 		}
 	};
 
-	$scope.editReferenceAto = function(referenceList,reference) {
+	$scope.editReferenceAto = function(referenceList,reference,index) {
 		$scope.referenceAto = angular.copy(reference);
 		$scope.checked_ato = !$scope.checked_ato;
+		$scope.index_reference_ato = index;
 	};
 
 	$scope.cancelReferenceAto = function() {
 		$scope.referenceAto = angular.copy(origR);
 		$scope.checked_ato = !$scope.checked_ato;
+		$scope.index_reference_ato = '';
 	};
 
 	$scope.findAncillaryAto = function(ancillaryData){

@@ -27,7 +27,7 @@
                 <td>{{associatedParty.organisation}}	</td>
                 <td>
                   <button data-ng-click="removeAssociatedParty(formData.associatedParty,associatedParty)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                  <button data-ng-click="editAssociatedParty(formData.associatedParty,associatedParty)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                  <button data-ng-click="editAssociatedParty(formData.associatedParty,associatedParty, $index)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                 </td>
               </tr>
             </tbody>

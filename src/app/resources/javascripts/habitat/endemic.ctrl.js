@@ -26,7 +26,13 @@ angular.module('app.controllers.endemic',[])
 	//list of proveedores de contenido
 	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false; 
+
+	//to edit
+	$scope.index_endemic = '';
+	$scope.index_ancillary = '';
+	$scope.index_reference = '';
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
@@ -34,10 +40,16 @@ angular.module('app.controllers.endemic',[])
 
 	$scope.addEndemic = function(list, endemicAtomized) {
 		if (JSON.stringify(endemicAtomized) !== JSON.stringify(origEA)){
-			endemicFactoryLocal.add(list, endemicAtomized);
+			if($scope.index_endemic !== ''){
+				list[$scope.index_endemic] = angular.copy(endemicAtomized);
+			}else{
+				endemicFactoryLocal.add(list, endemicAtomized);
+			}
+			
 			//Reset the scope variable
 			$scope.endemicAtomizedType = origEA;
 			origEA = angular.copy($scope.endemicAtomizedType);
+			$scope.index_endemic = '';
 		}
 	};
 
@@ -45,7 +57,8 @@ angular.module('app.controllers.endemic',[])
 		endemicFactoryLocal.delete(list, endemicAtomized);
 	};
 
-	$scope.editEndemic = function(list, endemicAtomized) {
+	$scope.editEndemic = function(list, endemicAtomized,index) {
+		$scope.index_endemic = index;
 		$scope.endemicAtomizedType = angular.copy(endemicAtomized);
 	};
 
@@ -66,9 +79,9 @@ angular.module('app.controllers.endemic',[])
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
-				license.parentNode.removeChild(license);
 			}
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			//if index is different to '' then replace the item because is an edit option
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData,$scope.index_ancillary);
 			
 			//Add all local reference to general reference vector
 			angular.forEach(ancillaryData.reference, function(reference) {
@@ -79,6 +92,7 @@ angular.module('app.controllers.endemic',[])
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$scope.resetLicenseList(license,$scope.lincese_list);
+			$scope.index_ancillary='';
 			$('#ancillaryEndemic').collapse("hide");
 		}else{
 			alert("La licencia debe ser seleccionada");
@@ -89,7 +103,8 @@ angular.module('app.controllers.endemic',[])
 		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
-	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData,index) {
+		$scope.index_ancillary = index;
 		$scope.ancillaryData = angular.copy(ancillaryData);
 		var checked_almost_one = false;
 		angular.forEach($scope.lincese_list, function(item) {
@@ -122,6 +137,7 @@ angular.module('app.controllers.endemic',[])
 		$scope.ancillaryData = angular.copy(origAD);
    		var license = document.getElementById("ancillaryData.license");
 		$scope.resetLicenseList(license,$scope.lincese_list);
+		$scope.index_ancillary='';
 		$('#ancillaryEndemic').collapse("hide");
 	};
 
@@ -135,11 +151,14 @@ angular.module('app.controllers.endemic',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactoryLocal.addTo(referenceList,reference);
+			//if index is different to '' then replace the item because is an edit option
+			referenceFactoryLocal.addTo(referenceList,reference,$scope.index_reference);
+
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.checked = !$scope.checked;
+			$scope.index_reference = '';
 		}else{
 			alert("El tipo de referencia debe ser seleccionado");
 		}
@@ -149,13 +168,15 @@ angular.module('app.controllers.endemic',[])
 		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
-	$scope.editReference = function(referenceList,reference) {
+	$scope.editReference = function(referenceList,reference,index) {
 		$scope.reference = angular.copy(reference);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = index;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 }]);

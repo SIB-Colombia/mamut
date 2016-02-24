@@ -25,13 +25,20 @@ angular.module('app.controllers.threatStatus',[])
 	//list of proveedores de contenido
 	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false; 
+
+	//to edit
+	$scope.index_threat = '';
+	$scope.index_ancillary = '';
+	$scope.index_reference = '';
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
 	};
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false; 
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
@@ -45,10 +52,16 @@ angular.module('app.controllers.threatStatus',[])
 
 	$scope.addThreatStatusClass = function(list, threatStatusClass) {
 		if (JSON.stringify(threatStatusClass) !== JSON.stringify(origTSC)){
-			threatStatusFactoryLocal.add(list, threatStatusClass);
+			if($scope.index_threat !== ''){
+				list[$scope.index_threat] = angular.copy(threatStatusClass);
+			}else{
+				threatStatusFactoryLocal.add(list, threatStatusClass);
+			}
+			
 			//Reset the scope variable
 			$scope.threatStatusClass = origTSC;
 			origTSC = angular.copy($scope.threatStatusClass);
+			$scope.index_threat = '';
 			$('input:checkbox').removeAttr('checked');
 		}
 	};
@@ -57,7 +70,8 @@ angular.module('app.controllers.threatStatus',[])
 		threatStatusFactoryLocal.delete(list, threatStatusClass);
 	};
 
-	$scope.editThreatStatus = function(list, threatStatusClass) {
+	$scope.editThreatStatus = function(list, threatStatusClass,index) {
+		$scope.index_threat = index;
 		$scope.threatStatusClass = angular.copy(threatStatusClass);
 	};
 
@@ -66,9 +80,9 @@ angular.module('app.controllers.threatStatus',[])
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
-				license.parentNode.removeChild(license);
 			}
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			//if index is different to '' then replace the item because is an edit option
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData,$scope.index_ancillary);
 			
 			//Add all local reference to general reference vector
 			angular.forEach(ancillaryData.reference, function(reference) {
@@ -79,6 +93,7 @@ angular.module('app.controllers.threatStatus',[])
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
   			$scope.resetLicenseList(license,$scope.lincese_list);
+  			$scope.index_ancillary='';
 			$('#ancillaryThreat').collapse("hide");
 		}else{
 			alert("La licencia debe ser seleccionada");
@@ -89,7 +104,8 @@ angular.module('app.controllers.threatStatus',[])
 		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
-	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData,index) {
+		$scope.index_ancillary = index;
 		$scope.ancillaryData = angular.copy(ancillaryData);
 		var checked_almost_one = false;
 		angular.forEach($scope.lincese_list, function(item) {
@@ -121,7 +137,8 @@ angular.module('app.controllers.threatStatus',[])
 	$scope.cancelAncillaryData = function() {
 		$scope.ancillaryData = angular.copy(origAD);
 		var license = document.getElementById("ancillaryData.license");
-		$scope.resetLicenseList(license,$scope.lincese_list);	
+		$scope.resetLicenseList(license,$scope.lincese_list);
+		$scope.index_ancillary='';	
 	};
 
 	$scope.findAncillary = function(ancillaryData){
@@ -134,11 +151,14 @@ angular.module('app.controllers.threatStatus',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactoryLocal.addTo(referenceList,reference);
+			//if index is different to '' then replace the item because is an edit option
+			referenceFactoryLocal.addTo(referenceList,reference,$scope.index_reference);
+
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.checked = !$scope.checked;
+			$scope.index_reference = '';
 		}else{
 			alert("El tipo de referencia debe ser seleccionado");
 		}
@@ -148,13 +168,15 @@ angular.module('app.controllers.threatStatus',[])
 		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
-	$scope.editReference = function(referenceList,reference) {
+	$scope.editReference = function(referenceList,reference,index) {
 		$scope.reference = angular.copy(reference);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = index;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 }]);

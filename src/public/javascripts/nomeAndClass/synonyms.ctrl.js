@@ -25,7 +25,13 @@ angular.module('app.controllers.synonmy',[])
 	//list of proveedores de contenido
 	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false; 
+
+	//to edit
+	$scope.index_synonyms = '';
+	$scope.index_ancillary = '';
+	$scope.index_reference = '';
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
@@ -35,10 +41,16 @@ angular.module('app.controllers.synonmy',[])
 	//ADD
 	$scope.addSynonymsAtomized = function(synonymsAtomized, synonmy) {
 		if (JSON.stringify(synonmy) !== JSON.stringify(origS)){
-			synonmyFactoryLocal.add(synonymsAtomized, synonmy);
+			if($scope.index_synonyms!==''){
+				synonymsAtomized[$scope.index_synonyms] = angular.copy(synonmy);
+			}else{
+				synonmyFactoryLocal.add(synonymsAtomized, synonmy);
+			}
+			
 			//Reset the scope variable
 			$scope.synonmy = origS;
 			origS = angular.copy($scope.synonmy);
+			$scope.index_synonyms = '';
 			$('#sysnonymForm').collapse("hide");
 		}
 	};
@@ -49,14 +61,16 @@ angular.module('app.controllers.synonmy',[])
 	};
 
 	//EDIT
-	$scope.editSynonymsAtomized = function(synonymsAtomized, synonmy) {
+	$scope.editSynonymsAtomized = function(synonymsAtomized, synonmy, index) {
 		$scope.synonmy = angular.copy(synonmy);
+		$scope.index_synonyms = index;
 		$('#sysnonymForm').collapse("show");
 	};
 
 	//CANCEL
 	$scope.cancelSynonym = function() {
 		$scope.synonmy = angular.copy(origS);
+		$scope.index_synonyms = '';
 		$('#sysnonymForm').collapse("hide");
 	};
 
@@ -65,9 +79,9 @@ angular.module('app.controllers.synonmy',[])
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
-				license.parentNode.removeChild(license);
 			}
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			//if index is different to '' then replace the item because is an edit option
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData,$scope.index_ancillary);
 			
 			//Add all local reference to general reference vector
 			angular.forEach(ancillaryData.reference, function(reference) {
@@ -78,6 +92,7 @@ angular.module('app.controllers.synonmy',[])
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$scope.resetLicenseList(license,$scope.lincese_list);
+			$scope.index_ancillary='';
 		}else{
 			alert("La licencia debe ser seleccionada");
 		}	
@@ -87,7 +102,8 @@ angular.module('app.controllers.synonmy',[])
 		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
-	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData,index) {
+		$scope.index_ancillary = index;
 		$scope.ancillaryData = angular.copy(ancillaryData);
 		var checked_almost_one = false;
 		angular.forEach($scope.lincese_list, function(item) {
@@ -126,11 +142,14 @@ angular.module('app.controllers.synonmy',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactoryLocal.addTo(referenceList,reference);
+			//if index is different to '' then replace the item because is an edit option
+			referenceFactoryLocal.addTo(referenceList,reference,$scope.index_reference);
+
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.checked = !$scope.checked;
+			$scope.index_reference = '';
 		}else{
 			alert("El tipo de referencia debe ser seleccionado");
 		}
@@ -140,13 +159,15 @@ angular.module('app.controllers.synonmy',[])
 		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
-	$scope.editReference = function(referenceList,reference) {
+	$scope.editReference = function(referenceList,reference,index) {
 		$scope.reference = angular.copy(reference);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = index;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 }]);

@@ -14,7 +14,7 @@ div(data-ng-controller='AncillaryDataCtrl')
 				div.table-responsive(data-ng-show='(formData.ancillaryData).length')
 					table.table.table-striped
 						tbody
-							tr(data-ng-repeat="ancillary in formData.ancillaryData ")
+							tr(data-ng-repeat="ancillary in formData.ancillaryData track by $index")
 								td
 									.parrafo-pegado
 										div(data-ng-show='ancillary.source')
@@ -34,7 +34,7 @@ div(data-ng-controller='AncillaryDataCtrl')
 								td
 									button.btn(data-ng-click='removeAncillaryData(formData.ancillaryData,ancillary)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
-									button.btn(data-ng-click='editAncillaryData(formData.ancillaryData,ancillary)')
+									button.btn(data-ng-click='editAncillaryData(formData.ancillaryData,ancillary, $index)')
 										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				.form-group
 					label.col-xs-2.control-label(for='source', translate='') simplePliCTerm.name.mediaURL
@@ -74,7 +74,7 @@ div(data-ng-controller='AncillaryDataCtrl')
 											td.col-xs-1
 												button.btn(data-ng-click='removeReference(ancillaryData.reference,ref)')
 													span(class="glyphicon glyphicon-trash", aria-hidden='true')
-												button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
+												button.btn(data-ng-click='editReference(ancillaryData.reference,ref, $index)')
 													span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 	
 							div(pageslide ps-open="checked" ps-key-listener="true")

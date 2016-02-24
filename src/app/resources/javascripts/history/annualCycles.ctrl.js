@@ -24,7 +24,12 @@ angular.module('app.controllers.annualCycle',[])
 	var origR = angular.copy($scope.reference);
 	var origAD = angular.copy($scope.ancillaryData);
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false; 
+
+	//to edit
+	$scope.index_ancillary = '';
+	$scope.index_reference = '';
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
@@ -43,10 +48,10 @@ angular.module('app.controllers.annualCycle',[])
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
-				license.parentNode.removeChild(license);
 			}
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
-			
+			//if index is different to '' then replace the item because is an edit option
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData,$scope.index_ancillary);
+
 			//Add all local reference to general reference vector
 			angular.forEach(ancillaryData.reference, function(reference) {
 				referenceFactoryLocal.addTo($scope.formData.references,reference);
@@ -55,6 +60,8 @@ angular.module('app.controllers.annualCycle',[])
 			//Reset the scope variable
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
+			$scope.resetLicenseList(license,$scope.lincese_list);
+			$scope.index_ancillary='';
 		}
 	};
 
@@ -62,17 +69,21 @@ angular.module('app.controllers.annualCycle',[])
 		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
-	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData,index) {
 		$scope.ancillaryData = angular.copy(ancillaryData);
+		$scope.index_ancillary = index;
 	};
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactoryLocal.addTo(referenceList,reference);
+			//if index is different to '' then replace the item because is an edit option
+			referenceFactoryLocal.addTo(referenceList,reference,$scope.index_reference);
+
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.checked = !$scope.checked;
+			$scope.index_reference = '';
 		}else{
 			alert("El tipo de referencia debe ser seleccionado");
 		}
@@ -82,13 +93,15 @@ angular.module('app.controllers.annualCycle',[])
 		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
-	$scope.editReference = function(referenceList,reference) {
+	$scope.editReference = function(referenceList,reference,index) {
 		$scope.reference = angular.copy(reference);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = index;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 }]);

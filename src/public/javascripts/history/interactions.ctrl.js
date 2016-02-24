@@ -24,7 +24,13 @@ angular.module('app.controllers.interactions',[])
 	//list of proveedores de contenido
 	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false; 
+
+	//to edit
+	$scope.index_interactions = '';
+	$scope.index_ancillary = '';
+	$scope.index_reference = '';
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
@@ -38,10 +44,16 @@ angular.module('app.controllers.interactions',[])
 
 	$scope.addInteractionAtomizedType = function(list,interactionsAtomizedType){
 		if (JSON.stringify(interactionsAtomizedType) !== JSON.stringify(origIA)){
-			$scope.interactionsFactoryLocal.add(list,interactionsAtomizedType);
+			if($scope.index_interactions !== ''){
+				list[$scope.index_interactions] = angular.copy(interactionsAtomizedType);
+			}else{
+				$scope.interactionsFactoryLocal.add(list,interactionsAtomizedType);
+			}
+			
 			//Reset the scope variable
 			$scope.interactionsAtomizedType = origIA;
 			origIA = angular.copy($scope.interactionsAtomizedType);
+			$scope.index_interactions = '';
 		}
 	};
 
@@ -53,12 +65,14 @@ angular.module('app.controllers.interactions',[])
 		$scope.interactionsFactoryLocal.delete(list,interactionSpeciesType);
 	};
 
-	$scope.editInteractionAtomizedType = function(list,interactionsAtomizedType){
+	$scope.editInteractionAtomizedType = function(list,interactionsAtomizedType,index){
 		$scope.interactionsAtomizedType = angular.copy(interactionsAtomizedType);
+		$scope.index_interactions = index;
 	};
 
 	$scope.cancelInteractionAtomizedType = function() {
 		$scope.interactionsAtomizedType = angular.copy(origIA);
+		$scope.index_interactions = '';
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
@@ -66,9 +80,9 @@ angular.module('app.controllers.interactions',[])
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
-				license.parentNode.removeChild(license);
 			}
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			//if index is different to '' then replace the item because is an edit option
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData,$scope.index_ancillary);
 			
 			//Add all local reference to general reference vector
 			angular.forEach(ancillaryData.reference, function(reference) {
@@ -79,6 +93,7 @@ angular.module('app.controllers.interactions',[])
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
  			$scope.resetLicenseList(license,$scope.lincese_list);
+ 			$scope.index_ancillary='';
 			$('#ancillaryInteraction').collapse("hide");
 		}else{
 			alert("La licencia debe ser seleccionada");
@@ -89,7 +104,8 @@ angular.module('app.controllers.interactions',[])
 		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
-	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData,index) {
+		$scope.index_ancillary = index;
 		$scope.ancillaryData = angular.copy(ancillaryData);
 		var checked_almost_one = false;
 		angular.forEach($scope.lincese_list, function(item) {
@@ -122,6 +138,7 @@ angular.module('app.controllers.interactions',[])
 		$scope.ancillaryData = angular.copy(origAD);
 		var license = document.getElementById("ancillaryData.license");
 		$scope.resetLicenseList(license,$scope.lincese_list);
+		$scope.index_ancillary='';
 		$('#ancillaryInteraction').collapse("hide");
 	};
 
@@ -135,11 +152,14 @@ angular.module('app.controllers.interactions',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactoryLocal.addTo(referenceList,reference);
+			//if index is different to '' then replace the item because is an edit option
+			referenceFactoryLocal.addTo(referenceList,reference,$scope.index_reference);
+
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.checked = !$scope.checked;
+			$scope.index_reference = '';
 		}else{
 			alert("El tipo de referencia debe ser seleccionado");
 		}
@@ -149,13 +169,15 @@ angular.module('app.controllers.interactions',[])
 		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
-	$scope.editReference = function(referenceList,reference) {
+	$scope.editReference = function(referenceList,reference,index) {
 		$scope.reference = angular.copy(reference);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = index;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 }]);

@@ -156,7 +156,7 @@ angular.module('app.controllers.form',[])
 			           }
 			        });	
 			   	}else{
-			   		$scope.formData._id;
+			   		$scope.formData.creation_date = new Date();
 					var req_1 = {
 						 method: 'POST',
 						 url: 'http://apimamut.elasticbeanstalk.com/post-record',

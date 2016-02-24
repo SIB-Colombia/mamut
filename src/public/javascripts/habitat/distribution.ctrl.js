@@ -30,6 +30,12 @@ angular.module('app.controllers.distribution',[])
 	// This will be binded using the ps-open attribute
 	$scope.checked = false; 
 
+	//to edit
+	$scope.index_distributionOpt = '';
+	$scope.index_distribution = '';
+	$scope.index_ancillary = '';
+	$scope.index_reference = '';
+
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
 	};
@@ -55,16 +61,22 @@ angular.module('app.controllers.distribution',[])
 					}
 				});
 			}else{
-				distributionFactoryLocal.addOpt2(distributionClass, opt2);
+				if($scope.index_distributionOpt !== ''){
+					distributionClass[$scope.index_distributionOpt] = angular.copy(opt2);
+				}else{
+					distributionFactoryLocal.addOpt2(distributionClass, opt2);
+				}
 			}
 			
 			//Reset the scope variable
 			$scope.distributionOpt2 = origDO;
 			origDO = angular.copy($scope.distributionOpt2);
+			$scope.index_distributionOpt = '';
 		}
 	};
 
-	$scope.editDistributionOpt2 = function(list,opt2) {
+	$scope.editDistributionOpt2 = function(list,opt2,index) {
+		$scope.index_distributionOpt = index;
 		$scope.distributionOpt2 = angular.copy(opt2);
 	};
 	$scope.removeDistributionOpt2 = function(distributionClass, opt2) {
@@ -73,7 +85,12 @@ angular.module('app.controllers.distribution',[])
 
 	$scope.addDistribution = function(list, distributionClass) {
 		if (JSON.stringify(distributionClass) !== JSON.stringify(origDC)){
-			distributionFactoryLocal.addClass(list, distributionClass);
+			if($scope.index_distribution !== ''){
+				list[$scope.index_distribution] = angular.copy(distributionClass);
+			}else{
+				distributionFactoryLocal.addClass(list, distributionClass);
+			}
+			
 			//Reset the scope variable
 			$scope.distributionClass = origDC;
 			origDC = angular.copy($scope.distributionClass);
@@ -81,6 +98,7 @@ angular.module('app.controllers.distribution',[])
 				item.checked = false;
 
 			});
+			$scope.index_distribution = '';
 		}
 	};
 
@@ -88,7 +106,8 @@ angular.module('app.controllers.distribution',[])
 		distributionFactoryLocal.deleteClass(list, distribution);
 	};
 
-	$scope.editDistribution = function(list,distribution) {
+	$scope.editDistribution = function(list,distribution,index) {
+		$scope.index_distribution = index;
 		$scope.distributionClass = angular.copy(distribution);
 		angular.forEach($scope.lenguajes.distributionScope, function(item) {
 			if(item.name===distribution.distributionScope.type){
@@ -103,9 +122,10 @@ angular.module('app.controllers.distribution',[])
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
-				license.parentNode.removeChild(license);
 			}
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			//if index is different to '' then replace the item because is an edit option
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData,$scope.index_ancillary);
+
 			//Add all local reference to general reference vector
 			angular.forEach(ancillaryData.reference, function(reference) {
 				referenceFactoryLocal.addTo($scope.formData.references,reference);
@@ -115,6 +135,7 @@ angular.module('app.controllers.distribution',[])
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$scope.resetLicenseList(license,$scope.lincese_list);
+			$scope.index_ancillary='';
 
 			$('#ancillaryDistribution').collapse("hide");
 		}else{
@@ -126,7 +147,8 @@ angular.module('app.controllers.distribution',[])
 		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
-	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData,index) {
+		$scope.index_ancillary = index;
 		$scope.ancillaryData = angular.copy(ancillaryData);
 		var checked_almost_one = false;
 		angular.forEach($scope.lincese_list, function(item) {
@@ -159,6 +181,7 @@ angular.module('app.controllers.distribution',[])
 		$scope.ancillaryData = angular.copy(origAD);
 		var license = document.getElementById("ancillaryData.license");
 		$scope.resetLicenseList(license,$scope.lincese_list);
+		$scope.index_ancillary='';
 		$('#ancillaryDistribution').collapse("hide");
 	};
 
@@ -172,11 +195,14 @@ angular.module('app.controllers.distribution',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactoryLocal.addTo(referenceList,reference);
+			//if index is different to '' then replace the item because is an edit option
+			referenceFactoryLocal.addTo(referenceList,reference,$scope.index_reference);
+			
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.checked = !$scope.checked;
+			$scope.index_reference = '';
 		}else{
 			alert("El tipo de referencia debe ser seleccionado");
 		}
@@ -186,13 +212,15 @@ angular.module('app.controllers.distribution',[])
 		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
-	$scope.editReference = function(referenceList,reference) {
+	$scope.editReference = function(referenceList,reference,index) {
 		$scope.reference = angular.copy(reference);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = index;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 }]);

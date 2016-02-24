@@ -57,7 +57,7 @@ div(data-ng-controller='DirectThreatsCtrl')
 										td
 											button.btn(data-ng-click='removeAncillaryData(formData.directThreats.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
-											button.btn(data-ng-click='editAncillaryData(formData.directThreats.ancillaryData,ancillary)')
+											button.btn(data-ng-click='editAncillaryData(formData.directThreats.ancillaryData,ancillary, $index)')
 												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 						button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='isCollapsed = !isCollapsed') Referencias y licencias
 						div.divider
@@ -88,7 +88,7 @@ div(data-ng-controller='DirectThreatsCtrl')
 													td.col-xs-1
 														button.btn(data-ng-click='removeReference(ancillaryData.reference,ref)')
 															span(class="glyphicon glyphicon-trash", aria-hidden='true')
-														button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
+														button.btn(data-ng-click='editReference(ancillaryData.reference,ref,$index)')
 															span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 									div(pageslide ps-open="checked" ps-key-listener="true")
 										div(style="padding:30px" id="demo-right")

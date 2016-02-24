@@ -8,6 +8,8 @@ angular.module('app.controllers.associatedParty',[])
 
 	var origAP = angular.copy($scope.associatedParty);
 
+	$scope.index_associated = '';
+
 	$scope.addAssociated = function() {
 		if($scope.formData.associatedParty.length > 0){
 			console.log('enviar');
@@ -16,7 +18,12 @@ angular.module('app.controllers.associatedParty',[])
 
 	$scope.addAssociatedParty = function(list, associatedParty) {
 		if (JSON.stringify(associatedParty) !== JSON.stringify(origAP)){
-			associatedPartyFactoryLocal.add(list, associatedParty);
+			if($scope.index_associated !==''){
+				list[$scope.index_associated] = angular.copy(associatedParty);
+			}else{
+				associatedPartyFactoryLocal.add(list, associatedParty);
+			}
+			
 			$scope.associatedParty = origAP;
 			origAP = angular.copy($scope.associatedParty);
 		}
@@ -26,12 +33,14 @@ angular.module('app.controllers.associatedParty',[])
 		associatedPartyFactoryLocal.delete(list, associatedParty);
 	};
 
-	$scope.editAssociatedParty = function(list, associatedParty) {
+	$scope.editAssociatedParty = function(list, associatedParty,index) {
+		$scope.index_associated = index;
 		$scope.associatedParty = angular.copy(associatedParty);
 	};
 
 	$scope.cancelAssociatedParty = function() {
 		$scope.associatedParty = angular.copy(origAP);
+		$scope.index_associated = '';
 	};
 	
 }]);

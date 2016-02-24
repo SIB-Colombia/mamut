@@ -18,7 +18,7 @@ div(data-ng-controller='EndemicCtrl')
 							th
 					
 					tbody
-						tr(data-ng-repeat="endemicAtomized in formData.endemicAtomized")
+						tr(data-ng-repeat="endemicAtomized in formData.endemicAtomized track by $index")
 							td
 								.selected-item(data-ng-repeat='endemicTo in endemicAtomized.endemicTo')
 									div(data-ng-show='endemicTo')
@@ -28,7 +28,7 @@ div(data-ng-controller='EndemicCtrl')
 							td
 								button.btn(data-ng-click='removeEndemic(formData.endemicAtomized,endemicAtomized)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
-								button.btn(data-ng-click='editEndemic(formData.endemicAtomized,endemicAtomized)')
+								button.btn(data-ng-click='editEndemic(formData.endemicAtomized,endemicAtomized,$index)')
 									span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 			.form-group
 				label.col-xs-2.control-label(for='endemicIn', translate='') simplePliCTerm.name.EndemicIn
@@ -88,7 +88,7 @@ div(data-ng-controller='EndemicCtrl')
 									td
 										button.btn(data-ng-click='removeAncillaryData(endemicAtomizedType.ancillaryData,ancillary)')
 											span(class="glyphicon glyphicon-trash", aria-hidden='true')
-										button.btn(data-ng-click='editAncillaryData(endemicAtomizedType.ancillaryData,ancillary)')
+										button.btn(data-ng-click='editAncillaryData(endemicAtomizedType.ancillaryData,ancillary,$index)')
 											span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 					button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='isCollapsed = !isCollapsed') Referencias y licencias
 					div.divider
@@ -119,7 +119,7 @@ div(data-ng-controller='EndemicCtrl')
 												td.col-xs-1
 													button.btn(data-ng-click='removeReference(ancillaryData.reference,ref)')
 														span(class="glyphicon glyphicon-trash", aria-hidden='true')
-													button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
+													button.btn(data-ng-click='editReference(ancillaryData.reference,ref,$index)')
 														span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 								div(pageslide ps-open="checked" ps-key-listener="true")
 									div(style="padding:30px" id="demo-right")

@@ -136,7 +136,7 @@ div
 										td
 											button.btn(data-ng-click='removeAncillaryData(usesAtomizedType.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
-											button.btn(data-ng-click='editAncillaryData(usesAtomizedType.ancillaryData,ancillary)')
+											button.btn(data-ng-click='editAncillaryData(usesAtomizedType.ancillaryData,ancillary, $index)')
 												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 						button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='isCollapsed = !isCollapsed') Referencias y licencias
 						div.divider
@@ -167,7 +167,7 @@ div
 													td.col-xs-1
 														button.btn(data-ng-click='removeReference(ancillaryData.reference,ref)')
 															span(class="glyphicon glyphicon-trash", aria-hidden='true')
-														button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
+														button.btn(data-ng-click='editReference(ancillaryData.reference,ref,$index)')
 															span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 									div(pageslide ps-open="checked" ps-key-listener="true")
 										div(style="padding:30px" id="demo-right")
@@ -285,5 +285,5 @@ div
 								td
 									button.btn(data-ng-click='removeUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
-									button.btn(data-ng-click='editUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized)')
+									button.btn(data-ng-click='editUsesAtomized(formData.usesManagementAndConservation.usesAtomized,usesAtomized,$index)')
 										span(class="glyphicon glyphicon-pencil", aria-hidden='true')

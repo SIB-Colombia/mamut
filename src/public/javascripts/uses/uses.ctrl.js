@@ -25,7 +25,13 @@ angular.module('app.controllers.use',[])
 	//list of proveedores de contenido
 	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false; 
+
+	//to edit 
+	$scope.index_usesAtomized = '';
+	$scope.index_ancillary = '';
+	$scope.index_reference = '';
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
@@ -39,10 +45,16 @@ angular.module('app.controllers.use',[])
 
 	$scope.addUsesAtomized = function(list, usesAtomized) {
 		if (JSON.stringify(usesAtomized) !== JSON.stringify(origUA)){
-			usesFactoryLocal.add(list, usesAtomized);
+			if($scope.index_usesAtomized !== ''){
+				list[$scope.index_usesAtomized] = angular.copy(usesAtomized);
+			}else{
+				usesFactoryLocal.add(list, usesAtomized);
+			}
+			
 			//Reset the scope variable
 			$scope.usesAtomizedType = origUA;
 			origUA = angular.copy($scope.usesAtomizedType);
+			$scope.index_usesAtomized = '';
 		}
 	};
 
@@ -50,11 +62,13 @@ angular.module('app.controllers.use',[])
 		usesFactoryLocal.delete(list, usesAtomized);
 	};
 
-	$scope.editUsesAtomized = function(list,usesAtomized){
+	$scope.editUsesAtomized = function(list,usesAtomized,index){
+		$scope.index_usesAtomized = index;
 		$scope.usesAtomizedType =  angular.copy(usesAtomized);
 	};
 
 	$scope.cancelUsesAtomized = function(){
+		$scope.index_usesAtomized = '';
 		$scope.usesAtomizedType =  angular.copy(origUA);
 	};
 
@@ -63,9 +77,10 @@ angular.module('app.controllers.use',[])
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
-				license.parentNode.removeChild(license);
 			}
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			//if index is different to '' then replace the item because is an edit option
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData,$scope.index_ancillary);
+
 			//Add all local reference to general reference vector
 			angular.forEach(ancillaryData.reference, function(reference) {
 				referenceFactoryLocal.addTo($scope.formData.references,reference);
@@ -75,6 +90,7 @@ angular.module('app.controllers.use',[])
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$scope.resetLicenseList(license,$scope.lincese_list);
+			$scope.index_ancillary='';
 			
 			$('#ancillaryUse').collapse("hide");
 		}else{
@@ -86,7 +102,8 @@ angular.module('app.controllers.use',[])
 		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
-	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData,index) {
+		$scope.index_ancillary = index;
 		$scope.ancillaryData = angular.copy(ancillaryData);
 		var checked_almost_one = false;
 		angular.forEach($scope.lincese_list, function(item) {
@@ -117,17 +134,9 @@ angular.module('app.controllers.use',[])
 
 	$scope.cancelAncillaryData = function() {
 		$scope.ancillaryData = angular.copy(origAD);
-		angular.forEach($scope.lincese_list, function(item) {
-			if(item.nombre ==='Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)'){
-				item.checked = true;
-			}else{
-				item.checked = false;
-			}
-		});
    		var license = document.getElementById("ancillaryData.license");
-		if(license !== undefined && license!==null){
-			license.parentNode.removeChild(license);
-		}
+		$scope.resetLicenseList(license,$scope.lincese_list);
+		$scope.index_ancillary='';
 		$('#ancillaryUse').collapse("hide");
 	};
 
@@ -141,11 +150,14 @@ angular.module('app.controllers.use',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactoryLocal.addTo(referenceList,reference);
+			//if index is different to '' then replace the item because is an edit option
+			referenceFactoryLocal.addTo(referenceList,reference,$scope.index_reference);
+
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.checked = !$scope.checked;
+			$scope.index_reference = '';
 		}else{
 			alert("El tipo de referencia debe ser seleccionado");
 		}
@@ -155,13 +167,15 @@ angular.module('app.controllers.use',[])
 		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
-	$scope.editReference = function(referenceList,reference) {
+	$scope.editReference = function(referenceList,reference,index) {
 		$scope.reference = angular.copy(reference);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = index;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 }]);

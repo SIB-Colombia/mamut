@@ -30,7 +30,7 @@ div(data-ng-controller='AssociatedPartyCtrl')
 								td
 									button.btn(data-ng-click='removeAssociatedParty(formData.associatedParty,associatedParty)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
-									button.btn(data-ng-click='editAssociatedParty(formData.associatedParty,associatedParty)')
+									button.btn(data-ng-click='editAssociatedParty(formData.associatedParty,associatedParty, $index)')
 										span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				.form-group
 					label.col-xs-2.control-label(for='givenName', translate='') simplePliCTerm.name.givenName

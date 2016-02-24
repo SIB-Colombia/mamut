@@ -6,8 +6,7 @@ angular.module('app.controllers.reference',[])
 	//reference
 	var referenceFactoryLocal = new ReferenceFactory();
 	$scope.reference = referenceFactoryLocal.reference;
-	$scope.update = false;
-	$scope.OriginalReferenceIndex = -1;
+	$scope.index_reference = '';
 	
 	var origR = angular.copy($scope.reference);
 
@@ -24,34 +23,28 @@ angular.module('app.controllers.reference',[])
 	};
 
 	$scope.addReference = function (referenceList, reference){
-		if($scope.update){
-			if ($scope.OriginalReferenceIndex !== -1) {
-			    referenceList[$scope.OriginalReferenceIndex] = angular.copy(reference);
-			    $scope.reference = origR;
-				origR = angular.copy($scope.reference);
-			}
-		}else{ 
-			if(JSON.stringify(reference) !== JSON.stringify(origR)){
-				referenceFactoryLocal.addTo(referenceList, reference);
-				$scope.reference = origR;
-				origR = angular.copy($scope.reference);
-			}
-		}
+		//if index is different to '' then replace the item because is an edit option
+		referenceFactoryLocal.addTo(referenceList, reference, $scope.index_reference);
+		
+		$scope.reference = angular.copy(origR);
+		origR = angular.copy($scope.reference);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 
 	$scope.removeReference = function (referenceList, reference){
 		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
-	$scope.editReference = function(referenceList,reference) {
+	$scope.editReference = function(referenceList,reference,index) {
+		$scope.index_reference = index;
 		$scope.reference = angular.copy(reference);
-		$scope.update =true;
-		$scope.OriginalReferenceIndex = referenceList.indexOf(reference);
+		$scope.checked = !$scope.checked;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 }]);

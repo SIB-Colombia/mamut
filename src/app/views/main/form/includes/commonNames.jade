@@ -62,7 +62,7 @@ div(data-ng-controller='CommonNameCtrl')
 												td
 													button.btn(data-ng-click='removeAncillaryData(commonName.ancillaryData,ancillary)')
 														span(class="glyphicon glyphicon-trash", aria-hidden='true')
-													button.btn(data-ng-click='editAncillaryData(commonName.ancillaryData,ancillary)')
+													button.btn(data-ng-click='editAncillaryData(commonName.ancillaryData,ancillary,$index)')
 														span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 								//input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
 								//button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')
@@ -91,7 +91,7 @@ div(data-ng-controller='CommonNameCtrl')
 														td.col-xs-1
 															button.btn(data-ng-click='removeReference(ancillaryData.reference,reference)')
 																span(class="glyphicon glyphicon-trash", aria-hidden='true')
-															button.btn(data-ng-click='editReference(ancillaryData.reference,ref)')
+															button.btn(data-ng-click='editReference(ancillaryData.reference,ref,$index)')
 																span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 				
 										div(pageslide ps-open="checked" ps-key-listener="true")
@@ -165,7 +165,7 @@ div(data-ng-controller='CommonNameCtrl')
 								th.col-md-2
 						
 						tbody
-							tr(data-ng-repeat="commonName in formData.commonNameAtomized| orderBy:'language'")
+							tr(data-ng-repeat="commonName in formData.commonNameAtomized track by $index| orderBy:'language'")
 								td
 									div(data-ng-show='commonName.name')
 										| {{commonName.name}}
@@ -181,5 +181,5 @@ div(data-ng-controller='CommonNameCtrl')
 								td
 									button.btn(data-ng-click='removeCommonNamesAtomized(formData.commonNameAtomized,commonName)')
 										span(class="glyphicon glyphicon-trash", aria-hidden='true')
-									button.btn(data-ng-click='editCommonNamesAtomized(formData.commonNameAtomized,commonName)')
+									button.btn(data-ng-click='editCommonNamesAtomized(formData.commonNameAtomized,commonName,$index)')
 										span(class="glyphicon glyphicon-pencil", aria-hidden='true')

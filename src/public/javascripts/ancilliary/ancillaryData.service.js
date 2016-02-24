@@ -27,8 +27,13 @@ angular.module('app.services.ancillary',[])
 			dataObject:''
 		};
 
-		this.addTo = function(ancillaryDataList, ancillary){
-			ancillaryDataList.push(ancillary);
+		this.addTo = function(ancillaryDataList, ancillary, index){
+			//if index is different to '' then replace the item because is an edit option
+			if(index!==''){
+				ancillaryDataList[index] = angular.copy(ancillary);
+			}else{
+				ancillaryDataList.push(ancillary);
+			}
 		};
 
 		this.deleteFrom = function(ancillaryDataList, ancillary){

@@ -36,10 +36,15 @@ angular.module('app.services.reference',[])
 			link: ''
 		};
 
-		this.addTo = function(referenceList, reference){
-			var idx = referenceList.indexOf(reference);
-			if(idx === -1){
-				referenceList.push(reference);
+		this.addTo = function(referenceList, reference, index){
+			//if index is different to '' then replace the item because is an edit option
+			if(index!==''){
+				referenceList[index] = angular.copy(reference);
+			}else{
+				var idx = referenceList.indexOf(reference);
+				if(idx === -1){
+					referenceList.push(reference);
+				}
 			}
 		};
 

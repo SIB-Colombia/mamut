@@ -24,7 +24,13 @@ angular.module('app.controllers.migratory',[])
 	//list of proveedores de contenido
 	$scope.prov_contenido = angular.copy($scope.lenguajes.provContenido);
 
-	$scope.checked = false; // This will be binded using the ps-open attribute
+	// This will be binded using the ps-open attribute
+	$scope.checked = false; 
+
+	//to edit
+	$scope.index_migratory = '';
+	$scope.index_ancillary = '';
+	$scope.index_reference = '';
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
@@ -38,9 +44,15 @@ angular.module('app.controllers.migratory',[])
 
 	$scope.addMigratoryAtomizedType = function(list,migratoryAtomizedType){
 		if (JSON.stringify(migratoryAtomizedType) !== JSON.stringify(origMA)){
-			$scope.migratoryFactoryLocal.add(list,migratoryAtomizedType);
+			if($scope.index_migratory !== ''){
+				list[$scope.index_migratory] = angular.copy(migratoryAtomizedType);
+			}else{
+				$scope.migratoryFactoryLocal.add(list,migratoryAtomizedType);
+			}
+			
 			$scope.migratoryAtomizedType = origMA;
 			origMA = angular.copy($scope.migratoryAtomizedType);
+			$scope.index_migratory = '';
 		}
 	};
 
@@ -48,12 +60,14 @@ angular.module('app.controllers.migratory',[])
 		$scope.migratoryFactoryLocal.delete(list,migratoryAtomized);
 	};
 
-	$scope.editMigratoryAtomized = function(list,migratoryAtomized) {
+	$scope.editMigratoryAtomized = function(list,migratoryAtomized,index) {
 		$scope.migratoryAtomizedType = angular.copy(migratoryAtomized);
+		$scope.index_migratory = index;
 	};
 
 	$scope.cancelMigratoryAtomized = function() {
 		$scope.migratoryAtomizedType = angular.copy(origMA);
+		$scope.index_migratory = '';
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
@@ -61,9 +75,9 @@ angular.module('app.controllers.migratory',[])
 			var license = document.getElementById("ancillaryData.license");
 			if(license !== undefined && license!==null){
 				ancillaryData.license = license.value;
-				license.parentNode.removeChild(license);
 			}
-			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData);
+			//if index is different to '' then replace the item because is an edit option
+			ancillaryDataFactoryLocal.addTo(ancillaryDataList,ancillaryData,$scope.index_ancillary);
 			
 			//Add all local reference to general reference vector
 			angular.forEach(ancillaryData.reference, function(reference) {
@@ -74,6 +88,7 @@ angular.module('app.controllers.migratory',[])
 			$scope.ancillaryData = origAD;
 			origAD = angular.copy($scope.ancillaryData);
 			$scope.resetLicenseList(license,$scope.lincese_list);
+			$scope.index_ancillary='';
 			$('#ancillaryMigratory').collapse("hide");
 		}else{
 			alert("La licencia debe ser seleccionada");
@@ -84,7 +99,8 @@ angular.module('app.controllers.migratory',[])
 		ancillaryDataFactoryLocal.deleteFrom(ancillaryDataList,ancillaryData);
 	};
 
-	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData) {
+	$scope.editAncillaryData = function(ancillaryDataList,ancillaryData,index) {
+		$scope.index_ancillary = index;
 		$scope.ancillaryData = angular.copy(ancillaryData);
 		var checked_almost_one = false;
 		angular.forEach($scope.lincese_list, function(item) {
@@ -117,6 +133,7 @@ angular.module('app.controllers.migratory',[])
 		$scope.ancillaryData = angular.copy(origAD);
 		var license = document.getElementById("ancillaryData.license");
 		$scope.resetLicenseList(license,$scope.lincese_list);
+		$scope.index_ancillary='';
 		$('#ancillaryMigratory').collapse("hide");
 	};
 
@@ -131,11 +148,13 @@ angular.module('app.controllers.migratory',[])
 
 	$scope.addReference = function(referenceList,reference){
 		if(reference.type !== ''){
-			referenceFactoryLocal.addTo(referenceList,reference);
+			//if index is different to '' then replace the item because is an edit option
+			referenceFactoryLocal.addTo(referenceList,reference,$scope.index_reference);
 			//Reset the scope variable
 			$scope.reference = origR;
 			origR = angular.copy($scope.reference);
 			$scope.checked = !$scope.checked;
+			$scope.index_reference = '';
 		}else{
 			alert("El tipo de referencia debe ser seleccionado");
 		}
@@ -145,13 +164,15 @@ angular.module('app.controllers.migratory',[])
 		referenceFactoryLocal.deleteFrom(referenceList,reference);
 	};
 
-	$scope.editReference = function(referenceList,reference) {
+	$scope.editReference = function(referenceList,reference,index) {
 		$scope.reference = angular.copy(reference);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = index;
 	};
 
 	$scope.cancelReference = function() {
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
+		$scope.index_reference = '';
 	};
 }]);
