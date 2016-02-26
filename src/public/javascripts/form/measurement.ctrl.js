@@ -219,6 +219,7 @@ angular.module('app.controllers.measurement',[])
 			angular.forEach($scope.lenguajes.environmentalEnvelopes, function(attr) {
 				if (attr.measurementtype === name) {
 					$scope.measurementOrFact.measurementOrFact.measurementType = name;
+					$scope.measurementOrFact.measurementOrFact.measurementUnit = attr.measurementunit;
 					$scope.measurementOrFact.ancillaryData.bibliographicCitation = attr.referencia;
 					$scope.measurementOrFact.ancillaryData.source = attr.url;
 				}

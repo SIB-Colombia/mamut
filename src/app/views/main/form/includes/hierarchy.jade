@@ -5,7 +5,7 @@ div(data-ng-controller='HierarchyCtrl')
 				spant {{"simplePliCTerm.name.Hierarchy"|translate}}
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Hierarchy"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-				//button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed = !isCollapsed')
+				button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed = !isCollapsed')
 					span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true', id = 'iconH')
 			.panel-body
 				div.table-responsive(data-ng-show='(formData.hierarchy).length')

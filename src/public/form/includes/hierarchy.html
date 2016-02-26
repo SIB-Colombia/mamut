@@ -4,8 +4,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <spant>{{"simplePliCTerm.name.Hierarchy"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Hierarchy&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
-        <!--button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed = !isCollapsed')span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true', id = 'iconH')
-        -->
+        <button data-ng-click="isCollapsed = !isCollapsed" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}" aria-hidden="true" id="iconH"></span></button>
       </div>
       <div class="panel-body">
         <div data-ng-show="(formData.hierarchy).length" class="table-responsive">

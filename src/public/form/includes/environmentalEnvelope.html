@@ -30,13 +30,16 @@
         </table>
       </div>
       <div data-ng-controller="MeasurementCtrl">
-        <div class="col-xs-5">
+        <div class="col-xs-3">
           <select data-ng-model="environmentalEnvelopeAtomized.measurementOrFact.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.environmentalEnvelopes | unique:'measurementtype'">
             <option value="">- Seleccione -</option>
           </select>
         </div>
-        <div class="col-xs-5">
+        <div class="col-xs-3">
           <input type="text" data-ng-model="measurementOrFact.measurementOrFact.measurementValue"/>
+        </div>
+        <div class="col-xs-4">
+          <label>{{measurementOrFact.measurementOrFact.measurementUnit}}</label>
         </div>
         <div class="col-xs-2">
           <button data-ng-click="addMeasurementOrFactVector(formData.environmentalEnvelope.environmentalEnvelopeAtomized, measurementOrFact)" class="btn btn-success btn-xs pull-right">Guardar </button>
