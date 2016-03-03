@@ -1,0 +1,9 @@
+div(data-ng-controller='MoreInformationCtrl')
+	.panel.panel-default
+		.panel-heading
+			spant Más Información
+			//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addMoreInformation()') 
+				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
+		.panel-body
+			.form-group
+				textarea(rows='3', name='moreInformation', data-ng-model='formData.moreInformation')

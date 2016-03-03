@@ -9,14 +9,33 @@ div(data-ng-controller='DirectThreatsCtrl')
 			//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addDirectThreats()') 
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
+			div.table-responsive(data-ng-show='(formData.directThreats.directThreatsAtomized).length')
+				table.table.table-striped
+					thead
+						tr
+							th Fuente de Información
+							th 
+							th
+					
+					tbody
+						tr(data-ng-repeat="directThreatsAtomized in formData.directThreats.directThreatsAtomized track by $index")
+							td
+								| {{directThreatsAtomized.measurementOrFact.measurementType}}
+							td
+								| {{directThreatsAtomized.measurementOrFact.measurementValue}}
+							td
+								button.btn(data-ng-click='removeDirectAtomized(formData.directThreats.directThreatsAtomized, directThreatsAtomized)')
+									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			.form-group
 				div(data-ng-controller='MeasurementCtrl')
 					.col-xs-5
-						select(data-ng-model='formData.directThreats.directThreatsAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.directThreats | unique:'measurementtype'")
+						select(data-ng-model='directThreatsAtomized.measurementOrFact.measurementType', ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.directThreats | unique:'measurementtype'")
 							option(value='') - Seleccione -
 					.col-xs-5
-						select(data-ng-model='formData.directThreats.directThreatsAtomized.measurementOrFact.measurementValue', data-ng-disabled='!formData.directThreats.directThreatsAtomized.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr_2 ')
+						select(data-ng-model='directThreatsAtomized.measurementOrFact.measurementValue', data-ng-disabled='!directThreatsAtomized.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr_2 ')
 							option(value='') - Seleccione -
+					.col-xs-2
+						button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(formData.directThreats.directThreatsAtomized, measurementOrFact)') Guardar
 			.form-group
 				hr
 				label(for='directThreatUnstructured', translate='') simplePliCTerm.name.DirectThreatUnstructured

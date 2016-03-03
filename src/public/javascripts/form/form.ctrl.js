@@ -8,29 +8,29 @@ angular.module('app.controllers.form',[])
 		EnvironmentalEnvelopeFactory,FeedingFactory,InteractionsFactory,LifeCycleFactory,LifeFormFactory,MigratoryFactory,MolecularDataFactory,ReproductionFactory,InvasivenessFactory,TaxonRecordNameFactory,FullDescriptionFactory,IdentificationKeysFactory,ManagementAndConservationAtomizedFactory) {
 
 	//Factories
-	$scope.directThreatsFactoryLocal = new DirectThreatsFactory();
-	$scope.legislationFactoryLocal = new LegislationFactory();
-	$scope.populationBiologyFactoryLocal = new PopulationBiologyFactory();
-	$scope.territoryFactoryLocal = new TerritoryFactory();
-	$scope.habitatsFactoryLocal = new HabitatsFactory();
 	$scope.annualCycleFactoryLocal = new AnnualCycleFactory();
 	$scope.behaviorFactoryLocal = new BehaviorFactory();
+	$scope.directThreatsFactoryLocal = new DirectThreatsFactory();
 	$scope.dispersalFactoryLocal = new DispersalFactory();
 	$scope.ecologicalSignificanceFactoryLocal = new EcologicalSignificanceFactory();
 	$scope.environmentalEnvelopeFactoryLocal = new EnvironmentalEnvelopeFactory();
 	$scope.feedingFactoryLocal = new FeedingFactory();
+	$scope.fullDescriptionFactoryLocal = new FullDescriptionFactory();
+	$scope.habitatsFactoryLocal = new HabitatsFactory();
+	$scope.identificationKeysFactoryLocal = new IdentificationKeysFactory();
 	$scope.interactionsFactoryLocal = new InteractionsFactory();
+	$scope.invasivenessFactoryLocal = new InvasivenessFactory();
+	$scope.legislationFactoryLocal = new LegislationFactory();
 	$scope.lifeCycleFactoryLocal = new LifeCycleFactory();
 	$scope.lifeFormFactoryLocal = new LifeFormFactory();
+	$scope.managementAndConservationAtomizedFactoryLocal = new ManagementAndConservationAtomizedFactory();
 	$scope.migratoryFactoryLocal = new MigratoryFactory();
 	$scope.molecularDataFactoryLocal = new MolecularDataFactory();
+	$scope.populationBiologyFactoryLocal = new PopulationBiologyFactory();
 	$scope.reproductionFactoryLocal = new ReproductionFactory();
-	$scope.invasivenessFactoryLocal = new InvasivenessFactory();
 	$scope.taxonRecordNameFactoryLocal = new TaxonRecordNameFactory();
-	$scope.fullDescriptionFactoryLocal = new FullDescriptionFactory();
-	$scope.identificationKeysFactoryLocal = new IdentificationKeysFactory();
-	$scope.managementAndConservationAtomizedFactoryLocal = new ManagementAndConservationAtomizedFactory();
-			
+	$scope.territoryFactoryLocal = new TerritoryFactory();
+	
 	if($scope.formDataGet!==undefined){
 		$scope.formData = $scope.formDataGet;
 		if($scope.formData.dispersal!==undefined){
@@ -52,6 +52,7 @@ angular.module('app.controllers.form',[])
 			ancillaryData : [],
 			associatedParty : [],
 			abstract : '',
+			moreInformation : '',
 			directThreats : $scope.directThreatsFactoryLocal.directThreats,
 			legislation : $scope.legislationFactoryLocal.legislation,
 			populationBiology : $scope.populationBiologyFactoryLocal.populationBiology,

@@ -38,6 +38,10 @@ angular.module('app.controllers.behavior',[])
 		}
 	};
 
+	$scope.removeBehaviorAtomized= function(list,behaviorAtomized){
+		$scope.behaviorFactoryLocal.delete(list,behaviorAtomized);	
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		if(ancillaryData.license !== ''){
 			var license = document.getElementById("ancillaryData.license");

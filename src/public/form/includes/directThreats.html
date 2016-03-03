@@ -9,17 +9,40 @@
       -->
     </div>
     <div class="panel-body">
+      <div data-ng-show="(formData.directThreats.directThreatsAtomized).length" class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Fuente de Información</th>
+              <th> </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="directThreatsAtomized in formData.directThreats.directThreatsAtomized track by $index">
+              <td>{{directThreatsAtomized.measurementOrFact.measurementType}}</td>
+              <td>{{directThreatsAtomized.measurementOrFact.measurementValue}}</td>
+              <td>
+                <button data-ng-click="removeDirectAtomized(formData.directThreats.directThreatsAtomized, directThreatsAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="form-group">
         <div data-ng-controller="MeasurementCtrl">
           <div class="col-xs-5">
-            <select data-ng-model="formData.directThreats.directThreatsAtomized.measurementOrFact.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.directThreats | unique:'measurementtype'">
+            <select data-ng-model="directThreatsAtomized.measurementOrFact.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.directThreats | unique:'measurementtype'">
               <option value="">- Seleccione -</option>
             </select>
           </div>
           <div class="col-xs-5">
-            <select data-ng-model="formData.directThreats.directThreatsAtomized.measurementOrFact.measurementValue" data-ng-disabled="!formData.directThreats.directThreatsAtomized.measurementOrFact.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr_2 ">
+            <select data-ng-model="directThreatsAtomized.measurementOrFact.measurementValue" data-ng-disabled="!directThreatsAtomized.measurementOrFact.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr_2 ">
               <option value="">- Seleccione -</option>
             </select>
+          </div>
+          <div class="col-xs-2">
+            <button data-ng-click="addMeasurementOrFactVector(formData.directThreats.directThreatsAtomized, measurementOrFact)" class="btn btn-success btn-xs pull-right">Guardar</button>
           </div>
         </div>
       </div>

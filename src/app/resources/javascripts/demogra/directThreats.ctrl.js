@@ -38,6 +38,10 @@ angular.module('app.controllers.directThreats',[])
 		}
 	};
 
+	$scope.removeDirectAtomized= function(list,directThreatsAtomized){
+		$scope.directThreatsFactoryLocal.delete(list,directThreatsAtomized);	
+	};
+
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){
 		var license = document.getElementById("ancillaryData.license");
 		if(license !== undefined && license!==null){

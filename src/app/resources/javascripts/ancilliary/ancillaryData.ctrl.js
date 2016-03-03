@@ -140,6 +140,7 @@ angular.module('app.controllers.ancillary',[])
 		$scope.index_reference = '';
 	};
 
+	
 	$scope.getInfoLicence = function(url, ancillary) {
 		
 		ancillary.rightsHolder = '';
@@ -285,8 +286,6 @@ angular.module('app.controllers.ancillary',[])
 							},
 							success: function(data1) {
 								var infoUrl = data1.query.pages[Object.keys(data1.query.pages)[0]].imageinfo[0].url;
-								//var partsUrl = (infoUrl).split('commons');
-								//var urlFine = partsUrl[0]+'commons/thumb' + partsUrl[1];
 								$scope.imageurl = infoUrl;
 							}
 						});
@@ -305,29 +304,33 @@ angular.module('app.controllers.ancillary',[])
 						'Api-User-Agent': 'Example/1.0'
 					},
 					success: function(data) {
+						console.log(data);
 						var license = data.items[0].contentDetails.licensedContent;
 						var checked_almost_one = false;
 						angular.forEach($scope.lincese_list, function(item) {
 				            if(license!==null){
-				            	if(license === item.nombre){
-				  					item.checked = true;
-				  					checked_almost_one = true;
-								}else{
-									if(item.nombre==='Otra'&& !checked_almost_one){
-									 	if(document.getElementById('ancillaryData.license') === null){
-											item.checked = true;
-											var input = document.createElement("input");
-								            input.type = "text";
-								            input.id = "ancillaryData.license";
-								            input.value = license;
-								            input.disabled = true;
-								            document.getElementById("ManualLicense").appendChild(input);
-										}else{
-											var license_field = document.getElementById("ancillaryData.license");
-											license_field.value = license;
+				            	if(license){
+				            		var lincese_value = data.items[0].status.license;
+				            		if(lincese_value === item.nombre){
+					  					item.checked = true;
+					  					checked_almost_one = true;
+									}else{
+										if(item.nombre==='Otra'&& !checked_almost_one){
+										 	if(document.getElementById('ancillaryData.license') === null){
+												item.checked = true;
+												var input = document.createElement("input");
+									            input.type = "text";
+									            input.id = "ancillaryData.license";
+									            input.value = lincese_value;
+									            input.disabled = true;
+									            document.getElementById("ManualLicense").appendChild(input);
+											}else{
+												var license_field = document.getElementById("ancillaryData.license");
+												license_field.value = lincese_value;
+											}
 										}
 									}
-								}
+				            	}
 				            }
 				        });
 						
@@ -340,20 +343,14 @@ angular.module('app.controllers.ancillary',[])
 						
 			if (url.indexOf('www.xeno-canto.org/') > -1) {
 				var sound_id = (url_parts[url_parts.length - 1]);
-				$.ajax({
-					url: 'http://www.xeno-canto.org/api/2/recordings?query=nr:'+ sound_id,
-					dataType: 'JSONP',
-					jsonpCallback: 'callback',
-					type: 'GET',
-					headers: {
-						'Api-User-Agent': 'Example/1.0'
-					},
-					success: function(data) {
-						var data_1 = data.replace(/\n/g, '');
-						var objetoJSONFinal_1 = JSON.parse(data_1);
-						console.log(objetoJSONFinal_1);
-					}
-				});
+				$http.jsonp('http://www.xeno-canto.org/api/2/recordings?query=nr:'+ sound_id)
+			 	.success(function(data, status, headers, config) {
+			    	$scope.posts = data;
+			    })
+			    .error(function(data, status, headers, config) {
+			      // log error
+			    });
+				
 			}
 		}
 	};

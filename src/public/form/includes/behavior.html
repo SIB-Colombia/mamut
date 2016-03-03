@@ -9,17 +9,40 @@
       -->
     </div>
     <div class="panel-body">
+      <div data-ng-show="(formData.behavior.behaviorAtomized).length" class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Fuente de Información</th>
+              <th> </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="behaviorAtomized in formData.behavior.behaviorAtomized track by $index">
+              <td>{{behaviorAtomized.measurementOrFact.measurementType}}</td>
+              <td>{{behaviorAtomized.measurementOrFact.measurementValue}}</td>
+              <td>
+                <button data-ng-click="removeBehaviorAtomized(formData.behavior.behaviorAtomized, behaviorAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="form-group">
         <div data-ng-controller="MeasurementCtrl">
           <div class="col-xs-5">
-            <select data-ng-model="formData.behavior.behaviorAtomized.measurementOrFact.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.behaviors | unique:'measurementtype'">
+            <select data-ng-model="behaviorAtomized.measurementType" ng-options="attr.measurementtype as attr.measurementtype for attr in lenguajes.behaviors | unique:'measurementtype'">
               <option value="">- Seleccione -</option>
             </select>
           </div>
           <div class="col-xs-5">
-            <select data-ng-model="formData.behavior.behaviorAtomized.measurementOrFact.measurementValue" data-ng-disabled="!formData.behavior.behaviorAtomized.measurementOrFact.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr ">
+            <select data-ng-model="behaviorAtomized.measurementValue" data-ng-disabled="!behaviorAtomized.measurementType" ng-options="item.measurementvalue as item.measurementvalue for item in selectedAttr">
               <option value="">- Seleccione -</option>
             </select>
+          </div>
+          <div class="col-xs-2">
+            <button data-ng-click="addMeasurementOrFactVector(formData.behavior.behaviorAtomized, measurementOrFact)" class="btn btn-success btn-xs pull-right">Guardar </button>
           </div>
         </div>
       </div>

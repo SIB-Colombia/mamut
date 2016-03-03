@@ -147,6 +147,9 @@ div(data-ng-controller='AncillaryDataCtrl')
 				div.pull-right
 					button.btn.btn-success.btn-xs(type='button', data-ng-click="addAncillaryData(formData.ancillaryData,ancillaryData)") Guardar 
 					button.btn.btn-success.btn-xs(type='button', data-ng-click="cancelAncillaryData(formData.ancillaryData,ancillaryData)") Cancelar 
+ 
+div(ng-include="'./form/includes/moreInformation.html'")
+
 .col-xs-6.col-xs-offset-3
 	ul.pager
 		li

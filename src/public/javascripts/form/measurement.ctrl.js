@@ -135,31 +135,35 @@ angular.module('app.controllers.measurement',[])
 			});
 		}
 	});
-	$scope.$watch('formData.behavior.behaviorAtomized.measurementOrFact.measurementType', function(name) {
+
+	$scope.$watch('behaviorAtomized.measurementType', function(name) {
 		if (name !== undefined) {
-			delete $scope.formData.behavior.behaviorAtomized.measurementValue;
+			delete $scope.behaviorAtomized.measurementValue;
 			$scope.selectedAttr.length = 0;
-			
+
 			angular.forEach($scope.lenguajes.behaviors, function(attr) {
 				if (attr.measurementtype === name) {
-
 					$scope.selectedAttr.push(attr);
 				}
 			});
 		}
 	});
-	$scope.$watch('formData.behavior.behaviorAtomized.measurementOrFact.measurementValue', function(name) {
+	
+	$scope.$watch('behaviorAtomized.measurementValue', function(name) {
 		if (name !== undefined) {
+			$scope.measurementOrFact = new MeasurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr, function(attr) {
 				if (attr.measurementvalue === name) {
-					$scope.formData.behavior.behaviorAtomized.measurementOrFact.measurementType = attr.measurementtype;
-					$scope.formData.behavior.behaviorAtomized.measurementOrFact.measurementValue = name;
-					$scope.formData.behavior.behaviorAtomized.ancillaryData.bibliographicCitation = attr.referencia;
-					$scope.formData.behavior.behaviorAtomized.ancillaryData.source = attr.url;
-				}
+					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
+					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
+					$scope.measurementOrFact.ancillaryData.bibliographicCitation = attr.referencia;
+					$scope.measurementOrFact.ancillaryData.source = attr.url;
+				} 
 			});
 		}
 	});
+
 	$scope.$watch('molecularDataAtomizedType.measurementOrFact.measurementType', function(name) {
 		if (name !== undefined) {
 			delete $scope.molecularDataAtomizedType.measurementOrFact.measurementValue;
@@ -302,10 +306,9 @@ angular.module('app.controllers.measurement',[])
 		}
 	});
 
-
-	$scope.$watch('formData.directThreats.directThreatsAtomized.measurementOrFact.measurementType', function(name) {
+	$scope.$watch('directThreatsAtomized.measurementOrFact.measurementType', function(name) {
 		if (name !== undefined) {
-			//delete $scope.formData.directThreats.directThreatsAtomized.measurementOrFact.measurementValue;
+			delete $scope.directThreatsAtomized.measurementOrFact.measurementValue;
 			$scope.selectedAttr_2.length = 0;
 
 			angular.forEach($scope.lenguajes.directThreats, function(attr) {
@@ -315,15 +318,18 @@ angular.module('app.controllers.measurement',[])
 			});
 		}
 	});
-	$scope.$watch('formData.directThreats.directThreatsAtomized.measurementOrFact.measurementValue', function(name) {
+
+	$scope.$watch('directThreatsAtomized.measurementOrFact.measurementValue', function(name) {
 		if (name !== undefined) {
+			$scope.measurementOrFact = new MeasurementFactory().measurement;
+			measurementCopy = angular.copy($scope.measurementOrFact);
 			angular.forEach($scope.selectedAttr_2, function(attr) {
 				if (attr.measurementvalue === name) {
-					$scope.formData.directThreats.directThreatsAtomized.measurementOrFact.measurementType = attr.measurementtype;
-					$scope.formData.directThreats.directThreatsAtomized.measurementOrFact.measurementValue = name;
-					$scope.formData.directThreats.directThreatsAtomized.ancillaryData.bibliographicCitation = attr.referencia;
-					$scope.formData.directThreats.directThreatsAtomized.ancillaryData.source = attr.url;
-				}
+					$scope.measurementOrFact.measurementOrFact.measurementType = attr.measurementtype;
+					$scope.measurementOrFact.measurementOrFact.measurementValue = name;
+					$scope.measurementOrFact.ancillaryData.bibliographicCitation = attr.referencia;
+					$scope.measurementOrFact.ancillaryData.source = attr.url;
+				} 
 			});
 		}
 	});
