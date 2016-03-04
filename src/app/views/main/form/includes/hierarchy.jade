@@ -62,7 +62,7 @@ div(data-ng-controller='HierarchyCtrl')
 											div
 												p(translate='', class='text_type_bold') simplePliCTerm.name.infraSpecificEpithet
 												| : {{hierarchy.infraspecificEpithet}}
-										div(data-ng-show='hierarchy.higherClassification')
+										//div(data-ng-show='hierarchy.higherClassification')
 											div
 												p(translate='', class='text_type_bold') simplePliCTerm.name.higherClassification
 												| : {{hierarchy.higherClassification}}
@@ -153,13 +153,13 @@ div(data-ng-controller='HierarchyCtrl')
 							input(type='text', data-ng-model='hierarchy.infraspecificEpithet')
 							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.infraSpecificEpithet"|translate}}')
 								span.glyphicon.glyphicon-info-sign
-					.form-group
+					//.form-group
 						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.higherClassification
 						.col-xs-10
 							input(type='text', data-ng-model='hierarchy.higherClassification')
 							a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.higherClassification"|translate}}')
 								span.glyphicon.glyphicon-info-sign
-					.form-group
+					//.form-group
 						label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.ParentTaxon
 						.col-xs-10
 							input(type='text', data-ng-model='hierarchy.parentTaxon')

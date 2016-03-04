@@ -9,27 +9,25 @@
       -->
     </div>
     <div class="panel-body">
-      <div class="form-group">
-        <label for="temporalCoverage" translate="" class="col-xs-2 control-label">simplePliCTerm.name.TemporalCoverage</label>
-        <div class="col-xs-4">
-          <label>{{simplePliCTerm.name.startDate|translate}} </label>
-          <div data-ng-controller="DatepickerCtrl">
-            <p class="input-group">
-              <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="distributionClass.temporalCoverage.startDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" disabled="disabled" class="form-control"/><span class="input-group-btn">
-                <button type="button" data-ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
-            </p>
-          </div>
-        </div>
-        <div class="col-xs-4">
-          <label>{{simplePliCTerm.name.endDate|translate}}</label>
-          <div data-ng-controller="DatepickerCtrl">
-            <p class="input-group">
-              <input type="text" uib-datepicker-popup="yyyy/MM/dd" data-ng-model="distributionClass.temporalCoverage.endDate" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" disabled="disabled" class="form-control"/><span class="input-group-btn">
-                <button type="button" data-ng-click="open($event)" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button></span>
-            </p>
-          </div>
-        </div>
-      </div>
+      <!--.form-group
+      label.col-xs-2.control-label(for='temporalCoverage', translate='') simplePliCTerm.name.TemporalCoverage
+      .col-xs-4
+      	label {{simplePliCTerm.name.startDate|translate}} 
+      	div(data-ng-controller='DatepickerCtrl')
+      		p.input-group
+      			input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", data-ng-model="distributionClass.temporalCoverage.startDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close", disabled )
+      			span.input-group-btn
+      				button.btn.btn-default(type="button",data-ng-click="open($event)")
+      					i.glyphicon.glyphicon-calendar
+      .col-xs-4
+      	label {{simplePliCTerm.name.endDate|translate}}
+      	div(data-ng-controller='DatepickerCtrl')
+      		p.input-group
+      			input.form-control(type='text', uib-datepicker-popup="yyyy/MM/dd", data-ng-model="distributionClass.temporalCoverage.endDate", is-open="status.opened", datepicker-options="dateOptions", date-disabled="disabled(date, mode)", close-text="Close", disabled )
+      			span.input-group-btn
+      				button.btn.btn-default(type="button",data-ng-click="open($event)")
+      					i.glyphicon.glyphicon-calendar
+      -->
       <div class="form-group">
         <label for="distributionScope" translate="" class="col-xs-2 control-label">simplePliCTerm.name.DistributionScope</label>
         <div class="col-xs-10">
@@ -246,7 +244,7 @@
           <thead>
             <tr>
               <th>{{"simplePliCTerm.name.DistributionScope"|translate}}</th>
-              <th>{{"simplePliCTerm.name.TemporalCoverage"|translate}}</th>
+              <!--th {{"simplePliCTerm.name.TemporalCoverage"|translate}}-->
               <th>Distribución atomizada</th>
               <th>{{"simplePliCTerm.name.DistributionUnstructured"|translate}}</th>
               <th></th>
@@ -255,7 +253,10 @@
           <tbody>
             <tr data-ng-repeat="distribution in formData.distribution">
               <td>{{distribution.distributionScope.type}}</td>
-              <td><span class="datepicker-date">{{distribution.temporalCoverage.startDate | date:'yyyy/MM/dd'}} - {{distribution.temporalCoverage.endDate | date:'yyyy/MM/dd'}}	</span></td>
+              <!--td
+              span.datepicker-date
+              	| {{distribution.temporalCoverage.startDate | date:'yyyy/MM/dd'}} - {{distribution.temporalCoverage.endDate | date:'yyyy/MM/dd'}}	
+              -->
               <td>
                 <div data-ng-repeat="distributionA in distribution.distributionAtomized track by $index" class="selected-item">
                   <div data-ng-show="distributionA">{{distributionA.country}} - {{distributionA.stateProvince}} - {{distributionA.county}}</div>

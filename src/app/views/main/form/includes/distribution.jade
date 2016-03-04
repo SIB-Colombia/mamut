@@ -9,7 +9,7 @@ div(data-ng-controller='DistributionCtrl')
 			//button.btn.btn-success.btn-xs.pull-right(data-ng-click='addDistribution(formData.distribution,distributionClass)')
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
-			.form-group
+			//.form-group
 				label.col-xs-2.control-label(for='temporalCoverage', translate='') simplePliCTerm.name.TemporalCoverage
 				.col-xs-4
 					label {{simplePliCTerm.name.startDate|translate}} 
@@ -214,7 +214,7 @@ div(data-ng-controller='DistributionCtrl')
 					thead
 						tr
 							th {{"simplePliCTerm.name.DistributionScope"|translate}}
-							th {{"simplePliCTerm.name.TemporalCoverage"|translate}}
+							//th {{"simplePliCTerm.name.TemporalCoverage"|translate}}
 							th Distribución atomizada
 							th {{"simplePliCTerm.name.DistributionUnstructured"|translate}}
 							th
@@ -223,7 +223,7 @@ div(data-ng-controller='DistributionCtrl')
 						tr(data-ng-repeat="distribution in formData.distribution")
 							td
 								| {{distribution.distributionScope.type}}
-							td
+							//td
 								span.datepicker-date
 									| {{distribution.temporalCoverage.startDate | date:'yyyy/MM/dd'}} - {{distribution.temporalCoverage.endDate | date:'yyyy/MM/dd'}}	
 							td

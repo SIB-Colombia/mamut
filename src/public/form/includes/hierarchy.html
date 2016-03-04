@@ -79,11 +79,11 @@
                         <p translate="" class="text_type_bold">simplePliCTerm.name.infraSpecificEpithet</p>: {{hierarchy.infraspecificEpithet}}
                       </div>
                     </div>
-                    <div data-ng-show="hierarchy.higherClassification">
-                      <div>
-                        <p translate="" class="text_type_bold">simplePliCTerm.name.higherClassification</p>: {{hierarchy.higherClassification}}
-                      </div>
-                    </div>
+                    <!--div(data-ng-show='hierarchy.higherClassification')
+                    div
+                    	p(translate='', class='text_type_bold') simplePliCTerm.name.higherClassification
+                    	| : {{hierarchy.higherClassification}}
+                    -->
                     <!--
                     <div data-ng-show="hierarchy.parentTaxon">
                     <div>parentTaxon :{{hierarchy.parentTaxon}}</div>
@@ -178,18 +178,20 @@
               <input type="text" data-ng-model="hierarchy.infraspecificEpithet"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.infraSpecificEpithet&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
             </div>
           </div>
-          <div class="form-group">
-            <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.higherClassification</label>
-            <div class="col-xs-10">
-              <input type="text" data-ng-model="hierarchy.higherClassification"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.higherClassification&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="canonicalName" translate="" class="col-xs-2 control-label">simplePliCTerm.name.ParentTaxon</label>
-            <div class="col-xs-10">
-              <input type="text" data-ng-model="hierarchy.parentTaxon"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.ParentTaxon&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
-            </div>
-          </div>
+          <!--.form-group
+          label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.higherClassification
+          .col-xs-10
+          	input(type='text', data-ng-model='hierarchy.higherClassification')
+          	a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.higherClassification"|translate}}')
+          		span.glyphicon.glyphicon-info-sign
+          -->
+          <!--.form-group
+          label.col-xs-2.control-label(for='canonicalName', translate='') simplePliCTerm.name.ParentTaxon
+          .col-xs-10
+          	input(type='text', data-ng-model='hierarchy.parentTaxon')
+          	a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.ParentTaxon"|translate}}')
+          		span.glyphicon.glyphicon-info-sign
+          -->
           <div class="form-group">
             <label for="ancillaryData" translate="" class="col-xs-2 control-label">Referencias y licencias<a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.AncillaryData&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></label>
             <div class="col-xs-10">

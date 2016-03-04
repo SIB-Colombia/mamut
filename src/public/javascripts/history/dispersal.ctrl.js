@@ -34,6 +34,7 @@ angular.module('app.controllers.dispersal',[])
 
 	$scope.addDispersal = function(){
 		if($scope.formData.dispersal.dispersalUnstructured !== ''){
+			//agregar validación a distancia
 			console.log('enviar cambios');
 		}
 	};

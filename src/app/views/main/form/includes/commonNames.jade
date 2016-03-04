@@ -40,21 +40,21 @@ div(data-ng-controller='CommonNameCtrl')
 								a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.UsedBy"|translate}}')
 									span.glyphicon.glyphicon-info-sign
 						.form-group
-							label.col-xs-2.control-label(for='ancillaryData', translate='') Licencia
+							label.col-xs-2.control-label(for='ancillaryData', translate='') Referencias
 							.col-xs-10
 								div.table-responsive(data-ng-show='(commonName.ancillaryData).length')
 									table.table.table-striped
 										thead
 											tr
-												th {{"simplePliCTerm.name.license"|translate}}
-												//th {{"simplePliCTerm.name.References"|translate}}
+												//th {{"simplePliCTerm.name.license"|translate}}
+												th {{"simplePliCTerm.name.References"|translate}}
 												th
 										
 										tbody
 											tr(data-ng-repeat="ancillary in commonName.ancillaryData track by $index")
-												td
+												//td
 													| {{ancillary.license}}
-												//td 
+												td 
 													.selected-item(data-ng-repeat='ref in ancillary.reference track by $index')
 														div(data-ng-show='ref')
 															textarea(disabled)
@@ -67,7 +67,7 @@ div(data-ng-controller='CommonNameCtrl')
 								//input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
 								//button.btn-xs(data-ng-click='findAncillary(ancillaryData.source)')
 									span.glyphicon.glyphicon-search
-								//.panel.panel-default
+								.panel.panel-default
 									.panel-heading
 										spant {{"simplePliCTerm.name.References"|translate}}
 										a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.References"|translate}}')
@@ -124,7 +124,7 @@ div(data-ng-controller='CommonNameCtrl')
 													div.pull-right
 														button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
 														button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
-								.form-group
+								//.form-group
 									panel(data-ng-controller='CheckBoxCrtl')
 										div(data-ng-repeat="lic in lincese_list | filter:{nombre : '!Otra'}")
 											input(type='checkbox', data-ng-model='lic.checked', data-ng-click='updateSelectionLicence(lic, lincese_list, "ManualLicenseFullDescription")')

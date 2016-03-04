@@ -105,7 +105,7 @@ div(data-ng-controller='PopulationBiologyCtrl')
 					input(type='text', data-ng-model='populationBiologyAtomized.immigration.measurementValue')
 					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Immigration"|translate}}')
 						span.glyphicon.glyphicon-info-sign
-			.form-group
+			//.form-group
 				label.col-xs-2.control-label(for='descriptionLifeStages', translate='') simplePliCTerm.name.DescriptionLifeStages
 				.col-xs-10
 					input(type='text', data-ng-model='populationBiologyAtomized.descriptionLifeStages.measurementValue')
@@ -182,7 +182,7 @@ div(data-ng-controller='PopulationBiologyCtrl')
 									div(data-ng-show='populationBiologyAtomized.immigration.measurementValue')
 										p(translate='', class='text_type_bold') simplePliCTerm.name.Immigration
 										| : {{populationBiologyAtomized.immigration.measurementValue}}
-									div(data-ng-show='populationBiologyAtomized.descriptionLifeStages.measurementValue')
+									//div(data-ng-show='populationBiologyAtomized.descriptionLifeStages.measurementValue')
 										p(translate='', class='text_type_bold') simplePliCTerm.name.DescriptionLifeStages
 										| : {{populationBiologyAtomized.descriptionLifeStages.measurementValue}}
 									div(data-ng-show='populationBiologyAtomized.proportionIndividualsPerStageLife.measurementValue')

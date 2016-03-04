@@ -31,8 +31,11 @@ div(data-ng-controller='DispersalCtrl')
 								| {{structure.name}}
 			.form-group
 				label.col-xs-2.control-label(for='distance', translate='') simplePliCTerm.name.Distance
-				.col-xs-10
-					input(type='text', data-ng-model='formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementValue')
+				.col-xs-5
+					input(type="number" step = "0.001" data-ng-model="formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementValue")
+				.col-xs-5
+					select(data-ng-model='ormData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementUnit', ng-options="attr.measurementunit as attr.measurementunit for attr in lenguajes.distance | unique:'measurementunit'")
+						option(value='') - Seleccione -
 			.form-group
 				hr
 				label(for='dispersalUnstructured', translate='') simplePliCTerm.name.DispersalUnstructured

@@ -105,12 +105,13 @@
           <input type="text" data-ng-model="populationBiologyAtomized.immigration.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Immigration&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
         </div>
       </div>
-      <div class="form-group">
-        <label for="descriptionLifeStages" translate="" class="col-xs-2 control-label">simplePliCTerm.name.DescriptionLifeStages</label>
-        <div class="col-xs-10">
-          <input type="text" data-ng-model="populationBiologyAtomized.descriptionLifeStages.measurementValue"/><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.DescriptionLifeStages&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
-        </div>
-      </div>
+      <!--.form-group
+      label.col-xs-2.control-label(for='descriptionLifeStages', translate='') simplePliCTerm.name.DescriptionLifeStages
+      .col-xs-10
+      	input(type='text', data-ng-model='populationBiologyAtomized.descriptionLifeStages.measurementValue')
+      	a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.DescriptionLifeStages"|translate}}')
+      		span.glyphicon.glyphicon-info-sign
+      -->
       <div class="form-group">
         <label for="proportionIndividualsPerStageLife" translate="" class="col-xs-2 control-label">simplePliCTerm.name.ProportionIndividualsPerStage</label>
         <div class="col-xs-10">
@@ -181,9 +182,10 @@
                   <div data-ng-show="populationBiologyAtomized.immigration.measurementValue">
                     <p translate="" class="text_type_bold">simplePliCTerm.name.Immigration</p>: {{populationBiologyAtomized.immigration.measurementValue}}
                   </div>
-                  <div data-ng-show="populationBiologyAtomized.descriptionLifeStages.measurementValue">
-                    <p translate="" class="text_type_bold">simplePliCTerm.name.DescriptionLifeStages</p>: {{populationBiologyAtomized.descriptionLifeStages.measurementValue}}
-                  </div>
+                  <!--div(data-ng-show='populationBiologyAtomized.descriptionLifeStages.measurementValue')
+                  p(translate='', class='text_type_bold') simplePliCTerm.name.DescriptionLifeStages
+                  | : {{populationBiologyAtomized.descriptionLifeStages.measurementValue}}
+                  -->
                   <div data-ng-show="populationBiologyAtomized.proportionIndividualsPerStageLife.measurementValue">
                     <p translate="" class="text_type_bold">simplePliCTerm.name.ProportionIndividualsPerStage</p>: {{populationBiologyAtomized.proportionIndividualsPerStageLife.measurementValue}}
                   </div>
