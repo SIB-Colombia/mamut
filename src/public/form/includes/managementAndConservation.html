@@ -13,15 +13,16 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th>{{"simplePliCTerm.name.Type"|translate}}</th>
               <th>{{"simplePliCTerm.name.Objectives"|translate}}</th>
               <th>{{"simplePliCTerm.name.ManagementPlan"|translate}}</th>
               <th>{{"simplePliCTerm.name.Actions"|translate}}</th>
-              <th>{{"simplePliCTerm.name.Type"|translate}}</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             <tr data-ng-repeat="managementAndConservationAtomized in formData.usesManagementAndConservation.managementAndConservation.managementAndConservationAtomized track by $index">
+              <td>{{managementAndConservationAtomized.type}}</td>
               <td>{{managementAndConservationAtomized.objective}}	</td>
               <td>{{managementAndConservationAtomized.managementPlan}}</td>
               <td>
@@ -29,7 +30,6 @@
                   <div data-ng-show="actions">{{actions.measurementOrFact.measurementType}} - {{actions.measurementOrFact.measurementValue}}</div>
                 </div>
               </td>
-              <td>{{managementAndConservationAtomized.type}}</td>
               <td>
                 <button data-ng-click="removeManagementAndConservation(formData.usesManagementAndConservation.managementAndConservation.managementAndConservationAtomized,managementAndConservationAtomized)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
                 <button data-ng-click="editManagementAndConservation(formData.usesManagementAndConservation.managementAndConservation.managementAndConservationAtomized,managementAndConservationAtomized,$index)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
@@ -37,6 +37,14 @@
             </tr>
           </tbody>
         </table>
+      </div>
+      <div class="form-group">
+        <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Type</label>
+        <div class="col-xs-10">
+          <div data-ng-repeat="managementType in lenguajes.managementType">
+            <input type="radio" data-ng-model="managementAndConservationAtomizedType.type" data-ng-value="managementType" id="{{managementType.name}}"/>{{managementType.name}}	
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <label for="objectives" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Objectives</label>
@@ -81,12 +89,6 @@
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Type</label>
-        <div class="col-xs-10">
-          <input id="type" type="text" data-ng-model="managementAndConservationAtomizedType.type"/>
         </div>
       </div>
       <div class="form-group">

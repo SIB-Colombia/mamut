@@ -10,6 +10,7 @@ angular.module('app.services.ancillary',[])
 			agent:[],
 			created:'',
 			modified:'',
+			title:'',
 			license:'Atribución - No Comercial - Compartir igual (CC BY-NC-SA 4.0)',
 			rights:'',
 			rightsHolder:'',
