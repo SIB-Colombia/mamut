@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.hierarchy',[])
-.controller('HierarchyCtrl', ['$scope', 'ReferenceFactory', 'AncillaryDataFactory', 'HierarchyFactory',  function($scope,ReferenceFactory,AncillaryDataFactory,HierarchyFactory) {
+.controller('HierarchyCtrl', ['$scope', '$http', 'ReferenceFactory', 'AncillaryDataFactory', 'HierarchyFactory',  function($scope,$http,ReferenceFactory,AncillaryDataFactory,HierarchyFactory) {
 	//hierarchy
 	var hierarchyFactoryLocal = new HierarchyFactory();
 	$scope.hierarchy = hierarchyFactoryLocal.hierarchy;
@@ -31,6 +31,26 @@ angular.module('app.controllers.hierarchy',[])
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
 	};
+
+	$scope.addHierarchyDB= function() {
+		var req_1 = {
+			 method: 'POST',
+			 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/hierarchy/',
+			 headers: {
+			   'Content-Type': 'application/JSON'
+			 },
+			 data: { "id_user" : "01",
+			 		"hierarchy":$scope.formData.hierarchy
+
+			 }
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
+	};
+
 	//ADD
 	$scope.addHierarchy = function(hierarchy, hier) {
 		if (JSON.stringify(hier) !== JSON.stringify(origH)){

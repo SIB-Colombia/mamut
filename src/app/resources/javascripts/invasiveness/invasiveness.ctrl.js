@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.invasiveness',[])
-.controller('InvasivenessCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+.controller('InvasivenessCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory) {
 
 	$scope.invasivenessAtomizedType = $scope.invasivenessFactoryLocal.invasivenessAtomizedType;
 
@@ -55,9 +55,22 @@ angular.module('app.controllers.invasiveness',[])
 	};
 
 	$scope.addInvasiveness = function(){
-		if($scope.formData.invasiveness.invasivenessUnstructured !== ''){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			method: 'POST',
+			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/invasiveness/',
+			headers: {
+			  'Content-Type': 'application/JSON'
+			},
+			data: { "id_user" : "01",
+				"invasiveness":$scope.formData.invasiveness
+
+			}
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });		
 	};
 	
 	$scope.addInvasivenessAtomizedType = function(list, invasiveness) {

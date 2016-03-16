@@ -4,10 +4,11 @@
     <div class="panel-heading">
       <spant>{{"simplePliCTerm.name.AnnualCycles" | translate}}
         <spant></spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.AnnualCycles&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
+        <button type="button" data-ng-click="addAnnualCycle()" class="btn btn-success btn-xs pull-right"> <span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"></span></button>
       </spant>
     </div>
     <div class="panel-body">
-      <div data-ng-repeat="annualCycleAtomized in formData.annualCycle.annualCycleAtomized" class="selected-item">
+      <div data-ng-repeat="annualCycleAtomized in formData.annualCycles.annualCycleAtomized" class="selected-item">
         <div data-ng-show="annualCycleAtomized">
           <div>Evento: {{annualCycleAtomized.Event}}</div>
           <div>Start Time: {{annualCycleAtomized.startTimeInterval| date: 'yyyy-MM-dd'}}</div>
@@ -164,7 +165,7 @@
                   <p style="font-size:90%;"><i>* Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co</i></p>
                 </panel>
                 <label for="rights" translate="" class="control-label">simplePliCTerm.name.rights</label>
-                <select data-ng-model="ancillaryData.rights" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
+                <select data-ng-model="ancillaryData.rightsHolder" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
                   <option value="">- Seleccione -</option>
                 </select>
                 <!--label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	-->
@@ -175,14 +176,14 @@
           </div>
         </div>
       </div>
-      <button type="button" data-ng-click="addAnnualCycleAtomizedType(formData.annualCycle.annualCycleAtomized, annualCycleAtomizedType)" class="btn btn-success btn-sm pull-right">Guardar</button>
+      <button type="button" data-ng-click="addAnnualCycleAtomizedType(formData.annualCycles.annualCycleAtomized, annualCycleAtomizedType)" class="btn btn-success btn-sm pull-right">Guardar</button>
       <div class="form-group">
         <hr/>
         <label for="annualCyclesUnstructured" translate="">simplePliCTerm.name.AnnualCyclesUnstructured</label><em>(opcional)</em><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.AnnualCyclesUnstructured&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
-        <textarea rows="3" name="annualCycle" data-ng-model="formData.annualCycle.annualCycleUnstructured"></textarea>
+        <textarea rows="3" name="annualCycle" data-ng-model="formData.annualCycles.annualCycleUnstructured"></textarea>
         <div data-ng-controller="CollapseDemoCtrl">
           <div class="form-group">
-            <div data-ng-show="(formData.annualCycle.ancillaryData).length" class="table-responsive">
+            <div data-ng-show="(formData.annualCycles.ancillaryData).length" class="table-responsive">
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -194,13 +195,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr data-ng-repeat="ancillary in formData.annualCycle.ancillaryData track by $index">
+                  <tr data-ng-repeat="ancillary in formData.annualCycles.ancillaryData track by $index">
                     <td>{{ancillary.bibliographicCitation}}</td>
                     <td>{{ancillary.license}}	</td>
                     <td>{{ancillary.rights}}</td>
                     <td>{{ancillary.source}}	</td>
                     <td>
-                      <button data-ng-click="removeAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                      <button data-ng-click="removeAncillaryData(formData.annualCycles.ancillaryData,ancillaryData)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
                     </td>
                   </tr>
                 </tbody>
@@ -211,7 +212,7 @@
               <div uib-collapse="isCollapsed">
                 <input type="text" data-ng-model="ancillaryData.bibliographicCitation" placeholder="{{&quot;simplePliCTerm.name.bibliographicCitation&quot;|translate}}"/>
                 <input type="text" data-ng-model="ancillaryData.license" placeholder="{{&quot;simplePliCTerm.name.license&quot;|translate}}"/>
-                <input type="text" data-ng-model="ancillaryData.rights" placeholder="{{&quot;simplePliCTerm.name.rights&quot;|translate}}"/>
+                <input type="text" data-ng-model="ancillaryData.rightsHolder" placeholder="{{&quot;simplePliCTerm.name.rights&quot;|translate}}"/>
                 <!--input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')-->
                 <div class="panel panel-default">
                   <div class="panel-heading">
@@ -264,7 +265,7 @@
                     </div>
                   </div>
                 </div>
-                <button type="button" data-ng-click="addAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Guardar</button>
+                <button type="button" data-ng-click="addAncillaryData(formData.annualCycles.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Guardar</button>
               </div>
             </div>
           </div>

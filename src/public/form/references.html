@@ -6,9 +6,9 @@
         <spant>{{"simplePliCTerm.name.References"|translate}}
           <spant></spant>
         </spant>
-        <!--button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addReferences()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
-        -->
-        <button href="" data-ng-click="slide()" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': !checked , 'glyphicon glyphicon-minus' : checked}" aria-hidden="true"></span></button>
+        <div class="pull-right"></div>
+        <button type="button" data-ng-click="addReferences()" class="btn btn-success btn-xs"> <span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"></span></button>
+        <button href="" data-ng-click="slide()" class="btn btn-success btn-xs"><span ng-class="{'glyphicon glyphicon-plus': !checked , 'glyphicon glyphicon-minus' : checked}" aria-hidden="true"></span></button>
       </div>
       <div class="panel-body">
         <div pageslide="pageslide" ps-open="checked" ps-key-listener="true">

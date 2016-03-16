@@ -7,7 +7,7 @@ div(data-ng-controller='AncillaryDataCtrl')
 					spant
 						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AncillaryData"|translate}}')
 							span.glyphicon.glyphicon-info-sign
-				//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addAncillaries()') 
+				button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addAncillaries()') 
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 			.panel-body
 
@@ -125,7 +125,7 @@ div(data-ng-controller='AncillaryDataCtrl')
 				.form-group
 					label.col-xs-2.control-label(for='rights', translate='') simplePliCTerm.name.rights
 					.col-xs-9
-						select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
+						select(data-ng-model='ancillaryData.rightsHolder', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
 							option(value='') - Seleccione -
 					.col-xs-1
 						a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.rights"|translate}}')

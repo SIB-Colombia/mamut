@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.interactions',[])
-.controller('InteractionsCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+.controller('InteractionsCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory', function($scope,$http, ReferenceFactory,AncillaryDataFactory) {
 	//interactions
 	$scope.interactionsAtomizedType = $scope.interactionsFactoryLocal.interactionsAtomizedType;
 
@@ -37,9 +37,22 @@ angular.module('app.controllers.interactions',[])
 	};
 
 	$scope.addInteraction = function(){
-		if($scope.formData.interactions.interactionsUnstructured !== ''){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			 method: 'POST',
+			 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/interactions/',
+			 headers: {
+			   'Content-Type': 'application/JSON'
+			 },
+			 data: { "id_user" : "01",
+			 		"interactions":$scope.formData.interactions
+
+			 }
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 	$scope.addInteractionAtomizedType = function(list,interactionsAtomizedType){
@@ -179,5 +192,18 @@ angular.module('app.controllers.interactions',[])
 		$scope.reference = angular.copy(origR);
 		$scope.checked = !$scope.checked;
 		$scope.index_reference = '';
+	};
+
+	$scope.checkTax = function(){
+		var taxonName = $scope.interactionsAtomizedType.interactionSpecies;
+		if(taxonName!==undefined&&taxonName!==''){
+			$.getJSON('http://api.gbif.org/v1/species?name=' + taxonName + '&limit=1',function( data ) {
+	  			if (data.results.length > 0) {
+	  				alert("El nombre científico ha sido verificado con éxito.");
+	  			}else{
+	  				alert("El nombre científico no pudo ser validado, por favor verifique la ortografía.");
+	  			}
+	  		});
+		}
 	};
 }]);

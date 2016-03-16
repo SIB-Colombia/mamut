@@ -5,9 +5,10 @@ div(data-ng-controller='ReferenceCrtl')
 				spant
 					| {{"simplePliCTerm.name.References"|translate}}
 					spant
-				//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addReferences()') 
+				div.pull-right
+				button.btn.btn-success.btn-xs(type='button', data-ng-click='addReferences()') 
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
-				button.btn.btn-success.btn-xs.pull-right(href="", data-ng-click="slide()")
+				button.btn.btn-success.btn-xs(href="", data-ng-click="slide()")
 					span(ng-class="{'glyphicon glyphicon-plus': !checked , 'glyphicon glyphicon-minus' : checked}", aria-hidden='true')
 			.panel-body
 				div(pageslide ps-open="checked" ps-key-listener="true")

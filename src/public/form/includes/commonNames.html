@@ -4,7 +4,10 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <spant>{{"simplePliCTerm.name.CommonNamesAtomized"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.CommonNamesAtomized&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
-        <button data-ng-click="isCollapsed = !isCollapsed" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}" aria-hidden="true"></span></button>
+        <div class="pull-right">
+          <button data-ng-click="isCollapsed = !isCollapsed" class="btn btn-success btn-xs"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}" aria-hidden="true"></span></button>
+          <button type="button" data-ng-click="addCommonNameDB()" class="btn btn-success btn-xs"> <span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"></span></button>
+        </div>
       </div>
       <div class="panel-body">
         <div uib-collapse="isCollapsed" id="commonNameForm">
@@ -159,7 +162,7 @@
                 	p(style="font-size:90%;")
                 		i * Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co
                 label.control-label(for='rights', translate='') simplePliCTerm.name.rights
-                select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
+                select(data-ng-model='ancillaryData.rightsHolder', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
                 	option(value='') - Seleccione -
                 -->
               </div>
@@ -169,14 +172,14 @@
             </div>
             <div class="form-group">
               <div class="pull-right">
-                <button type="button" data-ng-click="addCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn btn-success btn-sm">Guardar</button>
+                <button type="button" data-ng-click="addCommonNamesAtomized(formData.commonNamesAtomized,commonName)" class="btn btn-success btn-sm">Guardar</button>
                 <button type="button" data-ng-click="cancelCommonNamesAtomized()" class="btn btn-success btn-sm">Cancelar</button>
               </div>
             </div>
           </div>
         </div>
         <div class="divider"></div>
-        <div data-ng-show="(formData.commonNameAtomized).length" class="table-responsive">
+        <div data-ng-show="(formData.commonNamesAtomized).length" class="table-responsive">
           <hr/>
           <table class="table table-striped">
             <thead>
@@ -201,7 +204,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-ng-repeat="commonName in formData.commonNameAtomized track by $index| orderBy:'language'">
+              <tr data-ng-repeat="commonName in formData.commonNamesAtomized track by $index| orderBy:'language'">
                 <td>
                   <div data-ng-show="commonName.name">{{commonName.name}}</div>
                 </td>
@@ -215,8 +218,8 @@
                   <div data-ng-show="commonName.usedBy">{{commonName.usedBy}}</div>
                 </td>
                 <td>
-                  <button data-ng-click="removeCommonNamesAtomized(formData.commonNameAtomized,commonName)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
-                  <button data-ng-click="editCommonNamesAtomized(formData.commonNameAtomized,commonName,$index)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
+                  <button data-ng-click="removeCommonNamesAtomized(formData.commonNamesAtomized,commonName)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></button>
+                  <button data-ng-click="editCommonNamesAtomized(formData.commonNamesAtomized,commonName,$index)" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-pencil"></span></button>
                 </td>
               </tr>
             </tbody>

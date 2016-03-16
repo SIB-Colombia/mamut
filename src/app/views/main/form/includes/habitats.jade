@@ -6,10 +6,10 @@ div(data-ng-controller='HabitatsCtrl')
 				spant
 					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Habitats"|translate}}')
 						span.glyphicon.glyphicon-info-sign
-			//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addHabitat()') 
+			button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addHabitat()') 
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
-			div.table-responsive(data-ng-show='(formData.habitat.habitatAtomized).length')
+			div.table-responsive(data-ng-show='(formData.habitats.habitatAtomized).length')
 				table.table.table-striped
 					thead
 						tr
@@ -18,13 +18,13 @@ div(data-ng-controller='HabitatsCtrl')
 							th
 					
 					tbody
-						tr(data-ng-repeat="habitatAtomized in formData.habitat.habitatAtomized track by $index")
+						tr(data-ng-repeat="habitatAtomized in formData.habitats.habitatAtomized track by $index")
 							td
 								| {{habitatAtomized.measurementOrFact.measurementType}}
 							td
 								| {{habitatAtomized.measurementOrFact.measurementValue}}
 							td
-								button.btn(data-ng-click='removeHabitatAtomized(formData.habitat.habitatAtomized, habitatAtomized)')
+								button.btn(data-ng-click='removeHabitatAtomized(formData.habitats.habitatAtomized, habitatAtomized)')
 									span(class="glyphicon glyphicon-trash", aria-hidden='true')
 			.form-group
 				div(data-ng-controller='MeasurementCtrl')
@@ -35,18 +35,18 @@ div(data-ng-controller='HabitatsCtrl')
 						select(data-ng-model='habitatAtomized.measurementValue', data-ng-disabled='!habitatAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr')
 							option(value='') - Seleccione -
 					.col-xs-2
-						button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(formData.habitat.habitatAtomized, measurementOrFact)') Guardar 
+						button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(formData.habitats.habitatAtomized, measurementOrFact)') Guardar 
 			.form-group
 				hr
 				label(for='habitatUnstructured', translate='') simplePliCTerm.name.HabitatUnstructured
 				em (opcional)
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.HabitatUnstructured"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-				textarea(rows='3', name='habitat', data-ng-model='formData.habitat.habitatUnstructured')
+				textarea(rows='3', name='habitat', data-ng-model='formData.habitats.habitatUnstructured')
 				
 				div(data-ng-controller='CollapseDemoCtrl')
 					.form-group
-						div.table-responsive(data-ng-show='(formData.habitat.ancillaryData).length')
+						div.table-responsive(data-ng-show='(formData.habitats.ancillaryData).length')
 							table.table.table-striped
 								thead
 									tr
@@ -58,7 +58,7 @@ div(data-ng-controller='HabitatsCtrl')
 										th.col-xs-1
 								
 								tbody
-									tr(data-ng-repeat="ancillary in formData.habitat.ancillaryData track by $index")
+									tr(data-ng-repeat="ancillary in formData.habitats.ancillaryData track by $index")
 										//td
 											| {{ancillary.source}}
 										//td
@@ -74,9 +74,9 @@ div(data-ng-controller='HabitatsCtrl')
 													textarea(disabled)
 															| {{ref|references_format}}
 										td
-											button.btn(data-ng-click='removeAncillaryData(formData.habitat.ancillaryData,ancillary)')
+											button.btn(data-ng-click='removeAncillaryData(formData.habitats.ancillaryData,ancillary)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
-											button.btn(data-ng-click='editAncillaryData(formData.habitat.ancillaryData,ancillary,$index)')
+											button.btn(data-ng-click='editAncillaryData(formData.habitats.ancillaryData,ancillary,$index)')
 												span(class="glyphicon glyphicon-pencil", aria-hidden='true')
 						button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='isCollapsed = !isCollapsed') Referencias y licencias
 						div.divider
@@ -154,9 +154,9 @@ div(data-ng-controller='HabitatsCtrl')
 										p(style="font-size:90%;")
 											i * Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co
 									label.control-label(for='rights', translate='') simplePliCTerm.name.rights
-									select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
+									select(data-ng-model='ancillaryData.rightsHolder', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
 										option(value='') - Seleccione -
 									//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 									//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
-								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.habitat.ancillaryData,ancillaryData)', translate='') Guardar
+								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.habitats.ancillaryData,ancillaryData)', translate='') Guardar
 								button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar

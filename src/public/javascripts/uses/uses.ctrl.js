@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.use',[])
-.controller('UsesCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','UsesFactory', function($scope,ReferenceFactory,AncillaryDataFactory,UsesFactory) {
+.controller('UsesCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory','UsesFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory,UsesFactory) {
 	
 	var usesFactoryLocal = new UsesFactory();
 	$scope.usesAtomizedType = usesFactoryLocal.usesAtomizedType;
@@ -38,13 +38,25 @@ angular.module('app.controllers.use',[])
 	};
 
 	$scope.addUse = function(){
-		if($scope.formData.usesManagementAndConservation.usesAtomized.length > 0 ){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			method: 'POST',
+			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/uses_management_and_conservation/',
+			headers: {
+			  'Content-Type': 'application/JSON'
+			},
+			data: { "id_user" : "01",
+				"usesManagementAndConservation":$scope.formData.usesManagementAndConservation
+
+			}
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 	$scope.addUsesAtomized = function(list, usesAtomized){
-		console.log('Hola');
 		if (JSON.stringify(usesAtomized) !== JSON.stringify(origUA)){
 			if($scope.index_usesAtomized !== ''){
 				list[$scope.index_usesAtomized] = angular.copy(usesAtomized);

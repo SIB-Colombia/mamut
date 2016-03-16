@@ -12,16 +12,17 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
       getData: function ($defer, params) {
         var page = params.page();
         var size = params.count();
-        var testUrl = 'http://apimamut.elasticbeanstalk.com/get-list';
+        var testUrl = 'http://192.168.205.17:8080/lista';
         var search = {
           q: 'angular',
           page: page,
           per_page: size
         };
-        $http.get(testUrl, { params: search, headers: { 'Content-Type': 'application/json'} })
+        $http.get(testUrl, { headers: { 'Content-Type': 'application/json'} })
          .then(function(res) {
-            params.total(res.data.total);
-            $defer.resolve(res.data.docs);
+            //params.total(res.data.total);
+            //$defer.resolve(res.data.docs);
+            $defer.resolve(res.data);
           }, function(reason) {
             console.log(reason);
             $defer.reject();

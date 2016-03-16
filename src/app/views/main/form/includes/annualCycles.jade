@@ -6,8 +6,10 @@ div(data-ng-controller='AnnualCyclesCtrl')
 				spant
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AnnualCycles"|translate}}')
 					span.glyphicon.glyphicon-info-sign
+				button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addAnnualCycle()') 
+					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
-			.selected-item(data-ng-repeat='annualCycleAtomized in formData.annualCycle.annualCycleAtomized')
+			.selected-item(data-ng-repeat='annualCycleAtomized in formData.annualCycles.annualCycleAtomized')
 				div(data-ng-show='annualCycleAtomized')
 					div Evento: {{annualCycleAtomized.Event}}
 					div Start Time: {{annualCycleAtomized.startTimeInterval| date: 'yyyy-MM-dd'}}
@@ -139,23 +141,23 @@ div(data-ng-controller='AnnualCyclesCtrl')
 									p(style="font-size:90%;")
 										i * Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co
 								label.control-label(for='rights', translate='') simplePliCTerm.name.rights
-								select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
+								select(data-ng-model='ancillaryData.rightsHolder', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
 									option(value='') - Seleccione -
 								//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 								//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
 						button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(annualCycleAtomizedType.ancillaryData,ancillaryData)', translate='') Agregar Información adicional
-			button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addAnnualCycleAtomizedType(formData.annualCycle.annualCycleAtomized, annualCycleAtomizedType)') Guardar
+			button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addAnnualCycleAtomizedType(formData.annualCycles.annualCycleAtomized, annualCycleAtomizedType)') Guardar
 			.form-group
 				hr
 				label(for='annualCyclesUnstructured', translate='') simplePliCTerm.name.AnnualCyclesUnstructured
 				em (opcional)
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.AnnualCyclesUnstructured"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-				textarea(rows='3', name='annualCycle', data-ng-model='formData.annualCycle.annualCycleUnstructured')
+				textarea(rows='3', name='annualCycle', data-ng-model='formData.annualCycles.annualCycleUnstructured')
 
 				div(data-ng-controller='CollapseDemoCtrl')
 					.form-group
-						div.table-responsive(data-ng-show='(formData.annualCycle.ancillaryData).length')
+						div.table-responsive(data-ng-show='(formData.annualCycles.ancillaryData).length')
 							table.table.table-striped
 								thead
 									tr
@@ -166,7 +168,7 @@ div(data-ng-controller='AnnualCyclesCtrl')
 										th
 								
 								tbody
-									tr(data-ng-repeat="ancillary in formData.annualCycle.ancillaryData track by $index")
+									tr(data-ng-repeat="ancillary in formData.annualCycles.ancillaryData track by $index")
 										td
 											| {{ancillary.bibliographicCitation}}
 										td
@@ -176,14 +178,14 @@ div(data-ng-controller='AnnualCyclesCtrl')
 										td
 											| {{ancillary.source}}	
 										td
-											button.btn(data-ng-click='removeAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)')
+											button.btn(data-ng-click='removeAncillaryData(formData.annualCycles.ancillaryData,ancillaryData)')
 												span(class="glyphicon glyphicon-trash", aria-hidden='true')
 						button.btn.btn-primary.btn-sm.pull-right(type='button', data-ng-click='isCollapsed = !isCollapsed') {{"simplePliCTerm.name.AncillaryData"|translate}}
 						.col-xs-10
 							div(uib-collapse='isCollapsed')
 								input(type='text', data-ng-model='ancillaryData.bibliographicCitation', placeholder='{{"simplePliCTerm.name.bibliographicCitation"|translate}}')
 								input(type='text', data-ng-model='ancillaryData.license', placeholder='{{"simplePliCTerm.name.license"|translate}}')
-								input(type='text', data-ng-model='ancillaryData.rights', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
+								input(type='text', data-ng-model='ancillaryData.rightsHolder', placeholder='{{"simplePliCTerm.name.rights"|translate}}')
 								//input(type='text', data-ng-model='ancillaryData.source', placeholder='{{"simplePliCTerm.name.source"|translate}}')
 								.panel.panel-default
 									.panel-heading
@@ -230,4 +232,4 @@ div(data-ng-controller='AnnualCyclesCtrl')
 												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 											button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar Referencia
-								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.annualCycle.ancillaryData,ancillaryData)', translate='') Guardar
+								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.annualCycles.ancillaryData,ancillaryData)', translate='') Guardar

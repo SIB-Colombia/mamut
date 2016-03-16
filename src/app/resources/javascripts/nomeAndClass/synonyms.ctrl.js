@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.synonmy',[])
-.controller("SynonmyCtrl", ['$scope', 'ReferenceFactory', 'AncillaryDataFactory', 'SynonmyFactory', function($scope ,ReferenceFactory,AncillaryDataFactory,SynonmyFactory){
+.controller("SynonmyCtrl", ['$scope', '$http', 'ReferenceFactory', 'AncillaryDataFactory', 'SynonmyFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory,SynonmyFactory){
 	//synonmy
 	var synonmyFactoryLocal = new SynonmyFactory();
 	$scope.synonmy = synonmyFactoryLocal.synonmy;
@@ -37,6 +37,25 @@ angular.module('app.controllers.synonmy',[])
 	    $scope.checked = !$scope.checked;
 	};
 
+	$scope.addSynonymsDB= function() {
+		var req_1 = {
+			 method: 'POST',
+			 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/synonyms_atomized/',
+			 headers: {
+			   'Content-Type': 'application/JSON'
+			 },
+			 data: { "id_user" : "01",
+			 		"synonymsAtomized":$scope.formData.synonymsAtomized
+
+			 }
+		};
+
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
+	};
 
 	//ADD
 	$scope.addSynonymsAtomized = function(synonymsAtomized, synonmy) {

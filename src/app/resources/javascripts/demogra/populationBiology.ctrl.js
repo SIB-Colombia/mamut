@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.populationBiology',[])
-.controller('PopulationBiologyCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory',function($scope,ReferenceFactory,AncillaryDataFactory) {
+.controller('PopulationBiologyCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory',function($scope,$http,ReferenceFactory,AncillaryDataFactory) {
 	
 	$scope.populationBiologyAtomized = $scope.populationBiologyFactoryLocal.populationBiologyAtomized;
 	
@@ -37,9 +37,22 @@ angular.module('app.controllers.populationBiology',[])
 	};
 
 	$scope.addPopulationBiology = function(){
-		if($scope.formData.populationBiology.populationBiologyUnstructured !== ''){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			method: 'POST',
+			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/population_biology/',
+			headers: {
+			  'Content-Type': 'application/JSON'
+			},
+			data: { "id_user" : "01",
+				"populationBiology":$scope.formData.populationBiology
+
+			}
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 	
 	$scope.addPopulationBiologyAtomized = function(list, populationBiologyAtomized) {

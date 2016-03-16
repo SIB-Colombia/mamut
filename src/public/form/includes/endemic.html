@@ -5,8 +5,7 @@
       <spant>{{"simplePliCTerm.name.EndemicAtomized"|translate}}
         <spant></spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.EndemicAtomized&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
       </spant>
-      <!--button.btn.btn-success.btn-xs.pull-right(data-ng-click='addEndemic(formData.endemicAtomized,endemicAtomizedType)')span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true') 
-      -->
+      <button data-ng-click="addEndemicDB()" class="btn btn-success btn-xs pull-right"><span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"> </span></button>
     </div>
     <div class="panel-body">
       <div data-ng-show="(formData.endemicAtomized).length" class="table-responsive">
@@ -196,7 +195,7 @@
                   <p style="font-size:90%;"><i>* Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co</i></p>
                 </panel>
                 <label for="rights" translate="" class="control-label">simplePliCTerm.name.rights</label>
-                <select data-ng-model="ancillaryData.rights" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
+                <select data-ng-model="ancillaryData.rightsHolder" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
                   <option value="">- Seleccione -</option>
                 </select>
                 <!--label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	-->

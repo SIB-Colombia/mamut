@@ -4,7 +4,10 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <spant>{{"simplePliCTerm.name.SynonymsAtomized"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.SynonymsAtomized&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
-        <button data-ng-click="isCollapsed = !isCollapsed" class="btn btn-success btn-xs pull-right"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}" aria-hidden="true"></span></button>
+        <div class="pull-right">
+          <button data-ng-click="isCollapsed = !isCollapsed" class="btn btn-success btn-xs"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}" aria-hidden="true"></span></button>
+          <button type="button" data-ng-click="addSynonymsDB()" class="btn btn-success btn-xs"> <span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"></span></button>
+        </div>
       </div>
       <div class="panel-body">
         <div uib-collapse="isCollapsed" id="sysnonymForm">

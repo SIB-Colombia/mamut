@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.commonName',[])
-.controller('CommonNameCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', 'CommonNameFactory', function($scope,ReferenceFactory,AncillaryDataFactory,CommonNameFactory) {
+.controller('CommonNameCtrl', ['$scope','$http', 'ReferenceFactory', 'AncillaryDataFactory', 'CommonNameFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory,CommonNameFactory) {
 	//Common Name element
 	var commonNameFactoryLocal = new CommonNameFactory();
 	$scope.commonName = commonNameFactoryLocal.commonName;
@@ -37,13 +37,33 @@ angular.module('app.controllers.commonName',[])
 	    $scope.checked = !$scope.checked;
 	};
 	
+	$scope.addCommonNameDB= function() {
+		var req_1 = {
+			 method: 'POST',
+			 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/common_names_atomized/',
+			 headers: {
+			   'Content-Type': 'application/JSON'
+			 },
+			 data: { "id_user" : "01",
+			 		"commonNamesAtomized":$scope.formData.commonNamesAtomized
+
+			 }
+		};
+
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
+	};
+
 	//ADD
-	$scope.addCommonNamesAtomized = function(commonNameAtomized, commonName) {
+	$scope.addCommonNamesAtomized = function(commonNamesAtomized, commonName) {
 		if (JSON.stringify(commonName) !== JSON.stringify(origCN)){
 			if($scope.index_common !== ''){
-				commonNameAtomized[$scope.index_common] = angular.copy(commonName);
+				commonNamesAtomized[$scope.index_common] = angular.copy(commonName);
 			}else{
-				commonNameFactoryLocal.add(commonNameAtomized, commonName);	
+				commonNameFactoryLocal.add(commonNamesAtomized, commonName);	
 			}
 			
 			//Reset the scope variable
@@ -55,12 +75,12 @@ angular.module('app.controllers.commonName',[])
 	};
 
 	//DELETE
-	$scope.removeCommonNamesAtomized = function(commonNameAtomized, commonName) {
-		commonNameFactoryLocal.delete(commonNameAtomized, commonName);
+	$scope.removeCommonNamesAtomized = function(commonNamesAtomized, commonName) {
+		commonNameFactoryLocal.delete(commonNamesAtomized, commonName);
 	};
 
 	//EDIT
-	$scope.editCommonNamesAtomized = function(commonNameAtomized, commonName, index) {
+	$scope.editCommonNamesAtomized = function(commonNamesAtomized, commonName, index) {
 		$scope.commonName = angular.copy(commonName);
 		$scope.index_common = index;
 		$('#commonNameForm').collapse("show");

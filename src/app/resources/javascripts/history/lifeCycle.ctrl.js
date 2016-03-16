@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.lifeCycle',[])
-.controller('LifeCycleCtrl', ['$scope', 'ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+.controller('LifeCycleCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory) {
 
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -32,9 +32,22 @@ angular.module('app.controllers.lifeCycle',[])
 	};
 
 	$scope.addLifeCycle = function(){
-		if($scope.formData.lifeCycle.lifeCycleUnstructured !== ''){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			 method: 'POST',
+			 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/life_cycle/',
+			 headers: {
+			   'Content-Type': 'application/JSON'
+			 },
+			 data: { "id_user" : "01",
+			 		"lifeCycle":$scope.formData.lifeCycle
+
+			 }
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 	$scope.removeLifeCycleAtomized= function(list,lifeCycleAtomized){

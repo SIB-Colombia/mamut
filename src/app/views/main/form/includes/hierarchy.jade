@@ -5,8 +5,11 @@ div(data-ng-controller='HierarchyCtrl')
 				spant {{"simplePliCTerm.name.Hierarchy"|translate}}
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Hierarchy"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-				button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed = !isCollapsed')
-					span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true', id = 'iconH')
+				div.pull-right
+					button.btn.btn-success.btn-xs(data-ng-click='isCollapsed = !isCollapsed')
+						span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true', id = 'iconH')
+					button.btn.btn-success.btn-xs(type='button', data-ng-click='addHierarchyDB()') 
+						span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 			.panel-body
 				div.table-responsive(data-ng-show='(formData.hierarchy).length')
 					table.table.table-striped

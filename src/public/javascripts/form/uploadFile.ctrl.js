@@ -14,6 +14,7 @@ angular.module('app.controllers.upload',[])
     	var strFinal = (strClean).replace(/}/g,"");
     	return strFinal;
     };
+
     $scope.showContent = function($fileContent){
         $scope.content = $fileContent;
         

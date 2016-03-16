@@ -6,7 +6,7 @@ div(data-ng-controller='UsesCtrl')
 				spant
 					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Uses"|translate}}')
 						span.glyphicon.glyphicon-info-sign
-			//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addUse()') 
+			button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addUse()') 
 				span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 		.panel-body
 			.form-group
@@ -214,7 +214,7 @@ div(data-ng-controller='UsesCtrl')
 										p(style="font-size:90%;")
 											i * Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co
 									label.control-label(for='rights', translate='') simplePliCTerm.name.rights
-									select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
+									select(data-ng-model='ancillaryData.rightsHolder', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
 										option(value='') - Seleccione -
 									//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 									//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')

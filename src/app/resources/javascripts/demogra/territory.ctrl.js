@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.territory',[])
-.controller('TerritoryCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+.controller('TerritoryCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory) {
 	
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -33,9 +33,22 @@ angular.module('app.controllers.territory',[])
 	};
 	
 	$scope.addTerritory = function(){
-		if($scope.formData.territory.territoryUnstructured !== ''){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			method: 'POST',
+			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/territory/',
+			headers: {
+			  'Content-Type': 'application/JSON'
+			},
+			data: { "id_user" : "01",
+				"territory":$scope.formData.territory
+
+			}
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 	$scope.addAncillaryData = function(ancillaryDataList,ancillaryData){

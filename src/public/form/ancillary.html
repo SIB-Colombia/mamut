@@ -6,8 +6,7 @@
         <spant>{{"simplePliCTerm.name.AncillaryData"|translate}}
           <spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.AncillaryData&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
         </spant>
-        <!--button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addAncillaries()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
-        -->
+        <button type="button" data-ng-click="addAncillaries()" class="btn btn-success btn-xs pull-right"> <span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"></span></button>
       </div>
       <div class="panel-body">
         <div data-ng-show="(formData.ancillaryData).length" class="table-responsive">
@@ -140,7 +139,7 @@
         <div class="form-group">
           <label for="rights" translate="" class="col-xs-2 control-label">simplePliCTerm.name.rights</label>
           <div class="col-xs-9">
-            <select data-ng-model="ancillaryData.rights" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
+            <select data-ng-model="ancillaryData.rightsHolder" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
               <option value="">- Seleccione -</option>
             </select>
           </div>

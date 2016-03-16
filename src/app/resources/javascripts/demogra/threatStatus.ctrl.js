@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.threatStatus',[])
-.controller('ThreatStatusCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','ThreatStatusFactory', function($scope,ReferenceFactory,AncillaryDataFactory,ThreatStatusFactory) {
+.controller('ThreatStatusCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory','ThreatStatusFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory,ThreatStatusFactory) {
 	
 	var threatStatusFactoryLocal = new ThreatStatusFactory();
 	$scope.threatStatusClass = threatStatusFactoryLocal.threatStatusClass;
@@ -45,9 +45,22 @@ angular.module('app.controllers.threatStatus',[])
 	};
 
 	$scope.addThreatStatus = function(){
-		if($scope.threatStatusClass.threatStatusUnstructured !== ''){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			method: 'POST',
+			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/threat_status/',
+			headers: {
+			  'Content-Type': 'application/JSON'
+			},
+			data: { "id_user" : "01",
+				"threatStatus":$scope.formData.threatStatus
+
+			}
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 	$scope.addThreatStatusClass = function(list, threatStatusClass) {

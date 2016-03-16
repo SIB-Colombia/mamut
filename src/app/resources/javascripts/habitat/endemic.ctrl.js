@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.endemic',[])
-.controller('EndemicCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','EndemicFactory', function($scope,ReferenceFactory,AncillaryDataFactory,EndemicFactory) {
+.controller('EndemicCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory','EndemicFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory,EndemicFactory) {
 	
 	var endemicFactoryLocal = new EndemicFactory();
 	$scope.endemicTo = '';
@@ -36,6 +36,25 @@ angular.module('app.controllers.endemic',[])
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
+	};
+
+	$scope.addEndemicDB = function(){
+		var req_1 = {
+			method: 'POST',
+			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/endemic_atomized/',
+			headers: {
+			  'Content-Type': 'application/JSON'
+			},
+			data: { "id_user" : "01",
+				"endemicAtomized":$scope.formData.endemicAtomized
+
+			}
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 	$scope.addEndemic = function(list, endemicAtomized) {

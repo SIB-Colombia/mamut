@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.feeding',[])
-.controller('FeedingCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+.controller('FeedingCtrl', ['$scope','$http', 'ReferenceFactory', 'AncillaryDataFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory) {
 	//feeding
 	$scope.thropic = $scope.feedingFactoryLocal.thropic;
 	$scope.feedingAtomizedType = $scope.feedingFactoryLocal.feedingAtomizedType;
@@ -36,9 +36,21 @@ angular.module('app.controllers.feeding',[])
 	};
 
 	$scope.addFeeding = function(){
-		if($scope.formData.feeding.feedingUnstructured !== ''){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			method: 'POST',
+			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/feeding/',
+			headers: {
+			  'Content-Type': 'application/JSON'
+			},
+			data: { "id_user" : "01",
+				"feeding":$scope.formData.feeding
+			}
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 	$scope.addFeedingAtomizedType = function(feeding, feedingAtomizedType) {

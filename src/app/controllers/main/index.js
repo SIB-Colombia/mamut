@@ -20,12 +20,12 @@ exports.edit = function(req, res) {
 	var request = require("request");
 	var id = req.query.id;
 
-	request("http://apimamut.elasticbeanstalk.com/get-record/"+id, function(error, response, body) {
+	request("http://192.168.205.17:8080/fichas/"+id, function(error, response, body) {
 		if (!error && res.statusCode === 200) {
 			body = body.replace(/\{\{(.+?)\}\}/g, '');
 			var data = JSON.parse(body);
 			request("http://s3.amazonaws.com/mutis/vocabularies/test/lenguajesControlados.json", function(error, response, body) {
-				if (!error && res.statusCode == 200) {
+				if (!error && res.statusCode === 200) {
 					var lenguajes = JSON.parse(body);
 					res.render('index', { title: 'Editor Catálogo de la Biodiversidad' , json: data, lenguajes: lenguajes });
 				}

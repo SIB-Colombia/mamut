@@ -5,8 +5,11 @@ div(data-ng-controller='SynonmyCtrl')
 				spant {{"simplePliCTerm.name.SynonymsAtomized"|translate}}
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.SynonymsAtomized"|translate}}')
 					span.glyphicon.glyphicon-info-sign
-				button.btn.btn-success.btn-xs.pull-right(data-ng-click='isCollapsed = !isCollapsed')
-					span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true')
+				div.pull-right
+					button.btn.btn-success.btn-xs(data-ng-click='isCollapsed = !isCollapsed')
+						span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true')
+					button.btn.btn-success.btn-xs(type='button', data-ng-click='addSynonymsDB()') 
+						span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 			.panel-body
 				div(uib-collapse='isCollapsed', id='sysnonymForm')
 					.form-group

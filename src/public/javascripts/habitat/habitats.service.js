@@ -3,7 +3,7 @@
 angular.module('app.services.habitat',[])
 .factory('HabitatsFactory', function(){
 	return function() {
-		this.habitat = {
+		this.habitats = {
 			habitatAtomized: [],
 			habitatUnstructured: '',
 			ancillaryData: []

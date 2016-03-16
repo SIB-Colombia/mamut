@@ -10,7 +10,7 @@ angular.module('app.services.annualCycle',[])
 			ancillaryData: []
 		};
 
-		this.annualCycle = {
+		this.annualCycles = {
 			annualCycleAtomized: [],
 			annualCycleUnstructured: '',
 			ancillaryData: []

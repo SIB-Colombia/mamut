@@ -23,13 +23,13 @@ angular.module('app.services.commonName',[])
 			ancillaryData: []
 		};
 
-		this.add = function(commonNameAtomized, commonName){
-			commonNameAtomized.push(commonName);
+		this.add = function(commonNamesAtomized, commonName){
+			commonNamesAtomized.push(commonName);
 		};
 
-		this.delete = function(commonNameAtomized, commonName){
-			var index = commonNameAtomized.indexOf(commonName);
-			commonNameAtomized.splice(index,1);
+		this.delete = function(commonNamesAtomized, commonName){
+			var index = commonNamesAtomized.indexOf(commonName);
+			commonNamesAtomized.splice(index,1);
 		};
 	};
 });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.managementAndConservation',[])
-.controller('ManagementAndConservationCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+.controller('ManagementAndConservationCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory) {
 	
 	$scope.managementAndConservationAtomizedType = $scope.managementAndConservationAtomizedFactoryLocal.managementAndConservationAtomizedType;
 	
@@ -37,9 +37,22 @@ angular.module('app.controllers.managementAndConservation',[])
 	};
 
 	$scope.addManagement = function(){
-		if($scope.formData.usesManagementAndConservation.managementAndConservationAtomized.length !== ''){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			method: 'POST',
+			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/uses_management_and_conservation/',
+			headers: {
+			  'Content-Type': 'application/JSON'
+			},
+			data: { "id_user" : "01",
+				"usesManagementAndConservation":$scope.formData.usesManagementAndConservation
+
+			}
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 	$scope.addManagementAndConservation = function(list, managementAndConservation) {

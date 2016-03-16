@@ -5,8 +5,7 @@
       <spant>{{"simplePliCTerm.name.Interactions" | translate}}
         <spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Interactions&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
       </spant>
-      <!--button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addInteraction()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
-      -->
+      <button type="button" data-ng-click="addInteraction()" class="btn btn-success btn-xs pull-right"> <span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"></span></button>
     </div>
     <div class="panel-body">
       <div data-ng-show="(formData.interactions.interactionsAtomized).length" class="table-responsive">
@@ -42,8 +41,11 @@
       </div>
       <div class="form-group">
         <label for="interactionSpecies" translate="" class="col-xs-2 control-label">simplePliCTerm.name.InteractionSpecies</label>
-        <div class="col-xs-10">
-          <input type="text" data-ng-model="interactionsAtomizedType.interactionSpecies"/>
+        <div class="col-xs-8">
+          <input type="text" data-ng-model="interactionsAtomizedType.interactionSpecies" name="interaction"/>
+        </div>
+        <div class="col-xs-2">
+          <button type="button" data-ng-click="checkTax()" class="btn btn-success btn-xs pull-right"> <span aria-hidden="true" class="glyphicon glyphicon-check">Verificar</span></button>
         </div>
       </div>
       <div class="form-group">
@@ -86,9 +88,11 @@
           </div>
         </div>
       </div>
-      <div class="pull-right">
-        <button type="button" data-ng-click="addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)" class="btn btn-success btn-sm">Guardar interacción</button>
-        <button type="button" data-ng-click="cancelInteractionAtomizedType()" class="btn btn-success btn-sm">Cancelar</button>
+      <div class="form-group">
+        <div class="pull-right">
+          <button type="button" data-ng-click="addInteractionAtomizedType(formData.interactions.interactionsAtomized,interactionsAtomizedType)" class="btn btn-success btn-sm">Guardar interacción</button>
+          <button type="button" data-ng-click="cancelInteractionAtomizedType()" class="btn btn-success btn-sm">Cancelar</button>
+        </div>
       </div>
       <div class="form-group">
         <hr/>
@@ -221,7 +225,7 @@
                     <p style="font-size:90%;"><i>* Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co</i></p>
                   </panel>
                   <label for="rights" translate="" class="control-label">simplePliCTerm.name.rights</label>
-                  <select data-ng-model="ancillaryData.rights" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
+                  <select data-ng-model="ancillaryData.rightsHolder" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
                     <option value="">- Seleccione -</option>
                   </select>
                   <!--label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	-->

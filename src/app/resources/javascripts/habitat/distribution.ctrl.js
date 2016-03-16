@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.distribution',[])
-.controller('DistributionCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory','DistributionFactory',function($scope,ReferenceFactory,AncillaryDataFactory,DistributionFactory) {
+.controller('DistributionCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory','DistributionFactory',function($scope,$http,ReferenceFactory,AncillaryDataFactory,DistributionFactory) {
 	
 	var distributionFactoryLocal = new DistributionFactory();
 	$scope.distributionOpt2 = distributionFactoryLocal.distributionOpt2;
@@ -38,6 +38,25 @@ angular.module('app.controllers.distribution',[])
 
 	$scope.slide = function(){
 	    $scope.checked = !$scope.checked;
+	};
+
+	$scope.addDistributionDB = function(){
+		var req_1 = {
+			method: 'POST',
+			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/distribution/',
+			headers: {
+			  'Content-Type': 'application/JSON'
+			},
+			data: { "id_user" : "01",
+				"distribution":$scope.formData.distribution
+
+			}
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 	$scope.addDistributionOpt2 = function(distributionClass, opt2) {

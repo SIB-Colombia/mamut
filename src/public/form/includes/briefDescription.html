@@ -5,8 +5,7 @@
       <spant>{{"simplePliCTerm.name.BriefDescription"|translate}} 
         <spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.BriefDescription&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
       </spant>
-      <!--button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addBriefDescription()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
-      -->
+      <button type="button" data-ng-click="addBriefDescription()" class="btn btn-success btn-xs pull-right"> <span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"></span></button>
     </div>
     <div class="panel-body">
       <textarea rows="3" name="briefDescription" data-ng-model="formData.briefDescription"></textarea>

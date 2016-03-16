@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.annualCycle',[])
-.controller('AnnualCyclesCtrl', ['$scope', 'ReferenceFactory', 'AncillaryDataFactory',function($scope,ReferenceFactory,AncillaryDataFactory) {
+.controller('AnnualCyclesCtrl', ['$scope', '$http', 'ReferenceFactory', 'AncillaryDataFactory',function($scope,$http,ReferenceFactory,AncillaryDataFactory) {
 	
 	$scope.annualCycleAtomizedType = $scope.annualCycleFactoryLocal.annualCycleAtomizedType;
 
@@ -35,6 +35,25 @@ angular.module('app.controllers.annualCycle',[])
 	    $scope.checked = !$scope.checked;
 	};
 	
+	$scope.addAnnualCycle = function() {
+		var req_1 = {
+			 method: 'POST',
+			 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/annual_cycles/',
+			 headers: {
+			   'Content-Type': 'application/JSON'
+			 },
+			 data: { "id_user" : "01",
+			 		"annualCycle":$scope.formData.annualCycles
+
+			 }
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
+	};
+
 	$scope.addAnnualCycleAtomizedType = function(annualCycleAtomizedType, annualCycle) {
 		if (JSON.stringify(annualCycleAtomizedType) !== JSON.stringify(origAU)){
 			$scope.annualCycleFactoryLocal.add(annualCycleAtomizedType, annualCycle);

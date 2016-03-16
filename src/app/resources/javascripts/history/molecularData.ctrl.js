@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.molecularData',[])
-.controller('MolecularDataCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+.controller('MolecularDataCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory) {
 	
 	$scope.molecularDataAtomizedType = $scope.molecularDataFactoryLocal.molecularDataAtomizedType;
 	
@@ -36,9 +36,22 @@ angular.module('app.controllers.molecularData',[])
 	};
 
 	$scope.addMolecularData = function(){
-		if($scope.formData.molecularData.molecularDataUnstructured.length > 0){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			method: 'POST',
+			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/molecular_data/',
+			headers: {
+			  'Content-Type': 'application/JSON'
+			},
+			data: { "id_user" : "01",
+				"molecularData":$scope.formData.molecularData
+
+			}
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 	$scope.addMolecularDataAtomizedType = function(list, molecular) {
 		if (JSON.stringify(molecular) !== JSON.stringify(origMD)){

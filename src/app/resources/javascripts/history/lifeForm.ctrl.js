@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.lifeForm',[])
-.controller('LifeFormCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+.controller('LifeFormCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory) {
 
 	//Ancillary
 	var ancillaryDataFactoryLocal = new AncillaryDataFactory();
@@ -33,9 +33,22 @@ angular.module('app.controllers.lifeForm',[])
 	};
 
 	$scope.addLifeForm = function(){
-		if($scope.formData.lifeForm.lifeFormUnstructured !== ''){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			 method: 'POST',
+			 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/life_form/',
+			 headers: {
+			   'Content-Type': 'application/JSON'
+			 },
+			 data: { "id_user" : "01",
+			 		"lifeForm":$scope.formData.lifeForm
+
+			 }
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 	$scope.removeLifeFormAtomized= function(list,lifeFormAtomized){

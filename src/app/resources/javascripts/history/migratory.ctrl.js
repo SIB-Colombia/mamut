@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.migratory',[])
-.controller('MigratoryCtrl', ['$scope','ReferenceFactory', 'AncillaryDataFactory', function($scope,ReferenceFactory,AncillaryDataFactory) {
+.controller('MigratoryCtrl', ['$scope','$http','ReferenceFactory', 'AncillaryDataFactory', function($scope,$http,ReferenceFactory,AncillaryDataFactory) {
 	
 	$scope.migratoryAtomizedType = $scope.migratoryFactoryLocal.migratoryAtomizedType;
 	
@@ -37,9 +37,22 @@ angular.module('app.controllers.migratory',[])
 	};
 
 	$scope.addMigratory = function(){
-		if($scope.formData.migratory.migratoryAtomized !== ''){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			method: 'POST',
+			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/migratory/',
+			headers: {
+			  'Content-Type': 'application/JSON'
+			},
+			data: { "id_user" : "01",
+				"migratory":$scope.formData.migratory
+
+			}
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 	$scope.addMigratoryAtomizedType = function(list,migratoryAtomizedType){

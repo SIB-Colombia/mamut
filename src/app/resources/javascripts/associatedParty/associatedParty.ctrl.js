@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.associatedParty',[])
-.controller('AssociatedPartyCtrl', ['$scope', 'AssociatedPartyFactory',  function($scope, AssociatedPartyFactory) {
+.controller('AssociatedPartyCtrl', ['$scope', '$http', 'AssociatedPartyFactory',  function($scope, $http, AssociatedPartyFactory) {
 	
 	var associatedPartyFactoryLocal = new AssociatedPartyFactory();
 	$scope.associatedParty = associatedPartyFactoryLocal.associatedParty;
@@ -11,9 +11,23 @@ angular.module('app.controllers.associatedParty',[])
 	$scope.index_associated = '';
 
 	$scope.addAssociated = function() {
-		if($scope.formData.associatedParty.length > 0){
-			console.log('enviar');
-		}
+		var req_1 = {
+			 method: 'POST',
+			 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/associated_party/',
+			 headers: {
+			   'Content-Type': 'application/JSON'
+			 },
+			 data: { "id_user" : "01",
+			 		"associatedParty":$scope.formData.associatedParty
+
+			 }
+		};
+
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 	$scope.addAssociatedParty = function(list, associatedParty) {

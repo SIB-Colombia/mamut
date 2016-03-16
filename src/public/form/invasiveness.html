@@ -6,8 +6,7 @@
         <spant>{{"simplePliCTerm.name.Invasiveness" | translate}}
           <spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Invasiveness&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
         </spant><a href="http://www.gisin.org/cwis438/websites/GISINDirectory/Tech/Concept_Table.php?WebSiteID=4" style="font-size:10px">De acuerdo a GISIN</a>
-        <!--button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addInvasiveness()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
-        -->
+        <button type="button" data-ng-click="addInvasiveness()" class="btn btn-success btn-xs pull-right"> <span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"></span></button>
       </div>
       <div class="panel-body">
         <div class="form-group">
@@ -394,7 +393,7 @@
                     <select data-ng-model="ancillaryDataAto.rightsHolder" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido_ato | unique:'proveedorDeContenido'">
                       <option value="">- Seleccione -</option>
                     </select>
-                    <input type="text" data-ng-model="ancillaryDataAto.rights"/>
+                    <!--input(type='text', data-ng-model='ancillaryDataAto.rights')-->
                     <!--label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	-->
                     <!--input(type='text', data-ng-model='ancillaryDataAto.bibliographicCitation')-->
                   </div>
@@ -643,7 +642,7 @@
                       <p style="font-size:90%;"><i>* Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co</i></p>
                     </panel>
                     <label for="rights" translate="" class="control-label">simplePliCTerm.name.rights</label>
-                    <select data-ng-model="ancillaryData.rights" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
+                    <select data-ng-model="ancillaryData.rightsHolder" ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'">
                       <option value="">- Seleccione -</option>
                     </select>
                     <!--label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	-->

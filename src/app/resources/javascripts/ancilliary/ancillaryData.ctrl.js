@@ -34,9 +34,22 @@ angular.module('app.controllers.ancillary',[])
     };
     
 	$scope.addAncillaries = function(){
-		if($scope.formData.ancillaryData.length > 0){
-			console.log('enviar cambios');
-		}
+		var req_1 = {
+			method: 'POST',
+			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/ancillary_data/',
+			headers: {
+			  'Content-Type': 'application/JSON'
+			},
+			data: { "id_user" : "01",
+				"ancillaryData":$scope.formData.ancillaryData
+
+			}
+		};
+		$http(req_1).then(function (response) {
+			if(response.status===200){
+				alert("Elemento guardado satisfactoriamente!");
+			}
+        });
 	};
 
 
@@ -344,10 +357,10 @@ angular.module('app.controllers.ancillary',[])
 			if (url.indexOf('www.xeno-canto.org/') > -1) {
 				var sound_id = (url_parts[url_parts.length - 1]);
 				$http.jsonp('http://www.xeno-canto.org/api/2/recordings?query=nr:'+ sound_id)
-			 	.success(function(data, status, headers, config) {
+			 	.success(function(data, status, headers) {
 			    	$scope.posts = data;
 			    })
-			    .error(function(data, status, headers, config) {
+			    .error(function(data, status, headers) {
 			      // log error
 			    });
 				

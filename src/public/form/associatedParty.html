@@ -6,8 +6,7 @@
         <spant>{{"simplePliCTerm.name.associatedParty"|translate}}
           <spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.associatedParty&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a></spant>
         </spant>
-        <!--button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addAssociated()') span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
-        -->
+        <button type="button" data-ng-click="addAssociated()" class="btn btn-success btn-xs pull-right"> <span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"></span></button>
       </div>
       <div class="panel-body">
         <div data-ng-show="(formData.associatedParty).length" class="table-responsive">

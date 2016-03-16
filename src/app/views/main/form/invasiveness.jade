@@ -9,7 +9,7 @@ div(data-ng-controller='InvasivenessCtrl')
 							span.glyphicon.glyphicon-info-sign
 				a(href="http://www.gisin.org/cwis438/websites/GISINDirectory/Tech/Concept_Table.php?WebSiteID=4" style ="font-size:10px")
 					| De acuerdo a GISIN
-				//button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addInvasiveness()') 
+				button.btn.btn-success.btn-xs.pull-right(type='button', data-ng-click='addInvasiveness()') 
 					span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')
 			.panel-body
 				.form-group
@@ -331,7 +331,7 @@ div(data-ng-controller='InvasivenessCtrl')
 										label.control-label(for='rights', translate='') simplePliCTerm.name.rights
 										select(data-ng-model='ancillaryDataAto.rightsHolder', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido_ato | unique:'proveedorDeContenido'")
 											option(value='') - Seleccione -
-										input(type='text', data-ng-model='ancillaryDataAto.rights')
+										//input(type='text', data-ng-model='ancillaryDataAto.rights')
 										//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 										//input(type='text', data-ng-model='ancillaryDataAto.bibliographicCitation')
 									button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryDataAto(invasivenessAtomizedType.ancillaryData,ancillaryDataAto)', translate='') Guardar
@@ -557,7 +557,7 @@ div(data-ng-controller='InvasivenessCtrl')
 											p(style="font-size:90%;")
 												i * Para uso de otras licencias que no estén en este listado por favor escribenos a: sib+ac@humboldt.org.co
 										label.control-label(for='rights', translate='') simplePliCTerm.name.rights
-										select(data-ng-model='ancillaryData.rights', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
+										select(data-ng-model='ancillaryData.rightsHolder', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
 											option(value='') - Seleccione -
 										//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 										//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
