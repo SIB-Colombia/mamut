@@ -35,7 +35,7 @@ angular.module('app.controllers.environmentalEnvelope',[])
 	$scope.addEnvironmentalEnvelope = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/environmental_envelope/',
+			url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/environmental_envelope/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

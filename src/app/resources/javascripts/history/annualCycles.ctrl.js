@@ -38,7 +38,7 @@ angular.module('app.controllers.annualCycle',[])
 	$scope.addAnnualCycle = function() {
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/annual_cycles/',
+			 url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/annual_cycles/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

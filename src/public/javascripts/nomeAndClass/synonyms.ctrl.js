@@ -40,7 +40,7 @@ angular.module('app.controllers.synonmy',[])
 	$scope.addSynonymsDB= function() {
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/synonyms_atomized/',
+			 url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/synonyms_atomized/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

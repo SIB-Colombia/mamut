@@ -34,7 +34,7 @@ angular.module('app.controllers.lifeCycle',[])
 	$scope.addLifeCycle = function(){
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/life_cycle/',
+			 url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/life_cycle/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

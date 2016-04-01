@@ -5,10 +5,12 @@ var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var passport = require('passport');
 
 module.exports = function(parent) {
 	parent.set('port', normalizePort(process.env.PORT || '5000'));
 	parent.set('view engine', 'jade');
+	
 	parent.use(favicon(__dirname + '/../../src/public/images/sib.ico'));
 	parent.use(morgan('dev'));
 	parent.use(compression());
@@ -16,6 +18,8 @@ module.exports = function(parent) {
 	parent.use(bodyParser.json());
 	parent.use(bodyParser.urlencoded({ extended: false }));
 	parent.use(require('stylus').middleware(__dirname + './../../src/public/stylesheets'));
+	parent.use(passport.initialize());
+	parent.use(passport.session());
 
 	// Load configuration according to environment
 	if(process.env.NODE_ENV === 'development') {

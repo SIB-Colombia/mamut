@@ -38,7 +38,7 @@ angular.module('app.controllers.feeding',[])
 	$scope.addFeeding = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/feeding/',
+			url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/feeding/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

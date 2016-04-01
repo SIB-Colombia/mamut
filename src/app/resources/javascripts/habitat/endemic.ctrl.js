@@ -41,7 +41,7 @@ angular.module('app.controllers.endemic',[])
 	$scope.addEndemicDB = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/endemic_atomized/',
+			url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/endemic_atomized/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

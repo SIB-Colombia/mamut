@@ -57,7 +57,7 @@ angular.module('app.controllers.invasiveness',[])
 	$scope.addInvasiveness = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/invasiveness/',
+			url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/invasiveness/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

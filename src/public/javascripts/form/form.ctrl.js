@@ -262,7 +262,7 @@ angular.module('app.controllers.form',[])
 					$scope.formData.creation_date = new Date();
 					var req_1 = {
 						 method: 'POST',
-						 url: 'http://192.168.205.17:8080/fichas',
+						 url: 'http://192.168.205.191:8080/fichas',
 						 headers: {
 						   'Content-Type': 'application/JSON'
 						 },

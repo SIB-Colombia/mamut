@@ -12,7 +12,7 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
       getData: function ($defer, params) {
         var page = params.page();
         var size = params.count();
-        var testUrl = 'http://192.168.205.17:8080/lista';
+        var testUrl = 'http://192.168.205.191:8080/lista';
         var search = {
           q: 'angular',
           page: page,

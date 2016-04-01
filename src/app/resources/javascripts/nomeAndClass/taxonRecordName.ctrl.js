@@ -5,9 +5,16 @@ angular.module('app.controllers.taxonRecordName',[])
 	$scope.findLanguageName = function(languageIso){
         if(languageIso!== undefined && languageIso !== ''){
             for (var d = 0, len = $scope.idiomas.length; d < len; d += 1) {
-                if ($scope.idiomas[d].ISO === languageIso) {
-                    return $scope.idiomas[d].Idioma;
-                }
+            	if(languageIso.length===3){
+            		if ($scope.idiomas[d].ISO === languageIso) {
+	                    return $scope.idiomas[d].Idioma;
+	                }
+            	}else{
+            		var languageIso2 = languageIso.toLowerCase();
+            		if ($scope.idiomas[d].alpha2 === languageIso2) {
+	                    return $scope.idiomas[d].Idioma;
+	                }
+            	}
             }
         }
     };  
@@ -25,11 +32,13 @@ angular.module('app.controllers.taxonRecordName',[])
 		$scope.formData.taxonRecordName.scientificName.canonicalAuthorship.simple =  '';
 		$scope.formData.taxonRecordName.scientificName.publishedln.simple = '';
 		
+
 		$.ajaxSetup({
 		    beforeSend: function(xhr) {
 		        xhr.setRequestHeader('Accept-Language', 'en-US,en;q=0.8,es;q=0.6');
 		    }
 		});
+
 		$.getJSON('http://api.gbif.org/v1/species?name=' + taxonName + '&limit=1',function( data ) {
   			if (data.results.length > 0) {
 				$scope.$apply(function() {
@@ -44,7 +53,7 @@ angular.module('app.controllers.taxonRecordName',[])
 						$scope.formData.creation_date = new Date();
 						var req_1 = {
 							 method: 'POST',
-							 url: 'http://192.168.205.17:8080/fichas/',
+							 url: 'http://192.168.205.191:8080/fichas/',
 							 headers: {
 							   'Content-Type': 'application/JSON'
 							 },
@@ -110,6 +119,9 @@ angular.module('app.controllers.taxonRecordName',[])
 											dataObject: ''
 										}]
 									});
+
+									$scope.saveHierarchy();
+
 									//key for synonyms and commonNames
 									switch (angular.lowercase(data.results[0].rank)) {
 										case 'kingdom':
@@ -136,273 +148,111 @@ angular.module('app.controllers.taxonRecordName',[])
 										default:
 											keyValue = '';
 									}
-									if($scope.formData.hierarchy.length > 0){
-										var req_1 = {
-											 method: 'POST',
-											 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/hierarchy/',
-											 headers: {
-											   'Content-Type': 'application/JSON'
-											 },
-											 data: { "id_user" : "01",
-											 		"hierarchy":$scope.formData.hierarchy
-
-											 }
-										};
-										$http(req_1).then(function (response) {
-											if(response.status===200){
-												alert("Taxonomia guardada satisfactoriamente!");
-											}
-								        });
-									}
-									
+																	
 									//synonyms and commonNames
 									if (keyValue !== '') {
 										$.getJSON('http://api.gbif.org/v1/species/' + keyValue + '/synonyms',function(data_1) {
 											if (data_1.results.length > 0) {
 												$scope.$apply(function() {
 													for (var i = 0; i < data_1.results.length; i++) {
-														$scope.formData.synonymsAtomized.push({
-															synonymName: {
-																attributes: {
-																	id: '',
-																	isAnamorphic: '',
-																	nomenclaturalCode: ''
-																},
-																simple: (data_1.results[i].scientificName !== undefined) ? data_1.results[i].scientificName : '',
-																rank: (data_1.results[i].rank !== undefined) ? data_1.results[i].rank : '',
-																canonicalName: {
-																	simple: (data_1.results[i].canonicalName !== undefined) ? data_1.results[i].canonicalName : '',
-																	uninomial: '',
-																	genus: {
-																		ref: '',
-																		linkType: ''
-																	},
-																	epithet: {
-																		infragenericEpithet: '',
-																		specificEpithet: '',
-																		infraspecificEpithet: ''
-																	}
-																},
-																canonicalAuthorship: {
-																	simple: (data_1.results[i].authorship !== undefined) ? data_1.results[i].authorship : '',
-																	authorship: {
-																		simple: '',
-																		year: [],
-																		authors: []
-																	}
-																},
-																specialAuthorship: {
-																	basionymAuthorship: {
-																		simple: '',
-																		year: [],
-																		authors: []
-																	},
-																	combinationAuthorship: []
-																},
-																publishedln: {
-																	identifier: '',
-																	datatype: '',
-																	source: (data_1.results[i].publishedIn !== undefined) ? data_1.results[i].publishedIn : ''
-																},
-																year: '',
-																microReference: '',
-																typificacion: {
-																	simple: '',
-																	typeVoucherEntity: {
-																		voucherReference: [],
-																		lectotypePublicationVoucher: [],
-																		lectotypeMicroReferenceVoucher: [],
-																		typeOfType: ''
-																	},
-																	typeNameEntity: {
-																		nameReference: {
-																			identifier: '',
-																			datatype: '',
-																			source: ''
-																		},
-																		lectotypePublication: {
-																			identifier: '',
-																			datatype: '',
-																			source: ''
-																		},
-																		lectotypeMicroReference: {
-																			identifier: '',
-																			datatype: '',
-																			source: ''
-																		}
-																	}
-																},
-																spellingCorrentionOf: [],
-																basionym: {
-																	ruleConsidered: '',
-																	note: '',
-																	reletedName: {
-																		identifier: '',
-																		datatype: '',
-																		source: ''
-																	},
-																	publishedln: {
-																		identifier: '',
-																		datatype: '',
-																		source: ''
-																	},
-																	microReference: ''
-																},
-																basedOn: {
-																	ruleConsidered: '',
-																	note: '',
-																	reletedName: {
-																		identifier: '',
-																		datatype: '',
-																		source: ''
-																	},
-																	publishedln: {
-																		identifier: '',
-																		datatype: '',
-																		source: ''
-																	},
-																	microReference: ''
-																},
-																conservedAgainst: [],
-																laterHomonymOf: {
-																	ruleConsidered: '',
-																	note: '',
-																	reletedName: {
-																		identifier: '',
-																		datatype: '',
-																		source: ''
-																	},
-																	publishedln: {
-																		identifier: '',
-																		datatype: '',
-																		source: ''
-																	},
-																	microReference: ''
-																},
-																sanctioned: {
-																	ruleConsidered: '',
-																	note: '',
-																	reletedName: {
-																		identifier: '',
-																		datatype: '',
-																		source: ''
-																	},
-																	publishedln: {
-																		identifier: '',
-																		datatype: '',
-																		source: ''
-																	},
-																	microReference: ''
-																},
-																replacementNameFor: {
-																	ruleConsidered: '',
-																	note: '',
-																	reletedName: {
-																		identifier: '',
-																		datatype: '',
-																		source: ''
-																	},
-																	publishedln: {
-																		identifier: '',
-																		datatype: '',
-																		source: ''
-																	},
-																	microReference: ''
-																},
-																publicationStatus: {
-																	ruleConsidered: '',
-																	note: '',
-																	reletedName: {
-																		identifier: '',
-																		datatype: '',
-																		source: ''
-																	},
-																	publishedln: {
-																		identifier: '',
-																		datatype: '',
-																		source: ''
-																	},
-																	microReference: ''
-																},
-																providerLink: '',
-																providerSpecificData: {
-																	anyOne: [],
-																	anyTwo: ''
-																}
-															},
-															synonymStatus: (data_1.results[i].nomenclaturalStatus !== undefined && data_1.results[i].nomenclaturalStatus[0] !== undefined) ? data_1.results[i].nomenclaturalStatus : '',
-															ancillaryData: []
-														});
-													}
-
-													if($scope.formData.synonymsAtomized.length > 0){
-														var req_1 = {
-															 method: 'POST',
-															 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/synonyms_atomized/',
-															 headers: {
-															   'Content-Type': 'application/JSON'
-															 },
-															 data: { "id_user" : "01",
-															 		"synonymsAtomized":$scope.formData.synonymsAtomized
-
-															 }
-														};
-
-														$http(req_1).then(function (response) {
-															if(response.status===200){
-																alert("Sinonimos guardados satisfactoriamente!");
-															}
-												        });
+														$scope.insertSynonym((data_1.results[i].scientificName !== undefined) ? data_1.results[i].scientificName : '',(data_1.results[i].rank !== undefined) ? data_1.results[i].rank : '',(data_1.results[i].canonicalName !== undefined) ? data_1.results[i].canonicalName : '',(data_1.results[i].authorship !== undefined) ? data_1.results[i].authorship : '',(data_1.results[i].publishedIn !== undefined) ? data_1.results[i].publishedIn : '',(data_1.results[i].nomenclaturalStatus !== undefined && data_1.results[i].nomenclaturalStatus[0] !== undefined) ? data_1.results[i].nomenclaturalStatus : '');
 													}
 												});
+												$scope.saveSynonyms();
 											}
 										});
 										$.getJSON('http://api.gbif.org/v1/species/' + keyValue + '/vernacularNames',function(data_1) {
 											if (data_1.results.length > 0) {
 												$scope.$apply(function() {
 													for (var i = 0; i < data_1.results.length; i++) {
-														$scope.formData.commonNamesAtomized.push({
-															name: (data_1.results[i].vernacularName !== undefined) ? data_1.results[i].vernacularName : '',
-															language: (data_1.results[i].language !== undefined) ? $scope.findLanguageName(data_1.results[i].language) : '',
-															usedIn: {
-																distributionScope: {
-																	type: '',
-																	ancillaryData: []
-																},
-																temporalCoverage: {
-																	startDate: '',
-																	endDate: ''
-																},
-																distributionAtomizedBranch: [],
-																distributionUnstructured: (data_1.results[i].area !== undefined) ? data_1.results[i].area : '',
-																ancillaryData: []
-															},
-															usedBy: '',
-															ancillaryData: []
-														});
+														$scope.insertCommonName((data_1.results[i].vernacularName !== undefined) ? data_1.results[i].vernacularName : '',(data_1.results[i].language !== undefined) ? $scope.findLanguageName(data_1.results[i].language) : '',(data_1.results[i].area !== undefined) ? data_1.results[i].area : '');
 													}
-													if($scope.formData.commonNamesAtomized.length > 0){
-														var req_1 = {
-															 method: 'POST',
-															 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/common_names_atomized/',
-															 headers: {
-															   'Content-Type': 'application/JSON'
-															 },
-															 data: { "id_user" : "01",
-															 		"commonNamesAtomized":$scope.formData.commonNamesAtomized
-
-															 }
-														};
-
-														$http(req_1).then(function (response) {
-															if(response.status===200){
-																alert("Nombres comunes guardados satisfactoriamente!");
-															}
-												        });
-													}
+													
 												});
+												$scope.saveCommonNames();
 											}
 										});
+										$.ajax({
+											url : 'http://api.speciesplus.net/api/v1/taxon_concepts.json?name='+taxonName,
+											headers: {
+												'X-Authentication-Token' : 'xl3tUZ6wEEzQmqMSXra5Awtt'
+											}
+										}).done(function(data){
+											var cites = [];
+											if(data.taxon_concepts[0].cites_listings!==undefined&&data.taxon_concepts[0].cites_listings.length>0){
+												for (var i = 0; i < data.taxon_concepts[0].cites_listings.length; i++) {
+													var appendix = data.taxon_concepts[0].cites_listings[i].appendix;
+													if(appendix==='I'){
+														cites.push("Apéndice I");
+													}else if(appendix==='II'){
+														cites.push("Apéndice II");
+													}else{
+														cites.push("Apéndice III");
+													}
+												}
+												$scope.formData.threatStatus.push({
+													threatStatusAtomized: {
+														threatCategory: {
+															measurementID: '',
+															measurementType: '',
+															measurementValue: '',
+															measurementAccuracy: '',
+															measurementUnit: '',
+															measurementDeterminedDate: '',
+															measurementDeterminedBy: [],
+															measurementMethod: '',
+															measurementRemarks: '',
+															relatedTo: ''
+														},
+														authority: [],
+														appliesTo: {
+															country: '',
+															stateProvince: '',
+															county: '',
+															municipality: '',
+															locality: ''
+														},
+														apendiceCITES: cites,
+														ancillaryData: []
+													},
+													threatStatusUnstructured: '',
+													ancillaryData: []
+												});
+												var req_1 = {
+													method: 'POST',
+													url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/threat_status/',
+													headers: {
+													  'Content-Type': 'application/JSON'
+													},
+													data: { "id_user" : "01",
+														"threatStatus":$scope.formData.threatStatus
+
+													}
+												};
+												$http(req_1).then(function (response) {
+													if(response.status===200){
+														alert("Amenazas directas guardadas satisfactoriamente!");
+													}
+										        });
+											}
+											
+											if(data.taxon_concepts[0].synonyms!==undefined){
+												for(var i = 0; i < data.taxon_concepts[0].synonyms.length; i++){
+													var synonym_full_name = data.taxon_concepts[0].synonyms[i].full_name;
+													$scope.insertSynonym(synonym_full_name,data.taxon_concepts[0].synonyms[i].rank,synonym_full_name,data.taxon_concepts[0].synonyms[i].author_year,'CITES','');
+												}
+												$scope.saveSynonyms();
+											}
+
+											if(data.taxon_concepts[0].common_names!==undefined){
+												for(var i = 0; i < data.taxon_concepts[0].common_names.length; i++){
+													var common_name = data.taxon_concepts[0].common_names[i].name;
+													$scope.insertCommonName(common_name,$scope.findLanguageName(data.taxon_concepts[0].common_names[i].language),'');
+												}
+												$scope.saveCommonNames();
+											}
+				
+										});			
 									}	
 								}
 							}
@@ -410,6 +260,268 @@ angular.module('app.controllers.taxonRecordName',[])
 					}
 				});
 			}
+		});
+	};
+
+	$scope.saveHierarchy = function(){
+		if($scope.formData.hierarchy.length > 0){
+			var req_1 = {
+				 method: 'POST',
+				 url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/hierarchy/',
+				 headers: {
+				   'Content-Type': 'application/JSON'
+				 },
+				 data: { "id_user" : "01",
+				 		"hierarchy":$scope.formData.hierarchy
+
+				 }
+			};
+			$http(req_1).then(function (response) {
+				if(response.status===200){
+					alert("Taxonomia guardada satisfactoriamente!");
+				}
+	        });
+		}
+	};
+
+	$scope.saveCommonNames = function(){
+		if($scope.formData.commonNamesAtomized.length > 0){
+			var req_1 = {
+				 method: 'POST',
+				 url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/common_names_atomized/',
+				 headers: {
+				   'Content-Type': 'application/JSON'
+				 },
+				 data: { "id_user" : "01",
+				 		"commonNamesAtomized":$scope.formData.commonNamesAtomized
+
+				 }
+			};
+
+			$http(req_1).then(function (response) {
+				if(response.status===200){
+					alert("Nombres comunes guardados satisfactoriamente!");
+				}
+	        });
+		}
+	};
+
+	$scope.saveSynonyms = function(){
+		if($scope.formData.synonymsAtomized.length > 0){
+			var req_1 = {
+				 method: 'POST',
+				 url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/synonyms_atomized/',
+				 headers: {
+				   'Content-Type': 'application/JSON'
+				 },
+				 data: { "id_user" : "01",
+				 		"synonymsAtomized":$scope.formData.synonymsAtomized
+
+				 }
+			};
+
+			$http(req_1).then(function (response) {
+				if(response.status===200){
+					alert("Sinonimos guardados satisfactoriamente!");
+				}
+	        });
+		}
+	};
+
+	$scope.insertCommonName = function(name,language,distributionUnstructured){
+		$scope.formData.commonNamesAtomized.push({
+			name: name,
+			language: language,
+			usedIn: {
+				distributionScope: {
+					type: '',
+					ancillaryData: []
+				},
+				temporalCoverage: {
+					startDate: '',
+					endDate: ''
+				},
+				distributionAtomizedBranch: [],
+				distributionUnstructured: distributionUnstructured,
+				ancillaryData: []
+			},
+			usedBy: '',
+			ancillaryData: []
+		});
+	};
+
+	$scope.insertSynonym = function(synonym_name,rank,canonicalName,canonicalAuthorship,publishedln,synonymStatus){
+		$scope.formData.synonymsAtomized.push({
+			synonymName: {
+				attributes: {
+					id: '',
+					isAnamorphic: '',
+					nomenclaturalCode: ''
+				},
+				simple: synonym_name,
+				rank: rank,
+				canonicalName: {
+					simple: canonicalName,
+					uninomial: '',
+					genus: {
+						ref: '',
+						linkType: ''
+					},
+					epithet: {
+						infragenericEpithet: '',
+						specificEpithet: '',
+						infraspecificEpithet: ''
+					}
+				},
+				canonicalAuthorship: {
+					simple: canonicalAuthorship,
+					authorship: {
+						simple: '',
+						year: [],
+						authors: []
+					}
+				},
+				specialAuthorship: {
+					basionymAuthorship: {
+						simple: '',
+						year: [],
+						authors: []
+					},
+					combinationAuthorship: []
+				},
+				publishedln: {
+					identifier: '',
+					datatype: '',
+					source: publishedln
+				},
+				year: '',
+				microReference: '',
+				typificacion: {
+					simple: '',
+					typeVoucherEntity: {
+						voucherReference: [],
+						lectotypePublicationVoucher: [],
+						lectotypeMicroReferenceVoucher: [],
+						typeOfType: ''
+					},
+					typeNameEntity: {
+						nameReference: {
+							identifier: '',
+							datatype: '',
+							source: ''
+						},
+						lectotypePublication: {
+							identifier: '',
+							datatype: '',
+							source: ''
+						},
+						lectotypeMicroReference: {
+							identifier: '',
+							datatype: '',
+							source: ''
+						}
+					}
+				},
+				spellingCorrentionOf: [],
+				basionym: {
+					ruleConsidered: '',
+					note: '',
+					reletedName: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					publishedln: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					microReference: ''
+				},
+				basedOn: {
+					ruleConsidered: '',
+					note: '',
+					reletedName: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					publishedln: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					microReference: ''
+				},
+				conservedAgainst: [],
+				laterHomonymOf: {
+					ruleConsidered: '',
+					note: '',
+					reletedName: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					publishedln: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					microReference: ''
+				},
+				sanctioned: {
+					ruleConsidered: '',
+					note: '',
+					reletedName: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					publishedln: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					microReference: ''
+				},
+				replacementNameFor: {
+					ruleConsidered: '',
+					note: '',
+					reletedName: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					publishedln: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					microReference: ''
+				},
+				publicationStatus: {
+					ruleConsidered: '',
+					note: '',
+					reletedName: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					publishedln: {
+						identifier: '',
+						datatype: '',
+						source: ''
+					},
+					microReference: ''
+				},
+				providerLink: '',
+				providerSpecificData: {
+					anyOne: [],
+					anyTwo: ''
+				}
+			},
+			synonymStatus: synonymStatus,
+			ancillaryData: []
 		});
 	};
 }]);

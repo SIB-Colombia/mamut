@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express'),
+	passport = require('passport'),
     fs = require('fs');
 
 module.exports = function(parent, options) {
@@ -72,6 +73,10 @@ module.exports = function(parent, options) {
 					method = 'get';
 					path = '/edit';
 					break;
+				case 'login':
+					method = 'get';
+					path = '/login';
+					break;
 				default:
 					throw new Error('unrecognized route: ' + name + '.' + key);
 			}
@@ -80,6 +85,8 @@ module.exports = function(parent, options) {
 			verbose && console.log(' %s %s -> %s', method.toUpperCase(), path, key);
 		}
 		// mount the app
+		//app.get('/login', passport.authenticate('cas'));
+
 		parent.use(app);
 	});
 };

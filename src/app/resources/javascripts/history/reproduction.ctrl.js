@@ -34,7 +34,7 @@ angular.module('app.controllers.reproduction',[])
 	$scope.addReproduction = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/reproduction/',
+			url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/reproduction/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

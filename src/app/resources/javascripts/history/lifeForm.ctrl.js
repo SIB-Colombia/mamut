@@ -35,7 +35,7 @@ angular.module('app.controllers.lifeForm',[])
 	$scope.addLifeForm = function(){
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/life_form/',
+			 url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/life_form/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

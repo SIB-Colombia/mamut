@@ -19,7 +19,7 @@ angular.module('app.controllers.reference',[])
 	$scope.addReferences = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://192.168.205.17:8080/fichas/'+$scope.formData._id+'/references/',
+			url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/references/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},
