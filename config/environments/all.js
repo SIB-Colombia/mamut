@@ -3,9 +3,11 @@
 var compression = require('compression');
 var favicon = require('serve-favicon');
 var morgan = require('morgan');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
+var MemoryStore = require('session-memory-store')(session);
 
 module.exports = function(parent) {
 	parent.set('port', normalizePort(process.env.PORT || '5000'));
@@ -14,7 +16,13 @@ module.exports = function(parent) {
 	parent.use(favicon(__dirname + '/../../src/public/images/sib.ico'));
 	parent.use(morgan('dev'));
 	parent.use(compression());
-	parent.use(session({secret: 'ssshhhhh'}));
+	parent.use(cookieParser());
+	parent.use(session({
+	    store: new MemoryStore(),
+		secret: 'my express secret',
+		saveUninitialized: true,
+		resave: true
+	}));
 	parent.use(bodyParser.json());
 	parent.use(bodyParser.urlencoded({ extended: false }));
 	parent.use(require('stylus').middleware(__dirname + './../../src/public/stylesheets'));
@@ -29,7 +37,6 @@ module.exports = function(parent) {
 	} else {
 		require('./development')(parent);
 	}
-
 	// load controllers
 	require('./../../src/app/routes/routers')(parent, { verbose: true });
 

@@ -3,7 +3,7 @@
 angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.translate', 'ui.directives','ui.filters', 'ui.router','ui.bootstrap','ngAnimate','ngFileUpload', 'angularModalService', 'ngTable'])
 
 .controller('homeController', ['$scope', '$http', 'ngTableParams', function($scope, $http, ngTableParams) {
-	
+  console.log($scope.data);
   $scope.tableParams = new ngTableParams({
       page: 1,
       count: 10,

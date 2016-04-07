@@ -1,14 +1,17 @@
 'use strict';
 
 exports.index = function(req, res) {
-	var request = require("request");
+	if (req.isAuthenticated()) { 
+		var request = require("request");
 
-	request("http://s3.amazonaws.com/mutis/vocabularies/test/lenguajesControlados.json", function(error, response, body) {
-		if (!error && res.statusCode === 200) {
-			var lenguajes = JSON.parse(body);
-			res.render('index', { title: 'Editor Catálogo de la Biodiversidad' , lenguajes: lenguajes });
-		}
-	});
+		request("http://s3.amazonaws.com/mutis/vocabularies/test/lenguajesControlados.json", function(error, response, body) {
+			if (!error && res.statusCode === 200) {
+				var lenguajes = JSON.parse(body);
+				res.render('index', { title: 'Editor Catálogo de la Biodiversidad' , lenguajes: lenguajes });
+			}
+		});
+	}
+	res.redirect('/login');
 };
 
 exports.home = function(req, res) {
@@ -50,9 +53,15 @@ exports.login = function(req, res, next) {
 			if (err) {
 				return next(err);
 			}
-
-		req.session.messages = '';
-			return res.redirect('/');
+			res.locals.user = req.user;
+			req.session.messages = '';
+			return res.render('home');
 		});
 	})(req, res, next);
+};
+
+exports.logout = function(req, res) {
+	console.log('logging out');
+  	req.logout();
+  	res.redirect('/');
 };
