@@ -10,7 +10,7 @@ var RememberMeStrategy = require('passport-remember-me').Strategy;
 
 passport.use(new CasStrategy({
 	version: 'CAS3.0',
-	ssoBaseURL: 'http://190.85.123.98:8080/cas',
+	ssoBaseURL: 'http://190.25.96.108:8080/cas',
  	serverBaseURL: 'http://192.168.205.13:7000'
 },function(profile, done) {
 	var user = profile.attributes;

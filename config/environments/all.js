@@ -21,7 +21,8 @@ module.exports = function(parent) {
 	    store: new MemoryStore(),
 		secret: 'my express secret',
 		saveUninitialized: true,
-		resave: true
+		resave: true,
+		cookie: { maxAge: 60000, secure: false }
 	}));
 	parent.use(bodyParser.json());
 	parent.use(bodyParser.urlencoded({ extended: false }));

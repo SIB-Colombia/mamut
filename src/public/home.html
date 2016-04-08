@@ -12,7 +12,7 @@
   <body>
     <div class="wrapper">
       <!--include ../includes/header-->
-      <div data-ng-app="homeApp" data-ng-controller="homeController as home">
+      <div data-ng-app="homeApp" data-ng-controller="homeController as home" data-ng-init="home.init('')">
         <!-- views will be injected here-->
         <div class="container">
           <div class="row">
@@ -23,8 +23,8 @@
               <div class="row">
                 <div class="col-md-3"><a href="/new">
                     <button type="button" class="btn btn-success">CREAR UNA NUEVA FICHA	</button></a><a href="/login">
-                    <button type="button" class="btn btn-success">Login</button></a><a href="/logout">
-                    <button type="button" class="btn btn-success">Logout</button></a></div>
+                    <button type="button" class="btn btn-success">Login</button></a>
+                </div>
                 <div class="col-md-9">
                   <form data-ng-submit="search()">
                     <div class="input-group">

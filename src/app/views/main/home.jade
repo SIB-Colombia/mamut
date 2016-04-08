@@ -1,7 +1,7 @@
 extends ../../layouts/layout_min
 
 block content
-	div(data-ng-app="homeApp" data-ng-controller="homeController as home")
+	div(data-ng-app="homeApp" data-ng-controller="homeController as home" data-ng-init="home.init('#{user ? user.firstname : ''}')")
 		// views will be injected here
 		.container
 			.row
@@ -13,12 +13,15 @@ block content
 							a(href="/new")
 								button.btn.btn-success(type="button")
 									| CREAR UNA NUEVA FICHA	
-							a(href="/login")
-								button.btn.btn-success(type="button")
-									| Login
-							a(href="/logout")
-								button.btn.btn-success(type="button")
-									| Logout
+							if !user
+								a(href="/login")
+									button.btn.btn-success(type="button")
+										| Login
+							else
+								p #{user.firstname}
+								a(href="/logout")
+									button.btn.btn-success(type="button")
+										| Logout
 						div.col-md-9
 							form(data-ng-submit="search()")
 								div.input-group
