@@ -6,11 +6,10 @@
 var express = require('express');
 var passport = require('passport');
 var CasStrategy = require('passport-cas').Strategy;
-var RememberMeStrategy = require('passport-remember-me').Strategy;
 
 passport.use(new CasStrategy({
 	version: 'CAS3.0',
-	ssoBaseURL: 'http://190.25.96.108:8080/cas',
+	ssoBaseURL: 'http://192.168.220.147:8080/cas',
  	serverBaseURL: 'http://192.168.205.13:7000'
 },function(profile, done) {
 	var user = profile.attributes;

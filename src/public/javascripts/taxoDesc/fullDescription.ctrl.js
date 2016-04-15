@@ -35,7 +35,7 @@ angular.module('app.controllers.fullDescription',[])
 	$scope.addFullDescription = function(){
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/full_description/',
+			 url: 'http://192.168.220.86:3000/fichas/'+$scope.formData._id+'/full_description/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

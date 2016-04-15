@@ -35,7 +35,7 @@ angular.module('app.controllers.identificationKeys',[])
 	$scope.addIdentificationKeys = function(){
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/identification_keys/',
+			 url: 'http://192.168.220.86:3000/fichas/'+$scope.formData._id+'/identification_keys/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

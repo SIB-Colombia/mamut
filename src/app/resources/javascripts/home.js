@@ -16,17 +16,18 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
       getData: function ($defer, params) {
         var page = params.page();
         var size = params.count();
-        var testUrl = 'http://192.168.205.191:8080/lista';
+        var testUrl = 'http://192.168.220.86:3000/lista';
         var search = {
           q: 'angular',
-          page: page,
-          per_page: size
+          skip: page,
+          limit: size
         };
-        $http.get(testUrl, { headers: { 'Content-Type': 'application/json'} })
+        $http.get(testUrl, { params: search, headers: { 'Content-Type': 'application/json'} })
          .then(function(res) {
-            //params.total(res.data.total);
-            //$defer.resolve(res.data.docs);
-            $defer.resolve(res.data);
+            params.total(res.data.total);
+            console.log(res.data);
+            $defer.resolve(res.data.docs);
+            //$defer.resolve(res.data);
           }, function(reason) {
             console.log(reason);
             $defer.reject();

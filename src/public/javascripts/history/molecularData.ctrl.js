@@ -38,7 +38,7 @@ angular.module('app.controllers.molecularData',[])
 	$scope.addMolecularData = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/molecular_data/',
+			url: 'http://192.168.220.86:3000/fichas/'+$scope.formData._id+'/molecular_data/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

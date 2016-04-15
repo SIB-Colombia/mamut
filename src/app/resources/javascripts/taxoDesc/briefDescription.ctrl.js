@@ -6,7 +6,7 @@ angular.module('app.controllers.briefDescription',[])
 	$scope.addBriefDescription = function() {
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/brief_description/',
+			 url: 'http://192.168.220.86:3000/fichas/'+$scope.formData._id+'/brief_description/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

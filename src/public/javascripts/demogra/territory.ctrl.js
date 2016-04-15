@@ -35,7 +35,7 @@ angular.module('app.controllers.territory',[])
 	$scope.addTerritory = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://192.168.205.191:8080/fichas/'+$scope.formData._id+'/territory/',
+			url: 'http://192.168.220.86:3000/fichas/'+$scope.formData._id+'/territory/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

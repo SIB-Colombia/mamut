@@ -43,6 +43,15 @@ module.exports = function(parent, options) {
 			});
 		});
 
+		app.use('/', function(req, res, next) {
+			if (req.isAuthenticated()) {
+				res.locals.firstname = req.user.firstname;
+				res.locals.lastname = req.user.lastname;
+				res.locals.roles = req.user.roles;
+			}
+			return next();
+		});
+
 		// before middleware support
 		if (obj.before) {
 			path = '/' + name + '/:' + name + '_id';

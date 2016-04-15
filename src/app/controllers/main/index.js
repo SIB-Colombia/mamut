@@ -1,7 +1,6 @@
 'use strict';
 
 exports.index = function(req, res) {
-	
 	var request = require("request");
 
 	request("http://s3.amazonaws.com/mutis/vocabularies/test/lenguajesControlados.json", function(error, response, body) {
@@ -22,7 +21,7 @@ exports.edit = function(req, res) {
 	var request = require("request");
 	var id = req.query.id;
 
-	request("http://192.168.205.191:8080/fichas/"+id, function(error, response, body) {
+	request("http://192.168.220.86:3000/fichas/"+id, function(error, response, body) {
 		if (!error && res.statusCode === 200) {
 			body = body.replace(/\{\{(.+?)\}\}/g, '');
 			var data = JSON.parse(body);
@@ -52,9 +51,7 @@ exports.login = function(req, res, next) {
 			if (err) {
 				return next(err);
 			}
-			console.log(req.cookies);
-			res.setHeader('Set-Cookie','aaaaaaaa');
-			return res.render('home', {user : user});
+			return res.redirect('/');
 		});
 	})(req, res, next);
 };

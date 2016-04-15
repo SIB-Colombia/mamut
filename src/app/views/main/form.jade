@@ -4,13 +4,17 @@
 			div(style="margin:20px;padding:0;display:inline")
 				h1 EDITOR DE FICHAS
 				div.pull-right
-					.col-xs-5
+					.col-xs-3
 						a(href="/")
 							button.btn.btn-info(type="button")
 								span.glyphicon.glyphicon-home
-					.col-xs-5		
+					.col-xs-3		
 						button.btn.btn-success(type='button', data-ng-click="saveFile()") 
 							span.glyphicon.glyphicon-floppy-disk
+					.col-xs-6
+						if !firstname
+							span.glyphicon.glyphicon-user
+							| #{firstname}
 		ul.nav.nav-pills.nav-stacked.col-md-2
 			li(ui-sref-active="active")
 				a(ui-sref='.nomeAndClass', data-target='#nomeAndClass', data-toggle='tab', data-placement='left', title='{{"simplePliCTerm.help.NomenclatureAndClassification"|translate}}')

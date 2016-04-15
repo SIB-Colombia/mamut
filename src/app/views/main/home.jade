@@ -1,27 +1,25 @@
 extends ../../layouts/layout_min
 
 block content
-	div(data-ng-app="homeApp" data-ng-controller="homeController as home" data-ng-init="home.init('#{user ? user.firstname : ''}')")
+	div(data-ng-app="homeApp" data-ng-controller="homeController as home" data-ng-init="home.init('#{firstname ? firstname: ''}')")
 		// views will be injected here
 		.container
 			.row
 				#form-container
 					.page-header.text-center
 						h1 EDITOR DE FICHAS
-					div.row
-						div.col-md-3
-							a(href="/new")
-								button.btn.btn-success(type="button")
-									| CREAR UNA NUEVA FICHA	
-							if !user
+						div.pull-right
+							if !firstname
 								a(href="/login")
-									button.btn.btn-success(type="button")
-										| Login
+									button.btn.btn-success.btn-xs(type="button")
+										span.glyphicon.glyphicon-log-in
 							else
-								p #{user.firstname}
+								span.glyphicon.glyphicon-user
+									| #{firstname}
 								a(href="/logout")
-									button.btn.btn-success(type="button")
-										| Logout
+									button.btn.btn-success.btn-xs(type="button")
+										span.glyphicon.glyphicon-log-out
+					div.row
 						div.col-md-9
 							form(data-ng-submit="search()")
 								div.input-group
@@ -29,6 +27,11 @@ block content
 									span.input-group-btn
 										button.btn.btn-default(type="submit")
 											i.glyphicon.glyphicon-search
+						div.col-md-3
+							if firstname
+								a(href="/new")
+									button.btn.btn-success(type="button")
+										| CREAR UNA NUEVA FICHA	
 						
 					div.divider
 					div.row

@@ -1,7 +1,7 @@
 extends ../../layouts/final/layout
 
 block content
-	div(data-ng-app="formApp" , data-ng-init="formDataGet = #{JSON.stringify(json)} ; lenguajes = #{JSON.stringify(lenguajes)}")
+	div(data-ng-app="formApp" , data-ng-init="formDataGet = #{JSON.stringify(json)} ; lenguajes = #{JSON.stringify(lenguajes)}; firstname = #{JSON.stringify(firstname)}; lastname = #{JSON.stringify(lastname)}; roles = #{JSON.stringify(roles)};")
 		// views will be injected here
 		.container
 			div(ui-view)

@@ -33,8 +33,10 @@ angular.module('app.controllers.form',[])
 	$scope.reproductionFactoryLocal = new ReproductionFactory();
 	$scope.taxonRecordNameFactoryLocal = new TaxonRecordNameFactory();
 	$scope.territoryFactoryLocal = new TerritoryFactory();
-	
 	//Initial formData
+	console.log($scope.firstname);
+	console.log($scope.lastname);
+	console.log($scope.roles);
 	$scope.formData = {
 		taxonRecordName : $scope.taxonRecordNameFactoryLocal.taxonRecordName,
 		hierarchy : [],
@@ -262,7 +264,7 @@ angular.module('app.controllers.form',[])
 					$scope.formData.creation_date = new Date();
 					var req_1 = {
 						 method: 'POST',
-						 url: 'http://192.168.205.191:8080/fichas',
+						 url: 'http://192.168.220.86:3000/fichas',
 						 headers: {
 						   'Content-Type': 'application/JSON'
 						 },
