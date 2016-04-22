@@ -35,7 +35,7 @@ angular.module('app.controllers.directThreats',[])
 	$scope.addDirectThreats = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://192.168.220.86:3000/fichas/'+$scope.formData._id+'/direct_threats/',
+			url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/direct_threats/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

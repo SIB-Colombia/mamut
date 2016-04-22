@@ -7,19 +7,23 @@ block content
 			.row
 				#form-container
 					.page-header.text-center
-						h1 EDITOR DE FICHAS
-						div.pull-right
-							if !firstname
-								a(href="/login")
-									button.btn.btn-success.btn-xs(type="button")
-										span.glyphicon.glyphicon-log-in
-							else
+						div.row
+							div.col-md-1
 								span.glyphicon.glyphicon-user
 									| #{firstname}
+							div.col-md-10.text-center
+								h1 EDITOR DE FICHAS
+							div.col-md-1
 								a(href="/logout")
-									button.btn.btn-success.btn-xs(type="button")
+									button.btn.btn-success(type="button")
+										| Salir 
 										span.glyphicon.glyphicon-log-out
+					div.divider
 					div.row
+						div.col-md-3
+							a(href="/new")
+								button.btn.btn-success(type="button")
+									| CREAR UNA NUEVA FICHA	
 						div.col-md-9
 							form(data-ng-submit="search()")
 								div.input-group
@@ -27,12 +31,6 @@ block content
 									span.input-group-btn
 										button.btn.btn-default(type="submit")
 											i.glyphicon.glyphicon-search
-						div.col-md-3
-							if firstname
-								a(href="/new")
-									button.btn.btn-success(type="button")
-										| CREAR UNA NUEVA FICHA	
-						
 					div.divider
 					div.row
 						div.panel.panel-primary.filterable

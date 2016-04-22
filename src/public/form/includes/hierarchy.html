@@ -5,7 +5,7 @@
       <div class="panel-heading">
         <spant>{{"simplePliCTerm.name.Hierarchy"|translate}}</spant><a data-container="body" data-toggle="popover" data-placement="left" title="{{&quot;simplePliCTerm.definition.Hierarchy&quot;|translate}}" class="btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a>
         <div class="pull-right">
-          <button data-ng-click="isCollapsed = !isCollapsed" class="btn btn-success btn-xs"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}" aria-hidden="true" id="iconH"></span></button>
+          <button ng-show="roleAdministrador" data-ng-click="isCollapsed = !isCollapsed" class="btn btn-success btn-xs"><span ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}" aria-hidden="true" id="iconH"></span></button>
           <button type="button" data-ng-click="addHierarchyDB()" class="btn btn-success btn-xs"> <span aria-hidden="true" class="glyphicon glyphicon-floppy-disk"></span></button>
         </div>
       </div>

@@ -39,7 +39,7 @@ angular.module('app.controllers.migratory',[])
 	$scope.addMigratory = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://192.168.220.86:3000/fichas/'+$scope.formData._id+'/migratory/',
+			url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/migratory/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

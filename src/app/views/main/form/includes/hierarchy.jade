@@ -6,7 +6,7 @@ div(data-ng-controller='HierarchyCtrl')
 				a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.Hierarchy"|translate}}')
 					span.glyphicon.glyphicon-info-sign
 				div.pull-right
-					button.btn.btn-success.btn-xs(data-ng-click='isCollapsed = !isCollapsed')
+					button.btn.btn-success.btn-xs(ng-show="roleAdministrador", data-ng-click='isCollapsed = !isCollapsed')
 						span(ng-class="{'glyphicon glyphicon-plus': isCollapsed , 'glyphicon glyphicon-minus' : !isCollapsed}", aria-hidden='true', id = 'iconH')
 					button.btn.btn-success.btn-xs(type='button', data-ng-click='addHierarchyDB()') 
 						span(class="glyphicon glyphicon-floppy-disk", aria-hidden='true')

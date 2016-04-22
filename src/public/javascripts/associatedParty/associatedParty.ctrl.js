@@ -13,7 +13,7 @@ angular.module('app.controllers.associatedParty',[])
 	$scope.addAssociated = function() {
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://192.168.220.86:3000/fichas/'+$scope.formData._id+'/associated_party/',
+			 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/associated_party/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

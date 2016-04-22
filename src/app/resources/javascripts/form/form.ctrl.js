@@ -34,9 +34,14 @@ angular.module('app.controllers.form',[])
 	$scope.taxonRecordNameFactoryLocal = new TaxonRecordNameFactory();
 	$scope.territoryFactoryLocal = new TerritoryFactory();
 	//Initial formData
-	console.log($scope.firstname);
-	console.log($scope.lastname);
-	console.log($scope.roles);
+
+	$scope.roleAdministrador = false;
+	angular.forEach($scope.roles, function(rol){
+		if(rol==='administrator'){
+			$scope.roleAdministrador = true;
+		}
+	});
+
 	$scope.formData = {
 		taxonRecordName : $scope.taxonRecordNameFactoryLocal.taxonRecordName,
 		hierarchy : [],
@@ -264,7 +269,7 @@ angular.module('app.controllers.form',[])
 					$scope.formData.creation_date = new Date();
 					var req_1 = {
 						 method: 'POST',
-						 url: 'http://192.168.220.86:3000/fichas',
+						 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas',
 						 headers: {
 						   'Content-Type': 'application/JSON'
 						 },

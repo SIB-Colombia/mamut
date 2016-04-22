@@ -39,7 +39,7 @@ angular.module('app.controllers.populationBiology',[])
 	$scope.addPopulationBiology = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://192.168.220.86:3000/fichas/'+$scope.formData._id+'/population_biology/',
+			url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/population_biology/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

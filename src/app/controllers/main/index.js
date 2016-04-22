@@ -1,38 +1,51 @@
 'use strict';
 
 exports.index = function(req, res) {
-	var request = require("request");
-
-	request("http://s3.amazonaws.com/mutis/vocabularies/test/lenguajesControlados.json", function(error, response, body) {
-		if (!error && res.statusCode === 200) {
-			var lenguajes = JSON.parse(body);
-			res.render('index', { title: 'Editor Catálogo de la Biodiversidad' , lenguajes: lenguajes });
-		}
-	});
-
+	if (req.isAuthenticated()){
+		var request = require("request");
+		request("http://s3.amazonaws.com/mutis/vocabularies/test/lenguajesControlados.json", function(error, response, body) {
+			if (!error && res.statusCode === 200) {
+				var lenguajes = JSON.parse(body);
+				return res.render('index', { title: 'Editor Catálogo de la Biodiversidad' , lenguajes: lenguajes });
+			}
+		});
+	}else{
+		return res.redirect('/');
+	}
 };
 
 exports.home = function(req, res) {
-	res.render('home', { title: 'Editor Catálogo de la Biodiversidad' });
+	if (req.isAuthenticated()){
+		return res.render('home', { title: 'Editor Catálogo de la Biodiversidad' });
+	}else{
+		return res.redirect('/');
+	}
+};
+
+exports.access = function(req, res) {
+	res.render('access', { title: 'Editor Catálogo de la Biodiversidad' });
 };
 
 exports.edit = function(req, res) {
-	
-	var request = require("request");
-	var id = req.query.id;
+	if (req.isAuthenticated()){
+		var request = require("request");
+		var id = req.query.id;
 
-	request("http://192.168.220.86:3000/fichas/"+id, function(error, response, body) {
-		if (!error && res.statusCode === 200) {
-			body = body.replace(/\{\{(.+?)\}\}/g, '');
-			var data = JSON.parse(body);
-			request("http://s3.amazonaws.com/mutis/vocabularies/test/lenguajesControlados.json", function(error, response, body) {
-				if (!error && res.statusCode === 200) {
-					var lenguajes = JSON.parse(body);
-					res.render('index', { title: 'Editor Catálogo de la Biodiversidad' , json: data, lenguajes: lenguajes });
-				}
-			});
-		}
-	});
+		request("http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/"+id, function(error, response, body) {
+			if (!error && res.statusCode === 200) {
+				body = body.replace(/\{\{(.+?)\}\}/g, '');
+				var data = JSON.parse(body);
+				request("http://s3.amazonaws.com/mutis/vocabularies/test/lenguajesControlados.json", function(error, response, body) {
+					if (!error && res.statusCode === 200) {
+						var lenguajes = JSON.parse(body);
+						return res.render('index', { title: 'Editor Catálogo de la Biodiversidad' , json: data, lenguajes: lenguajes });
+					}
+				});
+			}
+		});
+	}else{
+		return res.redirect('/');
+	}
 };
 
 exports.login = function(req, res, next) {
@@ -51,7 +64,7 @@ exports.login = function(req, res, next) {
 			if (err) {
 				return next(err);
 			}
-			return res.redirect('/');
+			return res.redirect('/home');
 		});
 	})(req, res, next);
 };

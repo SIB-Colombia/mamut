@@ -1,20 +1,17 @@
 .row
 	#form-container
 		.page-header.text-center
-			div(style="margin:20px;padding:0;display:inline")
-				h1 EDITOR DE FICHAS
-				div.pull-right
-					.col-xs-3
-						a(href="/")
-							button.btn.btn-info(type="button")
-								span.glyphicon.glyphicon-home
-					.col-xs-3		
-						button.btn.btn-success(type='button', data-ng-click="saveFile()") 
-							span.glyphicon.glyphicon-floppy-disk
-					.col-xs-6
-						if !firstname
-							span.glyphicon.glyphicon-user
-							| #{firstname}
+			div.row
+				div.col-md-1
+					span.glyphicon.glyphicon-user
+						| {{firstname}}
+				div.col-md-10.text-center
+					h1 EDITOR DE FICHAS
+				div.col-md-1
+					a(href="/home")
+						button.btn.btn-info(type="button")
+							span.glyphicon.glyphicon-home
+					
 		ul.nav.nav-pills.nav-stacked.col-md-2
 			li(ui-sref-active="active")
 				a(ui-sref='.nomeAndClass', data-target='#nomeAndClass', data-toggle='tab', data-placement='left', title='{{"simplePliCTerm.help.NomenclatureAndClassification"|translate}}')
@@ -55,5 +52,5 @@
 				// our nested state views will be injected here
 				#form-views.tab-content(ui-view='')
 		// show our formData as it is being typed
-		//pre.
+		pre.
 			{{ formData | json}}

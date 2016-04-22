@@ -16,7 +16,7 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
       getData: function ($defer, params) {
         var page = params.page();
         var size = params.count();
-        var testUrl = 'http://192.168.220.86:3000/lista';
+        var testUrl = 'http://apichigui-env.us-east-1.elasticbeanstalk.com/lista';
         var search = {
           q: 'angular',
           skip: page,

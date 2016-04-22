@@ -35,7 +35,7 @@ angular.module('app.controllers.hierarchy',[])
 	$scope.addHierarchyDB= function() {
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://192.168.220.86:3000/fichas/'+$scope.formData._id+'/hierarchy/',
+			 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/hierarchy/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

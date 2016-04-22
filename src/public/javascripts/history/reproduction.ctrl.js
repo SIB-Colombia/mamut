@@ -34,7 +34,7 @@ angular.module('app.controllers.reproduction',[])
 	$scope.addReproduction = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://192.168.220.86:3000/fichas/'+$scope.formData._id+'/reproduction/',
+			url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/reproduction/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

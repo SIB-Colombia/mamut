@@ -75,6 +75,10 @@ module.exports = function(parent, options) {
 					break;
 				case 'home':
 					method = 'get';
+					path = '/home';
+					break;
+				case 'access':
+					method = 'get';
 					path = '/';
 					break;
 				case 'edit':

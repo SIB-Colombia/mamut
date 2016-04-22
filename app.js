@@ -9,7 +9,7 @@ var CasStrategy = require('passport-cas').Strategy;
 
 passport.use(new CasStrategy({
 	version: 'CAS3.0',
-	ssoBaseURL: 'http://192.168.220.147:8080/cas',
+	ssoBaseURL: 'http://54.172.124.188:8080/cas',
  	serverBaseURL: 'http://192.168.205.13:7000'
 },function(profile, done) {
 	var user = profile.attributes;
