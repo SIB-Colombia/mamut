@@ -124,7 +124,7 @@ div(data-ng-controller='PopulationBiologyCtrl')
 					a.btn-xs(data-container='body', data-toggle='popover', data-placement='left', title='{{"simplePliCTerm.definition.CarryingCapacity"|translate}}')
 						span.glyphicon.glyphicon-info-sign
 			.form-group
-				button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addPopulationBiologyAtomized(formData.populationBiology.populationBiologyAtomized, populationBiologyAtomized)') Guardar
+				button.btn.btn-success.btn-sm.pull-right(type='button', data-ng-click='addPopulationBiologyAtomized(formData.populationBiology.populationBiologyAtomized, populationBiologyAtomized)') Añadir
 
 			div.divider 
 
@@ -297,7 +297,7 @@ div(data-ng-controller='PopulationBiologyCtrl')
 												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 												div.pull-right
-													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
+													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Añadir
 													button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 								.form-group
 									label.control-label(for='license', translate='') simplePliCTerm.name.license
@@ -318,5 +318,5 @@ div(data-ng-controller='PopulationBiologyCtrl')
 										option(value='') - Seleccione -
 									//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 									//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
-								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.populationBiology.ancillaryData,ancillaryData)', translate='') Guardar
+								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.populationBiology.ancillaryData,ancillaryData)', translate='') Añadir
 								button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar

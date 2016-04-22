@@ -312,7 +312,7 @@ div(data-ng-controller='InvasivenessCtrl')
 													input(type='text', data-ng-model='referenceAto.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 													//input(type='text', data-ng-model='referenceAto.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 													div.pull-right
-														button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReferenceAto(ancillaryDataAto.reference,referenceAto)', translate='') Guardar
+														button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReferenceAto(ancillaryDataAto.reference,referenceAto)', translate='') Añadir
 														button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReferenceAto()', translate='') Cancelar
 									.form-group
 										label.control-label(for='license', translate='') simplePliCTerm.name.license
@@ -334,11 +334,11 @@ div(data-ng-controller='InvasivenessCtrl')
 										//input(type='text', data-ng-model='ancillaryDataAto.rights')
 										//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 										//input(type='text', data-ng-model='ancillaryDataAto.bibliographicCitation')
-									button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryDataAto(invasivenessAtomizedType.ancillaryData,ancillaryDataAto)', translate='') Guardar
+									button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryDataAto(invasivenessAtomizedType.ancillaryData,ancillaryDataAto)', translate='') Añadir
 									button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryDataAto()') Cancelar
 				.form-group
 					div.pull-right
-						button.btn.btn-success.btn-sm(type='button', data-ng-click='addInvasivenessAtomizedType(formData.invasiveness.invasivenessAtomized, invasivenessAtomizedType)') Guardar
+						button.btn.btn-success.btn-sm(type='button', data-ng-click='addInvasivenessAtomizedType(formData.invasiveness.invasivenessAtomized, invasivenessAtomizedType)') Añadir
 						button.btn.btn-success.btn-sm(type='button', data-ng-click='cancelInvasivenessAtomizedType(invasivenessAtomizedType)') Cancelar
 				div.divider
 				.form-group
@@ -540,7 +540,7 @@ div(data-ng-controller='InvasivenessCtrl')
 													input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 													//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 													div.pull-right
-														button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar
+														button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Añadir
 														button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 									.form-group
 										label.control-label(for='license', translate='') simplePliCTerm.name.license
@@ -561,7 +561,7 @@ div(data-ng-controller='InvasivenessCtrl')
 											option(value='') - Seleccione -
 										//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 										//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
-									button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.invasiveness.ancillaryData,ancillaryData)', translate='') Guardar
+									button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.invasiveness.ancillaryData,ancillaryData)', translate='') Añadir
 									button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar
 
 

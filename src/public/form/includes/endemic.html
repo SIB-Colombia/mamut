@@ -65,7 +65,7 @@
           </div>
         </div>
         <div class="col-xs-3">
-          <button data-ng-click="addEndemicTo(endemicAtomizedType.endemicTo,endemicTo)" class="btn btn-success btn-xs">Guardar país</button>
+          <button data-ng-click="addEndemicTo(endemicAtomizedType.endemicTo,endemicTo)" class="btn btn-success btn-xs">Añadir país</button>
         </div>
       </div>
       <div data-ng-controller="CollapseDemoCtrl">
@@ -177,7 +177,7 @@
                       <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
                       <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
                       <div class="pull-right">
-                        <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs">Guardar</button>
+                        <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs">Añadir</button>
                         <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs">Cancelar</button>
                       </div>
                     </div>
@@ -201,14 +201,14 @@
                 <!--label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	-->
                 <!--input(type='text', data-ng-model='ancillaryData.bibliographicCitation')-->
               </div>
-              <button type="button" data-ng-click="addAncillaryData(endemicAtomizedType.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Guardar</button>
+              <button type="button" data-ng-click="addAncillaryData(endemicAtomizedType.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Añadir</button>
               <button type="button" data-ng-click="cancelAncillaryData()" class="btn btn-primary btn-sm">Cancelar</button>
             </div>
           </div>
         </div>
       </div>
       <div class="form-group">
-        <button data-ng-click="addEndemic(formData.endemicAtomized,endemicAtomizedType)" class="btn btn-success btn-sm pull-right">Guardar endemismo</button>
+        <button data-ng-click="addEndemic(formData.endemicAtomized,endemicAtomizedType)" class="btn btn-success btn-sm pull-right">Añadir endemismo</button>
       </div>
     </div>
   </div>

@@ -125,7 +125,7 @@ div(data-ng-controller='CommonNameCtrl')
 													input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 													//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 													div.pull-right
-														button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
+														button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Añadir
 														button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 								//.form-group
 									panel(data-ng-controller='CheckBoxCrtl')
@@ -144,10 +144,10 @@ div(data-ng-controller='CommonNameCtrl')
 									select(data-ng-model='ancillaryData.rightsHolder', ng-options="prov.proveedorDeContenido as prov.proveedorDeContenido for prov in prov_contenido | unique:'proveedorDeContenido'")
 										option(value='') - Seleccione -
 						.form-group
-							button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addAncillaryData(commonName.ancillaryData,ancillaryData)', translate='') Guardar licencia
+							button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addAncillaryData(commonName.ancillaryData,ancillaryData)', translate='') Añadir licencia
 						.form-group
 							div.pull-right
-								button.btn.btn-success.btn-sm(type='button', data-ng-click='addCommonNamesAtomized(formData.commonNamesAtomized,commonName)') Guardar
+								button.btn.btn-success.btn-sm(type='button', data-ng-click='addCommonNamesAtomized(formData.commonNamesAtomized,commonName)') Añadir
 								button.btn.btn-success.btn-sm(type='button', data-ng-click='cancelCommonNamesAtomized()') Cancelar
 						
 				div.divider

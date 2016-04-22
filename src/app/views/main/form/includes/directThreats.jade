@@ -35,7 +35,7 @@ div(data-ng-controller='DirectThreatsCtrl')
 						select(data-ng-model='directThreatsAtomized.measurementOrFact.measurementValue', data-ng-disabled='!directThreatsAtomized.measurementOrFact.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr_2 ')
 							option(value='') - Seleccione -
 					.col-xs-2
-						button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(formData.directThreats.directThreatsAtomized, measurementOrFact)') Guardar
+						button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(formData.directThreats.directThreatsAtomized, measurementOrFact)') Añadir
 			.form-group
 				hr
 				label(for='directThreatUnstructured', translate='') simplePliCTerm.name.DirectThreatUnstructured
@@ -137,7 +137,7 @@ div(data-ng-controller='DirectThreatsCtrl')
 												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 												div.pull-right
-													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
+													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Añadir
 													button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 								.form-group
 									label.control-label(for='license', translate='') simplePliCTerm.name.license
@@ -158,5 +158,5 @@ div(data-ng-controller='DirectThreatsCtrl')
 										option(value='') - Seleccione -
 									//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 									//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
-								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.directThreats.ancillaryData,ancillaryData)', translate='') Guardar
+								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.directThreats.ancillaryData,ancillaryData)', translate='') Añadir
 								button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar

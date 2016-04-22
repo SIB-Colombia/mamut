@@ -21,7 +21,7 @@
           <textarea rows="3" name="relatedTo" data-ng-model="molecularDataAtomizedType.relatedTo"></textarea>
         </div>
         <div class="col-xs-2">
-          <button type="button" data-ng-click="addMolecularDataAtomizedType(formData.molecularData.molecularDataAtomized,molecularDataAtomizedType)" class="btn btn-success btn-xs pull-right">Guardar</button>
+          <button type="button" data-ng-click="addMolecularDataAtomizedType(formData.molecularData.molecularDataAtomized,molecularDataAtomizedType)" class="btn btn-success btn-xs pull-right">Añadir</button>
         </div>
       </div>
       <div class="form-group">
@@ -151,7 +151,7 @@
                         <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
                         <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
                         <div class="pull-right">
-                          <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs">Guardar</button>
+                          <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs">Añadir</button>
                           <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs">Cancelar</button>
                         </div>
                       </div>
@@ -175,7 +175,7 @@
                   <!--label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	-->
                   <!--input(type='text', data-ng-model='ancillaryData.bibliographicCitation')-->
                 </div>
-                <button type="button" data-ng-click="addAncillaryData(formData.molecularData.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Guardar</button>
+                <button type="button" data-ng-click="addAncillaryData(formData.molecularData.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Añadir</button>
                 <button type="button" data-ng-click="cancelAncillaryData()" translate="" class="btn btn-primary btn-sm">Cancelar</button>
               </div>
             </div>

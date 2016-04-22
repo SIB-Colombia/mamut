@@ -37,7 +37,7 @@
       		select(data-ng-model='lifeCycleAtomized.measurementValue', data-ng-disabled='!lifeCycleAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr ')
       			option(value='') - Seleccione -
       	.col-xs-2
-      		button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(formData.lifeCycle.lifeCycleAtomized, measurementOrFact)') Guardar 
+      		button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(formData.lifeCycle.lifeCycleAtomized, measurementOrFact)') Añadir 
       -->
       <div class="form-group">
         <!--hr-->
@@ -152,7 +152,7 @@
                         <input type="text" data-ng-model="reference.issn" placeholder="{{&quot;simplePliCTerm.name.issn&quot;|translate}}"/>
                         <!--input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')-->
                         <div class="pull-right">
-                          <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs">Guardar</button>
+                          <button type="button" data-ng-click="addReference(ancillaryData.reference,reference, checked)" translate="" class="btn btn-primary btn-xs">Añadir</button>
                           <button type="button" data-ng-click="cancelReference()" translate="" class="btn btn-primary btn-xs">Cancelar</button>
                         </div>
                       </div>
@@ -176,7 +176,7 @@
                   <!--label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	-->
                   <!--input(type='text', data-ng-model='ancillaryData.bibliographicCitation')-->
                 </div>
-                <button type="button" data-ng-click="addAncillaryData(formData.lifeCycle.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Guardar</button>
+                <button type="button" data-ng-click="addAncillaryData(formData.lifeCycle.ancillaryData,ancillaryData)" translate="" class="btn btn-primary btn-sm">Añadir</button>
                 <button type="button" data-ng-click="cancelAncillaryData()" class="btn btn-primary btn-sm">Cancelar</button>
               </div>
             </div>

@@ -35,7 +35,7 @@ div(data-ng-controller='ReproductionCtrl')
 						select(data-ng-model='reproductionAtomized.measurementValue', data-ng-disabled='!reproductionAtomized.measurementType', ng-options='item.measurementvalue as item.measurementvalue for item in selectedAttr_2 ')
 							option(value='') - Seleccione -
 					.col-xs-2
-						button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(formData.reproduction.reproductionAtomized, measurementOrFact)') Guardar 
+						button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(formData.reproduction.reproductionAtomized, measurementOrFact)') Añadir 
 			.form-group
 				hr
 				label(for='reproductionUnstructured', translate='') simplePliCTerm.name.ReproductionUnstructured
@@ -137,7 +137,7 @@ div(data-ng-controller='ReproductionCtrl')
 												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 												div.pull-right
-													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
+													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Añadir
 													button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 								.form-group
 									label.control-label(for='license', translate='') simplePliCTerm.name.license
@@ -158,5 +158,5 @@ div(data-ng-controller='ReproductionCtrl')
 										option(value='') - Seleccione -
 									//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 									//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
-								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.reproduction.ancillaryData,ancillaryData)', translate='') Guardar
+								button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.reproduction.ancillaryData,ancillaryData)', translate='') Añadir
 								button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar

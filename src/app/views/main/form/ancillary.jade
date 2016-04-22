@@ -105,7 +105,7 @@ div(data-ng-controller='AncillaryDataCtrl')
 										input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 										//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 										div.pull-right
-											button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Guardar
+											button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference)', translate='') Añadir
 											button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 						
 				.form-group
@@ -145,7 +145,7 @@ div(data-ng-controller='AncillaryDataCtrl')
 				.form-group
 					img(id="imageD", data-ng-if="imageurl !== ''", data-ng-src="{{ imageurl || '//:0' }}", class="imgAncilliary")
 				div.pull-right
-					button.btn.btn-success.btn-xs(type='button', data-ng-click="addAncillaryData(formData.ancillaryData,ancillaryData)") Guardar 
+					button.btn.btn-success.btn-xs(type='button', data-ng-click="addAncillaryData(formData.ancillaryData,ancillaryData)") Añadir 
 					button.btn.btn-success.btn-xs(type='button', data-ng-click="cancelAncillaryData(formData.ancillaryData,ancillaryData)") Cancelar 
  
 div(ng-include="'./form/includes/moreInformation.html'")

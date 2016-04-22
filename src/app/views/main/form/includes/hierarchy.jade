@@ -249,10 +249,10 @@ div(data-ng-controller='HierarchyCtrl')
 												input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 												//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 												div.pull-right
-													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
+													button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Añadir
 													button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 
-							button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addAncillaryData(hierarchy.ancillaryData,ancillaryData)', translate='') Guardar Información adicional
+							button.btn.btn-primary.btn-xs.pull-right(type='button', data-ng-click='addAncillaryData(hierarchy.ancillaryData,ancillaryData)', translate='') Añadir Información adicional
 					div.pull-right
-						button.btn.btn-success.btn-sm(type='button', data-ng-click='addHierarchy(formData.hierarchy,hierarchy)') Guardar
+						button.btn.btn-success.btn-sm(type='button', data-ng-click='addHierarchy(formData.hierarchy,hierarchy)') Añadir
 						button.btn.btn-success.btn-sm(type='button', data-ng-click='cancelHierarchy()') Cancelar

@@ -37,7 +37,7 @@ div(data-ng-controller='EnvironmentalEnvelopeCtrl')
 					label
 						| {{measurementOrFact.measurementOrFact.measurementUnit}}
 				.col-xs-2
-					button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(formData.environmentalEnvelope.environmentalEnvelopeAtomized, measurementOrFact)') Guardar 
+					button.btn.btn-success.btn-xs.pull-right(data-ng-click='addMeasurementOrFactVector(formData.environmentalEnvelope.environmentalEnvelopeAtomized, measurementOrFact)') Añadir 
 			hr
 			label(for='environmentalEnvelopeUnstructured', translate='') simplePliCTerm.name.EnvironmentalEnvelopeUnstructured
 			em (opcional)
@@ -138,7 +138,7 @@ div(data-ng-controller='EnvironmentalEnvelopeCtrl')
 											input(type='text', data-ng-model='reference.issn', placeholder='{{"simplePliCTerm.name.issn"|translate}}')
 											//input(type='text', data-ng-model='reference.link', placeholder='{{"simplePliCTerm.name.link"|translate}}')
 											div.pull-rigth
-												button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Guardar
+												button.btn.btn-primary.btn-xs(type='button', data-ng-click='addReference(ancillaryData.reference,reference, checked)', translate='') Añadir
 												button.btn.btn-primary.btn-xs(type='button', data-ng-click='cancelReference()', translate='') Cancelar
 							.form-group
 								label.control-label(for='license', translate='') simplePliCTerm.name.license
@@ -159,5 +159,5 @@ div(data-ng-controller='EnvironmentalEnvelopeCtrl')
 									option(value='') - Seleccione -
 								//label.control-label(for='bibliographicCitation', translate='') simplePliCTerm.name.bibliographicCitation	
 								//input(type='text', data-ng-model='ancillaryData.bibliographicCitation')
-							button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.environmentalEnvelope.ancillaryData,ancillaryData)', translate='') Guardar
+							button.btn.btn-primary.btn-sm(type='button', data-ng-click='addAncillaryData(formData.environmentalEnvelope.ancillaryData,ancillaryData)', translate='') Añadir
 							button.btn.btn-primary.btn-sm(type='button', data-ng-click='cancelAncillaryData()') Cancelar
