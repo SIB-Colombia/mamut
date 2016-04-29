@@ -111,31 +111,6 @@ angular.module('app.controllers.measurement',[])
 		}
 	});
 
-	$scope.$watch('formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementType', function(name) {
-		if (name !== undefined) {
-			delete $scope.formData.dispersal.dispersalAtomized.distance.measurementValue;
-			$scope.selectedAttr.length = 0;
-
-			angular.forEach($scope.lenguajes.distance, function(attr) {
-				if (attr.measurementtype === name) {
-					$scope.selectedAttr.push(attr);
-				}
-			});
-		}
-	});
-	$scope.$watch('formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementValue', function(name) {
-		if (name !== undefined) {
-			angular.forEach($scope.selectedAttr, function(attr) {
-				if (attr.measurementvalue === name) {
-					$scope.formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementType = attr.measurementtype;
-					$scope.formData.dispersal.dispersalAtomized.distance.measurementOrFact.measurementValue = name;
-					$scope.formData.dispersal.dispersalAtomized.distance.ancillaryData.bibliographicCitation = attr.referencia;
-					$scope.formData.dispersal.dispersalAtomized.distance.ancillaryData.source = attr.url;
-				}
-			});
-		}
-	});
-
 	$scope.$watch('behaviorAtomized.measurementType', function(name) {
 		if (name !== undefined) {
 			delete $scope.behaviorAtomized.measurementValue;

@@ -1,7 +1,7 @@
 extends ../../layouts/layout_min
 
 block content
-	div(data-ng-app="homeApp" data-ng-controller="homeController as home" data-ng-init="home.init('#{firstname ? firstname: ''}')")
+	div(data-ng-app="homeApp" data-ng-controller="homeController as home")
 		// views will be injected here
 		.container
 			.row

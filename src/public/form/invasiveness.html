@@ -105,30 +105,26 @@
         				button.btn.btn-default(type="button",data-ng-click="open($event)")
         					i.glyphicon.glyphicon-calendar
         -->
-        <div class="form-group">
-          <label for="countryCode" translate="" class="col-xs-2 control-label">simplePliCTerm.name.countryCode</label>
-          <div class="col-xs-10">
-            <div data-ng-controller="UbicacionCtrl">
+        <div data-ng-controller="UbicacionCtrl">
+          <div class="form-group">
+            <label for="countryCode" translate="" class="col-xs-2 control-label">simplePliCTerm.name.countryCode</label>
+            <div class="col-xs-10">
               <select data-ng-model="invasivenessAtomizedType.countryCode" ng-options="attr.countryName as attr.countryName for attr in ubicacion ">
                 <option value="">- Seleccione -</option>
               </select>
             </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="stateProvince" translate="" class="col-xs-2 control-label">simplePliCTerm.name.stateProvince</label>
-          <div class="col-xs-10">
-            <div data-ng-controller="UbicacionCtrl">
+          <div class="form-group">
+            <label for="stateProvince" translate="" class="col-xs-2 control-label">simplePliCTerm.name.stateProvince</label>
+            <div class="col-xs-10">
               <select data-ng-model="invasivenessAtomizedType.stateProvince" data-ng-disabled="!invasivenessAtomizedType.countryCode" ng-options="item.departmentName as item.departmentName for item in selectedAttr.departments ">
                 <option value="">- Seleccione -</option>
               </select>
             </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="county" translate="" class="col-xs-2 control-label">simplePliCTerm.name.county</label>
-          <div class="col-xs-10">
-            <div data-ng-controller="UbicacionCtrl">
+          <div class="form-group">
+            <label for="county" translate="" class="col-xs-2 control-label">simplePliCTerm.name.county</label>
+            <div class="col-xs-10">
               <select data-ng-model="invasivenessAtomizedType.county" data-ng-disabled="!invasivenessAtomizedType.countryCode || !invasivenessAtomizedType.stateProvince" ng-options="item.countyName as item.countyName for item in selectedAttr2.counties ">
                 <option value="">- Seleccione -</option>
               </select>

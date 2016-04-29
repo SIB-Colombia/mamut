@@ -41,7 +41,7 @@ div(data-ng-controller='ManagementAndConservationCtrl')
 				label.col-xs-2.control-label(for='type', translate='') simplePliCTerm.name.Type
 				.col-xs-10
 					div(data-ng-repeat="managementType in lenguajes.managementType")
-						input(type='radio', data-ng-model='managementAndConservationAtomizedType.type', data-ng-value="managementType", id = "{{managementType.name}}")
+						input(type='radio', data-ng-model='managementAndConservationAtomizedType.type', data-ng-value="managementType.name", id = "{{managementType.name}}")
 						{{managementType.name}}	
 			.form-group
 				label.col-xs-2.control-label(for='objectives', translate='') simplePliCTerm.name.Objectives
@@ -82,6 +82,10 @@ div(data-ng-controller='ManagementAndConservationCtrl')
 				label.col-xs-2.control-label(for='humanAndEnvironmentalRelevance', translate='') simplePliCTerm.name.HumanAndEnvironmentalRelevance
 				.col-xs-10
 					input#humanAndEnvironmentalrelevanc(type='text', data-ng-model='managementAndConservationAtomizedType.humanAndEnvironmentalrelevanc')
+			.form-group
+				div.pull-right
+					button.btn.btn-success.btn-sm(type='button', data-ng-click='addManagementAndConservation(formData.usesManagementAndConservation.managementAndConservation.managementAndConservationAtomized, managementAndConservationAtomizedType)') Añadir 
+					button.btn.btn-success.btn-sm(type='button', data-ng-click='cancelManagementAndConservation()') Cancelar 
 
 			.form-group
 				hr

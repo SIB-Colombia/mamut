@@ -33,8 +33,8 @@ angular.module('app.controllers.form',[])
 	$scope.reproductionFactoryLocal = new ReproductionFactory();
 	$scope.taxonRecordNameFactoryLocal = new TaxonRecordNameFactory();
 	$scope.territoryFactoryLocal = new TerritoryFactory();
-	//Initial formData
-
+	
+	//adminis. role
 	$scope.roleAdministrador = false;
 	angular.forEach($scope.roles, function(rol){
 		if(rol==='administrator'){
@@ -42,6 +42,7 @@ angular.module('app.controllers.form',[])
 		}
 	});
 
+	//Initial formData
 	$scope.formData = {
 		taxonRecordName : $scope.taxonRecordNameFactoryLocal.taxonRecordName,
 		hierarchy : [],
@@ -273,7 +274,7 @@ angular.module('app.controllers.form',[])
 						 headers: {
 						   'Content-Type': 'application/JSON'
 						 },
-						 data: { "id_user" : "01",
+						 data: { "id_user" : $scope.useremail,
 						 		"taxonRecordName":$scope.formData.taxonRecordName
 
 						 }

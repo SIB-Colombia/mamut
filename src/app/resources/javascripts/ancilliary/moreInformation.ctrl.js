@@ -11,7 +11,7 @@ angular.module('app.controllers.moreInformation',[])
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},
-			data: { "id_user" : "01",
+			data: { "id_user" : $scope.useremail,
 				"moreInformation":$scope.formData.moreInformation
 
 			}

@@ -352,6 +352,7 @@ angular.module('app.controllers.checkBox',[])
     };
 
      $scope.updateSelectionManagementType = function updateSelectionManagementType(element, list) {
+        console.log(elemet);
         angular.forEach(list, function(item) {
             item.checked = false;
         });

@@ -43,7 +43,7 @@ angular.module('app.controllers.migratory',[])
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},
-			data: { "id_user" : "01",
+			data: { "id_user" : $scope.useremail,
 				"migratory":$scope.formData.migratory
 
 			}

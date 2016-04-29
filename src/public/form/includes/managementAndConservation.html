@@ -41,7 +41,7 @@
         <label for="type" translate="" class="col-xs-2 control-label">simplePliCTerm.name.Type</label>
         <div class="col-xs-10">
           <div data-ng-repeat="managementType in lenguajes.managementType">
-            <input type="radio" data-ng-model="managementAndConservationAtomizedType.type" data-ng-value="managementType" id="{{managementType.name}}"/>{{managementType.name}}	
+            <input type="radio" data-ng-model="managementAndConservationAtomizedType.type" data-ng-value="managementType.name" id="{{managementType.name}}"/>{{managementType.name}}	
           </div>
         </div>
       </div>
@@ -94,6 +94,12 @@
         <label for="humanAndEnvironmentalRelevance" translate="" class="col-xs-2 control-label">simplePliCTerm.name.HumanAndEnvironmentalRelevance</label>
         <div class="col-xs-10">
           <input id="humanAndEnvironmentalrelevanc" type="text" data-ng-model="managementAndConservationAtomizedType.humanAndEnvironmentalrelevanc"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="pull-right">
+          <button type="button" data-ng-click="addManagementAndConservation(formData.usesManagementAndConservation.managementAndConservation.managementAndConservationAtomized, managementAndConservationAtomizedType)" class="btn btn-success btn-sm">Añadir </button>
+          <button type="button" data-ng-click="cancelManagementAndConservation()" class="btn btn-success btn-sm">Cancelar </button>
         </div>
       </div>
       <div class="form-group">

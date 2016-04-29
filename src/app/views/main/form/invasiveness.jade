@@ -96,22 +96,20 @@ div(data-ng-controller='InvasivenessCtrl')
 								span.input-group-btn
 									button.btn.btn-default(type="button",data-ng-click="open($event)")
 										i.glyphicon.glyphicon-calendar
-				.form-group
-					label.col-xs-2.control-label(for='countryCode', translate='') simplePliCTerm.name.countryCode
-					.col-xs-10
-						div(data-ng-controller='UbicacionCtrl')
+				div(data-ng-controller='UbicacionCtrl')
+					.form-group
+						label.col-xs-2.control-label(for='countryCode', translate='') simplePliCTerm.name.countryCode
+						.col-xs-10
 							select(data-ng-model='invasivenessAtomizedType.countryCode', ng-options='attr.countryName as attr.countryName for attr in ubicacion ')
 								option(value='') - Seleccione -
-				.form-group
-					label.col-xs-2.control-label(for='stateProvince', translate='') simplePliCTerm.name.stateProvince
-					.col-xs-10
-						div(data-ng-controller='UbicacionCtrl')
+					.form-group
+						label.col-xs-2.control-label(for='stateProvince', translate='') simplePliCTerm.name.stateProvince
+						.col-xs-10
 							select(data-ng-model='invasivenessAtomizedType.stateProvince', data-ng-disabled='!invasivenessAtomizedType.countryCode', ng-options='item.departmentName as item.departmentName for item in selectedAttr.departments ')
 								option(value='') - Seleccione -
-				.form-group
-					label.col-xs-2.control-label(for='county', translate='') simplePliCTerm.name.county
-					.col-xs-10
-						div(data-ng-controller='UbicacionCtrl')
+					.form-group
+						label.col-xs-2.control-label(for='county', translate='') simplePliCTerm.name.county
+						.col-xs-10
 							select(data-ng-model='invasivenessAtomizedType.county', data-ng-disabled='!invasivenessAtomizedType.countryCode || !invasivenessAtomizedType.stateProvince', ng-options='item.countyName as item.countyName for item in selectedAttr2.counties ')
 								option(value='') - Seleccione -
 				.form-group

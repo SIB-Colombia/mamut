@@ -51,7 +51,7 @@ angular.module('app.controllers.threatStatus',[])
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},
-			data: { "id_user" : "01",
+			data: { "id_user" : $scope.useremail,
 				"threatStatus":$scope.formData.threatStatus
 
 			}

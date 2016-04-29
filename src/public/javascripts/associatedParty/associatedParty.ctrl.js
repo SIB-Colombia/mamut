@@ -17,7 +17,7 @@ angular.module('app.controllers.associatedParty',[])
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },
-			 data: { "id_user" : "01",
+			 data: { "id_user" : $scope.useremail,
 			 		"associatedParty":$scope.formData.associatedParty
 
 			 }

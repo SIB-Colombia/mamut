@@ -38,13 +38,14 @@ angular.module('app.controllers.commonName',[])
 	};
 	
 	$scope.addCommonNameDB= function() {
+		console.log($scope.formData.commonNamesAtomized);
 		var req_1 = {
 			 method: 'POST',
 			 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/common_names_atomized/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },
-			 data: { "id_user" : "01",
+			 data: { "id_user" : $scope.useremail,
 			 		"commonNamesAtomized":$scope.formData.commonNamesAtomized
 
 			 }

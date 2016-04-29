@@ -48,6 +48,7 @@ module.exports = function(parent, options) {
 				res.locals.firstname = req.user.firstname;
 				res.locals.lastname = req.user.lastname;
 				res.locals.roles = req.user.roles;
+				res.locals.email = req.user.email;
 			}
 			return next();
 		});

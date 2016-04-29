@@ -3,11 +3,6 @@
 angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.translate', 'ui.directives','ui.filters', 'ui.router','ui.bootstrap','ngAnimate','ngFileUpload', 'angularModalService', 'ngTable'])
 
 .controller('homeController', ['$scope', '$http', 'ngTableParams', function($scope, $http, ngTableParams) {
-  this.init = function(data) {
-    // Current user
-    $scope.user = data;
-    console.log($scope.user);
-  };
   $scope.tableParams = new ngTableParams({
       page: 1,
       count: 10,
@@ -25,7 +20,6 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
         $http.get(testUrl, { params: search, headers: { 'Content-Type': 'application/json'} })
          .then(function(res) {
             params.total(res.data.total);
-            console.log(res.data);
             $defer.resolve(res.data.docs);
             //$defer.resolve(res.data);
           }, function(reason) {

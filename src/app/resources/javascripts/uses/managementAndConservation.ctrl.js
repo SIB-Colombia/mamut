@@ -43,11 +43,12 @@ angular.module('app.controllers.managementAndConservation',[])
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},
-			data: { "id_user" : "01",
+			data: { "id_user" : $scope.useremail,
 				"usesManagementAndConservation":$scope.formData.usesManagementAndConservation
 
 			}
 		};
+		console.log(req_1.data);
 		$http(req_1).then(function (response) {
 			if(response.status===200){
 				alert("Elemento guardado satisfactoriamente!");
