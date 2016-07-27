@@ -40,7 +40,7 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
           getData: function ($defer, params) {
             var page = params.page();
             var size = params.count();
-            var testUrl = 'http://apimamut.elasticbeanstalk.com/search/tax_author/'+searchText;
+            var testUrl = 'http://apichigui-env.us-east-1.elasticbeanstalk.com/search/tax_author/'+searchText;
             var search = {
               q: 'angular',
               page: page,

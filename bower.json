@@ -1,5 +1,5 @@
 {
-  "name": "Catalogue_of_Biodiversity:_Data_editor",
+  "name": "catalogue_of_biodiversity_data_editor",
   "description": "Data elements editor for plinianCore archive to json persistance",
   "version": "0.0.1",
   "homepage": "https://github.com/SIB-Colombia/editor",

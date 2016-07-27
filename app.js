@@ -10,7 +10,7 @@ var CasStrategy = require('passport-cas').Strategy;
 passport.use(new CasStrategy({
 	version: 'CAS3.0',
 	ssoBaseURL: 'http://54.172.124.188:8080/cas',
- 	serverBaseURL: 'http://192.168.205.13:7000'
+ 	serverBaseURL: 'http://mamut.biodiversidad.co/'
 },function(profile, done) {
 	var user = profile.attributes;
 	return done(null, user);
