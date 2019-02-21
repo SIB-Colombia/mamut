@@ -41,7 +41,7 @@ angular.module('app.controllers.commonName',[])
 		console.log($scope.formData.commonNamesAtomized);
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/common_names_atomized/',
+			 url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/common_names_atomized/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

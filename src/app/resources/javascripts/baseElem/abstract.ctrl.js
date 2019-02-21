@@ -6,7 +6,7 @@ angular.module('app.controllers.abstract',[])
 	$scope.addAbstract = function() {
 		var req_1 = {
 			method: 'POST',
-			url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/abstract/',
+			url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/abstract/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

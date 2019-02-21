@@ -36,7 +36,7 @@ angular.module('app.controllers.dispersal',[])
 		//agregar validación a distancia
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/dispersal/',
+			 url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/dispersal/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

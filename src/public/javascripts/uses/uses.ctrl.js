@@ -40,7 +40,7 @@ angular.module('app.controllers.use',[])
 	$scope.addUse = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/uses_management_and_conservation/',
+			url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/uses_management_and_conservation/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

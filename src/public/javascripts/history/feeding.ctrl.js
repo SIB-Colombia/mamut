@@ -38,7 +38,7 @@ angular.module('app.controllers.feeding',[])
 	$scope.addFeeding = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/feeding/',
+			url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/feeding/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

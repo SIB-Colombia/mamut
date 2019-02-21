@@ -36,7 +36,7 @@ angular.module('app.controllers.ancillary',[])
 	$scope.addAncillaries = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/ancillary_data/',
+			url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/ancillary_data/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

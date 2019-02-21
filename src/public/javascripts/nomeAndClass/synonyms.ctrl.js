@@ -40,7 +40,7 @@ angular.module('app.controllers.synonmy',[])
 	$scope.addSynonymsDB= function() {
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/synonyms_atomized/',
+			 url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/synonyms_atomized/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

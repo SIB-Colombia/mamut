@@ -47,7 +47,7 @@ angular.module('app.controllers.threatStatus',[])
 	$scope.addThreatStatus = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/threat_status/',
+			url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/threat_status/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

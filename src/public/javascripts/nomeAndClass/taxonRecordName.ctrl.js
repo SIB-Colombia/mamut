@@ -53,7 +53,7 @@ angular.module('app.controllers.taxonRecordName',[])
 						$scope.formData.creation_date = new Date();
 						var req_1 = {
 							 method: 'POST',
-							 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/',
+							 url: 'http://167.114.113.179:3000/fichas/',
 							 headers: {
 							   'Content-Type': 'application/JSON'
 							 },
@@ -221,7 +221,7 @@ angular.module('app.controllers.taxonRecordName',[])
 												});
 												var req_1 = {
 													method: 'POST',
-													url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/threat_status/',
+													url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/threat_status/',
 													headers: {
 													  'Content-Type': 'application/JSON'
 													},
@@ -268,7 +268,7 @@ angular.module('app.controllers.taxonRecordName',[])
 		if($scope.formData.hierarchy.length > 0){
 			var req_1 = {
 				 method: 'POST',
-				 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/hierarchy/',
+				 url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/hierarchy/',
 				 headers: {
 				   'Content-Type': 'application/JSON'
 				 },
@@ -289,7 +289,7 @@ angular.module('app.controllers.taxonRecordName',[])
 		if($scope.formData.commonNamesAtomized.length > 0){
 			var req_1 = {
 				 method: 'POST',
-				 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/common_names_atomized/',
+				 url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/common_names_atomized/',
 				 headers: {
 				   'Content-Type': 'application/JSON'
 				 },
@@ -311,7 +311,7 @@ angular.module('app.controllers.taxonRecordName',[])
 		if($scope.formData.synonymsAtomized.length > 0){
 			var req_1 = {
 				 method: 'POST',
-				 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/synonyms_atomized/',
+				 url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/synonyms_atomized/',
 				 headers: {
 				   'Content-Type': 'application/JSON'
 				 },

@@ -1,7 +1,6 @@
 'use strict';
 
-var express = require('express'),
-    fs = require('fs');
+var express = require('express'), fs = require('fs');
 
 module.exports = function(parent, options) {
 	var verbose = options.verbose;
@@ -44,12 +43,16 @@ module.exports = function(parent, options) {
 		});
 
 		app.use('/', function(req, res, next) {
-			if (req.isAuthenticated()) {
+			/*if (req.isAuthenticated()) {
 				res.locals.firstname = req.user.firstname;
 				res.locals.lastname = req.user.lastname;
 				res.locals.roles = req.user.roles;
 				res.locals.email = req.user.email;
-			}
+			}*/
+			res.locals.firstname = 'Edgar Esteban';
+			res.locals.lastname = 'Herrera Collazos';
+			res.locals.roles = 'administrator';
+			res.locals.email = 'edgarestebanhc@gmail.com';
 			return next();
 		});
 

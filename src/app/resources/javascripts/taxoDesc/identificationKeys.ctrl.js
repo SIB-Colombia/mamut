@@ -35,7 +35,7 @@ angular.module('app.controllers.identificationKeys',[])
 	$scope.addIdentificationKeys = function(){
 		var req_1 = {
 			 method: 'POST',
-			 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas/'+$scope.formData._id+'/identification_keys/',
+			 url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/identification_keys/',
 			 headers: {
 			   'Content-Type': 'application/JSON'
 			 },

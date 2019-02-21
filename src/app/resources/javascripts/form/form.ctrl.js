@@ -270,7 +270,7 @@ angular.module('app.controllers.form',[])
 					$scope.formData.creation_date = new Date();
 					var req_1 = {
 						 method: 'POST',
-						 url: 'http://apichigui-env.us-east-1.elasticbeanstalk.com/fichas',
+						 url: 'http://167.114.113.179:3000/fichas',
 						 headers: {
 						   'Content-Type': 'application/JSON'
 						 },
