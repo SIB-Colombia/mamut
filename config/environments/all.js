@@ -1,5 +1,3 @@
-'use strict';
-
 var compression = require('compression');
 var favicon = require('serve-favicon');
 var morgan = require('morgan');
@@ -10,7 +8,7 @@ var passport = require('passport');
 var MemoryStore = require('session-memory-store')(session);
 
 module.exports = function(parent) {
-	parent.set('port', normalizePort(process.env.PORT || '5000'));
+	parent.set('port', normalizePort(process.env.PORT || '5004'));
 	parent.set('view engine', 'jade');
 	
 	parent.use(favicon(__dirname + '/../../src/public/images/sib.ico'));
