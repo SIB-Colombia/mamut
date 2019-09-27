@@ -52,7 +52,7 @@ exports.edit = function(req, res) {
 		var id = req.query.id;
 
 		request(
-			'http://167.114.113.179:3000/fichas/' + id,
+			'http://51.38.179.153:3002/fichas/' + id,
 			function(error, response, body) {
 				if (!error && res.statusCode === 200) {
 					body = body.replace(/\{\{(.+?)\}\}/g, '');
@@ -80,7 +80,7 @@ exports.edit = function(req, res) {
 	var id = req.query.id;
 
 	request(
-		'http://167.114.113.179:3000/fichas/' + id,
+		'http://51.38.179.153:3002/fichas/' + id,
 		function(error, response, body) {
 			if (!error && res.statusCode === 200) {
 				body = body.replace(/\{\{(.+?)\}\}/g, '');

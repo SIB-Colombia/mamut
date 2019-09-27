@@ -47,7 +47,7 @@ angular.module('app.controllers.threatStatus',[])
 	$scope.addThreatStatus = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/threat_status/',
+			url: 'http://51.38.179.153:3002/fichas/'+$scope.formData._id+'/threat_status/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},

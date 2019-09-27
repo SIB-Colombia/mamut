@@ -11,7 +11,7 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
       getData: function ($defer, params) {
         var page = params.page();
         var size = params.count();
-        var testUrl = 'http://167.114.113.179:3000/lista';
+        var testUrl = 'http://51.38.179.153:3002/lista';
         var search = {
           q: 'angular',
           skip: page,
@@ -40,7 +40,7 @@ angular.module('homeApp',['ng', 'ngCookies', 'ngSanitize', 'pascalprecht.transla
           getData: function ($defer, params) {
             var page = params.page();
             var size = params.count();
-            var testUrl = 'http://167.114.113.179:3000/search/tax_author/'+searchText;
+            var testUrl = 'http://51.38.179.153:3002/search/tax_author/'+searchText;
             var search = {
               q: 'angular',
               page: page,

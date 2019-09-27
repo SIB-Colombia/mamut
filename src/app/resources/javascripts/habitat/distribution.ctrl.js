@@ -43,7 +43,7 @@ angular.module('app.controllers.distribution',[])
 	$scope.addDistributionDB = function(){
 		var req_1 = {
 			method: 'POST',
-			url: 'http://167.114.113.179:3000/fichas/'+$scope.formData._id+'/distribution/',
+			url: 'http://51.38.179.153:3002/fichas/'+$scope.formData._id+'/distribution/',
 			headers: {
 			  'Content-Type': 'application/JSON'
 			},
